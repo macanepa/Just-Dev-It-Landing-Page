@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Dev It - Fábrica de Software</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #00ff87, #60efff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="orbitron text-2xl font-bold gradient-text">Just Dev It</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="hover:text-cyan-400 transition-colors">Servicios</a>
+                    <a href="#team" class="hover:text-cyan-400 transition-colors">Equipo</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contacto</a>
+                </div>
+                <button
+                    class="bg-gradient-to-r from-cyan-500 to-emerald-500 px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+                    Empezar
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient min-h-screen relative overflow-hidden">
+        <div id="particles-js"></div>
+        <div class="content container mx-auto px-6 pt-32 pb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
+                <div class="space-y-8">
+                    <h1 class="orbitron text-5xl md:text-7xl font-bold leading-tight">
+                        Impulsando la <span class="gradient-text">Innovación</span>
+                    </h1>
+                    <p class="text-slate-300 text-xl">
+                        Transforma tu negocio con soluciones de datos y desarrollo de software de vanguardia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button
+                            class="bg-gradient-to-r from-cyan-500 to-emerald-500 px-8 py-3 rounded-full hover:opacity-90 transition-opacity">
+                            Nuestros Servicios
+                        </button>
+                        <button
+                            class="border border-cyan-500 px-8 py-3 rounded-full hover:bg-cyan-500/10 transition-colors">
+                            Saber Más
+                        </button>
+                    </div>
+                </div>
+                <div id="3d-container" class="h-[500px]"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Servicios</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">🤖</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Soluciones de IA</h3>
+                    <p class="text-slate-300">Modelos de IA personalizados y soluciones de machine learning para
+                        automatizar y optimizar tus procesos de negocio.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">🌐</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Desarrollo Web</h3>
+                    <p class="text-slate-300">Sitios web y aplicaciones modernas y responsivas que brindan experiencias
+                        excepcionales al usuario.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">🔍</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Web Scraping</h3>
+                    <p class="text-slate-300">Soluciones avanzadas de extracción de datos para obtener información
+                        valiosa de la web.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">📊</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Ingeniería de Datos</h3>
+                    <p class="text-slate-300">Construimos pipelines de datos robustos e infraestructura para manejar tus
+                        datos a cualquier escala.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">📈</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Análisis de Datos</h3>
+                    <p class="text-slate-300">Transformamos datos brutos en información accionable con análisis y
+                        visualización avanzada.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">💻</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Software a Medida</h3>
+                    <p class="text-slate-300">Soluciones de software personalizadas que se adaptan perfectamente a las
+                        necesidades de tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Fundadores</h2>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQE6MiaFUh5gdw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1728325392547?e=1738800000&v=beta&t=GX_tAat706g0DKDt-DDSjXYy-HxGrxcu61-3Pry0E-w"
+                            alt="Joaquin Espildora" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="orbitron text-xl font-bold mb-2">Joaquin Espildora Moraga</h3>
+                    <p class="text-cyan-400 mb-4">Fundador & CEO</p>
+                    <p class="text-slate-300">Ingeniero Civil con más de 5 años de experiencia en el sector financiero e
+                        inversiones inmobiliarias. Líder visionario con experiencia en gestión de portafolios que
+                        superan $1B USD y desarrollo de soluciones tecnológicas financieras innovadoras.</p>
+                </div>
+                <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="https://media.licdn.com/dms/image/v2/C4E03AQGqwfcuLaRyXw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1646010953642?e=1738800000&v=beta&t=z6Bm-iluK648Kg26svCY8jgQ7me9BBmvylc-TvYIEn4"
+                            alt="Matías Cánepa" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="orbitron text-xl font-bold mb-2">Matías Cánepa González</h3>
+                    <p class="text-cyan-400 mb-4">Fundador & CTO</p>
+                    <p class="text-slate-300">Cloud Engineer experto con amplia experiencia en desarrollo de software y
+                        data engineering. Lidera el desarrollo tecnológico y la infraestructura de nuestros
+                        servicios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="orbitron text-4xl font-bold mb-8">Creemos Algo Increíble</h2>
+                <p class="text-slate-300 mb-4">¿Listo para transformar tus datos en valor? Contáctanos hoy.</p>
+                <p class="text-cyan-400 mb-12">📍 Santiago, Chile</p>
+                <form class="space-y-6">
+                    <input type="text" placeholder="Tu Nombre"
+                        class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    <input type="email" placeholder="Tu Email"
+                        class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    <textarea placeholder="Tu Mensaje" rows="4"
+                        class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+                    <button
+                        class="bg-gradient-to-r from-cyan-500 to-emerald-500 px-8 py-3 rounded-full hover:opacity-90 transition-opacity">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Particles.js (Same JavaScript code as before)
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#60efff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#60efff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+            },
+            retina_detect: true
+        });
+
+        // Initialize Three.js Scene (Same JavaScript code as before)
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+        const container = document.getElementById('3d-container');
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const geometry = new THREE.TorusKnotGeometry(3, 1, 100, 16);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x60efff,
+            wireframe: true
+        });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        camera.position.z = 10;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
