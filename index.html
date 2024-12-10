@@ -37,6 +37,10 @@
             position: relative;
             z-index: 2;
         }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Esto compensa la altura de la barra de navegación fija */
+        }
     </style>
 </head>
 
@@ -264,14 +268,26 @@
             camera.updateProjectionMatrix();
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+         // Obtener todos los enlaces de navegación
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Obtener el id de la sección objetivo
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+            }
         });
+    });
+});
     </script>
 </body>
 
