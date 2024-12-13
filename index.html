@@ -10,20 +10,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 
-        .orbitron {
-            font-family: 'Orbitron', sans-serif;
+        .main-font {
+            font-family: 'Poppins', sans-serif;
         }
 
         .gradient-text {
-            background: linear-gradient(45deg, #00ff87, #60efff);
+            background: #FFFFFF;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text2 {
+            background: #04C7AA;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #000000 0%, #152636 100%);
         }
 
         #particles-js {
@@ -47,12 +52,13 @@
             <div class="flex items-center justify-between">
                 <div class="orbitron text-2xl font-bold gradient-text">Just Dev It</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#services" class="hover:text-cyan-400 transition-colors">Servicios</a>
-                    <a href="#team" class="hover:text-cyan-400 transition-colors">Equipo</a>
-                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contacto</a>
+                    <a href="#services" class="hover:text-[#04C7AA] transition-colors">Servicios</a>
+                    <a href="#portfolio" class="hover:text-[#04C7AA] transition-colors">Portafolio</a>
+                    <a href="#team" class="hover:text-[#04C7AA] transition-colors">Equipo</a>
+                    <a href="#contact" class="hover:text-[#04C7AA] transition-colors">Contacto</a>
                 </div>
                 <button
-                    class="bg-gradient-to-r from-cyan-500 to-emerald-500 px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+                    class="bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
                     Empezar
                 </button>
             </div>
@@ -65,19 +71,19 @@
         <div class="content container mx-auto px-6 pt-32 pb-20">
             <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
                 <div class="space-y-8">
-                    <h1 class="orbitron text-5xl md:text-7xl font-bold leading-tight">
-                        Impulsando la <span class="gradient-text">Innovación</span>
+                    <h1 class="main-font text-5xl md:text-7xl font-bold leading-tight">
+                        Impulsando la <span class="gradient-text2">Innovación</span>
                     </h1>
-                    <p class="text-slate-300 text-xl">
+                    <p class="text-[#BEC3C7] text-xl">
                         Transforma tu negocio con soluciones de datos y desarrollo de software de vanguardia.
                     </p>
                     <div class="flex space-x-4">
                         <button
-                            class="bg-gradient-to-r from-cyan-500 to-emerald-500 px-8 py-3 rounded-full hover:opacity-90 transition-opacity">
+                            class="bg-[#9B61A4] hover:bg-[#9B61A4]/10 border border-[#9B61A4] transition-colors px-8 py-3 rounded-full">
                             Nuestros Servicios
                         </button>
                         <button
-                            class="border border-cyan-500 px-8 py-3 rounded-full hover:bg-cyan-500/10 transition-colors">
+                            class="border border-[#9B61A4] hover:bg-[#9B61A4]/10 transition-colors px-8 py-3 rounded-full">
                             Saber Más
                         </button>
                     </div>
@@ -93,46 +99,151 @@
             <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Servicios</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div
-                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">🛒</div>
                     <h3 class="orbitron text-xl font-bold mb-4">E-Commerce</h3>
                     <p class="text-slate-300">Con diseño cautivador y desarrollo robusto, nuestro equipo elite crea experiencias digitales excepcionales. 
                         Especializados en E-commerce de alto rendimiento, landing pages y sitios web modernos que maximizan conversiones y escalabilidad..</p>
                 </div>
                 <div
-                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">🌐</div>
                     <h3 class="orbitron text-xl font-bold mb-4">Desarrollo Web</h3>
                     <p class="text-slate-300">Desarrollos web y aplicaciones modernas y responsivas que brindan experiencias
                         excepcionales al usuario.</p>
                 </div>
                 <div
-                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">🔍</div>
                     <h3 class="orbitron text-xl font-bold mb-4">Web Scraping</h3>
                     <p class="text-slate-300">Soluciones avanzadas de extracción de datos para obtener información
                         valiosa de la web.</p>
                 </div>
                 <div
-                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">📊</div>
                     <h3 class="orbitron text-xl font-bold mb-4">Ingeniería de Datos</h3>
                     <p class="text-slate-300">Construimos pipelines de datos robustos e infraestructura para manejar tus
                         datos a cualquier escala.</p>
                 </div>
                 <div
-                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">📈</div>
                     <h3 class="orbitron text-xl font-bold mb-4">Análisis de Datos</h3>
                     <p class="text-slate-300">Transformamos datos brutos en información accionable con análisis y
                         visualización avanzada.</p>
                 </div>
                 <div
-                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:transform hover:-translate-y-2 transition-all duration-300">
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">💻</div>
                     <h3 class="orbitron text-xl font-bold mb-4">Software a Medida</h3>
                     <p class="text-slate-300">Soluciones de software personalizadas que se adaptan perfectamente a las
                         necesidades de tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="min-h-screen relative overflow-hidden transition-all duration-700">
+        <!-- Fondo con overlay -->
+        <div id="portfolio-background" class="absolute inset-0 bg-cover bg-center transition-all duration-700 bg-[#000000]">
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        </div>
+    
+        <!-- Contenido -->
+        <div class="relative z-10 container mx-auto px-6 py-20">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+                Nuestro <span class="gradient-text">Portafolio</span>
+            </h2>
+    
+            <!-- Carrusel -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Slides Container -->
+                <div id="carousel-container" class="overflow-hidden">
+                    <div id="carousel-slides" class="flex transition-transform duration-500 ease-out">
+                        <!-- Slide 1 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets\images\Aquaevo.png" alt="Proyecto 1" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">E-commerce</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Desarrollo de plataforma completa de comercio electrónico para venta de elementos de Limpieza de Piscinas.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">WordPress</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">HTML</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">CSS</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Javascript</span>
+                                    </div>
+                                    <a href="https://www.aquaevo.cl" target="_blank">
+                                        <button class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#04C7AA] transition-colors">
+                                            Ver Proyecto
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Slide 2 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets\images\Databam.png" alt="Proyecto 2" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Plataforma de datos inmobiliarios</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Sistema de análisis de datos en tiempo real para empresa de logística, incluyendo visualizaciones y reportes automatizados.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Ruby on Rails</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">PostgreSQL</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">API</span>
+                                    </div>
+                                    <a href="https://www.databam.cl" target="_blank">
+                                        <button class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#04C7AA] transition-colors">
+                                            Ver Proyecto
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Slide 3 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Self.png" alt="Proyecto 3" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Gestión automatizada de inversiones</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Aplicación móvil para gestión de propiedades, incluyendo sistema de reservas y seguimiento de mantenimiento.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">HTML</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">PostgreSQL</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">API</span>
+                                    </div>
+                                    <a href="https://www.selfcapital.pro" target="_blank">
+                                        <button class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#04C7AA] transition-colors">
+                                            Ver Proyecto
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Controles del carrusel -->
+                <button id="prev-button" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#04C7AA] transition-colors">
+                    ←
+                </button>
+                <button id="next-button" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#04C7AA] transition-colors">
+                    →
+                </button>
+    
+                <!-- Indicadores -->
+                <div class="flex justify-center mt-8 gap-2">
+                    <button class="w-3 h-3 rounded-full bg-[#9B61A4] transition-colors" data-slide="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors" data-slide="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors" data-slide="2"></button>
                 </div>
             </div>
         </div>
@@ -149,7 +260,7 @@
                             class="w-full h-full object-cover" />
                     </div>
                     <h3 class="orbitron text-xl font-bold mb-2">Joaquin Espildora Moraga</h3>
-                    <p class="text-cyan-400 mb-4">Fundador & CEO</p>
+                    <p class="text-[#04C7AA] mb-4">Fundador & CEO</p>
                     <p class="text-slate-300">Ingeniero Civil con más de 5 años de experiencia en el sector financiero e
                         inversiones inmobiliarias. Líder visionario con experiencia en gestión de portafolios que
                         superan $1B USD y desarrollo de soluciones tecnológicas financieras innovadoras.</p>
@@ -160,7 +271,7 @@
                             class="w-full h-full object-cover" />
                     </div>
                     <h3 class="orbitron text-xl font-bold mb-2">Matías Cánepa González</h3>
-                    <p class="text-cyan-400 mb-4">Fundador & CTO</p>
+                    <p class="text-[#04C7AA] mb-4">Fundador & CTO</p>
                     <p class="text-slate-300">Cloud Engineer experto con amplia experiencia en desarrollo de software y
                         data engineering. Lidera el desarrollo tecnológico y la infraestructura de nuestros
                         servicios.</p>
@@ -175,7 +286,7 @@
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="orbitron text-4xl font-bold mb-8">Creemos Algo Increíble</h2>
                 <p class="text-slate-300 mb-4">¿Listo para transformar tus datos en valor? Contáctanos hoy.</p>
-                <p class="text-cyan-400 mb-12">📍 Santiago, Chile</p>
+                <p class="text-[#9B61A4] mb-12">📍 Santiago, Chile</p>
                 <form class="space-y-6">
                     <input type="text" placeholder="Tu Nombre"
                         class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
@@ -184,7 +295,7 @@
                     <textarea placeholder="Tu Mensaje" rows="4"
                         class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
                     <button
-                        class="bg-gradient-to-r from-cyan-500 to-emerald-500 px-8 py-3 rounded-full hover:opacity-90 transition-opacity">
+                    class="bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
                         Enviar Mensaje
                     </button>
                 </form>
@@ -193,18 +304,18 @@
     </section>
 
     <script>
-        // Initialize Particles.js (Same JavaScript code as before)
+        // Initialize Particles.js con los nuevos colores
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#60efff' },
+                color: { value: '#9B61A4' },
                 shape: { type: 'circle' },
                 opacity: { value: 0.5, random: false },
                 size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: '#60efff',
+                    color: '#9B61A4',
                     opacity: 0.4,
                     width: 1
                 },
@@ -229,7 +340,7 @@
             retina_detect: true
         });
 
-        // Initialize Three.js Scene (Same JavaScript code as before)
+        // Three.js Scene con los nuevos colores
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -237,11 +348,29 @@
         const container = document.getElementById('3d-container');
         renderer.setSize(container.clientWidth, container.clientHeight);
         container.appendChild(renderer.domElement);
-
-        const geometry = new THREE.TorusKnotGeometry(3, 1, 100, 16);
-        const material = new THREE.MeshBasicMaterial({
-            color: 0x60efff,
-            wireframe: true
+        // Geometría y material con gradiente dinámico
+        const geometry = new THREE.TorusKnotGeometry(3, 0.8, 150, 20);
+        const material = new THREE.ShaderMaterial({
+            uniforms: {
+                color1: { value: new THREE.Color(0x9B61A4) },
+                color2: { value: new THREE.Color(0x9B61A4) },
+            },
+            vertexShader: `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 color1;
+                uniform vec3 color2;
+                varying vec2 vUv;
+                void main() {
+                    gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
+                }
+            `,
+            wireframe: true,
         });
         const torusKnot = new THREE.Mesh(geometry, material);
         scene.add(torusKnot);
@@ -272,6 +401,85 @@
                 });
             });
         });
+// Datos del portafolio
+const portfolioItems = [
+        {
+            background: 'assets\images\Aquaevo.png', // URL de la imagen de fondo
+            color: '#9B61A4' // Color temático
+        },
+        {
+            background: '/api/placeholder/1920/1080',
+            color: '#04C7AA'
+        },
+        {
+            background: '/api/placeholder/1920/1080',
+            color: '#152636'
+        }
+    ];
+    
+    // Configuración del carrusel
+    let currentSlide = 0;
+    const slidesContainer = document.getElementById('carousel-slides');
+    const slides = document.querySelectorAll('#carousel-slides > div');
+    const totalSlides = slides.length;
+    const backgroundElement = document.getElementById('portfolio-background');
+    
+    // Función para actualizar el carrusel
+    function updateCarousel() {
+        // Mover slides
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Actualizar fondo
+        const currentItem = portfolioItems[currentSlide];
+        backgroundElement.style.backgroundImage = `url(${currentItem.background})`;
+        
+        // Actualizar indicadores
+        document.querySelectorAll('[data-slide]').forEach((indicator, index) => {
+            indicator.style.backgroundColor = index === currentSlide ? '#9B61A4' : '#BEC3C7';
+        });
+    }
+    
+    // Event listeners para los controles
+    document.getElementById('prev-button').addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+    
+    document.getElementById('next-button').addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    });
+    
+    // Event listeners para los indicadores
+    document.querySelectorAll('[data-slide]').forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+    
+    // Autoplay opcional
+    let autoplayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }, 5000);
+    
+    // Detener autoplay al hover
+    const carouselContainer = document.getElementById('carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+    
+    carouselContainer.addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+    });
+    
+    // Inicializar carrusel
+    updateCarousel();
+
     </script>
 </body>
 
