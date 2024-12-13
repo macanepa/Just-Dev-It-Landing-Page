@@ -51,16 +51,47 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="orbitron text-2xl font-bold gradient-text">Just Dev It</div>
+                
+                <!-- Menú desktop -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#services" class="hover:text-[#04C7AA] transition-colors">Servicios</a>
                     <a href="#portfolio" class="hover:text-[#04C7AA] transition-colors">Portafolio</a>
                     <a href="#team" class="hover:text-[#04C7AA] transition-colors">Equipo</a>
                     <a href="#contact" class="hover:text-[#04C7AA] transition-colors">Contacto</a>
                 </div>
-                <button
-                    class="bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+    
+                <!-- Botón hamburguesa para móvil -->
+                <button id="mobile-menu-button" class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors">
+                    <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
+                    <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
+                    <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
+                </button>
+    
+                <!-- Botón Empezar (visible solo en desktop) -->
+                <button class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
                     Empezar
                 </button>
+            </div>
+    
+            <!-- Menú móvil -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-3">
+                <div class="space-y-3">
+                    <a href="#services" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Servicios
+                    </a>
+                    <a href="#portfolio" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Portafolio
+                    </a>
+                    <a href="#team" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Equipo
+                    </a>
+                    <a href="#contact" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Contacto
+                    </a>
+                    <button class="w-full bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+                        Empezar
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -580,8 +611,60 @@ const portfolioItems = [
     }
 
     form.addEventListener("submit", handleSubmit);
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBars = mobileMenuButton.getElementsByTagName('span');
+    let isMenuOpen = false;
 
-    </script>
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        
+        // Toggle menu visibility with animation
+        if (isMenuOpen) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('animate-fadeIn');
+            // Transform hamburger to X
+            menuBars[0].classList.add('rotate-45', 'translate-y-2');
+            menuBars[1].classList.add('opacity-0');
+            menuBars[2].classList.add('-rotate-45', '-translate-y-2');
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('animate-fadeIn');
+            // Restore hamburger
+            menuBars[0].classList.remove('rotate-45', 'translate-y-2');
+            menuBars[1].classList.remove('opacity-0');
+            menuBars[2].classList.remove('-rotate-45', '-translate-y-2');
+        }
+    }
+
+    // Toggle menu on button click
+    mobileMenuButton.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMenuOpen) toggleMenu();
+        });
+    });
+
+    // Close menu on screen resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && isMenuOpen) {
+            toggleMenu();
+        }
+    });
+</script>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fadeIn {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+</style>
 </body>
 
 </html>
