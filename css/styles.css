@@ -1,0 +1,132 @@
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
+/* Estilos base */
+body {
+    background-color: rgb(15 23 42); /* bg-slate-900 */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilos de secciones */
+section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Estilos de componentes comunes */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Botones */
+.btn {
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to bottom right, #B37BBF, #9B61A4, #6A3B7E);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-primary:hover {
+    --tw-brightness: brightness(1.1);
+    filter: var(--tw-brightness);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary {
+    border: 1px solid #9B61A4;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(155, 97, 164, 0.1);
+}
+
+/* Cards y contenedores */
+.card {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: 1rem;
+    backdrop-filter: blur(4px);
+    padding: 2rem;
+}
+
+/* Formularios */
+.input {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: rgb(30 41 59);
+    border-radius: 0.5rem;
+}
+
+.input:focus {
+    outline: none;
+    --tw-ring: 2px;
+    --tw-ring-color: rgb(4 199 170);
+    box-shadow: 0 0 0 var(--tw-ring) var(--tw-ring-color);
+}
+
+/* Efectos de transición */
+.transition-base {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Utilidades de espaciado */
+.spacer {
+    margin-bottom: 2rem;
+}
+
+.spacer-lg {
+    margin-bottom: 4rem;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+/* Helpers de Visibilidad */
+.hidden {
+    display: none;
+}
+
+/* Transiciones y Animaciones */
+.fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Utilitarios de backdrop */
+.backdrop-blur {
+    backdrop-filter: blur(8px);
+}

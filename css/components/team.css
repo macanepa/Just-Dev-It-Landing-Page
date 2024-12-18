@@ -1,0 +1,93 @@
+/* Sección de equipo */
+.team-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: rgb(30 41 59); /* bg-slate-800 */
+}
+
+/* Contenedor */
+.team-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Título */
+.team-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Grid de miembros */
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tarjeta de miembro */
+.team-card {
+    background-color: rgba(15, 23, 42, 0.5); /* bg-slate-900/50 */
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(4px);
+    text-align: center;
+}
+
+/* Contenedor de imagen */
+.member-image-container {
+    width: 12rem; /* w-48 */
+    height: 12rem; /* h-48 */
+    margin: 0 auto 1.5rem;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Información del miembro */
+.member-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    color: #04C7AA;
+    margin-bottom: 1rem;
+}
+
+.member-description {
+    color: rgb(203 213 225); /* text-slate-300 */
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .team-container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
