@@ -2,7 +2,7 @@
 const particlesConfig = {
     particles: {
         number: { 
-            value: 80, 
+            value: 80, // Reducido para que no sea muy denso 
             density: { 
                 enable: true, 
                 value_area: 800 
@@ -15,7 +15,7 @@ const particlesConfig = {
             type: 'circle' 
         },
         opacity: { 
-            value: 0.5, 
+            value: 0.5, // Reducida la opacidad 
             random: false 
         },
         size: { 
@@ -26,7 +26,7 @@ const particlesConfig = {
             enable: true,
             distance: 150,
             color: '#9B61A4',
-            opacity: 0.4,
+            opacity: 0.4, // Reducida la opacidad de las líneas
             width: 1
         },
         move: {
@@ -61,5 +61,3 @@ function initializeParticles() {
     particlesJS('particles-js', particlesConfig);
 }
 
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', initializeParticles);

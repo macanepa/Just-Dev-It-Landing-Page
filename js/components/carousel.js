@@ -79,6 +79,3 @@ function initializeCarousel() {
     // Inicializar el carrusel
     updateCarousel();
 }
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', initializeCarousel);

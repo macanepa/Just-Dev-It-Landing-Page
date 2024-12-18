@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Inicializar animaciones
             siteAnimations.initializeCardAnimations(); // desde animations.js
 
+            // Inicializar formulario
+            handleSubmit(); // desde animations.js
+
             console.log('Todos los componentes inicializados correctamente');
         } catch (error) {
             console.error('Error al inicializar componentes:', error);
