@@ -1,14 +1,14 @@
 const portfolioItems = [
     {
-        background: '../assets/images/Aquaevo.png',
+        background: 'assets/images/Recurso10.webp',
         color: '#9B61A4'
     },
     {
-        background: '../assets/images/Databam.png',
+        background: '../assets/images/Recurso3.webp',
         color: '#04C7AA'
     },
     {
-        background: '../assets/images/Self.png',
+        background: '../assets/images/Recurso7.webp',
         color: '#152636'
     }
 ];
