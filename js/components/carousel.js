@@ -1,4 +1,3 @@
-// Configuración del carrusel
 const portfolioItems = [
     {
         background: '../assets/images/Aquaevo.png',
@@ -14,31 +13,53 @@ const portfolioItems = [
     }
 ];
 
-// Variables globales del carrusel
 let currentSlide = 0;
 const slidesContainer = document.getElementById('carousel-slides');
 const slides = document.querySelectorAll('#carousel-slides > div');
 const totalSlides = slides.length;
 const backgroundElement = document.getElementById('portfolio-background');
 
-// Función para actualizar el carrusel
+// Variables para el control de deslizamiento
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID = 0;
+let currentIndex = 0;
+
 function updateCarousel() {
-    // Mover slides
     slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    // Actualizar fondo
     const currentItem = portfolioItems[currentSlide];
     backgroundElement.style.backgroundImage = `url(${currentItem.background})`;
     
-    // Actualizar indicadores
     document.querySelectorAll('[data-slide]').forEach((indicator, index) => {
         indicator.style.backgroundColor = index === currentSlide ? '#9B61A4' : '#BEC3C7';
     });
 }
 
-// Función para inicializar el carrusel
 function initializeCarousel() {
-    // Event listeners para los controles
+    // Configuración de eventos táctiles y mouse
+    slides.forEach((slide, index) => {
+        // Touch events
+        slide.addEventListener('touchstart', touchStart(index));
+        slide.addEventListener('touchend', touchEnd);
+        slide.addEventListener('touchmove', touchMove);
+        
+        // Mouse events
+        slide.addEventListener('mousedown', touchStart(index));
+        slide.addEventListener('mouseup', touchEnd);
+        slide.addEventListener('mouseleave', touchEnd);
+        slide.addEventListener('mousemove', touchMove);
+    });
+
+    // Prevenir el comportamiento predeterminado del arrastre de imágenes
+    window.oncontextmenu = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
+
+    // Botones de navegación
     document.getElementById('prev-button').addEventListener('click', () => {
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         updateCarousel();
@@ -49,7 +70,7 @@ function initializeCarousel() {
         updateCarousel();
     });
 
-    // Event listeners para los indicadores
+    // Indicadores
     document.querySelectorAll('[data-slide]').forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             currentSlide = index;
@@ -57,25 +78,51 @@ function initializeCarousel() {
         });
     });
 
-    // Configuración del autoplay
-    let autoplayInterval = setInterval(() => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-    }, 5000);
-
-    // Detener autoplay al hover
-    const carouselContainer = document.getElementById('carousel-container');
-    carouselContainer.addEventListener('mouseenter', () => {
-        clearInterval(autoplayInterval);
-    });
-
-    carouselContainer.addEventListener('mouseleave', () => {
-        autoplayInterval = setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }, 5000);
-    });
-
-    // Inicializar el carrusel
     updateCarousel();
+}
+
+// Funciones para el control táctil y mouse
+function touchStart(index) {
+    return function(event) {
+        isDragging = true;
+        currentIndex = index;
+        startPos = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+        slidesContainer.style.cursor = 'grabbing';
+    };
+}
+
+function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    slidesContainer.style.cursor = 'grab';
+
+    const movedBy = currentTranslate - prevTranslate;
+    
+    // Determinar si el movimiento fue suficiente para cambiar de slide
+    if (movedBy < -100 && currentSlide < totalSlides - 1) {
+        currentSlide += 1;
+    }
+    if (movedBy > 100 && currentSlide > 0) {
+        currentSlide -= 1;
+    }
+
+    updateCarousel();
+}
+
+function touchMove(event) {
+    if (isDragging) {
+        const currentPosition = getPositionX(event);
+        currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+}
+
+function getPositionX(event) {
+    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+}
+
+function animation() {
+    if (isDragging) {
+        requestAnimationFrame(animation);
+    }
 }
