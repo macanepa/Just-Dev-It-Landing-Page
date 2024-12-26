@@ -3,11 +3,11 @@ const animations = {
     // Función para animar la aparición de elementos
     fadeIn: (element, duration = 300) => {
         if (!element) return;
-        
+
         element.style.opacity = '0';
         element.style.transition = `opacity ${duration}ms ease-out`;
         element.style.display = 'block';
-        
+
         setTimeout(() => {
             element.style.opacity = '1';
         }, 10);
@@ -16,10 +16,10 @@ const animations = {
     // Función para animar la desaparición de elementos
     fadeOut: (element, duration = 300) => {
         if (!element) return;
-        
+
         element.style.opacity = '1';
         element.style.transition = `opacity ${duration}ms ease-out`;
-        
+
         element.style.opacity = '0';
         setTimeout(() => {
             element.style.display = 'none';
@@ -65,8 +65,8 @@ const animations = {
 
     // Animación de hover para cards
     initializeCardAnimations: () => {
-        const cards = document.querySelectorAll('.bg-slate-800/50');
-        
+        const cards = document.querySelectorAll('.bg-slate-800\\/50');
+
         cards.forEach(card => {
             card.addEventListener('mouseenter', () => {
                 animations.addClassWithAnimation(card, 'transform');
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Implementar scroll suave para todos los enlaces internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
