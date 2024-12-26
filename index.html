@@ -90,13 +90,16 @@
                     </p>
                     <div class="flex space-x-4">
                         <button
+                            onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })"        
                             class="bg-[#9B61A4] hover:bg-[#9B61A4]/10 border border-[#9B61A4] transition-colors px-8 py-3 rounded-full">
                             Nuestros Servicios
                         </button>
+                    <a href="/about-us.html" target="_blank">
                         <button
                             class="border border-[#9B61A4] hover:bg-[#9B61A4]/10 transition-colors px-8 py-3 rounded-full">
                             Saber Más
                         </button>
+                    </a>
                     </div>
                 </div>
                 <div id="3d-container" class="h-[500px]"></div>
@@ -259,37 +262,6 @@
                     <button class="w-3 h-3 rounded-full bg-[#9B61A4] transition-colors" data-slide="0"></button>
                     <button class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors" data-slide="1"></button>
                     <button class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors" data-slide="2"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="py-20 bg-slate-800">
-        <div class="container mx-auto px-6">
-            <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Fundadores</h2>
-            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
-                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                        <img src="assets/images/joaquin espildora.jpg" alt="Joaquin Espildora"
-                            class="w-full h-full object-cover" />
-                    </div>
-                    <h3 class="orbitron text-xl font-bold mb-2">Joaquin Espildora Moraga</h3>
-                    <p class="text-[#04C7AA] mb-4">Fundador & CEO</p>
-                    <p class="text-slate-300">Ingeniero Civil con más de 5 años de experiencia en el sector financiero e
-                        inversiones inmobiliarias. Líder visionario con experiencia en gestión de portafolios que
-                        superan $1B USD y desarrollo de soluciones tecnológicas financieras innovadoras.</p>
-                </div>
-                <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
-                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                        <img src="assets/images/matias canepa.jpg" alt="Matías Cánepa"
-                            class="w-full h-full object-cover" />
-                    </div>
-                    <h3 class="orbitron text-xl font-bold mb-2">Matías Cánepa González</h3>
-                    <p class="text-[#04C7AA] mb-4">Fundador & CTO</p>
-                    <p class="text-slate-300">Cloud Engineer experto con amplia experiencia en desarrollo de software y
-                        data engineering. Lidera el desarrollo tecnológico y la infraestructura de nuestros
-                        servicios.</p>
                 </div>
             </div>
         </div>
