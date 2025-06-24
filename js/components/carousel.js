@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const last     = slides[slides.length - 1].cloneNode(true);
   slidesContainer.appendChild(first);
   slidesContainer.insertBefore(last, slidesContainer.firstChild);
-
   // 3) Nueva colección y estado inicial
   const allSlides   = Array.from(slidesContainer.children);
   const realCount   = portfolioItems.length;
