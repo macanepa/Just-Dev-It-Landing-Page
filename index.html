@@ -82,10 +82,11 @@
             <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
                 <div class="space-y-8">
                     <h1 class="main-font text-5xl md:text-7xl font-bold leading-tight">
-                        Impulsando la <span class="gradient-text2">Innovación</span>
+                        El software que tu negocio necesita<span class="gradient-text2"> justo a tiempo.</span>
                     </h1>
                     <p class="text-[#BEC3C7] text-xl">
-                        Transforma tu negocio con soluciones de datos y desarrollo de software de vanguardia.
+                        En Just Dev It creamos soluciones tecnológicas a la medida, enfocadas en resolver problemas reales con precisión, eficiencia y visión estratégica.
+Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
                     </p>
                     <div class="flex space-x-4">
                         <button
@@ -103,6 +104,203 @@
         </div>
     </div>
 
+    <!-- Sección ¿Qué hacemos? -->
+    <section id="what-we-do" class="py-20 relative overflow-hidden bg-[#162032]">
+        <style>
+            /* Estilos específicos para esta sección */
+            .isotipo-decorativo {
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                opacity: 0.1;
+                pointer-events: none;
+            }
+            
+            .isotipo-decorativo::before {
+                content: '*';
+                font-family: 'Poppins', sans-serif;
+                font-size: 400px;
+                color: #9B61A4;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                line-height: 1;
+            }
+            
+            .isotipo-top-right {
+                top: -100px;
+                right: -100px;
+                transform: rotate(45deg);
+            }
+            
+            .isotipo-bottom-left {
+                bottom: -100px;
+                left: -100px;
+                transform: rotate(-30deg);
+            }
+            
+            .titulo-seccion {
+                font-family: 'Poppins', sans-serif;
+                font-size: 3rem;
+                font-weight: 700;
+                color: white;
+                margin-bottom: 2.5rem;
+                text-align: center;
+                position: relative;
+            }
+            
+            .titulo-seccion::after {
+                content: '>';
+                color: #9B61A4;
+                margin-left: 10px;
+                display: inline-block;
+                animation: pulse 2s ease-in-out infinite;
+            }
+            
+            .descripcion-que-hacemos {
+                font-family: 'Manrope', sans-serif;
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: white;
+                text-align: center;
+                line-height: 1.6;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            
+            .descripcion-que-hacemos strong {
+                color: #9B61A4;
+                font-weight: 600;
+                position: relative;
+            }
+            
+            .descripcion-que-hacemos strong::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #9B61A4 0%, #04C7AA 100%);
+                transition: width 0.3s ease;
+            }
+            
+            .descripcion-que-hacemos strong:hover::after {
+                width: 100%;
+            }
+            
+            @keyframes pulse {
+                0%, 100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.7;
+                    transform: scale(1.1);
+                }
+            }
+            
+            .lineas-decorativas {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                overflow: hidden;
+            }
+            
+            .linea {
+                position: absolute;
+                background: linear-gradient(90deg, transparent, #9B61A4, transparent);
+                height: 1px;
+                width: 200px;
+                opacity: 0.3;
+            }
+            
+            .linea1 {
+                top: 20%;
+                left: -200px;
+                animation: slideRight 8s linear infinite;
+            }
+            
+            .linea2 {
+                top: 60%;
+                right: -200px;
+                animation: slideLeft 10s linear infinite;
+            }
+            
+            .linea3 {
+                bottom: 30%;
+                left: -200px;
+                animation: slideRight 12s linear infinite;
+            }
+            
+            @keyframes slideRight {
+                to {
+                    transform: translateX(calc(100vw + 400px));
+                }
+            }
+            
+            @keyframes slideLeft {
+                to {
+                    transform: translateX(calc(-100vw - 400px));
+                }
+            }
+            
+            /* Responsive */
+            @media (max-width: 768px) {
+                .titulo-seccion {
+                    font-size: 2.25rem;
+                }
+                
+                .descripcion-que-hacemos {
+                    font-size: 1.125rem;
+                }
+                
+                .isotipo-decorativo {
+                    width: 200px;
+                    height: 200px;
+                }
+                
+                .isotipo-decorativo::before {
+                    font-size: 250px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .titulo-seccion {
+                    font-size: 1.75rem;
+                }
+                
+                .descripcion-que-hacemos {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+        
+        <!-- Elementos decorativos -->
+        <div class="isotipo-decorativo isotipo-top-right"></div>
+        <div class="isotipo-decorativo isotipo-bottom-left"></div>
+        
+        <!-- Líneas decorativas animadas -->
+        <div class="lineas-decorativas">
+            <div class="linea linea1"></div>
+            <div class="linea linea2"></div>
+            <div class="linea linea3"></div>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="titulo-seccion">¿Qué hacemos?</h2>
+            <p class="descripcion-que-hacemos">
+                Desarrollamos software robusto, inteligente y escalable, desde plataformas web y sistemas de automatización, hasta soluciones complejas de <strong>inteligencia artificial aplicada</strong> y <strong>data engineering</strong>.
+            </p>
+        </div>
+    </section>
+
+
     <!-- Services Section -->
     <section id="services" class="py-20">
         <div class="container mx-auto px-6">
@@ -111,44 +309,38 @@
                 <div
                     class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">🛒</div>
-                    <h3 class="orbitron text-xl font-bold mb-4">E-Commerce</h3>
-                    <p class="text-slate-300">Con diseño cautivador y desarrollo robusto, nuestro equipo elite crea experiencias digitales excepcionales. 
-                        Especializados en E-commerce de alto rendimiento, landing pages y sitios web modernos que maximizan conversiones y escalabilidad..</p>
+                    <h3 class="orbitron text-xl font-bold mb-4">Desarrollo de software a medida</h3>
+                    <p class="text-slate-300">Web apps, APIs, automatización de procesos y flujos de negocio.</p>
                 </div>
                 <div
                     class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">🌐</div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Desarrollo Web</h3>
-                    <p class="text-slate-300">Desarrollos web y aplicaciones modernas y responsivas que brindan experiencias
-                        excepcionales al usuario.</p>
+                    <h3 class="orbitron text-xl font-bold mb-4">Cloud & Data Engineering</h3>
+                    <p class="text-slate-300">Infraestructura, ETLs, arquitectura escalable, Big Data y optimización en Azure, Google Cloud y AWS.</p>
                 </div>
                 <div
                     class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">🔍</div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Web Scraping</h3>
-                    <p class="text-slate-300">Soluciones avanzadas de extracción de datos para obtener información
-                        valiosa de la web.</p>
+                    <h3 class="orbitron text-xl font-bold mb-4">Soluciones con IA aplicada</h3>
+                    <p class="text-slate-300">Scraping, OCR, modelos predictivos, agentes inteligentes y asistentes con Modelos LLM</p>
                 </div>
                 <div
                     class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">📊</div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Ingeniería de Datos</h3>
-                    <p class="text-slate-300">Construimos pipelines de datos robustos e infraestructura para manejar tus
-                        datos a cualquier escala.</p>
+                    <h3 class="orbitron text-xl font-bold mb-4">Ecosistemas fintech e inmobiliarios</h3>
+                    <p class="text-slate-300">Desarrollo de plataformas para gestión financiera, reportes automatizados y visualización avanzada.</p>
                 </div>
                 <div
                     class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">📈</div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Análisis de Datos</h3>
-                    <p class="text-slate-300">Transformamos datos brutos en información accionable con análisis y
-                        visualización avanzada.</p>
+                    <h3 class="orbitron text-xl font-bold mb-4">Integraciones de Sistemas</h3>
+                    <p class="text-slate-300">Conectamos tus procesos con plataformas como Power BI, SharePoint, CRMs, ERPs, Marketplace, y más.</p>
                 </div>
                 <div
                     class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
                     <div class="text-cyan-400 text-4xl mb-4">💻</div>
-                    <h3 class="orbitron text-xl font-bold mb-4">Software a Medida</h3>
-                    <p class="text-slate-300">Soluciones de software personalizadas que se adaptan perfectamente a las
-                        necesidades de tu negocio.</p>
+                    <h3 class="orbitron text-xl font-bold mb-4">Data Analytics & Reporting</h3>
+                    <p class="text-slate-300">Dashboards, visualización, reportes automáticos y monitoreo de KPIs con herramientas como Power BI y Python.</p>
                 </div>
             </div>
         </div>
@@ -160,13 +352,13 @@
         <div id="portfolio-background" class="absolute inset-0 bg-cover bg-center transition-all duration-700 bg-[#000000]">
             <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         </div>
-    
+
         <!-- Contenido -->
         <div class="relative z-10 container mx-auto px-6 py-20">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
                 Nuestro <span class="gradient-text">Portafolio</span>
             </h2>
-    
+
             <!-- Carrusel -->
             <div class="relative max-w-6xl mx-auto">
                 <!-- Slides Container -->
@@ -175,32 +367,29 @@
                         <!-- Slide 1 -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
-                                <img src="assets\images\Aquaevo.png" alt="Proyecto 1" class="w-full h-64 object-cover">
+                                <img src="assets\images\Proyecto1.png" alt="Proyecto 1" class="w-full h-64 object-cover">
                                 <div class="p-8">
-                                    <h3 class="text-2xl font-bold mb-4">E-commerce</h3>
-                                    <p class="text-[#BEC3C7] mb-6">Desarrollo de plataforma completa de comercio electrónico para venta de elementos de Limpieza de Piscinas.</p>
+                                    <h3 class="text-2xl font-bold mb-4">Sistema de reportería automática y scraping de datos públicos</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Automatizamos la consolidación de datos desde emails, portales web con protección anti-bot y SharePoint para la creación de informes críticos en Excel y su conexión a dashboards de Power BI.</p>
                                     <div class="flex flex-wrap gap-2 mb-6">
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">WordPress</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">HTML</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">CSS</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Javascript</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Power Automate Desktop</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Selenium </span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Excel Macros</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">SharePoint API</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Power BI</span>
                                     </div>
-                                    <a href="https://www.aquaevo.cl" target="_blank">
-                                        <button class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#04C7AA] transition-colors">
-                                            Ver Proyecto
-                                        </button>
-                                    </a>
                                 </div>
                             </div>
                         </div>
-    
+
                         <!-- Slide 2 -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
                                 <img src="assets\images\Databam.png" alt="Proyecto 2" class="w-full h-64 object-cover">
                                 <div class="p-8">
-                                    <h3 class="text-2xl font-bold mb-4">Plataforma de datos inmobiliarios</h3>
-                                    <p class="text-[#BEC3C7] mb-6">Sistema de análisis de datos en tiempo real para empresa de logística, incluyendo visualizaciones y reportes automatizados.</p>
+                                    <h3 class="text-2xl font-bold mb-4">Databam</h3>
+                                    <p class="text-[#BEC3C7] mb-6">La plataforma de data inmobiliaria más completa de Chile. Información de propiedades, dueños y precios transaccionales para inversionistas, tasadores y corredores.</p>
                                     <div class="flex flex-wrap gap-2 mb-6">
                                         <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Ruby on Rails</span>
                                         <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
@@ -216,46 +405,115 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <!-- Slide 3 -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
-                                <img src="assets/images/Self.png" alt="Proyecto 3" class="w-full h-64 object-cover">
+                                <img src="assets/images/Proyecto3.png" alt="Proyecto 3" class="w-full h-64 object-cover">
                                 <div class="p-8">
-                                    <h3 class="text-2xl font-bold mb-4">Gestión automatizada de inversiones</h3>
-                                    <p class="text-[#BEC3C7] mb-6">Aplicación móvil para gestión de propiedades, incluyendo sistema de reservas y seguimiento de mantenimiento.</p>
+                                    <h3 class="text-2xl font-bold mb-4">Plataforma cloud de ingestión y procesamiento de datos</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Arquitectura en Azure para procesamiento avanzado de datos con pipelines ETL, integración con SharePoint, funciones serverless para trazabilidad, y visualización final en Power BI.</p>
                                     <div class="flex flex-wrap gap-2 mb-6">
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">HTML</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">PostgreSQL</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">API</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Azure Synapse Analytics</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Data Factory</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Databricks</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Azure Functions</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">MongoDB (CosmosDB)</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Power BI</span>
                                     </div>
-                                    <a href="https://www.selfcapital.pro" target="_blank">
-                                        <button class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#04C7AA] transition-colors">
-                                            Ver Proyecto
-                                        </button>
-                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto4.png" alt="Proyecto 4" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Automatización de cargas judiciales masivas</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Sistema automatizado para carga de demandas judiciales a plataformas gubernamentales. Incluye validación de duplicados, control post-envío, reportería y soporte técnico.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Selenium</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Excel automation</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">OCR</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Local Services</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Cloud Deployment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 5 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto5.png" alt="Proyecto 5" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Sincronización de stock multi-marketplace</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Motor que sincroniza stock real y virtual entre sistemas logísticos y plataformas como Jumpseller, Cencosud, MercadoLibre, Ripley y Falabella, desplegado en la nube.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">AWS Lambda</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">REST APIs</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">MongoDB</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">ETL pipelines</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">TerraForm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 6 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto6.png" alt="Proyecto 6" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Gestión inmobiliaria financiera con trazabilidad completa</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Aplicación para el modelado financiero de proyectos inmobiliarios, gestión de inputs, reporting por etapas, sensibilidades y trazabilidad total del proceso de inversión.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Flask</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Pandas</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Plotly</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Metabase</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">OCR & AI agents</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 7 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto7.png" alt="Proyecto 7" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Plataforma de inscripción a talleres y pagos online</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Sistema de inscripción con calendario, pagos WebPay, envío automatizado de material por email, reportería de alumnos y gestión de inscripciones vía backoffice.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">WebPay API</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">REST APIs</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">MongoDB</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">AWS S3</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Metabase</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- Controles del carrusel -->
                 <button id="prev-button" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#04C7AA] transition-colors">
                     <img src="assets\icons\flecha1_blanca.svg" alt="Back" width="12" height="12">
-
                 </button>
                 <button id="next-button" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#04C7AA] transition-colors">
                     <img src="assets\icons\flecha2_blanca.svg" alt="Forward" width="12" height="12">
                 </button>
-    
+
                 <!-- Indicadores -->
-                <div class="flex justify-center mt-8 gap-2">
-                    <button class="w-3 h-3 rounded-full bg-[#9B61A4] transition-colors" data-slide="0"></button>
-                    <button class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors" data-slide="1"></button>
-                    <button class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors" data-slide="2"></button>
+                <div class="flex justify-center mt-8 gap-2" id="indicators-container">
+                    <!-- Los indicadores se crearán dinámicamente con JavaScript -->
                 </div>
             </div>
         </div>
@@ -268,25 +526,26 @@
             <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                 <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
                     <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                        <img src="assets/images/joaquin espildora.jpg" alt="Joaquin Espildora"
+                        <img src="assets/images/joaquin espildora.jpg" alt="Joaquin Espildora M."
                             class="w-full h-full object-cover" />
                     </div>
-                    <h3 class="orbitron text-xl font-bold mb-2">Joaquin Espildora Moraga</h3>
+                    <h3 class="orbitron text-xl font-bold mb-2">Joaquin Espildora M.</h3>
                     <p class="text-[#04C7AA] mb-4">Fundador & CEO</p>
-                    <p class="text-slate-300">Ingeniero Civil con más de 5 años de experiencia en el sector financiero e
-                        inversiones inmobiliarias. Líder visionario con experiencia en gestión de portafolios que
-                        superan $1B USD y desarrollo de soluciones tecnológicas financieras innovadoras.</p>
+                    <p class="text-slate-300">Ingeniero Civil con +5 años de experiencia liderando 
+                        portafolios de inversión por más de $1B USD. Experto en soluciones tecnológicas 
+                        para el sector financiero e inmobiliario.</p>
                 </div>
                 <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
                     <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
-                        <img src="assets/images/matias canepa.jpg" alt="Matías Cánepa"
+                        <img src="assets/images/matias canepa.jpg" alt="Matías Cánepa G."
                             class="w-full h-full object-cover" />
                     </div>
-                    <h3 class="orbitron text-xl font-bold mb-2">Matías Cánepa González</h3>
+                    <h3 class="orbitron text-xl font-bold mb-2">Matías Cánepa G.</h3>
                     <p class="text-[#04C7AA] mb-4">Fundador & CTO</p>
-                    <p class="text-slate-300">Cloud Engineer experto con amplia experiencia en desarrollo de software y
-                        data engineering. Lidera el desarrollo tecnológico y la infraestructura de nuestros
-                        servicios.</p>
+                    <p class="text-slate-300">Cloud Engineer y desarrollador experto en arquitectura, 
+                        IA y manejo de datos. Lidera el desarrollo técnico
+                         e infraestructura de nuestros proyectos.
+</p>
                 </div>
             </div>
         </div>
