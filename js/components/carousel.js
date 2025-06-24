@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1) Tu array ahora con 7 items:
   const portfolioItems = [
-    { background: 'assets/images/Proyecto1.png', color: '#9B61A4' },
-    { background: 'assets/images/Databam.png',      color: '#04C7AA' },
-    { background: 'assets/images/Proyecto3.png',     color: '#9B61A4' },
-    { background: 'assets/images/Proyecto4.png',     color: '#04C7AA' },
-    { background: 'assets/images/Proyecto5.png',     color: '#9B61A4' },
-    { background: 'assets/images/Proyecto6.png',     color: '#04C7AA' },
-    { background: 'assets/images/Proyecto7.png',     color: '#9B61A4' }
+    { background: '../assets/images/Proyecto1.png', color: '#9B61A4' },
+    { background: '../assets/images/Databam.png',      color: '#04C7AA' },
+    { background: '../assets/images/Proyecto3.png',     color: '#9B61A4' },
+    { background: '../assets/images/Proyecto4.png',     color: '#04C7AA' },
+    { background: '../assets/images/Proyecto5.png',     color: '#9B61A4' },
+    { background: '../assets/images/Proyecto6.png',     color: '#04C7AA' },
+    { background: '../assets/images/Proyecto7.png',     color: '#9B61A4' }
   ];
 
   const slidesContainer = document.getElementById('carousel-slides');
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const last     = slides[slides.length - 1].cloneNode(true);
   slidesContainer.appendChild(first);
   slidesContainer.insertBefore(last, slidesContainer.firstChild);
+
   // 3) Nueva colección y estado inicial
   const allSlides   = Array.from(slidesContainer.children);
   const realCount   = portfolioItems.length;
