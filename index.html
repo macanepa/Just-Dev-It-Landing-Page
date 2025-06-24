@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just Dev It - Soluciones de Software</title>
+    <title>Just Dev It</title>
+    <link rel="icon" href="assets\images\Isotipo_morado.svg" type="image/x-icon">
+    
 
     <!-- Librerías externas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -28,46 +31,54 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="orbitron text-2xl font-bold gradient-text">
-                    <img src="assets\images\Logo principal - blanco.svg" alt="Just Dev It" width="120" height="120">
+                    <a href="index.html">
+                        <img src="assets\images\Logo principal - blanco.svg" alt="Just Dev It" width="120" height="120">
+                    </a>
                 </div>
-                
+
                 <!-- Menú desktop -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#services" class="hover:text-[#04C7AA] transition-colors">Servicios</a>
-                    <a href="#portfolio" class="hover:text-[#04C7AA] transition-colors">Portafolio</a>
-                    <a href="#team" class="hover:text-[#04C7AA] transition-colors">Equipo</a>
-                    <a href="#contact" class="hover:text-[#04C7AA] transition-colors">Contacto</a>
+                    <a href="index.html#services" class="hover:text-[#04C7AA] transition-colors">Servicios</a>
+                    <a href="index.html#portfolio" class="hover:text-[#04C7AA] transition-colors">Portafolio</a>
+                    <a href="about-us.html#historia" class="hover:text-[#04C7AA] transition-colors">Equipo</a>
+                    <a href="index.html#contact" class="hover:text-[#04C7AA] transition-colors">Contacto</a>
                 </div>
-    
+
                 <!-- Botón hamburguesa para móvil -->
-                <button id="mobile-menu-button" class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors">
+                <button id="mobile-menu-button"
+                    class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors">
                     <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
                     <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
                     <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
                 </button>
-    
+
                 <!-- Botón Empezar (visible solo en desktop) -->
-                <button class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+                <button
+                    class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
                     Empezar
                 </button>
             </div>
-    
+
             <!-- Menú móvil -->
             <div id="mobile-menu" class="md:hidden hidden pt-4 pb-3">
                 <div class="space-y-3">
-                    <a href="#services" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                    <a href="index.html#services"
+                        class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
                         Servicios
                     </a>
-                    <a href="#portfolio" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                    <a href="index.html#portfolio"
+                        class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
                         Portafolio
                     </a>
-                    <a href="#team" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                    <a href="about-us.html#historia" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
                         Equipo
                     </a>
-                    <a href="#contact" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                    <a href="index.html#contact"
+                        class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
                         Contacto
                     </a>
-                    <button class="w-full bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+                    <button
+                        class="w-full bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
                         Empezar
                     </button>
                 </div>
@@ -76,7 +87,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero-gradient min-h-screen relative overflow-hidden">
+    <div class="hero-gradient min-h-screen relative overflow-hidden h-dvh">
         <div id="particles-js"></div>
         <div class="content container mx-auto px-6 pt-32 pb-20">
             <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
@@ -90,16 +101,19 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
                     </p>
                     <div class="flex space-x-4">
                         <button
+                            onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })"        
                             class="bg-[#9B61A4] hover:bg-[#9B61A4]/10 border border-[#9B61A4] transition-colors px-8 py-3 rounded-full">
                             Nuestros Servicios
                         </button>
+                    <a href="about-us.html#historia" target="_blank">
                         <button
                             class="border border-[#9B61A4] hover:bg-[#9B61A4]/10 transition-colors px-8 py-3 rounded-full">
                             Saber Más
                         </button>
+                    </a>
                     </div>
                 </div>
-                <div id="3d-container" class="h-[500px]"></div>
+                <div class="w-full h-full aspect-square sm:w-[40vw] sm:h-[40vw]" id="3d-container"></div>
             </div>
         </div>
     </div>
@@ -303,7 +317,9 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
 
     <!-- Services Section -->
     <section id="services" class="py-20">
+
         <div class="container mx-auto px-6">
+
             <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Servicios</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div
@@ -349,15 +365,18 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
     <!-- Portfolio Section -->
     <section id="portfolio" class="min-h-screen relative overflow-hidden transition-all duration-700">
         <!-- Fondo con overlay -->
-        <div id="portfolio-background" class="absolute inset-0 bg-cover bg-center transition-all duration-700 bg-[#000000]">
+        <div id="portfolio-background"
+            class="absolute inset-0 bg-cover bg-center transition-all duration-700 bg-[#000000]">
             <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         </div>
+
 
         <!-- Contenido -->
         <div class="relative z-10 container mx-auto px-6 py-20">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
                 Nuestro <span class="gradient-text">Portafolio</span>
             </h2>
+
 
             <!-- Carrusel -->
             <div class="relative max-w-6xl mx-auto">
@@ -383,28 +402,34 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
                             </div>
                         </div>
 
+
                         <!-- Slide 2 -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
-                                <img src="assets\images\Databam.png" alt="Proyecto 2" class="w-full h-64 object-cover">
+                                <img src="assets\images\Recurso3.webp" alt="Proyecto 2"
+                                    class="w-full h-64 object-cover">
                                 <div class="p-8">
                                     <h3 class="text-2xl font-bold mb-4">Databam</h3>
                                     <p class="text-[#BEC3C7] mb-6">La plataforma de data inmobiliaria más completa de Chile. Información de propiedades, dueños y precios transaccionales para inversionistas, tasadores y corredores.</p>
                                     <div class="flex flex-wrap gap-2 mb-6">
-                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Ruby on Rails</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Ruby
+                                            on
+                                            Rails</span>
                                         <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
                                         <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">PostgreSQL</span>
                                         <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
                                         <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">API</span>
                                     </div>
                                     <a href="https://www.databam.cl" target="_blank">
-                                        <button class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#04C7AA] transition-colors">
+                                        <button
+                                            class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors">
                                             Ver Proyecto
                                         </button>
                                     </a>
                                 </div>
                             </div>
                         </div>
+
 
                         <!-- Slide 3 -->
                         <div class="w-full flex-shrink-0 px-4">
@@ -503,13 +528,17 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
                     </div>
                 </div>
 
+
                 <!-- Controles del carrusel -->
-                <button id="prev-button" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#04C7AA] transition-colors">
+                <button id="prev-button"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors">
                     <img src="assets\icons\flecha1_blanca.svg" alt="Back" width="12" height="12">
                 </button>
-                <button id="next-button" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#04C7AA] transition-colors">
+                <button id="next-button"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors">
                     <img src="assets\icons\flecha2_blanca.svg" alt="Forward" width="12" height="12">
                 </button>
+
 
                 <!-- Indicadores -->
                 <div class="flex justify-center mt-8 gap-2" id="indicators-container">
@@ -556,64 +585,40 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
         <div class="container mx-auto px-6">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="orbitron text-4xl font-bold mb-8">Creemos Algo Increíble</h2>
-                <p class="text-slate-300 mb-4">¿Listo para transformar tus datos en valor? Contáctanos hoy.</p>
+                <p class="text-slate-300 mb-4">¿Listo para transformar tus datos en valor? Contáctanos
+                    hoy.</p>
                 <p class="text-[#9B61A4] mb-12">📍 Santiago, Chile</p>
-    
+
                 <form id="contact-form" action="https://formspree.io/f/xpwzegdb" method="POST" class="space-y-6">
                     <!-- Primera fila: Nombre y Apellido -->
                     <div class="grid grid-cols-2 gap-4">
-                        <input 
-                            type="text" 
-                            name="name" 
-                            placeholder="Nombre" 
-                            required
-                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
-                        >
-                        <input 
-                            type="text" 
-                            name="lastname" 
-                            placeholder="Apellido" 
-                            required
-                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
-                        >
+                        <input type="text" name="name" placeholder="Nombre" required
+                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]">
+                        <input type="text" name="lastname" placeholder="Apellido" required
+                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]">
                     </div>
-    
+
                     <!-- Segunda fila: Email y Teléfono -->
                     <div class="grid grid-cols-2 gap-4">
-                        <input 
-                            type="email" 
-                            name="email" 
-                            placeholder="Email" 
-                            required
-                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
-                        >
-                        <input 
-                            type="tel" 
-                            name="phone" 
-                            placeholder="Teléfono" 
-                            required
-                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
-                        >
+                        <input type="email" name="email" placeholder="Email" required
+                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]">
+                        <input type="tel" name="phone" placeholder="Teléfono" required
+                            class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]">
                     </div>
-    
+
                     <!-- Tercera fila: Mensaje -->
-                    <textarea 
-                        name="message" 
-                        placeholder="Tu Mensaje" 
-                        rows="4" 
-                        required
-                        class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
-                    ></textarea>
-    
+                    <textarea name="message" placeholder="Tu Mensaje" rows="4" required
+                        class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"></textarea>
+
                     <!-- Campo honeypot para prevenir spam -->
                     <input type="text" name="_gotcha" style="display:none">
-    
+
                     <button type="submit"
                         class="bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
                         Enviar Mensaje
                     </button>
                 </form>
-    
+
                 <!-- Mensajes de estado del formulario -->
                 <div id="form-status" class="mt-6 text-center hidden">
                     <p id="success-message" class="text-green-500 hidden">
@@ -637,8 +642,10 @@ Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
     <script src="js/components/three-config.js"></script>
     <script src="js/components/carousel.js"></script>
     <script src="js/components/form.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.min.js"></script>
 
     <!-- Script principal -->
     <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -91,3 +91,27 @@ window.onerror = function(msg, url, lineNo, columnNo, error) {
     console.error('Error: ', msg, '\nURL: ', url, '\nLine: ', lineNo, '\nColumn: ', columnNo, '\nError object: ', error);
     return false;
 };
+
+// <!-- Script para asegurar que vuelva al inicio -->
+// Función para manejar el scroll al inicio
+const initLogoClickHandler = () => {
+    const logo = document.querySelector('nav a:first-child');
+    if (logo) {
+        logo.addEventListener('click', (e) => {
+            // Si estamos en index.html, prevenimos la navegación por defecto
+            if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+};
+
+// Agregar a las funciones de inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    initLogoClickHandler();
+    // Otras inicializaciones que ya tengas...
+});

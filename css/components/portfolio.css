@@ -6,6 +6,15 @@
     transition: all 0.7s;
 }
 
+#carousel-slides {
+    cursor: grab;
+    user-select: none;
+}
+
+#carousel-slides.dragging {
+    cursor: grabbing;
+}
+
 /* Fondo y overlay */
 .portfolio-background {
     position: absolute;
