@@ -43,18 +43,18 @@
                 </div>
     
                 <!-- Botón hamburguesa para móvil -->
-                <button id="mobile-menu-button" class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors">
+                <button id="mobile-menu-button" 
+                    class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors">
                     <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
                     <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
                     <span class="w-6 h-0.5 bg-white transform transition-transform duration-300"></span>
                 </button>
     
                 <!-- Botón Empezar (visible solo en desktop) -->
-                 <a href="https://justdevit.databam.cl">
-                    <button class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
-                        Empezar
-                    </button>
-                </a>
+                <button
+                    class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+                    Empezar
+                </button>
             </div>
     
             <!-- Menú móvil -->
@@ -419,6 +419,9 @@
 
     // Iniciar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', init);
+    
 </script>
+<!-- Componentes -->
+<script src="js/components/nav.js"></script>
 </body>
 </html>
