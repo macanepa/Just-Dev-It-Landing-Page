@@ -1,0 +1,341 @@
+/**
+ * Cards Component - Just Dev It
+ * Componentes de tarjetas reutilizables
+ */
+
+/* ===== CARD BASE ===== */
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(155, 97, 164, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 0;
+}
+
+.card:hover::before {
+    opacity: 0.05;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(155, 97, 164, 0.3);
+    box-shadow: var(--shadow-brand);
+}
+
+/* Card content should be above overlay */
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== CARD VARIANTS ===== */
+.card-flat {
+    background: var(--bg-secondary);
+    border: none;
+}
+
+.card-bordered {
+    background: transparent;
+    border: 2px solid rgba(155, 97, 164, 0.2);
+}
+
+.card-gradient {
+    background: linear-gradient(
+        135deg,
+        rgba(155, 97, 164, 0.1) 0%,
+        rgba(4, 199, 170, 0.05) 100%
+    );
+}
+
+/* ===== CARD HEADER ===== */
+.card-header {
+    margin-bottom: var(--space-6);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-secondary);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-3xl);
+    transition: transform var(--transition-base);
+}
+
+.card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+    color: var(--color-neutral-lightest);
+}
+
+.card-subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-brand-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: var(--font-semibold);
+}
+
+/* ===== CARD BODY ===== */
+.card-body {
+    color: var(--color-neutral-light);
+    line-height: var(--leading-relaxed);
+}
+
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== CARD FOOTER ===== */
+.card-footer {
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(155, 97, 164, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+/* ===== CARD TAGS ===== */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.card-tag {
+    padding: var(--space-1) var(--space-3);
+    background: rgba(155, 97, 164, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--color-brand-accent);
+    font-weight: var(--font-medium);
+    transition: all var(--transition-fast);
+}
+
+.card-tag:hover {
+    background: rgba(155, 97, 164, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== SERVICE CARD ===== */
+.service-card {
+    text-align: center;
+}
+
+.service-card .card-icon {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== PROJECT CARD ===== */
+.project-card {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    transition: transform var(--transition-base);
+}
+
+.project-card:hover .project-card-image {
+    transform: scale(1.05);
+}
+
+.project-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-body {
+    flex: 1;
+}
+
+/* ===== TEAM CARD ===== */
+.team-card {
+    text-align: center;
+}
+
+.team-card-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto var(--space-4);
+    overflow: hidden;
+    border: 4px solid var(--color-brand-primary);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.team-card:hover .team-card-avatar {
+    border-color: var(--color-brand-secondary);
+    transform: scale(1.05);
+}
+
+.team-card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-card-role {
+    color: var(--color-brand-secondary);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-2);
+}
+
+/* ===== TESTIMONIAL CARD ===== */
+.testimonial-card {
+    position: relative;
+    padding-top: var(--space-12);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-4);
+    font-size: 4rem;
+    color: var(--color-brand-primary);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--color-neutral-lighter);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-lg);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-info {
+    flex: 1;
+}
+
+.testimonial-name {
+    font-weight: var(--font-semibold);
+    color: var(--color-neutral-lightest);
+}
+
+.testimonial-position {
+    font-size: var(--text-sm);
+    color: var(--color-neutral-light);
+}
+
+/* ===== STAT CARD ===== */
+.stat-card {
+    text-align: center;
+    padding: var(--space-6);
+}
+
+.stat-card-value {
+    font-size: var(--text-5xl);
+    font-weight: var(--font-extrabold);
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: var(--space-3);
+}
+
+.stat-card-label {
+    color: var(--color-neutral-light);
+    font-size: var(--text-base);
+}
+
+/* ===== HOVER EFFECTS ===== */
+.card-hover-lift:hover {
+    transform: translateY(-12px);
+}
+
+.card-hover-glow:hover {
+    box-shadow: 0 0 30px rgba(155, 97, 164, 0.4),
+                0 0 60px rgba(4, 199, 170, 0.2);
+}
+
+.card-hover-tilt {
+    transition: transform var(--transition-base);
+}
+
+.card-hover-tilt:hover {
+    transform: perspective(1000px) rotateY(5deg);
+}
+
+/* ===== CARD GRID ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
+}
+
+@media (max-width: 640px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .card {
+        padding: var(--space-6);
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: var(--text-2xl);
+    }
+}

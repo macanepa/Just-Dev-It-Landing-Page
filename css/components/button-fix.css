@@ -1,0 +1,275 @@
+/* =====================================================
+   BUTTON FIX - Solución para hover pegado
+   Optimización de transiciones y estados
+   ===================================================== */
+
+/* Reset y fix para todos los botones */
+.btn,
+button,
+[type="button"],
+[type="submit"],
+.filter-btn,
+.nav-link {
+    /* Transiciones más cortas y precisas */
+    transition: 
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease !important;
+    
+    /* Prevenir delays acumulados */
+    transition-delay: 0s !important;
+    
+    /* Forzar re-render en hover out */
+    will-change: auto;
+}
+
+/* Hover states optimizados */
+.btn:hover,
+button:hover,
+[type="button"]:hover,
+[type="submit"]:hover {
+    /* Transiciones inmediatas al salir */
+    transition-duration: 0.15s;
+}
+
+/* Active states - respuesta instantánea */
+.btn:active,
+button:active {
+    transition-duration: 0.05s;
+    transform: scale(0.98);
+}
+
+/* Fix específico para botones primary */
+.btn-primary {
+    background: linear-gradient(135deg, #9B61A4, #b77cc5);
+    border: none;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6a3b7e, #543062);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover::before {
+    opacity: 1;
+}
+
+.btn-primary:hover {
+    color: #FFFFFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:not(:hover)::before {
+    opacity: 0;
+    transition-duration: 0.15s;
+}
+
+/* Fix específico para botones secondary/outline */
+.btn-secondary,
+.btn-outline {
+    background: rgba(4, 199, 170, 0.05);
+    border: 2px solid rgba(4, 199, 170, 0.4);
+    color: #04C7AA;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before,
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(4, 199, 170, 0.15), rgba(4, 199, 170, 0.25));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+    z-index: -1;
+}
+
+.btn-secondary:hover,
+.btn-outline:hover {
+    color: #26e0c0;
+    border-color: #26e0c0;
+}
+
+.btn-secondary:hover::before,
+.btn-outline:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-secondary:not(:hover)::before,
+.btn-outline:not(:hover)::before {
+    transform: scaleX(0);
+    transform-origin: right;
+    transition-duration: 0.15s;
+}
+
+.btn-secondary:not(:hover),
+.btn-outline:not(:hover) {
+    color: #04C7AA;
+}
+
+/* Fix para filter buttons del portfolio */
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(155, 97, 164, 0.3);
+    color: var(--color-neutral-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a3b7e, #7d4a8f);
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease;
+    z-index: -1;
+}
+
+.filter-btn:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.filter-btn:not(:hover)::before {
+    width: 0;
+    height: 0;
+    transition-duration: 0.2s;
+}
+
+.filter-btn:hover {
+    color: #FFFFFF;
+    border-color: #9B61A4;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.filter-btn:not(:hover) {
+    color: var(--color-neutral-light);
+    border-color: rgba(155, 97, 164, 0.3);
+    text-shadow: none;
+}
+
+.filter-btn.active {
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #9B61A4, #b77cc5);
+    border-color: #9B61A4;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.filter-btn.active::before {
+    width: 100%;
+    height: 100%;
+}
+
+/* Fix para nav links */
+.nav-link {
+    position: relative;
+    color: var(--color-neutral-light);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #04C7AA;
+    transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:not(:hover)::after {
+    width: 0;
+    transition-duration: 0.15s;
+}
+
+.nav-link:hover {
+    color: #04C7AA;
+}
+
+.nav-link:not(:hover) {
+    color: var(--color-neutral-light);
+}
+
+/* Prevenir flicker en touch devices */
+@media (hover: none) {
+    .btn::before,
+    .filter-btn::before {
+        display: none;
+    }
+    
+    .btn:hover,
+    .filter-btn:hover {
+        transform: none;
+    }
+}
+
+/* Fix para focus states */
+.btn:focus-visible,
+button:focus-visible,
+.filter-btn:focus-visible {
+    outline: 2px solid #b77cc5;
+    outline-offset: 2px;
+    transition: outline-offset 0.1s ease;
+}
+
+/* Disabled state */
+.btn:disabled,
+button:disabled,
+.filter-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn:disabled:hover,
+button:disabled:hover,
+.filter-btn:disabled:hover {
+    background: inherit;
+    color: inherit;
+    border-color: inherit;
+    transform: none;
+}
+
+/* Fix para mobile - prevenir hover stuck */
+@media (pointer: coarse) {
+    .btn:hover::before,
+    .filter-btn:hover::before {
+        transition-duration: 0.1s;
+    }
+}
+
+/* Performance optimization */
+.btn,
+.filter-btn,
+button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}

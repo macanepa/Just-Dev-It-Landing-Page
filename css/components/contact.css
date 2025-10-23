@@ -68,18 +68,20 @@
 
 /* Botón del formulario */
 .form-button {
-    background-image: linear-gradient(to bottom right, #B37BBF, #9B61A4, #6A3B7E);
+    background-image: linear-gradient(to bottom right, #9B61A4, #7d4a8f, #6a3b7e);
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 9999px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(155, 97, 164, 0.2);
     transition: all 0.3s ease;
 }
 
 .form-button:hover {
-    --tw-brightness: brightness(1.1);
-    filter: var(--tw-brightness);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom right, #6a3b7e, #543062, #3e234a);
+    box-shadow: 0 10px 15px -3px rgba(155, 97, 164, 0.4);
+    transform: translateY(-2px);
+    color: #FFFFFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Mensajes de estado del formulario */

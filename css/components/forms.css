@@ -1,0 +1,427 @@
+/**
+ * Forms Component - Just Dev It
+ * Sistema de formularios profesional con validación visual
+ */
+
+/* ===== FORM BASE ===== */
+.form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: var(--space-6);
+    position: relative;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== LABELS ===== */
+.form-label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-neutral-lighter);
+    transition: color var(--transition-fast);
+}
+
+.form-label.required::after {
+    content: '*';
+    color: var(--color-error);
+    margin-left: var(--space-1);
+}
+
+/* ===== INPUTS ===== */
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--text-base);
+    color: var(--color-neutral-lightest);
+    background-color: var(--bg-secondary);
+    border: 2px solid rgba(155, 97, 164, 0.2);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--color-neutral-medium);
+    opacity: 0.7;
+}
+
+/* Focus states */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: var(--color-brand-secondary);
+    background-color: var(--bg-tertiary);
+    box-shadow: 0 0 0 4px rgba(4, 199, 170, 0.1);
+}
+
+/* Hover states */
+.form-input:hover,
+.form-textarea:hover,
+.form-select:hover {
+    border-color: rgba(155, 97, 164, 0.4);
+}
+
+/* ===== TEXTAREA ===== */
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: var(--leading-relaxed);
+}
+
+/* ===== SELECT ===== */
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-12);
+    cursor: pointer;
+}
+
+/* ===== VALIDATION STATES ===== */
+
+/* Success */
+.form-group.success .form-input,
+.form-group.success .form-textarea,
+.form-group.success .form-select {
+    border-color: var(--color-success);
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.form-group.success .form-label {
+    color: var(--color-success);
+}
+
+/* Error */
+.form-group.error .form-input,
+.form-group.error .form-textarea,
+.form-group.error .form-select {
+    border-color: var(--color-error);
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.form-group.error .form-label {
+    color: var(--color-error);
+}
+
+/* ===== VALIDATION MESSAGES ===== */
+.form-message {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+}
+
+.form-message-success {
+    color: var(--color-success);
+}
+
+.form-message-error {
+    color: var(--color-error);
+}
+
+.form-message-info {
+    color: var(--color-info);
+}
+
+/* Icons for validation */
+.form-message::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.form-message-success::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3334 4L6.00002 11.3333L2.66669 8' stroke='%2310B981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.form-message-error::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 2L2 12H14L8 2Z' stroke='%23EF4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 7V9' stroke='%23EF4444' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8 11H8.01' stroke='%23EF4444' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* ===== CHECKBOX & RADIO ===== */
+.form-checkbox,
+.form-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-checkbox input[type="checkbox"],
+.form-radio input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid rgba(155, 97, 164, 0.3);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    margin-top: 2px;
+}
+
+.form-radio input[type="radio"] {
+    border-radius: 50%;
+}
+
+/* Checked state */
+.form-checkbox input[type="checkbox"]:checked,
+.form-radio input[type="radio"]:checked {
+    background-color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+}
+
+.form-checkbox input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.form-radio input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Focus state */
+.form-checkbox input[type="checkbox"]:focus,
+.form-radio input[type="radio"]:focus {
+    outline: 2px solid var(--color-brand-secondary);
+    outline-offset: 2px;
+}
+
+.form-checkbox-label,
+.form-radio-label {
+    font-size: var(--text-sm);
+    color: var(--color-neutral-light);
+    line-height: var(--leading-snug);
+}
+
+/* ===== FORM BUTTONS ===== */
+.form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+@media (max-width: 640px) {
+    .form-submit {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+    
+    .form-submit .btn {
+        width: 100%;
+    }
+}
+
+/* ===== INPUT GROUPS ===== */
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group .form-input {
+    border-radius: 0;
+}
+
+.input-group .form-input:first-child {
+    border-top-left-radius: var(--radius-lg);
+    border-bottom-left-radius: var(--radius-lg);
+}
+
+.input-group .form-input:last-child {
+    border-top-right-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
+}
+
+.input-group-addon {
+    display: flex;
+    align-items: center;
+    padding: var(--space-4);
+    background-color: var(--bg-secondary);
+    border: 2px solid rgba(155, 97, 164, 0.2);
+    color: var(--color-neutral-light);
+    white-space: nowrap;
+}
+
+.input-group-addon:first-child {
+    border-right: none;
+    border-top-left-radius: var(--radius-lg);
+    border-bottom-left-radius: var(--radius-lg);
+}
+
+.input-group-addon:last-child {
+    border-left: none;
+    border-top-right-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
+}
+
+/* ===== FILE UPLOAD ===== */
+.form-file {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    padding: var(--space-6);
+    border: 2px dashed rgba(155, 97, 164, 0.3);
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.form-file:hover {
+    border-color: var(--color-brand-secondary);
+    background-color: var(--bg-tertiary);
+}
+
+.form-file input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-file-content {
+    text-align: center;
+    pointer-events: none;
+}
+
+.form-file-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-3);
+    color: var(--color-brand-primary);
+}
+
+.form-file-text {
+    color: var(--color-neutral-light);
+    font-size: var(--text-sm);
+}
+
+/* ===== LOADING STATE ===== */
+.form-input.loading,
+.form-textarea.loading,
+.form-select.loading {
+    background-image: linear-gradient(
+        90deg,
+        transparent,
+        rgba(155, 97, 164, 0.1),
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ===== DISABLED STATE ===== */
+.form-input:disabled,
+.form-textarea:disabled,
+.form-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--bg-secondary);
+}
+
+/* ===== FLOATING LABELS ===== */
+.form-floating {
+    position: relative;
+}
+
+.form-floating .form-input,
+.form-floating .form-textarea {
+    padding-top: var(--space-6);
+}
+
+.form-floating .form-label {
+    position: absolute;
+    top: var(--space-4);
+    left: var(--space-5);
+    margin: 0;
+    pointer-events: none;
+    transition: all var(--transition-fast);
+    color: var(--color-neutral-medium);
+}
+
+.form-floating .form-input:focus ~ .form-label,
+.form-floating .form-input:not(:placeholder-shown) ~ .form-label,
+.form-floating .form-textarea:focus ~ .form-label,
+.form-floating .form-textarea:not(:placeholder-shown) ~ .form-label {
+    top: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-brand-secondary);
+}
+
+/* ===== FORM SECTION ===== */
+.form-section {
+    margin-bottom: var(--space-12);
+}
+
+.form-section-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-6);
+    color: var(--color-neutral-lightest);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid rgba(155, 97, 164, 0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+    .form-input,
+    .form-textarea,
+    .form-select {
+        padding: var(--space-3) var(--space-4);
+    }
+}

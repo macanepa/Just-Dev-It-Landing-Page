@@ -32,23 +32,28 @@ section {
 }
 
 .btn-primary {
-    background-image: linear-gradient(to bottom right, #B37BBF, #9B61A4, #6A3B7E);
+    background-image: linear-gradient(to bottom right, #9B61A4, #7d4a8f, #6a3b7e);
     color: white;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .btn-primary:hover {
-    --tw-brightness: brightness(1.1);
-    filter: var(--tw-brightness);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    background-image: linear-gradient(to bottom right, #6a3b7e, #543062, #3e234a);
+    box-shadow: 0 10px 15px -3px rgba(155, 97, 164, 0.4);
+    color: #FFFFFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .btn-secondary {
-    border: 1px solid #9B61A4;
+    border: 2px solid #04C7AA;
+    color: #04C7AA;
+    background: transparent;
 }
 
 .btn-secondary:hover {
-    background-color: rgba(155, 97, 164, 0.1);
+    background-color: rgba(4, 199, 170, 0.12);
+    border-color: #26e0c0;
+    color: #26e0c0;
 }
 
 /* Cards y contenedores */
