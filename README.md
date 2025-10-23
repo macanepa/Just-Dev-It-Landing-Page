@@ -54,11 +54,13 @@ Just-Dev-It-Landing-Page/
 ### 1. Servidor Local
 
 **Opción A: Live Server (VS Code)**
+
 1. Instala la extensión "Live Server" en VS Code
 2. Click derecho en `index-new.html` → "Open with Live Server"
 3. El sitio se abrirá en `http://localhost:5500`
 
 **Opción B: http-server (Node.js)**
+
 ```powershell
 # Instalar globalmente
 npm install -g http-server
@@ -71,6 +73,7 @@ http-server -p 5501
 ```
 
 **Opción C: Python Simple Server**
+
 ```powershell
 # Python 3
 python -m http.server 8000
@@ -82,6 +85,7 @@ python -m http.server 8000
 ### 2. Verificación
 
 Abre tu navegador y navega a la URL del servidor local. Deberías ver:
+
 - ✅ Hero section con animación de partículas Canvas
 - ✅ Sección "¿Qué Hacemos?"
 - ✅ Servicios (6 cards animadas)
@@ -98,9 +102,9 @@ Abre tu navegador y navega a la URL del servidor local. Deberías ver:
 Edita `css/core/variables.css`:
 
 ```css
---color-brand-primary: #9B61A4;     /* Morado principal */
---color-brand-secondary: #04C7AA;   /* Verde agua */
---color-brand-accent: #B37BBF;      /* Morado claro */
+--color-brand-primary: #9b61a4; /* Morado principal */
+--color-brand-secondary: #04c7aa; /* Verde agua */
+--color-brand-accent: #b37bbf; /* Morado claro */
 ```
 
 ### Tipografía
@@ -108,9 +112,9 @@ Edita `css/core/variables.css`:
 Edita `css/core/variables.css`:
 
 ```css
---font-heading: 'Poppins', sans-serif;
---font-body: 'Manrope', system-ui, sans-serif;
---font-mono: 'Fira Code', monospace;
+--font-heading: "Poppins", sans-serif;
+--font-body: "Manrope", system-ui, sans-serif;
+--font-mono: "Fira Code", monospace;
 ```
 
 ### Animaciones
@@ -119,9 +123,9 @@ Ajusta delays y thresholds en `js/components/animations.js`:
 
 ```javascript
 const options = {
-    root: null,
-    threshold: 0.1,  // Cambiar threshold
-    rootMargin: '0px 0px -50px 0px'
+  root: null,
+  threshold: 0.1, // Cambiar threshold
+  rootMargin: "0px 0px -50px 0px",
 };
 ```
 
@@ -134,9 +138,11 @@ El formulario está configurado para usar Formspree. Para cambiar:
 3. Actualiza el `action` en `index-new.html`:
 
 ```html
-<form id="contact-form" 
-      action="https://formspree.io/f/TU-ENDPOINT-AQUI"
-      method="POST">
+<form
+  id="contact-form"
+  action="https://formspree.io/f/TU-ENDPOINT-AQUI"
+  method="POST"
+></form>
 ```
 
 ## 📊 SEO y Analytics
@@ -147,12 +153,17 @@ El formulario está configurado para usar Formspree. Para cambiar:
 2. Descomenta las líneas al final de `index-new.html`:
 
 ```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XXXXXXXXXX");
 </script>
 ```
 
@@ -162,11 +173,18 @@ Agrega tu código GTM en el `<head>`:
 
 ```html
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-XXXXXXX");
+</script>
 <!-- End Google Tag Manager -->
 ```
 
@@ -193,6 +211,7 @@ https://jigsaw.w3.org/css-validator/
 3. Ejecuta auditoría
 
 **Objetivos:**
+
 - 🎯 Performance: 90+
 - 🎯 SEO: 95+
 - 🎯 Accessibility: 95+
@@ -201,6 +220,7 @@ https://jigsaw.w3.org/css-validator/
 ### Testing Responsive
 
 **Chrome DevTools:**
+
 1. Presiona `F12`
 2. Toggle device toolbar (`Ctrl+Shift+M`)
 3. Prueba en diferentes dispositivos:

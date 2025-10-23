@@ -1,924 +1,1200 @@
 <!DOCTYPE html>
 <html lang="es-CL">
-<head>
+  <head>
     <!-- ===== META BÁSICAS ===== -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <!-- ===== SEO OPTIMIZADO ===== -->
-    <title>Just Dev It | Desarrollo de Software Premium en Chile - Soluciones Tecnológicas a Medida</title>
-    <meta name="description" content="Empresa líder en desarrollo de software en Chile. Especializados en soluciones tecnológicas a medida, data engineering, IA aplicada y cloud computing. Transformamos ideas en software robusto y escalable.">
-    <meta name="keywords" content="desarrollo software Chile, empresa desarrollo software, programación a medida Chile, data engineering, inteligencia artificial Chile, cloud computing, software empresarial, desarrollo web Chile, API REST, soluciones tecnológicas">
-    <meta name="author" content="Just Dev It">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <link rel="canonical" href="https://justdev.it/">
-    
+    <title>
+      Just Dev It | Desarrollo de Software Premium en Chile - Soluciones
+      Tecnológicas a Medida
+    </title>
+    <meta
+      name="description"
+      content="Empresa líder en desarrollo de software en Chile. Especializados en soluciones tecnológicas a medida, data engineering, IA aplicada y cloud computing. Transformamos ideas en software robusto y escalable."
+    />
+    <meta
+      name="keywords"
+      content="desarrollo software Chile, empresa desarrollo software, programación a medida Chile, data engineering, inteligencia artificial Chile, cloud computing, software empresarial, desarrollo web Chile, API REST, soluciones tecnológicas"
+    />
+    <meta name="author" content="Just Dev It" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://justdev.it/" />
+
     <!-- ===== GEO TARGETING ===== -->
     <meta name="geo.region" content="CL" />
     <meta name="geo.placename" content="Santiago, Chile" />
     <meta name="geo.position" content="-33.4489;-70.6693" />
     <meta name="ICBM" content="-33.4489, -70.6693" />
-    
+
     <!-- ===== OPEN GRAPH / FACEBOOK ===== -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://justdev.it/">
-    <meta property="og:title" content="Just Dev It | Desarrollo de Software Premium en Chile">
-    <meta property="og:description" content="Empresa líder en desarrollo de software en Chile. Soluciones tecnológicas robustas, escalables e innovadoras. Especialistas en data engineering, IA y cloud computing.">
-    <meta property="og:image" content="https://justdev.it/assets/images/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Just Dev It">
-    <meta property="og:locale" content="es_CL">
-    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://justdev.it/" />
+    <meta
+      property="og:title"
+      content="Just Dev It | Desarrollo de Software Premium en Chile"
+    />
+    <meta
+      property="og:description"
+      content="Empresa líder en desarrollo de software en Chile. Soluciones tecnológicas robustas, escalables e innovadoras. Especialistas en data engineering, IA y cloud computing."
+    />
+    <meta
+      property="og:image"
+      content="https://justdev.it/assets/images/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Just Dev It" />
+    <meta property="og:locale" content="es_CL" />
+
     <!-- ===== TWITTER CARD ===== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://justdev.it/">
-    <meta name="twitter:title" content="Just Dev It | Desarrollo de Software Premium en Chile">
-    <meta name="twitter:description" content="Empresa líder en desarrollo de software en Chile. Soluciones tecnológicas a medida con IA, data engineering y cloud.">
-    <meta name="twitter:image" content="https://justdev.it/assets/images/twitter-image.jpg">
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://justdev.it/" />
+    <meta
+      name="twitter:title"
+      content="Just Dev It | Desarrollo de Software Premium en Chile"
+    />
+    <meta
+      name="twitter:description"
+      content="Empresa líder en desarrollo de software en Chile. Soluciones tecnológicas a medida con IA, data engineering y cloud."
+    />
+    <meta
+      name="twitter:image"
+      content="https://justdev.it/assets/images/twitter-image.jpg"
+    />
+
     <!-- ===== FAVICON ===== -->
-    <link rel="icon" type="image/svg+xml" href="assets/images/Isotipo_morado.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/images/Isotipo_morado.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+
     <!-- ===== PRECONNECT PARA PERFORMANCE ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- ===== ESTILOS CSS ===== -->
-    <link rel="stylesheet" href="css/core/reset.css">
-    <link rel="stylesheet" href="css/core/variables.css">
-    <link rel="stylesheet" href="css/core/typography.css">
-    <link rel="stylesheet" href="css/layouts/sections.css">
-    <link rel="stylesheet" href="css/layouts/grid.css">
-    <link rel="stylesheet" href="css/components/preloader.css">
-    <link rel="stylesheet" href="css/components/navigation.css">
-    <link rel="stylesheet" href="css/components/hero.css">
-    <link rel="stylesheet" href="css/components/cards.css">
-    <link rel="stylesheet" href="css/components/forms.css">
-    <link rel="stylesheet" href="css/components/portfolio-filter.css">
-    <link rel="stylesheet" href="css/components/button-fix.css">
-    <link rel="stylesheet" href="css/components/footer.css">
-    <link rel="stylesheet" href="css/utils/animations.css">
-    <link rel="stylesheet" href="css/main.css">
-    
+    <link rel="stylesheet" href="css/core/reset.css" />
+    <link rel="stylesheet" href="css/core/variables.css" />
+    <link rel="stylesheet" href="css/core/typography.css" />
+    <link rel="stylesheet" href="css/layouts/sections.css" />
+    <link rel="stylesheet" href="css/layouts/grid.css" />
+    <link rel="stylesheet" href="css/components/preloader.css" />
+    <link rel="stylesheet" href="css/components/navigation.css" />
+    <link rel="stylesheet" href="css/components/hero.css" />
+    <link rel="stylesheet" href="css/components/cards.css" />
+    <link rel="stylesheet" href="css/components/forms.css" />
+    <link rel="stylesheet" href="css/components/portfolio-filter.css" />
+    <link rel="stylesheet" href="css/components/button-fix.css" />
+    <link rel="stylesheet" href="css/components/footer.css" />
+    <link rel="stylesheet" href="css/utils/animations.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
     <!-- ===== SCHEMA.ORG JSON-LD PARA IA GENERATIVA ===== -->
     <script type="application/ld+json">
-    {
+      {
         "@context": "https://schema.org",
         "@graph": [
-            {
-                "@type": "Organization",
-                "@id": "https://justdev.it/#organization",
-                "name": "Just Dev It",
-                "alternateName": "JustDevIt",
-                "url": "https://justdev.it",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://justdev.it/assets/images/Logo principal - blanco.svg",
-                    "width": 600,
-                    "height": 200
-                },
-                "description": "Empresa líder de desarrollo de software en Chile especializada en soluciones tecnológicas a medida, data engineering, inteligencia artificial aplicada y arquitectura cloud.",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Santiago",
-                    "addressRegion": "RM",
-                    "addressCountry": "CL"
-                },
-                "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": "-33.4489",
-                    "longitude": "-70.6693"
-                },
-                "areaServed": {
-                    "@type": "Country",
-                    "name": "Chile"
-                },
-                "foundingDate": "2020",
-                "founders": [
-                    {
-                        "@type": "Person",
-                        "name": "Joaquín Espildora Moraga",
-                        "jobTitle": "CEO & Co-Fundador",
-                        "description": "Ingeniero Civil con más de 5 años de experiencia liderando portafolios de inversión superiores a $1B USD. Experto en soluciones tecnológicas para el sector financiero e inmobiliario."
-                    },
-                    {
-                        "@type": "Person",
-                        "name": "Matías Cánepa González",
-                        "jobTitle": "CTO & Co-Fundador",
-                        "description": "Cloud Engineer y desarrollador experto en arquitectura cloud, inteligencia artificial y data engineering. Lidera el desarrollo técnico e infraestructura tecnológica."
-                    }
-                ],
-                "sameAs": [
-                    "https://www.linkedin.com/company/just-dev-it",
-                    "https://github.com/justdevit"
-                ]
+          {
+            "@type": "Organization",
+            "@id": "https://justdev.it/#organization",
+            "name": "Just Dev It",
+            "alternateName": "JustDevIt",
+            "url": "https://justdev.it",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://justdev.it/assets/images/Logo principal - blanco.svg",
+              "width": 600,
+              "height": 200
             },
-            {
-                "@type": "WebSite",
-                "@id": "https://justdev.it/#website",
-                "url": "https://justdev.it",
-                "name": "Just Dev It",
-                "description": "Desarrollo de software premium en Chile",
-                "publisher": {
-                    "@id": "https://justdev.it/#organization"
-                },
-                "inLanguage": "es-CL"
+            "description": "Empresa líder de desarrollo de software en Chile especializada en soluciones tecnológicas a medida, data engineering, inteligencia artificial aplicada y arquitectura cloud.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Santiago",
+              "addressRegion": "RM",
+              "addressCountry": "CL"
             },
-            {
-                "@type": "SoftwareApplication",
-                "name": "Servicios de Desarrollo de Software - Just Dev It",
-                "description": "Desarrollo de software a medida, cloud & data engineering, soluciones con IA aplicada, ecosistemas fintech, integraciones de sistemas y data analytics.",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "Web, Cloud, Cross-platform",
-                "offers": {
-                    "@type": "AggregateOffer",
-                    "priceCurrency": "CLP",
-                    "availability": "https://schema.org/InStock"
-                },
-                "provider": {
-                    "@id": "https://justdev.it/#organization"
-                }
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-33.4489",
+              "longitude": "-70.6693"
             },
-            {
-                "@type": "Service",
-                "serviceType": "Desarrollo de Software a Medida",
-                "provider": {
-                    "@id": "https://justdev.it/#organization"
-                },
-                "areaServed": {
-                    "@type": "Country",
-                    "name": "Chile"
-                },
-                "description": "Desarrollo de aplicaciones web, APIs REST, automatización de procesos y flujos de negocio personalizados."
+            "areaServed": {
+              "@type": "Country",
+              "name": "Chile"
             },
-            {
-                "@type": "Service",
-                "serviceType": "Cloud & Data Engineering",
-                "provider": {
-                    "@id": "https://justdev.it/#organization"
-                },
-                "description": "Infraestructura cloud, ETLs, arquitectura escalable, Big Data y optimización en Azure, Google Cloud y AWS."
+            "foundingDate": "2020",
+            "founders": [
+              {
+                "@type": "Person",
+                "name": "Joaquín Espildora Moraga",
+                "jobTitle": "CEO & Co-Fundador",
+                "description": "Ingeniero Civil con más de 5 años de experiencia liderando portafolios de inversión superiores a $1B USD. Experto en soluciones tecnológicas para el sector financiero e inmobiliario."
+              },
+              {
+                "@type": "Person",
+                "name": "Matías Cánepa González",
+                "jobTitle": "CTO & Co-Fundador",
+                "description": "Cloud Engineer y desarrollador experto en arquitectura cloud, inteligencia artificial y data engineering. Lidera el desarrollo técnico e infraestructura tecnológica."
+              }
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/company/just-dev-it",
+              "https://github.com/justdevit"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://justdev.it/#website",
+            "url": "https://justdev.it",
+            "name": "Just Dev It",
+            "description": "Desarrollo de software premium en Chile",
+            "publisher": {
+              "@id": "https://justdev.it/#organization"
             },
-            {
-                "@type": "Service",
-                "serviceType": "Inteligencia Artificial Aplicada",
-                "provider": {
-                    "@id": "https://justdev.it/#organization"
-                },
-                "description": "Web scraping, OCR, modelos predictivos, agentes inteligentes y asistentes con modelos LLM."
+            "inLanguage": "es-CL"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Servicios de Desarrollo de Software - Just Dev It",
+            "description": "Desarrollo de software a medida, cloud & data engineering, soluciones con IA aplicada, ecosistemas fintech, integraciones de sistemas y data analytics.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web, Cloud, Cross-platform",
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "CLP",
+              "availability": "https://schema.org/InStock"
             },
-            {
-                "@type": "ItemList",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "item": {
-                            "@type": "Organization",
-                            "name": "Pacific Hydro",
-                            "description": "Cliente de Just Dev It"
-                        }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "item": {
-                            "@type": "Organization",
-                            "name": "Contego",
-                            "description": "Cliente de Just Dev It"
-                        }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 3,
-                        "item": {
-                            "@type": "Organization",
-                            "name": "MT2",
-                            "description": "Cliente de Just Dev It"
-                        }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 4,
-                        "item": {
-                            "@type": "Organization",
-                            "name": "ESE Business School",
-                            "description": "Cliente de Just Dev It"
-                        }
-                    }
-                ]
+            "provider": {
+              "@id": "https://justdev.it/#organization"
             }
+          },
+          {
+            "@type": "Service",
+            "serviceType": "Desarrollo de Software a Medida",
+            "provider": {
+              "@id": "https://justdev.it/#organization"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Chile"
+            },
+            "description": "Desarrollo de aplicaciones web, APIs REST, automatización de procesos y flujos de negocio personalizados."
+          },
+          {
+            "@type": "Service",
+            "serviceType": "Cloud & Data Engineering",
+            "provider": {
+              "@id": "https://justdev.it/#organization"
+            },
+            "description": "Infraestructura cloud, ETLs, arquitectura escalable, Big Data y optimización en Azure, Google Cloud y AWS."
+          },
+          {
+            "@type": "Service",
+            "serviceType": "Inteligencia Artificial Aplicada",
+            "provider": {
+              "@id": "https://justdev.it/#organization"
+            },
+            "description": "Web scraping, OCR, modelos predictivos, agentes inteligentes y asistentes con modelos LLM."
+          },
+          {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "Organization",
+                  "name": "Pacific Hydro",
+                  "description": "Cliente de Just Dev It"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "Organization",
+                  "name": "Contego",
+                  "description": "Cliente de Just Dev It"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "Organization",
+                  "name": "MT2",
+                  "description": "Cliente de Just Dev It"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "Organization",
+                  "name": "ESE Business School",
+                  "description": "Cliente de Just Dev It"
+                }
+              }
+            ]
+          }
         ]
-    }
+      }
     </script>
-    
-    <!-- ===== GOOGLE TAG MANAGER ===== -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N67BW2PN');</script>
-    
-    <!-- ===== GOOGLE ANALYTICS ===== -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E47YX9JYCS"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-E47YX9JYCS');
-    </script>
-</head>
 
-<body>
+    <!-- ===== GOOGLE TAG MANAGER ===== -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-N67BW2PN");
+    </script>
+
+    <!-- ===== GOOGLE ANALYTICS ===== -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E47YX9JYCS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-E47YX9JYCS");
+    </script>
+  </head>
+
+  <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN" 
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
     </noscript>
-    
+
     <!-- ===== SKIP TO MAIN CONTENT (Accesibilidad) ===== -->
-    <a href="#main-content" class="skip-to-content">Ir al contenido principal</a>
-    
+    <a href="#main-content" class="skip-to-content"
+      >Ir al contenido principal</a
+    >
+
     <!-- ===== NAVIGATION ===== -->
     <header class="site-header" role="banner">
-        <nav class="main-nav" role="navigation" aria-label="Navegación principal">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <a href="/" aria-label="Just Dev It - Inicio">
-                        <img src="assets/images/Logo principal - blanco.svg" 
-                             alt="Logo Just Dev It" 
-                             width="140" 
-                             height="50"
-                             loading="eager">
-                    </a>
-                </div>
-                
-                <div class="nav-menu" id="nav-menu">
-                    <ul class="nav-list" role="list">
-                        <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                        <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
-                        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-                        <li><a href="#clientes" class="nav-link">Clientes</a></li>
-                        <li><a href="#contacto" class="nav-link">Contacto</a></li>
-                    </ul>
-                    
-                    <a href="#contacto" class="btn btn-primary">Cotizar Proyecto</a>
-                </div>
-                
-                <button class="nav-toggle" 
-                        id="nav-toggle" 
-                        aria-label="Abrir menú de navegación"
-                        aria-expanded="false"
-                        aria-controls="nav-menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </nav>
+      <nav class="main-nav" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container">
+          <div class="nav-brand">
+            <a href="/" aria-label="Just Dev It - Inicio">
+              <img
+                src="assets/images/Logo principal - blanco.svg"
+                alt="Logo Just Dev It"
+                width="140"
+                height="50"
+                loading="eager"
+              />
+            </a>
+          </div>
+
+          <div class="nav-menu" id="nav-menu">
+            <ul class="nav-list" role="list">
+              <li><a href="#servicios" class="nav-link">Servicios</a></li>
+              <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+              <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+              <li><a href="#clientes" class="nav-link">Clientes</a></li>
+              <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+
+            <a href="#contacto" class="btn btn-primary">Cotizar Proyecto</a>
+          </div>
+
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </nav>
     </header>
-    
+
     <!-- ===== MAIN CONTENT ===== -->
     <main id="main-content">
-        <!-- HERO SECTION -->
-        <section class="hero" id="hero" aria-labelledby="hero-title">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <p class="hero-subtitle">Desarrollo de Software Premium</p>
-                    
-                    <h1 id="hero-title" class="hero-title">
-                        El software que tu negocio necesita
-                        <span class="gradient-text"> justo a tiempo</span>
-                    </h1>
-                    
-                    <p class="hero-description">
-                        En <strong>Just Dev It</strong> creamos soluciones tecnológicas a la medida, 
-                        enfocadas en resolver problemas reales con precisión, eficiencia y visión estratégica.
-                    </p>
-                    
-                    <p class="hero-subtext">
-                        Somos más que una empresa de desarrollo: somos tus <strong>socios tecnológicos</strong>.
-                    </p>
-                    
-                    <div class="hero-cta">
-                        <a href="#servicios" class="btn btn-primary btn-lg">
-                            Ver Nuestros Servicios
-                        </a>
-                        <a href="#portafolio" class="btn btn-secondary btn-lg">
-                            Ver Proyectos
-                        </a>
-                    </div>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Proyectos Completados</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Años de Experiencia</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Satisfacción Cliente</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-visual" id="hero-3d-container">
-                    <!-- Animación épica de morphing -->
-                </div>
+      <!-- HERO SECTION -->
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero-container">
+          <div class="hero-content">
+            <p class="hero-subtitle">Desarrollo de Software Premium</p>
+
+            <h1 id="hero-title" class="hero-title">
+              El software que tu negocio necesita
+              <span class="gradient-text"> justo a tiempo</span>
+            </h1>
+
+            <p class="hero-description">
+              En <strong>Just Dev It</strong> creamos soluciones tecnológicas a
+              la medida, enfocadas en resolver problemas reales con precisión,
+              eficiencia y visión estratégica.
+            </p>
+
+            <p class="hero-subtext">
+              Somos más que una empresa de desarrollo: somos tus
+              <strong>socios tecnológicos</strong>.
+            </p>
+
+            <div class="hero-cta">
+              <a href="#servicios" class="btn btn-primary btn-lg">
+                Ver Nuestros Servicios
+              </a>
+              <a href="#portafolio" class="btn btn-secondary btn-lg">
+                Ver Proyectos
+              </a>
             </div>
-        </section>
-        
-        <!-- ===== ¿QUÉ HACEMOS? ===== -->
-        <section class="section section-dark" id="que-hacemos">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        ¿Qué hacemos<span class="gradient-text">?</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Desarrollamos software robusto, inteligente y escalable, desde plataformas web 
-                        y sistemas de automatización, hasta soluciones complejas de <strong>inteligencia 
-                        artificial aplicada</strong> y <strong>data engineering</strong>. Transformamos 
-                        tu data en decisiones accionables.
-                    </p>
-                </div>
+
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Proyectos Completados</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Años de Experiencia</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Satisfacción Cliente</span>
+              </div>
             </div>
-        </section>
-        
-        <!-- ===== SERVICIOS ===== -->
-        <section class="section" id="servicios" aria-labelledby="servicios-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="servicios-title" class="section-title">
-                        Nuestros <span class="gradient-text">Servicios</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Soluciones tecnológicas integrales para impulsar tu negocio
-                    </p>
+          </div>
+
+          <div class="hero-visual" id="hero-3d-container">
+            <!-- Animación épica de morphing -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ¿QUÉ HACEMOS? ===== -->
+      <section class="section section-dark" id="que-hacemos">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">
+              ¿Qué hacemos<span class="gradient-text">?</span>
+            </h2>
+            <p class="section-subtitle">
+              Desarrollamos software robusto, inteligente y escalable, desde
+              plataformas web y sistemas de automatización, hasta soluciones
+              complejas de <strong>inteligencia artificial aplicada</strong> y
+              <strong>data engineering</strong>. Transformamos tu data en
+              decisiones accionables.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SERVICIOS ===== -->
+      <section class="section" id="servicios" aria-labelledby="servicios-title">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="servicios-title" class="section-title">
+              Nuestros <span class="gradient-text">Servicios</span>
+            </h2>
+            <p class="section-subtitle">
+              Soluciones tecnológicas integrales para impulsar tu negocio
+            </p>
+          </div>
+
+          <div class="card-grid" data-stagger data-stagger-delay="100">
+            <!-- Servicio 1 -->
+            <article
+              class="card service-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Service"
+            >
+              <div class="card-icon" aria-hidden="true">🚀</div>
+              <div class="card-header">
+                <h3 class="card-title" itemprop="name">
+                  Desarrollo de Software a Medida
+                </h3>
+              </div>
+              <div class="card-body">
+                <p itemprop="description">
+                  Web apps, APIs REST, automatización de procesos y flujos de
+                  negocio personalizados para tu empresa. Desarrollo ágil con
+                  las mejores prácticas.
+                </p>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">Ruby</span>
+                <span class="card-tag">Node.js</span>
+              </div>
+            </article>
+
+            <!-- Servicio 2 -->
+            <article
+              class="card service-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Service"
+            >
+              <div class="card-icon" aria-hidden="true">☁️</div>
+              <div class="card-header">
+                <h3 class="card-title" itemprop="name">
+                  Cloud & Data Engineering
+                </h3>
+              </div>
+              <div class="card-body">
+                <p itemprop="description">
+                  Infraestructura escalable, ETLs robustos, pipelines de datos,
+                  Big Data y optimización en Azure, Google Cloud y AWS.
+                </p>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">Azure</span>
+                <span class="card-tag">AWS</span>
+                <span class="card-tag">GCP</span>
+              </div>
+            </article>
+
+            <!-- Servicio 3 -->
+            <article
+              class="card service-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Service"
+            >
+              <div class="card-icon" aria-hidden="true">🤖</div>
+              <div class="card-header">
+                <h3 class="card-title" itemprop="name">
+                  Soluciones con IA Aplicada
+                </h3>
+              </div>
+              <div class="card-body">
+                <p itemprop="description">
+                  Web scraping, OCR, modelos predictivos, agentes inteligentes y
+                  asistentes conversacionales con Modelos LLM (GPT, Claude,
+                  Gemini).
+                </p>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">Machine Learning</span>
+                <span class="card-tag">NLP</span>
+                <span class="card-tag">Computer Vision</span>
+              </div>
+            </article>
+
+            <!-- Servicio 4 -->
+            <article
+              class="card service-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Service"
+            >
+              <div class="card-icon" aria-hidden="true">🏦</div>
+              <div class="card-header">
+                <h3 class="card-title" itemprop="name">
+                  Ecosistemas Fintech e Inmobiliarios
+                </h3>
+              </div>
+              <div class="card-body">
+                <p itemprop="description">
+                  Plataformas de inversión, gestión de activos, análisis de
+                  mercado inmobiliario y herramientas de due diligence
+                  automatizadas.
+                </p>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">Fintech</span>
+                <span class="card-tag">PropTech</span>
+                <span class="card-tag">Analytics</span>
+              </div>
+            </article>
+
+            <!-- Servicio 5 -->
+            <article
+              class="card service-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Service"
+            >
+              <div class="card-icon" aria-hidden="true">🔗</div>
+              <div class="card-header">
+                <h3 class="card-title" itemprop="name">
+                  Integraciones de Sistemas
+                </h3>
+              </div>
+              <div class="card-body">
+                <p itemprop="description">
+                  Conectamos tus herramientas existentes: ERPs, CRMs,
+                  plataformas de pago, sistemas legacy y APIs de terceros.
+                </p>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">APIs</span>
+                <span class="card-tag">Webhooks</span>
+                <span class="card-tag">Middleware</span>
+              </div>
+            </article>
+
+            <!-- Servicio 6 -->
+            <article
+              class="card service-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Service"
+            >
+              <div class="card-icon" aria-hidden="true">📊</div>
+              <div class="card-header">
+                <h3 class="card-title" itemprop="name">
+                  Data Analytics & Reporting
+                </h3>
+              </div>
+              <div class="card-body">
+                <p itemprop="description">
+                  Dashboards interactivos, reportes automatizados y
+                  visualizaciones avanzadas con Power BI, Tableau y soluciones
+                  custom.
+                </p>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">Power BI</span>
+                <span class="card-tag">Tableau</span>
+                <span class="card-tag">SQL</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PORTFOLIO ===== -->
+      <section
+        class="section section-darker"
+        id="portafolio"
+        aria-labelledby="portafolio-title"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 id="portafolio-title" class="section-title">
+              Nuestro <span class="gradient-text">Portafolio</span>
+            </h2>
+            <p class="section-subtitle">
+              Proyectos que transforman negocios y generan valor real
+            </p>
+          </div>
+
+          <!-- Portfolio Filter Buttons -->
+          <div
+            class="portfolio-filters"
+            role="navigation"
+            aria-label="Filtrar proyectos"
+          >
+            <button
+              class="filter-btn active"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              Todos
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="platform"
+              aria-pressed="false"
+            >
+              Plataformas
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="fintech"
+              aria-pressed="false"
+            >
+              Fintech
+            </button>
+            <button class="filter-btn" data-filter="data" aria-pressed="false">
+              Data & Analytics
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="enterprise"
+              aria-pressed="false"
+            >
+              Enterprise
+            </button>
+          </div>
+
+          <div class="card-grid" data-portfolio-grid>
+            <!-- Proyecto 1: Databam -->
+            <article
+              class="card project-card fade-in"
+              data-category="platform, fintech, data"
+              itemscope
+              itemtype="https://schema.org/CreativeWork"
+            >
+              <div
+                data-lightbox
+                data-caption="Databam - La plataforma de data inmobiliaria más completa de Chile"
+              >
+                <img
+                  src="assets/images/Databam.png"
+                  alt="Databam - Plataforma de Data Inmobiliaria"
+                  class="project-card-image"
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
+              <div class="project-card-content">
+                <div class="card-header">
+                  <span class="card-subtitle">Platform</span>
+                  <h3 class="card-title" itemprop="name">Databam</h3>
                 </div>
-                
-                <div class="card-grid" data-stagger data-stagger-delay="100">
-                    <!-- Servicio 1 -->
-                    <article class="card service-card fade-in" itemscope itemtype="https://schema.org/Service">
-                        <div class="card-icon" aria-hidden="true">🚀</div>
-                        <div class="card-header">
-                            <h3 class="card-title" itemprop="name">Desarrollo de Software a Medida</h3>
-                        </div>
-                        <div class="card-body">
-                            <p itemprop="description">
-                                Web apps, APIs REST, automatización de procesos y flujos de negocio 
-                                personalizados para tu empresa. Desarrollo ágil con las mejores prácticas.
-                            </p>
-                        </div>
-                        <div class="card-tags">
-                            <span class="card-tag">Python</span>
-                            <span class="card-tag">Ruby</span>
-                            <span class="card-tag">Node.js</span>
-                        </div>
-                    </article>
-                    
-                    <!-- Servicio 2 -->
-                    <article class="card service-card fade-in" itemscope itemtype="https://schema.org/Service">
-                        <div class="card-icon" aria-hidden="true">☁️</div>
-                        <div class="card-header">
-                            <h3 class="card-title" itemprop="name">Cloud & Data Engineering</h3>
-                        </div>
-                        <div class="card-body">
-                            <p itemprop="description">
-                                Infraestructura escalable, ETLs robustos, pipelines de datos, Big Data 
-                                y optimización en Azure, Google Cloud y AWS.
-                            </p>
-                        </div>
-                        <div class="card-tags">
-                            <span class="card-tag">Azure</span>
-                            <span class="card-tag">AWS</span>
-                            <span class="card-tag">GCP</span>
-                        </div>
-                    </article>
-                    
-                    <!-- Servicio 3 -->
-                    <article class="card service-card fade-in" itemscope itemtype="https://schema.org/Service">
-                        <div class="card-icon" aria-hidden="true">🤖</div>
-                        <div class="card-header">
-                            <h3 class="card-title" itemprop="name">Soluciones con IA Aplicada</h3>
-                        </div>
-                        <div class="card-body">
-                            <p itemprop="description">
-                                Web scraping, OCR, modelos predictivos, agentes inteligentes y asistentes 
-                                conversacionales con Modelos LLM (GPT, Claude, Gemini).
-                            </p>
-                        </div>
-                        <div class="card-tags">
-                            <span class="card-tag">Machine Learning</span>
-                            <span class="card-tag">NLP</span>
-                            <span class="card-tag">Computer Vision</span>
-                        </div>
-                    </article>
-                    
-                    <!-- Servicio 4 -->
-                    <article class="card service-card fade-in" itemscope itemtype="https://schema.org/Service">
-                        <div class="card-icon" aria-hidden="true">🏦</div>
-                        <div class="card-header">
-                            <h3 class="card-title" itemprop="name">Ecosistemas Fintech e Inmobiliarios</h3>
-                        </div>
-                        <div class="card-body">
-                            <p itemprop="description">
-                                Plataformas de inversión, gestión de activos, análisis de mercado inmobiliario 
-                                y herramientas de due diligence automatizadas.
-                            </p>
-                        </div>
-                        <div class="card-tags">
-                            <span class="card-tag">Fintech</span>
-                            <span class="card-tag">PropTech</span>
-                            <span class="card-tag">Analytics</span>
-                        </div>
-                    </article>
-                    
-                    <!-- Servicio 5 -->
-                    <article class="card service-card fade-in" itemscope itemtype="https://schema.org/Service">
-                        <div class="card-icon" aria-hidden="true">🔗</div>
-                        <div class="card-header">
-                            <h3 class="card-title" itemprop="name">Integraciones de Sistemas</h3>
-                        </div>
-                        <div class="card-body">
-                            <p itemprop="description">
-                                Conectamos tus herramientas existentes: ERPs, CRMs, plataformas de pago, 
-                                sistemas legacy y APIs de terceros.
-                            </p>
-                        </div>
-                        <div class="card-tags">
-                            <span class="card-tag">APIs</span>
-                            <span class="card-tag">Webhooks</span>
-                            <span class="card-tag">Middleware</span>
-                        </div>
-                    </article>
-                    
-                    <!-- Servicio 6 -->
-                    <article class="card service-card fade-in" itemscope itemtype="https://schema.org/Service">
-                        <div class="card-icon" aria-hidden="true">📊</div>
-                        <div class="card-header">
-                            <h3 class="card-title" itemprop="name">Data Analytics & Reporting</h3>
-                        </div>
-                        <div class="card-body">
-                            <p itemprop="description">
-                                Dashboards interactivos, reportes automatizados y visualizaciones avanzadas 
-                                con Power BI, Tableau y soluciones custom.
-                            </p>
-                        </div>
-                        <div class="card-tags">
-                            <span class="card-tag">Power BI</span>
-                            <span class="card-tag">Tableau</span>
-                            <span class="card-tag">SQL</span>
-                        </div>
-                    </article>
+                <div class="card-body project-card-body">
+                  <p itemprop="description">
+                    La plataforma de data inmobiliaria más completa de Chile.
+                    Información de propiedades, dueños y precios transaccionales
+                    en tiempo real.
+                  </p>
                 </div>
+                <div class="card-tags">
+                  <span class="card-tag">Ruby on Rails</span>
+                  <span class="card-tag">Python</span>
+                  <span class="card-tag">PostgreSQL</span>
+                </div>
+                <div class="card-footer">
+                  <a
+                    href="https://www.databam.cl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline"
+                  >
+                    Ver Proyecto →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Proyecto 2: Pacific Hydro -->
+            <article
+              class="card project-card fade-in"
+              data-category="enterprise, data"
+              itemscope
+              itemtype="https://schema.org/CreativeWork"
+            >
+              <div
+                data-lightbox
+                data-caption="Pacific Hydro - Sistema de monitoreo y gestión de plantas hidroeléctricas"
+              >
+                <img
+                  src="assets/images/pacific hydro.png"
+                  alt="Pacific Hydro - Sistema de Gestión Energética"
+                  class="project-card-image"
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
+              <div class="project-card-content">
+                <div class="card-header">
+                  <span class="card-subtitle">Energy Management</span>
+                  <h3 class="card-title" itemprop="name">Pacific Hydro</h3>
+                </div>
+                <div class="card-body project-card-body">
+                  <p itemprop="description">
+                    Sistema de monitoreo y gestión de plantas hidroeléctricas
+                    con dashboards en tiempo real y predictive maintenance.
+                  </p>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Python</span>
+                  <span class="card-tag">IoT</span>
+                  <span class="card-tag">Power BI</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Proyecto 3: Prisa -->
+            <article
+              class="card project-card fade-in"
+              itemscope
+              itemtype="https://schema.org/CreativeWork"
+            >
+              <img
+                src="assets/images/prisa.png"
+                alt="Prisa - Plataforma de Gestión Documental"
+                class="project-card-image"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="project-card-content">
+                <div class="card-header">
+                  <span class="card-subtitle">Document Management</span>
+                  <h3 class="card-title" itemprop="name">Prisa</h3>
+                </div>
+                <div class="card-body project-card-body">
+                  <p itemprop="description">
+                    Plataforma de gestión documental inteligente con OCR,
+                    clasificación automática y búsqueda semántica avanzada.
+                  </p>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">OCR</span>
+                  <span class="card-tag">NLP</span>
+                  <span class="card-tag">Azure</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Proyecto 4: Grunenthal -->
+            <article
+              class="card project-card fade-in"
+              itemscope
+              itemtype="https://schema.org/CreativeWork"
+            >
+              <img
+                src="assets/images/grunenthal.png"
+                alt="Grünenthal - Sistema CRM Farmacéutico"
+                class="project-card-image"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="project-card-content">
+                <div class="card-header">
+                  <span class="card-subtitle">Healthcare CRM</span>
+                  <h3 class="card-title" itemprop="name">Grünenthal</h3>
+                </div>
+                <div class="card-body project-card-body">
+                  <p itemprop="description">
+                    CRM especializado para la industria farmacéutica con
+                    tracking de visitadores médicos y analytics de ventas.
+                  </p>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Salesforce</span>
+                  <span class="card-tag">Custom APIs</span>
+                  <span class="card-tag">Analytics</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Proyecto 5: Rosen Group -->
+            <article
+              class="card project-card fade-in"
+              itemscope
+              itemtype="https://schema.org/CreativeWork"
+            >
+              <img
+                src="assets/images/rosen group.png"
+                alt="Rosen Group - Plataforma de Inversión"
+                class="project-card-image"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="project-card-content">
+                <div class="card-header">
+                  <span class="card-subtitle">Investment Platform</span>
+                  <h3 class="card-title" itemprop="name">Rosen Group</h3>
+                </div>
+                <div class="card-body project-card-body">
+                  <p itemprop="description">
+                    Plataforma de gestión de portafolios de inversión con
+                    análisis automatizado y reportería financiera avanzada.
+                  </p>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">Fintech</span>
+                  <span class="card-tag">Real Estate</span>
+                  <span class="card-tag">Ruby on Rails</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Proyecto 6: Autodesk -->
+            <article
+              class="card project-card fade-in"
+              itemscope
+              itemtype="https://schema.org/CreativeWork"
+            >
+              <img
+                src="assets/images/autodesk.png"
+                alt="Autodesk - Integración CAD"
+                class="project-card-image"
+                loading="lazy"
+                itemprop="image"
+              />
+              <div class="project-card-content">
+                <div class="card-header">
+                  <span class="card-subtitle">CAD Integration</span>
+                  <h3 class="card-title" itemprop="name">Autodesk</h3>
+                </div>
+                <div class="card-body project-card-body">
+                  <p itemprop="description">
+                    Integración de herramientas CAD con sistemas de gestión de
+                    proyectos para flujos de trabajo optimizados.
+                  </p>
+                </div>
+                <div class="card-tags">
+                  <span class="card-tag">APIs</span>
+                  <span class="card-tag">3D Processing</span>
+                  <span class="card-tag">Cloud</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CLIENTES ===== -->
+      <section class="section" id="clientes" aria-labelledby="clientes-title">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="clientes-title" class="section-title">
+              Confían en <span class="gradient-text">Nosotros</span>
+            </h2>
+            <p class="section-subtitle">
+              Empresas líderes que han transformado su negocio con nuestra
+              tecnología
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div
+              class="card card-flat flex items-center justify-center p-8 fade-in"
+            >
+              <img
+                src="assets/images/Pacific-Hydro-Logo-768x189.png"
+                alt="Pacific Hydro"
+                loading="lazy"
+                style="max-height: 50px; width: auto"
+              />
             </div>
-        </section>
-        
-        <!-- ===== PORTFOLIO ===== -->
-        <section class="section section-darker" id="portafolio" aria-labelledby="portafolio-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="portafolio-title" class="section-title">
-                        Nuestro <span class="gradient-text">Portafolio</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Proyectos que transforman negocios y generan valor real
-                    </p>
-                </div>
-                
-                <!-- Portfolio Filter Buttons -->
-                <div class="portfolio-filters" role="navigation" aria-label="Filtrar proyectos">
-                    <button class="filter-btn active" data-filter="all" aria-pressed="true">
-                        Todos
-                    </button>
-                    <button class="filter-btn" data-filter="platform" aria-pressed="false">
-                        Plataformas
-                    </button>
-                    <button class="filter-btn" data-filter="fintech" aria-pressed="false">
-                        Fintech
-                    </button>
-                    <button class="filter-btn" data-filter="data" aria-pressed="false">
-                        Data & Analytics
-                    </button>
-                    <button class="filter-btn" data-filter="enterprise" aria-pressed="false">
-                        Enterprise
-                    </button>
-                </div>
-                
-                <div class="card-grid" data-portfolio-grid>
-                    <!-- Proyecto 1: Databam -->
-                    <article class="card project-card fade-in" 
-                             data-category="platform, fintech, data"
-                             itemscope 
-                             itemtype="https://schema.org/CreativeWork">
-                        <div data-lightbox data-caption="Databam - La plataforma de data inmobiliaria más completa de Chile">
-                            <img src="assets/images/Databam.png" 
-                                 alt="Databam - Plataforma de Data Inmobiliaria" 
-                                 class="project-card-image" 
-                                 loading="lazy" 
-                                 itemprop="image">
-                        </div>
-                        <div class="project-card-content">
-                            <div class="card-header">
-                                <span class="card-subtitle">Platform</span>
-                                <h3 class="card-title" itemprop="name">Databam</h3>
-                            </div>
-                            <div class="card-body project-card-body">
-                                <p itemprop="description">
-                                    La plataforma de data inmobiliaria más completa de Chile. Información 
-                                    de propiedades, dueños y precios transaccionales en tiempo real.
-                                </p>
-                            </div>
-                            <div class="card-tags">
-                                <span class="card-tag">Ruby on Rails</span>
-                                <span class="card-tag">Python</span>
-                                <span class="card-tag">PostgreSQL</span>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://www.databam.cl" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                                    Ver Proyecto →
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 2: Pacific Hydro -->
-                    <article class="card project-card fade-in" 
-                             data-category="enterprise, data"
-                             itemscope 
-                             itemtype="https://schema.org/CreativeWork">
-                        <div data-lightbox data-caption="Pacific Hydro - Sistema de monitoreo y gestión de plantas hidroeléctricas">
-                            <img src="assets/images/pacific hydro.png" 
-                                 alt="Pacific Hydro - Sistema de Gestión Energética" 
-                                 class="project-card-image" 
-                                 loading="lazy" 
-                                 itemprop="image">
-                        </div>
-                        <div class="project-card-content">
-                            <div class="card-header">
-                                <span class="card-subtitle">Energy Management</span>
-                                <h3 class="card-title" itemprop="name">Pacific Hydro</h3>
-                            </div>
-                            <div class="card-body project-card-body">
-                                <p itemprop="description">
-                                    Sistema de monitoreo y gestión de plantas hidroeléctricas con dashboards 
-                                    en tiempo real y predictive maintenance.
-                                </p>
-                            </div>
-                            <div class="card-tags">
-                                <span class="card-tag">Python</span>
-                                <span class="card-tag">IoT</span>
-                                <span class="card-tag">Power BI</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 3: Prisa -->
-                    <article class="card project-card fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-                        <img src="assets/images/prisa.png" alt="Prisa - Plataforma de Gestión Documental" class="project-card-image" loading="lazy" itemprop="image">
-                        <div class="project-card-content">
-                            <div class="card-header">
-                                <span class="card-subtitle">Document Management</span>
-                                <h3 class="card-title" itemprop="name">Prisa</h3>
-                            </div>
-                            <div class="card-body project-card-body">
-                                <p itemprop="description">
-                                    Plataforma de gestión documental inteligente con OCR, clasificación automática 
-                                    y búsqueda semántica avanzada.
-                                </p>
-                            </div>
-                            <div class="card-tags">
-                                <span class="card-tag">OCR</span>
-                                <span class="card-tag">NLP</span>
-                                <span class="card-tag">Azure</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 4: Grunenthal -->
-                    <article class="card project-card fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-                        <img src="assets/images/grunenthal.png" alt="Grünenthal - Sistema CRM Farmacéutico" class="project-card-image" loading="lazy" itemprop="image">
-                        <div class="project-card-content">
-                            <div class="card-header">
-                                <span class="card-subtitle">Healthcare CRM</span>
-                                <h3 class="card-title" itemprop="name">Grünenthal</h3>
-                            </div>
-                            <div class="card-body project-card-body">
-                                <p itemprop="description">
-                                    CRM especializado para la industria farmacéutica con tracking de visitadores 
-                                    médicos y analytics de ventas.
-                                </p>
-                            </div>
-                            <div class="card-tags">
-                                <span class="card-tag">Salesforce</span>
-                                <span class="card-tag">Custom APIs</span>
-                                <span class="card-tag">Analytics</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 5: Rosen Group -->
-                    <article class="card project-card fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-                        <img src="assets/images/rosen group.png" alt="Rosen Group - Plataforma de Inversión" class="project-card-image" loading="lazy" itemprop="image">
-                        <div class="project-card-content">
-                            <div class="card-header">
-                                <span class="card-subtitle">Investment Platform</span>
-                                <h3 class="card-title" itemprop="name">Rosen Group</h3>
-                            </div>
-                            <div class="card-body project-card-body">
-                                <p itemprop="description">
-                                    Plataforma de gestión de portafolios de inversión con análisis automatizado 
-                                    y reportería financiera avanzada.
-                                </p>
-                            </div>
-                            <div class="card-tags">
-                                <span class="card-tag">Fintech</span>
-                                <span class="card-tag">Real Estate</span>
-                                <span class="card-tag">Ruby on Rails</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Proyecto 6: Autodesk -->
-                    <article class="card project-card fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-                        <img src="assets/images/autodesk.png" alt="Autodesk - Integración CAD" class="project-card-image" loading="lazy" itemprop="image">
-                        <div class="project-card-content">
-                            <div class="card-header">
-                                <span class="card-subtitle">CAD Integration</span>
-                                <h3 class="card-title" itemprop="name">Autodesk</h3>
-                            </div>
-                            <div class="card-body project-card-body">
-                                <p itemprop="description">
-                                    Integración de herramientas CAD con sistemas de gestión de proyectos 
-                                    para flujos de trabajo optimizados.
-                                </p>
-                            </div>
-                            <div class="card-tags">
-                                <span class="card-tag">APIs</span>
-                                <span class="card-tag">3D Processing</span>
-                                <span class="card-tag">Cloud</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+            <div
+              class="card card-flat flex items-center justify-center p-8 fade-in"
+            >
+              <img
+                src="assets/images/grunenthal_log.png"
+                alt="Grünenthal"
+                loading="lazy"
+                style="max-height: 50px; width: auto"
+              />
             </div>
-        </section>
-        
-        <!-- ===== CLIENTES ===== -->
-        <section class="section" id="clientes" aria-labelledby="clientes-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="clientes-title" class="section-title">
-                        Confían en <span class="gradient-text">Nosotros</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Empresas líderes que han transformado su negocio con nuestra tecnología
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="card card-flat flex items-center justify-center p-8 fade-in">
-                        <img src="assets/images/Pacific-Hydro-Logo-768x189.png" alt="Pacific Hydro" loading="lazy" style="max-height: 50px; width: auto;">
-                    </div>
-                    <div class="card card-flat flex items-center justify-center p-8 fade-in">
-                        <img src="assets/images/grunenthal_log.png" alt="Grünenthal" loading="lazy" style="max-height: 50px; width: auto;">
-                    </div>
-                    <div class="card card-flat flex items-center justify-center p-8 fade-in">
-                        <img src="assets/images/prisa-educa-logo.svg" alt="Prisa Educa" loading="lazy" style="max-height: 50px; width: auto;">
-                    </div>
-                    <div class="card card-flat flex items-center justify-center p-8 fade-in">
-                        <img src="assets/images/autodesk-logo-white.png" alt="Autodesk" loading="lazy" style="max-height: 50px; width: auto;">
-                    </div>
-                </div>
+            <div
+              class="card card-flat flex items-center justify-center p-8 fade-in"
+            >
+              <img
+                src="assets/images/prisa-educa-logo.svg"
+                alt="Prisa Educa"
+                loading="lazy"
+                style="max-height: 50px; width: auto"
+              />
             </div>
-        </section>
-        
-        <!-- ===== EQUIPO ===== -->
-        <section class="section section-darker" id="nosotros" aria-labelledby="equipo-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="equipo-title" class="section-title">
-                        Nuestro <span class="gradient-text">Equipo</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        Los fundadores detrás de Just Dev It
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                    <!-- Fundador 1 -->
-                    <article class="card team-card fade-in" itemscope itemtype="https://schema.org/Person">
-                        <div class="team-card-avatar">
-                            <img src="assets/images/joaquin espildora.jpg" alt="Joaquín Espildora M." loading="lazy" itemprop="image">
-                        </div>
-                        <h3 class="card-title" itemprop="name">Joaquín Espildora M.</h3>
-                        <p class="team-card-role" itemprop="jobTitle">CEO & Co-Fundador</p>
-                        <p class="card-body" itemprop="description">
-                            Ingeniero Civil con +5 años de experiencia liderando portafolios de inversión 
-                            por más de <strong>$1B USD</strong>. Experto en soluciones tecnológicas para 
-                            el sector financiero e inmobiliario.
-                        </p>
-                    </article>
-                    
-                    <!-- Fundador 2 -->
-                    <article class="card team-card fade-in" itemscope itemtype="https://schema.org/Person">
-                        <div class="team-card-avatar">
-                            <img src="assets/images/matias canepa.jpg" alt="Matías Cánepa G." loading="lazy" itemprop="image">
-                        </div>
-                        <h3 class="card-title" itemprop="name">Matías Cánepa G.</h3>
-                        <p class="team-card-role" itemprop="jobTitle">CTO & Co-Fundador</p>
-                        <p class="card-body" itemprop="description">
-                            Cloud Engineer y desarrollador experto en arquitectura cloud, IA y data engineering. 
-                            Lidera el desarrollo técnico e infraestructura de nuestros proyectos más complejos.
-                        </p>
-                    </article>
-                </div>
+            <div
+              class="card card-flat flex items-center justify-center p-8 fade-in"
+            >
+              <img
+                src="assets/images/autodesk-logo-white.png"
+                alt="Autodesk"
+                loading="lazy"
+                style="max-height: 50px; width: auto"
+              />
             </div>
-        </section>
-        
-        <!-- ===== CONTACTO ===== -->
-        <section class="section" id="contacto" aria-labelledby="contacto-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="contacto-title" class="section-title">
-                        Creemos Algo <span class="gradient-text">Increíble</span>
-                    </h2>
-                    <p class="section-subtitle">
-                        ¿Listo para transformar tus datos en valor? Contáctanos hoy.
-                    </p>
-                    <p class="text-brand text-lg mt-4">📍 Santiago, Chile</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== EQUIPO ===== -->
+      <section
+        class="section section-darker"
+        id="nosotros"
+        aria-labelledby="equipo-title"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 id="equipo-title" class="section-title">
+              Nuestro <span class="gradient-text">Equipo</span>
+            </h2>
+            <p class="section-subtitle">Los fundadores detrás de Just Dev It</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <!-- Fundador 1 -->
+            <article
+              class="card team-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Person"
+            >
+              <div class="team-card-avatar">
+                <img
+                  src="assets/images/joaquin espildora.jpg"
+                  alt="Joaquín Espildora M."
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
+              <h3 class="card-title" itemprop="name">Joaquín Espildora M.</h3>
+              <p class="team-card-role" itemprop="jobTitle">
+                CEO & Co-Fundador
+              </p>
+              <p class="card-body" itemprop="description">
+                Ingeniero Civil con +5 años de experiencia liderando portafolios
+                de inversión por más de <strong>$1B USD</strong>. Experto en
+                soluciones tecnológicas para el sector financiero e
+                inmobiliario.
+              </p>
+            </article>
+
+            <!-- Fundador 2 -->
+            <article
+              class="card team-card fade-in"
+              itemscope
+              itemtype="https://schema.org/Person"
+            >
+              <div class="team-card-avatar">
+                <img
+                  src="assets/images/matias canepa.jpg"
+                  alt="Matías Cánepa G."
+                  loading="lazy"
+                  itemprop="image"
+                />
+              </div>
+              <h3 class="card-title" itemprop="name">Matías Cánepa G.</h3>
+              <p class="team-card-role" itemprop="jobTitle">
+                CTO & Co-Fundador
+              </p>
+              <p class="card-body" itemprop="description">
+                Cloud Engineer y desarrollador experto en arquitectura cloud, IA
+                y data engineering. Lidera el desarrollo técnico e
+                infraestructura de nuestros proyectos más complejos.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACTO ===== -->
+      <section class="section" id="contacto" aria-labelledby="contacto-title">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="contacto-title" class="section-title">
+              Creemos Algo <span class="gradient-text">Increíble</span>
+            </h2>
+            <p class="section-subtitle">
+              ¿Listo para transformar tus datos en valor? Contáctanos hoy.
+            </p>
+            <p class="text-brand text-lg mt-4">📍 Santiago, Chile</p>
+          </div>
+
+          <div class="max-w-2xl mx-auto">
+            <form
+              id="contact-form"
+              class="form"
+              action="https://formspree.io/f/xpwzegdb"
+              method="POST"
+              data-validate
+              aria-label="Formulario de contacto"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" class="form-label required">Nombre</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Tu nombre"
+                    required
+                    minlength="2"
+                    aria-required="true"
+                  />
                 </div>
-                
-                <div class="max-w-2xl mx-auto">
-                    <form id="contact-form" 
-                          class="form" 
-                          action="https://formspree.io/f/xpwzegdb" 
-                          method="POST"
-                          data-validate
-                          aria-label="Formulario de contacto">
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name" class="form-label required">Nombre</label>
-                                <input type="text" 
-                                       id="name" 
-                                       name="name" 
-                                       class="form-input" 
-                                       placeholder="Tu nombre"
-                                       required
-                                       minlength="2"
-                                       aria-required="true">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="lastname" class="form-label required">Apellido</label>
-                                <input type="text" 
-                                       id="lastname" 
-                                       name="lastname" 
-                                       class="form-input" 
-                                       placeholder="Tu apellido"
-                                       required
-                                       minlength="2"
-                                       aria-required="true">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email" class="form-label required">Email</label>
-                                <input type="email" 
-                                       id="email" 
-                                       name="email" 
-                                       class="form-input" 
-                                       placeholder="tu@email.com"
-                                       required
-                                       aria-required="true">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone" class="form-label required">Teléfono</label>
-                                <input type="tel" 
-                                       id="phone" 
-                                       name="phone" 
-                                       class="form-input" 
-                                       placeholder="+56 9 1234 5678"
-                                       required
-                                       aria-required="true">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label required">Mensaje</label>
-                            <textarea id="message" 
-                                      name="message" 
-                                      class="form-textarea" 
-                                      placeholder="Cuéntanos sobre tu proyecto..."
-                                      required
-                                      minlength="10"
-                                      rows="5"
-                                      aria-required="true"></textarea>
-                        </div>
-                        
-                        <!-- Honeypot anti-spam -->
-                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                Enviar Mensaje
-                            </button>
-                        </div>
-                    </form>
+
+                <div class="form-group">
+                  <label for="lastname" class="form-label required"
+                    >Apellido</label
+                  >
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    class="form-input"
+                    placeholder="Tu apellido"
+                    required
+                    minlength="2"
+                    aria-required="true"
+                  />
                 </div>
-            </div>
-        </section>
-        
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email" class="form-label required">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="tu@email.com"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="form-label required"
+                    >Teléfono</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="+56 9 1234 5678"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label required">Mensaje</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-textarea"
+                  placeholder="Cuéntanos sobre tu proyecto..."
+                  required
+                  minlength="10"
+                  rows="5"
+                  aria-required="true"
+                ></textarea>
+              </div>
+
+              <!-- Honeypot anti-spam -->
+              <input
+                type="text"
+                name="_gotcha"
+                style="display: none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+
+              <div class="form-submit">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Enviar Mensaje
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
-    
+
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="assets/images/Logo principal - blanco.svg" alt="Just Dev It" width="140" height="auto">
-                    </div>
-                    <p class="footer-description">
-                        Transformando ideas en soluciones tecnológicas de primer nivel.
-                    </p>
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/company/just-dev-it" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           aria-label="LinkedIn" 
-                           class="social-link">
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/justdevit" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           aria-label="GitHub" 
-                           class="social-link">
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3 class="footer-title">Servicios</h3>
-                    <ul class="footer-links">
-                        <li><a href="#servicios">Desarrollo de Software</a></li>
-                        <li><a href="#servicios">Cloud & Data Engineering</a></li>
-                        <li><a href="#servicios">IA Aplicada</a></li>
-                        <li><a href="#servicios">Ecosistemas Fintech</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3 class="footer-title">Empresa</h3>
-                    <ul class="footer-links">
-                        <li><a href="#nosotros">Sobre Nosotros</a></li>
-                        <li><a href="#portafolio">Portfolio</a></li>
-                        <li><a href="#clientes">Clientes</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3 class="footer-title">Contacto</h3>
-                    <ul class="footer-contact">
-                        <li>📍 Santiago, Chile</li>
-                        <li>✉️ contacto@justdev.it</li>
-                        <li>🌐 <a href="https://www.justdev.it" target="_blank" rel="noopener">www.justdev.it</a></li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <img
+                src="assets/images/Logo principal - blanco.svg"
+                alt="Just Dev It"
+                width="140"
+                height="auto"
+              />
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Just Dev It. Todos los derechos reservados.</p>
-                <p class="footer-credits">Hecho con 💜 en Chile</p>
+            <p class="footer-description">
+              Transformando ideas en soluciones tecnológicas de primer nivel.
+            </p>
+            <div class="footer-social">
+              <a
+                href="https://www.linkedin.com/company/just-dev-it"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                class="social-link"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/justdevit"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                class="social-link"
+              >
+                GitHub
+              </a>
             </div>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-title">Servicios</h3>
+            <ul class="footer-links">
+              <li><a href="#servicios">Desarrollo de Software</a></li>
+              <li><a href="#servicios">Cloud & Data Engineering</a></li>
+              <li><a href="#servicios">IA Aplicada</a></li>
+              <li><a href="#servicios">Ecosistemas Fintech</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-title">Empresa</h3>
+            <ul class="footer-links">
+              <li><a href="#nosotros">Sobre Nosotros</a></li>
+              <li><a href="#portafolio">Portfolio</a></li>
+              <li><a href="#clientes">Clientes</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-title">Contacto</h3>
+            <ul class="footer-contact">
+              <li>📍 Santiago, Chile</li>
+              <li>✉️ contacto@justdev.it</li>
+              <li>
+                🌐
+                <a href="https://www.justdev.it" target="_blank" rel="noopener"
+                  >www.justdev.it</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Just Dev It. Todos los derechos reservados.</p>
+          <p class="footer-credits">Hecho con 💜 en Chile</p>
+        </div>
+      </div>
     </footer>
-    
+
     <!-- ===== JAVASCRIPT ===== -->
     <!-- Three.js para animación 3D del logo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
-    
+
     <script src="js/epic-preloader.js"></script>
     <script src="js/hero-background.js"></script>
     <script src="js/logo-3d-animation.js"></script>
     <script src="js/app-standalone.js"></script>
-    
+
     <!-- Google Analytics (opcional - reemplazar con tu ID) -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-</body>
+  </body>
 </html>
