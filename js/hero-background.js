@@ -28,8 +28,11 @@
             this.ctx = this.canvas.getContext('2d');
             
             this.particles = [];
-            this.mouse = { x: null, y: null, radius: 200 }; // Aumentado de 150 a 200
-            this.particleCount = 150; // Aumentado de 80 a 150
+            this.mouse = { x: null, y: null, radius: 200 };
+            
+            // Ajustar cantidad de partículas según el tamaño de la pantalla
+            const isMobile = window.innerWidth < 768;
+            this.particleCount = isMobile ? 150 : 250; // Más partículas en desktop
             
             this.init();
         }
@@ -38,7 +41,16 @@
             this.resize();
             this.createParticles();
             
-            window.addEventListener('resize', () => this.resize());
+            window.addEventListener('resize', () => {
+                this.resize();
+                // Recrear partículas al cambiar de tamaño para ajustar cantidad
+                const isMobile = window.innerWidth < 768;
+                const newCount = isMobile ? 150 : 250;
+                if (newCount !== this.particleCount) {
+                    this.particleCount = newCount;
+                    this.createParticles();
+                }
+            });
             
             // Mouse tracking en el hero completo
             const heroSection = document.querySelector('.hero');

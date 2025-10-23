@@ -48,10 +48,19 @@
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
         
+        console.log('🔍 Elementos encontrados:', { navToggle, navMenu });
+        
         if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
-                navToggle.classList.toggle('active');
+            // Toggle del menú con el botón hamburguesa
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isActive = navToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                
+                console.log('🍔 Menu toggled:', { isActive, classes: navMenu.className });
+                
+                // Actualizar aria-expanded para accesibilidad
+                navToggle.setAttribute('aria-expanded', isActive);
                 
                 // Prevenir scroll cuando el menu está abierto
                 if (navMenu.classList.contains('active')) {
@@ -60,7 +69,21 @@
                     document.body.style.overflow = '';
                 }
             });
+            
+            // Cerrar menú al hacer click en el overlay (::before)
+            navMenu.addEventListener('click', (e) => {
+                if (e.target === navMenu) {
+                    console.log('🔒 Cerrando menu por click en overlay');
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+            
             console.log('✅ Navegación móvil inicializada');
+        } else {
+            console.error('❌ No se encontraron elementos de navegación');
         }
     }
     

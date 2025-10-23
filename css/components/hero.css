@@ -45,14 +45,28 @@
     padding: 20px 0;
 }
 
+/* Agregar sombra de fondo sutil para mejor contraste */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(ellipse at center, rgba(10, 10, 20, 0.6) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
 .hero-subtitle {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #9B61A4;
+    color: #b77cc5;
     margin: 0;
     line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-title {
@@ -61,40 +75,49 @@
     line-height: 1.1;
     color: #FFFFFF;
     margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #9B61A4 0%, #b77cc5 50%, #9B61A4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
+    color: #d4a5e0;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-text2 {
+    color: #d4a5e0;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-description {
     font-size: clamp(1rem, 2vw, 1.25rem);
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     margin: 0;
     max-width: 600px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-description strong {
-    color: #9B61A4;
+    color: #b77cc5;
     font-weight: 600;
+    text-shadow: 0 1px 4px rgba(155, 97, 164, 0.5);
 }
 
 .hero-subtext {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
     max-width: 600px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-subtext strong {
     color: #FFFFFF;
     font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-cta {
@@ -165,7 +188,7 @@
 .stat-number {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
-    color: #9B61A4;
+    color: white;
     line-height: 1;
 }
 
