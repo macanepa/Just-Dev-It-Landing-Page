@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es">
+<<<<<<< HEAD
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+=======
+
+    <head>
+        <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N67BW2PN');</script>
+    <!-- End Google Tag Manager -->
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E47YX9JYCS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-E47YX9JYCS');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+    <title>Just Dev It</title>
+    <link
+      rel="icon"
+      href="assets\images\Isotipo_morado.svg"
+      type="image/x-icon"
+    />
+
+    <!-- Librerías externas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/utils/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/components/nav.css" />
+    <link rel="stylesheet" href="css/components/hero.css" />
+    <link rel="stylesheet" href="css/components/services.css" />
+    <link rel="stylesheet" href="css/components/portfolio.css" />
+    <link rel="stylesheet" href="css/components/team.css" />
+    <link rel="stylesheet" href="css/components/contact.css" />
+  </head>
+
+<<<<<<< HEAD
+  <body class="bg-slate-900 text-white">
+=======
+<body class="bg-slate-900 text-white">
+        <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="orbitron text-2xl font-bold gradient-text">
+            <a href="index.html">
+              <img
+                src="assets\images\Logo principal - blanco.svg"
+                alt="Just Dev It"
+                width="120"
+                height="120"
+              />
+            </a>
+          </div>
+
+<<<<<<< HEAD
+          <!-- Menú desktop -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html#services"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Servicios</a
+            >
+            <a
+              href="index.html#portfolio"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Portafolio</a
+            >
+            <a
+              href="about-us.html#historia"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Equipo</a
+            >
+            <a
+              href="index.html#contact"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Contacto</a
+            >
+          </div>
+=======
+                <!-- Menú desktop -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#services" class="hover:text-[#04C7AA] transition-colors">Servicios</a>
+                    <a href="index.html#portfolio" class="hover:text-[#04C7AA] transition-colors">Portafolio</a>
+                    <a href="index.html#team" class="hover:text-[#04C7AA] transition-colors">Equipo</a>
+                    <a href="index.html#contact" class="hover:text-[#04C7AA] transition-colors">Contacto</a>
+                </div>
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+
+          <!-- Botón hamburguesa para móvil -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors"
+          >
+            <span
+              class="w-6 h-0.5 bg-white transform transition-transform duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-white transform transition-transform duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-white transform transition-transform duration-300"
+            ></span>
+          </button>
+
+<<<<<<< HEAD
+          <!-- Botón Empezar (visible solo en desktop) -->
+          <button
+            class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all"
+          >
+            Empezar
+          </button>
+=======
+                <!-- Botón Empezar (visible solo en desktop) -->
+                <button
+                    class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+                    Empezar
+                </button>
+            </div>
+
+            <!-- Menú móvil -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-3">
+                <div class="space-y-3">
+                    <a href="index.html#services"
+                        class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Servicios
+                    </a>
+                    <a href="index.html#portfolio"
+                        class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Portafolio
+                    </a>
+                    <a href="index.html#team" class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Equipo
+                    </a>
+                    <a href="index.html#contact"
+                        class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors">
+                        Contacto
+                    </a>
+                    <button
+                        class="w-full bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all">
+                        Empezar
+                    </button>
+                </div>
+            </div>
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="md:hidden hidden pt-4 pb-3">
+          <div class="space-y-3">
+            <a
+              href="index.html#services"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Servicios
+            </a>
+            <a
+              href="index.html#portfolio"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Portafolio
+            </a>
+            <a
+              href="about-us.html#historia"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Equipo
+            </a>
+            <a
+              href="index.html#contact"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Contacto
+            </a>
+            <button
+              class="w-full bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all"
+            >
+              Empezar
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient min-h-screen relative overflow-hidden h-dvh">
+<<<<<<< HEAD
+      <div id="particles-js"></div>
+      <div class="content container mx-auto px-6 pt-32 pb-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
+          <div class="space-y-8">
+            <h1 class="main-font text-5xl md:text-7xl font-bold leading-tight">
+              Impulsando la <span class="gradient-text2">Innovación</span>
+            </h1>
+            <p class="text-[#BEC3C7] text-xl">
+              Transforma tu negocio con soluciones de datos y desarrollo de
+              software de vanguardia.
+            </p>
+            <div class="flex space-x-4">
+              <button
+                onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })"
+                class="bg-[#9B61A4] hover:bg-[#9B61A4]/10 border border-[#9B61A4] transition-colors px-8 py-3 rounded-full"
+              >
+                Nuestros Servicios
+              </button>
+              <a href="about-us.html#historia" target="_blank">
+                <button
+                  class="border border-[#9B61A4] hover:bg-[#9B61A4]/10 transition-colors px-8 py-3 rounded-full"
+                >
+                  Saber Más
+                </button>
+              </a>
+=======
+        <div id="particles-js"></div>
+        <div class="content container mx-auto px-6 pt-32 pb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
+                <div class="space-y-8">
+                    <h1 class="main-font text-5xl md:text-7xl font-bold leading-tight">
+                        El software que tu negocio necesita<span class="gradient-text2"> justo a tiempo.</span>
+                    </h1>
+                    <p class="text-[#BEC3C7] text-xl">
+                        En Just Dev It creamos soluciones tecnológicas a la medida, enfocadas en resolver problemas reales con precisión, eficiencia y visión estratégica.
+Somos más que una empresa de desarrollo: somos tus socios tecnológicos.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button
+                            onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })"        
+                            class="bg-[#9B61A4] hover:bg-[#9B61A4]/10 border border-[#9B61A4] transition-colors px-8 py-3 rounded-full">
+                            Nuestros Servicios
+                        </button>
+                    <!--<a href="about-us.html#historia" target="_blank">
+                        <button
+                            class="border border-[#9B61A4] hover:bg-[#9B61A4]/10 transition-colors px-8 py-3 rounded-full">
+                            Saber Más
+                        </button>
+                    </a>-->
+                    </div>
+                </div>
+                <div class="w-full h-full aspect-square sm:w-[40vw] sm:h-[40vw]" id="3d-container"></div>
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+            </div>
+          </div>
+          <div
+            class="w-full h-full aspect-square sm:w-[40vw] sm:h-[40vw]"
+            id="3d-container"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección ¿Qué hacemos? -->
+    <section id="what-we-do" class="py-20 relative overflow-hidden bg-[#162032]">
+        <style>
+            /* Estilos específicos para esta sección */
+            .isotipo-decorativo {
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                opacity: 0.1;
+                pointer-events: none;
+            }
+            
+            .isotipo-decorativo::before {
+                content: '*';
+                font-family: 'Poppins', sans-serif;
+                font-size: 400px;
+                color: #9B61A4;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                line-height: 1;
+            }
+            
+            .isotipo-top-right {
+                top: -100px;
+                right: -100px;
+                transform: rotate(45deg);
+            }
+            
+            .isotipo-bottom-left {
+                bottom: -100px;
+                left: -100px;
+                transform: rotate(-30deg);
+            }
+            
+            .titulo-seccion {
+                font-family: 'Poppins', sans-serif;
+                font-size: 3rem;
+                font-weight: 700;
+                color: white;
+                margin-bottom: 2.5rem;
+                text-align: center;
+                position: relative;
+            }
+            
+            .titulo-seccion::after {
+                content: '>';
+                color: #9B61A4;
+                margin-left: 10px;
+                display: inline-block;
+                animation: pulse 2s ease-in-out infinite;
+            }
+            
+            .descripcion-que-hacemos {
+                font-family: 'Manrope', sans-serif;
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: white;
+                text-align: center;
+                line-height: 1.6;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            
+            .descripcion-que-hacemos strong {
+                color: #9B61A4;
+                font-weight: 600;
+                position: relative;
+            }
+            
+            .descripcion-que-hacemos strong::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #9B61A4 0%, #04C7AA 100%);
+                transition: width 0.3s ease;
+            }
+            
+            .descripcion-que-hacemos strong:hover::after {
+                width: 100%;
+            }
+            
+            @keyframes pulse {
+                0%, 100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.7;
+                    transform: scale(1.1);
+                }
+            }
+            
+            .lineas-decorativas {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                overflow: hidden;
+            }
+            
+            .linea {
+                position: absolute;
+                background: linear-gradient(90deg, transparent, #9B61A4, transparent);
+                height: 1px;
+                width: 200px;
+                opacity: 0.3;
+            }
+            
+            .linea1 {
+                top: 20%;
+                left: -200px;
+                animation: slideRight 8s linear infinite;
+            }
+            
+            .linea2 {
+                top: 60%;
+                right: -200px;
+                animation: slideLeft 10s linear infinite;
+            }
+            
+            .linea3 {
+                bottom: 30%;
+                left: -200px;
+                animation: slideRight 12s linear infinite;
+            }
+            
+            @keyframes slideRight {
+                to {
+                    transform: translateX(calc(100vw + 400px));
+                }
+            }
+            
+            @keyframes slideLeft {
+                to {
+                    transform: translateX(calc(-100vw - 400px));
+                }
+            }
+            
+            /* Responsive */
+            @media (max-width: 768px) {
+                .titulo-seccion {
+                    font-size: 2.25rem;
+                }
+                
+                .descripcion-que-hacemos {
+                    font-size: 1.125rem;
+                }
+                
+                .isotipo-decorativo {
+                    width: 200px;
+                    height: 200px;
+                }
+                
+                .isotipo-decorativo::before {
+                    font-size: 250px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .titulo-seccion {
+                    font-size: 1.75rem;
+                }
+                
+                .descripcion-que-hacemos {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+        
+        <!-- Elementos decorativos -->
+        <div class="isotipo-decorativo isotipo-top-right"></div>
+        <div class="isotipo-decorativo isotipo-bottom-left"></div>
+        
+        <!-- Líneas decorativas animadas -->
+        <div class="lineas-decorativas">
+            <div class="linea linea1"></div>
+            <div class="linea linea2"></div>
+            <div class="linea linea3"></div>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="titulo-seccion">¿Qué hacemos?</h2>
+            <p class="descripcion-que-hacemos">
+                Desarrollamos software robusto, inteligente y escalable, desde plataformas web y sistemas de automatización, hasta soluciones complejas de <strong>inteligencia artificial aplicada</strong> y <strong>data engineering</strong>.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+<<<<<<< HEAD
+      <div class="container mx-auto px-6">
+        <h2 class="orbitron text-4xl font-bold text-center mb-16">
+          Nuestros Servicios
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div class="text-cyan-400 text-4xl mb-4">🛒</div>
+            <h3 class="orbitron text-xl font-bold mb-4">E-Commerce</h3>
+            <p class="text-slate-300">
+              Con diseño cautivador y desarrollo robusto, nuestro equipo elite
+              crea experiencias digitales excepcionales. Especializados en
+              E-commerce de alto rendimiento, landing pages y sitios web
+              modernos que maximizan conversiones y escalabilidad..
+            </p>
+          </div>
+          <div
+            class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div class="text-cyan-400 text-4xl mb-4">🌐</div>
+            <h3 class="orbitron text-xl font-bold mb-4">Desarrollo Web</h3>
+            <p class="text-slate-300">
+              Desarrollos web y aplicaciones modernas y responsivas que brindan
+              experiencias excepcionales al usuario.
+            </p>
+          </div>
+          <div
+            class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div class="text-cyan-400 text-4xl mb-4">🔍</div>
+            <h3 class="orbitron text-xl font-bold mb-4">Web Scraping</h3>
+            <p class="text-slate-300">
+              Soluciones avanzadas de extracción de datos para obtener
+              información valiosa de la web.
+            </p>
+          </div>
+          <div
+            class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div class="text-cyan-400 text-4xl mb-4">📊</div>
+            <h3 class="orbitron text-xl font-bold mb-4">Ingeniería de Datos</h3>
+            <p class="text-slate-300">
+              Construimos pipelines de datos robustos e infraestructura para
+              manejar tus datos a cualquier escala.
+            </p>
+          </div>
+          <div
+            class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div class="text-cyan-400 text-4xl mb-4">📈</div>
+            <h3 class="orbitron text-xl font-bold mb-4">Análisis de Datos</h3>
+            <p class="text-slate-300">
+              Transformamos datos brutos en información accionable con análisis
+              y visualización avanzada.
+            </p>
+          </div>
+          <div
+            class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300"
+          >
+            <div class="text-cyan-400 text-4xl mb-4">💻</div>
+            <h3 class="orbitron text-xl font-bold mb-4">Software a Medida</h3>
+            <p class="text-slate-300">
+              Soluciones de software personalizadas que se adaptan perfectamente
+              a las necesidades de tu negocio.
+            </p>
+          </div>
+=======
+
+        <div class="container mx-auto px-6">
+
+            <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Servicios</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">🛒</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Desarrollo de software a medida</h3>
+                    <p class="text-slate-300">Web apps, APIs, automatización de procesos y flujos de negocio.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">🌐</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Cloud & Data Engineering</h3>
+                    <p class="text-slate-300">Infraestructura, ETLs, arquitectura escalable, Big Data y optimización en Azure, Google Cloud y AWS.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">🔍</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Soluciones con IA aplicada</h3>
+                    <p class="text-slate-300">Scraping, OCR, modelos predictivos, agentes inteligentes y asistentes con Modelos LLM</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">📊</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Ecosistemas fintech e inmobiliarios</h3>
+                    <p class="text-slate-300">Desarrollo de plataformas para gestión financiera, reportes automatizados y visualización avanzada.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">📈</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Integraciones de Sistemas</h3>
+                    <p class="text-slate-300">Conectamos tus procesos con plataformas como Power BI, SharePoint, CRMs, ERPs, Marketplace, y más.</p>
+                </div>
+                <div
+                    class="bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm hover:text-[#04C7AA] transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="text-cyan-400 text-4xl mb-4">💻</div>
+                    <h3 class="orbitron text-xl font-bold mb-4">Data Analytics & Reporting</h3>
+                    <p class="text-slate-300">Dashboards, visualización, reportes automáticos y monitoreo de KPIs con herramientas como Power BI y Python.</p>
+                </div>
+            </div>
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section
+      id="portfolio"
+      class="min-h-screen relative overflow-hidden transition-all duration-700"
+    >
+      <!-- Fondo con overlay -->
+      <div
+        id="portfolio-background"
+        class="absolute inset-0 bg-cover bg-center transition-all duration-700 bg-[#000000]"
+      >
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      </div>
+
+<<<<<<< HEAD
+      <!-- Contenido -->
+      <div class="relative z-10 container mx-auto px-6 py-20">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+          Nuestro <span class="gradient-text">Portafolio</span>
+        </h2>
+
+        <!-- Carrusel -->
+        <div class="relative max-w-6xl mx-auto">
+          <!-- Slides Container -->
+          <div id="carousel-container" class="overflow-hidden">
+            <div
+              id="carousel-slides"
+              class="flex transition-transform duration-500 ease-out"
+            >
+              <!-- Slide 1 -->
+              <div class="w-full flex-shrink-0 px-4">
+                <div
+                  class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden"
+                >
+                  <img
+                    src="assets\images\Recurso10.webp"
+                    alt="Proyecto 1"
+                    class="w-full h-64 object-cover"
+                  />
+                  <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4">E-commerce</h3>
+                    <p class="text-[#BEC3C7] mb-6">
+                      Desarrollo de plataforma completa de comercio electrónico
+                      para venta de elementos de Limpieza de Piscinas.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >WordPress</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >HTML</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >CSS</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >Javascript</span
+                      >
+=======
+
+        <!-- Contenido -->
+        <div class="relative z-10 container mx-auto px-6 py-20">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">
+                Nuestro <span class="gradient-text">Portafolio</span>
+            </h2>
+
+
+            <!-- Carrusel -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Slides Container -->
+                <div id="carousel-container" class="overflow-hidden">
+                    <div id="carousel-slides" class="flex transition-transform duration-500 ease-out">
+                        <!-- Slide 1 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets\images\Proyecto1.png" alt="Proyecto 1" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Sistema de reportería automática y scraping de datos públicos</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Automatizamos la consolidación de datos desde emails, portales web con protección anti-bot y SharePoint para la creación de informes críticos en Excel y su conexión a dashboards de Power BI.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Power Automate Desktop</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Selenium </span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Excel Macros</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">SharePoint API</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Power BI</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Slide 2 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets\images\Databam.png" alt="Proyecto 2"
+                                    class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Databam</h3>
+                                    <p class="text-[#BEC3C7] mb-6">La plataforma de data inmobiliaria más completa de Chile. Información de propiedades, dueños y precios transaccionales para inversionistas, tasadores y corredores.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Ruby
+                                            on
+                                            Rails</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">PostgreSQL</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">API</span>
+                                    </div>
+                                    <a href="https://www.databam.cl" target="_blank">
+                                        <button
+                                            class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors">
+                                            Ver Proyecto
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Slide 3 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto3.png" alt="Proyecto 3" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Plataforma cloud de ingestión y procesamiento de datos</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Arquitectura en Azure para procesamiento avanzado de datos con pipelines ETL, integración con SharePoint, funciones serverless para trazabilidad, y visualización final en Power BI.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Azure Synapse Analytics</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Data Factory</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Databricks</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Azure Functions</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">MongoDB (CosmosDB)</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Power BI</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto4.png" alt="Proyecto 4" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Automatización de cargas judiciales masivas</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Sistema automatizado para carga de demandas judiciales a plataformas gubernamentales. Incluye validación de duplicados, control post-envío, reportería y soporte técnico.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Selenium</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Excel automation</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">OCR</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Local Services</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Cloud Deployment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto5.png" alt="Proyecto 5" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Sincronización de stock multi-marketplace</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Motor que sincroniza stock real y virtual entre sistemas logísticos y plataformas como Jumpseller, Cencosud, MercadoLibre, Ripley y Falabella, desplegado en la nube.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">AWS Lambda</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">REST APIs</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">MongoDB</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">ETL pipelines</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">TerraForm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 6 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto6.png" alt="Proyecto 6" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Gestión inmobiliaria financiera con trazabilidad completa</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Aplicación para el modelado financiero de proyectos inmobiliarios, gestión de inputs, reporting por etapas, sensibilidades y trazabilidad total del proceso de inversión.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Python</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Flask</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Pandas</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Plotly</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Metabase</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">OCR & AI agents</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 7 -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden">
+                                <img src="assets/images/Proyecto7.png" alt="Proyecto 7" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <h3 class="text-2xl font-bold mb-4">Plataforma de inscripción a talleres y pagos online</h3>
+                                    <p class="text-[#BEC3C7] mb-6">Sistema de inscripción con calendario, pagos WebPay, envío automatizado de material por email, reportería de alumnos y gestión de inscripciones vía backoffice.</p>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Tailwind</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">WebPay API</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">REST APIs</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">MongoDB</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">AWS S3</span>
+                                        <span class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm">Metabase</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+                    </div>
+                    <a href="https://www.aquaevo.cl" target="_blank">
+                      <button
+                        class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors"
+                      >
+                        Ver Proyecto
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+<<<<<<< HEAD
+              <!-- Slide 2 -->
+              <div class="w-full flex-shrink-0 px-4">
+                <div
+                  class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden"
+                >
+                  <img
+                    src="assets\images\Recurso3.webp"
+                    alt="Proyecto 2"
+                    class="w-full h-64 object-cover"
+                  />
+                  <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4">
+                      Plataforma de datos inmobiliarios
+                    </h3>
+                    <p class="text-[#BEC3C7] mb-6">
+                      Sistema de análisis de datos en tiempo real para empresa
+                      de logística, incluyendo visualizaciones y reportes
+                      automatizados.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >Ruby on Rails</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >Python</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >PostgreSQL</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >Tailwind</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >API</span
+                      >
+                    </div>
+                    <a href="https://www.databam.cl" target="_blank">
+                      <button
+                        class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors"
+                      >
+                        Ver Proyecto
+                      </button>
+                    </a>
+                  </div>
+=======
+
+                <!-- Controles del carrusel -->
+                <button id="prev-button"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors">
+                    <img src="assets\icons\flecha1_blanca.svg" alt="Back" width="12" height="12">
+                </button>
+                <button id="next-button"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors">
+                    <img src="assets\icons\flecha2_blanca.svg" alt="Forward" width="12" height="12">
+                </button>
+
+
+                <!-- Indicadores -->
+                <div class="flex justify-center mt-8 gap-2" id="indicators-container">
+                    <!-- Los indicadores se crearán dinámicamente con JavaScript -->
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="w-full flex-shrink-0 px-4">
+                <div
+                  class="bg-[#152636]/80 backdrop-blur-md rounded-2xl overflow-hidden"
+                >
+                  <img
+                    src="assets/images/Recurso7.webp"
+                    alt="Proyecto 3"
+                    class="w-full h-64 object-cover"
+                  />
+                  <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-4">
+                      Gestión automatizada de inversiones
+                    </h3>
+                    <p class="text-[#BEC3C7] mb-6">
+                      Aplicación móvil para gestión de propiedades, incluyendo
+                      sistema de reservas y seguimiento de mantenimiento.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >HTML</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >Python</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >PostgreSQL</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >Tailwind</span
+                      >
+                      <span
+                        class="px-3 py-1 bg-[#9B61A4]/20 rounded-full text-sm"
+                        >API</span
+                      >
+                    </div>
+                    <a href="https://www.selfcapital.pro" target="_blank">
+                      <button
+                        class="bg-[#9B61A4] px-6 py-2 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors"
+                      >
+                        Ver Proyecto
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles del carrusel -->
+          <button
+            id="prev-button"
+            class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors"
+          >
+            <img
+              src="assets\icons\flecha1_blanca.svg"
+              alt="Back"
+              width="12"
+              height="12"
+            />
+          </button>
+          <button
+            id="next-button"
+            class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#9B61A4] p-3 rounded-full hover:bg-[#9B61A4]/80 active:bg-[#04C7AA] transition-colors"
+          >
+            <img
+              src="assets\icons\flecha2_blanca.svg"
+              alt="Forward"
+              width="12"
+              height="12"
+            />
+          </button>
+
+          <!-- Indicadores -->
+          <div class="flex justify-center mt-8 gap-2">
+            <button
+              class="w-3 h-3 rounded-full bg-[#9B61A4] transition-colors"
+              data-slide="0"
+            ></button>
+            <button
+              class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors"
+              data-slide="1"
+            ></button>
+            <button
+              class="w-3 h-3 rounded-full bg-[#BEC3C7] transition-colors"
+              data-slide="2"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-6">
+
+            <h2 class="orbitron text-4xl font-bold text-center mb-16">Confían en Nosotros</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <a 
+                    href="https://www.pacifichydro.cl/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center
+                            bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm
+                            hover:text-[#04C7AA] hover:-translate-y-2
+                            transition-transform duration-300
+                            cursor-pointer"
+                >
+                <img 
+                    src="/assets/images/partner1.png" 
+                    alt="Pacific Hydro" 
+                    class="mx-auto h-54 w-auto object-contain"
+                >
+                </a>
+
+                <a 
+                    href="https://www.contego.cl/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center
+                            bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm
+                            hover:text-[#04C7AA] hover:-translate-y-2
+                            transition-transform duration-300
+                            cursor-pointer"
+                >
+                <img 
+                    src="/assets/images/partner2.png" 
+                    alt="Contego" 
+                    class="mx-auto h-48 w-auto object-contain"
+                >
+                </a>
+                                <a 
+                    href="https://www.mt2.cl/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center
+                            bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm
+                            hover:text-[#04C7AA] hover:-translate-y-2
+                            transition-transform duration-300
+                            cursor-pointer"
+                >
+                <img 
+                    src="/assets/images/partner3.png" 
+                    alt="MT2" 
+                    class="mx-auto h-40 w-auto object-contain"
+                >
+                </a>
+                </a>
+                                <a 
+                    href="https://www.ese.cl/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center
+                            bg-slate-800/50 p-8 rounded-2xl backdrop-blur-sm
+                            hover:text-[#04C7AA] hover:-translate-y-2
+                            transition-transform duration-300
+                            cursor-pointer"
+                >
+                <img 
+                    src="/assets/images/partner4.png" 
+                    alt="ESE Business School" 
+                    class="mx-auto h-40 w-auto object-contain"
+                >
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-slate-800">
+<<<<<<< HEAD
+      <div class="container mx-auto px-6">
+        <h2 class="orbitron text-4xl font-bold text-center mb-16">
+          Nuestros Fundadores
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div
+            class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center"
+          >
+            <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+              <img
+                src="assets/images/joaquin espildora.jpg"
+                alt="Joaquin Espildora"
+                class="w-full h-full object-cover"
+              />
+=======
+        <div class="container mx-auto px-6">
+            <h2 class="orbitron text-4xl font-bold text-center mb-16">Nuestros Fundadores</h2>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="assets/images/joaquin espildora.jpg" alt="Joaquin Espildora M."
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="orbitron text-xl font-bold mb-2">Joaquin Espildora M.</h3>
+                    <p class="text-[#04C7AA] mb-4">Fundador & CEO</p>
+                    <p class="text-slate-300">Ingeniero Civil con +5 años de experiencia liderando 
+                        portafolios de inversión por más de $1B USD. Experto en soluciones tecnológicas 
+                        para el sector financiero e inmobiliario.</p>
+                </div>
+                <div class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+                        <img src="assets/images/matias canepa.jpg" alt="Matías Cánepa G."
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="orbitron text-xl font-bold mb-2">Matías Cánepa G.</h3>
+                    <p class="text-[#04C7AA] mb-4">Fundador & CTO</p>
+                    <p class="text-slate-300">Cloud Engineer y desarrollador experto en arquitectura cloud, 
+                        IA y manejo de datos. Lidera el desarrollo técnico
+                         e infraestructura de nuestros proyectos.
+</p>
+                </div>
+>>>>>>> b91eeb22a89b4086043d5f44e45e8cac4d7bd3bb
+            </div>
+            <h3 class="orbitron text-xl font-bold mb-2">
+              Joaquin Espildora Moraga
+            </h3>
+            <p class="text-[#04C7AA] mb-4">Fundador & CEO</p>
+            <p class="text-slate-300">
+              Ingeniero Civil con más de 5 años de experiencia en el sector
+              financiero e inversiones inmobiliarias. Líder visionario con
+              experiencia en gestión de portafolios que superan $1B USD y
+              desarrollo de soluciones tecnológicas financieras innovadoras.
+            </p>
+          </div>
+          <div
+            class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center"
+          >
+            <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+              <img
+                src="assets/images/matias canepa.jpg"
+                alt="Matías Cánepa"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="orbitron text-xl font-bold mb-2">
+              Matías Cánepa González
+            </h3>
+            <p class="text-[#04C7AA] mb-4">Fundador & CTO</p>
+            <p class="text-slate-300">
+              Cloud Engineer experto con amplia experiencia en desarrollo de
+              software y data engineering. Lidera el desarrollo tecnológico y la
+              infraestructura de nuestros servicios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="orbitron text-4xl font-bold mb-8">
+            Creemos Algo Increíble
+          </h2>
+          <p class="text-slate-300 mb-4">
+            ¿Listo para transformar tus datos en valor? Contáctanos hoy.
+          </p>
+          <p class="text-[#9B61A4] mb-12">📍 Santiago, Chile</p>
+
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/xpwzegdb"
+            method="POST"
+            class="space-y-6"
+          >
+            <!-- Primera fila: Nombre y Apellido -->
+            <div class="grid grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                required
+                class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
+              />
+              <input
+                type="text"
+                name="lastname"
+                placeholder="Apellido"
+                required
+                class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
+              />
+            </div>
+
+            <!-- Segunda fila: Email y Teléfono -->
+            <div class="grid grid-cols-2 gap-4">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Teléfono"
+                required
+                class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
+              />
+            </div>
+
+            <!-- Tercera fila: Mensaje -->
+            <textarea
+              name="message"
+              placeholder="Tu Mensaje"
+              rows="4"
+              required
+              class="w-full px-6 py-3 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04C7AA]"
+            ></textarea>
+
+            <!-- Campo honeypot para prevenir spam -->
+            <input type="text" name="_gotcha" style="display: none" />
+
+            <button
+              type="submit"
+              class="bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all"
+            >
+              Enviar Mensaje
+            </button>
+          </form>
+
+          <!-- Mensajes de estado del formulario -->
+          <div id="form-status" class="mt-6 text-center hidden">
+            <p id="success-message" class="text-green-500 hidden">
+              ¡Gracias por tu mensaje! Te contactaremos pronto.
+            </p>
+            <p id="error-message" class="text-red-500 hidden">
+              Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <!-- Utilidades -->
+    <script src="js/utils/animations.js"></script>
+
+    <!-- Componentes -->
+    <script src="js/components/nav.js"></script>
+    <script src="js/components/particles-config.js"></script>
+    <script src="js/components/three-config.js"></script>
+    <script src="js/components/carousel.js"></script>
+    <script src="js/components/form.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.min.js"></script>
+
+    <!-- Script principal -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
