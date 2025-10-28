@@ -3,14 +3,18 @@
 ## Estado Actual del Sitio
 
 ### 🎯 Hero/Banner - ✅ PRESENTE
+
 **Ubicación**: Líneas 535-585 en index.html
+
 - Título: "Transformamos tus datos y procesos en ventaja competitiva real"
 - Propuesta de valor completa
 - CTAs: "Cotizar Mi Proyecto" y "Ver Casos de Éxito"
 - Stats: 20+ proyectos, 5+ años, 100% satisfacción
 
 ### 🛠️ Sección Servicios - ✅ PRESENTE
+
 **Ubicación**: Líneas 588-799 en index.html
+
 - Título: "Soluciones que Generan Resultados"
 - 6 servicios con cards:
   1. Desarrollo Premium (Recurso3.webp)
@@ -21,39 +25,45 @@
   6. Analytics (Recurso10.webp)
 
 ### 📁 Proyectos - ✅ IMÁGENES CONFIGURADAS
+
 **Ubicación**: Líneas 818-1086 en index.html
 
-| Proyecto | Imagen | Estado |
-|----------|--------|--------|
-| Databam | `Databam.png` | ✅ Existe |
-| PJUD | `Proyecto3.png` | ✅ Existe |
-| DGA | `Proyecto4.png` | ✅ Existe |
-| Top-N | `Proyecto1.png` | ✅ Existe |
+| Proyecto   | Imagen          | Estado    |
+| ---------- | --------------- | --------- |
+| Databam    | `Databam.png`   | ✅ Existe |
+| PJUD       | `Proyecto3.png` | ✅ Existe |
+| DGA        | `Proyecto4.png` | ✅ Existe |
+| Top-N      | `Proyecto1.png` | ✅ Existe |
 | E-commerce | `Proyecto5.png` | ✅ Existe |
-| CBRS | `Proyecto6.png` | ✅ Existe |
+| CBRS       | `Proyecto6.png` | ✅ Existe |
 | Agentes IA | `Proyecto7.png` | ✅ Existe |
 
 ### 👥 Equipo - ✅ IMÁGENES CONFIGURADAS
+
 **Ubicación**: Líneas 1169-1228 en index.html
 
-| Persona | Imagen | Ruta | Estado |
-|---------|--------|------|--------|
+| Persona              | Imagen                  | Ruta                                  | Estado    |
+| -------------------- | ----------------------- | ------------------------------------- | --------- |
 | Joaquín Espildora M. | `joaquin espildora.jpg` | `assets/images/joaquin espildora.jpg` | ✅ Existe |
-| Matías Cánepa G. | `matias canepa.jpg` | `assets/images/matias canepa.jpg` | ✅ Existe |
+| Matías Cánepa G.     | `matias canepa.jpg`     | `assets/images/matias canepa.jpg`     | ✅ Existe |
 
 ---
 
 ## 🔍 Diagnóstico
 
 ### El código HTML está correcto ✅
+
 Todas las rutas de imágenes apuntan correctamente a:
+
 - `assets/images/Databam.png`
 - `assets/images/Proyecto1.png` (hasta Proyecto7.png)
 - `assets/images/joaquin espildora.jpg`
 - `assets/images/matias canepa.jpg`
 
 ### Los archivos existen ✅
+
 Verificado en el directorio `assets/images/`:
+
 ```
 ✅ Databam.png
 ✅ Proyecto1.png
@@ -67,7 +77,9 @@ Verificado en el directorio `assets/images/`:
 ```
 
 ### El CSS está correcto ✅
+
 **slider-cards.css**:
+
 - `.slider-card-image` tiene `z-index: 1` (visible)
 - `.slider-card-overlay` tiene `z-index: 2` (sobre la imagen)
 - Opacity: 1 para imágenes
@@ -80,16 +92,20 @@ Verificado en el directorio `assets/images/`:
 ### Si NO ves las imágenes:
 
 #### 1. Limpiar caché del navegador
+
 **Opción A - Forzar recarga:**
+
 - **Windows**: `Ctrl + Shift + R` o `Ctrl + F5`
 - **Mac**: `Cmd + Shift + R`
 
 **Opción B - Limpiar caché manualmente:**
+
 1. Abre DevTools (F12)
 2. Click derecho en el botón de recargar
 3. Selecciona "Vaciar caché y recargar de forma forzada"
 
 #### 2. Verificar en DevTools
+
 1. Abre DevTools (F12)
 2. Ve a la pestaña **"Network"**
 3. Filtra por **"Img"**
@@ -97,20 +113,23 @@ Verificado en el directorio `assets/images/`:
 5. Verifica que las imágenes se carguen (status 200)
 
 #### 3. Verificar rutas en Console
+
 Abre Console (F12) y ejecuta:
+
 ```javascript
 // Verificar imágenes de proyectos
-document.querySelectorAll('.slider-card-image').forEach(img => {
-  console.log(img.src, img.complete ? '✅' : '❌');
+document.querySelectorAll(".slider-card-image").forEach((img) => {
+  console.log(img.src, img.complete ? "✅" : "❌");
 });
 
 // Verificar imágenes del equipo
-document.querySelectorAll('.team-card-avatar img').forEach(img => {
-  console.log(img.src, img.complete ? '✅' : '❌');
+document.querySelectorAll(".team-card-avatar img").forEach((img) => {
+  console.log(img.src, img.complete ? "✅" : "❌");
 });
 ```
 
 #### 4. Verificar permisos de archivos
+
 ```powershell
 # Desde PowerShell en la carpeta del proyecto
 Get-ChildItem "assets/images" -File | Select-Object Name, Length
@@ -123,18 +142,21 @@ Get-ChildItem "assets/images" -File | Select-Object Name, Length
 ### Cómo deberían verse las imágenes:
 
 #### Proyectos (Portfolio Cards):
+
 - Imagen de fondo en cada card
 - Overlay oscuro semitransparente encima
 - Texto blanco sobre el overlay
 - Al hacer hover: imagen se ve más grande (zoom)
 
 #### Equipo (Team Cards):
+
 - Avatar circular/cuadrado arriba
 - Nombre debajo
 - Bio debajo del nombre
 - Foto de Joaquín y Matías centradas
 
 #### Servicios (Service Cards):
+
 - Imágenes WebP de fondo
 - Overlay con gradiente
 - Texto sobre el overlay
@@ -145,33 +167,39 @@ Get-ChildItem "assets/images" -File | Select-Object Name, Length
 ## 🐛 Problemas Comunes y Soluciones
 
 ### Problema: "Las imágenes están pero muy oscuras"
+
 **Solución**: Es por diseño. El overlay tiene opacidad 0.95. Si quieres más brillo:
+
 ```css
 /* En slider-cards.css, buscar: */
 .slider-card-overlay {
-    background: linear-gradient(
-        to top,
-        rgba(9, 7, 29, 0.95) 0%,  /* Reducir a 0.85 */
-        rgba(9, 7, 29, 0.6) 50%,   /* Reducir a 0.4 */
-        rgba(9, 7, 29, 0.3) 100%   /* Reducir a 0.2 */
-    );
+  background: linear-gradient(
+    to top,
+    rgba(9, 7, 29, 0.95) 0%,
+    /* Reducir a 0.85 */ rgba(9, 7, 29, 0.6) 50%,
+    /* Reducir a 0.4 */ rgba(9, 7, 29, 0.3) 100% /* Reducir a 0.2 */
+  );
 }
 ```
 
 ### Problema: "Solo veo el texto, no las imágenes"
+
 **Causa**: Z-index invertido o display none
 **Verificación**:
+
 ```javascript
 // En Console
-const img = document.querySelector('.slider-card-image');
-const overlay = document.querySelector('.slider-card-overlay');
-console.log('Image z-index:', window.getComputedStyle(img).zIndex);
-console.log('Overlay z-index:', window.getComputedStyle(overlay).zIndex);
-console.log('Image opacity:', window.getComputedStyle(img).opacity);
+const img = document.querySelector(".slider-card-image");
+const overlay = document.querySelector(".slider-card-overlay");
+console.log("Image z-index:", window.getComputedStyle(img).zIndex);
+console.log("Overlay z-index:", window.getComputedStyle(overlay).zIndex);
+console.log("Image opacity:", window.getComputedStyle(img).opacity);
 ```
 
 ### Problema: "Las imágenes del equipo no aparecen"
+
 **Verificación**: Los nombres tienen espacios, asegúrate que el navegador los maneja:
+
 ```
 assets/images/joaquin espildora.jpg  ✅ Correcto
 assets/images/joaquin%20espildora.jpg  ✅ También funciona (URL encoded)
@@ -195,6 +223,7 @@ Antes de reportar un problema, verifica:
 ## 🚀 Confirmación de Estado
 
 ### ✅ TODOS LOS ELEMENTOS ESTÁN EN EL CÓDIGO:
+
 1. ✅ Hero/Banner con propuesta de valor
 2. ✅ Sección de Servicios completa
 3. ✅ 7 Proyectos con imágenes configuradas
@@ -203,9 +232,11 @@ Antes de reportar un problema, verifica:
 6. ✅ JavaScript para slider funcionando
 
 ### 🎯 Si aún no ves algo:
-Es muy probable un problema de **caché del navegador**. 
+
+Es muy probable un problema de **caché del navegador**.
 
 **Solución definitiva:**
+
 1. Cierra completamente el navegador
 2. Abre una **ventana de incógnito** (Ctrl+Shift+N)
 3. Navega a http://localhost:8000
@@ -216,4 +247,4 @@ Es muy probable un problema de **caché del navegador**.
 **Última actualización**: Diciembre 2024  
 **Estado verificación**: ✅ CÓDIGO CORRECTO  
 **Archivos verificados**: ✅ TODOS EXISTEN  
-**CSS verificado**: ✅ Z-INDEX CORRECTO  
+**CSS verificado**: ✅ Z-INDEX CORRECTO
