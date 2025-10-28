@@ -132,13 +132,17 @@
 
 .slider-cards {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: var(--space-6);
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
     padding: var(--space-4) 0;
     scroll-snap-type: x mandatory;
+    align-items: stretch;
 }
 
 .slider-cards::-webkit-scrollbar {
@@ -149,6 +153,8 @@
 .slider-card {
     flex: 0 0 auto;
     width: 350px;
+    min-width: 350px;
+    max-width: 350px;
     height: 450px;
     position: relative;
     border-radius: var(--radius-2xl);
@@ -500,6 +506,8 @@
 
     .slider-card {
         width: 300px;
+        min-width: 300px;
+        max-width: 300px;
         height: 400px;
     }
 
@@ -531,6 +539,8 @@
 
     .slider-card {
         width: 280px;
+        min-width: 280px;
+        max-width: 280px;
         height: 380px;
         /* Mejor feedback táctil en móvil */
         -webkit-tap-highlight-color: rgba(155, 97, 164, 0.2);
@@ -590,6 +600,7 @@
 
     .slider-card {
         width: calc(100vw - 3rem);
+        min-width: calc(100vw - 3rem);
         max-width: 320px;
     }
     
@@ -602,6 +613,8 @@
 @media (min-width: 1440px) {
     .slider-card {
         width: 380px;
+        min-width: 380px;
+        max-width: 380px;
         height: 480px;
     }
 }
