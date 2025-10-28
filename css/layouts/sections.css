@@ -7,11 +7,13 @@
 section {
     position: relative;
     width: 100%;
+    min-height: fit-content;
 }
 
 .section {
     padding-top: var(--space-20);
     padding-bottom: var(--space-20);
+    min-height: fit-content;
 }
 
 @media (min-width: 768px) {
@@ -25,6 +27,20 @@ section {
     .section {
         padding-top: var(--space-32);
         padding-bottom: var(--space-32);
+    }
+}
+
+@media (max-width: 767px) {
+    .section {
+        padding-top: var(--space-16);
+        padding-bottom: var(--space-16);
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
     }
 }
 

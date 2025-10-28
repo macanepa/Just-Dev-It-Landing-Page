@@ -205,13 +205,22 @@ class CardSlider {
   }
 
   updateSlider() {
-    const cardWidth = this.cards[0].offsetWidth + 24;
+    if (!this.cards || this.cards.length === 0) return;
+    
+    // Obtener el ancho de la card + gap
+    const card = this.cards[0];
+    const cardStyle = window.getComputedStyle(card);
+    const cardWidth = card.offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
     
     // Normalizar el índice para carrusel cilíndrico
     const normalizedIndex = ((this.currentIndex % this.cards.length) + this.cards.length) % this.cards.length;
     
+    // Calcular posición con gap incluido
+    const scrollPosition = normalizedIndex * (cardWidth + gap);
+    
     this.slider.scrollTo({
-      left: normalizedIndex * cardWidth,
+      left: scrollPosition,
       behavior: 'smooth'
     });
     
@@ -283,18 +292,28 @@ class CardSlider {
   }
 
   snapToCard() {
-    const cardWidth = this.cards[0].offsetWidth + 24;
+    if (!this.cards || this.cards.length === 0) return;
+    
+    const card = this.cards[0];
+    const cardWidth = card.offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
     const scrollLeft = this.slider.scrollLeft;
-    const index = Math.round(scrollLeft / cardWidth);
-    this.goToSlide(index);
+    const index = Math.round(scrollLeft / (cardWidth + gap));
+    const clampedIndex = Math.max(0, Math.min(index, this.cards.length - 1));
+    this.currentIndex = clampedIndex;
+    this.updateSlider();
   }
 
   updateDotsFromScroll() {
-    const cardWidth = this.cards[0].offsetWidth + 24;
-    const scrollLeft = this.slider.scrollLeft;
-    const index = Math.round(scrollLeft / cardWidth);
+    if (!this.cards || this.cards.length === 0) return;
     
-    if (index !== this.currentIndex) {
+    const card = this.cards[0];
+    const cardWidth = card.offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
+    const scrollLeft = this.slider.scrollLeft;
+    const index = Math.round(scrollLeft / (cardWidth + gap));
+    
+    if (index !== this.currentIndex && index >= 0 && index < this.cards.length) {
       this.currentIndex = index;
       this.updateDots();
       this.updateBackground();

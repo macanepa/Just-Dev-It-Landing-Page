@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 140px 20px 80px;
+    padding: 140px 20px 100px;
     background: linear-gradient(135deg, #0d0d14 0%, #1a1a2e 50%, #0d0d14 100%);
     overflow: hidden;
 }
@@ -285,7 +285,8 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 90px 16px 40px;
+        padding: 100px 16px 60px;
+        min-height: auto;
     }
     
     .hero-container {
@@ -346,7 +347,8 @@
 
 @media (max-width: 480px) {
     .hero {
-        padding: 80px 12px 30px;
+        padding: 90px 12px 50px;
+        min-height: auto;
     }
     
     .hero-content {
