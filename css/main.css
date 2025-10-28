@@ -60,6 +60,32 @@ html {
     scroll-padding-top: 80px; /* Para navegación fija */
 }
 
+/* Asegurar que todas las secciones se vean completas en mobile */
+@media (max-width: 768px) {
+    section {
+        min-height: fit-content;
+        overflow: visible;
+    }
+    
+    /* Asegurar padding suficiente para ver contenido */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        min-height: fit-content;
+        overflow: visible;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
 /* Loading state para body */
 body.loading {
     overflow: hidden;

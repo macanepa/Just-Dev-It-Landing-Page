@@ -6,6 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    <!-- ===== GOOGLE TAG MANAGER ===== -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ===== GOOGLE ANALYTICS 4 ===== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'send_page_view': true,
+        'allow_enhanced_conversions': true
+      });
+      
+      // Eventos de conversión personalizados
+      window.trackConversion = function(eventName, eventParams) {
+        gtag('event', eventName, eventParams);
+      };
+    </script>
+
+    <!-- ===== FACEBOOK PIXEL ===== -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'XXXXXXXXXXXXXXXXX');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"
+    /></noscript>
+
+    <!-- ===== LINKEDIN INSIGHT TAG ===== -->
+    <script type="text/javascript">
+    _linkedin_partner_id = "XXXXXXX";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script><script type="text/javascript">
+    (function(l) {
+    if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+    window.lintrk.q=[]}
+    var s = document.getElementsByTagName("script")[0];
+    var b = document.createElement("script");
+    b.type = "text/javascript";b.async = true;
+    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+    s.parentNode.insertBefore(b, s);})(window.lintrk);
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=XXXXXXX&fmt=gif" />
+    </noscript>
+
     <!-- ===== SEO OPTIMIZADO ===== -->
     <title>
       Just Dev It | Desarrolladora de Software en Chile - Automatización, ETL,
@@ -17,7 +78,7 @@
     />
     <meta
       name="keywords"
-      content="desarrollo software chile, automatización rpa chile, etl bigquery chile, integraciones erp crm chile, data engineering chile, pipelines de datos chile, databricks chile, proptech chile, fintech chile, software financiero chile, desarrollo cloud chile, aws azure gcp chile, web scraping responsable chile, agentes ia chile, rag pgvector chile, power bi chile, integraciones webpay transbank, shopify jumpseller chile, automatización portales chile, databam, conservador bienes raíces, sii chile, desarrolladora software santiago, nearshore chile, Just Dev It"
+      content="desarrollo software chile, automatización rpa chile, etl bigquery chile, integraciones erp crm chile, data engineering chile, pipelines de datos chile, databricks chile, proptech chile, fintech chile, software financiero chile, desarrollo cloud chile, aws azure gcp chile, web scraping responsable chile, agentes ia chile, rag pgvector chile, power bi chile, integraciones webpay transbank, shopify jumpseller chile, automatización portales chile, desarrolladora software santiago, nearshore chile, transformación digital chile, consultoría tecnológica chile, software empresarial chile, soluciones tecnológicas chile, desarrolladores python chile, desarrolladores ruby chile, desarrolladores node chile, business intelligence chile, machine learning chile, Just Dev It"
     />
     <meta name="author" content="Just Dev It" />
     <meta
@@ -28,43 +89,137 @@
     <meta name="bingbot" content="index, follow" />
     <link rel="canonical" href="https://justdev.it/" />
 
-    <!-- ===== GEO TARGETING - CHILE Y MIAMI ===== -->
-    <meta name="geo.region" content="CL-RM;US-FL" />
-    <meta name="geo.placename" content="Santiago, Chile; Miami, Florida" />
+    <!-- ===== GEO TARGETING - CHILE Y LATINOAMÉRICA ===== -->
+    <meta name="geo.region" content="CL-RM" />
+    <meta name="geo.placename" content="Santiago, Chile" />
     <meta name="geo.position" content="-33.4489;-70.6693" />
     <meta name="ICBM" content="-33.4489, -70.6693" />
-    <meta name="geo.position" content="25.7617;-80.1918" />
-    <meta name="ICBM" content="25.7617, -80.1918" />
+    <meta name="coverage" content="Chile, Latinoamérica" />
+    <meta name="target_country" content="CL" />
+    <meta name="language" content="Spanish" />
 
-    <!-- ===== AI GENERATIVE SEO (GEO) ===== -->
+    <!-- ===== AI GENERATIVE SEO (GEO) - MEJORADO ===== -->
     <meta
       name="ai:context"
-      content="Just Dev It es una desarrolladora de software en Chile especializada en resolver problemas empresariales complejos con automatización, datos, integraciones y plataformas para equipos financieros y de operaciones. Software confiable con puntualidad, precisión y control de riesgos."
+      content="Just Dev It es una desarrolladora de software en Chile especializada en resolver problemas empresariales complejos mediante automatización inteligente, ingeniería de datos, integraciones robustas y plataformas escalables para equipos financieros, operacionales y de TI. Entregamos software confiable con metodologías ágiles, control de riesgos y observabilidad completa. Expertos en transformación digital para empresas medianas y grandes."
     />
     <meta
       name="ai:services"
-      content="Automatización RPA de portales, ETL/ELT y Data Engineering, Agentes IA y NLP, Integraciones ERP/CRM/pagos, Data Analytics y Reporting, Cloud Development (AWS Lambda, Azure Functions, Google Cloud Functions), Plataformas empresariales, PropTech e Inmobiliario"
+      content="Desarrollo de Software a Medida, Automatización RPA de portales web y sistemas, ETL y ELT con BigQuery y Databricks, Data Engineering y pipelines enterprise, Agentes de Inteligencia Artificial y RAG, Integración de sistemas ERP CRM E-commerce, Business Intelligence con Power BI y Metabase, Cloud Development en AWS Azure y Google Cloud, Plataformas PropTech e Inmobiliarias, Soluciones Fintech y pasarelas de pago, Web Scraping ético y responsable, Microservicios y APIs RESTful, Consultoría en arquitectura de datos"
     />
     <meta
       name="ai:locations"
-      content="Santiago Chile, Región Metropolitana Chile"
+      content="Santiago de Chile, Región Metropolitana, Chile, Latinoamérica, Servicios remotos para toda América Latina"
     />
     <meta
       name="ai:industries"
-      content="PropTech, Fintech, Energía, Retail, Servicios Financieros, Inmobiliario"
+      content="PropTech y sector inmobiliario, Fintech y servicios financieros, Energía y utilities, Retail y e-commerce, Banca y seguros, Salud y telemedicina, Logística y transporte, Agroindustria, Educación y EdTech"
     />
     <meta
       name="ai:technologies"
-      content="Python, Ruby on Rails, Node.js, PostgreSQL, MongoDB, DynamoDB, pgvector, BigQuery, Databricks, AWS Lambda, Azure Functions, Google Cloud Functions, Power BI, Metabase, SAP, Salesforce, WebPay, Transbank, Shopify, Jumpseller, GPT-4, Claude, Gemini"
+      content="Python Django Flask FastAPI, Ruby on Rails, Node.js Express NestJS, PostgreSQL TimescaleDB pgvector, MongoDB DynamoDB, Redis Elasticsearch, BigQuery Databricks Snowflake, Apache Airflow dbt, AWS Lambda S3 RDS, Azure Functions Blob Storage, Google Cloud Functions Cloud Run, Docker Kubernetes, Power BI Tableau Metabase, SAP Odoo NetSuite, Salesforce HubSpot, WebPay Transbank Flow, Shopify WooCommerce Jumpseller, GPT-4 Claude Gemini, LangChain RAG, React Next.js Vue, Git CI CD Jenkins, Terraform Infrastructure as Code"
     />
     <meta
       name="ai:target_audience"
-      content="Equipos financieros y de operaciones, Empresas PropTech, Empresas Fintech, Empresas medianas y grandes que requieren automatización y datos"
+      content="CTOs y líderes de tecnología, Gerentes de operaciones y finanzas, Equipos de transformación digital, Empresas PropTech e Inmobiliarias, Empresas Fintech y servicios financieros, Empresas medianas y grandes que requieren automatización, Compañías que buscan nearshore development en Chile, Organizaciones que necesitan ingeniería de datos"
     />
     <meta
       name="ai:value_proposition"
-      content="Software confiable que acelera decisiones financieras y operacionales. Entregas rápidas con rigor, ciclos iterativos y control de riesgos. Sistemas medibles que perduran en producción con observabilidad completa."
+      content="Software confiable y robusto que acelera decisiones financieras y operacionales. Entregas rápidas con rigor técnico, ciclos iterativos y control de riesgos. Sistemas medibles que perduran en producción con observabilidad completa. ROI demostrable desde el primer mes. Código limpio y documentado. Equipo senior con +10 años de experiencia. Metodología ágil adaptada a cada cliente."
     />
+    <meta
+      name="ai:differentiators"
+      content="Experiencia comprobada en proyectos enterprise, Equipo 100% en Chile con zona horaria compatible, Código de alta calidad con testing automatizado, Documentación exhaustiva de todos los sistemas, Observabilidad y monitoreo desde día uno, Entregas incrementales cada 2 semanas, Soporte técnico especializado, Arquitectura escalable y mantenible"
+    />
+
+    <!-- ===== SCHEMA.ORG JSON-LD - MEJORADO ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Just Dev It",
+      "alternateName": "JustDevIt",
+      "url": "https://justdev.it",
+      "logo": "https://justdev.it/assets/Just%20Dev%20It/Logo/PNG/Logo_con_bajada_Blanco.png",
+      "description": "Desarrolladora de software en Chile especializada en automatización, data engineering, integraciones y soluciones cloud para empresas Fintech, PropTech y enterprise.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "RM",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.4489,
+        "longitude": -70.6693
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Chile"
+        },
+        {
+          "@type": "Country",
+          "name": "Latinoamérica"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "email": "contacto@justdev.it",
+        "availableLanguage": ["Spanish", "English"]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/justdevit",
+        "https://github.com/justdevit"
+      ],
+      "knowsAbout": [
+        "Software Development",
+        "Data Engineering",
+        "Cloud Computing",
+        "Business Intelligence",
+        "Artificial Intelligence",
+        "System Integration",
+        "PropTech",
+        "Fintech"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Just Dev It",
+      "image": "https://justdev.it/assets/Just%20Dev%20It/Logo/PNG/Logo_con_bajada_Blanco.png",
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "20"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "RM",
+        "addressCountry": "CL"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Just Dev It",
+      "url": "https://justdev.it",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://justdev.it/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
     <!-- ===== OPEN GRAPH / FACEBOOK ===== -->
     <meta property="og:type" content="website" />
@@ -473,6 +628,27 @@
   </head>
 
   <body>
+    <!-- ===== PREMIUM PRELOADER ===== -->
+    <div class="epic-preloader" id="preloader">
+      <div class="preloader-glow"></div>
+      <div class="preloader-content">
+        <div class="preloader-logo">
+          <img src="assets/Just Dev It/Isotipo/Isotipo_blanco.svg" alt="Just Dev It" loading="eager">
+        </div>
+        <div class="preloader-counter">
+          <span id="counter">0</span><span class="counter-percent">%</span>
+        </div>
+        <div class="preloader-bar-wrapper">
+          <div class="preloader-bar">
+            <div class="preloader-bar-fill" id="progressBar"></div>
+          </div>
+        </div>
+        <div class="preloader-text">
+          Cargando experiencia<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+        </div>
+      </div>
+    </div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
@@ -545,8 +721,9 @@
             </h1>
 
             <p class="hero-description">
-              Automatización, datos e integraciones con ROI medible. 
-              <strong>RPA, ETL, IA y cloud</strong> para empresas que buscan resultados.
+              Automatización, datos e integraciones con ROI medible.
+              <strong>RPA, ETL, IA y cloud</strong> para empresas que buscan
+              resultados.
             </p>
 
             <p class="hero-subtext">
@@ -590,30 +767,31 @@
       <section class="intro-section variant-1" data-parallax>
         <div class="intro-decoration intro-decoration-1"></div>
         <div class="intro-decoration intro-decoration-2"></div>
-        
+
         <div class="intro-content">
           <span class="intro-badge">Software Empresarial</span>
           <h2 class="intro-title">
-            <span class="intro-title-gradient">Automatización & Data</span><br>
+            <span class="intro-title-gradient">Automatización & Data</span
+            ><br />
             que Genera <span class="intro-title-highlight">Resultados</span>
           </h2>
           <p class="intro-subtitle">
-            RPA, cloud y pipelines de datos que reducen costos operativos hasta 80%. 
-            ROI medible en menos de 90 días.
+            RPA, cloud y pipelines de datos que reducen costos operativos hasta
+            80%. ROI medible en menos de 90 días.
           </p>
-          
+
           <div class="intro-stats">
             <div class="intro-stat">
               <span class="intro-stat-number">20+</span>
-              <span class="intro-stat-label">Proyectos<br>Exitosos</span>
+              <span class="intro-stat-label">Proyectos<br />Exitosos</span>
             </div>
             <div class="intro-stat">
               <span class="intro-stat-number">99.9%</span>
-              <span class="intro-stat-label">Uptime<br>Garantizado</span>
+              <span class="intro-stat-label">Uptime<br />Garantizado</span>
             </div>
             <div class="intro-stat">
               <span class="intro-stat-number">&lt;90 Días</span>
-              <span class="intro-stat-label">ROI<br>Promedio</span>
+              <span class="intro-stat-label">ROI<br />Promedio</span>
             </div>
           </div>
         </div>
@@ -670,8 +848,8 @@
                     Software a Medida
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Apps web, APIs y RPA que reducen tiempos operativos hasta 80%. 
-                    Cloud-native con monitoreo 24/7.
+                    Apps web, APIs y RPA que reducen tiempos operativos hasta
+                    80%. Cloud-native con monitoreo 24/7.
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">Python</span>
@@ -699,8 +877,8 @@
                     Data Engineering
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Pipelines ETL enterprise con BigQuery/Databricks. 
-                    Procesamos millones de registros diarios.
+                    Pipelines ETL enterprise con BigQuery/Databricks. Procesamos
+                    millones de registros diarios.
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">BigQuery</span>
@@ -728,8 +906,8 @@
                     Inteligencia Artificial
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Automatización inteligente con GPT-4 y Claude. 
-                    Reduce 70% el tiempo en tareas repetitivas.
+                    Automatización inteligente con GPT-4 y Claude. Reduce 70% el
+                    tiempo en tareas repetitivas.
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">GPT-4</span>
@@ -757,8 +935,8 @@
                     Fintech & PropTech
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Plataformas de inversión, integraciones WebPay y dashboards ejecutivos. 
-                    Datos en tiempo real para toma de decisiones.
+                    Plataformas de inversión, integraciones WebPay y dashboards
+                    ejecutivos. Datos en tiempo real para toma de decisiones.
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">WebPay</span>
@@ -786,15 +964,8 @@
                     Integraciones Enterprise
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Conectamos ERPs (SAP, Odoo), CRMs (Salesforce) y e-commerce. 
+                    Conectamos ERPs (SAP, Odoo), CRMs (Salesforce) y e-commerce.
                     Sincronización automática 24/7.
-                  </p>
-                  <div class="slider-card-tags">
-                    <span class="slider-card-tag">SAP</span>
-                    <span class="slider-card-tag">Salesforce</span>
-                    <span class="slider-card-tag">Shopify</span>
-                  </div>
-                </div>
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">SAP</span>
@@ -823,15 +994,9 @@
                     Business Intelligence
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Dashboards Power BI y Metabase con KPIs en tiempo real. 
+                    Dashboards Power BI y Metabase con KPIs en tiempo real.
                     Datos complejos convertidos en decisiones.
                   </p>
-                  <div class="slider-card-tags">
-                    <span class="slider-card-tag">Power BI</span>
-                    <span class="slider-card-tag">Metabase</span>
-                    <span class="slider-card-tag">SQL</span>
-                  </div>
-                </div>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">Power BI</span>
                     <span class="slider-card-tag">Metabase</span>
@@ -866,30 +1031,31 @@
       <section class="intro-section variant-2" data-parallax>
         <div class="intro-decoration intro-decoration-1"></div>
         <div class="intro-decoration intro-decoration-2"></div>
-        
+
         <div class="intro-content">
           <span class="intro-badge">Impacto Real</span>
           <h2 class="intro-title">
-            <span class="intro-title-gradient">PropTech & Fintech</span><br>
+            <span class="intro-title-gradient">PropTech & Fintech</span><br />
             de Clase <span class="intro-title-highlight">Mundial</span>
           </h2>
           <p class="intro-subtitle">
-            Plataformas empresariales que procesan millones de datos diarios. 
-            Automatización de portales, ETL para BigQuery/Databricks y APIs escalables.
+            Plataformas empresariales que procesan millones de datos diarios.
+            Automatización de portales, ETL para BigQuery/Databricks y APIs
+            escalables.
           </p>
-          
+
           <div class="intro-stats">
             <div class="intro-stat">
               <span class="intro-stat-number">$3B+</span>
-              <span class="intro-stat-label">Activos<br>Gestionados</span>
+              <span class="intro-stat-label">Activos<br />Gestionados</span>
             </div>
             <div class="intro-stat">
               <span class="intro-stat-number">80%</span>
-              <span class="intro-stat-label">Reducción<br>de Tiempos</span>
+              <span class="intro-stat-label">Reducción<br />de Tiempos</span>
             </div>
             <div class="intro-stat">
               <span class="intro-stat-number">24/7</span>
-              <span class="intro-stat-label">Uptime<br>Garantizado</span>
+              <span class="intro-stat-label">Uptime<br />Garantizado</span>
             </div>
           </div>
         </div>
@@ -917,8 +1083,8 @@
               <span class="gradient-text">Proyectos</span> que Transforman
             </h2>
             <p class="slider-description">
-              +20 casos de éxito con ROI comprobado. 
-              Soluciones que escalan negocios.
+              +20 casos de éxito con ROI comprobado. Soluciones que escalan
+              negocios.
             </p>
             <a href="#contacto" class="btn btn-primary btn-lg"
               >Empezar Mi Proyecto</a
@@ -947,8 +1113,8 @@
                     Databam — Plataforma Inmobiliaria
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Plataforma líder de data inmobiliaria en Chile. 
-                    Propiedades y precios en tiempo real. +500K registros.
+                    Plataforma líder de data inmobiliaria en Chile. Propiedades
+                    y precios en tiempo real. +500K registros.
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">Rails</span>
@@ -977,7 +1143,7 @@
                     Automatización PJUD
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    RPA judicial que reduce 90% el tiempo de procesamiento. 
+                    RPA judicial que reduce 90% el tiempo de procesamiento.
                     1000+ documentos/día automatizados.
                   </p>
                   <div class="slider-card-tags">
@@ -1009,7 +1175,7 @@
                     Tickets DGA — Pacific Hydro
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    500+ tickets/mes automatizados con 99.8% uptime. 
+                    500+ tickets/mes automatizados con 99.8% uptime.
                     Trazabilidad completa desde email hasta SharePoint.
                   </p>
                   <div class="slider-card-tags">
@@ -1039,15 +1205,7 @@
                     Portafolios Top-N & Backtesting
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Gestión de carteras >$3B USD con backtesting automatizado. 
-                    Reportes ejecutivos en tiempo real.
-                  </p>
-                  <div class="slider-card-tags">
-                    <span class="slider-card-tag">Python</span>
-                    <span class="slider-card-tag">BigQuery</span>
-                    <span class="slider-card-tag">Power BI</span>
-                  </div>
-                </div>
+                    Gestión de carteras >$3B USD con backtesting automatizado.
                     Reportería ejecutiva y ranking CMF en tiempo real.
                   </p>
                   <div class="slider-card-tags">
@@ -1080,8 +1238,8 @@
                     E-commerce — Integraciones Multi-plataforma
                   </h3>
                   <p class="slider-card-description" itemprop="description">
-                    Integración Shopify/WooCommerce/Jumpseller. 
-                    Sincronización de inventario y pagos 24/7.
+                    Integración Shopify/WooCommerce/Jumpseller. Sincronización
+                    de inventario y pagos 24/7.
                   </p>
                   <div class="slider-card-tags">
                     <span class="slider-card-tag">Shopify API</span>
@@ -1186,30 +1344,31 @@
       <section class="intro-section variant-3" data-parallax>
         <div class="intro-decoration intro-decoration-1"></div>
         <div class="intro-decoration intro-decoration-2"></div>
-        
+
         <div class="intro-content">
           <span class="intro-badge">Nearshore Premium</span>
           <h2 class="intro-title">
-            <span class="intro-title-gradient">Partner Tecnológico</span><br>
+            <span class="intro-title-gradient">Partner Tecnológico</span><br />
             para <span class="intro-title-highlight">Chile y LATAM</span>
           </h2>
           <p class="intro-subtitle">
-            Expertise internacional con presencia local. Misma zona horaria, 
-            idioma y cultura de negocios. Desarrollo ágil para proyectos críticos.
+            Expertise internacional con presencia local. Misma zona horaria,
+            idioma y cultura de negocios. Desarrollo ágil para proyectos
+            críticos.
           </p>
-          
+
           <div class="intro-stats">
             <div class="intro-stat">
               <span class="intro-stat-number">100%</span>
-              <span class="intro-stat-label">Clientes<br>Satisfechos</span>
+              <span class="intro-stat-label">Clientes<br />Satisfechos</span>
             </div>
             <div class="intro-stat">
               <span class="intro-stat-number">5+ Años</span>
-              <span class="intro-stat-label">Relaciones<br>Estratégicas</span>
+              <span class="intro-stat-label">Relaciones<br />Estratégicas</span>
             </div>
             <div class="intro-stat">
               <span class="intro-stat-number">GMT-3</span>
-              <span class="intro-stat-label">Zona<br>Compatible</span>
+              <span class="intro-stat-label">Zona<br />Compatible</span>
             </div>
           </div>
         </div>
@@ -1283,7 +1442,9 @@
             <h2 id="equipo-title" class="section-title">
               <span class="gradient-text">Equipo</span> Fundador
             </h2>
-            <p class="section-subtitle">Expertise en Fintech, PropTech y Data</p>
+            <p class="section-subtitle">
+              Expertise en Fintech, PropTech y Data
+            </p>
           </div>
 
           <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
@@ -1305,8 +1466,8 @@
               <h3 class="card-title" itemprop="name">Joaquín Espildora M.</h3>
               <p class="team-card-role" itemprop="jobTitle">Fundador & CEO</p>
               <p class="card-body" itemprop="description">
-                Ingeniero Civil (U. de los Andes). Ex Penta Vida (carteras >$3B USD). 
-                Especialista en PropTech y Fintech.
+                Ingeniero Civil (U. de los Andes). Ex Penta Vida (carteras >$3B
+                USD). Especialista en PropTech y Fintech.
               </p>
             </article>
 
@@ -1330,7 +1491,7 @@
                 CTO & Co-Fundador
               </p>
               <p class="card-body" itemprop="description">
-                Arquitecto de datos AWS/Azure/GCP. Profesor Big Data UANDES. 
+                Arquitecto de datos AWS/Azure/GCP. Profesor Big Data UANDES.
                 Especialista en ETL y cloud serverless.
               </p>
             </article>

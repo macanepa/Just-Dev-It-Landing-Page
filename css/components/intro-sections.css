@@ -7,7 +7,7 @@
 .intro-section {
   position: relative;
   height: 100vh;
-  min-height: 600px; /* Mínimo para pantallas muy pequeñas */
+  min-height: 700px; /* Mínimo más alto para asegurar que se vea todo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -350,9 +350,9 @@
 /* Responsive */
 @media (max-width: 768px) {
   .intro-section {
-    height: 100vh;
-    min-height: 500px;
-    padding: 6rem 1.5rem 3rem;
+    height: auto;
+    min-height: 100vh;
+    padding: 8rem 1.5rem 4rem;
   }
 
   .intro-stats {
@@ -367,9 +367,9 @@
 
 @media (max-width: 480px) {
   .intro-section {
-    height: 100vh;
-    min-height: 450px;
-    padding: 5rem 1rem 2rem;
+    height: auto;
+    min-height: 100vh;
+    padding: 7rem 1rem 3rem;
   }
 
   .intro-stats {
