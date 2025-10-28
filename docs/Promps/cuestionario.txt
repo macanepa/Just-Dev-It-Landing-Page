@@ -1,0 +1,868 @@
+# 📋 CUESTIONARIO COMPLETO DE CONTENIDO - JUST DEV IT
+
+**Fecha:** 23 de Octubre, 2025
+**Objetivo:** Recopilar toda la información necesaria para optimizar el contenido del sitio con SEO y datos reales
+
+---
+
+## 📊 IMÁGENES DISPONIBLES (Para referencia)
+
+### Imágenes de Proyectos:
+
+* `Databam.png` ✅ (Ya en uso)
+* `Aquaevo.png`
+* `Proyecto1.png`
+* `Proyecto3.png`
+* `Proyecto4.png`
+* `Proyecto5.png`
+* `Proyecto6.png`
+* `Proyecto7.png`
+* `Self.png`
+
+### Imágenes de Clientes:
+
+* `partner1.png`
+* `partner2.png`
+* `partner3.png`
+* `partner4.png`
+
+### Imágenes de Equipo:
+
+* `joaquin espildora.jpg` ✅ (Ya en uso)
+* `matias canepa.jpg` ✅ (Ya en uso)
+
+### Otros Assets:
+
+* `Recurso3.webp`
+* `Recurso7.webp`
+* `Recurso10.webp`
+
+---
+
+## 🎯 SECCIÓN 1: HERO (Página de Inicio)
+
+### 1.1 Estadísticas del Hero
+
+**Actualmente dice:**
+
+* "20+ Proyectos Completados"
+* "5+ Años de Experiencia"
+* "10+ Clientes Satisfechos"
+
+**Pregunta 1.1:** ¿Son correctas estas cifras o quieres actualizarlas?
+
+* [ 20+ ] Proyectos completados: **20+**
+* [ 5+ ] Años de experiencia (combinada del equipo): **5+**
+* [ 350+ ] Clientes satisfechos/activos: **10+**
+
+> Nota: si validan números mayores, los unificamos en todo el sitio/press‑kit.
+
+### 1.2 Título y Descripción Hero
+
+**Actualmente dice:**
+
+```
+"El software que tu negocio necesita justo a tiempo"
+"Somos una empresa de desarrollo y diseño de soluciones digitales boutique enfocados en innovación y personalización para tu negocio. Somos un ecosistema empresarial que impulsa el mercado de empresas con tecnología innovadora y análisis de datos.
+Ofrecemos soluciones integrales desde la identificación de inversiones hasta la creación de herramientas y softwares, guiados por la eficiencia e innovación, para una transformación digital completa"
+```
+
+**Pregunta 1.2:** ¿Quieres cambiar el mensaje principal del hero?
+
+* [ ] Mantener como está
+* [x] Cambiar a: **H1:** *Software a medida y automatización para resultados de negocio.*
+  **H2:** *Estudio boutique de ingeniería en Chile. RPA, ETL, integraciones, data/analytics y cloud con enfoque comercial y financiero.*
+* [ Sí ] Agregar mención específica de Chile/Miami: **Chile: Sí** · **Miami: Operación remota (opcional)**
+
+---
+
+## 🚀 SECCIÓN 2: SERVICIOS
+
+> Pilares: Agentes IA · ETL & Pipelines · Web Scraping Responsable · RPA/Portales · Data & Analytics · Cloud Development · Automatización de Workflows · Integraciones · DevOps/Seguridad.
+
+### Servicio 1: Desarrollo de Software a Medida
+
+**Actual:**
+
+* Título: "Desarrollo de Software Empresarial"
+* Descripción: "Web apps, APIs REST, automatización..."
+* Tags: Python, Ruby, Node.js
+
+**Pregunta 2.1 (propuesta):**
+
+* ¿Cambiar descripción? **Sí →** *Aplicaciones web y servicios a medida (APIs, RPA, datos) con arquitectura cloud, CI/CD y observabilidad desde el día 1.*
+* ¿Tecnologías correctas? (agregar/quitar): **Python, Ruby on Rails, Node.js**
+  **Bases:** PostgreSQL/MySQL/SQL Server · **NoSQL:** MongoDB/DynamoDB · **Vector:** pgvector/FAISS/Weaviate
+  **Cloud:** AWS/Azure/GCP · **BI:** Power BI/Metabase
+* ¿Agregar ejemplos específicos? (ej: "ERP personalizado", "Portal clientes"): **Portales B2B, Consolas operativas, APIs para terceros, Conectores ERP/CRM**
+
+### Servicio 2: Cloud & Data Engineering
+
+**Actual:**
+
+* Tags: Azure, AWS, GCP
+
+**Pregunta 2.2 (propuesta):**
+
+* ¿Qué clouds usan más? (ordenar por prioridad): **GCP · AWS · Azure**
+* ¿Agregar servicios específicos? (ej: "Data Lakes", "ETL Pipelines"): **ETL/ELT, Data Lakes, Warehouses (BigQuery/Databricks), orquestación (Composer/Run/Lambda/Functions), calidad de datos, costos cloud**
+
+### Servicio 3: IA Aplicada
+
+**Actual:**
+
+* "Web scraping, OCR, modelos predictivos, LLMs..."
+
+**Pregunta 2.3 (propuesta):**
+
+* ¿Casos de uso reales para mencionar? **Chat/Agentes sobre catálogos/datasets (RAG), clasificación de documentos, extracción de datos en flujos operativos, copilotos internos**
+* ¿Modelos LLM que usan? (GPT-4, Claude, Gemini, Custom): **GPT‑4, Claude, Gemini; RAG con vectores (pgvector/Weaviate) y evaluaciones**
+
+### Servicio 4: Ecosistemas Fintech e Inmobiliarios
+
+**Pregunta 2.4 (propuesta):**
+
+* ¿Ejemplos concretos de proyectos fintech? **Portafolios Top‑N, backtesting con reportes ejecutivos, ETL CMF, dashboards de rendimiento**
+* ¿Integraciones bancarias? (Webpay, Transbank, etc.): **WebPay/Transbank; conciliaciones y reportería**
+
+### Servicio 5: Integraciones de Sistemas
+
+**Pregunta 2.5 (propuesta):**
+
+* ¿ERPs con los que integran? (SAP, Odoo, etc.): **SAP, Odoo (a definir), sistemas contables locales**
+* ¿CRMs? (Salesforce, HubSpot, etc.): **Salesforce, HubSpot (según cliente)**
+
+### Servicio 6: Data Analytics & Reporting
+
+**Pregunta 2.6 (propuesta):**
+
+* ¿Herramientas BI que usan? (Power BI, Tableau, Looker): **Power BI/Fabric, Metabase**
+* ¿Tipo de reportes? (financieros, operacionales, etc.): **Financieros, operacionales, comerciales (board‑ready)**
+
+**Pregunta 2.7:** ¿Quieres agregar un nuevo servicio que no está listado?
+
+* [ ] No, los 6 actuales están bien
+* [x] Sí, agregar: **Agentes de IA**, **DevOps/Seguridad**, **Automatización de Workflows**, **Web Scraping Responsable** (si no quedan explícitos en 1–6)
+
+---
+
+## 💼 SECCIÓN 3: PORTAFOLIO (LA MÁS IMPORTANTE)
+
+**Actualmente hay 2-3 proyectos vagos. Necesito info detallada para cada proyecto que quieras mostrar.**
+
+### PROYECTO 1: Databam ✅ (Ya configurado)
+
+* ✅ Imagen: `Databam.png`
+* ✅ Categorías: Platform, **PropTech**, Data & Analytics
+* ✅ Tecnologías: Ruby on Rails, Python, PostgreSQL, BigQuery/Metabase
+* ✅ URL: databam.cl
+
+---
+
+### PROYECTO 2: Aquaevo
+
+**Pregunta 3.1 - Aquaevo:**
+
+* Nombre completo del proyecto: **____**
+
+* ¿Qué es/hace Aquaevo?: **____**
+
+* Industria/Sector: **____**
+
+* Categorías (marcar las que aplican):
+
+  * [ ] Platform
+  * [ ] Fintech
+  * [ ] Data & Analytics
+  * [ ] Enterprise
+  * [ ] E-commerce
+  * [ ] Otra: **____**
+
+* Tecnologías usadas (específicas):
+
+  * Frontend: **____**
+  * Backend: **____**
+  * Base de datos: **____**
+  * Cloud/Infraestructura: **____**
+  * Otras: **____**
+
+* Descripción corta (2-3 líneas para la card): **____**
+
+  *
+
+  *
+
+* URL del proyecto (si es pública): **____**
+
+* Imagen a usar:
+
+  * [ ] `Aquaevo.png`
+  * [ ] Otra: **____**
+
+* Logros/Métricas (opcional):
+
+  * Usuarios: **____**
+  * Impacto: **____**
+
+---
+
+### PROYECTO 3: Proyecto usando Proyecto1.png
+
+**Pregunta 3.2 - Proyecto 1:**
+
+* Nombre del proyecto: **Administradora de Fondos — Portafolio Top‑N & Backtesting** (editable)
+
+* Cliente (si es público): **____**
+
+* ¿Qué hace el proyecto?: **ETL CMF, ranking Top‑N, backtesting y reportes ejecutivos**
+  *
+
+* Industria: **Finanzas**
+
+* Categorías:
+
+  * [x] Data & Analytics
+  * [x] Enterprise
+  * [ ] E-commerce
+  * [ ] IA/ML
+  * [ ] Otra: **____**
+
+* Stack tecnológico:
+
+  * Lenguajes: **Python, SQL**
+  * Frameworks: **—**
+  * Base de datos: **BigQuery/PostgreSQL**
+  * Cloud: **GCP (Storage/BigQuery/Composer/Run)**
+
+* Descripción (2-3 líneas): **Pipeline reproducible para ranking de fondos y backtesting con reportería Excel/JSON, dashboards y jobs programados.**
+
+  *
+
+* URL (si aplica): **____**
+
+* Cambiar nombre de imagen por SEO:
+
+  * Actual: `Proyecto1.png`
+  * Nuevo nombre (ej: "databam-dashboard.png"): **topn-backtesting-finanzas.png** (editable)
+
+---
+
+### PROYECTO 4: Proyecto usando Proyecto3.png
+
+**Pregunta 3.3 - Proyecto 3:**
+
+* Nombre: **Automatización PJUD — Carga y Envíos** (editable)
+* Cliente: **Contego** (si prefieren genérico, dejamos "LegalTech")
+* Descripción: **Robots resilientes para carga/envío masivo, validación de duplicados y control post‑envío con monitoreo.**
+  *
+* Industria: **LegalTech**
+* Categorías: **RPA/Portales, Automatización**
+* Tecnologías principales (3-5): **Playwright/Selenium, Python, Colas/Backoff, Logging/Auditoría, Cloud**
+* URL: **____**
+* Renombrar imagen a: **automatizacion-pjud-envios.png** (editable)
+
+---
+
+### PROYECTO 5: Proyecto usando Proyecto4.png
+
+**Pregunta 3.4 - Proyecto 4:**
+
+* Nombre: **Tickets DGA — Alta & Seguimiento** (editable)
+* Cliente: **Pacific Hydro**
+* Descripción: **Automatización correo→portal DGA→SharePoint, trazabilidad en Mongo y dashboards.**
+  *
+* Industria: **Energía**
+* Categorías: **Automatización, Integraciones, Data**
+* Tecnologías: **Azure Functions (Python), Power Automate, SharePoint, MongoDB**
+* URL: **____**
+* Renombrar imagen a: **automatizacion-dga-tickets.png** (editable)
+
+---
+
+### PROYECTO 6: Proyecto usando Proyecto5.png
+
+**Pregunta 3.5 - Proyecto 5:**
+
+* Nombre: **E‑commerce — Integraciones (Jumpseller/Shopify/WooCommerce)** (editable)
+* Cliente: **Retail** (genérico)
+* Descripción: **ETL inventario, idempotencia por SKU e integraciones de pagos/logística con monitoreo.**
+  *
+* Industria: **Retail/E‑commerce**
+* Categorías: **Integraciones, Automatización, Cloud**
+* Tecnologías: **Python, APIs Jumpseller/Shopify/WooCommerce, AWS/GCP**
+* URL: **____**
+* Renombrar imagen a: **integraciones-ecommerce-retail.png** (editable)
+
+---
+
+### PROYECTO 7: Proyecto usando Proyecto6.png
+
+**Pregunta 3.6 - Proyecto 6:**
+
+* Nombre: **CBRS — Suscripción y Dumps de Datos** (editable)
+* Cliente: **PropTech** (genérico)
+* Descripción: **Extractores responsables con límites/captcha, deduplicación y entrega diaria a bucket con tableros de cobertura.**
+  *
+* Industria: **PropTech/Legal**
+* Categorías: **Web Scraping Responsable, ETL, Data**
+* Tecnologías: **Python, Colas/Rate Limit, S3/BigQuery, Metabase**
+* URL: **____**
+* Renombrar imagen a: **cbrs-datos-proptech.png** (editable)
+
+---
+
+### PROYECTO 8: Proyecto usando Proyecto7.png
+
+**Pregunta 3.7 - Proyecto 7:**
+
+* Nombre: **Agentes IA — Copilotos sobre catálogos/datasets** (editable)
+* Cliente: **—**
+* Descripción: **RAG con vectores, herramientas y observabilidad para asistencia a equipos internos.**
+  *
+* Industria: **Enterprise**
+* Categorías: **IA/ML, Data**
+* Tecnologías: **GPT‑4/Claude/Gemini, pgvector/Weaviate, Python**
+* URL: **____**
+* Renombrar imagen a: **agentes-ia-copilotos.png** (editable)
+
+---
+
+### PROYECTO 9: Proyecto usando Self.png (¿es su propia web?)
+
+**Pregunta 3.8 - Self.png:**
+
+* ¿Qué es este proyecto?: **Sitio corporativo Just Dev It** (si aplica)
+* ¿Es la web de Just Dev It o es un cliente?: **Just Dev It**
+* ¿Mostrar en portafolio? **Sí/No**
+* Si Sí:
+
+  * Nombre: **Sitio Just Dev It**
+  * Descripción: **Sitio SEO + generación de demanda con landing por servicios y casos.**
+  * Tecnologías: **Next.js/WordPress (definir), GA4, JSON‑LD**
+
+**Pregunta 3.9 - Proyectos adicionales:**
+
+* ¿Hay otros proyectos importantes que no tienen imagen?
+
+  * Proyecto: **____**
+    Descripción: **____**
+    Tecnologías: **____**
+    ¿Necesitas que cree una imagen placeholder? **Sí / No**
+
+---
+
+## 🏢 SECCIÓN 4: CLIENTES
+
+**Actualmente menciona:**
+
+* Pacific Hydro
+* Contego
+* MT2
+* ESE Business School
+
+### Partner Logos
+
+Tienes 4 imágenes: partner1.png, partner2.png, partner3.png, partner4.png
+
+**Pregunta 4.1 - Clientes (propuesta):**
+
+1. **Pacific Hydro** (usar/renombrar a `logo-pacific-hydro.png`)
+2. **Contego** (o genérico "LegalTech") (`logo-contego.png`)
+3. **ESE Business School** (`logo-ese.png`)
+4. **Administradora de Fondos** (genérico) (`logo-af.png`)
+
+**Pregunta 4.2:**
+
+* ¿Agregar testimonios de clientes?
+
+  * [ ] No por ahora
+  * [ ] Sí, agregar:
+
+    * Cliente: **____**
+    * Testimonio (2-3 líneas): **____**
+    * Cargo de quien da el testimonio: **____**
+    * Proyecto asociado: **____**
+
+---
+
+## 👥 SECCIÓN 5: NOSOTROS (EQUIPO)
+
+**Actualmente:**
+
+* Joaquín Espildora M. — **Director Comercial & Asesor Financiero**
+* Matías Cánepa G. — **CTO & Arquitectura (Profesor de Big Data, UANDES)**
+
+### Joaquín Espildora
+
+**Pregunta 5.1 - Bio de Joaquín:**
+
+* Título/Cargo exacto: **Director Comercial & Asesor Financiero** (editable)
+* Años de experiencia: **____**
+* Especialización principal: **Levantamiento de capital, estructuración de fondos, reportería ejecutiva**
+* Bio corta (3-4 líneas): **____**
+  *
+  *
+* LinkedIn URL: **____**
+* Logros destacados (opcional): **____**
+
+### Matías Cánepa
+
+**Pregunta 5.2 - Bio de Matías:**
+
+* Título/Cargo exacto: **CTO & Arquitecto Cloud** (Profesor Big Data UANDES)
+* Años de experiencia: **____**
+* Especialización principal: **ETL/ELT, Cloud, RPA, Integraciones, DevOps**
+* Bio corta (3-4 líneas): **____**
+  *
+  *
+* LinkedIn URL: **____**
+* Logros destacados: **____**
+
+**Pregunta 5.3 - Equipo adicional:**
+
+* ¿Hay más miembros del equipo para mostrar?
+
+  * [x] No, solo los 2 fundadores (por ahora)
+  * [ ] Sí, agregar:
+
+    * Nombre: **____**
+    * Cargo: **____**
+    * Bio: **____**
+    * Foto disponible: Sí / No
+
+---
+
+## 📍 SECCIÓN 6: UBICACIONES (Para SEO Chile + Miami)
+
+**Pregunta 6.1 - Oficina Chile:**
+
+* Dirección exacta (si es pública): **____**
+  *
+* Comuna/Ciudad: **Santiago** (editable)
+* ¿Mostrar dirección en el sitio? **Sí / No**
+* Teléfono Chile (si es público): **____**
+
+**Pregunta 6.2 - Oficina Miami:**
+
+* ¿Tienen oficina física en Miami o es operación remota?: **Remota (propuesta)**
+* Si tienen oficina:
+
+  * Dirección: **____**
+  * Ciudad (Miami, Miami Beach, etc.): **____**
+  * Teléfono USA: **____**
+
+**Pregunta 6.3:**
+
+* ¿Operan en otros países de LATAM?
+
+  * [x] Solo Chile (y operación remota USA)
+  * [ ] También en: **____**
+
+---
+
+## 📞 SECCIÓN 7: CONTACTO
+
+**Pregunta 7.1 - Emails:**
+
+* Email principal de contacto: **[contacto@justdev.it](mailto:contacto@justdev.it)** (placeholder)
+* Email para cotizaciones: **____**
+* Email para soporte (si aplica): **____**
+
+**Pregunta 7.2 - Teléfonos:**
+
+* Teléfono Chile (WhatsApp): **____**
+* Teléfono Miami (si tienen): **____**
+
+**Pregunta 7.3 - Redes Sociales:**
+
+* LinkedIn: [https://www.linkedin.com/company/](https://www.linkedin.com/company/)**____**
+* GitHub: [https://github.com/](https://github.com/)**____**
+* Twitter/X (si tienen): **____**
+* Instagram (si tienen): **____**
+
+**Pregunta 7.4 - Formulario de contacto:**
+
+* ¿A dónde llegan los mensajes del formulario actualmente?: **____**
+* ¿Usan algún CRM o Email Marketing? (HubSpot, Mailchimp, etc.): **____**
+
+---
+
+## 🎨 SECCIÓN 8: BRANDING Y TONO
+
+**Pregunta 8.1 - Tono de comunicación:**
+
+* ¿Qué tono prefieren para el contenido?
+
+  * [ ] Profesional/Corporativo
+  * [ ] Técnico/Geek
+  * [x] Mix: **Profesional comercial + claridad técnica**
+
+**Pregunta 8.2 - Palabras clave para enfatizar:**
+
+* ¿Qué palabras/conceptos quieren que aparezcan más?
+
+  * Ejemplos: "innovación", "escalabilidad", "nearshore", "calidad"
+  * Tus palabras: **automatización, ROI, RPA, ETL, integraciones, data analytics, cloud, Chile, nearshore, confiabilidad**
+
+**Pregunta 8.3 - Diferenciadores (propuesta base):**
+
+1. Equipo fundador **hands‑on** con mezcla **comercial/financiera + arquitectura**
+2. Entregas **predecibles** con observabilidad y SLAs
+3. Experiencia real en **proptech, legaltech, energía y retail**
+
+---
+
+## 🏆 SECCIÓN 9: CASOS DE ÉXITO / MÉTRICAS
+
+**Pregunta 9.1 - Logros cuantificables:**
+
+* ¿Tienen métricas de éxito para mostrar?
+
+  * [ ] Tiempo promedio de entrega: **____**
+  * [ ] % de satisfacción del cliente: **____**
+  * [ ] Aumento de eficiencia en clientes: **____**
+  * [ ] ROI generado: **____**
+  * [ ] Usuarios totales en plataformas: **____**
+
+**Pregunta 9.2 - Certificaciones:**
+
+* ¿Tienen certificaciones o partnerships?
+
+  * [ ] AWS Partner: Sí / No
+  * [ ] Microsoft Partner: Sí / No
+  * [ ] Google Cloud Partner: Sí / No
+  * [ ] Otras: **____**
+
+---
+
+## 💰 SECCIÓN 10: MODELO DE NEGOCIO (Para contenido)
+
+**Pregunta 10.1 - Tipos de proyectos:**
+
+* ¿Qué modelos de contratación ofrecen?
+
+  * [x] Proyecto cerrado (fixed price)
+  * [ ] Time & Materials
+  * [ ] Staff Augmentation / Nearshore
+  * [x] Retainer mensual
+  * [ ] Otros: **____**
+
+**Pregunta 10.2 - Tamaño de clientes:**
+
+* ¿A qué tamaño de empresa apuntan?
+
+  * [x] Startups
+  * [x] Empresas medianas (50-500 empleados)
+  * [x] Enterprise (500+ empleados)
+  * [ ] Todos
+
+---
+
+## 🎯 SECCIÓN 11: LLAMADOS A LA ACCIÓN (CTAs)
+
+**Pregunta 11.1 - CTAs principales (propuesta):**
+
+1. **Agenda una reunión**
+2. **Cotiza tu proyecto**
+3. **Ver casos**
+
+**Pregunta 11.2 - Proceso de cotización:**
+
+* Cuando alguien pide una cotización, ¿qué sucede?
+  **Diagnóstico 30–45 min → Propuesta por alcance (entregables/SLAs/cronograma) → Kick‑off**
+
+---
+
+## 📱 SECCIÓN 12: RECURSOS ADICIONALES
+
+**Pregunta 12.1 - Blog/Contenido:**
+
+* ¿Tienen o planean tener blog?
+
+  * [ ] No
+  * [x] Sí, temas a cubrir: **RPA en portales públicos, ETL/BigQuery/Databricks, scraping responsable, medir frescura/cobertura, nearshore Chile, ROI de automatización**
+
+**Pregunta 12.2 - Descargas:**
+
+* ¿Ofrecen recursos descargables? (whitepapers, caso de estudio)
+
+  * [ ] No
+  * [x] Sí: **Caso Databam (proptech), Automatización PJUD, Tickets DGA, Portafolios Top‑N**
+
+---
+
+## 🔍 SECCIÓN 13: SEO Y KEYWORDS
+
+**Pregunta 13.1 - Búsquedas objetivo (propuesta inicial):**
+
+* ¿Cómo buscaría tu cliente ideal en Google?
+
+  * Ejemplo: "desarrollo software fintech Chile"
+  * Tus keywords objetivo:
+
+    1. **desarrollo de software a medida chile**
+    2. **automatización rpa chile**
+    3. **etl bigquery integraciones chile**
+    4. **consultora data analytics santiago**
+    5. **desarrollo cloud aws gcp azure chile**
+    6. **web scraping responsable chile**
+    7. **integraciones erp crm pagos chile**
+    8. **agentes ia empresa chile**
+
+**Pregunta 13.2 - Competencia:**
+
+* ¿Quiénes son sus principales competidores?
+
+  1. **____**
+  2. **____**
+  3. **____**
+
+---
+
+## ✅ CHECKLIST FINAL
+
+Marca cuando completes cada sección:
+
+* [ ] Sección 1: Hero (estadísticas y mensajes)
+* [ ] Sección 2: Servicios (6+ servicios detallados)
+* [ ] Sección 3: Portafolio (7-9 proyectos con info completa)
+* [ ] Sección 4: Clientes (4 logos + testimonios)
+* [ ] Sección 5: Equipo (bios de fundadores)
+* [ ] Sección 6: Ubicaciones (Chile y Miami)
+* [ ] Sección 7: Contacto (emails, teléfonos, redes)
+* [ ] Sección 8: Branding (tono y diferenciadores)
+* [ ] Sección 9: Métricas (logros cuantificables)
+* [ ] Sección 10: Modelo de negocio
+* [ ] Sección 11: CTAs
+* [ ] Sección 12: Recursos adicionales
+* [ ] Sección 13: SEO keywords
+
+---
+
+## 📝 INSTRUCCIONES DE ENTREGA
+
+**Puedes responder de las siguientes formas:**
+
+### Opción 1: Responder en este mismo archivo
+
+* Edita este archivo y llena los espacios en blanco
+* Guárdalo como `CUESTIONARIO-CONTENIDO-RESPONDIDO.md`
+
+### Opción 2: Responder por secciones
+
+* Copia la sección que vayas a responder
+* Pégala en tu respuesta
+* Responde solo esa sección
+* Iremos sección por sección
+
+### Opción 3: Audio/Video
+
+* Graba un audio/video explicando cada proyecto
+* Yo transcribo y organizo
+
+### Opción 4: Reunión rápida
+
+* Dame 30-45 minutos y te hago las preguntas en vivo
+* Tomo notas y redacto
+
+---
+
+## 🚀 PRÓXIMOS PASOS DESPUÉS DE COMPLETAR
+
+Una vez tengas todas las respuestas, yo haré:
+
+1. ✅ Redactar todo el contenido optimizado para SEO
+2. ✅ Renombrar imágenes con keywords (ej: `databam-plataforma-inmobiliaria.png`)
+3. ✅ Agregar alt text descriptivo a cada imagen
+4. ✅ Crear descripciones únicas para cada proyecto
+5. ✅ Actualizar meta tags con keywords reales
+6. ✅ Estructurar JSON-LD con proyectos y servicios reales
+7. ✅ Optimizar títulos y encabezados (H1, H2, H3)
+8. ✅ Agregar internal linking estratégico
+9. ✅ Crear contenido para aumentar tiempo en página
+10. ✅ Todo listo para indexar y rankear 🎯
+
+---
+
+**Tiempo estimado de llenado:** 30-45 minutos
+**Resultado:** Sitio web con contenido real, optimizado y listo para convertir
+
+**¡Empecemos! 🚀**
+
+---
+
+# ANEXO — Sugerencias estratégicas para la web (SEO, GEO, Marketing Digital)
+
+> Compilé **todo lo nuevo** que detecté a partir de tus proyectos y brandbook para que lo agreguemos a la web. Está organizado para que puedas implementarlo por bloques o usarlo como checklist.
+
+## A) Estructura y páginas nuevas recomendadas
+
+1. **Soluciones por industria** (URLs tipo `/soluciones/proptech`, `/soluciones/legaltech`, `/soluciones/energia`, `/soluciones/retail`)
+
+   * Problemas comunes → Soluciones → Casos → KPIs.
+   * CTA: *“Agenda diagnóstico”*.
+2. **Soluciones por capacidad** (URLs tipo `/soluciones/rpa-portales`, `/soluciones/etl`, `/soluciones/integraciones`, `/soluciones/agentes-ia`)
+
+   * Explicar límites (captcha/ToS), SLAs de frescura, métricas de éxito.
+3. **Recursos/Blog** con clusters (ver sección H/SEO): guías técnicas y de negocio; PDFs descargables (casos, whitepapers).
+4. **Calculadora ROI** (RPA/ETL) → formulario + resultado (lead magnet).
+5. **Página de Pricing** (sin tarifas por hora): *cómo cotizamos*, ejemplos de paquetes (MVP, Data Launchpad, Integración Express, Retainer), FAQs.
+6. **Política de Privacidad & Términos** (incluye uso de datos, scraping responsable, cookies).
+7. **Status/Confiabilidad** (simple): uptime, incidentes resueltos, enlaces a runbooks (opcional, suma confianza técnica).
+
+---
+
+## B) Clúster de keywords (SEO + GEO)
+
+**Pilar 1 — Software a medida (Chile):**
+
+* desarrollo de software a medida chile; consultora software santiago; empresa desarrollo cloud chile; nearshore chile usa
+  **Pilar 2 — Automatización RPA / Portales:**
+* rpa chile; automatización portales chile; robot judicial pjud; automatizar dga; web scraping responsable chile; bots selenium/playwright chile
+  **Pilar 3 — Data/ETL/BigQuery/Databricks:**
+* etl bigquery chile; pipelines de datos chile; databricks azure chile; data warehouse chile; calidad de datos chile
+  **Pilar 4 — Integraciones / E‑commerce:**
+* integraciones erp crm chile; integrar webpay transbank; jumpseller shopify woocommerce chile; sincronización inventario ecommerce
+  **Pilar 5 — IA/Agentes:**
+* agentes ia empresa chile; rag pgvector chile; copilotos internos chile
+  **GEO secundario (local):**
+* santiago; las condes; providencia; vitacura (usar en landing locales y schema **`LocalBusiness`** si se publica dirección)
+  **GEO internacional (nearshore):**
+* miami; usa; latam (usar en copies, pero mantener como operación remota si no hay oficina física)
+
+> **Tip:** crear **landing GEO**: `/chile/santiago`, `/chile/las-condes`, `/usa/miami` con el mismo servicio pero contexto local (testimonios, horarios, moneda, CTAs).
+
+---
+
+## C) Metadatos y tags de marketing (plantillas)
+
+**Title (≤60) + Meta (≤155) por tipo de página**
+
+* Home — *Software a medida y automatización en Chile | Just Dev It*
+  Meta: *RPA, ETL, integraciones, data/analytics y cloud con enfoque comercial y financiero.*
+* Servicio — *RPA y automatización de portales | Just Dev It*
+  Meta: *Robots resilientes con colas, reintentos y monitoreo. Casos reales en Chile.*
+* Solución/Industria — *PropTech: datos inmobiliarios y ETL | Just Dev It*
+  Meta: *Pipelines SII/CBRS, DW en BigQuery/Databricks y dashboards para decisiones.*
+* Caso — *Estudio de caso: automatización PJUD | Just Dev It*
+  Meta: *Carga/envíos masivos, validación de duplicados y control post‑envío.*
+
+**Open Graph / Twitter** (por defecto en `<head>`)
+
+```html
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Just Dev It">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="https://justdev.it/og/{{slug}}.png">
+<meta property="og:url" content="https://justdev.it{{pathname}}">
+<meta name="twitter:card" content="summary_large_image">
+```
+
+**Robots / Canonical / Sitemap**
+
+```html
+<link rel="canonical" href="https://justdev.it{{pathname}}"/>
+<link rel="alternate" hreflang="es-CL" href="https://justdev.it{{pathname}}"/>
+<link rel="alternate" hreflang="en-US" href="https://justdev.it/en{{pathname}}"/>
+```
+
+* `robots.txt`: permitir crawl general, bloquear `/admin` / `/api` / staging.
+* `sitemap.xml`: actualizar en deploy.
+
+**JSON‑LD sugerido (site‑wide)**
+
+* `Organization`, `WebSite` (con `SearchAction`), `ProfessionalService` (servicios), `CaseStudy`, `FAQPage`, `ContactPage`, `BreadcrumbList`.
+
+---
+
+## D) SEO generativo (LLMs)
+
+1. **Resumen canónico** por página (60–80 palabras) con entidades: servicios, industrias, ubicación, founders.
+2. **LLM Readme** (página oculta /public): explica qué hace la empresa, diccionario de términos (PJUD, DGA, SII, CBRS, BigQuery, Databricks, WebPay), políticas de scraping responsable y alcances.
+3. **JSON‑LD completo** ayuda a que LLMs reconozcan estructura: Organization → Services → CaseStudy → ContactPoint.
+4. **Q&A cortas** (3–5 por página) para alimentar respuestas directas (también como `FAQPage`).
+
+---
+
+## E) Conversión, tracking y funnels
+
+1. **Eventos GA4** (GTM): `lead_submit`, `cta_click_agenda`, `cta_click_cotizar`, `whatsapp_click`, `download_whitepaper`, `roi_calc_complete`.
+2. **Taxonomía UTM**: `utm_source` (site/ads/email), `utm_medium` (hero/cta/blog), `utm_campaign` (lead-gen/q4‑proptech/finanzas), `utm_content` (hero_primary/button_footer).
+3. **Pixels**: Google Ads, LinkedIn Insight, (opcional) Meta. Retargeting de visitantes de **/casos** y **/servicios**.
+4. **Thank‑you pages** dedicadas por objetivo (`/gracias-demo`, `/gracias-cotizacion`) para medir conversiones.
+5. **Lead scoring simple**: +2 si visita /casos, +3 si visita /servicios/rpa‑portales, +5 si descarga PDF, +10 si agenda.
+
+---
+
+## F) Performance y técnica (Core Web Vitals)
+
+* LCP < 2.5s (hero en AVIF/WEBP < 200KB), CLS < 0.1 (reservar alturas), INP < 200ms.
+* `preconnect` a fuentes/CDN; `font-display: swap`; imágenes responsive (`srcset`, `sizes`).
+* Defer/async de JS no crítico; CSS crítico inline (< 30KB).
+* Auditoría de enlaces rotos, canónicos coherentes, 404 con buscador interno.
+
+---
+
+## G) Local GEO (Chile/USA)
+
+* **Landing Santiago**: casos locales (PJUD, DGA), horarios, moneda CLP/UF.
+* **Landing Miami/USA (remoto)**: enfoque nearshore (timezone, idioma), facturación USD, compliance.
+* `LocalBusiness` schema si publican dirección en Chile; si no, mantener `Organization` global + `ContactPoint` por idioma.
+
+---
+
+## H) Contenidos y clusters (Blog/Recursos)
+
+**Cluster RPA/Portales**
+
+* *Guía de RPA en portales públicos en Chile* (ToS, captcha, límites, métricas)
+* *Cómo medir el éxito de un robot: SLAs, reintentos, trazabilidad*
+  **Cluster Data/ETL**
+* *BigQuery vs. Databricks: cuándo usar cada uno*
+* *Métricas de frescura y cobertura en pipelines*
+* *Gobierno de datos práctico para pymes chilenas*
+  **Cluster PropTech**
+* *Integrando SII/CBRS de forma responsable*
+* *KPIs inmobiliarios clave para inversión*
+  **Cluster Fintech**
+* *Portafolios Top‑N y backtesting explicado para gerencias*
+  **Cluster Integraciones/E‑commerce**
+* *Idempotencia por SKU y sincronización de inventario*
+* *WebPay/Transbank: buenas prácticas de integración*
+
+> Cada post con **descargable PDF** (lead magnet) y CTA a diagnóstico.
+
+---
+
+## I) Imágenes, alt text y nombres SEO
+
+* Nombra archivos con keywords: `automatizacion-pjud-envios.png`, `etl-bigquery-chile.png`, `integraciones-ecommerce-retail.png`.
+* **Alt text** descriptivo: “Robot para carga y envío en portal PJUD con validación de duplicados”.
+* Usa **OG** específicos por página (`/og/slug.png`).
+
+---
+
+## J) Trust & legal
+
+* **Política de scraping responsable** (qué sí/no hacemos).
+* **Seguridad**: TLS 1.3, AES‑256, gestión de secretos; mención de evaluaciones **ZKP** en casos avanzados de privacidad.
+* **SLAs** públicos resumidos; Compromiso de soporte.
+
+---
+
+## K) Backlinks y PR
+
+* Publicar casos como **PDF** con versiones “para compartir”.
+* Guest posts en *proptech/legaltech/analytics* locales (ESE, comunidades tech).
+* Directorios: empresas de software Chile, partners cloud.
+
+---
+
+## L) Roadmap de implementación (90 días)
+
+1. **Semana 1–2**: landings de servicios + industria (RPA, ETL, PropTech, LegalTech).
+2. **Semana 3–4**: casos completos (Databam, PJUD, DGA, AF/Backtesting, E‑commerce, CBRS).
+3. **Semana 5–6**: blog (2 posts/semana) + PDFs descargables.
+4. **Semana 7–8**: calculadora ROI + thank‑you pages + retargeting.
+5. **Semana 9–12**: landings GEO (Santiago, Miami), auditoría CWV y backlinks.
