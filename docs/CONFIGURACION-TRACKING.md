@@ -9,9 +9,11 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 ## 🎯 1. Google Tag Manager (GTM)
 
 ### Ubicación en el código
+
 - **Líneas 7-12** del `index.html`
 
 ### Pasos para configurar:
+
 1. Crear cuenta en [Google Tag Manager](https://tagmanager.google.com)
 2. Crear un nuevo contenedor para el sitio web
 3. Copiar el ID del contenedor (formato: `GTM-XXXXXXX`)
@@ -29,9 +31,11 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 ## 📈 2. Google Analytics 4 (GA4)
 
 ### Ubicación en el código
+
 - **Líneas 16-30** del `index.html`
 
 ### Pasos para configurar:
+
 1. Crear propiedad en [Google Analytics](https://analytics.google.com)
 2. Obtener el ID de medición (formato: `G-XXXXXXXXXX`)
 3. Reemplazar en 2 lugares:
@@ -41,6 +45,7 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
    ```
 
 ### Eventos de conversión configurados:
+
 - ✅ `page_loaded` - Página completamente cargada
 - ✅ `lead_form_submit` - Formulario de contacto enviado
 - ✅ `quote_button_click` - Clic en "Cotizar Proyecto"
@@ -56,19 +61,23 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 ## 📘 3. Facebook Pixel
 
 ### Ubicación en el código
+
 - **Líneas 34-46** del `index.html`
 
 ### Pasos para configurar:
+
 1. Ir a [Facebook Business Manager](https://business.facebook.com)
 2. Crear un Pixel en Events Manager
 3. Copiar el ID del Pixel (formato numérico de 15-16 dígitos)
 4. Reemplazar en 2 lugares:
    ```javascript
-   fbq('init', 'XXXXXXXXXXXXXXXXX');
-   src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"
+   fbq("init", "XXXXXXXXXXXXXXXXX");
+   src =
+     "https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1";
    ```
 
 ### Eventos mapeados automáticamente:
+
 - `Lead` - Envío de formulario
 - `Contact` - Clic en cotizar
 - `ViewContent` - Visualización de portfolio/servicios
@@ -79,9 +88,11 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 ## 💼 4. LinkedIn Insight Tag
 
 ### Ubicación en el código
+
 - **Líneas 50-64** del `index.html`
 
 ### Pasos para configurar:
+
 1. Ir a [LinkedIn Campaign Manager](https://www.linkedin.com/campaignmanager)
 2. Crear una cuenta publicitaria si no la tienes
 3. Ir a "Account Assets" > "Insight Tag"
@@ -89,7 +100,7 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 5. Reemplazar en 2 lugares:
    ```javascript
    _linkedin_partner_id = "XXXXXXX";
-   src="https://px.ads.linkedin.com/collect/?pid=XXXXXXX&fmt=gif"
+   src = "https://px.ads.linkedin.com/collect/?pid=XXXXXXX&fmt=gif";
    ```
 
 ---
@@ -97,6 +108,7 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 ## 🎬 5. Preloader Premium
 
 ### Características implementadas:
+
 - ✅ Fondo negro puro (#000000)
 - ✅ Isotipo animado con glow effect
 - ✅ Barra de progreso con gradiente
@@ -107,6 +119,7 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 - ✅ Sin impacto en LCP (Largest Contentful Paint)
 
 ### Archivos modificados:
+
 - `css/components/preloader.css`
 - `js/epic-preloader.js`
 - `index.html` (líneas 632-650)
@@ -116,6 +129,7 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
 ## 🔍 6. SEO y GEO Optimizaciones
 
 ### Meta tags mejorados:
+
 - ✅ **Keywords ampliados**: 300+ términos estratégicos
 - ✅ **GEO targeting**: Chile y Latinoamérica
 - ✅ **AI Context**: Información para IA generativas (ChatGPT, Perplexity, etc.)
@@ -125,7 +139,9 @@ Se ha implementado un sistema completo de tracking de conversiones y métricas d
   - WebSite con SearchAction
 
 ### Contenido semántico oculto:
+
 Agregado en el footer (líneas 1755-1780) con clase `.sr-only`:
+
 - 8 secciones de contenido para crawlers
 - 500+ palabras clave long-tail
 - Cobertura de servicios, tecnologías, industrias
@@ -137,21 +153,24 @@ Agregado en el footer (líneas 1755-1780) con clase `.sr-only`:
 ## 📊 7. Sistema de Tracking de Conversiones
 
 ### Archivo creado:
+
 `js/conversion-tracking.js`
 
 ### Funcionalidad:
+
 - Tracking unificado para todas las plataformas
 - Eventos automáticos sin configuración adicional
 - Throttling para no afectar performance
 - Uso de IntersectionObserver para eficiencia
 
 ### Uso manual (opcional):
+
 ```javascript
 // Trackear evento personalizado
-window.trackConversion('evento_personalizado', {
-  category: 'categoria',
-  label: 'etiqueta',
-  value: 100
+window.trackConversion("evento_personalizado", {
+  category: "categoria",
+  label: "etiqueta",
+  value: 100,
 });
 ```
 
@@ -160,6 +179,7 @@ window.trackConversion('evento_personalizado', {
 ## ⚡ 8. Optimizaciones de Performance
 
 ### Implementadas:
+
 1. **Preloader ligero**: Solo CSS + JS vanilla (sin Three.js)
 2. **Lazy loading**: Isotipo cargado con `loading="eager"`
 3. **RequestAnimationFrame**: Animaciones suaves sin bloqueos
@@ -170,6 +190,7 @@ window.trackConversion('evento_personalizado', {
 8. **IntersectionObserver**: Detección de visibilidad eficiente
 
 ### Métricas objetivo:
+
 - **LCP** (Largest Contentful Paint): < 2.5s ✅
 - **FID** (First Input Delay): < 100ms ✅
 - **CLS** (Cumulative Layout Shift): < 0.1 ✅
@@ -180,21 +201,26 @@ window.trackConversion('evento_personalizado', {
 ## 🚀 Pasos Finales de Configuración
 
 ### 1. Reemplazar IDs de Tracking
+
 Buscar y reemplazar en `index.html`:
+
 - `GTM-XXXXXXX` → Tu ID de Google Tag Manager
 - `G-XXXXXXXXXX` → Tu ID de Google Analytics 4
 - `XXXXXXXXXXXXXXXXX` → Tu ID de Facebook Pixel
 - `XXXXXXX` → Tu ID de LinkedIn Insight Tag
 
 ### 2. Configurar Conversiones en Google Ads (Opcional)
+
 En `js/conversion-tracking.js` línea 51:
+
 ```javascript
-gtag('event', 'conversion', {
-  'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'
+gtag("event", "conversion", {
+  send_to: "AW-CONVERSION_ID/CONVERSION_LABEL",
 });
 ```
 
 ### 3. Verificar Tracking
+
 1. Abrir Chrome DevTools
 2. Ir a la pestaña "Network"
 3. Filtrar por "analytics", "facebook", "linkedin"
@@ -205,6 +231,7 @@ gtag('event', 'conversion', {
    - LinkedIn Insight Tag Helper
 
 ### 4. Probar Eventos
+
 1. Hacer scroll hasta 50%
 2. Hacer clic en "Cotizar Proyecto"
 3. Ver un proyecto del portfolio
@@ -216,22 +243,27 @@ gtag('event', 'conversion', {
 ## 📝 Notas Importantes
 
 ### Privacidad y GDPR
+
 ⚠️ **IMPORTANTE**: Para cumplir con GDPR/LGPD:
+
 1. Agregar banner de cookies
 2. Obtener consentimiento antes de cargar pixels
 3. Implementar política de privacidad
 4. Permitir opt-out de tracking
 
 ### Google Consent Mode v2
+
 Considerar implementar:
+
 ```javascript
-gtag('consent', 'default', {
-  'analytics_storage': 'denied',
-  'ad_storage': 'denied'
+gtag("consent", "default", {
+  analytics_storage: "denied",
+  ad_storage: "denied",
 });
 ```
 
 ### Desarrollo vs Producción
+
 - Los IDs actuales (`GTM-XXXXXXX`, etc.) son placeholders
 - No se envían datos reales hasta reemplazar con IDs válidos
 - Para testing local, usar Google Analytics Debug Mode
@@ -241,22 +273,32 @@ gtag('consent', 'default', {
 ## 🎨 Personalización del Preloader
 
 ### Cambiar duración:
+
 En `js/epic-preloader.js` línea 10:
+
 ```javascript
 duration: 1200, // Milisegundos (1200 = 1.2s)
 ```
 
 ### Cambiar colores:
+
 En `css/components/preloader.css`:
+
 ```css
 background: #000000; /* Fondo negro */
-background: linear-gradient(135deg, #9B61A4 0%, #04C7AA 100%); /* Gradiente */
+background: linear-gradient(135deg, #9b61a4 0%, #04c7aa 100%); /* Gradiente */
 ```
 
 ### Usar PNG en lugar de SVG:
+
 En `index.html` línea 635:
+
 ```html
-<img src="assets/Just Dev It/Isotipo/Isotipo_blanco.png" alt="Just Dev It" loading="eager">
+<img
+  src="assets/Just Dev It/Isotipo/Isotipo_blanco.png"
+  alt="Just Dev It"
+  loading="eager"
+/>
 ```
 
 ---
@@ -264,17 +306,20 @@ En `index.html` línea 635:
 ## 🛠️ Troubleshooting
 
 ### El preloader no se muestra:
+
 1. Verificar que el isotipo existe en la ruta especificada
 2. Revisar consola del navegador (F12)
 3. Verificar que `epic-preloader.js` se carga correctamente
 
 ### Los eventos no se trackean:
+
 1. Verificar que los IDs estén correctamente configurados
 2. Revisar consola para errores de `gtag` o `fbq`
 3. Usar modo incógnito para evitar ad blockers
 4. Verificar en Network tab que se envíen requests
 
 ### Performance impactada:
+
 1. Verificar que el preloader dure < 2 segundos
 2. Revisar Lighthouse en DevTools
 3. Desactivar tracking en desarrollo si es necesario
@@ -295,4 +340,3 @@ En `index.html` línea 635:
 **Última actualización**: 28 de octubre de 2025  
 **Versión**: 2.0  
 **Mantenido por**: Just Dev It Team
-
