@@ -75,19 +75,19 @@
     line-height: 1.1;
     color: #FFFFFF;
     margin: 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    /* text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); */
 }
 
 .gradient-text {
     color: #d4a5e0;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 .gradient-text2 {
     color: #d4a5e0;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); */
 }
 
 .hero-description {
@@ -102,7 +102,7 @@
 .hero-description strong {
     color: #b77cc5;
     font-weight: 600;
-    text-shadow: 0 1px 4px rgba(155, 97, 164, 0.5);
+    /* text-shadow: 0 1px 4px rgba(155, 97, 164, 0.5); */
 }
 
 .hero-subtext {
