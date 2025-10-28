@@ -1,0 +1,48 @@
+/**
+ * DEBUG: Estilos para asegurar visibilidad de imágenes
+ * Este archivo ayuda a diagnosticar problemas con imágenes
+ */
+
+/* Forzar visibilidad de imágenes en cards de proyectos */
+.slider-card-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Verificar que las imágenes tengan contenido */
+.slider-card-image[src] {
+    border: 2px solid lime; /* Visual debug - quitar en producción */
+}
+
+/* Forzar visibilidad de imágenes del equipo */
+.team-card-avatar img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.team-card-avatar {
+    background: #333 !important; /* Fondo visible si la imagen no carga */
+}
+
+/* Debug: marcar elementos cargados */
+img[complete="true"] {
+    outline: 2px solid green;
+}
+
+img:not([src]),
+img[src=""] {
+    outline: 2px solid red !important;
+    background: red !important;
+}

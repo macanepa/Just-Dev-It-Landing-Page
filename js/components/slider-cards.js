@@ -13,6 +13,10 @@ class CardSlider {
     this.nextBtn = document.getElementById(`${sliderId.replace('-slider', '')}-next`);
     this.dotsContainer = document.getElementById(`${sliderId.replace('-slider', '')}-dots`);
     
+    // Get background container for syncing
+    this.backgroundContainer = this.slider.closest('.slider-section').querySelector('.slider-background');
+    this.backgroundImages = this.backgroundContainer ? Array.from(this.backgroundContainer.querySelectorAll('.slider-bg-image')) : [];
+    
     this.cards = Array.from(this.slider.children);
     this.currentIndex = 0;
     this.autoplayInterval = null;
@@ -52,11 +56,8 @@ class CardSlider {
     
     this.dotsContainer.innerHTML = '';
     
-    // Calculate number of visible cards
-    const cardWidth = this.cards[0].offsetWidth + 24; // card width + gap
-    const containerWidth = this.slider.parentElement.offsetWidth;
-    const visibleCards = Math.floor(containerWidth / cardWidth) || 1;
-    const totalDots = Math.max(1, this.cards.length - visibleCards + 1);
+    // Para carrusel cilíndrico infinito: 1 punto por cada tarjeta
+    const totalDots = this.cards.length;
     
     for (let i = 0; i < totalDots; i++) {
       const dot = document.createElement('div');
@@ -64,7 +65,8 @@ class CardSlider {
       if (i === 0) dot.classList.add('active');
       
       dot.addEventListener('click', () => {
-        this.goToSlide(i);
+        this.currentIndex = i;
+        this.updateSlider();
       });
       
       this.dotsContainer.appendChild(dot);
@@ -137,12 +139,62 @@ class CardSlider {
 
   updateSlider() {
     const cardWidth = this.cards[0].offsetWidth + 24;
+    
+    // Normalizar el índice para carrusel cilíndrico
+    const normalizedIndex = ((this.currentIndex % this.cards.length) + this.cards.length) % this.cards.length;
+    
     this.slider.scrollTo({
-      left: this.currentIndex * cardWidth,
+      left: normalizedIndex * cardWidth,
       behavior: 'smooth'
     });
     
     this.updateDots();
+    this.updateBackground();
+  }
+  
+  updateBackground() {
+    // Sync background image with current card
+    if (this.cards.length === 0 || this.backgroundImages.length === 0) return;
+    
+    // Normalizar el índice para carrusel cilíndrico
+    const normalizedIndex = ((this.currentIndex % this.cards.length) + this.cards.length) % this.cards.length;
+    
+    // Update active class on cards
+    this.cards.forEach((card, index) => {
+      if (index === normalizedIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+    
+    // Get the image src from the current card
+    const currentCardImage = this.cards[normalizedIndex].querySelector('.slider-card-image');
+    if (!currentCardImage) return;
+    
+    const cardImageSrc = currentCardImage.getAttribute('src');
+    
+    // Find or create matching background image
+    let matchingBgImage = this.backgroundImages.find(bg => bg.getAttribute('src') === cardImageSrc);
+    
+    if (!matchingBgImage && cardImageSrc) {
+      // Create a new background image if it doesn't exist
+      matchingBgImage = document.createElement('img');
+      matchingBgImage.className = 'slider-bg-image';
+      matchingBgImage.src = cardImageSrc;
+      matchingBgImage.alt = '';
+      this.backgroundContainer.appendChild(matchingBgImage);
+      this.backgroundImages.push(matchingBgImage);
+    }
+    
+    // Activate the matching background
+    this.backgroundImages.forEach(bg => {
+      if (bg === matchingBgImage) {
+        bg.classList.add('active');
+      } else {
+        bg.classList.remove('active');
+      }
+    });
   }
 
   goToSlide(index) {
@@ -152,14 +204,14 @@ class CardSlider {
   }
 
   nextSlide() {
-    const maxIndex = this.getMaxIndex();
-    this.currentIndex = (this.currentIndex + 1) > maxIndex ? 0 : this.currentIndex + 1;
+    // Carrusel cilíndrico infinito
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
     this.updateSlider();
   }
 
   prevSlide() {
-    const maxIndex = this.getMaxIndex();
-    this.currentIndex = (this.currentIndex - 1) < 0 ? maxIndex : this.currentIndex - 1;
+    // Carrusel cilíndrico infinito
+    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
     this.updateSlider();
   }
 
@@ -178,6 +230,7 @@ class CardSlider {
     if (index !== this.currentIndex) {
       this.currentIndex = index;
       this.updateDots();
+      this.updateBackground();
     }
   }
 
@@ -185,8 +238,10 @@ class CardSlider {
     if (!this.dotsContainer) return;
     
     const dots = this.dotsContainer.querySelectorAll('.slider-dot');
+    // Para carrusel cilíndrico: normalizar el índice dentro del rango
+    const normalizedIndex = ((this.currentIndex % this.cards.length) + this.cards.length) % this.cards.length;
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === this.currentIndex);
+      dot.classList.toggle('active', index === normalizedIndex);
     });
   }
 

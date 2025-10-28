@@ -32,7 +32,7 @@
             
             // Ajustar cantidad de partículas según el tamaño de la pantalla
             const isMobile = window.innerWidth < 768;
-            this.particleCount = isMobile ? 150 : 250; // Más partículas en desktop
+            this.particleCount = isMobile ? 80 : 250; // Menos partículas en mobile para mejor performance
             
             this.init();
         }
@@ -45,7 +45,7 @@
                 this.resize();
                 // Recrear partículas al cambiar de tamaño para ajustar cantidad
                 const isMobile = window.innerWidth < 768;
-                const newCount = isMobile ? 150 : 250;
+                const newCount = isMobile ? 80 : 250;
                 if (newCount !== this.particleCount) {
                     this.particleCount = newCount;
                     this.createParticles();
