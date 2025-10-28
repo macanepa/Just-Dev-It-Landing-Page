@@ -92,11 +92,16 @@ class CardSlider {
     let startX = 0;
     let scrollLeft = 0;
     let isDragging = false;
+    let startTime = 0;
+    let hasMoved = false;
     
+    // Mouse events
     this.slider.addEventListener('mousedown', (e) => {
       isDragging = true;
+      hasMoved = false;
       startX = e.pageX - this.slider.offsetLeft;
       scrollLeft = this.slider.scrollLeft;
+      startTime = Date.now();
       this.slider.style.cursor = 'grabbing';
     });
     
@@ -105,20 +110,53 @@ class CardSlider {
       e.preventDefault();
       const x = e.pageX - this.slider.offsetLeft;
       const walk = (x - startX) * 2;
+      if (Math.abs(walk) > 5) {
+        hasMoved = true;
+      }
       this.slider.scrollLeft = scrollLeft - walk;
     });
     
     this.slider.addEventListener('mouseup', () => {
       isDragging = false;
       this.slider.style.cursor = 'grab';
-      this.snapToCard();
-      this.resetAutoplay();
+      if (hasMoved) {
+        this.snapToCard();
+        this.resetAutoplay();
+      }
+      hasMoved = false;
     });
     
     this.slider.addEventListener('mouseleave', () => {
       isDragging = false;
       this.slider.style.cursor = 'grab';
+      hasMoved = false;
     });
+    
+    // Touch events for mobile
+    let touchStartX = 0;
+    let touchStartTime = 0;
+    
+    this.slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartTime = Date.now();
+      hasMoved = false;
+    }, { passive: true });
+    
+    this.slider.addEventListener('touchmove', (e) => {
+      const touchX = e.touches[0].clientX;
+      const diff = Math.abs(touchX - touchStartX);
+      if (diff > 5) {
+        hasMoved = true;
+      }
+    }, { passive: true });
+    
+    this.slider.addEventListener('touchend', (e) => {
+      if (hasMoved) {
+        this.snapToCard();
+        this.resetAutoplay();
+      }
+      hasMoved = false;
+    }, { passive: true });
     
     // Pause autoplay on hover
     this.slider.addEventListener('mouseenter', () => {
@@ -134,6 +172,35 @@ class CardSlider {
     // Scroll sync with dots
     this.slider.addEventListener('scroll', () => {
       this.updateDotsFromScroll();
+    });
+    
+    // Click on card to activate
+    this.cards.forEach((card, index) => {
+      card.addEventListener('click', (e) => {
+        // Evitar activar si está arrastrando
+        if (hasMoved) {
+          hasMoved = false;
+          return;
+        }
+        
+        this.currentIndex = index;
+        this.updateSlider();
+        this.resetAutoplay();
+      });
+      
+      // Make cards keyboard accessible
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `Tarjeta ${index + 1}`);
+      
+      card.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.currentIndex = index;
+          this.updateSlider();
+          this.resetAutoplay();
+        }
+      });
     });
   }
 

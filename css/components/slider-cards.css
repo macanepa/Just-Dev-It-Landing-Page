@@ -161,6 +161,17 @@
     border: 2px solid rgba(155, 97, 164, 0.2);
     opacity: 0.7;
     transform: scale(0.95);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slider-card:focus {
+    outline: 2px solid var(--color-brand-secondary);
+    outline-offset: 4px;
+}
+
+.slider-card:active {
+    transform: scale(0.98);
 }
 
 .slider-card.active {
@@ -170,6 +181,10 @@
     box-shadow: 
         0 0 0 3px rgba(155, 97, 164, 0.3),
         0 25px 50px -12px rgba(155, 97, 164, 0.5);
+}
+
+.slider-card.active:active {
+    transform: scale(0.98);
 }
 
 .slider-card:hover {
@@ -194,6 +209,9 @@
     position: absolute;
     inset: 0;
     z-index: 1;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     /* Fallback gradient para imágenes que no cargan */
     background: linear-gradient(
         135deg,
@@ -514,6 +532,16 @@
     .slider-card {
         width: 280px;
         height: 380px;
+        /* Mejor feedback táctil en móvil */
+        -webkit-tap-highlight-color: rgba(155, 97, 164, 0.2);
+    }
+    
+    .slider-card:active {
+        transform: scale(0.95);
+    }
+    
+    .slider-card.active {
+        transform: scale(1);
     }
 
     .slider-card-overlay {
@@ -527,11 +555,17 @@
     .slider-cards {
         gap: var(--space-4);
         padding-left: var(--space-4);
+        /* Mejor scroll en móvil */
+        -webkit-overflow-scrolling: touch;
+        scroll-padding-left: var(--space-4);
     }
 
     .slider-btn {
         width: 45px;
         height: 45px;
+        /* Área táctil más grande */
+        min-width: 48px;
+        min-height: 48px;
     }
     
     /* Show description always on mobile */
