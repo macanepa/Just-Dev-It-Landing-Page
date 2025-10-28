@@ -7,6 +7,7 @@ Este documento te guía para alcanzar **100%** en todos los indicadores de Light
 ## 📊 CÓMO EJECUTAR LIGHTHOUSE
 
 ### Opción 1: Chrome DevTools (Recomendado)
+
 1. Abre Chrome/Edge
 2. Navega a `https://justdev.it` (o localhost para testing)
 3. Presiona `F12` para abrir DevTools
@@ -18,6 +19,7 @@ Este documento te guía para alcanzar **100%** en todos los indicadores de Light
 6. Click **"Analyze page load"**
 
 ### Opción 2: PageSpeed Insights Online
+
 1. Visita: https://pagespeed.web.dev/
 2. Ingresa: `https://justdev.it`
 3. Click **"Analyze"**
@@ -27,6 +29,7 @@ Este documento te guía para alcanzar **100%** en todos los indicadores de Light
 ## ✅ CHECKLIST PRE-AUDIT
 
 ### 1. Verificar Archivos Críticos
+
 ```powershell
 # Desde la carpeta del proyecto
 ls assets/images/*.webp  # Verificar WebP backgrounds
@@ -36,6 +39,7 @@ ls js/**/*.js            # Verificar JavaScript
 ```
 
 ### 2. Comprimir Imágenes (Si son >200KB)
+
 ```bash
 # Instalar herramientas (si no las tienes)
 # npm install -g sharp-cli
@@ -53,6 +57,7 @@ done
 ```
 
 ### 3. Minificar CSS/JS
+
 ```powershell
 # Ya tienes minify.ps1 en el proyecto
 .\minify.ps1
@@ -63,6 +68,7 @@ done
 ```
 
 ### 4. Verificar HTTPS
+
 - ✅ Sitio debe estar en `https://` no `http://`
 - ✅ Certificado SSL válido y actualizado
 - ✅ Sin mixed content (http en https)
@@ -74,6 +80,7 @@ done
 ### 📈 PERFORMANCE (Target: 90-100)
 
 #### Métricas Clave:
+
 - **First Contentful Paint (FCP)**: <1.8s ✅
 - **Largest Contentful Paint (LCP)**: <2.5s ✅
 - **Total Blocking Time (TBT)**: <200ms ✅
@@ -81,6 +88,7 @@ done
 - **Speed Index**: <3.4s ✅
 
 #### Ya Implementado:
+
 - ✅ Lazy loading en imágenes: `loading="lazy"`
 - ✅ Preconnect a recursos externos: `<link rel="preconnect">`
 - ✅ Will-change para animaciones GPU
@@ -88,12 +96,15 @@ done
 - ✅ JavaScript defer/async donde posible
 
 #### Si Score < 90:
+
 1. **Comprimir imágenes más**:
+
    - Hero background debe ser <100KB
    - Proyectos PNG <50KB cada uno
    - Usar AVIF si navegador compatible
 
 2. **Inline Critical CSS**:
+
    ```html
    <!-- En <head> antes de otros CSS -->
    <style>
@@ -102,6 +113,7 @@ done
    ```
 
 3. **Defer non-critical JS**:
+
    ```html
    <script src="js/epic-preloader.js" defer></script>
    <script src="js/hero-background.js" defer></script>
@@ -117,6 +129,7 @@ done
 ### ♿ ACCESSIBILITY (Target: 100)
 
 #### Ya Implementado:
+
 - ✅ ARIA labels: `aria-label`, `aria-labelledby`
 - ✅ Contraste colores: Purple/black cumple WCAG AA
 - ✅ Focus visible: `:focus-visible` outline
@@ -125,7 +138,9 @@ done
 - ✅ Form labels asociados a inputs
 
 #### Verificar:
+
 1. **Tab Navigation**:
+
    ```
    - ¿Todos los elementos interactivos son accesibles con Tab?
    - ¿El orden lógico de focus?
@@ -133,6 +148,7 @@ done
    ```
 
 2. **Screen Reader Test**:
+
    - Windows: NVDA (gratis)
    - Mac: VoiceOver (integrado)
    - Verificar que todo se lee correctamente
@@ -145,6 +161,7 @@ done
    ```
 
 #### Fix Común:
+
 ```html
 <!-- Si falta ARIA en botones icon-only -->
 <button aria-label="Siguiente proyecto" class="slider-btn">→</button>
@@ -158,17 +175,21 @@ done
 ### ✅ BEST PRACTICES (Target: 100)
 
 #### Ya Implementado:
+
 - ✅ HTTPS (cuando deployed)
 - ✅ No console.log en producción
 - ✅ Imágenes con aspect ratio correcto
 - ✅ Links externos con `rel="noopener"`
 
 #### Verificar:
+
 1. **HTTP/2 Enabled**:
+
    - Hosting debe soportar HTTP/2
    - Netlify/Vercel lo hacen automáticamente
 
 2. **Errors en Console**:
+
    ```javascript
    // Abrir DevTools Console y verificar:
    - ❌ No debe haber errores rojos
@@ -176,9 +197,10 @@ done
    ```
 
 3. **Image Dimensions**:
+
    ```html
    <!-- Agregar width/height explícito previene CLS -->
-   <img src="..." alt="..." width="1200" height="630" loading="lazy">
+   <img src="..." alt="..." width="1200" height="630" loading="lazy" />
    ```
 
 4. **Remove Unused Code**:
@@ -190,6 +212,7 @@ done
 ### 🔍 SEO (Target: 100)
 
 #### Ya Implementado:
+
 - ✅ Meta description optimizada
 - ✅ Title único y descriptivo
 - ✅ Heading hierarchy (H1 → H2 → H3)
@@ -200,7 +223,9 @@ done
 - ✅ Schema.org JSON-LD
 
 #### Verificar:
+
 1. **Mobile Friendly**:
+
    ```
    - Viewport meta tag presente ✅
    - Texto legible sin zoom ✅
@@ -209,12 +234,14 @@ done
    ```
 
 2. **Links Válidos**:
+
    ```bash
    # Verificar todos los href/src funcionan
    # No hay 404s en recursos internos
    ```
 
 3. **Structured Data Valid**:
+
    - Probar en: https://search.google.com/test/rich-results
    - Copiar JSON-LD de `<head>` y validar
 
@@ -230,16 +257,17 @@ done
 
 ### Performance Scores:
 
-| Métrica | Excelente | Bueno | Necesita Mejora |
-|---------|-----------|-------|-----------------|
-| **FCP** | <1.8s | 1.8-3s | >3s |
-| **LCP** | <2.5s | 2.5-4s | >4s |
-| **TBT** | <200ms | 200-600ms | >600ms |
-| **CLS** | <0.1 | 0.1-0.25 | >0.25 |
-| **SI** | <3.4s | 3.4-5.8s | >5.8s |
+| Métrica | Excelente | Bueno     | Necesita Mejora |
+| ------- | --------- | --------- | --------------- |
+| **FCP** | <1.8s     | 1.8-3s    | >3s             |
+| **LCP** | <2.5s     | 2.5-4s    | >4s             |
+| **TBT** | <200ms    | 200-600ms | >600ms          |
+| **CLS** | <0.1      | 0.1-0.25  | >0.25           |
+| **SI**  | <3.4s     | 3.4-5.8s  | >5.8s           |
 
 ### Pesos por Categoría:
-- **Performance**: 
+
+- **Performance**:
   - LCP: 25%
   - TBT: 30%
   - CLS: 15%
@@ -252,6 +280,7 @@ done
 ## 🔧 FIXES RÁPIDOS SI SCORES <100
 
 ### Performance <90:
+
 ```bash
 # 1. Comprimir todas las imágenes
 npm install -g @squoosh/cli
@@ -266,16 +295,18 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
 ```
 
 ### Accessibility <100:
+
 ```html
 <!-- Fix típico: Agregar labels a form inputs sin label -->
 <label for="nombre" class="sr-only">Nombre</label>
-<input id="nombre" type="text" placeholder="Tu nombre">
+<input id="nombre" type="text" placeholder="Tu nombre" />
 
 <!-- Fix típico: Agregar aria-label a buttons icon-only -->
 <button aria-label="Cerrar menú">✕</button>
 ```
 
 ### Best Practices <100:
+
 ```javascript
 // Eliminar console.logs
 // Find: console\.log\(.*\);
@@ -286,9 +317,10 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
 ```
 
 ### SEO <100:
+
 ```html
 <!-- Fix típico: Agregar alt a todas las imágenes -->
-<img src="..." alt="Descripción específica aquí">
+<img src="..." alt="Descripción específica aquí" />
 
 <!-- Fix típico: H1 único por página -->
 <!-- Solo un <h1> en toda la página -->
@@ -299,16 +331,19 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
 ## 📊 HERRAMIENTAS ADICIONALES
 
 ### Performance Monitoring:
+
 - **WebPageTest**: https://www.webpagetest.org/
 - **GTmetrix**: https://gtmetrix.com/
 - **Pingdom**: https://tools.pingdom.com/
 
 ### SEO Validation:
+
 - **Google Search Console**: https://search.google.com/search-console
 - **Bing Webmaster**: https://www.bing.com/webmasters
 - **Schema Validator**: https://validator.schema.org/
 
 ### Image Optimization:
+
 - **Squoosh**: https://squoosh.app/ (online)
 - **TinyPNG**: https://tinypng.com/ (PNG/JPG)
 - **Compressor.io**: https://compressor.io/ (multi-format)
@@ -337,7 +372,9 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
 ## 🚀 DEPLOYMENT RECOMMENDATIONS
 
 ### Hosting Óptimo (100% Performance):
+
 1. **Netlify** (Recomendado):
+
    - CDN global automático
    - HTTP/2 + Brotli compression
    - Deploy continuo desde GitHub
@@ -345,6 +382,7 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
    - Edge Functions
 
 2. **Vercel**:
+
    - Edge Network ultra rápido
    - Image optimization automático
    - Analytics integrado
@@ -355,6 +393,7 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
    - Workers para lógica edge
 
 ### GitHub Pages:
+
 - ⚠️ Sin HTTP/2 optimizado
 - ⚠️ Sin compression Brotli
 - ✅ Gratis y simple
@@ -365,16 +404,19 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
 ## 📈 MÉTRICAS ESPERADAS (REALISTIC)
 
 ### First Load (Cold Cache):
+
 - **Performance**: 85-95 mobile, 95-100 desktop
 - **Accessibility**: 100
 - **Best Practices**: 95-100
 - **SEO**: 100
 
 ### Subsequent Loads (Warm Cache):
+
 - **Performance**: 98-100 todas las plataformas
 - Todo lo demás: 100
 
 ### Limitantes Reales:
+
 - Animaciones 3D (logo-3d-animation.js) pueden bajar Performance 5-10 puntos
 - Carruseles dinámicos afectan TBT levemente
 - Formulario Formspree puede agregar latencia externa
@@ -397,4 +439,4 @@ squoosh-cli --webp auto assets/images/*.{png,jpg}
 **Última actualización**: Diciembre 2024  
 **Estado preparación**: ✅ LISTO PARA AUDIT  
 **Optimizaciones aplicadas**: 15+  
-**Expectativa score**: 95-100 en todas las categorías  
+**Expectativa score**: 95-100 en todas las categorías
