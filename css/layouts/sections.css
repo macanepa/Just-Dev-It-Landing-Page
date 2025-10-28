@@ -174,7 +174,8 @@ section {
                 transform var(--transition-smooth);
 }
 
-.fade-in.is-visible {
+.fade-in.is-visible,
+.fade-in.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -186,7 +187,8 @@ section {
                 transform var(--transition-smooth);
 }
 
-.fade-in-left.is-visible {
+.fade-in-left.is-visible,
+.fade-in-left.visible {
     opacity: 1;
     transform: translateX(0);
 }
@@ -198,7 +200,8 @@ section {
                 transform var(--transition-smooth);
 }
 
-.fade-in-right.is-visible {
+.fade-in-right.is-visible,
+.fade-in-right.visible {
     opacity: 1;
     transform: translateX(0);
 }
