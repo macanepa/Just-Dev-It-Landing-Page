@@ -29,6 +29,7 @@ Si tienes VS Code con Live Server:
 ## 🎯 Qué Ver
 
 ### Sección de Servicios
+
 - Scroll hasta la sección "Nuestros Servicios"
 - Verás 6 cards con gradientes de colores
 - Arrastra las cards horizontalmente
@@ -36,12 +37,14 @@ Si tienes VS Code con Live Server:
 - Haz hover sobre una card para ver el efecto
 
 ### Sección de Portafolio
+
 - Scroll hasta "Nuestro Portafolio"
 - Verás 7 proyectos con sus imágenes
 - Misma interacción que servicios
 - Cada proyecto tiene métricas reales
 
 ### Prueba Responsive
+
 - Presiona F12 para abrir DevTools
 - Click en el ícono de dispositivo móvil
 - Prueba diferentes tamaños:
@@ -54,12 +57,14 @@ Si tienes VS Code con Live Server:
 ## 🎨 Interacciones Disponibles
 
 1. **Mouse:**
+
    - Arrastra las cards
    - Click en botones ← →
    - Click en dots
    - Hover sobre cards
 
 2. **Teclado:**
+
    - Flecha izquierda: anterior
    - Flecha derecha: siguiente
 
@@ -72,7 +77,9 @@ Si tienes VS Code con Live Server:
 ## ⚠️ Notas Importantes
 
 ### Imágenes Faltantes
+
 Las siguientes imágenes aún no existen y mostrarán gradientes:
+
 - `service-desarrollo.jpg`
 - `service-cloud.jpg`
 - `service-ai.jpg`
@@ -85,7 +92,8 @@ Las siguientes imágenes aún no existen y mostrarán gradientes:
 **Esto es normal y esperado.** Los gradientes se ven bien y son temporales.
 
 ### Proyectos
-Las imágenes de proyectos (Databam, Proyecto1-7.png) deberían estar 
+
+Las imágenes de proyectos (Databam, Proyecto1-7.png) deberían estar
 y se verán correctamente.
 
 ---
@@ -93,19 +101,24 @@ y se verán correctamente.
 ## 🐛 Si Algo No Funciona
 
 ### JavaScript no carga
+
 Verifica en la consola (F12) si hay errores. El archivo debe estar en:
+
 ```
 js/components/slider-cards.js
 ```
 
 ### CSS no aplica
+
 El archivo debe estar en:
+
 ```
 css/components/slider-cards.css
 ```
 
 ### Imágenes no cargan
-Las rutas son relativas a `index.html`. Si las imágenes de proyectos 
+
+Las rutas son relativas a `index.html`. Si las imágenes de proyectos
 no cargan, verifica que estén en `assets/images/`
 
 ---
@@ -139,10 +152,11 @@ Para probar en tu teléfono:
 
 ## 🎉 Disfruta!
 
-El sitio está completamente funcional. Todo el código está limpio, 
+El sitio está completamente funcional. Todo el código está limpio,
 optimizado y listo para producción.
 
 Si quieres agregar las imágenes reales, consulta:
+
 ```
 docs/IMAGENES-NECESARIAS.md
 ```
