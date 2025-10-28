@@ -39,8 +39,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 1s ease-in-out;
     /* Fallback si la imagen no carga */
     background: linear-gradient(
         135deg,
@@ -52,6 +53,17 @@
 
 .slider-bg-image.active {
     opacity: 1;
+    z-index: 1;
+}
+
+/* Webp backgrounds - ajustar opacidad y contraste */
+.slider-bg-image[src$=".webp"] {
+    filter: brightness(0.7) contrast(1.2);
+}
+
+/* PNG backgrounds - para proyectos */
+.slider-bg-image[src$=".png"] {
+    filter: brightness(0.6) contrast(1.1);
 }
 
 /* Error handling for missing images */
@@ -146,7 +158,18 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--bg-card);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(155, 97, 164, 0.2);
+    border: 2px solid rgba(155, 97, 164, 0.2);
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+.slider-card.active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(155, 97, 164, 0.6);
+    box-shadow: 
+        0 0 0 3px rgba(155, 97, 164, 0.3),
+        0 25px 50px -12px rgba(155, 97, 164, 0.5);
 }
 
 .slider-card:hover {
@@ -157,18 +180,32 @@
         0 0 0 1px rgba(155, 97, 164, 0.1);
 }
 
+.slider-card.active:hover {
+    transform: translateY(-12px) scale(1.02);
+}
+
 /* Card Image */
 .slider-card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     /* Fallback gradient para imágenes que no cargan */
     background: linear-gradient(
         135deg,
         rgba(155, 97, 164, 0.3) 0%,
         rgba(4, 199, 170, 0.2) 100%
     );
+}
+
+/* Webp images - asegurar que se vean correctamente */
+.slider-card-image[src$=".webp"] {
+    opacity: 1;
+    filter: brightness(0.95) contrast(1.1);
 }
 
 /* Specific fallbacks for service images */
@@ -204,25 +241,31 @@
 .slider-card-overlay {
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: linear-gradient(
         to top,
-        rgba(9, 7, 29, 0.95) 0%,
-        rgba(9, 7, 29, 0.6) 50%,
-        rgba(9, 7, 29, 0.3) 100%
+        rgba(9, 7, 29, 0.85) 0%,
+        rgba(9, 7, 29, 0.4) 50%,
+        rgba(9, 7, 29, 0.2) 100%
     );
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: var(--space-6);
     transition: background 0.4s ease;
+    pointer-events: none; /* Permite clicks en la imagen debajo */
+}
+
+.slider-card-overlay > * {
+    pointer-events: auto; /* Reactiva clicks en el contenido */
 }
 
 .slider-card:hover .slider-card-overlay {
     background: linear-gradient(
         to top,
-        rgba(9, 7, 29, 0.98) 0%,
-        rgba(9, 7, 29, 0.8) 50%,
-        rgba(9, 7, 29, 0.5) 100%
+        rgba(9, 7, 29, 0.90) 0%,
+        rgba(9, 7, 29, 0.6) 50%,
+        rgba(9, 7, 29, 0.3) 100%
     );
 }
 
