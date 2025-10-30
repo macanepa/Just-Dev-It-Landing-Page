@@ -7,9 +7,9 @@
 .slider-section {
     position: relative;
     width: 100%;
-    min-height: fit-content;
+    min-height: auto;
     overflow: hidden;
-    padding: var(--space-20) 0;
+    padding: clamp(100px, 12vh, 140px) 0 clamp(60px, 8vh, 80px);
     display: flex;
     align-items: center;
     /* Compensar header fijo */
@@ -30,6 +30,9 @@
     position: absolute;
     inset: 0;
     transition: opacity 0.8s ease-in-out;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     /* Fallback gradient si no hay imágenes */
     background: linear-gradient(
         135deg,
@@ -114,23 +117,23 @@
 /* ===== SLIDER MAIN INFO ===== */
 .slider-main {
     max-width: 600px;
-    margin-bottom: var(--space-12);
+    margin-bottom: clamp(var(--space-8), 5vh, var(--space-12));
     animation: fadeInUp 0.8s ease-out;
 }
 
 .slider-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 4rem);
     font-weight: var(--font-extrabold);
     color: var(--color-neutral-lightest);
-    margin-bottom: var(--space-6);
+    margin-bottom: clamp(var(--space-4), 3vh, var(--space-6));
     line-height: 1.1;
 }
 
 .slider-description {
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.95rem, 1.8vw, 1.25rem);
     color: var(--color-neutral-lighter);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-8);
+    margin-bottom: clamp(var(--space-6), 4vh, var(--space-8));
 }
 
 /* ===== SLIDER CARDS CONTAINER - Centrado mejorado ===== */
@@ -176,7 +179,7 @@
     width: 350px;
     min-width: 350px;
     max-width: 350px;
-    height: 450px;
+    height: clamp(400px, 50vh, 450px);
     position: relative;
     border-radius: var(--radius-2xl);
     overflow: hidden;
@@ -244,13 +247,6 @@
     transform: scale(0.98);
 }
 
-.slider-card:hover {
-    opacity: 0.95;
-    transform: translateY(-12px) scale(1.02);
-    background: linear-gradient(
-        135deg,
-        rgba(55, 50, 75, 0.90) 0%,
-        rgba(45, 40, 65, 0.93) 50%,
 .slider-card:hover {
     opacity: 0.95;
     transform: translateY(-12px) scale(1.02);
@@ -473,10 +469,6 @@
     position: relative;
     z-index: 100;
 }
-    gap: var(--space-3);
-    justify-content: center;
-    margin-top: var(--space-6);
-}
 
 .slider-dot {
     width: 12px;
@@ -540,46 +532,50 @@
 /* Tablets */
 @media (max-width: 1024px) {
     .slider-section {
-        min-height: fit-content;
-        padding: var(--space-16) 0;
+        min-height: auto;
+        padding: clamp(90px, 10vh, 110px) 0 clamp(50px, 6vh, 70px);
     }
 
     .slider-card {
         width: 300px;
         min-width: 300px;
         max-width: 300px;
-        height: 400px;
+        height: clamp(350px, 45vh, 400px);
         scroll-snap-align: center;
     }
 
     .slider-main {
-        margin-bottom: var(--space-8);
+        margin-bottom: clamp(var(--space-6), 4vh, var(--space-8));
+    }
+    
+    .slider-title {
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
     .slider-section {
-        min-height: fit-content;
-        padding: var(--space-12) 0;
+        min-height: auto;
+        padding: clamp(90px, 12vh, 110px) 0 clamp(40px, 5vh, 60px);
     }
 
     .slider-content {
-        gap: var(--space-6);
+        gap: clamp(var(--space-4), 3vh, var(--space-6));
     }
 
     .slider-main {
-        margin-bottom: var(--space-6);
+        margin-bottom: clamp(var(--space-4), 3vh, var(--space-6));
     }
 
     .slider-title {
-        font-size: 2rem;
-        margin-bottom: var(--space-4);
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        margin-bottom: clamp(var(--space-3), 2vh, var(--space-4));
     }
 
     .slider-description {
-        font-size: 1rem;
-        margin-bottom: var(--space-6);
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        margin-bottom: clamp(var(--space-4), 3vh, var(--space-6));
     }
 
     .slider-cards-container {
@@ -601,7 +597,7 @@
         width: calc(85vw);
         min-width: calc(85vw);
         max-width: 320px;
-        height: 420px;
+        height: clamp(350px, 45vh, 420px);
         scroll-snap-align: center;
         scroll-snap-stop: always;
         /* Mantener fondo sólido en móvil */
@@ -693,39 +689,122 @@
 /* Small mobile */
 @media (max-width: 480px) {
     .slider-section {
-        min-height: 100vh;
-        min-height: 100dvh;
-        padding: var(--space-10) 0;
+        min-height: auto;
+        padding: clamp(80px, 10vh, 100px) 0 clamp(30px, 4vh, 50px);
+        display: flex;
+        flex-direction: column;
     }
 
     .slider-content {
         padding: 0 var(--space-4);
-        gap: var(--space-4);
+        gap: clamp(var(--space-3), 2vh, var(--space-4));
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .slider-main {
+        margin-bottom: clamp(var(--space-3), 2vh, var(--space-4));
+    }
+    
+    .slider-title {
+        font-size: clamp(1.3rem, 6vw, 1.75rem);
+        margin-bottom: var(--space-2);
+    }
+    
+    .slider-description {
+        font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+        margin-bottom: var(--space-3);
     }
 
     .slider-card {
         width: calc(90vw);
         min-width: calc(90vw);
         max-width: 320px;
-        height: 400px;
+        height: clamp(320px, 40vh, 380px);
     }
     
     .slider-controls {
         gap: var(--space-3);
-        margin-top: var(--space-6);
+        margin-top: clamp(var(--space-4), 3vh, var(--space-6));
     }
 
     .slider-dots {
-        margin-top: var(--space-4);
+        margin-top: var(--space-3);
+        padding-bottom: var(--space-2);
     }
 }
 
 /* High resolution displays */
 @media (min-width: 1440px) {
+    .slider-section {
+        min-height: auto;
+        padding: clamp(120px, 15vh, 160px) 0 clamp(80px, 10vh, 100px);
+    }
+    
     .slider-card {
         width: 380px;
         min-width: 380px;
         max-width: 380px;
-        height: 480px;
+        height: clamp(450px, 55vh, 480px);
+    }
+}
+
+/* Extra safety for very short screens */
+@media (max-height: 800px) {
+    .slider-section {
+        padding: clamp(80px, 8vh, 100px) 0 clamp(40px, 4vh, 60px);
+    }
+    
+    .slider-card {
+        height: clamp(320px, 40vh, 380px) !important;
+    }
+    
+    .slider-title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+        margin-bottom: var(--space-3) !important;
+    }
+    
+    .slider-description {
+        font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
+        margin-bottom: var(--space-4) !important;
+    }
+    
+    .slider-main {
+        margin-bottom: var(--space-4) !important;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+    .slider-section {
+        min-height: auto;
+        padding: clamp(70px, 6vh, 90px) 0 clamp(30px, 3vh, 40px);
+    }
+    
+    .slider-main {
+        margin-bottom: var(--space-3);
+    }
+    
+    .slider-title {
+        font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+        margin-bottom: var(--space-2);
+    }
+    
+    .slider-description {
+        font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+        margin-bottom: var(--space-3);
+    }
+    
+    .slider-card {
+        height: clamp(250px, 35vh, 300px);
+    }
+    
+    .slider-controls {
+        margin-top: var(--space-3);
+    }
+    
+    .slider-dots {
+        margin-top: var(--space-2);
     }
 }
