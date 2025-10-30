@@ -3,17 +3,23 @@
  * Estilos base para secciones del sitio
  */
 
-/* ===== SECTION BASE ===== */
+/* ===== SECTION BASE - Optimizado para todas las pantallas ===== */
 section {
     position: relative;
     width: 100%;
     min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .section {
     padding-top: var(--space-20);
     padding-bottom: var(--space-20);
     min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -48,11 +54,13 @@ section {
 .section-sm {
     padding-top: var(--space-12);
     padding-bottom: var(--space-12);
+    min-height: fit-content;
 }
 
 .section-lg {
     padding-top: var(--space-32);
     padding-bottom: var(--space-32);
+    min-height: fit-content;
 }
 
 /* ===== SECTION BACKGROUNDS ===== */

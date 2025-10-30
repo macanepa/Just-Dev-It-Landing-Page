@@ -40,12 +40,12 @@ class CardSlider {
       this.startAutoplay();
     }
     
-    // Update on resize
-    this.handleResize = this.debounce(() => {
+    // Update on resize - con throttle para optimización
+    this.handleResize = this.throttle(() => {
       this.updateSlider();
     }, 250);
     
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('resize', this.handleResize, { passive: true });
     
     // Initial update
     this.updateSlider();
@@ -88,17 +88,20 @@ class CardSlider {
       });
     }
     
-    // Touch/swipe support
+    // Touch/swipe support - Mejorado para móviles
     let startX = 0;
     let scrollLeft = 0;
     let isDragging = false;
     let startTime = 0;
     let hasMoved = false;
+    let isScrolling = false;
     
-    // Mouse events
+    // Mouse events - Mejorado para permitir scroll de página
     this.slider.addEventListener('mousedown', (e) => {
+      // Solo capturar si el click es en el área del slider
       isDragging = true;
       hasMoved = false;
+      isScrolling = false;
       startX = e.pageX - this.slider.offsetLeft;
       scrollLeft = this.slider.scrollLeft;
       startTime = Date.now();
@@ -107,55 +110,98 @@ class CardSlider {
     
     this.slider.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
-      e.preventDefault();
       const x = e.pageX - this.slider.offsetLeft;
       const walk = (x - startX) * 2;
       if (Math.abs(walk) > 5) {
         hasMoved = true;
+        isScrolling = true;
+        e.preventDefault(); // Solo prevenir si hay movimiento real
       }
       this.slider.scrollLeft = scrollLeft - walk;
     });
     
     this.slider.addEventListener('mouseup', () => {
-      isDragging = false;
-      this.slider.style.cursor = 'grab';
-      if (hasMoved) {
-        this.snapToCard();
-        this.resetAutoplay();
+      if (isDragging) {
+        isDragging = false;
+        this.slider.style.cursor = 'grab';
+        if (hasMoved && isScrolling) {
+          this.snapToCard();
+          this.resetAutoplay();
+        }
+        hasMoved = false;
+        isScrolling = false;
       }
-      hasMoved = false;
     });
     
     this.slider.addEventListener('mouseleave', () => {
-      isDragging = false;
-      this.slider.style.cursor = 'grab';
-      hasMoved = false;
+      if (isDragging) {
+        isDragging = false;
+        this.slider.style.cursor = 'grab';
+        hasMoved = false;
+        isScrolling = false;
+      }
     });
     
-    // Touch events for mobile
+    // Touch events for mobile - Mejorados para prevenir saltos
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchStartTime = 0;
+    let touchStartScrollLeft = 0;
+    let isTouchMoving = false;
+    let touchDirection = null;
     
     this.slider.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
       touchStartTime = Date.now();
+      touchStartScrollLeft = this.slider.scrollLeft;
       hasMoved = false;
+      isTouchMoving = false;
+      touchDirection = null;
     }, { passive: true });
     
     this.slider.addEventListener('touchmove', (e) => {
       const touchX = e.touches[0].clientX;
-      const diff = Math.abs(touchX - touchStartX);
-      if (diff > 5) {
+      const touchY = e.touches[0].clientY;
+      const diffX = Math.abs(touchX - touchStartX);
+      const diffY = Math.abs(touchY - touchStartY);
+      
+      // Determinar dirección de scroll solo en el primer movimiento significativo
+      if (!touchDirection && (diffX > 5 || diffY > 5)) {
+        touchDirection = diffX > diffY ? 'horizontal' : 'vertical';
+      }
+      
+      // Solo considerar como movimiento horizontal si es claramente horizontal
+      if (touchDirection === 'horizontal' && diffX > 10) {
         hasMoved = true;
+        isTouchMoving = true;
       }
     }, { passive: true });
     
     this.slider.addEventListener('touchend', (e) => {
-      if (hasMoved) {
-        this.snapToCard();
-        this.resetAutoplay();
+      // Solo hacer snap si hubo movimiento horizontal significativo
+      if (hasMoved && isTouchMoving && touchDirection === 'horizontal') {
+        const touchEndTime = Date.now();
+        const touchDuration = touchEndTime - touchStartTime;
+        const scrollDiff = Math.abs(this.slider.scrollLeft - touchStartScrollLeft);
+        
+        // Solo hacer snap si el scroll fue significativo (más de 30px)
+        if (scrollDiff > 30) {
+          setTimeout(() => {
+            this.snapToCard();
+            this.resetAutoplay();
+          }, 50);
+        } else {
+          // Si el movimiento fue muy pequeño, volver a la posición original
+          this.slider.scrollTo({
+            left: touchStartScrollLeft,
+            behavior: 'smooth'
+          });
+        }
       }
       hasMoved = false;
+      isTouchMoving = false;
+      touchDirection = null;
     }, { passive: true });
     
     // Pause autoplay on hover
@@ -169,17 +215,23 @@ class CardSlider {
       }
     });
     
-    // Scroll sync with dots
+    // Scroll sync with dots - con throttle para optimización
+    let scrollTimeout;
     this.slider.addEventListener('scroll', () => {
-      this.updateDotsFromScroll();
-    });
+      if (scrollTimeout) return;
+      scrollTimeout = setTimeout(() => {
+        this.updateDotsFromScroll();
+        scrollTimeout = null;
+      }, 100);
+    }, { passive: true });
     
-    // Click on card to activate
+    // Click on card to activate - Mejorado para evitar conflictos con touch
     this.cards.forEach((card, index) => {
       card.addEventListener('click', (e) => {
-        // Evitar activar si está arrastrando
-        if (hasMoved) {
+        // Evitar activar si está arrastrando o si hubo movimiento touch
+        if (hasMoved || isTouchMoving) {
           hasMoved = false;
+          isTouchMoving = false;
           return;
         }
         
@@ -207,20 +259,25 @@ class CardSlider {
   updateSlider() {
     if (!this.cards || this.cards.length === 0) return;
     
-    // Obtener el ancho de la card + gap
-    const card = this.cards[0];
-    const cardStyle = window.getComputedStyle(card);
-    const cardWidth = card.offsetWidth;
-    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
-    
     // Normalizar el índice para carrusel cilíndrico
     const normalizedIndex = ((this.currentIndex % this.cards.length) + this.cards.length) % this.cards.length;
     
-    // Calcular posición con gap incluido
-    const scrollPosition = normalizedIndex * (cardWidth + gap);
+    // Obtener la card actual
+    const currentCard = this.cards[normalizedIndex];
+    
+    // Calcular posición para centrar la card
+    const containerWidth = this.slider.offsetWidth;
+    const cardWidth = currentCard.offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
+    
+    // Posición de la card en el contenedor
+    const cardOffsetLeft = currentCard.offsetLeft;
+    
+    // Calcular scroll para centrar la card
+    const scrollPosition = cardOffsetLeft - (containerWidth / 2) + (cardWidth / 2);
     
     this.slider.scrollTo({
-      left: scrollPosition,
+      left: Math.max(0, scrollPosition),
       behavior: 'smooth'
     });
     
@@ -274,47 +331,89 @@ class CardSlider {
   }
 
   goToSlide(index) {
-    const maxIndex = this.getMaxIndex();
-    this.currentIndex = Math.max(0, Math.min(index, maxIndex));
+    const maxIndex = this.cards.length - 1;
+    // Normalizar el índice dentro del rango válido
+    if (index < 0) {
+      this.currentIndex = maxIndex;
+    } else if (index > maxIndex) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex = index;
+    }
     this.updateSlider();
   }
 
   nextSlide() {
-    // Carrusel cilíndrico infinito
-    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    // Carrusel cilíndrico: si estamos en la última, ir a la primera
+    if (this.currentIndex >= this.cards.length - 1) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex++;
+    }
     this.updateSlider();
   }
 
   prevSlide() {
-    // Carrusel cilíndrico infinito
-    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    // Carrusel cilíndrico: si estamos en la primera, ir a la última
+    if (this.currentIndex <= 0) {
+      this.currentIndex = this.cards.length - 1;
+    } else {
+      this.currentIndex--;
+    }
     this.updateSlider();
   }
 
   snapToCard() {
     if (!this.cards || this.cards.length === 0) return;
     
-    const card = this.cards[0];
-    const cardWidth = card.offsetWidth;
-    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
-    const scrollLeft = this.slider.scrollLeft;
-    const index = Math.round(scrollLeft / (cardWidth + gap));
-    const clampedIndex = Math.max(0, Math.min(index, this.cards.length - 1));
-    this.currentIndex = clampedIndex;
-    this.updateSlider();
+    // Encontrar la card más cercana al centro del viewport
+    const containerRect = this.slider.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+    
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+    
+    this.cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+    
+    // Solo actualizar si el índice cambió
+    if (closestIndex !== this.currentIndex) {
+      this.currentIndex = closestIndex;
+      this.updateSlider();
+    }
   }
 
   updateDotsFromScroll() {
     if (!this.cards || this.cards.length === 0) return;
     
-    const card = this.cards[0];
-    const cardWidth = card.offsetWidth;
-    const gap = parseFloat(window.getComputedStyle(this.slider).gap) || 24;
-    const scrollLeft = this.slider.scrollLeft;
-    const index = Math.round(scrollLeft / (cardWidth + gap));
+    // Encontrar la card más cercana al centro
+    const containerRect = this.slider.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
     
-    if (index !== this.currentIndex && index >= 0 && index < this.cards.length) {
-      this.currentIndex = index;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+    
+    this.cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+    
+    if (closestIndex !== this.currentIndex) {
+      this.currentIndex = closestIndex;
       this.updateDots();
       this.updateBackground();
     }
@@ -367,6 +466,17 @@ class CardSlider {
       };
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
+    };
+  }
+
+  throttle(func, wait) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, wait);
+      }
     };
   }
 
