@@ -26,22 +26,28 @@ ol[role='list'] {
     list-style: none;
 }
 
-/* Set core root defaults */
+/* Set core root defaults - Mejorado para viewport completo */
 html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    width: 100%;
 }
 
 html:focus-within {
     scroll-behavior: smooth;
 }
 
-/* Set core body defaults */
+/* Set core body defaults - Viewport completo */
 body {
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height para móviles */
     text-rendering: optimizeSpeed;
     line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* A elements that don't have a class get default styles */

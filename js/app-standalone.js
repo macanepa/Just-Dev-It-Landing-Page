@@ -112,6 +112,48 @@
     }
     
     // ==========================================
+    // ACTIVE SECTION DETECTION
+    // ==========================================
+    function initActiveSection() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        if (sections.length === 0 || navLinks.length === 0) return;
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px', // Activar cuando la sección esté centrada
+            threshold: 0
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Remover clase active de todos los links
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Agregar clase active al link correspondiente
+                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observar todas las secciones
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        console.log('✅ Active section detection inicializado');
+    }
+    
+    // ==========================================
     // ANIMACIONES AL SCROLL
     // ==========================================
     function initScrollAnimations() {
@@ -484,6 +526,7 @@
             initSmoothScroll();
             initMobileNav();
             initStickyHeader();
+            initActiveSection();
             initScrollAnimations();
             initLazyLoading();
             initFormValidation();
