@@ -825,7 +825,15 @@
           </div>
 
           <div class="hero-visual" id="hero-3d-container">
-            <!-- Animación épica de morphing -->
+            <!-- Isotipo estático (reemplaza animación 3D para optimizar recursos) -->
+            <img 
+              src="assets/images/Isotipo_morado.svg" 
+              alt="Just Dev It - Isotipo"
+              class="hero-isotipo-static"
+              width="400"
+              height="400"
+              loading="eager"
+            />
           </div>
         </div>
       </section>
@@ -1990,15 +1998,17 @@
     </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
-    <!-- Three.js para animación 3D del logo - defer para no bloquear -->
+    <!-- Three.js DESACTIVADO para optimizar RAM/CPU (ahorra ~200 MB) -->
+    <!--
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script async src="js/logo-3d-animation.js"></script>
+    -->
 
     <!-- Core Scripts - defer para mejor rendimiento -->
     <script async src="js/conversion-tracking.js"></script>
     <script defer src="js/epic-preloader.js"></script>
     <script defer src="js/hero-background.js"></script>
-    <script async src="js/logo-3d-animation.js"></script>
     <script defer src="js/components/slider-cards.js"></script>
     <script defer src="js/components/intro-parallax.js"></script>
     <script defer src="js/app-standalone.js"></script>

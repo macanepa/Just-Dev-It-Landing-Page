@@ -1,0 +1,28 @@
+# Archivos y carpetas ignorados por VS Code para mejor rendimiento
+
+# Documentación archivada
+docs/archive/**
+
+# Git
+.git/**
+.gitignore
+
+# Imágenes grandes
+assets/images/**/*.png
+assets/Just Dev It/**
+
+# Modelos 3D (deprecados)
+assets/3d_models/**
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scripts de sistema
+scripts/**
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak

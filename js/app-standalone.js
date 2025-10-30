@@ -9,6 +9,19 @@
     console.log('🚀 Inicializando Just Dev It...');
     
     // ==========================================
+    // OPTIMIZACIÓN: Detección de pestaña activa
+    // ==========================================
+    let isTabActive = true;
+    document.addEventListener('visibilitychange', () => {
+        isTabActive = !document.hidden;
+        if (!isTabActive) {
+            console.log('⏸️ Pausando animaciones (pestaña inactiva)');
+        } else {
+            console.log('▶️ Reanudando animaciones');
+        }
+    });
+    
+    // ==========================================
     // SMOOTH SCROLL
     // ==========================================
     function initSmoothScroll() {
@@ -409,7 +422,7 @@
         
         // Configuración
         const particles = [];
-        const particleCount = 80;
+        const particleCount = 30; // OPTIMIZADO: reducido de 80 a 30 (-60% CPU/RAM)
         const connectionDistance = 150;
         let mouse = { x: 0, y: 0 };
         
@@ -472,6 +485,12 @@
         
         // Animate
         function animate() {
+            // OPTIMIZACIÓN: Pausar animación cuando la pestaña no está activa
+            if (!isTabActive) {
+                requestAnimationFrame(animate);
+                return;
+            }
+            
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             // Update y draw partículas
