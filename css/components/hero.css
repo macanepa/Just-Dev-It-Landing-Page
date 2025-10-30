@@ -10,6 +10,8 @@
     padding: 140px 20px 100px;
     background: linear-gradient(135deg, #0d0d14 0%, #1a1a2e 50%, #0d0d14 100%);
     overflow: hidden;
+    /* Compensar header fijo */
+    scroll-margin-top: 80px;
 }
 
 .hero::before {
@@ -48,6 +50,8 @@
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    /* Contenido a la izquierda */
+    order: 1;
 }
 
 /* Agregar sombra de fondo sutil para mejor contraste */
@@ -213,6 +217,35 @@
     align-items: center;
     justify-content: center;
     background: transparent;
+    /* Isotipo a la derecha */
+    order: 2;
+}
+
+/* Isotipo estático (reemplaza animación 3D) */
+.hero-isotipo-static {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 40px rgba(155, 97, 164, 0.6));
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animación de flotación suave */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-2deg);
+    }
+    75% {
+        transform: translateY(-20px) rotate(1deg);
+    }
 }
 
 #hero-3d-container {

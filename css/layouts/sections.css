@@ -11,6 +11,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Compensar header fijo */
+    scroll-margin-top: 80px;
 }
 
 .section {
@@ -20,6 +22,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Compensar header fijo */
+    scroll-margin-top: 80px;
 }
 
 @media (min-width: 768px) {
