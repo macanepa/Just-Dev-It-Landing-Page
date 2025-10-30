@@ -14,7 +14,13 @@
         SERVICE_INTEREST: 'service_interest',
         SCROLL_DEPTH: 'scroll_depth',
         TIME_ON_SITE: 'time_on_site',
-        CTA_CLICK: 'cta_click'
+        CTA_CLICK: 'cta_click',
+        OUTBOUND_CLICK: 'outbound_click',
+        VIDEO_PLAY: 'video_play',
+        FILE_DOWNLOAD: 'file_download',
+        SEARCH_QUERY: 'site_search',
+        ERROR_404: 'error_404',
+        PAGE_VIEW: 'page_view'
     };
     
     // Helper para enviar eventos a múltiples plataformas
@@ -201,6 +207,62 @@
                     label: `social_${platform}`
                 });
             });
+        });
+        
+        // 8. Tracking de enlaces salientes (outbound links)
+        const outboundLinks = document.querySelectorAll('a[href^="http"]:not([href*="justdev.it"])');
+        outboundLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                trackConversion(CONVERSION_EVENTS.OUTBOUND_CLICK, {
+                    url: this.href,
+                    category: 'engagement',
+                    label: 'outbound_link'
+                });
+            });
+        });
+        
+        // 9. Tracking de clics en teléfono/email
+        const contactLinks = document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]');
+        contactLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const type = this.href.startsWith('tel:') ? 'phone' : 'email';
+                trackConversion('direct_contact', {
+                    contact_type: type,
+                    category: 'lead_generation',
+                    label: `${type}_click`,
+                    value: 75
+                });
+            });
+        });
+        
+        // 10. Tracking de engagement con el hero
+        const heroSection = document.querySelector('.hero-section, .hero');
+        if (heroSection && 'IntersectionObserver' in window) {
+            let heroEngaged = false;
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.8 && !heroEngaged) {
+                        heroEngaged = true;
+                        trackConversion('hero_engagement', {
+                            category: 'engagement',
+                            label: 'hero_viewed'
+                        });
+                    }
+                });
+            }, { threshold: 0.8 });
+            
+            heroObserver.observe(heroSection);
+        }
+        
+        // 11. Tracking de errores JavaScript (para debugging)
+        window.addEventListener('error', function(e) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    description: e.message,
+                    fatal: false,
+                    page: window.location.pathname
+                });
+            }
         });
         
         console.log('✅ Conversion tracking initialized');

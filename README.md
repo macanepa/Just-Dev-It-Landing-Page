@@ -1,17 +1,105 @@
 # 🚀 Just Dev It - Sitio Web Premium
 
-> Sitio web corporativo de nivel premium con diseño moderno, animaciones únicas y optimización SEO/GEO para IA generativa.
+> Sitio web corporativo de nivel premium con diseño moderno, animaciones únicas, optimización SEO/GEO y sistema completo de tracking analítico.
+
+**🎯 Estado**: Producción  
+**📅 Última actualización**: 30 de octubre de 2025  
+**🔗 Live**: https://justdev.it
+
+---
 
 ## ✨ Características Destacadas
 
-- **🎨 Diseño Moderno**: Sistema de diseño completo con 150+ variables CSS
-- **📱 Responsive**: Optimizado para todos los dispositivos (móvil, tablet, desktop)
-- **⚡ Performance**: Carga ultra rápida, sin dependencias externas
-- **🤖 SEO/GEO Optimizado**: Meta tags completos + Schema.org para IA (ChatGPT, Gemini, Claude)
-- **♿ Accesible**: WCAG 2.1 Level AA compliant
-- **🎭 Animaciones Únicas**: Sistema custom de animaciones con Intersection Observer
-- **🎨 Canvas 3D**: Animación de partículas personalizada en hero section
-- **✅ Validación de Formularios**: Sistema completo de validación en tiempo real
+### 🎨 Diseño y UX
+- **Diseño Moderno Premium**: Sistema de diseño completo con 150+ variables CSS
+- **100% Responsive**: Optimizado para móvil, tablet y desktop
+- **Animaciones Únicas**: Sistema custom con Intersection Observer
+- **Canvas 3D**: Animación de partículas en hero section
+- **Preloader Premium**: Isotipo animado con barra de progreso
+
+### ⚡ Performance y SEO
+- **Ultra Rápido**: Sin dependencias externas innecesarias
+- **SEO/GEO Optimizado**: Meta tags completos + Schema.org
+- **AI-Ready**: Optimizado para ChatGPT, Gemini, Claude, Perplexity
+- **Core Web Vitals**: LCP < 2.5s, FID < 100ms, CLS < 0.1
+- **Sitemap.xml**: Actualizado con hreflang alternates
+
+### 📊 Analytics y Tracking
+- **Google Tag Manager**: GTM-N67BW2PN ✅
+- **Google Analytics 4**: G-E47YX9JYCS ✅
+- **13+ Eventos Automáticos**: Forms, CTAs, scroll, time, etc.
+- **Multi-Platform**: GA4, Facebook Pixel, LinkedIn ready
+- **Privacy-Ready**: Cookie flags, GDPR preparado
+
+### ♿ Accesibilidad
+- **WCAG 2.1 Level AA**: Compliant
+- **Screen Reader Friendly**: Contenido semántico
+- **Keyboard Navigation**: Completamente navegable
+
+---
+
+## 📊 TRACKING Y ANALYTICS
+
+### ✅ Configurado y Activo
+
+#### Google Tag Manager
+```
+ID: GTM-N67BW2PN
+Estado: ✅ FUNCIONANDO
+Ubicaciones: head + body (3 tags)
+```
+
+#### Google Analytics 4
+```
+ID: G-E47YX9JYCS
+Cuenta: 359600018
+Features:
+  ✅ Enhanced Conversions
+  ✅ Page View Tracking
+  ✅ Custom Events (13+)
+  ✅ Cookie Security
+```
+
+#### Sistema de Conversiones
+```
+Archivo: js/conversion-tracking.js
+Eventos Automáticos:
+  ✅ lead_form_submit (valor: 100)
+  ✅ quote_button_click
+  ✅ direct_contact (valor: 75)
+  ✅ portfolio_item_view
+  ✅ scroll_depth (25-100%)
+  ✅ time_on_site
+  ✅ social_click
+  ✅ outbound_click
+  ✅ hero_engagement
+  ✅ exception (error logging)
+```
+
+### ⚠️ Pendiente de Configuración
+
+**Facebook Pixel** y **LinkedIn Insight Tag** están preparados pero requieren IDs.  
+Ver: `GUIA-RAPIDA-10MIN.md` para instrucciones.
+
+---
+
+## 📁 Documentación de Tracking
+
+### Quick Start (Empieza aquí)
+1. **GUIA-RAPIDA-10MIN.md** - Setup en 10 minutos
+2. **CHECKLIST-TRACKING.md** - Lista de tareas
+3. **RESUMEN-TRACKING.md** - Overview ejecutivo
+
+### Completas
+4. **docs/GUIA-CONFIGURACION-TRACKING-ACTUALIZADA.md** - Guía técnica completa (400+ líneas)
+5. **INDICE-DOCUMENTACION-TRACKING.md** - Índice de navegación
+
+### Herramientas
+6. **verificar-tracking.ps1** - Script de verificación automática
+
+**👉 Para empezar**: Lee `GUIA-RAPIDA-10MIN.md`
+
+---
 
 ## 📦 Estructura del Proyecto
 

@@ -17,14 +17,17 @@
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-XXXXXXX");
+      })(window, document, "script", "dataLayer", "GTM-N67BW2PN");
     </script>
     <!-- End Google Tag Manager -->
 
     <!-- ===== GOOGLE ANALYTICS 4 ===== -->
+    <!-- NOTA: Por favor verifica tu ID de medición en https://analytics.google.com -->
+    <!-- Para la cuenta 359600018, obtén el ID de medición (formato G-XXXXXXXXXX) -->
+    <!-- Ubicación: Admin > Flujo de datos > Detalles del flujo de datos web -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      src="https://www.googletagmanager.com/gtag/js?id=G-E47YX9JYCS"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -32,9 +35,10 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX", {
+      gtag("config", "G-E47YX9JYCS", {
         send_page_view: true,
         allow_enhanced_conversions: true,
+        cookie_flags: 'SameSite=None;Secure'
       });
 
       // Eventos de conversión personalizados
@@ -44,6 +48,11 @@
     </script>
 
     <!-- ===== FACEBOOK PIXEL ===== -->
+    <!-- ✅ CONFIGURADO: Pixel ID 1498046651302442 -->
+    <!-- ⚠️ DESACTIVADO: Solo para tracking gratuito básico -->
+    <!-- 💡 CUÁNDO ACTIVAR: Cuando vayas a hacer publicidad en Facebook/Instagram -->
+    <!-- 📝 CÓMO ACTIVAR: Simplemente quita los comentarios <!-- y --> que rodean este bloque -->
+    <!--
     <script>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -68,7 +77,7 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js"
       );
-      fbq("init", "XXXXXXXXXXXXXXXXX");
+      fbq("init", "1498046651302442");
       fbq("track", "PageView");
     </script>
     <noscript
@@ -76,12 +85,18 @@
         height="1"
         width="1"
         style="display: none"
-        src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"
+        src="https://www.facebook.com/tr?id=1498046651302442&ev=PageView&noscript=1"
     /></noscript>
+    -->
 
     <!-- ===== LINKEDIN INSIGHT TAG ===== -->
+    <!-- ✅ CONFIGURADO: Partner ID 8203674 -->
+    <!-- ⚠️ DESACTIVADO: Solo para tracking gratuito básico -->
+    <!-- 💡 CUÁNDO ACTIVAR: Cuando vayas a hacer publicidad en LinkedIn -->
+    <!-- 📝 CÓMO ACTIVAR: Simplemente quita los comentarios <!-- y --> que rodean este bloque -->
+    <!--
     <script type="text/javascript">
-      _linkedin_partner_id = "XXXXXXX";
+      _linkedin_partner_id = "8203674";
       window._linkedin_data_partner_ids =
         window._linkedin_data_partner_ids || [];
       window._linkedin_data_partner_ids.push(_linkedin_partner_id);
@@ -108,9 +123,10 @@
         width="1"
         style="display: none"
         alt=""
-        src="https://px.ads.linkedin.com/collect/?pid=XXXXXXX&fmt=gif"
+        src="https://px.ads.linkedin.com/collect/?pid=8203674&fmt=gif"
       />
     </noscript>
+    -->
 
     <!-- ===== SEO OPTIMIZADO ===== -->
     <title>

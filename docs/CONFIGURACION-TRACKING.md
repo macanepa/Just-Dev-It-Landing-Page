@@ -337,6 +337,6 @@ En `index.html` línea 635:
 
 ---
 
-**Última actualización**: 28 de octubre de 2025  
-**Versión**: 2.0  
+**Última actualización**: 30 de octubre de 2025  
+**Versión**: 3.0 (Ver GUIA-CONFIGURACION-TRACKING-ACTUALIZADA.md para versión más reciente)  
 **Mantenido por**: Just Dev It Team
