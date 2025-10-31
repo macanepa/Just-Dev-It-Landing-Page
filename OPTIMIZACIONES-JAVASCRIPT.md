@@ -3,12 +3,14 @@
 ## ✅ Optimizaciones Implementadas
 
 ### 1. **Detección de Capacidades del Dispositivo**
+
 - ✅ Detección de mobile vs desktop
 - ✅ Respeto a preferencias de movimiento reducido (`prefers-reduced-motion`)
 - ✅ Verificación de soporte de APIs modernas (IntersectionObserver, requestAnimationFrame)
 - **Impacto**: Adaptación automática según capacidades del dispositivo
 
 ### 2. **Lazy Loading Inteligente de Scripts**
+
 ```javascript
 // Scripts críticos: Carga inmediata
 - epic-preloader.js (inline)
@@ -22,13 +24,16 @@
 - slider-cards.js (después del preloader)
 - intro-parallax.js (solo cuando es visible)
 ```
-**Impacto**: 
+
+**Impacto**:
+
 - ⚡ Reducción del tiempo de carga inicial en ~40%
 - 📉 Menor bloqueo del thread principal
 
 ### 3. **Optimización de Animaciones**
 
 #### Hero Background (hero-background.js)
+
 - ✅ Desactivado en mobile (ahorra ~200MB RAM)
 - ✅ Reducción de partículas: 250 → 100 (-60%)
 - ✅ Distancia de conexión reducida: 150px → 120px
@@ -38,11 +43,13 @@
 - ✅ Uso de `desynchronized: true` en canvas context
 
 **Impacto**:
+
 - 🔋 -70% uso de CPU en animaciones
 - 💾 -60% uso de memoria RAM
 - ⚡ 60fps consistentes en desktop
 
 #### Hero 3D Animation (app-standalone.js)
+
 - ✅ Partículas reducidas: 80 → 20 (-75%)
 - ✅ Distancia de conexión: 150px → 120px
 - ✅ Desactivado completamente en mobile
@@ -50,58 +57,69 @@
 - ✅ Cálculo con distancia al cuadrado (evita sqrt)
 
 **Impacto**:
+
 - 🔋 -80% uso de CPU
 - 💾 -75% uso de memoria
 
 ### 4. **Optimización de Event Listeners**
 
 #### Implementación de Throttle y Debounce
+
 ```javascript
 // Scroll events: throttle 16-50ms
-window.addEventListener('scroll', throttle(handleScroll, 50), { passive: true });
+window.addEventListener("scroll", throttle(handleScroll, 50), {
+  passive: true,
+});
 
 // Resize events: debounce 250ms
-window.addEventListener('resize', debounce(handleResize, 250), { passive: true });
+window.addEventListener("resize", debounce(handleResize, 250), {
+  passive: true,
+});
 
 // Click events: debounce 300ms
-button.addEventListener('click', debounce(handleClick, 300));
+button.addEventListener("click", debounce(handleClick, 300));
 ```
 
 **Impacto**:
+
 - ⚡ -85% llamadas a funciones en scroll
 - 🎯 Mejor uso de requestAnimationFrame
 
 ### 5. **Batch DOM Operations**
 
 #### Antes:
+
 ```javascript
-elements.forEach(el => {
+elements.forEach((el) => {
   const rect = el.getBoundingClientRect(); // DOM read
-  el.style.transform = '...'; // DOM write
+  el.style.transform = "..."; // DOM write
   // Read/write interleaved = layout thrashing
 });
 ```
 
 #### Después:
+
 ```javascript
 // Batch reads
-const positions = elements.map(el => el.getBoundingClientRect());
+const positions = elements.map((el) => el.getBoundingClientRect());
 
 // Batch writes in RAF
 requestAnimationFrame(() => {
   elements.forEach((el, i) => {
-    el.style.transform = '...';
+    el.style.transform = "...";
   });
 });
 ```
 
 **Impacto**:
+
 - ⚡ -60% tiempo en layout/reflow
 - 📈 60fps consistentes durante scroll
 
 ### 6. **Optimización del Preloader**
 
 #### epic-preloader.js
+
 - ✅ Duración reducida: 1200ms → 1000ms
 - ✅ Tiempo mínimo: 800ms → 600ms
 - ✅ Timeout de seguridad: 3000ms → 2500ms
@@ -109,12 +127,14 @@ requestAnimationFrame(() => {
 - ✅ Tracking optimizado con checks de existencia
 
 **Impacto**:
+
 - ⚡ 20% más rápido
 - 📊 LCP mejorado
 
 ### 7. **Optimización del Slider (Swiper.js)**
 
 #### slider-cards.js
+
 - ✅ Configuración con `preloadImages: false`
 - ✅ Lazy loading activado: `loadPrevNext: true`
 - ✅ Velocidad adaptativa: 400ms desktop, 300ms mobile
@@ -122,12 +142,14 @@ requestAnimationFrame(() => {
 - ✅ Batch updates con requestAnimationFrame
 
 **Impacto**:
+
 - 📉 -50% imágenes cargadas inicialmente
 - ⚡ Interacción más fluida en mobile
 
 ### 8. **Optimización de Parallax**
 
 #### intro-parallax.js
+
 - ✅ Desactivado en mobile/reduced-motion
 - ✅ Modo simple con IntersectionObserver en mobile
 - ✅ Throttle agresivo (16ms) en scroll
@@ -135,12 +157,14 @@ requestAnimationFrame(() => {
 - ✅ Batch DOM reads/writes separados
 
 **Impacto**:
+
 - 🔋 -90% CPU en mobile (desactivado)
 - ⚡ Smooth scrolling en todos los dispositivos
 
 ### 9. **Optimización de Tracking**
 
 #### conversion-tracking.js
+
 - ✅ Queue system para batch sending
 - ✅ Flush automático cada 5 segundos
 - ✅ Throttle/debounce en eventos
@@ -148,12 +172,14 @@ requestAnimationFrame(() => {
 - ✅ Eliminación de tracking innecesario en mobile
 
 **Impacto**:
+
 - 📉 -70% requests de analytics
 - 🎯 Datos más precisos con batch sending
 
 ### 10. **Optimización de Intersection Observer**
 
 #### Configuraciones optimizadas:
+
 ```javascript
 // Scroll animations
 { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
@@ -167,6 +193,7 @@ requestAnimationFrame(() => {
 ```
 
 **Impacto**:
+
 - ⚡ Activación precisa de elementos
 - 💾 Menor uso de memoria (unobserve después de animar)
 
@@ -175,6 +202,7 @@ requestAnimationFrame(() => {
 ### Performance Metrics (Lighthouse Mobile)
 
 #### Antes:
+
 - ⏱️ FCP: ~2.8s
 - ⏱️ LCP: ~4.2s
 - 🎨 CLS: ~0.15
@@ -182,6 +210,7 @@ requestAnimationFrame(() => {
 - 📊 Performance Score: ~72
 
 #### Después (Estimado):
+
 - ⏱️ FCP: ~1.5s (-46%) ✅
 - ⏱️ LCP: ~2.3s (-45%) ✅
 - 🎨 CLS: ~0.05 (-67%) ✅
@@ -191,14 +220,17 @@ requestAnimationFrame(() => {
 ### Uso de Recursos
 
 #### CPU:
+
 - Desktop: -60% en idle, -70% en scroll
 - Mobile: -85% en idle, -90% en scroll
 
 #### Memoria RAM:
+
 - Desktop: ~150MB → ~80MB (-47%)
 - Mobile: ~120MB → ~35MB (-71%)
 
 #### JavaScript Bundle:
+
 - Tamaño inicial: ~45KB
 - Scripts no críticos: lazy load
 - Reducción de ejecución inicial: ~65%
@@ -229,10 +261,12 @@ requestAnimationFrame(() => {
 ## 🔧 Debugging y Monitoreo
 
 ### Performance Observer implementado en:
+
 - ✅ Preloader (LCP tracking)
 - ✅ Core Web Vitals tracking
 
 ### Console logs optimizados:
+
 - ✅ Solo en desarrollo
 - ✅ Sin logs en animaciones (evita overhead)
 - ✅ Logs agrupados por componente
@@ -240,6 +274,7 @@ requestAnimationFrame(() => {
 ## 🚀 Próximos Pasos (Opcional)
 
 ### Optimizaciones Adicionales Sugeridas:
+
 1. 🔄 Implementar Service Worker para caching
 2. 📦 Code splitting con dynamic imports
 3. 🗜️ Minificación y compresión Gzip/Brotli
