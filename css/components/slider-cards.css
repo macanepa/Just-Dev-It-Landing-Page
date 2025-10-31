@@ -150,7 +150,7 @@
     overscroll-behavior-x: contain;
     overscroll-behavior-y: auto;
     touch-action: pan-x pan-y;
-    will-change: scroll-position;
+    /* Eliminar will-change para evitar conflictos con scroll */
     contain: layout style;
 }
 
@@ -170,7 +170,12 @@
     cursor: pointer;
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Transiciones específicas - NO usar "all" */
+    transition: 
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid rgba(155, 97, 164, 0.25);
     opacity: 0.75;
     transform: scale(0.95);
