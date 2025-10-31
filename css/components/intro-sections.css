@@ -103,38 +103,52 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
+  align-items: stretch;
+  gap: 2rem;
   margin-top: 2rem;
-  padding: 1.5rem 1rem;
+  padding: 3rem 1.5rem;
   background: rgba(255, 255, 255, 0.02);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 280px;
 }
 
 .intro-stat {
   text-align: center;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.25rem 0.75rem;
+  gap: 0.5rem;
 }
 
 .intro-stat-number {
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 900;
   background: linear-gradient(135deg, var(--color-brand-secondary), var(--color-brand-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: block;
-  line-height: 1;
-  margin-bottom: 0.6rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .intro-stat-label {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.7;
+  max-width: 150px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* 2. Móvil grande / phablet (~480px) */
@@ -160,18 +174,27 @@
   }
   
   .intro-stats {
-    gap: 1.75rem;
-    padding: 1.75rem 1.25rem;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
     margin-top: 2.25rem;
+    min-height: 290px;
+  }
+  
+  .intro-stat {
+    min-height: 170px;
+    padding: 1.25rem 1rem;
   }
   
   .intro-stat-number {
-    font-size: clamp(2.15rem, 4.8vw, 2.9rem);
-    margin-bottom: 0.65rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 0.6rem;
   }
   
   .intro-stat-label {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    line-height: 1.75;
+    max-width: 170px;
+    letter-spacing: 0.07em;
   }
 }
 
@@ -205,18 +228,28 @@
   
   .intro-stats {
     flex-direction: row;
-    gap: 2rem;
-    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    padding: 3rem 1.5rem;
     margin-top: 2.5rem;
+    min-height: auto;
+  }
+  
+  .intro-stat {
+    flex: 1;
+    min-height: 180px;
+    padding: 1.25rem 0.75rem;
   }
   
   .intro-stat-number {
-    font-size: clamp(2.3rem, 4.5vw, 3rem);
+    font-size: clamp(1.75rem, 3.8vw, 2.5rem);
     margin-bottom: 0.7rem;
   }
   
   .intro-stat-label {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    max-width: 100%;
+    letter-spacing: 0.07em;
   }
 }
 
@@ -249,19 +282,26 @@
   }
   
   .intro-stats {
-    gap: 2.5rem;
-    padding: 2rem;
+    gap: 2rem;
+    padding: 3.25rem 1.75rem;
     margin-top: 3rem;
   }
   
+  .intro-stat {
+    min-height: 190px;
+    padding: 1.5rem 1rem;
+  }
+  
   .intro-stat-number {
-    font-size: clamp(2.5rem, 4vw, 3.25rem);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
     margin-bottom: 0.75rem;
   }
   
   .intro-stat-label {
-    font-size: 0.925rem;
-    letter-spacing: 0.12em;
+    font-size: 0.775rem;
+    letter-spacing: 0.08em;
+    line-height: 1.85;
+    max-width: 100%;
   }
 }
 
@@ -293,13 +333,15 @@
   }
   
   .intro-stats {
-    gap: 3rem;
-    padding: 2rem;
+    gap: 2.5rem;
+    padding: 3.5rem 2rem;
     margin-top: 3.25rem;
   }
   
   .intro-stat {
     transition: transform 0.3s ease;
+    min-height: 190px;
+    padding: 1.5rem 1rem;
   }
   
   .intro-stat:hover {
@@ -307,12 +349,15 @@
   }
   
   .intro-stat-number {
-    font-size: clamp(2.75rem, 3.8vw, 3.5rem);
-    margin-bottom: 0.8rem;
+    font-size: clamp(2.25rem, 3.3vw, 3rem);
+    margin-bottom: 0.85rem;
   }
   
   .intro-stat-label {
-    font-size: 0.95rem;
+    font-size: 0.825rem;
+    line-height: 1.9;
+    max-width: 100%;
+    letter-spacing: 0.09em;
   }
 }
 
@@ -344,13 +389,24 @@
   }
   
   .intro-stats {
-    gap: 4rem;
-    padding: 2rem;
+    gap: 3rem;
+    padding: 3.5rem 2rem;
     margin-top: 3.5rem;
   }
   
+  .intro-stat {
+    min-height: 200px;
+    padding: 1.5rem 1rem;
+  }
+  
   .intro-stat-number {
-    font-size: clamp(2.75rem, 3.5vw, 3.5rem);
+    font-size: clamp(2.25rem, 3.2vw, 3rem);
+  }
+  
+  .intro-stat-label {
+    line-height: 1.95;
+    max-width: 100%;
+    font-size: 0.85rem;
   }
 }
 
@@ -376,15 +432,22 @@
   }
   
   .intro-stats {
-    gap: 4.5rem;
-    padding: 2.25rem;
+    gap: 3rem;
+    padding: 3.5rem 2rem;
+  }
+  
+  .intro-stat {
+    min-height: 210px;
+    padding: 1.5rem 1rem;
   }
   
   .intro-stat-number {
-    font-size: 3.75rem;
+    font-size: 3.25rem;
   }
   
   .intro-stat-label {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 2;
+    max-width: 100%;
   }
 }

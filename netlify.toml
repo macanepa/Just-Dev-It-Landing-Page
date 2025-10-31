@@ -1,0 +1,91 @@
+# =====================================================
+# NETLIFY CONFIGURATION
+# Just Dev It Landing Page
+# =====================================================
+
+[build]
+  # Directorio de publicación (root del proyecto)
+  publish = "."
+  
+  # Comando de build (si usas algún build process en el futuro)
+  # command = "npm run build"
+
+# ===== REDIRECTS & REWRITES =====
+
+# Redirect www to non-www (IP Canonicalization)
+[[redirects]]
+  from = "https://www.justdev.it/*"
+  to = "https://justdev.it/:splat"
+  status = 301
+  force = true
+
+# Redirect HTTP to HTTPS
+[[redirects]]
+  from = "http://justdev.it/*"
+  to = "https://justdev.it/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.justdev.it/*"
+  to = "https://justdev.it/:splat"
+  status = 301
+  force = true
+
+# ===== HEADERS =====
+# Se complementa con el archivo _headers existente
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # HSTS (HTTP Strict Transport Security)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ===== PLUGINS =====
+# Optimizaciones automáticas de Netlify
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  # Lighthouse CI para monitoreo continuo
+  [plugins.inputs]
+    output_path = "reports/lighthouse"
+
+# ===== BUILD SETTINGS =====
+
+[build.environment]
+  NODE_VERSION = "18"
+  
+# ===== ERROR PAGES =====
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
