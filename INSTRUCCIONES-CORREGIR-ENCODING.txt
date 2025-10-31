@@ -1,0 +1,94 @@
+═══════════════════════════════════════════════════════════════
+   INSTRUCCIONES PARA CORREGIR ENCODING UTF-8 EN INDEX.HTML
+═══════════════════════════════════════════════════════════════
+
+📁 ARCHIVO AFECTADO: index.html
+
+🔧 MÉTODO: VS Code Find & Replace (Ctrl + H)
+
+═══════════════════════════════════════════════════════════════
+
+PASO 1: Abre index.html en VS Code
+
+PASO 2: Presiona Ctrl + H para abrir Find & Replace
+
+PASO 3: Copia y pega EXACTAMENTE cada par de buscar/reemplazar:
+
+─────────────────────────────────────────────────────────────
+
+1. Buscar:     Ã³
+   Reemplazar: ó
+   ✅ Click "Replace All"
+
+2. Buscar:     Ã­
+   Reemplazar: í
+   ✅ Click "Replace All"
+
+3. Buscar:     Ã©
+   Reemplazar: é
+   ✅ Click "Replace All"
+
+4. Buscar:     Ã¡
+   Reemplazar: á
+   ✅ Click "Replace All"
+
+5. Buscar:     Ãº
+   Reemplazar: ú
+   ✅ Click "Replace All"
+
+6. Buscar:     Ã±
+   Reemplazar: ñ
+   ✅ Click "Replace All"
+
+7. Buscar:     Ã"
+   Reemplazar: Ó
+   ✅ Click "Replace All"
+
+8. Buscar:     Ã
+   Reemplazar: Í
+   ✅ Click "Replace All"
+
+9. Buscar:     Ã‰
+   Reemplazar: É
+   ✅ Click "Replace All"
+
+10. Buscar:    Ã
+    Reemplazar: Á
+    ✅ Click "Replace All"
+
+11. Buscar:    Ãš
+    Reemplazar: Ú
+    ✅ Click "Replace All"
+
+12. Buscar:    Ã'
+    Reemplazar: Ñ
+    ✅ Click "Replace All"
+
+13. Buscar:    âœ…
+    Reemplazar: ✅
+    ✅ Click "Replace All"
+
+14. Buscar:    âš ï¸
+    Reemplazar: ⚠️
+    ✅ Click "Replace All"
+
+15. Buscar:    ðŸ'¡
+    Reemplazar: 💡
+    ✅ Click "Replace All"
+
+16. Buscar:    ðŸ"
+    Reemplazar: 📝
+    ✅ Click "Replace All"
+
+─────────────────────────────────────────────────────────────
+
+PASO 4: Guarda el archivo (Ctrl + S)
+
+PASO 5: Verifica que se vea bien abriendo index.html en el navegador
+
+═══════════════════════════════════════════════════════════════
+
+💡 NOTA: Si VS Code no puede copiar los caracteres corruptos correctamente,
+         usa la opción de restaurar desde Git si tienes un backup.
+
+═══════════════════════════════════════════════════════════════
