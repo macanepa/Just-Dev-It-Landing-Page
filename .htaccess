@@ -73,10 +73,10 @@
   ExpiresByType video/mp4 "access plus 1 year"
   ExpiresByType video/mpeg "access plus 1 year"
   
-  # CSS, JavaScript
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType text/javascript "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
+  # CSS, JavaScript - ACTUALIZADO: 1 año con immutable
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
   
   # Fonts
   ExpiresByType application/x-font-ttf "access plus 1 year"
@@ -102,9 +102,9 @@
 # CACHE CONTROL HEADERS
 # ==========================================
 <IfModule mod_headers.c>
-  # Cache static assets for 1 year
+  # Cache static assets for 1 year with immutable flag (PageSpeed Optimization)
   <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|svg|js|css|swf|woff|woff2|ttf|otf|eot)$">
-    Header set Cache-Control "max-age=31536000, public"
+    Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
   
   # Cache HTML for 0 seconds (always check for updates)

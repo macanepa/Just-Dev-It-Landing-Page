@@ -1,7 +1,6 @@
 /**
- * Slider with Cards - JavaScript SIMPLIFICADO
- * Maneja la funcionalidad de los sliders de servicios y portafolio
- * SIN autoplay, comportamiento lineal simple
+ * Slider with Cards - OPTIMIZADO Y ROBUSTO
+ * Funcionalidad de sliders sin lag ni bugs de doble click
  */
 
 class CardSlider {
@@ -23,7 +22,7 @@ class CardSlider {
     
     this.cards = Array.from(this.slider.children);
     this.currentIndex = 0;
-    this.isAnimating = false; // Prevenir múltiples animaciones simultáneas
+    this.animationTimeout = null; // Control de animación mejorado
     
     console.log(`✅ Slider "${sliderId}" initialized with ${this.cards.length} cards`);
     
@@ -49,8 +48,9 @@ class CardSlider {
       dot.classList.add('slider-dot');
       if (index === 0) dot.classList.add('active');
       
-      dot.addEventListener('click', () => {
-        if (this.isAnimating) return;
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         this.goToSlide(index);
       });
       
@@ -61,45 +61,59 @@ class CardSlider {
   }
 
   setupEventListeners() {
-    // Botones de navegación
+    // Botones de navegación - SIN restricciones artificiales
     if (this.prevBtn) {
       this.prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (!this.isAnimating) this.prevSlide();
+        e.stopPropagation();
+        this.prevSlide();
       });
     }
     
     if (this.nextBtn) {
       this.nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (!this.isAnimating) this.nextSlide();
+        e.stopPropagation();
+        this.nextSlide();
       });
     }
     
-    // Touch/swipe para móviles
+    // Touch/swipe para móviles - MEJORADO
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchCurrentX = 0;
     let isDragging = false;
+    let startTime = 0;
     
     this.slider.addEventListener('touchstart', (e) => {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
       touchCurrentX = touchStartX;
       isDragging = false;
+      startTime = Date.now();
     }, { passive: true });
     
     this.slider.addEventListener('touchmove', (e) => {
       touchCurrentX = e.touches[0].clientX;
-      const diff = Math.abs(touchCurrentX - touchStartX);
-      if (diff > 10) isDragging = true;
+      const touchCurrentY = e.touches[0].clientY;
+      const diffX = Math.abs(touchCurrentX - touchStartX);
+      const diffY = Math.abs(touchCurrentY - touchStartY);
+      
+      // Solo considerar drag horizontal
+      if (diffX > diffY && diffX > 10) {
+        isDragging = true;
+      }
     }, { passive: true });
     
     this.slider.addEventListener('touchend', () => {
-      if (!isDragging || this.isAnimating) return;
+      if (!isDragging) return;
       
       const diff = touchStartX - touchCurrentX;
+      const duration = Date.now() - startTime;
+      const velocity = Math.abs(diff) / duration;
       
-      // Swipe significativo (más de 50px)
-      if (Math.abs(diff) > 50) {
+      // Swipe rápido (menos distancia pero más velocidad) O swipe largo
+      if (velocity > 0.3 || Math.abs(diff) > 50) {
         if (diff > 0 && this.currentIndex < this.cards.length - 1) {
           this.nextSlide();
         } else if (diff < 0 && this.currentIndex > 0) {
@@ -113,7 +127,7 @@ class CardSlider {
     // Click en tarjetas
     this.cards.forEach((card, index) => {
       card.addEventListener('click', () => {
-        if (!isDragging && !this.isAnimating) {
+        if (!isDragging) {
           this.goToSlide(index);
         }
       });
@@ -123,9 +137,9 @@ class CardSlider {
     document.addEventListener('keydown', (e) => {
       if (!this.slider.closest('.slider-section:hover')) return;
       
-      if (e.key === 'ArrowLeft' && !this.isAnimating) {
+      if (e.key === 'ArrowLeft') {
         this.prevSlide();
-      } else if (e.key === 'ArrowRight' && !this.isAnimating) {
+      } else if (e.key === 'ArrowRight') {
         this.nextSlide();
       }
     });
@@ -134,13 +148,20 @@ class CardSlider {
   updateSlider() {
     if (!this.slider || this.cards.length === 0) return;
     
-    this.isAnimating = true;
+    // Cancelar timeout anterior si existe
+    if (this.animationTimeout) {
+      clearTimeout(this.animationTimeout);
+      this.animationTimeout = null;
+    }
     
     const currentCard = this.cards[this.currentIndex];
-    if (!currentCard) {
-      this.isAnimating = false;
-      return;
-    }
+    if (!currentCard) return;
+    
+    // Actualizar estados visuales INMEDIATAMENTE
+    this.updateCardStates();
+    this.updateDots();
+    this.updateBackground();
+    this.updateButtonStates();
     
     // Calcular scroll para centrar la tarjeta
     const containerWidth = this.slider.offsetWidth;
@@ -148,21 +169,11 @@ class CardSlider {
     const cardLeft = currentCard.offsetLeft;
     const scrollPosition = cardLeft - (containerWidth / 2) + (cardWidth / 2);
     
+    // Scroll suave
     this.slider.scrollTo({
       left: Math.max(0, scrollPosition),
       behavior: 'smooth'
     });
-    
-    // Actualizar estados visuales
-    this.updateCardStates();
-    this.updateDots();
-    this.updateBackground();
-    this.updateButtonStates();
-    
-    // Liberar animación después de completarse
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 500);
   }
   
   updateCardStates() {
@@ -211,32 +222,31 @@ class CardSlider {
     // Botón anterior
     if (this.prevBtn) {
       if (this.currentIndex === 0) {
-        this.prevBtn.disabled = true;
+        this.prevBtn.classList.add('disabled');
         this.prevBtn.style.opacity = '0.3';
-        this.prevBtn.style.cursor = 'not-allowed';
       } else {
-        this.prevBtn.disabled = false;
+        this.prevBtn.classList.remove('disabled');
         this.prevBtn.style.opacity = '1';
-        this.prevBtn.style.cursor = 'pointer';
       }
     }
     
     // Botón siguiente
     if (this.nextBtn) {
       if (this.currentIndex === this.cards.length - 1) {
-        this.nextBtn.disabled = true;
+        this.nextBtn.classList.add('disabled');
         this.nextBtn.style.opacity = '0.3';
-        this.nextBtn.style.cursor = 'not-allowed';
       } else {
-        this.nextBtn.disabled = false;
+        this.nextBtn.classList.remove('disabled');
         this.nextBtn.style.opacity = '1';
-        this.nextBtn.style.cursor = 'pointer';
       }
     }
   }
 
   goToSlide(index) {
-    if (index < 0 || index >= this.cards.length || index === this.currentIndex) return;
+    // Validar índice
+    if (index < 0 || index >= this.cards.length) return;
+    
+    // Permitir re-click en la misma tarjeta para re-centrar
     this.currentIndex = index;
     this.updateSlider();
   }
