@@ -57,6 +57,15 @@
         rgba(42, 23, 74, 1) 50%,
         rgba(9, 7, 29, 1) 100%
     );
+    /* OPTIMIZACIÓN: Ocultar en mobile para mejor performance */
+    will-change: opacity;
+}
+
+/* CRÍTICO: Ocultar backgrounds en mobile para performance */
+@media (max-width: 767px) {
+    .slider-background {
+        display: none !important;
+    }
 }
 
 .slider-bg-image {
@@ -67,7 +76,7 @@
     object-fit: cover;
     object-position: center;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.6s ease-in-out; /* Reducido de 1s a 0.6s */
     /* Fallback si la imagen no carga */
     background: linear-gradient(
         135deg,
@@ -75,6 +84,10 @@
         rgba(4, 199, 170, 0.10) 50%,
         rgba(155, 97, 164, 0.15) 100%
     );
+    /* OPTIMIZACIÓN: Hints para el navegador */
+    will-change: opacity;
+    transform: translateZ(0); /* Hardware acceleration */
+    backface-visibility: hidden;
 }
 
 .slider-bg-image.active {
@@ -82,14 +95,16 @@
     z-index: 1;
 }
 
-/* Webp backgrounds - ajustar opacidad y contraste */
-.slider-bg-image[src$=".webp"] {
-    filter: brightness(0.7) contrast(1.2);
-}
-
-/* PNG backgrounds - para proyectos */
-.slider-bg-image[src$=".png"] {
-    filter: brightness(0.6) contrast(1.1);
+/* Webp backgrounds - ajustar opacidad y contraste (solo desktop) */
+@media (min-width: 768px) {
+    .slider-bg-image[src$=".webp"] {
+        filter: brightness(0.7) contrast(1.2);
+    }
+    
+    /* PNG backgrounds - para proyectos */
+    .slider-bg-image[src$=".png"] {
+        filter: brightness(0.6) contrast(1.1);
+    }
 }
 
 /* Error handling for missing images */
@@ -205,6 +220,18 @@
     z-index: 0;
     opacity: 0.3;
     transition: opacity 0.4s ease;
+    /* OPTIMIZACIÓN: Hardware acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: opacity;
+}
+
+/* OPTIMIZACIÓN: Simplificar en mobile */
+@media (max-width: 767px) {
+    .slider-card-image {
+        transition: opacity 0.2s ease;
+        will-change: auto; /* Evitar hints innecesarios en mobile */
+    }
 }
 
 .slider-card.active .slider-card-image,
@@ -278,6 +305,21 @@
         rgba(9, 7, 29, 0.88) 50%,
         rgba(9, 7, 29, 0.92) 100%
     );
+    /* OPTIMIZACIÓN: Hardware acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* OPTIMIZACIÓN: Simplificar backdrop-filter en mobile (muy costoso) */
+@media (max-width: 767px) {
+    .slider-card {
+        backdrop-filter: none !important;
+    }
+    
+    .slider-card-overlay {
+        /* Usar fondo sólido en mobile en lugar de gradiente complejo */
+        background: rgba(9, 7, 29, 0.90);
+    }
 }
 
 .slider-card-category {
