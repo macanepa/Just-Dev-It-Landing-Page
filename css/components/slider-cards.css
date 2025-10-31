@@ -45,7 +45,6 @@
 .slider-background {
     position: absolute;
     inset: 0;
-    transition: opacity 0.8s ease-in-out;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -57,15 +56,6 @@
         rgba(42, 23, 74, 1) 50%,
         rgba(9, 7, 29, 1) 100%
     );
-    /* OPTIMIZACIÓN: Ocultar en mobile para mejor performance */
-    will-change: opacity;
-}
-
-/* CRÍTICO: Ocultar backgrounds en mobile para performance */
-@media (max-width: 767px) {
-    .slider-background {
-        display: none !important;
-    }
 }
 
 .slider-bg-image {
@@ -76,7 +66,7 @@
     object-fit: cover;
     object-position: center;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out; /* Reducido de 1s a 0.6s */
+    transition: opacity 0.3s ease-in-out;
     /* Fallback si la imagen no carga */
     background: linear-gradient(
         135deg,
@@ -84,10 +74,16 @@
         rgba(4, 199, 170, 0.10) 50%,
         rgba(155, 97, 164, 0.15) 100%
     );
-    /* OPTIMIZACIÓN: Hints para el navegador */
-    will-change: opacity;
-    transform: translateZ(0); /* Hardware acceleration */
+    /* OPTIMIZACIÓN: Hardware acceleration */
+    transform: translateZ(0);
     backface-visibility: hidden;
+}
+
+/* Transición más rápida en mobile */
+@media (max-width: 767px) {
+    .slider-bg-image {
+        transition: opacity 0.2s ease-in-out;
+    }
 }
 
 .slider-bg-image.active {
@@ -95,15 +91,24 @@
     z-index: 1;
 }
 
-/* Webp backgrounds - ajustar opacidad y contraste (solo desktop) */
-@media (min-width: 768px) {
+/* Webp backgrounds - ajustar opacidad y contraste */
+.slider-bg-image[src$=".webp"] {
+    filter: brightness(0.7) contrast(1.2);
+}
+
+/* PNG backgrounds - para proyectos */
+.slider-bg-image[src$=".png"] {
+    filter: brightness(0.6) contrast(1.1);
+}
+
+/* Reducir intensidad de filtros en mobile */
+@media (max-width: 767px) {
     .slider-bg-image[src$=".webp"] {
-        filter: brightness(0.7) contrast(1.2);
+        filter: brightness(0.75) contrast(1.1);
     }
     
-    /* PNG backgrounds - para proyectos */
     .slider-bg-image[src$=".png"] {
-        filter: brightness(0.6) contrast(1.1);
+        filter: brightness(0.65) contrast(1.05);
     }
 }
 
@@ -219,18 +224,16 @@
     object-position: center;
     z-index: 0;
     opacity: 0.3;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
     /* OPTIMIZACIÓN: Hardware acceleration */
     transform: translateZ(0);
     backface-visibility: hidden;
-    will-change: opacity;
 }
 
-/* OPTIMIZACIÓN: Simplificar en mobile */
+/* Transición más rápida en mobile */
 @media (max-width: 767px) {
     .slider-card-image {
         transition: opacity 0.2s ease;
-        will-change: auto; /* Evitar hints innecesarios en mobile */
     }
 }
 
@@ -310,15 +313,10 @@
     backface-visibility: hidden;
 }
 
-/* OPTIMIZACIÓN: Simplificar backdrop-filter en mobile (muy costoso) */
+/* OPTIMIZACIÓN: Reducir backdrop-filter en mobile (costoso) */
 @media (max-width: 767px) {
     .slider-card {
-        backdrop-filter: none !important;
-    }
-    
-    .slider-card-overlay {
-        /* Usar fondo sólido en mobile en lugar de gradiente complejo */
-        background: rgba(9, 7, 29, 0.90);
+        backdrop-filter: blur(4px) !important;
     }
 }
 

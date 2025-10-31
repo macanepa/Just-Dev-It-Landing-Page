@@ -13,15 +13,6 @@ function initSliders() {
   // Detección de dispositivo
   const isMobile = window.innerWidth < 768;
   
-  // OPTIMIZACIÓN CRÍTICA: Ocultar imágenes de fondo en mobile
-  if (isMobile) {
-    const backgrounds = document.querySelectorAll('.slider-background');
-    backgrounds.forEach(bg => {
-      bg.style.display = 'none';
-    });
-    console.log('✅ Imágenes de fondo desactivadas en mobile para mejor performance');
-  }
-  
   // Configuración base optimizada
   const baseConfig = {
     loop: true,
@@ -73,15 +64,11 @@ function initSliders() {
     on: {
       slideChangeTransitionStart: function() {
         // Usar transitionStart para mejor performance
-        if (!isMobile) {
-          updateBackground(this, 'services');
-        }
+        updateBackground(this, 'services');
         updateCardStates(this);
       },
       init: function() {
-        if (!isMobile) {
-          updateBackground(this, 'services');
-        }
+        updateBackground(this, 'services');
         updateCardStates(this);
       },
     },
@@ -102,15 +89,11 @@ function initSliders() {
     on: {
       slideChangeTransitionStart: function() {
         // Usar transitionStart para mejor performance
-        if (!isMobile) {
-          updateBackground(this, 'portfolio');
-        }
+        updateBackground(this, 'portfolio');
         updateCardStates(this);
       },
       init: function() {
-        if (!isMobile) {
-          updateBackground(this, 'portfolio');
-        }
+        updateBackground(this, 'portfolio');
         updateCardStates(this);
       },
     },
@@ -121,19 +104,15 @@ function initSliders() {
 
 // ===== FUNCIONES DE ANIMACIÓN ULTRA OPTIMIZADAS =====
 
-// Cache mejorado con WeakMap para mejor gestión de memoria
+// Cache mejorado para mejor gestión de memoria
 const backgroundCache = new Map();
-const isMobileDevice = window.innerWidth < 768;
 
 function updateBackground(swiper, sliderType) {
-  // Skip en mobile para mejor performance
-  if (isMobileDevice) return;
-  
   const section = document.getElementById(sliderType === 'services' ? 'servicios' : 'portafolio');
   if (!section) return;
   
   const backgroundContainer = section.querySelector('.slider-background');
-  if (!backgroundContainer || backgroundContainer.style.display === 'none') return;
+  if (!backgroundContainer) return;
   
   const activeSlide = swiper.slides[swiper.activeIndex];
   const cardImage = activeSlide?.querySelector('.slider-card-image');
@@ -174,18 +153,7 @@ function updateCardStates(swiper) {
   if (newActiveSlide) newActiveSlide.classList.add('active');
 }
 
-// OPTIMIZACIÓN: Limpiar cache y eventos al cambiar tamaño de ventana
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    const newIsMobile = window.innerWidth < 768;
-    if (newIsMobile !== isMobileDevice) {
-      console.log('📱 Cambio de dispositivo detectado, recargando...');
-      window.location.reload();
-    }
-  }, 500);
-}, { passive: true });
+
 
 // Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
