@@ -13,25 +13,25 @@
 
 Aplica estos reemplazos en **VS Code** (Ctrl+H) en el orden indicado:
 
-| # | Buscar | Reemplazar por | Ocurrencias | Prioridad |
-|---|--------|----------------|-------------|-----------|
-| 1 | `Ã³` | `ó` | 200+ | 🔴 CRÍTICA |
-| 2 | `Ã­` | `í` | 150+ | 🔴 CRÍTICA |
-| 3 | `Ã©` | `é` | 80+ | 🔴 CRÍTICA |
-| 4 | `Ã¡` | `á` | 100+ | 🔴 CRÍTICA |
-| 5 | `Ãº` | `ú` | 10+ | 🟡 MEDIA |
-| 6 | `Ã±` | `ñ` | 20+ | 🟡 MEDIA |
-| 7 | `Ã‰` | `É` | 5+ | 🟢 BAJA |
-| 8 | `Ã"` | `Ó` | 3+ | 🟢 BAJA |
-| 9 | `âœ…` | `✅` | 5+ | 🟡 MEDIA |
-| 10 | `âš ï¸` | `⚠️` | 6+ | 🟡 MEDIA |
-| 11 | `ðŸ'¡` | `💡` | 3+ | 🟡 MEDIA |
-| 12 | `ðŸ"` | `📝` | 3+ | 🟡 MEDIA |
-| 13 | `ðŸŒ` | `🌐` | 1+ | 🟢 BAJA |
-| 14 | `ðŸ'œ` | `💜` | 1+ | 🟢 BAJA |
-| 15 | `â€¢` | `•` | 30+ | 🟡 MEDIA |
-| 16 | `â†` | `←` | 15+ | 🟢 BAJA |
-| 17 | `â†'` | `→` | 15+ | 🟢 BAJA |
+| #   | Buscar  | Reemplazar por | Ocurrencias | Prioridad  |
+| --- | ------- | -------------- | ----------- | ---------- |
+| 1   | `Ã³`    | `ó`            | 200+        | 🔴 CRÍTICA |
+| 2   | `Ã­`    | `í`            | 150+        | 🔴 CRÍTICA |
+| 3   | `Ã©`    | `é`            | 80+         | 🔴 CRÍTICA |
+| 4   | `Ã¡`    | `á`            | 100+        | 🔴 CRÍTICA |
+| 5   | `Ãº`    | `ú`            | 10+         | 🟡 MEDIA   |
+| 6   | `Ã±`    | `ñ`            | 20+         | 🟡 MEDIA   |
+| 7   | `Ã‰`    | `É`            | 5+          | 🟢 BAJA    |
+| 8   | `Ã"`    | `Ó`            | 3+          | 🟢 BAJA    |
+| 9   | `âœ…`   | `✅`           | 5+          | 🟡 MEDIA   |
+| 10  | `âš ï¸` | `⚠️`           | 6+          | 🟡 MEDIA   |
+| 11  | `ðŸ'¡`  | `💡`           | 3+          | 🟡 MEDIA   |
+| 12  | `ðŸ"`   | `📝`           | 3+          | 🟡 MEDIA   |
+| 13  | `ðŸŒ`   | `🌐`           | 1+          | 🟢 BAJA    |
+| 14  | `ðŸ'œ`  | `💜`           | 1+          | 🟢 BAJA    |
+| 15  | `â€¢`   | `•`            | 30+         | 🟡 MEDIA   |
+| 16  | `â†`    | `←`            | 15+         | 🟢 BAJA    |
+| 17  | `â†'`   | `→`            | 15+         | 🟢 BAJA    |
 
 ---
 
@@ -54,7 +54,7 @@ Aplica estos reemplazos en **VS Code** (Ctrl+H) en el orden indicado:
 **Línea 425-430**: `JoaquÃ­n, mÃ¡s, aÃ±os, inversiÃ³n`  
 **Línea 469**: `MatÃ­as CÃ¡nepa GonzÃ¡lez`  
 **Línea 458**: `RECURSOS CRÃTICOS` → `RECURSOS CRÍTICOS`  
-**Línea 522**: `optimizaciÃ³n`  
+**Línea 522**: `optimizaciÃ³n`
 
 ### 🟡 NAVEGACIÓN Y HERO (Líneas 700-900)
 
@@ -64,12 +64,12 @@ Aplica estos reemplazos en **VS Code** (Ctrl+H) en el orden indicado:
 **Línea 822**: `AÃ±os`  
 **Línea 826**: `SatisfacciÃ³n`  
 **Línea 866**: `90 dÃ­as`  
-**Línea 878**: `<90 DÃ­as`  
+**Línea 878**: `<90 DÃ­as`
 
 ### 🟠 SERVICIOS SLIDER (Líneas 900-1150)
 
 **Línea 1060**: ✅ YA CORREGIDO (`inversión`)  
-**Línea 1082**: `sincronizaciÃ³n automÃ¡tica`  
+**Línea 1082**: `sincronizaciÃ³n automÃ¡tica`
 
 ### 🔵 PORTFOLIO SLIDER (Líneas 1200-1670)
 
@@ -79,32 +79,32 @@ Aplica estos reemplazos en **VS Code** (Ctrl+H) en el orden indicado:
 **Línea 1450**: `IntegraciÃ³n`  
 **Línea 1522**: `GestiÃ³n, anÃ¡lisis`  
 **Línea 1601**: `EnergÃ­a â€¢` (tilde + bullet)  
-**Línea 1634**: `CriptografÃ­a`  
+**Línea 1634**: `CriptografÃ­a`
 
 ### 🟣 INTRO SECTIONS (Líneas 1670-1750)
 
 **Línea 1691**: `TecnolÃ³gico`  
 **Línea 1697**: `Ã¡gil, crÃ­ticos`  
 **Línea 1706**: `AÃ±os`  
-**Línea 1707**: `EstratÃ©gicas`  
+**Línea 1707**: `EstratÃ©gicas`
 
 ### 🟤 EQUIPO Y CLIENTES (Líneas 1720-1850)
 
 **Línea 1727**: `ConfÃ­an`  
 **Línea 1729**: `lÃ­deres, tecnologÃ­a`  
 **Línea 1809**: `JoaquÃ­n`  
-**Línea 1829**: `MatÃ­as CÃ¡nepa`  
+**Línea 1829**: `MatÃ­as CÃ¡nepa`
 
 ### 🔶 CONTACTO (Líneas 1850-1950)
 
 **Línea 1883**: `TelÃ©fono`  
-**Línea 1899**: `CuÃ©ntanos`  
+**Línea 1899**: `CuÃ©ntanos`
 
 ### ⚫ FOOTER (Líneas 1950-2100)
 
 **Línea 2024**: `tecnológicas` (puede estar corrupto)  
 **Línea 2085**: `ðŸŒ` → `🌐`  
-**Línea 2095**: `ðŸ'œ` → `💜`  
+**Línea 2095**: `ðŸ'œ` → `💜`
 
 ### 🔴 CONTENIDO SEMÁNTICO SEO (Líneas 2100-2269)
 
@@ -121,7 +121,7 @@ Aplica estos reemplazos en **VS Code** (Ctrl+H) en el orden indicado:
 **Línea 2240**: `extracciÃ³n, consolidaciÃ³n, integraciÃ³n, atenciÃ³n, detecciÃ³n, optimizaciÃ³n, inversiÃ³n, gestiÃ³n, facturaciÃ³n`  
 **Línea 2260**: `mÃ¡s, aÃ±os, cÃ³digo, mÃ©tricas, dÃ­a, tÃ©cnico, metodologÃ­a, Ã¡gil, comunicaciÃ³n, espaÃ±ol, inglÃ©s`  
 **Línea 2280**: `protecciÃ³n`  
-**Línea 2290**: `consultora, tecnológica, fÃ¡brica, asesorÃ­a, anÃ¡lisis, automatizaciÃ³n, integraciÃ³n, migraciÃ³n, modernizaciÃ³n, cÃ³digo, tÃ©cnica, evoluciÃ³n`  
+**Línea 2290**: `consultora, tecnológica, fÃ¡brica, asesorÃ­a, anÃ¡lisis, automatizaciÃ³n, integraciÃ³n, migraciÃ³n, modernizaciÃ³n, cÃ³digo, tÃ©cnica, evoluciÃ³n`
 
 ---
 
@@ -130,13 +130,16 @@ Aplica estos reemplazos en **VS Code** (Ctrl+H) en el orden indicado:
 ### Método Recomendado: VS Code Find & Replace Global
 
 1. **Abre el archivo**:
+
    - `index.html` en VS Code
 
 2. **Activa Find & Replace**:
+
    - Presiona `Ctrl + H`
    - O ve a Edit → Replace
 
 3. **Aplica cada reemplazo**:
+
    - Copia el texto de la columna "Buscar" (ejemplo: `Ã³`)
    - Pégalo en el campo **Find**
    - Copia el texto de la columna "Reemplazar por" (ejemplo: `ó`)
@@ -179,13 +182,13 @@ Después de aplicar TODOS los reemplazos, verifica que no queden errores:
 
 ## 📊 ESTADÍSTICAS DETALLADAS
 
-| Categoría | Problemas | % del Total |
-|-----------|-----------|-------------|
-| Tildes (ó, í, é, á, ú) | 560+ | 93% |
-| Letra ñ | 20+ | 3% |
-| Emojis | 15+ | 2% |
-| Símbolos (•, ←, →) | 60+ | 2% |
-| **TOTAL** | **655+** | **100%** |
+| Categoría              | Problemas | % del Total |
+| ---------------------- | --------- | ----------- |
+| Tildes (ó, í, é, á, ú) | 560+      | 93%         |
+| Letra ñ                | 20+       | 3%          |
+| Emojis                 | 15+       | 2%          |
+| Símbolos (•, ←, →)     | 60+       | 2%          |
+| **TOTAL**              | **655+**  | **100%**    |
 
 ### Secciones Más Afectadas:
 
@@ -228,10 +231,12 @@ Después de aplicar TODOS los reemplazos, verifica que no queden errores:
 ## 💡 PREVENCIÓN FUTURA
 
 ### ❌ NO HACER:
+
 - Nunca usar PowerShell para modificar archivos UTF-8 con caracteres especiales
 - Evitar comandos como `-replace` en PowerShell con texto español
 
 ### ✅ HACER:
+
 - Usar herramientas de VS Code (`replace_string_in_file`)
 - Editar manualmente en VS Code con encoding UTF-8
 - Implementar Git para tener backups y rollback fácil
