@@ -46,7 +46,13 @@ class CardSlider {
       threshold: 0.5 // 50% visible
     };
     
+    // Flag para evitar loops entre observer y navegación manual
+    this.isUserNavigating = false;
+    
     const observer = new IntersectionObserver((entries) => {
+      // No actualizar si el usuario está navegando manualmente
+      if (this.isUserNavigating) return;
+      
       entries.forEach(entry => {
         if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
           const cardIndex = this.cards.indexOf(entry.target);
@@ -189,6 +195,9 @@ class CardSlider {
   updateSlider() {
     if (!this.slider || this.cards.length === 0) return;
     
+    // Marcar que el usuario está navegando manualmente
+    this.isUserNavigating = true;
+    
     // Cancelar timeout anterior si existe
     if (this.animationTimeout) {
       clearTimeout(this.animationTimeout);
@@ -214,6 +223,11 @@ class CardSlider {
     setTimeout(() => {
       this.updateBackground();
     }, 100);
+    
+    // Desactivar el flag después de que termine la animación
+    setTimeout(() => {
+      this.isUserNavigating = false;
+    }, 600); // Tiempo suficiente para que termine el scroll suave
   }
   
   updateCardStates() {
@@ -289,12 +303,18 @@ class CardSlider {
     // Validar índice
     if (index < 0 || index >= this.cards.length) return;
     
+    // Evitar ejecuciones múltiples si ya está navegando
+    if (this.isUserNavigating) return;
+    
     // Permitir re-click en la misma tarjeta para re-centrar
     this.currentIndex = index;
     this.updateSlider();
   }
 
   nextSlide() {
+    // Evitar ejecuciones múltiples si ya está navegando
+    if (this.isUserNavigating) return;
+    
     if (this.currentIndex < this.cards.length - 1) {
       this.currentIndex++;
       this.updateSlider();
@@ -302,6 +322,9 @@ class CardSlider {
   }
 
   prevSlide() {
+    // Evitar ejecuciones múltiples si ya está navegando
+    if (this.isUserNavigating) return;
+    
     if (this.currentIndex > 0) {
       this.currentIndex--;
       this.updateSlider();
