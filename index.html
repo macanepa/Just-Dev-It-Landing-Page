@@ -568,33 +568,51 @@
       fetchpriority="high"
     />
 
-    <!-- ===== ESTILOS CSS INDIVIDUALES (Restaurados) ===== -->
-    <!-- Core -->
+    <!-- ===== ESTILOS CSS INDIVIDUALES OPTIMIZADOS (Sin Bundle) ===== -->
+    
+    <!-- CRITICAL CSS (Above-the-fold - Render Blocking) -->
+    <!-- Estos se cargan síncronamente porque son necesarios para First Paint -->
     <link rel="stylesheet" href="css/core/reset.css" />
     <link rel="stylesheet" href="css/core/variables.css" />
     <link rel="stylesheet" href="css/core/typography.css" />
-    
-    <!-- Layouts -->
-    <link rel="stylesheet" href="css/layouts/sections.css" />
-    <link rel="stylesheet" href="css/layouts/grid.css" />
-    
-    <!-- Components -->
     <link rel="stylesheet" href="css/components/preloader.css" />
     <link rel="stylesheet" href="css/components/navigation.css" />
     <link rel="stylesheet" href="css/components/hero.css" />
-    <link rel="stylesheet" href="css/components/cards.css" />
-    <link rel="stylesheet" href="css/components/slider-cards.css" />
-    <link rel="stylesheet" href="css/components/intro-sections.css" />
-    <link rel="stylesheet" href="css/components/forms.css" />
-    <link rel="stylesheet" href="css/components/portfolio-filter.css" />
-    <link rel="stylesheet" href="css/components/button-fix.css" />
-    <link rel="stylesheet" href="css/components/footer.css" />
     
-    <!-- Utils -->
-    <link rel="stylesheet" href="css/utils/animations.css" />
+    <!-- NON-CRITICAL CSS (Below-the-fold - Deferred con media trick) -->
+    <!-- Estos se cargan asíncronamente para no bloquear el render -->
+    <link rel="preload" href="css/layouts/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/layouts/sections.css"></noscript>
     
-    <!-- Main -->
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preload" href="css/layouts/grid.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/layouts/grid.css"></noscript>
+    
+    <link rel="preload" href="css/components/cards.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/cards.css"></noscript>
+    
+    <link rel="preload" href="css/components/slider-cards.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/slider-cards.css"></noscript>
+    
+    <link rel="preload" href="css/components/intro-sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/intro-sections.css"></noscript>
+    
+    <link rel="preload" href="css/components/forms.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/forms.css"></noscript>
+    
+    <link rel="preload" href="css/components/portfolio-filter.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/portfolio-filter.css"></noscript>
+    
+    <link rel="preload" href="css/components/button-fix.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/button-fix.css"></noscript>
+    
+    <link rel="preload" href="css/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/footer.css"></noscript>
+    
+    <link rel="preload" href="css/utils/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/utils/animations.css"></noscript>
+    
+    <link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/main.css"></noscript>
 
 
     <!-- ===== SCHEMA.ORG JSON-LD PARA IA GENERATIVA ===== -->
