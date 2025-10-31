@@ -364,17 +364,13 @@
     />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- ===== PREFETCH CRÍTICOS ===== -->
+    <!-- ===== PREFETCH RECURSOS CRÍTICOS ===== -->
+    <link rel="preload" href="assets/images/logo-principal-blanco.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="assets/Just Dev It/Isotipo/Isotipo_blanco.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="assets/images/Isotipo_morado.svg" as="image" type="image/svg+xml" />
     <link rel="preload" href="css/core/reset.css" as="style" />
     <link rel="preload" href="css/core/variables.css" as="style" />
-    <link
-      rel="preload"
-      href="assets/3d_models/tinker.obj"
-      as="fetch"
-      crossorigin
-    />
-    <link rel="modulepreload" href="js/epic-preloader.js" />
-
+    
     <!-- ===== ESTILOS CSS ===== -->
     <link rel="stylesheet" href="css/core/reset.css" />
     <link rel="stylesheet" href="css/core/variables.css" />
@@ -697,7 +693,9 @@
           <img
             src="assets/Just Dev It/Isotipo/Isotipo_blanco.svg"
             alt="Just Dev It"
-            loading="eager"
+            width="120"
+            height="120"
+            fetchpriority="high"
           />
         </div>
         <div class="preloader-counter">
@@ -742,7 +740,7 @@
                 alt="Logo Just Dev It"
                 width="140"
                 height="50"
-                loading="eager"
+                fetchpriority="high"
               />
             </a>
           </div>
@@ -831,7 +829,7 @@
               class="hero-isotipo-static"
               width="400"
               height="400"
-              loading="eager"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -883,31 +881,49 @@
             src="assets/images/Recurso3.webp"
             alt=""
             class="slider-bg-image active"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Recurso7.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Recurso10.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Recurso3.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Recurso7.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Recurso10.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
         </div>
 
@@ -943,6 +959,8 @@
                   src="assets/images/Recurso3.webp"
                   alt="Desarrollo de Software a Medida"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                 />
                 <div class="slider-card-overlay">
@@ -978,6 +996,8 @@
                   src="assets/images/Recurso7.webp"
                   alt="Cloud & Data Engineering"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                 />
                 <div class="slider-card-overlay">
@@ -1013,6 +1033,8 @@
                   src="assets/images/Recurso10.webp"
                   alt="Agentes de IA y Machine Learning"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                 />
                 <div class="slider-card-overlay">
@@ -1209,36 +1231,57 @@
             src="assets/images/Databam.png"
             alt=""
             class="slider-bg-image active"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Proyecto3.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Proyecto4.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Proyecto1.png"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Proyecto5.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Proyecto6.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
           <img
             src="assets/images/Proyecto7.webp"
             alt=""
             class="slider-bg-image"
+            width="1920"
+            height="1080"
+            loading="lazy"
           />
         </div>
 
@@ -1274,6 +1317,8 @@
                   src="assets/images/Databam.png"
                   alt="Databam - Plataforma de Data Inmobiliaria"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1310,6 +1355,8 @@
                   src="assets/images/Proyecto3.webp"
                   alt="Automatización PJUD - Carga y Envíos"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1346,6 +1393,8 @@
                   src="assets/images/Proyecto4.webp"
                   alt="Tickets DGA - Alta y Seguimiento"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1384,6 +1433,8 @@
                   src="assets/images/Proyecto1.png"
                   alt="Portafolios Top-N y Backtesting"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1421,6 +1472,8 @@
                   src="assets/images/Proyecto5.webp"
                   alt="Integraciones E-commerce"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1459,6 +1512,8 @@
                   src="assets/images/Proyecto6.webp"
                   alt="CBRS Datos PropTech"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1499,6 +1554,8 @@
                   src="assets/images/Proyecto7.webp"
                   alt="Agentes IA Copilotos"
                   class="slider-card-image"
+                  width="800"
+                  height="600"
                   loading="lazy"
                   itemprop="image"
                 />
@@ -1601,6 +1658,8 @@
               <img
                 src="assets/images/partner1.png"
                 alt="Pacific Hydro"
+                width="200"
+                height="80"
                 loading="lazy"
                 class="client-logo client-logo-pacific"
               />
@@ -1611,6 +1670,8 @@
               <img
                 src="assets/images/partner2.png"
                 alt="Cliente"
+                width="200"
+                height="80"
                 loading="lazy"
                 class="client-logo"
               />
@@ -1621,6 +1682,8 @@
               <img
                 src="assets/images/partner3.png"
                 alt="Cliente"
+                width="200"
+                height="80"
                 loading="lazy"
                 class="client-logo"
               />
@@ -1631,6 +1694,8 @@
               <img
                 src="assets/images/partner4.png"
                 alt="Cliente"
+                width="200"
+                height="80"
                 loading="lazy"
                 class="client-logo"
               />
@@ -1666,9 +1731,10 @@
                 <img
                   src="assets/images/joaquin-espildora.jpg"
                   alt="Joaquín Espildora M."
+                  width="300"
+                  height="300"
                   loading="lazy"
                   itemprop="image"
-                  onerror="console.error('Error cargando imagen Joaquín:', this.src); this.style.background='linear-gradient(135deg, rgba(155, 97, 164, 0.5) 0%, rgba(4, 199, 170, 0.3) 100%)'"
                 />
               </div>
               <h3 class="card-title" itemprop="name">Joaquín Espildora M.</h3>
@@ -1689,9 +1755,10 @@
                 <img
                   src="assets/images/matias-canepa.jpg"
                   alt="Matías Cánepa G."
+                  width="300"
+                  height="300"
                   loading="lazy"
                   itemprop="image"
-                  onerror="console.error('Error cargando imagen Matías:', this.src); this.style.background='linear-gradient(135deg, rgba(155, 97, 164, 0.5) 0%, rgba(4, 199, 170, 0.3) 100%)'"
                 />
               </div>
               <h3 class="card-title" itemprop="name">Matías Cánepa G.</h3>
@@ -2062,14 +2129,11 @@
     -->
 
     <!-- Core Scripts - defer para mejor rendimiento -->
-    <script async src="js/conversion-tracking.js"></script>
+    <script defer src="js/conversion-tracking.js"></script>
     <script defer src="js/epic-preloader.js"></script>
     <script defer src="js/hero-background.js"></script>
     <script defer src="js/components/slider-cards.js"></script>
     <script defer src="js/components/intro-parallax.js"></script>
     <script defer src="js/app-standalone.js"></script>
-
-    <!-- Google Analytics (opcional - reemplazar con tu ID) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
   </body>
 </html>
