@@ -567,11 +567,11 @@
       type="image/svg+xml"
       fetchpriority="high"
     />
-    <!-- Preload CSS bundle para reducir render blocking -->
-    <link rel="preload" href="css/bundle.css?v=1.0" as="style" />
+    <!-- Preload CSS bundle minificado para reducir render blocking -->
+    <link rel="preload" href="css/bundle.min.css?v=1.1" as="style" />
     <!-- Preload JS críticos -->
     <link rel="preload" href="js/epic-preloader.js" as="script" />
-    <link rel="preload" href="js/bundle.js?v=1.0" as="script" />
+    <link rel="preload" href="js/bundle.min.js?v=1.1" as="script" />
 
     <!-- ===== CSS CRÍTICO INLINE (Above-the-fold) ===== -->
     <style>
@@ -606,13 +606,13 @@
       .gradient-text{color:#d4a5e0;font-weight:700}
     </style>
 
-    <!-- ===== ESTILOS CSS BUNDLE (Diferido) ===== -->
-    <!-- Bundle principal con todos los estilos: 133KB (17 archivos → 1) -->
-    <link rel="stylesheet" href="css/bundle.css?v=1.0" media="print" onload="this.media='all'" />
+    <!-- ===== ESTILOS CSS BUNDLE MINIFICADO (Diferido) ===== -->
+    <!-- Bundle principal minificado: 107KB (17 archivos → 1, -21%) -->
+    <link rel="stylesheet" href="css/bundle.min.css?v=1.1" media="print" onload="this.media='all'" />
     
     <!-- Fallback bundle para navegadores sin soporte -->
     <noscript>
-      <link rel="stylesheet" href="css/bundle.css?v=1.0" />
+      <link rel="stylesheet" href="css/bundle.min.css?v=1.1" />
     </noscript>
 
     <!-- ===== SCHEMA.ORG JSON-LD PARA IA GENERATIVA ===== -->
@@ -2498,8 +2498,8 @@
     <!-- Critical Scripts - Preloader primero para experiencia inmediata -->
     <script src="js/epic-preloader.js"></script>
     
-    <!-- Core Scripts Bundle - defer para mejor rendimiento (45KB: 3 archivos → 1) -->
-    <script defer src="js/bundle.js?v=1.0"></script>
+    <!-- Core Scripts Bundle Minificado - defer para mejor rendimiento (29KB: 3 archivos → 1, -37%) -->
+    <script defer src="js/bundle.min.js?v=1.1"></script>
     
     <!-- Non-critical animations - lazy load después del preloader -->
     <script>
