@@ -67,6 +67,7 @@
     object-position: center;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    aspect-ratio: 16 / 9; /* 🔧 FIX CLS: Prevenir layout shift */
     /* Fallback si la imagen no carga */
     background: linear-gradient(
         135deg,

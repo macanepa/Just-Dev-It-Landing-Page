@@ -568,10 +568,10 @@
       fetchpriority="high"
     />
     <!-- Preload CSS bundle minificado para reducir render blocking -->
-    <link rel="preload" href="css/bundle.min.css?v=1.1" as="style" />
+    <link rel="preload" href="css/bundle.min.css?v=1.2" as="style" />
     <!-- Preload JS críticos -->
     <link rel="preload" href="js/epic-preloader.js" as="script" />
-    <link rel="preload" href="js/bundle.min.js?v=1.1" as="script" />
+    <link rel="preload" href="js/bundle.min.js?v=1.2" as="script" />
 
     <!-- ===== CSS CRÍTICO INLINE (Above-the-fold) ===== -->
     <style>
@@ -592,6 +592,8 @@
       .epic-preloader.fade-out{opacity:0;pointer-events:none}
       .preloader-content{width:280px;height:300px;text-align:center;z-index:2}
       .preloader-logo img{width:120px;height:120px;animation:pulse 2s ease-in-out infinite}
+      .preloader-counter{min-height:58px}
+      .counter-percent{display:inline-block;min-width:24px}
       @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
       
       /* Header crítico */
@@ -608,11 +610,11 @@
 
     <!-- ===== ESTILOS CSS BUNDLE MINIFICADO (Diferido) ===== -->
     <!-- Bundle principal minificado: 107KB (17 archivos → 1, -21%) -->
-    <link rel="stylesheet" href="css/bundle.min.css?v=1.1" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/bundle.min.css?v=1.2" media="print" onload="this.media='all'" />
     
     <!-- Fallback bundle para navegadores sin soporte -->
     <noscript>
-      <link rel="stylesheet" href="css/bundle.min.css?v=1.1" />
+      <link rel="stylesheet" href="css/bundle.min.css?v=1.2" />
     </noscript>
 
     <!-- ===== SCHEMA.ORG JSON-LD PARA IA GENERATIVA ===== -->
@@ -2499,7 +2501,7 @@
     <script src="js/epic-preloader.js"></script>
     
     <!-- Core Scripts Bundle Minificado - defer para mejor rendimiento (29KB: 3 archivos → 1, -37%) -->
-    <script defer src="js/bundle.min.js?v=1.1"></script>
+    <script defer src="js/bundle.min.js?v=1.2"></script>
     
     <!-- Non-critical animations - lazy load después del preloader -->
     <script>
