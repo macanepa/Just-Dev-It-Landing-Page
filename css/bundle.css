@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Modern CSS Reset
  * Optimizado para Just Dev It
  */
@@ -42,7 +42,7 @@ html:focus-within {
 /* Set core body defaults - Viewport completo */
 body {
     min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height para mÃ³viles */
+    min-height: 100dvh; /* Dynamic viewport height para móviles */
     text-rendering: optimizeSpeed;
     line-height: 1.6;
     width: 100%;
@@ -108,7 +108,7 @@ video {
 }
 /**
  * Design System - Just Dev It
- * Variables CSS personalizadas para un sistema de diseÃ±o coherente
+ * Variables CSS personalizadas para un sistema de diseño coherente
  */
 
 :root {
@@ -141,7 +141,7 @@ video {
     --bg-card: rgba(30, 41, 59, 0.6);
     --bg-card-hover: rgba(30, 41, 59, 0.8);
     
-    /* ===== TIPOGRAFÃA ===== */
+    /* ===== TIPOGRAFÍA ===== */
     /* Font Families */
     --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
     --font-secondary: 'Manrope', system-ui, -apple-system, sans-serif;
@@ -272,7 +272,7 @@ video {
     }
 }
 
-/* ReducciÃ³n de movimiento */
+/* Reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
     :root {
         --transition-fast: 0ms;
@@ -283,10 +283,10 @@ video {
 }
 /**
  * Typography System - Just Dev It
- * Sistema tipogrÃ¡fico optimizado para legibilidad y jerarquÃ­a visual
+ * Sistema tipográfico optimizado para legibilidad y jerarquía visual
  */
 
-/* ===== IMPORTACIÃ“N DE FUENTES ===== */
+/* ===== IMPORTACIÓN DE FUENTES ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
 
 /* ===== ESTILOS BASE ===== */
@@ -342,7 +342,7 @@ h6 {
     font-weight: var(--font-medium);
 }
 
-/* ===== PÃRRAFOS ===== */
+/* ===== PÁRRAFOS ===== */
 p {
     margin-bottom: var(--space-6);
     color: var(--color-neutral-light);
@@ -395,7 +395,7 @@ ol[role="list"] {
     padding-left: 0;
 }
 
-/* ===== UTILIDADES TIPOGRÃFICAS ===== */
+/* ===== UTILIDADES TIPOGRÁFICAS ===== */
 
 /* Font Families */
 .font-primary {
@@ -585,16 +585,16 @@ section {
     scroll-margin-top: 80px;
 }
 
-/* 1. MÃ³vil base hasta ~480px - ya definido arriba */
+/* 1. Móvil base hasta ~480px - ya definido arriba */
 
-/* 2. MÃ³vil grande / phablet (~480px) */
+/* 2. Móvil grande / phablet (~480px) */
 @media (min-width: 480px) {
     .section {
         padding: 3.5rem 1.5rem;
     }
 }
 
-/* 3. MÃ³vil grande / phablet (~576px) */
+/* 3. Móvil grande / phablet (~576px) */
 @media (min-width: 576px) {
     .section {
         padding: 4rem 2rem;
@@ -615,7 +615,7 @@ section {
     }
 }
 
-/* 6. Desktop estÃ¡ndar (~1200px) */
+/* 6. Desktop estándar (~1200px) */
 @media (min-width: 1200px) {
     .section {
         padding: 7rem 3rem;
@@ -1112,6 +1112,8 @@ section {
 
 .preloader-content {
     position: relative;
+    width: 280px; /* 🔧 FIX CLS: Width explícito */
+    height: 300px; /* 🔧 FIX CLS: Height explícito */
     z-index: 2;
     text-align: center;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1382,7 +1384,7 @@ body.loaded .hero {
 
 /**
  * Navigation Component - Just Dev It
- * Sistema de navegaciÃ³n responsive y accesible
+ * Sistema de navegación responsive y accesible
  */
 
 /* ===== HEADER ===== */
@@ -1458,7 +1460,7 @@ body.loaded .hero {
     gap: var(--space-8);
 }
 
-/* Desktop: menÃº horizontal normal */
+/* Desktop: menú horizontal normal */
 @media (min-width: 1024px) {
     .nav-menu {
         display: flex;
@@ -1492,7 +1494,7 @@ body.loaded .hero {
         right: 0 !important;
     }
     
-    /* Overlay oscuro cuando el menÃº estÃ¡ abierto */
+    /* Overlay oscuro cuando el menú está abierto */
     .nav-menu::before {
         content: '';
         position: fixed;
@@ -1535,7 +1537,7 @@ body.loaded .hero {
         border-bottom: 2px solid rgba(155, 97, 164, 0.2);
     }
     
-    /* BotÃ³n de cotizar en mobile dentro del menÃº */
+    /* Botón de cotizar en mobile dentro del menú */
     .nav-menu .btn {
         width: 100%;
         margin-top: 20px;
@@ -1795,6 +1797,7 @@ body.loaded .hero {
     position: relative;
     width: 100%;
     max-width: 1400px;
+    min-height: 600px; /* ?? FIX CLS: Prevenir layout shift */
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1988,7 +1991,7 @@ body.loaded .hero {
     order: 2;
 }
 
-/* Isotipo estático (reemplaza animación 3D) */
+/* Isotipo est�tico (reemplaza animaci�n 3D) */
 .hero-isotipo-static {
     width: auto;
     height: auto;
@@ -1999,7 +2002,7 @@ body.loaded .hero {
     animation: float 6s ease-in-out infinite;
 }
 
-/* Animación de flotación suave */
+/* Animaci�n de flotaci�n suave */
 @keyframes float {
     0%, 100% {
         transform: translateY(0px) rotate(0deg);
@@ -2768,7 +2771,7 @@ body.loaded .hero {
     visibility: visible !important;
 }
 
-/* Logo de Pacific Hydro mÃ¡s grande */
+/* Logo de Pacific Hydro más grande */
 .client-logo-pacific {
     max-height: 90px;
 }
@@ -2831,7 +2834,7 @@ body.loaded .hero {
 }
 /**
  * Slider Cards Component - RESPONSIVE OPTIMIZADO + SWIPER.JS
- * Breakpoints especÃ­ficos para todos los tamaÃ±os
+ * Breakpoints específicos para todos los tamaños
  * Compatible con Swiper.js para infinite loop
  */
 
@@ -2880,7 +2883,7 @@ body.loaded .hero {
     height: 100%;
     overflow: hidden;
     z-index: 0;
-    /* Fallback gradient si no hay imÃ¡genes */
+    /* Fallback gradient si no hay imágenes */
     background: linear-gradient(
         135deg,
         rgba(9, 7, 29, 1) 0%,
@@ -2905,12 +2908,12 @@ body.loaded .hero {
         rgba(4, 199, 170, 0.10) 50%,
         rgba(155, 97, 164, 0.15) 100%
     );
-    /* OPTIMIZACIÃ“N: Hardware acceleration */
+    /* OPTIMIZACIÓN: Hardware acceleration */
     transform: translateZ(0);
     backface-visibility: hidden;
 }
 
-/* TransiciÃ³n mÃ¡s rÃ¡pida en mobile */
+/* Transición más rápida en mobile */
 @media (max-width: 767px) {
     .slider-bg-image {
         transition: opacity 0.2s ease-in-out;
@@ -3015,7 +3018,7 @@ body.loaded .hero {
 }
 
 .slider-card {
-    /* Swiper maneja flex y width a travÃ©s de slidesPerView */
+    /* Swiper maneja flex y width a través de slidesPerView */
     width: 100%;
     min-height: 460px;
     height: auto;
@@ -3056,12 +3059,12 @@ body.loaded .hero {
     z-index: 0;
     opacity: 0.3;
     transition: opacity 0.3s ease;
-    /* OPTIMIZACIÃ“N: Hardware acceleration */
+    /* OPTIMIZACIÓN: Hardware acceleration */
     transform: translateZ(0);
     backface-visibility: hidden;
 }
 
-/* TransiciÃ³n mÃ¡s rÃ¡pida en mobile */
+/* Transición más rápida en mobile */
 @media (max-width: 767px) {
     .slider-card-image {
         transition: opacity 0.2s ease;
@@ -3102,7 +3105,7 @@ body.loaded .hero {
     );
 }
 
-/* Swiper agrega esta clase automÃ¡ticamente a la slide centrada */
+/* Swiper agrega esta clase automáticamente a la slide centrada */
 .slider-card.swiper-slide-active {
     opacity: 1 !important;
     transform: scale(1) !important;
@@ -3139,12 +3142,12 @@ body.loaded .hero {
         rgba(9, 7, 29, 0.88) 50%,
         rgba(9, 7, 29, 0.92) 100%
     );
-    /* OPTIMIZACIÃ“N: Hardware acceleration */
+    /* OPTIMIZACIÓN: Hardware acceleration */
     transform: translateZ(0);
     backface-visibility: hidden;
 }
 
-/* OPTIMIZACIÃ“N: Reducir backdrop-filter en mobile (costoso) */
+/* OPTIMIZACIÓN: Reducir backdrop-filter en mobile (costoso) */
 @media (max-width: 767px) {
     .slider-card {
         backdrop-filter: blur(4px) !important;
@@ -3278,7 +3281,7 @@ body.loaded .hero {
     transform: scale(1.3);
 }
 
-/* 2. MÃ³vil grande / phablet (~480px) */
+/* 2. Móvil grande / phablet (~480px) */
 @media (min-width: 480px) {
     .slider-section {
         padding: 7rem 0 3.5rem;
@@ -3320,7 +3323,7 @@ body.loaded .hero {
     }
 }
 
-/* 3. MÃ³vil grande / phablet (~576px) */
+/* 3. Móvil grande / phablet (~576px) */
 @media (min-width: 576px) {
     .slider-section {
         padding: 7.5rem 0 4rem;
@@ -3565,7 +3568,7 @@ body.loaded .hero {
     }
 }
 
-/* 6. Desktop estÃ¡ndar (~1200px) */
+/* 6. Desktop estándar (~1200px) */
 @media (min-width: 1200px) {
     .slider-section {
         padding: 8rem 0 4rem;
@@ -3727,7 +3730,7 @@ body.loaded .hero {
     }
 }
 
-/* Altura mÃ¡xima en pantallas cortas */
+/* Altura máxima en pantallas cortas */
 @media (max-height: 800px) {
     .slider-section {
         padding: 80px 0 60px;
@@ -3764,13 +3767,13 @@ body.loaded .hero {
 }
 
 /* ===== INFINITE LOOP CLONES ===== */
-/* Los clones deben verse idÃ©nticos a las cards originales */
+/* Los clones deben verse idénticos a las cards originales */
 .slider-card-clone {
     /* Heredar todos los estilos de .slider-card */
     pointer-events: auto;
 }
 
-/* Los clones tambiÃ©n deben responder a hover/active */
+/* Los clones también deben responder a hover/active */
 .slider-card-clone:hover {
     opacity: 0.9;
 }
@@ -3797,7 +3800,7 @@ body.loaded .hero {
 }
 /**
  * Intro Sections - RESPONSIVE OPTIMIZADO
- * Secciones de introducciÃ³n entre secciones principales
+ * Secciones de introducción entre secciones principales
  */
 
 /* BASE MOBILE FIRST */
@@ -3948,7 +3951,7 @@ body.loaded .hero {
   hyphens: auto;
 }
 
-/* 2. MÃ³vil grande / phablet (~480px) */
+/* 2. Móvil grande / phablet (~480px) */
 @media (min-width: 480px) {
   .intro-section {
     padding: 7rem 1.5rem 3.5rem;
@@ -3995,7 +3998,7 @@ body.loaded .hero {
   }
 }
 
-/* 3. MÃ³vil grande / phablet (~576px) */
+/* 3. Móvil grande / phablet (~576px) */
 @media (min-width: 576px) {
   .intro-section {
     padding: 7.5rem 2rem 4rem;
@@ -4158,7 +4161,7 @@ body.loaded .hero {
   }
 }
 
-/* 6. Desktop estÃ¡ndar (~1200px) */
+/* 6. Desktop estándar (~1200px) */
 @media (min-width: 1200px) {
   .intro-section {
     min-height: 100vh;
@@ -4250,7 +4253,7 @@ body.loaded .hero {
 }
 /**
  * Forms Component - Just Dev It
- * Sistema de formularios profesional con validaciÃ³n visual
+ * Sistema de formularios profesional con validación visual
  */
 
 /* ===== FORM BASE ===== */
@@ -4804,7 +4807,7 @@ body.loaded .hero {
     }
 }
 
-/* AnimaciÃ³n para items que aparecen */
+/* Animación para items que aparecen */
 @keyframes filterFadeIn {
     from {
         opacity: 0;
@@ -4820,8 +4823,8 @@ body.loaded .hero {
     animation: filterFadeIn 400ms ease forwards;
 }
 /* =====================================================
-   BUTTON FIX - SoluciÃ³n para hover pegado
-   OptimizaciÃ³n de transiciones y estados
+   BUTTON FIX - Solución para hover pegado
+   Optimización de transiciones y estados
    ===================================================== */
 
 /* Reset y fix para todos los botones */
@@ -4831,7 +4834,7 @@ button,
 [type="submit"],
 .filter-btn,
 .nav-link {
-    /* Transiciones mÃ¡s cortas y precisas */
+    /* Transiciones más cortas y precisas */
     transition: 
         background-color 0.2s ease,
         color 0.2s ease,
@@ -4855,14 +4858,14 @@ button:hover,
     transition-duration: 0.15s;
 }
 
-/* Active states - respuesta instantÃ¡nea */
+/* Active states - respuesta instantánea */
 .btn:active,
 button:active {
     transition-duration: 0.05s;
     transform: scale(0.98);
 }
 
-/* Fix especÃ­fico para botones primary */
+/* Fix específico para botones primary */
 .btn-primary {
     background: linear-gradient(135deg, #9B61A4, #b77cc5);
     border: none;
@@ -4898,7 +4901,7 @@ button:active {
     transition-duration: 0.15s;
 }
 
-/* Fix especÃ­fico para botones secondary/outline */
+/* Fix específico para botones secondary/outline */
 .btn-secondary,
 .btn-outline {
     background: rgba(4, 199, 170, 0.05);
@@ -5266,7 +5269,7 @@ button {
 }
 
 .footer-links a::before {
-    content: 'â†’';
+    content: '→';
     position: absolute;
     left: 0;
     opacity: 0;
@@ -5466,7 +5469,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Prevent scroll cuando menu mÃ³vil estÃ¡ abierto */
+/* Prevent scroll cuando menu móvil está abierto */
 body.menu-open {
     overflow: hidden;
 }
@@ -5477,7 +5480,7 @@ body.menu-open {
     outline-offset: 2px;
 }
 
-/* AnimaciÃ³n para items del portfolio filtrados */
+/* Animación para items del portfolio filtrados */
 [data-category] {
     opacity: 1;
     transform: scale(1);
@@ -5533,8 +5536,8 @@ body.menu-open {
  * 1. Core (reset, variables, typography)
  * 2. Layouts (grid, sections)
  * 3. Components (navigation, hero, cards, forms, footer)
- * 4. Pages (especÃ­ficos si se requieren)
- * 5. Utilities (helpers de Ãºltima instancia)
+ * 4. Pages (específicos si se requieren)
+ * 5. Utilities (helpers de última instancia)
  */
 
 /* ===== IMPORTS ===== */
@@ -5584,7 +5587,7 @@ body.menu-open {
 /* Smooth scrolling behavior */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Para navegaciÃ³n fija */
+    scroll-padding-top: 80px; /* Para navegación fija */
 }
 
 /* Asegurar que todas las secciones se vean completas en mobile */
@@ -5919,7 +5922,7 @@ body.loading::after {
 }
 
 .scroll-to-top::before {
-    content: 'â†‘';
+    content: '↑';
     font-size: var(--text-2xl);
     color: white;
     font-weight: bold;
