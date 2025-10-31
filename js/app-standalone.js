@@ -1,12 +1,19 @@
 /**
  * Main Application - Just Dev It (Standalone Version)
- * Versión sin ES6 modules para máxima compatibilidad
+ * Versión optimizada para máximo rendimiento en mobile
  */
 
 (function() {
     'use strict';
     
     console.log('🚀 Inicializando Just Dev It...');
+    
+    // ==========================================
+    // DETECCIÓN DE DISPOSITIVO Y CAPACIDADES
+    // ==========================================
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const supportsIntersectionObserver = 'IntersectionObserver' in window;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     // ==========================================
     // OPTIMIZACIÓN: Detección de pestaña activa
@@ -20,6 +27,32 @@
             console.log('▶️ Reanudando animaciones');
         }
     });
+    
+    // ==========================================
+    // UTILIDADES: Debounce y Throttle
+    // ==========================================
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    function throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
     
     // ==========================================
     // SMOOTH SCROLL
@@ -101,15 +134,16 @@
     }
     
     // ==========================================
-    // STICKY HEADER
+    // STICKY HEADER (OPTIMIZADO CON THROTTLE)
     // ==========================================
     function initStickyHeader() {
         const header = document.querySelector('.site-header');
         
         if (header) {
             let lastScroll = 0;
+            let ticking = false;
             
-            window.addEventListener('scroll', () => {
+            const updateHeader = () => {
                 const currentScroll = window.pageYOffset;
                 
                 if (currentScroll > 100) {
@@ -119,15 +153,26 @@
                 }
                 
                 lastScroll = currentScroll;
-            });
+                ticking = false;
+            };
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeader);
+                    ticking = true;
+                }
+            }, { passive: true });
+            
             console.log('✅ Sticky header inicializado');
         }
     }
     
     // ==========================================
-    // ACTIVE SECTION DETECTION
+    // ACTIVE SECTION DETECTION (OPTIMIZADO)
     // ==========================================
     function initActiveSection() {
+        if (!supportsIntersectionObserver) return;
+        
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section[id]');
         
@@ -135,58 +180,65 @@
         
         const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -80% 0px', // Activar cuando la sección esté centrada
+            rootMargin: '-20% 0px -80% 0px',
             threshold: 0
         };
+        
+        let currentActive = null;
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
                     
-                    // Remover clase active de todos los links
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    
-                    // Agregar clase active al link correspondiente
-                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
+                    if (currentActive !== id) {
+                        currentActive = id;
+                        
+                        // Usar requestAnimationFrame para batch updates
+                        requestAnimationFrame(() => {
+                            navLinks.forEach(link => {
+                                const href = link.getAttribute('href');
+                                link.classList.toggle('active', href === `#${id}`);
+                            });
+                        });
                     }
                 }
             });
         }, observerOptions);
         
-        // Observar todas las secciones
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
+        sections.forEach(section => observer.observe(section));
         console.log('✅ Active section detection inicializado');
     }
     
     // ==========================================
-    // ANIMACIONES AL SCROLL
+    // ANIMACIONES AL SCROLL (OPTIMIZADO)
     // ==========================================
     function initScrollAnimations() {
+        if (!supportsIntersectionObserver || prefersReducedMotion) {
+            // Mostrar todos los elementos si no hay soporte o se prefiere reducir movimiento
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+            return;
+        }
+        
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: isMobile ? 0.05 : 0.1,
+            rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Opcional: dejar de observar después de animar
-                    // observer.unobserve(entry.target);
+                    requestAnimationFrame(() => {
+                        entry.target.classList.add('visible');
+                    });
+                    // Dejar de observar después de animar para mejor performance
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
         
-        // Observar elementos con clase .fade-in
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
@@ -195,32 +247,49 @@
     }
     
     // ==========================================
-    // LAZY LOADING DE IMÁGENES
+    // LAZY LOADING DE IMÁGENES (OPTIMIZADO)
     // ==========================================
     function initLazyLoading() {
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        const src = img.getAttribute('data-src');
-                        
-                        if (src) {
-                            img.src = src;
-                            img.removeAttribute('data-src');
-                        }
-                        
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
+        if (!supportsIntersectionObserver) {
+            // Fallback: cargar todas las imágenes
             document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
+                img.src = img.getAttribute('data-src');
+                img.removeAttribute('data-src');
             });
-            
-            console.log('✅ Lazy loading inicializado');
+            return;
         }
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    
+                    if (src) {
+                        // Precargar imagen antes de asignarla
+                        const tempImg = new Image();
+                        tempImg.onload = () => {
+                            requestAnimationFrame(() => {
+                                img.src = src;
+                                img.removeAttribute('data-src');
+                                img.classList.add('loaded');
+                            });
+                        };
+                        tempImg.src = src;
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: isMobile ? '50px' : '100px' // Cargar antes en desktop
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+        
+        console.log('✅ Lazy loading inicializado');
     }
     
     // ==========================================
@@ -409,31 +478,39 @@
     }
     
     // ==========================================
-    // HERO 3D CANVAS ANIMATION
+    // HERO 3D CANVAS ANIMATION (ULTRA OPTIMIZADO)
     // ==========================================
     function initHeroAnimation() {
+        // No inicializar en mobile para mejor performance
+        if (isMobile || prefersReducedMotion) {
+            console.log('⚡ Hero animation desactivada en mobile/reduced motion');
+            return;
+        }
+        
         const canvas = document.createElement('canvas');
         const container = document.getElementById('hero-3d-container');
         
         if (!container) return;
         
         container.appendChild(canvas);
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
         
-        // Configuración
+        // Configuración ultra optimizada
         const particles = [];
-        const particleCount = 30; // OPTIMIZADO: reducido de 80 a 30 (-60% CPU/RAM)
-        const connectionDistance = 150;
+        const particleCount = 20; // Reducido aún más para mejor performance
+        const connectionDistance = 120; // Reducido para menos cálculos
         let mouse = { x: 0, y: 0 };
+        let isAnimating = false;
+        let animationId = null;
         
-        // Resize canvas
-        function resize() {
+        // Resize canvas con debounce
+        const resize = debounce(() => {
             canvas.width = container.offsetWidth;
             canvas.height = container.offsetHeight;
-        }
+        }, 250);
         
         resize();
-        window.addEventListener('resize', resize);
+        window.addEventListener('resize', resize, { passive: true });
         
         // Crear partículas
         class Particle {
@@ -476,18 +553,30 @@
             particles.push(new Particle());
         }
         
-        // Tracking del mouse
-        container.addEventListener('mousemove', (e) => {
+        // Tracking del mouse con throttle
+        const handleMouseMove = throttle((e) => {
             const rect = container.getBoundingClientRect();
             mouse.x = e.clientX - rect.left;
             mouse.y = e.clientY - rect.top;
-        });
+            
+            if (!isAnimating) {
+                isAnimating = true;
+                animate();
+            }
+        }, 50);
         
-        // Animate
+        container.addEventListener('mousemove', handleMouseMove, { passive: true });
+        
+        // Pausar cuando el mouse sale
+        container.addEventListener('mouseleave', () => {
+            mouse.x = 0;
+            mouse.y = 0;
+        }, { passive: true });
+        
+        // Animate con optimizaciones agresivas
         function animate() {
-            // OPTIMIZACIÓN: Pausar animación cuando la pestaña no está activa
-            if (!isTabActive) {
-                requestAnimationFrame(animate);
+            if (!isTabActive || !isAnimating) {
+                isAnimating = false;
                 return;
             }
             
@@ -499,16 +588,22 @@
                 particle.draw();
             });
             
-            // Conectar partículas cercanas
+            // Conectar partículas cercanas (optimizado)
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (dist < connectionDistance) {
+                    // Early exit si están muy lejos
+                    if (Math.abs(dx) > connectionDistance || Math.abs(dy) > connectionDistance) continue;
+                    
+                    const distSq = dx * dx + dy * dy; // Evitar sqrt cuando sea posible
+                    const connectionDistSq = connectionDistance * connectionDistance;
+                    
+                    if (distSq < connectionDistSq) {
+                        const dist = Math.sqrt(distSq);
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(155, 97, 164, ${1 - dist / connectionDistance})`;
+                        ctx.strokeStyle = `rgba(155, 97, 164, ${(1 - dist / connectionDistance) * 0.5})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -517,11 +612,14 @@
                 }
             }
             
-            requestAnimationFrame(animate);
+            animationId = requestAnimationFrame(animate);
         }
         
+        // Iniciar animación
+        isAnimating = true;
         animate();
-        console.log('✅ Hero 3D animation inicializada');
+        
+        console.log('✅ Hero 3D animation inicializada (optimizada)');
     }
     
     // ==========================================
