@@ -30,6 +30,8 @@
 
 .preloader-content {
     position: relative;
+    width: 280px; /* 🔧 FIX CLS: Width explícito */
+    height: 300px; /* 🔧 FIX CLS: Height explícito */
     z-index: 2;
     text-align: center;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
