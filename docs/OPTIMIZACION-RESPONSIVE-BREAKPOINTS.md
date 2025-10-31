@@ -6,34 +6,43 @@ Se han optimizado **TODOS** los archivos CSS para trabajar con los siguientes br
 
 ```css
 /* 1. Móvil base (hasta ~480px) */
-@media (min-width: 480px) {}
+@media (min-width: 480px) {
+}
 
 /* 2. Móvil grande / phablet (~576px) */
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+}
 
 /* 3. Tablet vertical (~768px) */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+}
 
 /* 4. Tablet horizontal / laptop chico (~992px) */
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+}
 
 /* 5. Desktop estándar (~1200px) */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}
 
 /* 6. Desktop grande / wide (~1400px) */
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+}
 ```
 
 ## 🎯 Archivos Optimizados
 
 ### ✅ 1. `css/layouts/sections.css`
+
 **Cambios realizados:**
+
 - Padding progresivo y consistente en cada breakpoint
 - Sistema mobile-first con incrementos lógicos
 - Eliminación de `min-height: fit-content` en favor de `auto`
 - Section headers con tamaños responsive usando `clamp()`
 
 **Breakpoints aplicados:**
+
 ```css
 Mobile base:     padding: 3rem 1rem
 480px:           padding: 3.5rem 1.5rem
@@ -45,7 +54,9 @@ Mobile base:     padding: 3rem 1rem
 ```
 
 ### ✅ 2. `css/components/hero.css`
+
 **Cambios realizados:**
+
 - Grid adaptativo: 1 columna en móvil, 2 columnas desde 992px
 - Hero content con padding y gap responsive
 - Botones adaptativos: full-width en móvil, auto desde 480px
@@ -53,6 +64,7 @@ Mobile base:     padding: 3rem 1rem
 - Isotipo con tamaños progresivos (200px → 480px)
 
 **Highlights:**
+
 - **Móvil (<480px):** Layout vertical, botones full-width, isotipo 200px
 - **480-576px:** Botones en fila, isotipo 240-280px
 - **768px:** Texto centrado, isotipo 320px
@@ -60,7 +72,9 @@ Mobile base:     padding: 3rem 1rem
 - **1200px+:** Espacios generosos, isotipo 420-480px
 
 ### ✅ 3. `css/components/slider-cards.css` (COMPLETAMENTE REESCRITO)
+
 **Cambios realizados:**
+
 - **Mobile-first approach** desde cero
 - Cards con ancho adaptativo: `calc(85vw)` en móvil → 420px en desktop
 - Altura de cards: 380px móvil → 500px en 1400px+
@@ -69,6 +83,7 @@ Mobile base:     padding: 3rem 1rem
 - Controls y dots optimizados para touch
 
 **Breakpoints específicos para cada elemento:**
+
 ```css
 Cards width:
 - Base:    calc(85vw), max 320px, height 380px
@@ -81,13 +96,16 @@ Cards width:
 ```
 
 **Typography responsive:**
+
 ```css
 Title: clamp(1.5rem, 6vw, 2.5rem) móvil → 2.75rem desktop
 Description: clamp(0.875rem, 2.5vw, 1.1rem) móvil → 1.4rem desktop
 ```
 
 ### ✅ 4. `css/components/intro-sections.css`
+
 **Cambios realizados:**
+
 - Padding adaptativo con menos espacio en móvil
 - Stats: columna en móvil, fila desde 576px
 - Content max-width progresivo: 100% → 950px
@@ -95,6 +113,7 @@ Description: clamp(0.875rem, 2.5vw, 1.1rem) móvil → 1.4rem desktop
 - Stats números y labels escalables
 
 **Progressive enhancement:**
+
 ```css
 Content max-width:
 - Base:    100%
@@ -108,27 +127,33 @@ Content max-width:
 ## 🔧 Mejoras Técnicas Implementadas
 
 ### 1. **Mobile-First Approach**
+
 Todos los estilos base están optimizados para móvil, con media queries que **añaden** complejidad en pantallas más grandes.
 
 ### 2. **Uso Consistente de `clamp()`**
+
 ```css
-font-size: clamp(min, preferred, max)
+font-size: clamp(min, preferred, max);
 ```
+
 Asegura tipografía fluida entre breakpoints sin saltos bruscos.
 
 ### 3. **Alturas Adaptativas**
+
 - **Hero:** `min-height: 100vh` con contenido flexible
-- **Intro sections:** `min-height: 100vh` 
+- **Intro sections:** `min-height: 100vh`
 - **Slider sections:** `min-height: auto` con padding controlado
 - **Cards:** Alturas fijas progresivas por breakpoint
 
 ### 4. **Touch-Friendly en Móvil**
+
 - Botones con `min-width: 48px` y `min-height: 48px`
 - Área táctil generosa en controls
 - `-webkit-tap-highlight-color: transparent`
 - `touch-action: pan-x pan-y` para sliders
 
 ### 5. **Performance Optimizations**
+
 ```css
 contain: layout style paint;
 will-change: transform, scroll-position;
@@ -138,11 +163,15 @@ will-change: transform, scroll-position;
 ## 📊 Comparativa de Cambios
 
 ### ANTES ❌
+
 ```css
 /* Breakpoints inconsistentes */
-@media (max-width: 768px) {}
-@media (max-width: 1024px) {}
-@media (max-width: 1280px) {}
+@media (max-width: 768px) {
+}
+@media (max-width: 1024px) {
+}
+@media (max-width: 1280px) {
+}
 
 /* Alturas fijas problemáticas */
 min-height: fit-content; /* No funciona bien */
@@ -153,14 +182,21 @@ font-size: var(--text-4xl);
 ```
 
 ### DESPUÉS ✅
+
 ```css
 /* Breakpoints consistentes mobile-first */
-@media (min-width: 480px) {}
-@media (min-width: 576px) {}
-@media (min-width: 768px) {}
-@media (min-width: 992px) {}
-@media (min-width: 1200px) {}
-@media (min-width: 1400px) {}
+@media (min-width: 480px) {
+}
+@media (min-width: 576px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1400px) {
+}
 
 /* Alturas adaptativas */
 min-height: auto;
@@ -190,12 +226,14 @@ Testea el sitio en estos tamaños específicos:
 - [ ] **1920px** - Full HD desktop
 
 ### Testear en navegadores:
+
 - [ ] Chrome DevTools (todos los breakpoints)
 - [ ] Firefox Responsive Design Mode
 - [ ] Safari (iOS & macOS)
 - [ ] Edge
 
 ### Validaciones específicas:
+
 - [ ] Hero section se ve completo en todos los tamaños
 - [ ] Intro sections tienen altura adecuada (100% visible)
 - [ ] Slider cards son navegables con touch
@@ -207,12 +245,14 @@ Testea el sitio en estos tamaños específicos:
 ## 🚀 Próximos Pasos
 
 ### Opcional - Mejoras Adicionales:
+
 1. **Optimizar navigation.css** con los mismos breakpoints
 2. **Revisar footer.css** para mejor responsive
 3. **Añadir lazy loading** a imágenes del slider
 4. **Implementar intersection observer** para animaciones on-scroll
 
 ### Performance:
+
 - [ ] Minificar CSS para producción
 - [ ] Combinar media queries duplicadas
 - [ ] Purgar CSS no utilizado con PurgeCSS
@@ -223,6 +263,7 @@ Testea el sitio en estos tamaños específicos:
 ### Si necesitas añadir nuevos estilos responsive:
 
 1. **Siempre usa mobile-first:**
+
 ```css
 /* Base: móvil */
 .elemento {
@@ -238,9 +279,11 @@ Testea el sitio en estos tamaños específicos:
 ```
 
 2. **Usa los breakpoints exactos definidos:**
+
 - 480px, 576px, 768px, 992px, 1200px, 1400px
 
 3. **Prefiere `clamp()` para tipografía:**
+
 ```css
 font-size: clamp(min-mobile, preferred, max-desktop);
 ```
@@ -254,7 +297,7 @@ font-size: clamp(min-mobile, preferred, max-desktop);
 ✅ **Typography fluida** sin saltos bruscos  
 ✅ **Touch-friendly** en móviles  
 ✅ **Performance optimized** con contain y will-change  
-✅ **Backup creado** del archivo original (slider-cards-backup.css)  
+✅ **Backup creado** del archivo original (slider-cards-backup.css)
 
 ---
 
