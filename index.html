@@ -1721,7 +1721,7 @@
               id="portfolio-next"
               aria-label="Siguiente"
             >
-              â†’
+              →
             </button>
           </div>
 
@@ -2245,7 +2245,7 @@
       </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ===== JAVASCRIPT OPTIMIZADO ===== -->
     <!-- Three.js DESACTIVADO para optimizar RAM/CPU (ahorra ~200 MB) -->
     <!--
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -2253,16 +2253,62 @@
     <script async src="js/logo-3d-animation.js"></script>
     -->
 
-    <!-- Swiper JS Library -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Swiper JS Library - Lazy load con defer -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Core Scripts - defer para mejor rendimiento -->
+    <!-- Critical Scripts - Preloader primero para experiencia inmediata -->
+    <script src="js/epic-preloader.js"></script>
+    
+    <!-- Core Scripts - defer para mejor rendimiento, orden optimizado -->
     <script defer src="js/conversion-tracking.js"></script>
-    <script defer src="js/epic-preloader.js"></script>
-    <script defer src="js/hero-background.js"></script>
-    <script src="js/components/slider-cards.js"></script>
-    <script defer src="js/components/intro-parallax.js"></script>
     <script defer src="js/app-standalone.js"></script>
+    
+    <!-- Non-critical animations - lazy load después del preloader -->
+    <script>
+      // Lazy load hero background solo después del preloader y en desktop
+      window.addEventListener('preloaderComplete', function() {
+        const isMobile = window.innerWidth < 768;
+        if (!isMobile) {
+          const script = document.createElement('script');
+          script.src = 'js/hero-background.js';
+          script.defer = true;
+          document.body.appendChild(script);
+        }
+      });
+      
+      // Lazy load slider después del preloader
+      window.addEventListener('preloaderComplete', function() {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = 'js/components/slider-cards.js';
+          script.defer = true;
+          document.body.appendChild(script);
+        }, 100);
+      });
+      
+      // Lazy load intro parallax solo si está disponible
+      if (typeof IntersectionObserver !== 'undefined') {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const script = document.createElement('script');
+              script.src = 'js/components/intro-parallax.js';
+              script.defer = true;
+              document.body.appendChild(script);
+              observer.disconnect();
+            }
+          });
+        }, { rootMargin: '200px' });
+        
+        window.addEventListener('preloaderComplete', function() {
+          const introSection = document.querySelector('.intro-section');
+          if (introSection) {
+            observer.observe(introSection);
+          }
+        });
+      }
+    </script>
   </body>
 </html>

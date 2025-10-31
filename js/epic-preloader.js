@@ -1,5 +1,5 @@
 /**
- * PREMIUM PRELOADER - Just Dev It
+ * PREMIUM PRELOADER - Just Dev It (ULTRA OPTIMIZADO)
  * Experiencia de carga premium optimizada para performance
  * Sin impacto en Web Vitals (LCP, FID, CLS)
  */
@@ -7,10 +7,10 @@
 (function() {
     'use strict';
     
-    // Configuración optimizada
+    // Configuración optimizada para carga rápida
     const CONFIG = {
-        duration: 1200, // 1.2 segundos - rápido pero elegante
-        minDisplayTime: 800, // Mínimo 0.8s para que se aprecie
+        duration: 1000, // 1 segundo - más rápido
+        minDisplayTime: 600, // Mínimo 0.6s
         easing: t => 1 - Math.pow(1 - t, 3) // easeOutCubic
     };
     
@@ -35,7 +35,7 @@
         let progress = 0;
         let animationFrameId;
         
-        // Función de actualización del progreso
+        // Función de actualización del progreso (optimizada)
         function updateProgress(currentTime) {
             const elapsed = currentTime - startTime;
             const rawProgress = Math.min(elapsed / CONFIG.duration, 1);
@@ -43,11 +43,9 @@
             
             const percentage = Math.floor(progress * 100);
             
-            // Actualizar UI - batch updates para mejor performance
-            requestAnimationFrame(() => {
-                counter.textContent = percentage;
-                progressBar.style.width = percentage + '%';
-            });
+            // Batch DOM updates en un solo RAF
+            counter.textContent = percentage;
+            progressBar.style.width = percentage + '%';
             
             if (progress < 1) {
                 animationFrameId = requestAnimationFrame(updateProgress);
@@ -59,26 +57,24 @@
         // Función para terminar la carga
         function finishLoading(finishTime) {
             const totalTime = finishTime - startTime;
-            
-            // Asegurar tiempo mínimo de display
             const remainingTime = Math.max(0, CONFIG.minDisplayTime - totalTime);
             
             setTimeout(() => {
-                // Trigger conversión tracking
-                if (typeof gtag !== 'undefined') {
+                // Tracking optimizado - solo si están disponibles
+                if (typeof gtag === 'function') {
                     gtag('event', 'page_loaded', {
                         'event_category': 'engagement',
                         'event_label': 'preloader_complete',
-                        'value': Math.round(totalTime)
+                        'value': Math.round(totalTime),
+                        'non_interaction': true
                     });
                 }
                 
-                // Trigger Facebook Pixel
-                if (typeof fbq !== 'undefined') {
+                if (typeof fbq === 'function') {
                     fbq('trackCustom', 'PreloaderComplete');
                 }
                 
-                // Animación de salida
+                // Animación de salida con clase
                 preloader.classList.add('loaded');
                 document.body.classList.add('loaded');
                 
@@ -109,7 +105,7 @@
         // Iniciar animación
         animationFrameId = requestAnimationFrame(updateProgress);
         
-        // Fallback: forzar completado después de 3 segundos
+        // Fallback: forzar completado después de 2.5 segundos (reducido)
         setTimeout(() => {
             if (progress < 1) {
                 console.warn('Preloader timeout - forcing completion');
@@ -120,25 +116,28 @@
                 progressBar.style.width = '100%';
                 finishLoading(performance.now());
             }
-        }, 3000);
+        }, 2500); // Reducido de 3000 a 2500
     }
     
-    // Tracking de performance para optimización
+    // Tracking de performance optimizado
     if ('PerformanceObserver' in window) {
         try {
             const observer = new PerformanceObserver((list) => {
-                for (const entry of list.getEntries()) {
-                    if (entry.entryType === 'largest-contentful-paint') {
-                        // Track LCP para asegurar que no lo perjudicamos
-                        console.log('LCP:', entry.startTime + 'ms');
-                    }
+                const entries = list.getEntries();
+                const lcpEntry = entries[entries.length - 1]; // Último LCP
+                
+                if (lcpEntry) {
+                    console.log('LCP:', Math.round(lcpEntry.startTime) + 'ms');
                 }
             });
-            observer.observe({ entryTypes: ['largest-contentful-paint'] });
+            
+            observer.observe({ 
+                type: 'largest-contentful-paint',
+                buffered: true 
+            });
         } catch (e) {
             // Silently fail en navegadores antiguos
         }
     }
     
 })();
-
