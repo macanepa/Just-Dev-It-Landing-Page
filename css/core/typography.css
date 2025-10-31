@@ -1,9 +1,11 @@
 /**
  * Typography System - Just Dev It
  * Sistema tipográfico optimizado para legibilidad y jerarquía visual
+ * Fuentes: Poppins (headings), Manrope (body), Fira Code (code)
  */
 
-/* ===== IMPORTACIÓN DE FUENTES ===== */
+/* ===== IMPORTACIÓN DE FUENTES (Google Fonts CDN con display=swap) ===== */
+/* Nota: Para performance óptima, considerar self-hosting fonts en el futuro */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
 
 /* ===== ESTILOS BASE ===== */
