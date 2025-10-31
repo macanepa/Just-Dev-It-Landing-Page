@@ -163,16 +163,11 @@ class CardSlider {
     this.updateBackground();
     this.updateButtonStates();
     
-    // Calcular scroll para centrar la tarjeta
-    const containerWidth = this.slider.offsetWidth;
-    const cardWidth = currentCard.offsetWidth;
-    const cardLeft = currentCard.offsetLeft;
-    const scrollPosition = cardLeft - (containerWidth / 2) + (cardWidth / 2);
-    
-    // Scroll suave
-    this.slider.scrollTo({
-      left: Math.max(0, scrollPosition),
-      behavior: 'smooth'
+    // Usar scrollIntoView para scroll más natural y suave
+    currentCard.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
     });
   }
   
