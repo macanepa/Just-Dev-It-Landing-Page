@@ -1,0 +1,1192 @@
+﻿/**
+ * Main Application - Just Dev It (Standalone Version)
+ * VersiÃ³n optimizada para mÃ¡ximo rendimiento en mobile
+ */
+
+(function() {
+    'use strict';
+    
+    console.log('ðŸš€ Inicializando Just Dev It...');
+    
+    // ==========================================
+    // DETECCIÃ“N DE DISPOSITIVO Y CAPACIDADES
+    // ==========================================
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const supportsIntersectionObserver = 'IntersectionObserver' in window;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // ==========================================
+    // OPTIMIZACIÃ“N: DetecciÃ³n de pestaÃ±a activa
+    // ==========================================
+    let isTabActive = true;
+    document.addEventListener('visibilitychange', () => {
+        isTabActive = !document.hidden;
+        if (!isTabActive) {
+            console.log('â¸ï¸ Pausando animaciones (pestaÃ±a inactiva)');
+        } else {
+            console.log('â–¶ï¸ Reanudando animaciones');
+        }
+    });
+    
+    // ==========================================
+    // UTILIDADES: Debounce y Throttle
+    // ==========================================
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    function throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+    
+    // ==========================================
+    // SMOOTH SCROLL
+    // ==========================================
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Ignorar links vacÃ­os o solo #
+                if (href === '#' || !href) return;
+                
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Cerrar menu mÃ³vil si estÃ¡ abierto
+                    const navMenu = document.querySelector('.nav-menu');
+                    const navToggle = document.querySelector('.nav-toggle');
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navToggle?.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        console.log('âœ… Smooth scroll inicializado');
+    }
+    
+    // ==========================================
+    // NAVEGACIÃ“N MÃ“VIL
+    // ==========================================
+    function initMobileNav() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        console.log('ðŸ” Elementos encontrados:', { navToggle, navMenu });
+        
+        if (navToggle && navMenu) {
+            // Toggle del menÃº con el botÃ³n hamburguesa
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isActive = navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                console.log('ðŸ” Menu toggled:', { isActive, classes: navMenu.className });
+                
+                // Actualizar aria-expanded para accesibilidad
+                navToggle.setAttribute('aria-expanded', isActive);
+                
+                // Prevenir scroll cuando el menu estÃ¡ abierto
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Cerrar menÃº al hacer click en el overlay (::before)
+            navMenu.addEventListener('click', (e) => {
+                if (e.target === navMenu) {
+                    console.log('ðŸ”’ Cerrando menu por click en overlay');
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            console.log('âœ… NavegaciÃ³n mÃ³vil inicializada');
+        } else {
+            console.error('âŒ No se encontraron elementos de navegaciÃ³n');
+        }
+    }
+    
+    // ==========================================
+    // STICKY HEADER (OPTIMIZADO CON THROTTLE)
+    // ==========================================
+    function initStickyHeader() {
+        const header = document.querySelector('.site-header');
+        
+        if (header) {
+            let lastScroll = 0;
+            let ticking = false;
+            
+            const updateHeader = () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                lastScroll = currentScroll;
+                ticking = false;
+            };
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeader);
+                    ticking = true;
+                }
+            }, { passive: true });
+            
+            console.log('âœ… Sticky header inicializado');
+        }
+    }
+    
+    // ==========================================
+    // ACTIVE SECTION DETECTION (OPTIMIZADO)
+    // ==========================================
+    function initActiveSection() {
+        if (!supportsIntersectionObserver) return;
+        
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        
+        if (sections.length === 0 || navLinks.length === 0) return;
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px',
+            threshold: 0
+        };
+        
+        let currentActive = null;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    if (currentActive !== id) {
+                        currentActive = id;
+                        
+                        // Usar requestAnimationFrame para batch updates
+                        requestAnimationFrame(() => {
+                            navLinks.forEach(link => {
+                                const href = link.getAttribute('href');
+                                link.classList.toggle('active', href === `#${id}`);
+                            });
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => observer.observe(section));
+        console.log('âœ… Active section detection inicializado');
+    }
+    
+    // ==========================================
+    // ANIMACIONES AL SCROLL (OPTIMIZADO)
+    // ==========================================
+    function initScrollAnimations() {
+        if (!supportsIntersectionObserver || prefersReducedMotion) {
+            // Mostrar todos los elementos si no hay soporte o se prefiere reducir movimiento
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+            return;
+        }
+        
+        const observerOptions = {
+            threshold: isMobile ? 0.05 : 0.1,
+            rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    requestAnimationFrame(() => {
+                        entry.target.classList.add('visible');
+                    });
+                    // Dejar de observar despuÃ©s de animar para mejor performance
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        console.log('âœ… Animaciones al scroll inicializadas');
+    }
+    
+    // ==========================================
+    // LAZY LOADING DE IMÃGENES (OPTIMIZADO)
+    // ==========================================
+    function initLazyLoading() {
+        if (!supportsIntersectionObserver) {
+            // Fallback: cargar todas las imÃ¡genes
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                img.src = img.getAttribute('data-src');
+                img.removeAttribute('data-src');
+            });
+            return;
+        }
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    
+                    if (src) {
+                        // Precargar imagen antes de asignarla
+                        const tempImg = new Image();
+                        tempImg.onload = () => {
+                            requestAnimationFrame(() => {
+                                img.src = src;
+                                img.removeAttribute('data-src');
+                                img.classList.add('loaded');
+                            });
+                        };
+                        tempImg.src = src;
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: isMobile ? '50px' : '100px' // Cargar antes en desktop
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+        
+        console.log('âœ… Lazy loading inicializado');
+    }
+    
+    // ==========================================
+    // VALIDACIÃ“N DE FORMULARIO
+    // ==========================================
+    function initFormValidation() {
+        const form = document.getElementById('contact-form');
+        
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // ValidaciÃ³n bÃ¡sica
+                const name = form.querySelector('#name');
+                const email = form.querySelector('#email');
+                const message = form.querySelector('#message');
+                
+                let isValid = true;
+                
+                // Validar nombre
+                if (name && name.value.trim().length < 2) {
+                    showError(name, 'El nombre debe tener al menos 2 caracteres');
+                    isValid = false;
+                } else if (name) {
+                    clearError(name);
+                }
+                
+                // Validar email
+                if (email && !isValidEmail(email.value)) {
+                    showError(email, 'Por favor ingresa un email vÃ¡lido');
+                    isValid = false;
+                } else if (email) {
+                    clearError(email);
+                }
+                
+                // Validar mensaje
+                if (message && message.value.trim().length < 10) {
+                    showError(message, 'El mensaje debe tener al menos 10 caracteres');
+                    isValid = false;
+                } else if (message) {
+                    clearError(message);
+                }
+                
+                if (isValid) {
+                    // Enviar formulario
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        const formData = new FormData(form);
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            showSuccessMessage('Â¡Mensaje enviado con Ã©xito! Te contactaremos pronto.');
+                            form.reset();
+                        } else {
+                            showErrorMessage('Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
+                        }
+                    } catch (error) {
+                        showErrorMessage('Error de conexiÃ³n. Por favor verifica tu internet.');
+                    } finally {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                }
+            });
+            
+            console.log('âœ… ValidaciÃ³n de formulario inicializada');
+        }
+    }
+    
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    function showError(input, message) {
+        const formGroup = input.closest('.form-group');
+        formGroup.classList.add('error');
+        
+        let errorDiv = formGroup.querySelector('.form-error');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error';
+            formGroup.appendChild(errorDiv);
+        }
+        errorDiv.textContent = message;
+    }
+    
+    function clearError(input) {
+        const formGroup = input.closest('.form-group');
+        formGroup.classList.remove('error');
+        
+        const errorDiv = formGroup.querySelector('.form-error');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+    }
+    
+    function showSuccessMessage(message) {
+        showToast(message, 'success');
+    }
+    
+    function showErrorMessage(message) {
+        showToast(message, 'error');
+    }
+    
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            background: ${type === 'success' ? '#04C7AA' : '#ef4444'};
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        `;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }, 5000);
+    }
+    
+    // ==========================================
+    // PORTFOLIO FILTER
+    // ==========================================
+    function initPortfolioFilter() {
+        const filterButtons = document.querySelectorAll('[data-filter]');
+        const portfolioItems = document.querySelectorAll('[data-category]');
+        
+        if (filterButtons.length === 0 || portfolioItems.length === 0) return;
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                // Actualizar botÃ³n activo
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+                
+                // Filtrar items
+                portfolioItems.forEach((item, index) => {
+                    const categories = item.getAttribute('data-category').split(',').map(c => c.trim());
+                    const shouldShow = filter === 'all' || categories.includes(filter);
+                    
+                    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    
+                    if (shouldShow) {
+                        item.style.display = '';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, index * 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        console.log('âœ… Portfolio filter inicializado');
+    }
+    
+    // ==========================================
+    // HERO 3D CANVAS ANIMATION (ULTRA OPTIMIZADO)
+    // ==========================================
+    function initHeroAnimation() {
+        // No inicializar en mobile para mejor performance
+        if (isMobile || prefersReducedMotion) {
+            console.log('âš¡ Hero animation desactivada en mobile/reduced motion');
+            return;
+        }
+        
+        const canvas = document.createElement('canvas');
+        const container = document.getElementById('hero-3d-container');
+        
+        if (!container) return;
+        
+        container.appendChild(canvas);
+        const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
+        
+        // ConfiguraciÃ³n ultra optimizada
+        const particles = [];
+        const particleCount = 20; // Reducido aÃºn mÃ¡s para mejor performance
+        const connectionDistance = 120; // Reducido para menos cÃ¡lculos
+        let mouse = { x: 0, y: 0 };
+        let isAnimating = false;
+        let animationId = null;
+        
+        // Resize canvas con debounce
+        const resize = debounce(() => {
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+        }, 250);
+        
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+        
+        // Crear partÃ­culas
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                
+                // Mouse interaction
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (dist < 100) {
+                    this.x -= dx * 0.03;
+                    this.y -= dy * 0.03;
+                }
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(155, 97, 164, 0.6)';
+                ctx.fill();
+            }
+        }
+        
+        // Inicializar partÃ­culas
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Tracking del mouse con throttle
+        const handleMouseMove = throttle((e) => {
+            const rect = container.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+            
+            if (!isAnimating) {
+                isAnimating = true;
+                animate();
+            }
+        }, 50);
+        
+        container.addEventListener('mousemove', handleMouseMove, { passive: true });
+        
+        // Pausar cuando el mouse sale
+        container.addEventListener('mouseleave', () => {
+            mouse.x = 0;
+            mouse.y = 0;
+        }, { passive: true });
+        
+        // Animate con optimizaciones agresivas
+        function animate() {
+            if (!isTabActive || !isAnimating) {
+                isAnimating = false;
+                return;
+            }
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Update y draw partÃ­culas
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            // Conectar partÃ­culas cercanas (optimizado)
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    
+                    // Early exit si estÃ¡n muy lejos
+                    if (Math.abs(dx) > connectionDistance || Math.abs(dy) > connectionDistance) continue;
+                    
+                    const distSq = dx * dx + dy * dy; // Evitar sqrt cuando sea posible
+                    const connectionDistSq = connectionDistance * connectionDistance;
+                    
+                    if (distSq < connectionDistSq) {
+                        const dist = Math.sqrt(distSq);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(155, 97, 164, ${(1 - dist / connectionDistance) * 0.5})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Iniciar animaciÃ³n
+        isAnimating = true;
+        animate();
+        
+        console.log('âœ… Hero 3D animation inicializada (optimizada)');
+    }
+    
+    // ==========================================
+    // INICIALIZACIÃ“N PRINCIPAL
+    // ==========================================
+    function init() {
+        // Esperar a que el DOM estÃ© listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                startApp();
+            });
+        } else {
+            startApp();
+        }
+    }
+    
+    function startApp() {
+        console.log('ðŸ“¦ Iniciando componentes...');
+        
+        try {
+            initSmoothScroll();
+            initMobileNav();
+            initStickyHeader();
+            initActiveSection();
+            initScrollAnimations();
+            initLazyLoading();
+            initFormValidation();
+            initPortfolioFilter();
+            initHeroAnimation();
+            
+            console.log('âœ… Just Dev It cargado exitosamente!');
+        } catch (error) {
+            console.error('âŒ Error inicializando:', error);
+        }
+    }
+    
+    // Iniciar la aplicaciÃ³n
+    init();
+    
+})();
+/**
+ * HERO BACKGROUND - PartÃ­culas y conexiones animadas (ULTRA OPTIMIZADO)
+ * Fondo Ã©pico con partÃ­culas conectadas y efecto mouse
+ * Optimizado para mobile y bajo consumo de recursos
+ */
+
+(function() {
+    'use strict';
+    
+    // DetecciÃ³n de capacidades del dispositivo
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const supportsRAF = 'requestAnimationFrame' in window;
+    
+    // No inicializar en mobile o si se prefiere reducir movimiento
+    if (isMobile || prefersReducedMotion || !supportsRAF) {
+        console.log('âš¡ Hero background desactivado (mobile/reduced motion)');
+        return;
+    }
+    
+    class HeroBackground {
+        constructor(containerId) {
+            this.container = document.getElementById(containerId);
+            if (!this.container) return;
+            
+            this.isTabActive = true;
+            this.isAnimating = false;
+            this.animationId = null;
+            
+            // Crear canvas para el fondo
+            this.canvas = document.createElement('canvas');
+            this.canvas.id = 'hero-background-canvas';
+            this.canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;';
+            
+            // Insertar al principio del contenedor
+            this.container.insertBefore(this.canvas, this.container.firstChild);
+            
+            this.ctx = this.canvas.getContext('2d', { 
+                alpha: true, 
+                desynchronized: true // Mejor performance
+            });
+            
+            this.particles = [];
+            this.mouse = { x: null, y: null, radius: 150 }; // Radio reducido
+            
+            // Reducir partÃ­culas para mejor performance
+            this.particleCount = 100; // Reducido de 250
+            
+            this.init();
+        }
+        
+        init() {
+            this.resize();
+            this.createParticles();
+            this.setupEventListeners();
+            
+            this.isAnimating = true;
+            this.animate();
+            
+            console.log('ðŸŒŸ Hero Background iniciado (optimizado)');
+        }
+        
+        setupEventListeners() {
+            // Resize con debounce
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => this.resize(), 250);
+            }, { passive: true });
+            
+            // Visibility change para pausar cuando no estÃ¡ visible
+            document.addEventListener('visibilitychange', () => {
+                this.isTabActive = !document.hidden;
+            });
+            
+            // Mouse tracking con throttle
+            let mouseTimeout;
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    if (mouseTimeout) return;
+                    
+                    mouseTimeout = setTimeout(() => {
+                        const rect = this.canvas.getBoundingClientRect();
+                        this.mouse.x = e.clientX - rect.left;
+                        this.mouse.y = e.clientY - rect.top;
+                        mouseTimeout = null;
+                    }, 16); // ~60fps
+                }, { passive: true });
+                
+                heroSection.addEventListener('mouseleave', () => {
+                    this.mouse.x = null;
+                    this.mouse.y = null;
+                }, { passive: true });
+            }
+        }
+        
+        resize() {
+            this.canvas.width = this.container.offsetWidth;
+            this.canvas.height = this.container.offsetHeight;
+        }
+        
+        createParticles() {
+            this.particles = [];
+            
+            for (let i = 0; i < this.particleCount; i++) {
+                this.particles.push({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    vx: (Math.random() - 0.5) * 0.3, // Velocidad reducida
+                    vy: (Math.random() - 0.5) * 0.3,
+                    radius: Math.random() * 1.5 + 0.5, // TamaÃ±o reducido
+                    originalVx: (Math.random() - 0.5) * 0.3,
+                    originalVy: (Math.random() - 0.5) * 0.3
+                });
+            }
+        }
+        
+        animate() {
+            if (!this.isAnimating || !this.isTabActive) {
+                this.animationId = requestAnimationFrame(() => this.animate());
+                return;
+            }
+            
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            
+            // Actualizar y dibujar partÃ­culas
+            this.particles.forEach(particle => {
+                this.updateParticle(particle);
+                this.drawParticle(particle);
+            });
+            
+            // Dibujar conexiones (optimizado)
+            this.drawConnections();
+            
+            // Dibujar cursor interactivo (si hay mouse)
+            if (this.mouse.x !== null) {
+                this.drawMouseEffect();
+            }
+            
+            this.animationId = requestAnimationFrame(() => this.animate());
+        }
+        
+        updateParticle(particle) {
+            // Movimiento
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            
+            // Rebote en bordes
+            if (particle.x < 0 || particle.x > this.canvas.width) {
+                particle.vx *= -1;
+            }
+            if (particle.y < 0 || particle.y > this.canvas.height) {
+                particle.vy *= -1;
+            }
+            
+            // InteracciÃ³n con mouse (simplificada)
+            if (this.mouse.x !== null) {
+                const dx = particle.x - this.mouse.x;
+                const dy = particle.y - this.mouse.y;
+                const distSq = dx * dx + dy * dy;
+                const radiusSq = this.mouse.radius * this.mouse.radius;
+                
+                if (distSq < radiusSq) {
+                    const force = (radiusSq - distSq) / radiusSq;
+                    const angle = Math.atan2(dy, dx);
+                    particle.vx += Math.cos(angle) * force * 0.3;
+                    particle.vy += Math.sin(angle) * force * 0.3;
+                } else {
+                    // Volver a velocidad original
+                    particle.vx += (particle.originalVx - particle.vx) * 0.03;
+                    particle.vy += (particle.originalVy - particle.vy) * 0.03;
+                }
+            }
+            
+            // Limitar velocidad
+            const speedSq = particle.vx * particle.vx + particle.vy * particle.vy;
+            const maxSpeedSq = 4; // 2^2
+            if (speedSq > maxSpeedSq) {
+                const speed = Math.sqrt(speedSq);
+                particle.vx = (particle.vx / speed) * 2;
+                particle.vy = (particle.vy / speed) * 2;
+            }
+        }
+        
+        drawParticle(particle) {
+            // Dibujar partÃ­cula (simplificado, sin glow para mejor performance)
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            this.ctx.fillStyle = 'rgba(155, 97, 164, 0.6)';
+            this.ctx.fill();
+        }
+        
+        drawConnections() {
+            const maxDistance = 120; // Reducido para menos cÃ¡lculos
+            const maxDistanceSq = maxDistance * maxDistance;
+            
+            for (let i = 0; i < this.particles.length; i++) {
+                for (let j = i + 1; j < this.particles.length; j++) {
+                    const dx = this.particles[i].x - this.particles[j].x;
+                    const dy = this.particles[i].y - this.particles[j].y;
+                    
+                    // Early exit
+                    if (Math.abs(dx) > maxDistance || Math.abs(dy) > maxDistance) continue;
+                    
+                    const distSq = dx * dx + dy * dy;
+                    
+                    if (distSq < maxDistanceSq) {
+                        const dist = Math.sqrt(distSq);
+                        const opacity = (1 - dist / maxDistance) * 0.25; // Opacidad reducida
+                        
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                        this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                        this.ctx.strokeStyle = `rgba(155, 97, 164, ${opacity})`;
+                        this.ctx.lineWidth = 0.5;
+                        this.ctx.stroke();
+                    }
+                }
+            }
+            
+            // Conexiones con el mouse (limitadas)
+            if (this.mouse.x !== null) {
+                let connections = 0;
+                const maxConnections = 5; // Limitar conexiones con mouse
+                
+                for (let i = 0; i < this.particles.length && connections < maxConnections; i++) {
+                    const particle = this.particles[i];
+                    const dx = particle.x - this.mouse.x;
+                    const dy = particle.y - this.mouse.y;
+                    const distSq = dx * dx + dy * dy;
+                    const radiusSq = this.mouse.radius * this.mouse.radius;
+                    
+                    if (distSq < radiusSq) {
+                        const dist = Math.sqrt(distSq);
+                        const opacity = (1 - dist / this.mouse.radius) * 0.4;
+                        
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(particle.x, particle.y);
+                        this.ctx.lineTo(this.mouse.x, this.mouse.y);
+                        this.ctx.strokeStyle = `rgba(4, 199, 170, ${opacity})`;
+                        this.ctx.lineWidth = 1.5;
+                        this.ctx.stroke();
+                        
+                        connections++;
+                    }
+                }
+            }
+        }
+        
+        drawMouseEffect() {
+            // Anillo simple (sin animaciÃ³n de pulso para mejor performance)
+            this.ctx.beginPath();
+            this.ctx.arc(this.mouse.x, this.mouse.y, 15, 0, Math.PI * 2);
+            this.ctx.strokeStyle = 'rgba(4, 199, 170, 0.4)';
+            this.ctx.lineWidth = 2;
+            this.ctx.stroke();
+            
+            // CÃ­rculo interior
+            this.ctx.beginPath();
+            this.ctx.arc(this.mouse.x, this.mouse.y, 4, 0, Math.PI * 2);
+            this.ctx.fillStyle = 'rgba(4, 199, 170, 0.6)';
+            this.ctx.fill();
+        }
+        
+        destroy() {
+            this.isAnimating = false;
+            if (this.animationId) {
+                cancelAnimationFrame(this.animationId);
+            }
+            if (this.canvas && this.canvas.parentNode) {
+                this.canvas.parentNode.removeChild(this.canvas);
+            }
+        }
+    }
+    
+    // Inicializar cuando el DOM estÃ© listo
+    function init() {
+        const container = document.querySelector('.hero');
+        if (container && !window.heroBackground) {
+            window.heroBackground = new HeroBackground('hero');
+        }
+    }
+    
+    // Iniciar despuÃ©s del preloader
+    window.addEventListener('preloaderComplete', () => {
+        setTimeout(init, 100);
+    });
+    
+    // Fallback
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(init, 100);
+        });
+    } else {
+        setTimeout(init, 100);
+    }
+    
+})();
+/**
+ * CONVERSION TRACKING - Just Dev It (OPTIMIZADO)
+ * Sistema unificado de tracking de conversiones
+ * Optimizado para bajo impacto en performance
+ */
+
+(function() {
+    'use strict';
+    
+    // ConfiguraciÃ³n de eventos de conversiÃ³n
+    const CONVERSION_EVENTS = {
+        FORM_SUBMIT: 'lead_form_submit',
+        QUOTE_BUTTON: 'quote_button_click',
+        PORTFOLIO_VIEW: 'portfolio_item_view',
+        SERVICE_INTEREST: 'service_interest',
+        SCROLL_DEPTH: 'scroll_depth',
+        CTA_CLICK: 'cta_click',
+        OUTBOUND_CLICK: 'outbound_click',
+        PAGE_VIEW: 'page_view'
+    };
+    
+    // Queue para batch tracking (mejor performance)
+    let trackingQueue = [];
+    let queueTimer = null;
+    
+    // Helper optimizado para enviar eventos
+    function trackConversion(eventName, eventParams = {}) {
+        // Agregar a queue en lugar de enviar inmediatamente
+        trackingQueue.push({ eventName, eventParams, timestamp: Date.now() });
+        
+        // Batch send despuÃ©s de 1 segundo
+        clearTimeout(queueTimer);
+        queueTimer = setTimeout(flushTrackingQueue, 1000);
+    }
+    
+    function flushTrackingQueue() {
+        if (trackingQueue.length === 0) return;
+        
+        const eventsToSend = [...trackingQueue];
+        trackingQueue = [];
+        
+        // Enviar eventos en batch
+        eventsToSend.forEach(({ eventName, eventParams }) => {
+            sendToAnalytics(eventName, eventParams);
+        });
+    }
+    
+    function sendToAnalytics(eventName, eventParams) {
+        // Google Analytics 4
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, {
+                ...eventParams,
+                event_category: eventParams.category || 'engagement',
+                event_label: eventParams.label || eventName,
+                value: eventParams.value || 0,
+                non_interaction: true
+            });
+        }
+        
+        // Facebook Pixel (limitado)
+        if (typeof fbq === 'function') {
+            const fbEventMap = {
+                'lead_form_submit': 'Lead',
+                'quote_button_click': 'Contact'
+            };
+            
+            const fbEvent = fbEventMap[eventName];
+            if (fbEvent) {
+                fbq('track', fbEvent, eventParams);
+            }
+        }
+        
+        // DataLayer para GTM
+        if (window.dataLayer) {
+            window.dataLayer.push({
+                event: eventName,
+                ...eventParams
+            });
+        }
+    }
+    
+    // Utilidades
+    const throttle = (func, delay) => {
+        let lastCall = 0;
+        return function(...args) {
+            const now = Date.now();
+            if (now - lastCall >= delay) {
+                lastCall = now;
+                func.apply(this, args);
+            }
+        };
+    };
+    
+    const debounce = (func, wait) => {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    };
+    
+    // Inicializar tracking cuando el DOM estÃ© listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initConversionTracking);
+    } else {
+        initConversionTracking();
+    }
+    
+    function initConversionTracking() {
+        // 1. Tracking de formulario de contacto
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const formData = new FormData(contactForm);
+                trackConversion(CONVERSION_EVENTS.FORM_SUBMIT, {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    category: 'lead_generation',
+                    label: 'contact_form_submission',
+                    value: 100
+                });
+            });
+        }
+        
+        // 2. Tracking de botones CTA (con debounce)
+        const ctaButtons = document.querySelectorAll('a[href="#contacto"], .btn-primary');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', debounce(function() {
+                trackConversion(CONVERSION_EVENTS.CTA_CLICK, {
+                    button_text: this.textContent.trim(),
+                    category: 'engagement',
+                    label: 'cta_click'
+                });
+            }, 300));
+        });
+        
+        // 3. Tracking de visualizaciÃ³n de proyectos (optimizado con IO)
+        if ('IntersectionObserver' in window) {
+            const portfolioCards = document.querySelectorAll('.slider-card');
+            const viewedCards = new Set();
+            
+            const portfolioObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !viewedCards.has(entry.target)) {
+                        viewedCards.add(entry.target);
+                        const projectTitle = entry.target.querySelector('.slider-card-title')?.textContent || 'Unknown';
+                        trackConversion(CONVERSION_EVENTS.PORTFOLIO_VIEW, {
+                            project_name: projectTitle,
+                            category: 'content_engagement',
+                            label: 'portfolio_view'
+                        });
+                    }
+                });
+            }, { threshold: 0.5, rootMargin: '0px' });
+            
+            portfolioCards.forEach(card => portfolioObserver.observe(card));
+        }
+        
+        // 4. Tracking de profundidad de scroll (ultra optimizado)
+        let maxScroll = 0;
+        const scrollMilestones = [25, 50, 75, 100];
+        const trackedMilestones = new Set();
+        
+        const handleScroll = throttle(() => {
+            const scrollPercentage = Math.round(
+                (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+            );
+            
+            if (scrollPercentage > maxScroll) {
+                maxScroll = scrollPercentage;
+                
+                scrollMilestones.forEach(milestone => {
+                    if (scrollPercentage >= milestone && !trackedMilestones.has(milestone)) {
+                        trackedMilestones.add(milestone);
+                        trackConversion(CONVERSION_EVENTS.SCROLL_DEPTH, {
+                            scroll_depth: milestone,
+                            category: 'engagement',
+                            label: `scroll_${milestone}percent`
+                        });
+                    }
+                });
+            }
+        }, 1000); // Aumentado el throttle a 1 segundo
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // 5. Tracking de servicios (con debounce)
+        const serviceCards = document.querySelectorAll('.service-card, .slider-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('click', debounce(function() {
+                const serviceTitle = this.querySelector('.card-title, .slider-card-title')?.textContent || 'Unknown';
+                trackConversion(CONVERSION_EVENTS.SERVICE_INTEREST, {
+                    service_name: serviceTitle,
+                    category: 'interest',
+                    label: 'service_click'
+                });
+            }, 300));
+        });
+        
+        // 6. Tracking de enlaces salientes (optimizado)
+        const outboundLinks = document.querySelectorAll('a[href^="http"]:not([href*="justdev.it"])');
+        outboundLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                trackConversion(CONVERSION_EVENTS.OUTBOUND_CLICK, {
+                    url: this.href,
+                    category: 'engagement',
+                    label: 'outbound_link'
+                });
+            }, { once: false, passive: true });
+        });
+        
+        // 7. Flush tracking queue al salir
+        window.addEventListener('beforeunload', () => {
+            flushTrackingQueue();
+        });
+        
+        // 8. Flush periÃ³dico cada 5 segundos si hay eventos
+        setInterval(() => {
+            if (trackingQueue.length > 0) {
+                flushTrackingQueue();
+            }
+        }, 5000);
+        
+        console.log('âœ… Conversion tracking initialized (optimized)');
+    }
+    
+    // Exponer funciÃ³n global para uso manual
+    window.trackConversion = trackConversion;
+    window.CONVERSION_EVENTS = CONVERSION_EVENTS;
+    
+})();
