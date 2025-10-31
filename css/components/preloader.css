@@ -82,6 +82,7 @@
     font-size: 48px;
     font-weight: 700;
     line-height: 1;
+    min-height: 58px; /* 🔧 FIX CLS: Reservar espacio (48px font + 10px padding) */
     margin-bottom: 30px;
     background: linear-gradient(135deg, #9B61A4 0%, #04C7AA 100%);
     -webkit-background-clip: text;
@@ -106,6 +107,8 @@
     font-size: 32px;
     opacity: 0.8;
     margin-left: 4px;
+    display: inline-block; /* 🔧 FIX CLS: Evitar que el % cause reflow */
+    min-width: 24px; /* 🔧 FIX CLS: Ancho mínimo para el símbolo % */
 }
 
 /* Barra de Progreso Premium */
