@@ -568,10 +568,10 @@
       fetchpriority="high"
     />
     <!-- Preload CSS bundle minificado para reducir render blocking -->
-    <link rel="preload" href="css/bundle.min.css?v=1.2" as="style" />
+    <link rel="preload" href="css/bundle.min.css?v=1.3" as="style" />
     <!-- Preload JS críticos -->
     <link rel="preload" href="js/epic-preloader.js" as="script" />
-    <link rel="preload" href="js/bundle.min.js?v=1.2" as="script" />
+    <link rel="preload" href="js/bundle.min.js?v=1.3" as="script" />
 
     <!-- ===== CSS CRÍTICO INLINE (Above-the-fold) ===== -->
     <style>
@@ -609,12 +609,12 @@
     </style>
 
     <!-- ===== ESTILOS CSS BUNDLE MINIFICADO (Diferido) ===== -->
-    <!-- Bundle principal minificado: 107KB (17 archivos → 1, -21%) -->
-    <link rel="stylesheet" href="css/bundle.min.css?v=1.2" media="print" onload="this.media='all'" />
+    <!-- Bundle principal minificado: 86KB (17 archivos → 1, -37%) -->
+    <link rel="stylesheet" href="css/bundle.min.css?v=1.3" media="print" onload="this.media='all'" />
     
     <!-- Fallback bundle para navegadores sin soporte -->
     <noscript>
-      <link rel="stylesheet" href="css/bundle.min.css?v=1.2" />
+      <link rel="stylesheet" href="css/bundle.min.css?v=1.3" />
     </noscript>
 
     <!-- ===== SCHEMA.ORG JSON-LD PARA IA GENERATIVA ===== -->
@@ -1003,7 +1003,7 @@
     <main id="main-content">
       <!-- HERO SECTION -->
       <section class="hero" id="hero" aria-labelledby="hero-title">
-        <div class="hero-container">
+        <div class="hero-container" style="min-height:600px">
           <div class="hero-content">
             <p class="hero-subtitle">Desarrollo de Software</p>
 
@@ -2500,8 +2500,8 @@
     <!-- Critical Scripts - Preloader primero para experiencia inmediata -->
     <script src="js/epic-preloader.js"></script>
     
-    <!-- Core Scripts Bundle Minificado - defer para mejor rendimiento (29KB: 3 archivos → 1, -37%) -->
-    <script defer src="js/bundle.min.js?v=1.2"></script>
+    <!-- Core Scripts Bundle Minificado - defer para mejor rendimiento (27KB: 3 archivos → 1, -41%) -->
+    <script defer src="js/bundle.min.js?v=1.3"></script>
     
     <!-- Non-critical animations - lazy load después del preloader -->
     <script>
