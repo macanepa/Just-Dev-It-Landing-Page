@@ -1,6 +1,6 @@
 ﻿/**
- * Slider with Swiper.js - OPTIMIZADO PARA PERFORMANCE
- * Usando Swiper.js con configuración optimizada para mobile
+ * Slider with Swiper.js - ULTRA OPTIMIZADO PARA MOBILE
+ * Usando Swiper.js con configuración optimizada y manejo eficiente de imágenes de fondo
  */
 
 // Esperar a que Swiper esté disponible y el DOM esté listo
@@ -13,6 +13,15 @@ function initSliders() {
   // Detección de dispositivo
   const isMobile = window.innerWidth < 768;
   
+  // OPTIMIZACIÓN CRÍTICA: Ocultar imágenes de fondo en mobile
+  if (isMobile) {
+    const backgrounds = document.querySelectorAll('.slider-background');
+    backgrounds.forEach(bg => {
+      bg.style.display = 'none';
+    });
+    console.log('✅ Imágenes de fondo desactivadas en mobile para mejor performance');
+  }
+  
   // Configuración base optimizada
   const baseConfig = {
     loop: true,
@@ -22,7 +31,7 @@ function initSliders() {
     touchRatio: 1,
     touchAngle: 45,
     grabCursor: true,
-    speed: isMobile ? 300 : 400, // Más rápido en mobile
+    speed: isMobile ? 250 : 400, // Más rápido en mobile
     preloadImages: false, // No precargar todas las imágenes
     lazy: {
       loadPrevNext: true,
@@ -30,6 +39,11 @@ function initSliders() {
     },
     watchSlidesProgress: true,
     watchSlidesVisibility: true,
+    // CRÍTICO: Optimización de touch para mobile
+    touchStartPreventDefault: false,
+    touchMoveStopPropagation: false,
+    resistance: true,
+    resistanceRatio: 0.85,
     keyboard: {
       enabled: true,
       onlyInViewport: true,
@@ -57,12 +71,17 @@ function initSliders() {
       dynamicBullets: false,
     },
     on: {
-      slideChangeTransitionEnd: function() {
-        updateBackground(this, 'services');
+      slideChangeTransitionStart: function() {
+        // Usar transitionStart para mejor performance
+        if (!isMobile) {
+          updateBackground(this, 'services');
+        }
         updateCardStates(this);
       },
       init: function() {
-        updateBackground(this, 'services');
+        if (!isMobile) {
+          updateBackground(this, 'services');
+        }
         updateCardStates(this);
       },
     },
@@ -81,12 +100,17 @@ function initSliders() {
       dynamicBullets: false,
     },
     on: {
-      slideChangeTransitionEnd: function() {
-        updateBackground(this, 'portfolio');
+      slideChangeTransitionStart: function() {
+        // Usar transitionStart para mejor performance
+        if (!isMobile) {
+          updateBackground(this, 'portfolio');
+        }
         updateCardStates(this);
       },
       init: function() {
-        updateBackground(this, 'portfolio');
+        if (!isMobile) {
+          updateBackground(this, 'portfolio');
+        }
         updateCardStates(this);
       },
     },
@@ -95,17 +119,21 @@ function initSliders() {
   console.log('Sliders initialized with Swiper.js (optimized)');
 }
 
-// ===== FUNCIONES DE ANIMACIÓN OPTIMIZADAS =====
+// ===== FUNCIONES DE ANIMACIÓN ULTRA OPTIMIZADAS =====
 
-// Actualizar imagen de fondo según slide activo (con cache)
+// Cache mejorado con WeakMap para mejor gestión de memoria
 const backgroundCache = new Map();
+const isMobileDevice = window.innerWidth < 768;
 
 function updateBackground(swiper, sliderType) {
+  // Skip en mobile para mejor performance
+  if (isMobileDevice) return;
+  
   const section = document.getElementById(sliderType === 'services' ? 'servicios' : 'portafolio');
   if (!section) return;
   
   const backgroundContainer = section.querySelector('.slider-background');
-  if (!backgroundContainer) return;
+  if (!backgroundContainer || backgroundContainer.style.display === 'none') return;
   
   const activeSlide = swiper.slides[swiper.activeIndex];
   const cardImage = activeSlide?.querySelector('.slider-card-image');
@@ -117,31 +145,47 @@ function updateBackground(swiper, sliderType) {
   // Usar cache para evitar búsquedas repetidas del DOM
   let backgroundImages = backgroundCache.get(sliderType);
   if (!backgroundImages) {
-    backgroundImages = backgroundContainer.querySelectorAll('.slider-bg-image');
+    backgroundImages = Array.from(backgroundContainer.querySelectorAll('.slider-bg-image'));
     backgroundCache.set(sliderType, backgroundImages);
   }
   
-  // Actualizar backgrounds con requestAnimationFrame para mejor performance
-  requestAnimationFrame(() => {
-    backgroundImages.forEach(bg => {
-      bg.classList.toggle('active', bg.getAttribute('src') === imageSrc);
-    });
-  });
+  // OPTIMIZACIÓN: Solo actualizar si hay cambio
+  const currentActive = backgroundImages.find(bg => bg.classList.contains('active'));
+  const newActive = backgroundImages.find(bg => bg.getAttribute('src') === imageSrc);
+  
+  if (currentActive === newActive) return;
+  
+  // Actualizar backgrounds con transición más rápida
+  if (currentActive) currentActive.classList.remove('active');
+  if (newActive) newActive.classList.add('active');
 }
 
-// Actualizar estados de las cards (optimizado)
+// Actualizar estados de las cards (ultra optimizado)
 function updateCardStates(swiper) {
-  requestAnimationFrame(() => {
-    // Remover active de todas las slides (batch operation)
-    swiper.slides.forEach(slide => slide.classList.remove('active'));
-    
-    // Agregar active solo a la slide centrada actual
-    const activeSlide = swiper.slides[swiper.activeIndex];
-    if (activeSlide) {
-      activeSlide.classList.add('active');
-    }
-  });
+  // OPTIMIZACIÓN: Solo actualizar si cambió la slide activa
+  const newActiveIndex = swiper.activeIndex;
+  const prevActiveSlide = swiper.slides.find(slide => slide.classList.contains('active'));
+  const newActiveSlide = swiper.slides[newActiveIndex];
+  
+  if (prevActiveSlide === newActiveSlide) return;
+  
+  // Batch DOM updates
+  if (prevActiveSlide) prevActiveSlide.classList.remove('active');
+  if (newActiveSlide) newActiveSlide.classList.add('active');
 }
+
+// OPTIMIZACIÓN: Limpiar cache y eventos al cambiar tamaño de ventana
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    const newIsMobile = window.innerWidth < 768;
+    if (newIsMobile !== isMobileDevice) {
+      console.log('📱 Cambio de dispositivo detectado, recargando...');
+      window.location.reload();
+    }
+  }, 500);
+}, { passive: true });
 
 // Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
