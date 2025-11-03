@@ -60,37 +60,68 @@ class I18n {
       const data = await response.json();
       console.log('[i18n] Datos de geolocalización:', data);
 
-      // Países de habla hispana en Latinoamérica
+      // Países de habla hispana (TODOS los hispanohablantes del mundo)
       const spanishSpeakingCountries = [
-        'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'SV', 'GT', 
-        'HN', 'MX', 'NI', 'PA', 'PY', 'PE', 'ES', 'UY', 'VE'
+        // Latinoamérica
+        'AR', // Argentina
+        'BO', // Bolivia
+        'CL', // Chile
+        'CO', // Colombia
+        'CR', // Costa Rica
+        'CU', // Cuba
+        'DO', // República Dominicana
+        'EC', // Ecuador
+        'SV', // El Salvador
+        'GT', // Guatemala
+        'HN', // Honduras
+        'MX', // México
+        'NI', // Nicaragua
+        'PA', // Panamá
+        'PY', // Paraguay
+        'PE', // Perú
+        'UY', // Uruguay
+        'VE', // Venezuela
+        
+        // Europa
+        'ES', // España
+        
+        // África
+        'GQ', // Guinea Ecuatorial
+        
+        // Territorios y otros
+        'PR', // Puerto Rico
+        'AD'  // Andorra (co-oficial)
       ];
 
       const countryCode = data.country_code || data.country || 'US';
       
       if (spanishSpeakingCountries.includes(countryCode)) {
-        console.log(`[i18n] País detectado: ${countryCode} - Idioma: español`);
+        console.log(`[i18n] País hispanohablante detectado: ${countryCode} → Español`);
         return 'es';
       } else {
-        console.log(`[i18n] País detectado: ${countryCode} - Idioma: inglés`);
+        console.log(`[i18n] País no hispanohablante detectado: ${countryCode} → Inglés`);
         return 'en';
       }
 
     } catch (error) {
       console.warn('[i18n] Error al detectar idioma por IP:', error);
-      console.log('[i18n] Usando idioma por defecto del navegador como fallback...');
+      console.log('[i18n] Usando idioma del navegador como fallback...');
       
       // Fallback: detectar idioma del navegador
       const browserLang = navigator.language || navigator.userLanguage;
-      const langCode = browserLang.split('-')[0];
+      const langCode = browserLang.split('-')[0].toLowerCase();
       
-      if (this.supportedLanguages.includes(langCode)) {
-        console.log(`[i18n] Idioma del navegador: ${langCode}`);
-        return langCode;
+      console.log(`[i18n] Idioma del navegador: ${browserLang} (código: ${langCode})`);
+      
+      // Si el navegador está en español, usar español
+      if (langCode === 'es') {
+        console.log('[i18n] Navegador en español → Español');
+        return 'es';
       }
       
-      console.log(`[i18n] Usando idioma por defecto: ${this.defaultLanguage}`);
-      return this.defaultLanguage;
+      // Si el navegador está en inglés o cualquier otro idioma, usar inglés
+      console.log(`[i18n] Navegador en ${langCode} → Inglés (por defecto)`);
+      return 'en';
     }
   }
 

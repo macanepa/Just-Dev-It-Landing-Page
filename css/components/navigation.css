@@ -166,7 +166,7 @@
 /* ===== NAV LINKS ===== */
 .nav-link {
     position: relative;
-    display: block;
+    display: inline-block;
     padding: var(--space-2) var(--space-3);
     font-size: var(--text-base);
     font-weight: var(--font-medium);
@@ -183,17 +183,19 @@
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
+    left: var(--space-3);
+    right: var(--space-3);
+    width: calc(100% - calc(var(--space-3) * 2));
     height: 2px;
     background: var(--gradient-secondary);
-    transition: width var(--transition-base);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-base);
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-    width: 80%;
+    transform: scaleX(1);
 }
 
 @media (max-width: 1023px) {
