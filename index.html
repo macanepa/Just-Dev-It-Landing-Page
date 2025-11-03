@@ -1524,13 +1524,23 @@
       >
         <!-- Background images (dinámico - se sincroniza con las cards) -->
         <div class="slider-background">
+          <!-- Databam screenshot como primer fondo -->
+          <img
+            src="https://databam.cl/app.png"
+            alt=""
+            class="slider-bg-image active"
+            width="1920"
+            height="1080"
+            loading="lazy"
+            style="object-fit: cover; filter: brightness(0.4);"
+          />
           <picture>
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto7.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto7.webp">
             <img
               src="assets/images/Desktop/Proyecto7.webp"
               alt=""
-              class="slider-bg-image active"
+              class="slider-bg-image"
               width="1920"
               height="1080"
               loading="lazy"
@@ -1660,7 +1670,7 @@
           <div class="slider-cards-container">
             <div class="slider-cards swiper" id="portfolio-slider">
               <div class="swiper-wrapper">
-              <!-- Proyecto 1: Agentes de IA -->
+              <!-- Proyecto 1: Databam -->
               <div
                 class="slider-card swiper-slide"
                 data-index="01"
@@ -1669,6 +1679,46 @@
                 tabindex="0"
                 role="button"
                 aria-label="Proyecto 1"
+              >
+                <img
+                  src="https://databam.cl/app.png"
+                  alt="Databam - Plataforma de Data Inmobiliaria"
+                  class="slider-card-image"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  itemprop="image"
+                  style="object-fit: cover;"
+                />
+                <div class="slider-card-overlay">
+                  <span class="slider-card-category" data-i18n="portfolio.project8.category">PropTech</span>
+                  <div>
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project8.title">Databam</h3>
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project8.description">
+                      Plataforma de data inmobiliaria con 8M propiedades.
+                      Precios reales de transacción del CBR y datos de propietarios.
+                    </p>
+                    <div class="slider-card-tags">
+                      <span class="slider-card-tag">Rails</span>
+                      <span class="slider-card-tag">Python</span>
+                      <span class="slider-card-tag">BigQuery</span>
+                    </div>
+                    <a href="sections/databam/databam.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">
+                      Ver Proyecto
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Proyecto 2: Agentes de IA -->
+              <div
+                class="slider-card swiper-slide"
+                data-index="02"
+                itemscope
+                itemtype="https://schema.org/CreativeWork"
+                tabindex="0"
+                role="button"
+                aria-label="Proyecto 2"
               >
                 <picture>
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto7.webp">
@@ -1710,7 +1760,7 @@
                 itemtype="https://schema.org/CreativeWork"
                 tabindex="0"
                 role="button"
-                aria-label="Proyecto 2"
+                aria-label="Proyecto 3"
               >
                 <picture>
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto1.webp">
@@ -1963,7 +2013,7 @@
                 </div>
               </div>
 
-              <!-- Proyecto 8: Databam -->
+              <!-- Proyecto 8: Tickets DGA -->
               <div
                 class="slider-card swiper-slide"
                 data-index="08"
@@ -1972,43 +2022,6 @@
                 tabindex="0"
                 role="button"
                 aria-label="Proyecto 8"
-              >
-                <!-- Imagen Databam.png no existe - TODO: agregar imagen real -->
-                <!-- <img
-                  src="assets/images/Databam.png"
-                  alt="Databam - Plataforma de Data Inmobiliaria"
-                  class="slider-card-image"
-                  width="800"
-                  height="600"
-                  loading="lazy"
-                  itemprop="image"
-                /> -->
-                <div class="slider-card-overlay">
-                  <span class="slider-card-category" data-i18n="portfolio.project8.category">PropTech</span>
-                  <div>
-                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project8.title">Databam</h3>
-                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project8.description">
-                      Plataforma de data inmobiliaria con +500K propiedades en
-                      tiempo real con precios de transacción y propietarios.
-                    </p>
-                    <div class="slider-card-tags">
-                      <span class="slider-card-tag">Rails</span>
-                      <span class="slider-card-tag">Python</span>
-                      <span class="slider-card-tag">BigQuery</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Proyecto 9: Tickets DGA -->
-              <div
-                class="slider-card swiper-slide"
-                data-index="09"
-                itemscope
-                itemtype="https://schema.org/CreativeWork"
-                tabindex="0"
-                role="button"
-                aria-label="Proyecto 9"
               >
                 <picture>
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto4.webp">
@@ -2043,15 +2056,15 @@
                 </div>
               </div>
 
-              <!-- Proyecto 10: Encriptado Zero-Knowledge -->
+              <!-- Proyecto 9: Encriptado Zero-Knowledge -->
               <div
                 class="slider-card swiper-slide"
-                data-index="10"
+                data-index="09"
                 itemscope
                 itemtype="https://schema.org/CreativeWork"
                 tabindex="0"
                 role="button"
-                aria-label="Proyecto 10"
+                aria-label="Proyecto 9"
               >
                 <picture>
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto6.webp">
