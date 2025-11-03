@@ -273,55 +273,62 @@
             // Limpiar canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // NUEVO DISEÑO INSPIRADO EN LA REFERENCIA
+            // DISEÑO AJUSTADO: 70% blanco (izquierda) + 30% imagen (derecha)
+            const whiteWidth = canvas.width * 0.70; // 70% para fondo blanco
+            const imageWidth = canvas.width * 0.30; // 30% para imagen
             
-            // Mitad izquierda - Fondo blanco
+            // Fondo blanco (70% izquierda)
             ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, canvas.width / 2, canvas.height);
+            ctx.fillRect(0, 0, whiteWidth, canvas.height);
             
-            // Mitad derecha - Imagen de fondo (Recurso 1.webp)
+            // Imagen de fondo (30% derecha - Recurso 1.webp)
             if (backgroundImage.complete && backgroundImage.naturalWidth > 0) {
-                // Dibujar imagen de fondo cubriendo toda la mitad derecha
+                // Dibujar imagen de fondo cubriendo el 30% derecho
                 const imgAspect = backgroundImage.width / backgroundImage.height;
-                const canvasAspect = (canvas.width / 2) / canvas.height;
+                const canvasAspect = imageWidth / canvas.height;
                 
                 let drawWidth, drawHeight, offsetX, offsetY;
                 
                 if (imgAspect > canvasAspect) {
                     drawHeight = canvas.height;
                     drawWidth = drawHeight * imgAspect;
-                    offsetX = canvas.width / 2 - (drawWidth - canvas.width / 2) / 2;
+                    offsetX = whiteWidth - (drawWidth - imageWidth) / 2;
                     offsetY = 0;
                 } else {
-                    drawWidth = canvas.width / 2;
+                    drawWidth = imageWidth;
                     drawHeight = drawWidth / imgAspect;
-                    offsetX = canvas.width / 2;
+                    offsetX = whiteWidth;
                     offsetY = -(drawHeight - canvas.height) / 2;
                 }
                 
                 ctx.drawImage(backgroundImage, offsetX, offsetY, drawWidth, drawHeight);
                 
                 // Overlay oscuro sobre la imagen para mejor contraste
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-                ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+                ctx.fillRect(whiteWidth, 0, imageWidth, canvas.height);
             } else {
                 // Fallback: gradiente oscuro
-                const bgGradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width, canvas.height);
+                const bgGradient = ctx.createLinearGradient(whiteWidth, 0, canvas.width, canvas.height);
                 bgGradient.addColorStop(0, '#2d1b4e');
                 bgGradient.addColorStop(0.5, '#1a2332');
                 bgGradient.addColorStop(1, '#0f1419');
                 ctx.fillStyle = bgGradient;
-                ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+                ctx.fillRect(whiteWidth, 0, imageWidth, canvas.height);
             }
             
-            // Overlay de tecnología en la mitad derecha
-            drawTechOverlay();
+            // Overlay de tecnología en la parte derecha
+            drawTechOverlay(whiteWidth, imageWidth);
             
-            // Logo pequeño arriba a la izquierda (logo-principal-blanco.svg)
+            // Logo pequeño arriba a la izquierda (logo-principal-blanco.svg en negro)
             if (logoBlanco.complete && logoBlanco.naturalWidth > 0) {
-                const logoWidth = 180;
+                const logoWidth = 160;
                 const logoHeight = (logoBlanco.height / logoBlanco.width) * logoWidth;
-                ctx.drawImage(logoBlanco, 40, 40, logoWidth, logoHeight);
+                
+                // Crear una versión oscura del logo para que se vea sobre blanco
+                ctx.save();
+                ctx.globalCompositeOperation = 'multiply';
+                ctx.drawImage(logoBlanco, 40, 35, logoWidth, logoHeight);
+                ctx.restore();
             } else {
                 // Fallback texto
                 ctx.fillStyle = '#000000';
@@ -332,19 +339,19 @@
             
             // URL arriba a la derecha (sobre la imagen)
             ctx.fillStyle = '#ffffff';
-            ctx.font = '22px Poppins, sans-serif';
+            ctx.font = 'bold 20px Poppins, sans-serif';
             ctx.textAlign = 'right';
-            ctx.fillText('www.justdev.it', canvas.width - 40, 55);
+            ctx.fillText('www.justdev.it', canvas.width - 30, 50);
             
-            // Isotipo grande morado en el centro-derecha de la parte blanca
+            // Isotipo grande morado - más a la derecha pero aún en zona blanca
             if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
-                const isotipoSize = 280;
-                const isotipoX = 350;
-                const isotipoY = 180;
+                const isotipoSize = 350;
+                const isotipoX = whiteWidth - isotipoSize - 50; // Posicionar cerca del borde derecho del área blanca
+                const isotipoY = 140;
                 ctx.drawImage(isotipoMorado, isotipoX, isotipoY, isotipoSize, isotipoSize);
             } else {
                 // Fallback: dibujar isotipo con canvas
-                drawIsotipo(420, 180, 280);
+                drawIsotipo(whiteWidth - 330, 140, 350);
             }
             
             // Texto principal en la parte blanca
@@ -374,16 +381,18 @@
             // "a tiempo" en morado (segunda línea)
             ctx.fillText('a tiempo', 46, 490);
             
-            // Logo grande en la parte derecha (logo-principal-blanco.svg)
+            // Logo grande en la parte derecha sobre la imagen (logo-principal-blanco.svg)
             if (logoBlanco.complete && logoBlanco.naturalWidth > 0) {
-                const bigLogoWidth = 400;
+                // Calcular tamaño proporcional al espacio disponible
+                const availableWidth = imageWidth - 40; // Margen de 20px a cada lado
+                const bigLogoWidth = Math.min(280, availableWidth);
                 const bigLogoHeight = (logoBlanco.height / logoBlanco.width) * bigLogoWidth;
-                const bigLogoX = canvas.width - bigLogoWidth - 60;
-                const bigLogoY = 520;
+                const bigLogoX = whiteWidth + (imageWidth - bigLogoWidth) / 2; // Centrar en el área de imagen
+                const bigLogoY = canvas.height - bigLogoHeight - 40;
                 
                 // Sombra para el logo
-                ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-                ctx.shadowBlur = 20;
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+                ctx.shadowBlur = 25;
                 ctx.shadowOffsetX = 0;
                 ctx.shadowOffsetY = 5;
                 
@@ -397,20 +406,19 @@
             } else {
                 // Fallback: texto
                 ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 72px Poppins, sans-serif';
-                ctx.textAlign = 'right';
+                ctx.font = 'bold 48px Poppins, sans-serif';
+                ctx.textAlign = 'center';
                 ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
                 ctx.shadowBlur = 20;
                 
-                const logoText = 'Just Dev';
-                const logoWidth = ctx.measureText(logoText).width;
-                ctx.fillText(logoText, canvas.width - 60, 530);
+                const centerX = whiteWidth + imageWidth / 2;
+                ctx.fillText('Just Dev', centerX, 550);
                 
                 ctx.fillStyle = '#8b5ab8';
-                ctx.fillText('*', canvas.width - 60 - logoWidth - 20, 530);
+                ctx.fillText('*', centerX, 600);
                 
                 ctx.fillStyle = '#ffffff';
-                ctx.fillText('It', canvas.width - 60, 530);
+                ctx.fillText('It', centerX, 600);
                 
                 ctx.shadowColor = 'transparent';
                 ctx.shadowBlur = 0;
@@ -444,15 +452,15 @@
             ctx.restore();
         }
         
-        function drawTechOverlay() {
+        function drawTechOverlay(startX, width) {
             ctx.save();
             ctx.globalAlpha = 0.15;
             
-            // Grid de tecnología
+            // Grid de tecnología solo en la parte de la imagen
             ctx.strokeStyle = '#60efff';
             ctx.lineWidth = 1;
             
-            for (let i = canvas.width / 2; i < canvas.width; i += 40) {
+            for (let i = startX; i < canvas.width; i += 40) {
                 ctx.beginPath();
                 ctx.moveTo(i, 0);
                 ctx.lineTo(i, canvas.height);
@@ -461,15 +469,15 @@
             
             for (let i = 0; i < canvas.height; i += 40) {
                 ctx.beginPath();
-                ctx.moveTo(canvas.width / 2, i);
+                ctx.moveTo(startX, i);
                 ctx.lineTo(canvas.width, i);
                 ctx.stroke();
             }
             
-            // Puntos brillantes
+            // Puntos brillantes solo en la zona de imagen
             ctx.fillStyle = '#60efff';
-            for (let i = 0; i < 30; i++) {
-                const x = canvas.width / 2 + Math.random() * (canvas.width / 2);
+            for (let i = 0; i < 25; i++) {
+                const x = startX + Math.random() * width;
                 const y = Math.random() * canvas.height;
                 ctx.beginPath();
                 ctx.arc(x, y, 2, 0, Math.PI * 2);
