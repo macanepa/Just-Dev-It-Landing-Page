@@ -216,18 +216,45 @@
         const ctx = canvas.getContext('2d');
         let currentGradient = 'linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%)';
         
-        // Cargar logo
-        const logo = new Image();
-        logo.crossOrigin = 'anonymous';
-        logo.src = 'assets/images/Desktop/logo-principal-blanco.svg';
+        // Cargar imágenes
+        const logoBlanco = new Image();
+        logoBlanco.crossOrigin = 'anonymous';
+        logoBlanco.src = 'assets/images/Desktop/logo-principal-blanco.svg';
         
-        logo.onload = function() {
-            generateImage();
+        const isotipoMorado = new Image();
+        isotipoMorado.crossOrigin = 'anonymous';
+        isotipoMorado.src = 'assets/images/Desktop/Isotipo_morado.svg';
+        
+        const backgroundImage = new Image();
+        backgroundImage.crossOrigin = 'anonymous';
+        backgroundImage.src = 'assets/images/Desktop/Recurso 1.webp';
+        
+        let imagesLoaded = 0;
+        const totalImages = 3;
+        
+        function checkImagesLoaded() {
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+                generateImage();
+            }
+        }
+        
+        logoBlanco.onload = checkImagesLoaded;
+        logoBlanco.onerror = function() {
+            console.warn('No se pudo cargar logo blanco');
+            checkImagesLoaded();
         };
         
-        logo.onerror = function() {
-            console.warn('No se pudo cargar el logo, continuando sin él...');
-            generateImage();
+        isotipoMorado.onload = checkImagesLoaded;
+        isotipoMorado.onerror = function() {
+            console.warn('No se pudo cargar isotipo morado');
+            checkImagesLoaded();
+        };
+        
+        backgroundImage.onload = checkImagesLoaded;
+        backgroundImage.onerror = function() {
+            console.warn('No se pudo cargar imagen de fondo');
+            checkImagesLoaded();
         };
         
         // Event listeners
@@ -241,9 +268,6 @@
         }
         
         function generateImage() {
-            const title = document.getElementById('title').value;
-            const subtitle = document.getElementById('subtitle').value;
-            const highlight = document.getElementById('highlight').value;
             const style = document.getElementById('style').value;
             
             // Limpiar canvas
@@ -255,31 +279,73 @@
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width / 2, canvas.height);
             
-            // Mitad derecha - Imagen de ciudad (usar gradiente oscuro por ahora)
-            const bgGradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width, canvas.height);
-            bgGradient.addColorStop(0, '#2d1b4e');
-            bgGradient.addColorStop(0.5, '#1a2332');
-            bgGradient.addColorStop(1, '#0f1419');
-            ctx.fillStyle = bgGradient;
-            ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+            // Mitad derecha - Imagen de fondo (Recurso 1.webp)
+            if (backgroundImage.complete && backgroundImage.naturalWidth > 0) {
+                // Dibujar imagen de fondo cubriendo toda la mitad derecha
+                const imgAspect = backgroundImage.width / backgroundImage.height;
+                const canvasAspect = (canvas.width / 2) / canvas.height;
+                
+                let drawWidth, drawHeight, offsetX, offsetY;
+                
+                if (imgAspect > canvasAspect) {
+                    drawHeight = canvas.height;
+                    drawWidth = drawHeight * imgAspect;
+                    offsetX = canvas.width / 2 - (drawWidth - canvas.width / 2) / 2;
+                    offsetY = 0;
+                } else {
+                    drawWidth = canvas.width / 2;
+                    drawHeight = drawWidth / imgAspect;
+                    offsetX = canvas.width / 2;
+                    offsetY = -(drawHeight - canvas.height) / 2;
+                }
+                
+                ctx.drawImage(backgroundImage, offsetX, offsetY, drawWidth, drawHeight);
+                
+                // Overlay oscuro sobre la imagen para mejor contraste
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+                ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+            } else {
+                // Fallback: gradiente oscuro
+                const bgGradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width, canvas.height);
+                bgGradient.addColorStop(0, '#2d1b4e');
+                bgGradient.addColorStop(0.5, '#1a2332');
+                bgGradient.addColorStop(1, '#0f1419');
+                ctx.fillStyle = bgGradient;
+                ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+            }
             
             // Overlay de tecnología en la mitad derecha
             drawTechOverlay();
             
-            // Logo pequeño arriba a la izquierda
-            ctx.fillStyle = '#000000';
-            ctx.font = 'bold 24px Poppins, sans-serif';
-            ctx.textAlign = 'left';
-            ctx.fillText('Just Dev.It', 40, 50);
+            // Logo pequeño arriba a la izquierda (logo-principal-blanco.svg)
+            if (logoBlanco.complete && logoBlanco.naturalWidth > 0) {
+                const logoWidth = 180;
+                const logoHeight = (logoBlanco.height / logoBlanco.width) * logoWidth;
+                ctx.drawImage(logoBlanco, 40, 40, logoWidth, logoHeight);
+            } else {
+                // Fallback texto
+                ctx.fillStyle = '#000000';
+                ctx.font = 'bold 24px Poppins, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText('Just Dev.It', 40, 50);
+            }
             
             // URL arriba a la derecha (sobre la imagen)
             ctx.fillStyle = '#ffffff';
             ctx.font = '22px Poppins, sans-serif';
             ctx.textAlign = 'right';
-            ctx.fillText('www.justdev.it', canvas.width - 40, 50);
+            ctx.fillText('www.justdev.it', canvas.width - 40, 55);
             
             // Isotipo grande morado en el centro-derecha de la parte blanca
-            drawIsotipo(420, 180, 280);
+            if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
+                const isotipoSize = 280;
+                const isotipoX = 350;
+                const isotipoY = 180;
+                ctx.drawImage(isotipoMorado, isotipoX, isotipoY, isotipoSize, isotipoSize);
+            } else {
+                // Fallback: dibujar isotipo con canvas
+                drawIsotipo(420, 180, 280);
+            }
             
             // Texto principal en la parte blanca
             ctx.textAlign = 'left';
@@ -308,33 +374,47 @@
             // "a tiempo" en morado (segunda línea)
             ctx.fillText('a tiempo', 46, 490);
             
-            // Logo grande en la parte derecha (sobre la imagen)
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 72px Poppins, sans-serif';
-            ctx.textAlign = 'right';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-            ctx.shadowBlur = 20;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 5;
-            
-            const logoText = 'Just Dev';
-            const logoWidth = ctx.measureText(logoText).width;
-            ctx.fillText(logoText, canvas.width - 60, 530);
-            
-            // Isotipo pequeño después de "Dev"
-            ctx.fillStyle = '#8b5ab8';
-            ctx.font = 'bold 72px Poppins, sans-serif';
-            ctx.fillText('*', canvas.width - 60 - logoWidth - 20, 530);
-            
-            // "It" después del isotipo
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText('It', canvas.width - 60, 530);
-            
-            // Reset shadow
-            ctx.shadowColor = 'transparent';
-            ctx.shadowBlur = 0;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
+            // Logo grande en la parte derecha (logo-principal-blanco.svg)
+            if (logoBlanco.complete && logoBlanco.naturalWidth > 0) {
+                const bigLogoWidth = 400;
+                const bigLogoHeight = (logoBlanco.height / logoBlanco.width) * bigLogoWidth;
+                const bigLogoX = canvas.width - bigLogoWidth - 60;
+                const bigLogoY = 520;
+                
+                // Sombra para el logo
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+                ctx.shadowBlur = 20;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 5;
+                
+                ctx.drawImage(logoBlanco, bigLogoX, bigLogoY, bigLogoWidth, bigLogoHeight);
+                
+                // Reset shadow
+                ctx.shadowColor = 'transparent';
+                ctx.shadowBlur = 0;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 0;
+            } else {
+                // Fallback: texto
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 72px Poppins, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+                ctx.shadowBlur = 20;
+                
+                const logoText = 'Just Dev';
+                const logoWidth = ctx.measureText(logoText).width;
+                ctx.fillText(logoText, canvas.width - 60, 530);
+                
+                ctx.fillStyle = '#8b5ab8';
+                ctx.fillText('*', canvas.width - 60 - logoWidth - 20, 530);
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText('It', canvas.width - 60, 530);
+                
+                ctx.shadowColor = 'transparent';
+                ctx.shadowBlur = 0;
+            }
         }
         
         function drawIsotipo(x, y, size) {
@@ -448,10 +528,8 @@
             }
         }
         
-        // Generar imagen inicial
-        if (logo.complete) {
-            generateImage();
-        }
+        // Generar imagen inicial cuando todas las imágenes estén cargadas
+        // (La función checkImagesLoaded se encarga de esto)
     </script>
 </body>
 </html>
