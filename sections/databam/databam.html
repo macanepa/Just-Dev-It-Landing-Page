@@ -28,6 +28,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+
+    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/core/reset.css">
     <link rel="stylesheet" href="/css/core/variables.css">
@@ -163,9 +165,9 @@
             backdrop-filter: blur(10px);
         }
         
-        /* Hero Section */
+        /* Hero Section - Compacto para desktop */
         .hero {
-            padding: var(--space-20) 0;
+            padding: var(--space-12) 0 var(--space-8) 0; /* Reducido padding */
             background: radial-gradient(ellipse at top, var(--bg-secondary) 0%, var(--bg-primary) 100%);
             position: relative;
         }
@@ -484,6 +486,147 @@
             margin-bottom: var(--space-4);
         }
         
+        /* Estilos del Carrusel Swiper - Idéntico a landing */
+        .slider-cards-container {
+            position: relative;
+            margin-top: var(--space-12);
+            padding: 0 60px;
+        }
+        
+        .slider-cards {
+            overflow: visible !important;
+        }
+        
+        .slider-card {
+            height: auto;
+            min-height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.04) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slider-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(107, 44, 245, 0.4);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
+                        0 0 30px rgba(107, 44, 245, 0.15);
+        }
+        
+        .slider-card-overlay {
+            padding: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .slider-card-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-4);
+            width: fit-content;
+        }
+        
+        .slider-card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .slider-card-subtitle {
+            font-size: 14px;
+            color: var(--db-secondary);
+            margin-bottom: var(--space-4);
+            font-weight: 600;
+        }
+        
+        .slider-card-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+        }
+        
+        .slider-card-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: auto;
+            margin-bottom: var(--space-4);
+        }
+        
+        .slider-card-tag {
+            padding: 6px 12px;
+            background: rgba(107, 44, 245, 0.15);
+            border: 1px solid rgba(107, 44, 245, 0.3);
+            color: var(--db-secondary);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .slider-controls {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            margin-top: var(--space-8);
+        }
+        
+        .slider-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slider-btn:hover {
+            background: var(--db-primary);
+            border-color: var(--db-primary);
+            transform: scale(1.1);
+        }
+        
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: var(--space-6);
+        }
+        
+        .slider-dots .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dots .swiper-pagination-bullet-active {
+            background: var(--db-primary);
+            width: 24px;
+            border-radius: 4px;
+        }
+        
         .feature-title {
             font-family: var(--font-heading);
             font-size: 22px;
@@ -701,24 +844,18 @@
             transform: scale(1.02) translateY(-4px);
         }
         
-        /* Texto oscuro en pricing cards */
+        /* Texto CLARO en pricing cards para mejor contraste */
         .pricing-card .plan-name {
-            color: #1A1A24;
+            color: var(--text-primary); /* Texto claro */
         }
         
         .pricing-card .plan-description,
         .pricing-card .plan-features li {
-            color: #4A5568;
+            color: var(--text-secondary); /* Texto claro */
         }
         
         .pricing-card .plan-price {
-        .plan-features li {
-            padding: var(--space-3) 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
-        }   color: #718096;
-        }   box-shadow: var(--shadow-lg);
-            transform: scale(1.02);
+            color: var(--text-primary); /* Texto claro */
         }
         
         .plan-name {
@@ -726,6 +863,7 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: var(--space-3);
+            color: var(--text-primary);
         }
         
         .plan-description {
@@ -742,7 +880,7 @@
         
         .plan-features li {
             padding: var(--space-3) 0;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-secondary);
         }
         
@@ -765,71 +903,173 @@
             margin: 0 auto;
         }
         
+        /* FAQ Acordeones */
+        .faq-grid {
+            display: grid;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
         .faq-item {
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.06) 0%, 
-                rgba(255, 255, 255, 0.03) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-md);
-            padding: var(--space-6);
-            margin-bottom: var(--space-4);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            overflow: hidden;
         }
         
         .faq-item:hover {
+            border-color: rgba(107, 44, 245, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+                        0 0 20px rgba(107, 44, 245, 0.15);
             transform: translateY(-2px);
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.09) 0%, 
-                rgba(255, 255, 255, 0.05) 100%);
-            border-color: rgba(46, 197, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
-                        0 0 20px rgba(46, 197, 255, 0.1);
         }
         
         .faq-question {
-            font-family: var(--font-heading);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 18px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: var(--space-3);
+            color: #FFFFFF;
+            width: 100%;
+            text-align: left;
+            padding: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question span:first-child {
+            flex: 1;
+            padding-right: 16px;
+        }
+        
+        .faq-question:hover {
+            color: #2EC5FF;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-icon {
+            font-size: 32px;
+            font-weight: 300;
+            color: #6B2CF5;
+            transition: transform 0.3s ease, color 0.3s ease;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            color: #2EC5FF;
         }
         
         .faq-answer {
-            color: var(--text-secondary);
-            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 24px;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 800px;
+            padding: 0 24px 24px;
+        }
+        
+        .faq-answer p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin: 0;
+            font-size: 16px;
         }
         
         /* Footer */
         footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-light);
-            padding: var(--space-16) 0 var(--space-8);
+            background: linear-gradient(180deg, 
+                #1A1A2E 0%, 
+                #0A0A14 100%);
+            border-top: 1px solid rgba(107, 44, 245, 0.2);
+            padding: 64px 0 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(107, 44, 245, 0.5) 50%, 
+                transparent);
         }
         
         .footer-content {
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            margin-bottom: 16px;
+        }
+        
+        .footer-content strong {
+            color: #6B2CF5;
+            font-weight: 700;
+            font-size: 18px;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: var(--space-8);
-            margin-top: var(--space-6);
+            align-items: center;
+            gap: 24px;
+            margin-top: 24px;
             flex-wrap: wrap;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .footer-links a {
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            position: relative;
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, #6B2CF5, #2EC5FF);
+            transition: transform 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: var(--db-primary);
+            color: #FFFFFF;
+            background: rgba(107, 44, 245, 0.1);
         }
         
-        /* Chatbot Widget */
+        .footer-links a:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+        
         /* Divider */
         .divider {
             height: 1px;
@@ -934,13 +1174,51 @@
         </div>
     </section>
 
+    <!-- CTA Principal - Visita la Plataforma -->
+    <section class="section" style="background: linear-gradient(135deg, #6B2CF5 0%, #2EC5FF 100%); padding: var(--space-12) 0; position: relative; overflow: hidden;">
+        <!-- Decoración de fondo -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; pointer-events: none;">
+            <div style="position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -30%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%); border-radius: 50%;"></div>
+        </div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 36px; font-weight: 800; color: #FFFFFF; margin-bottom: var(--space-4); line-height: 1.2; text-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                    Transforma tus Decisiones Inmobiliarias
+                </h2>
+                <p style="font-size: 18px; color: rgba(255,255,255,0.95); margin-bottom: var(--space-8); line-height: 1.6;">
+                    Accede ahora a 8 millones de propiedades con datos históricos de 10+ años. 
+                    Precios reales del Conservador de Bienes Raíces y mucho más.
+                </p>
+                
+                <a href="https://my.databam.cl" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn"
+                   style="display: inline-flex; align-items: center; gap: 12px; background: #FFFFFF; color: #6B2CF5; font-size: 20px; font-weight: 700; padding: 20px 48px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.2); text-decoration: none;"
+                   onmouseover="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.3)';"
+                   onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 40px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.2)';">
+                    <span>Visita la Plataforma</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+
+                <p style="margin-top: var(--space-6); font-size: 14px; color: rgba(255,255,255,0.8);">
+                    ✓ Sin tarjeta de crédito para comenzar &nbsp;•&nbsp; ✓ Demo gratuita disponible
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Divider -->
     <div class="container">
         <div class="divider"></div>
     </div>
 
-    <!-- Nuestros Datos Section -->
-    <section class="section">
+    <!-- Nuestros Datos Section - CARDS ESTÁTICAS -->
+    <section class="section section-darker">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">Nuestros Datos</span>
@@ -952,65 +1230,72 @@
                 </p>
             </div>
 
-            <div class="feature-grid">
-                <!-- Card 1: Base Transaccional CBR -->
-                <div class="feature-card animate-in">
-                    <div class="feature-icon">🏛️</div>
-                    <h3 class="feature-title">Base de Datos Transaccional</h3>
-                    <p class="feature-subtitle">Conservador de Bienes Raíces</p>
-                    <p class="feature-description">
-                        Nuestra base de datos contempla inscripciones de 20+ comunas del Gran Santiago. 
-                        Incluye ROL, Precios, Coordenadas, Naturaleza y más datos oficiales del CBR.
-                    </p>
-                    <ul class="feature-list">
-                        <li>Compra Venta y Herencias</li>
-                        <li>Precios reales de transacción</li>
-                        <li>20+ comunas Gran Santiago</li>
-                        <li>Datos de propietarios</li>
-                    </ul>
-                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                        Acceder a Datos CBR
-                    </a>
+            <!-- Grid de Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-8); margin-top: var(--space-12);">
+                <!-- Card 1: CBR -->
+                <div class="slider-card">
+                    <div class="slider-card-overlay">
+                        <span class="slider-card-category">PROPTECH</span>
+                        <div>
+                            <div class="feature-icon">🏛️</div>
+                            <h3 class="slider-card-title">Base de Datos Transaccional</h3>
+                            <p class="slider-card-subtitle">Conservador de Bienes Raíces</p>
+                            <p class="slider-card-description">
+                                Nuestra base de datos contempla inscripciones de 20+ comunas del Gran Santiago. 
+                                Incluye ROL, Precios, Coordenadas, Naturaleza y más datos oficiales del CBR.
+                            </p>
+                            <div class="slider-card-tags">
+                                <span class="slider-card-tag">Compra Venta y Herencias</span>
+                                <span class="slider-card-tag">Precios reales</span>
+                                <span class="slider-card-tag">20+ comunas</span>
+                                <span class="slider-card-tag">Propietarios</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Card 2: Rutificador -->
-                <div class="feature-card animate-in">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">Rutificador de Propiedades</h3>
-                    <p class="feature-subtitle">Dueño ↔ ROL</p>
-                    <p class="feature-description">
-                        Encuentra a los dueños de una propiedad por ROL, o bien, 
-                        encuentra las propiedades asociadas a una persona o empresa.
-                    </p>
-                    <ul class="feature-list">
-                        <li>Búsqueda bidireccional</li>
-                        <li>ROL a propietario</li>
-                        <li>RUT a propiedades</li>
-                        <li>Datos actualizados</li>
-                    </ul>
-                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                        Usar Rutificador
-                    </a>
+                <div class="slider-card">
+                    <div class="slider-card-overlay">
+                        <span class="slider-card-category">HERRAMIENTAS</span>
+                        <div>
+                            <div class="feature-icon">🔍</div>
+                            <h3 class="slider-card-title">Rutificador de Propiedades</h3>
+                            <p class="slider-card-subtitle">Dueño ↔ ROL</p>
+                            <p class="slider-card-description">
+                                Encuentra a los dueños de una propiedad por ROL, o bien, 
+                                encuentra las propiedades asociadas a una persona o empresa.
+                            </p>
+                            <div class="slider-card-tags">
+                                <span class="slider-card-tag">Búsqueda bidireccional</span>
+                                <span class="slider-card-tag">ROL a propietario</span>
+                                <span class="slider-card-tag">RUT a propiedades</span>
+                                <span class="slider-card-tag">Actualizado</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Card 3: Catastro -->
-                <div class="feature-card animate-in">
-                    <div class="feature-icon">🗺️</div>
-                    <h3 class="feature-title">Base de Datos Catastral Enriquecida</h3>
-                    <p class="feature-subtitle">Catastro Completo de Chile</p>
-                    <p class="feature-description">
-                        Catastro de los últimos 10+ años para todas las propiedades de Chile. 
-                        Incluye ROL, constructibilidad, avalúos, tipo de uso y coordenadas geográficas.
-                    </p>
-                    <ul class="feature-list">
-                        <li>Cobertura nacional completa</li>
-                        <li>10+ años de histórico</li>
-                        <li>Constructibilidad y avalúos</li>
-                        <li>Coordenadas GPS precisas</li>
-                    </ul>
-                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                        Explorar Catastro
-                    </a>
+                <div class="slider-card">
+                    <div class="slider-card-overlay">
+                        <span class="slider-card-category">DATA NACIONAL</span>
+                        <div>
+                            <div class="feature-icon">🗺️</div>
+                            <h3 class="slider-card-title">Base de Datos Catastral Enriquecida</h3>
+                            <p class="slider-card-subtitle">Catastro Completo de Chile</p>
+                            <p class="slider-card-description">
+                                Catastro de los últimos 10+ años para todas las propiedades de Chile. 
+                                Incluye ROL, constructibilidad, avalúos, tipo de uso y coordenadas geográficas.
+                            </p>
+                            <div class="slider-card-tags">
+                                <span class="slider-card-tag">Cobertura nacional</span>
+                                <span class="slider-card-tag">10+ años histórico</span>
+                                <span class="slider-card-tag">Constructibilidad</span>
+                                <span class="slider-card-tag">GPS precisas</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1218,7 +1503,7 @@
         <div class="divider"></div>
     </div>
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section - Acordeones Reales -->
     <section class="section">
         <div class="container">
             <div class="section-header">
@@ -1227,36 +1512,56 @@
             </div>
 
             <div class="faq-grid">
-                <div class="faq-item animate-in">
-                    <h3 class="faq-question">¿Qué es DATABAM?</h3>
-                    <p class="faq-answer">
-                        DATABAM es una plataforma de data inmobiliaria pensada en tasadores, corredores de propiedades e inmobiliarias. 
-                        Hacemos accesible información que por lo general es difícil de recopilar y procesar.
-                    </p>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>¿Qué es DATABAM?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            DATABAM es una plataforma de data inmobiliaria pensada en tasadores, corredores de propiedades e inmobiliarias. 
+                            Hacemos accesible información que por lo general es difícil de recopilar y procesar.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="faq-item animate-in">
-                    <h3 class="faq-question">¿Qué cobertura tienen los datos?</h3>
-                    <p class="faq-answer">
-                        Para datos de la propiedad (construcciones, terrenos, avalúos, contribuciones, etc) y dueños tenemos cobertura nacional. 
-                        Para precios transaccionales CBR tenemos cobertura en las 26 comunas del Conservador de Bienes Raíces de Santiago.
-                    </p>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>¿Qué cobertura tienen los datos?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Para datos de la propiedad (construcciones, terrenos, avalúos, contribuciones, etc) y dueños tenemos cobertura nacional. 
+                            Para precios transaccionales CBR tenemos cobertura en las 26 comunas del Conservador de Bienes Raíces de Santiago.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="faq-item animate-in">
-                    <h3 class="faq-question">¿Cómo funcionan los créditos?</h3>
-                    <p class="faq-answer">
-                        En la plataforma web, cada vez que consultas un dashboard o trazas una figura en el mapa, se consume un crédito. 
-                        Al finalizar tu ciclo de facturación, tu consumo se reiniciará a 0. Los créditos no son acumulables entre periodos.
-                    </p>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>¿Cómo funcionan los créditos?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            En la plataforma web, cada vez que consultas un dashboard o trazas una figura en el mapa, se consume un crédito. 
+                            Al finalizar tu ciclo de facturación, tu consumo se reiniciará a 0. Los créditos no son acumulables entre periodos.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="faq-item animate-in">
-                    <h3 class="faq-question">¿Puedo simplemente comprar bases de datos?</h3>
-                    <p class="faq-answer">
-                        Ofrecemos servicios de bases de datos inmobiliarias para soluciones empresariales. 
-                        Contáctanos para conocer más sobre nuestros datasets masivos y API.
-                    </p>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>¿Puedo simplemente comprar bases de datos?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Ofrecemos servicios de bases de datos inmobiliarias para soluciones empresariales. 
+                            Contáctanos para conocer más sobre nuestros datasets masivos y API.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1297,17 +1602,22 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
-                    <strong style="color: var(--db-primary);">Databam</strong> by Just Dev It
+                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 12px; font-size: 15px;">
+                    <strong>Databam</strong> by Just Dev It
                 </p>
-                <p style="color: var(--text-muted); font-size: 14px;">
-                    © 2025 Just Dev It. Todos los derechos reservados.
+                <p style="color: rgba(255, 255, 255, 0.45); font-size: 14px; margin-bottom: 24px;">
+                    Plataforma de data inmobiliaria pensada para profesionales
                 </p>
                 <div class="footer-links">
                     <a href="/about-us.html">Sobre Nosotros</a>
+                    <span style="color: rgba(255, 255, 255, 0.2);">•</span>
                     <a href="https://databam.cl" target="_blank" rel="noopener noreferrer">Ir a Databam</a>
+                    <span style="color: rgba(255, 255, 255, 0.2);">•</span>
                     <a href="/">Volver al inicio</a>
                 </div>
+                <p style="color: rgba(255, 255, 255, 0.35); font-size: 13px; margin-top: 24px;">
+                    © 2025 Just Dev It. Todos los derechos reservados.
+                </p>
             </div>
         </div>
     </footer>
@@ -1347,67 +1657,6 @@
             </p>
         </div>
     </div>
-
-    <!-- Flowise Chatbot Widget - Mismo de databam.cl -->
-    <script type="module">
-        import Chatbot from 'https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js';
-        Chatbot.initFull({
-            chatflowid: 'c7ee9d29-e850-4a91-bd6e-50c42df33e41',
-            apiHost: 'https://flowise.databam.cl',
-            theme: {
-                button: {
-                    backgroundColor: '#6B2CF5',
-                    right: 20,
-                    bottom: 20,
-                    size: 60,
-                    iconColor: 'white',
-                    customIconSrc: 'https://databam.cl/favicon.ico',
-                    boxShadow: '0 4px 20px rgba(107, 44, 245, 0.4)',
-                },
-                tooltip: {
-                    showTooltip: true,
-                    tooltipMessage: 'Chatea con Databam 💬',
-                    tooltipBackgroundColor: '#6B2CF5',
-                    tooltipTextColor: 'white',
-                    tooltipFontSize: 14,
-                },
-                chatWindow: {
-                    showTitle: true,
-                    title: 'Chatea con Databam',
-                    titleAvatarSrc: 'https://databam.cl/favicon.ico',
-                    welcomeMessage: '¡Hola! Soy un asistente de Databam ¿En qué puedo ayudarte?',
-                    backgroundColor: '#FFFFFF',
-                    height: 600,
-                    width: 400,
-                    fontSize: 14,
-                    poweredByTextColor: '#1E1E1E',
-                    botMessage: {
-                        backgroundColor: '#D9CCF3',
-                        textColor: '#2A1A4F',
-                        showAvatar: true,
-                        avatarSrc: 'https://databam.cl/favicon.ico',
-                    },
-                    userMessage: {
-                        backgroundColor: '#6B2CF5',
-                        textColor: '#ffffff',
-                        showAvatar: true,
-                    },
-                    textInput: {
-                        placeholder: 'Escribe tu pregunta...',
-                        backgroundColor: '#ffffff',
-                        textColor: '#1E1E1E',
-                        sendButtonColor: '#6B2CF5',
-                    },
-                    footer: {
-                        textColor: '#1E1E1E',
-                        text: 'Powered by',
-                        company: 'Databam',
-                        companyLink: 'https://databam.cl',
-                    }
-                }
-            }
-        });
-    </script>
 
     <!-- JavaScript -->
     <script>
@@ -1469,84 +1718,46 @@
                 }
             });
         });
+        
+        // FAQ Acordeones
+        function toggleFAQ(button) {
+            console.log('toggleFAQ called');
+            const faqItem = button.closest('.faq-item');
+            const wasActive = faqItem.classList.contains('active');
+            
+            console.log('FAQ item found:', faqItem ? 'YES' : 'NO', 'Was active:', wasActive);
+            
+            // Cerrar todos los acordeones
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Si NO estaba activo, abrirlo
+            if (!wasActive) {
+                faqItem.classList.add('active');
+                console.log('✅ FAQ opened');
+            } else {
+                console.log('✅ FAQ closed');
+            }
+        }
+        
+        // Verificar que el sistema esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const faqButtons = document.querySelectorAll('.faq-question');
+            console.log('✅ FAQ System Ready');
+            console.log('   - FAQ items found:', faqItems.length);
+            console.log('   - FAQ buttons found:', faqButtons.length);
+            
+            // Agregar listeners como backup
+            faqButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    console.log('FAQ button clicked (via event listener):', index);
+                });
+            });
+        });
     </script>
 
-    <!-- Flowise Chatbot Widget -->
-    <!-- DESHABILITADO: Habilitar cuando esté en producción (databam.cl) -->
-    <!-- NOTA: En localhost muestra "Failed to fetch" por restricciones CORS -->
-    <!-- 
-    <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-        Chatbot.init({
-            chatflowid: "c7ee9d29-e850-4a91-bd6e-50c42df33e41",
-            apiHost: "https://flowise.databam.cl",
-            chatflowConfig: {
-                // topK: 2
-            },
-            observersConfig: {
-                // (optional) Allows you to execute code in parent based upon signal observations within the chatbot.
-                // The userinput field submitted to bot ("" when reset by bot)
-                observeUserInput: (userInput) => {
-                    console.log({ userInput });
-                },
-                // The bot message stack has changed
-                observeMessages: (messages) => {
-                    console.log({ messages });
-                },
-                // The bot loading signal changed
-                observeLoading: (loading) => {
-                    console.log({ loading });
-                },
-            },
-            theme: {
-                button: {
-                    backgroundColor: "#6B2CF5",
-                    right: 20,
-                    bottom: 20,
-                    size: 60, // Bubble size
-                    iconColor: "white",
-                    customIconSrc: "https://databam.cl/assets/images/databam-icon.svg",
-                    boxShadow: "0 4px 20px rgba(107, 44, 245, 0.4)",
-                },
-                tooltip: {
-                    showTooltip: true,
-                    tooltipMessage: 'Chatea con Databam 💬',
-                    tooltipBackgroundColor: '#6B2CF5',
-                    tooltipTextColor: 'white',
-                    tooltipFontSize: 14,
-                },
-                chatWindow: {
-                    showTitle: true,
-                    title: 'Asistente Databam',
-                    titleAvatarSrc: 'https://databam.cl/assets/images/databam-icon.svg',
-                    welcomeMessage: '¡Hola! ¿En qué puedo ayudarte hoy?',
-                    backgroundColor: "#0F0F1A",
-                    height: 600,
-                    width: 400,
-                    fontSize: 14,
-                    poweredByTextColor: "#8B8CA8",
-                    botMessage: {
-                        backgroundColor: "rgba(107, 44, 245, 0.1)",
-                        textColor: "#E8E9F3",
-                        showAvatar: true,
-                        avatarSrc: "https://databam.cl/assets/images/databam-icon.svg",
-                    },
-                    userMessage: {
-                        backgroundColor: "#6B2CF5",
-                        textColor: "#ffffff",
-                        showAvatar: true,
-                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
-                    },
-                    textInput: {
-                        placeholder: 'Escribe tu mensaje...',
-                        backgroundColor: 'rgba(255,255,255,0.05)',
-                        textColor: '#E8E9F3',
-                        sendButtonColor: '#6B2CF5',
-                    }
-                }
-            }
-        })
-    </script>
-    -->
+
 </body>
 </html>
