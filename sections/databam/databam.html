@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Databam | Data Inmobiliaria Para la Toma de Decisiones | Just Dev It</title>
+    <meta name="description" content="Accede a 8M propiedades con precios reales del CBR. 10+ años de histórico. Data inmobiliaria confiable para tasadores, inversionistas y desarrolladores.">
+    <meta name="keywords" content="databam, data inmobiliaria chile, proptech chile, valuación propiedades, precios transacción cbr, api inmobiliaria, comparables propiedades, rutificador propiedades, mapa catastral chile">
+    <meta name="author" content="Just Dev It">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://justdev.it/databam">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://justdev.it/databam">
+    <meta property="og:title" content="Databam - Data Inmobiliaria Para la Toma de Decisiones">
+    <meta property="og:description" content="8M propiedades, 10+ años de histórico. Precios reales del CBR. Cobertura nacional.">
+    <meta property="og:image" content="https://justdev.it/assets/og-images/databam-og.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="databam.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/core/reset.css">
+    <link rel="stylesheet" href="/css/core/variables.css">
+    
+    <style>
+        :root {
+            /* Databam Colors */
+            --db-primary: #6B2CF5;
+            --db-secondary: #2EC5FF;
+            --db-accent: #F9C23C;
+            
+            /* Backgrounds - Fusión Oscuro/Claro */
+            --bg-primary: #0F0F1A;
+            --bg-secondary: #1A1A2E;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-card-elevated: rgba(255, 255, 255, 0.08);
+            --bg-subtle: #16162F;
+            
+            /* Text Colors - Balanceados */
+            --text-primary: #E8E9F3;
+            --text-secondary: #B8B9D0;
+            --text-muted: #8B8CA8;
+            --text-on-light: #2D2D44;
+            
+            /* Borders - Con glow sutil */
+            --border-light: rgba(107, 44, 245, 0.1);
+            --border-medium: rgba(107, 44, 245, 0.2);
+            --border-glow: rgba(107, 44, 245, 0.3);
+            
+            /* Glass effect */
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            
+            /* Spacing */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-12: 48px;
+            --space-16: 64px;
+            --space-20: 80px;
+            --space-24: 96px;
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+            
+            /* Radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            /* Shadows - Para tema oscuro */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+            
+            /* Glow effects */
+            --glow-primary: 0 0 20px rgba(107, 44, 245, 0.3);
+            --glow-secondary: 0 0 20px rgba(46, 197, 255, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+        
+        .section {
+            padding: var(--space-20) 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--space-12) 0;
+            }
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 15, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            padding: var(--space-4) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, rgba(107, 44, 245, 0.15), rgba(46, 197, 255, 0.15));
+            color: #FFFFFF;
+            padding: var(--space-2) var(--space-4);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(107, 44, 245, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: var(--space-20) 0;
+            background: radial-gradient(ellipse at top, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(107, 44, 245, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(46, 197, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+            }
+        }
+        
+        .logo-databam {
+            max-width: 280px;
+            height: auto;
+            margin-bottom: var(--space-6);
+        }
+        
+        @media (max-width: 768px) {
+            .logo-databam {
+                max-width: 220px;
+                margin: 0 auto var(--space-4);
+                display: block;
+            }
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(107, 44, 245, 0.2), rgba(46, 197, 255, 0.2));
+            color: #FFFFFF;
+            padding: var(--space-2) var(--space-4);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            border: 1px solid rgba(107, 44, 245, 0.5);
+            box-shadow: 0 4px 15px rgba(107, 44, 245, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary);
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+        }
+        
+        .checklist {
+            list-style: none;
+            margin: var(--space-6) 0;
+        }
+        
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            padding: var(--space-2) 0;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .checklist li::before {
+            content: '✓';
+            color: var(--db-secondary);
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: var(--space-3);
+            flex-shrink: 0;
+        }
+        
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            gap: var(--space-2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+            color: white;
+            box-shadow: var(--shadow-md), var(--glow-primary);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--glow-primary);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border: 2px solid rgba(107, 44, 245, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, 
+                rgba(107, 44, 245, 0.3), 
+                rgba(46, 197, 255, 0.3));
+            color: white;
+            border-color: rgba(107, 44, 245, 0.6);
+            box-shadow: 0 8px 20px rgba(107, 44, 245, 0.3),
+                        inset 0 0 20px rgba(107, 44, 245, 0.1);
+        }
+        
+        /* Screenshot */
+        .screenshot-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        
+        .screenshot-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 1px;
+            background: linear-gradient(135deg, 
+                rgba(107, 44, 245, 0.5), 
+                rgba(46, 197, 255, 0.5));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                          linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-16);
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, 
+                rgba(107, 44, 245, 0.15), 
+                rgba(46, 197, 255, 0.15));
+            color: #FFFFFF;
+            padding: var(--space-2) var(--space-4);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            border: 1px solid rgba(107, 44, 245, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Feature Cards - Glassmorphism con fusión */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.04) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                rgba(107, 44, 245, 0.8), 
+                rgba(46, 197, 255, 0.8));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top left, 
+                rgba(107, 44, 245, 0.05) 0%, 
+                transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-6px);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.12) 0%, 
+                rgba(255, 255, 255, 0.06) 100%);
+            border-color: rgba(107, 44, 245, 0.4);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
+                        0 0 30px rgba(107, 44, 245, 0.15);
+        }
+        
+        /* Texto claro en cards glass */
+        .feature-card .feature-title {
+            color: var(--text-primary);
+        }
+        
+        .feature-card .feature-description {
+            color: var(--text-secondary);
+        }
+        
+        .feature-card .feature-list li {
+            color: var(--text-secondary);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: var(--space-4);
+        }
+        
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+            color: var(--text-primary);
+        }
+        
+        .feature-subtitle {
+            color: var(--db-secondary);
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            font-size: 14px;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-4);
+            flex-grow: 1;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: var(--space-4) 0;
+        }
+        
+        .feature-list li {
+            padding: var(--space-2) 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list li::before {
+            content: '→';
+            color: var(--db-primary);
+            margin-right: var(--space-2);
+            font-weight: 700;
+        }
+        /* Video Section */
+        .video-section {
+            background: var(--bg-subtle);
+            position: relative;
+        }
+        
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(46, 197, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        /* Video Embed Compacto - Estilo Databam */
+        .video-embed-compact {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 0 1px rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-embed-compact iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .video-embed-compact {
+                height: 300px;
+            }
+        }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-12);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.04) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, 
+                rgba(46, 197, 255, 0.1) 0%, 
+                transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(46, 197, 255, 0.3);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
+                        0 0 30px rgba(46, 197, 255, 0.2);
+        }
+        
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--db-primary), var(--db-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Pricing Section */
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-12);
+        }
+        
+        .toggle-btn {
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
+        
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(107, 44, 245, 0.3);
+        }
+        
+        .toggle-btn.active {
+            background: linear-gradient(135deg, 
+                rgba(107, 44, 245, 0.3), 
+                rgba(46, 197, 255, 0.3));
+            color: white;
+            border-color: rgba(107, 44, 245, 0.5);
+            box-shadow: 0 4px 15px rgba(107, 44, 245, 0.3),
+                        inset 0 0 20px rgba(107, 44, 245, 0.1);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-8);
+            max-width: 1000px;
+            margin: 0 auto;
+        .pricing-card {
+            background: var(--white-card);
+            border: 2px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--db-primary);
+            box-shadow: var(--shadow-lg), var(--glow-primary);
+            transform: scale(1.02);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.02) translateY(-4px);
+        }
+        
+        /* Texto oscuro en pricing cards */
+        .pricing-card .plan-name {
+            color: #1A1A24;
+        }
+        
+        .pricing-card .plan-description,
+        .pricing-card .plan-features li {
+            color: #4A5568;
+        }
+        
+        .pricing-card .plan-price {
+        .plan-features li {
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+        }   color: #718096;
+        }   box-shadow: var(--shadow-lg);
+            transform: scale(1.02);
+        }
+        
+        .plan-name {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+        }
+        
+        .plan-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+            line-height: 1.6;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: var(--space-6) 0;
+            flex-grow: 1;
+        }
+        
+        .plan-features li {
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+        
+        .plan-price {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: var(--space-6) 0;
+        }
+        
+        .plan-price span {
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+        
+        /* FAQ */
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.06) 0%, 
+                rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.09) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
+            border-color: rgba(46, 197, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+                        0 0 20px rgba(46, 197, 255, 0.1);
+        }
+        
+        .faq-question {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+        }
+        
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            padding: var(--space-16) 0 var(--space-8);
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin-top: var(--space-6);
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--db-primary);
+        }
+        
+        /* Chatbot Widget */
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-medium), transparent);
+            margin: var(--space-12) 0;
+        }
+        
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: var(--border-light);
+            margin: var(--space-12) 0;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="logo">Just Dev It</a>
+                <span class="badge">PropTech Analytics</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Hero Content -->
+                <div class="hero-content animate-in">
+                    <img src="databam.png" alt="DATABAM Logo" class="logo-databam">
+                    
+                    <span class="hero-badge">Data As A Service</span>
+                    
+                    <h1 class="hero-title">
+                        Data Inmobiliaria Para la Toma de Decisiones
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Nuestro equipo de especialistas recopila datos de diversas fuentes del sector inmobiliario. 
+                        Tú nos dices dónde la necesitas, y nosotros nos encargamos del resto.
+                    </p>
+                    
+                    <ul class="checklist">
+                        <li>Actualizados Octubre 2024</li>
+                        <li>Compra Venta, Herencias, Adjudicaciones</li>
+                        <li>Habitacional, Oficina, Comercio, Industria</li>
+                        <li>Constructibilidad, Avalúos, Antigüedad, Coordenadas</li>
+                        <li>10+ Años de registros para 8 millones de propiedades</li>
+                        <li>Actualizados periódicamente</li>
+                    </ul>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="openDemoModal()">
+                            Solicitar Demo
+                            <span>→</span>
+                        </button>
+                        <a href="https://my.databam.cl/users/sign_up" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                            Registrarse para Contratar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Screenshot -->
+                <div class="screenshot-container animate-in">
+                    <img src="https://databam.cl/app.png" alt="Plataforma Databam - Dashboard con mapa catastral" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- Nuestros Datos Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nuestros Datos</span>
+                <h2 class="section-title">
+                    Estar informado es lo más importante para tomar decisiones
+                </h2>
+                <p class="section-subtitle">
+                    Levantamos data para tu negocio desde diversas fuentes confiables del sector inmobiliario
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <!-- Card 1: Base Transaccional CBR -->
+                <div class="feature-card animate-in">
+                    <div class="feature-icon">🏛️</div>
+                    <h3 class="feature-title">Base de Datos Transaccional</h3>
+                    <p class="feature-subtitle">Conservador de Bienes Raíces</p>
+                    <p class="feature-description">
+                        Nuestra base de datos contempla inscripciones de 20+ comunas del Gran Santiago. 
+                        Incluye ROL, Precios, Coordenadas, Naturaleza y más datos oficiales del CBR.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Compra Venta y Herencias</li>
+                        <li>Precios reales de transacción</li>
+                        <li>20+ comunas Gran Santiago</li>
+                        <li>Datos de propietarios</li>
+                    </ul>
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        Acceder a Datos CBR
+                    </a>
+                </div>
+
+                <!-- Card 2: Rutificador -->
+                <div class="feature-card animate-in">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Rutificador de Propiedades</h3>
+                    <p class="feature-subtitle">Dueño ↔ ROL</p>
+                    <p class="feature-description">
+                        Encuentra a los dueños de una propiedad por ROL, o bien, 
+                        encuentra las propiedades asociadas a una persona o empresa.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Búsqueda bidireccional</li>
+                        <li>ROL a propietario</li>
+                        <li>RUT a propiedades</li>
+                        <li>Datos actualizados</li>
+                    </ul>
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        Usar Rutificador
+                    </a>
+                </div>
+
+                <!-- Card 3: Catastro -->
+                <div class="feature-card animate-in">
+                    <div class="feature-icon">🗺️</div>
+                    <h3 class="feature-title">Base de Datos Catastral Enriquecida</h3>
+                    <p class="feature-subtitle">Catastro Completo de Chile</p>
+                    <p class="feature-description">
+                        Catastro de los últimos 10+ años para todas las propiedades de Chile. 
+                        Incluye ROL, constructibilidad, avalúos, tipo de uso y coordenadas geográficas.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Cobertura nacional completa</li>
+                        <li>10+ años de histórico</li>
+                        <li>Constructibilidad y avalúos</li>
+                        <li>Coordenadas GPS precisas</li>
+                    </ul>
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        Explorar Catastro
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- Video Section - Compacto -->
+    <section class="section video-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Demo en Vivo</span>
+                <h2 class="section-title">
+                    Conoce la Plataforma en Acción
+                </h2>
+                <p class="section-subtitle">
+                    Mira cómo funciona nuestra nueva herramienta de búsqueda de compraventas por mapa
+                </p>
+            </div>
+
+            <!-- Video Embed Compacto -->
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="video-embed-compact">
+                    <iframe 
+                        src="https://www.loom.com/embed/5dd1a3900bb44c36b1c8d9e07233edcf?sid=8e1f9f0a-3b5d-4c3e-9c4a-7d1e2f3a4b5c&hideEmbedTopBar=true" 
+                        frameborder="0" 
+                        webkitallowfullscreen 
+                        mozallowfullscreen 
+                        allowfullscreen
+                        title="Demo Databam - Nueva herramienta de búsqueda">
+                    </iframe>
+                </div>
+                <p style="text-align: center; margin-top: var(--space-4); color: var(--text-muted); font-size: 14px;">
+                    ⏱️ Duración: 1min 42seg | 📊 Búsqueda por Mapa Interactivo
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Métricas</span>
+                <h2 class="section-title">Databam en Números</h2>
+                <p class="section-subtitle">Datos que respaldan nuestra confiabilidad</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card animate-in">
+                    <div class="stat-value">8M</div>
+                    <p class="stat-label">Propiedades Indexadas</p>
+                </div>
+
+                <div class="stat-card animate-in">
+                    <div class="stat-value">10+</div>
+                    <p class="stat-label">Años de Histórico</p>
+                </div>
+
+                <div class="stat-card animate-in">
+                    <div class="stat-value">2019</div>
+                    <p class="stat-label">Levantando Data Desde</p>
+                </div>
+
+                <div class="stat-card animate-in">
+                    <div class="stat-value">20+</div>
+                    <p class="stat-label">Comunas Gran Santiago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- Pricing Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Precios</span>
+                <h2 class="section-title">Planes Plataforma Web</h2>
+                <p class="section-subtitle">Seleccione el plan que mejor se ajuste a sus necesidades</p>
+            </div>
+
+            <div class="pricing-toggle">
+                <button class="toggle-btn active" onclick="switchPricing('monthly')">Mensual</button>
+                <button class="toggle-btn" onclick="switchPricing('annual')">Anual (2 meses gratis)</button>
+            </div>
+
+            <div class="pricing-grid" id="pricing-monthly">
+                <!-- Plan Tasador Mensual -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Plan Tasador</h3>
+                    <p class="plan-description">
+                        Para tasadores independientes que buscan datos para apoyar sus tasaciones.
+                    </p>
+                    
+                    <ul class="plan-features">
+                        <li>200 créditos mensuales</li>
+                        <li>Todas las comunas de Chile</li>
+                        <li>1 usuario</li>
+                        <li><strong>Dashboards</strong></li>
+                        <li>Detalle Propiedad, Búsqueda por Mapa, Rutificador</li>
+                    </ul>
+                    
+                    <div class="plan-price">
+                        $50.000 <span>/ mes</span>
+                    </div>
+                    
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        Registrarse para Contratar
+                    </a>
+                </div>
+
+                <!-- Plan Empresa Mensual -->
+                <div class="pricing-card featured">
+                    <h3 class="plan-name">Plan Empresa</h3>
+                    <p class="plan-description">
+                        Para organizaciones que buscan implementar databam en sus flujos de trabajo.
+                    </p>
+                    
+                    <ul class="plan-features">
+                        <li>600 créditos mensuales</li>
+                        <li>Todas las comunas de Chile</li>
+                        <li>Múltiples usuarios</li>
+                        <li><strong>Dashboards</strong></li>
+                        <li>Dashboards Plan Tasador + Leads de Herencia</li>
+                    </ul>
+                    
+                    <div class="plan-price">
+                        desde $100.000 <span>/ mes</span>
+                    </div>
+                    
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        Registrarse para Contratar
+                    </a>
+                </div>
+            </div>
+
+            <div class="pricing-grid" id="pricing-annual" style="display: none;">
+                <!-- Plan Tasador Anual -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Plan Tasador</h3>
+                    <p class="plan-description">
+                        Para tasadores independientes que buscan datos para apoyar sus tasaciones.
+                    </p>
+                    
+                    <ul class="plan-features">
+                        <li>2.400 créditos anuales</li>
+                        <li>Todas las comunas de Chile</li>
+                        <li>1 usuario</li>
+                        <li><strong>Dashboards</strong></li>
+                        <li>Detalle Propiedad, Búsqueda por Mapa, Rutificador</li>
+                    </ul>
+                    
+                    <div class="plan-price">
+                        $41.667 <span>/ mes</span>
+                    </div>
+                    
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        Registrarse para Contratar
+                    </a>
+                </div>
+
+                <!-- Plan Empresa Anual -->
+                <div class="pricing-card featured">
+                    <h3 class="plan-name">Plan Empresa</h3>
+                    <p class="plan-description">
+                        Para organizaciones que buscan implementar databam en sus flujos de trabajo.
+                    </p>
+                    
+                    <ul class="plan-features">
+                        <li>7.200 créditos anuales</li>
+                        <li>Todas las comunas de Chile</li>
+                        <li>Múltiples usuarios</li>
+                        <li><strong>Dashboards</strong></li>
+                        <li>Dashboards Plan Tasador + Leads de Herencia</li>
+                        <li>+ 1 Dashboard a la medida</li>
+                    </ul>
+                    
+                    <div class="plan-price">
+                        desde $83.333 <span>/ mes</span>
+                    </div>
+                    
+                    <a href="https://my.databam.cl/users/sign_up" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        Registrarse para Contratar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item animate-in">
+                    <h3 class="faq-question">¿Qué es DATABAM?</h3>
+                    <p class="faq-answer">
+                        DATABAM es una plataforma de data inmobiliaria pensada en tasadores, corredores de propiedades e inmobiliarias. 
+                        Hacemos accesible información que por lo general es difícil de recopilar y procesar.
+                    </p>
+                </div>
+
+                <div class="faq-item animate-in">
+                    <h3 class="faq-question">¿Qué cobertura tienen los datos?</h3>
+                    <p class="faq-answer">
+                        Para datos de la propiedad (construcciones, terrenos, avalúos, contribuciones, etc) y dueños tenemos cobertura nacional. 
+                        Para precios transaccionales CBR tenemos cobertura en las 26 comunas del Conservador de Bienes Raíces de Santiago.
+                    </p>
+                </div>
+
+                <div class="faq-item animate-in">
+                    <h3 class="faq-question">¿Cómo funcionan los créditos?</h3>
+                    <p class="faq-answer">
+                        En la plataforma web, cada vez que consultas un dashboard o trazas una figura en el mapa, se consume un crédito. 
+                        Al finalizar tu ciclo de facturación, tu consumo se reiniciará a 0. Los créditos no son acumulables entre periodos.
+                    </p>
+                </div>
+
+                <div class="faq-item animate-in">
+                    <h3 class="faq-question">¿Puedo simplemente comprar bases de datos?</h3>
+                    <p class="faq-answer">
+                        Ofrecemos servicios de bases de datos inmobiliarias para soluciones empresariales. 
+                        Contáctanos para conocer más sobre nuestros datasets masivos y API.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider"></div>
+    </div>
+
+    <!-- CTA Final -->
+    <section class="section" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Comienza ahora</span>
+                <h2 class="section-title">
+                    Estar informado es lo más importante para tomar decisiones
+                </h2>
+                <p class="section-subtitle">
+                    Únete a tasadores, inversionistas, corredores y desarrolladores que ya confían en Databam 
+                    para acceder a data inmobiliaria confiable. Levantando data desde 2019.
+                </p>
+            </div>
+
+            <div class="btn-group" style="justify-content: center; margin-top: var(--space-12);">
+                <button class="btn btn-primary" onclick="openDemoModal()">
+                    Solicitar Demo Gratuita
+                    <span>→</span>
+                </button>
+                <a href="https://my.databam.cl/users/sign_up" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    Registrarse para Contratar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+                    <strong style="color: var(--db-primary);">Databam</strong> by Just Dev It
+                </p>
+                <p style="color: var(--text-muted); font-size: 14px;">
+                    © 2025 Just Dev It. Todos los derechos reservados.
+                </p>
+                <div class="footer-links">
+                    <a href="/about-us.html">Sobre Nosotros</a>
+                    <a href="https://databam.cl" target="_blank" rel="noopener noreferrer">Ir a Databam</a>
+                    <a href="/">Volver al inicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Demo -->
+    <div id="demoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+        <div style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 22, 47, 0.95) 100%); border-radius: var(--radius-lg); padding: var(--space-8); max-width: 500px; width: 90%; border: 1px solid rgba(107, 44, 245, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(107, 44, 245, 0.2); backdrop-filter: blur(20px);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                <h3 style="color: #FFFFFF; font-size: 24px; font-weight: 700; background: linear-gradient(135deg, #6B2CF5, #2EC5FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Solicitar Demo</h3>
+                <button onclick="closeDemoModal()" style="background: none; border: none; color: rgba(255, 255, 255, 0.5); font-size: 32px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.color='#FFFFFF'; this.style.transform='rotate(90deg)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.5)'; this.style.transform='rotate(0)'">×</button>
+            </div>
+            
+            <form id="demoForm" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                <div>
+                    <label style="display: block; margin-bottom: var(--space-2); color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 600;">Nombre Completo *</label>
+                    <input type="text" required style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-sm); color: #FFFFFF; font-size: 15px; transition: all 0.3s ease; backdrop-filter: blur(10px);" placeholder="Juan Pérez" onfocus="this.style.borderColor='rgba(107, 44, 245, 0.5)'; this.style.background='rgba(255, 255, 255, 0.08)'" onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.background='rgba(255, 255, 255, 0.05)'">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: var(--space-2); color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 600;">Email *</label>
+                    <input type="email" required style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-sm); color: #FFFFFF; font-size: 15px; transition: all 0.3s ease; backdrop-filter: blur(10px);" placeholder="juan@empresa.cl" onfocus="this.style.borderColor='rgba(107, 44, 245, 0.5)'; this.style.background='rgba(255, 255, 255, 0.08)'" onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.background='rgba(255, 255, 255, 0.05)'">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: var(--space-2); color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 600;">Empresa</label>
+                    <input type="text" style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-sm); color: #FFFFFF; font-size: 15px; transition: all 0.3s ease; backdrop-filter: blur(10px);" placeholder="Mi Empresa S.A." onfocus="this.style.borderColor='rgba(107, 44, 245, 0.5)'; this.style.background='rgba(255, 255, 255, 0.08)'" onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.background='rgba(255, 255, 255, 0.05)'">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-4);">
+                    Enviar Solicitud
+                    <span>→</span>
+                </button>
+            </form>
+            
+            <p style="font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-top: var(--space-4); text-align: center;">
+                Nos contactaremos contigo en menos de 24 horas
+            </p>
+        </div>
+    </div>
+
+    <!-- Flowise Chatbot Widget - Mismo de databam.cl -->
+    <script type="module">
+        import Chatbot from 'https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js';
+        Chatbot.initFull({
+            chatflowid: 'c7ee9d29-e850-4a91-bd6e-50c42df33e41',
+            apiHost: 'https://flowise.databam.cl',
+            theme: {
+                button: {
+                    backgroundColor: '#6B2CF5',
+                    right: 20,
+                    bottom: 20,
+                    size: 60,
+                    iconColor: 'white',
+                    customIconSrc: 'https://databam.cl/favicon.ico',
+                    boxShadow: '0 4px 20px rgba(107, 44, 245, 0.4)',
+                },
+                tooltip: {
+                    showTooltip: true,
+                    tooltipMessage: 'Chatea con Databam 💬',
+                    tooltipBackgroundColor: '#6B2CF5',
+                    tooltipTextColor: 'white',
+                    tooltipFontSize: 14,
+                },
+                chatWindow: {
+                    showTitle: true,
+                    title: 'Chatea con Databam',
+                    titleAvatarSrc: 'https://databam.cl/favicon.ico',
+                    welcomeMessage: '¡Hola! Soy un asistente de Databam ¿En qué puedo ayudarte?',
+                    backgroundColor: '#FFFFFF',
+                    height: 600,
+                    width: 400,
+                    fontSize: 14,
+                    poweredByTextColor: '#1E1E1E',
+                    botMessage: {
+                        backgroundColor: '#D9CCF3',
+                        textColor: '#2A1A4F',
+                        showAvatar: true,
+                        avatarSrc: 'https://databam.cl/favicon.ico',
+                    },
+                    userMessage: {
+                        backgroundColor: '#6B2CF5',
+                        textColor: '#ffffff',
+                        showAvatar: true,
+                    },
+                    textInput: {
+                        placeholder: 'Escribe tu pregunta...',
+                        backgroundColor: '#ffffff',
+                        textColor: '#1E1E1E',
+                        sendButtonColor: '#6B2CF5',
+                    },
+                    footer: {
+                        textColor: '#1E1E1E',
+                        text: 'Powered by',
+                        company: 'Databam',
+                        companyLink: 'https://databam.cl',
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- JavaScript -->
+    <script>
+        // Modal functions
+        function openDemoModal() {
+            document.getElementById('demoModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeDemoModal() {
+            document.getElementById('demoModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close on outside click
+        document.getElementById('demoModal')?.addEventListener('click', function(e) {
+            if (e.target === this) closeDemoModal();
+        });
+        
+        // Close on ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDemoModal();
+        });
+        
+        // Form submission
+        document.getElementById('demoForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias! Nos contactaremos contigo pronto.');
+            closeDemoModal();
+            this.reset();
+        });
+
+        // Pricing toggle
+        function switchPricing(type) {
+            const monthly = document.getElementById('pricing-monthly');
+            const annual = document.getElementById('pricing-annual');
+            const buttons = document.querySelectorAll('.toggle-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (type === 'monthly') {
+                monthly.style.display = 'grid';
+                annual.style.display = 'none';
+                buttons[0].classList.add('active');
+            } else {
+                monthly.style.display = 'none';
+                annual.style.display = 'grid';
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+    <!-- Flowise Chatbot Widget -->
+    <!-- DESHABILITADO: Habilitar cuando esté en producción (databam.cl) -->
+    <!-- NOTA: En localhost muestra "Failed to fetch" por restricciones CORS -->
+    <!-- 
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        Chatbot.init({
+            chatflowid: "c7ee9d29-e850-4a91-bd6e-50c42df33e41",
+            apiHost: "https://flowise.databam.cl",
+            chatflowConfig: {
+                // topK: 2
+            },
+            observersConfig: {
+                // (optional) Allows you to execute code in parent based upon signal observations within the chatbot.
+                // The userinput field submitted to bot ("" when reset by bot)
+                observeUserInput: (userInput) => {
+                    console.log({ userInput });
+                },
+                // The bot message stack has changed
+                observeMessages: (messages) => {
+                    console.log({ messages });
+                },
+                // The bot loading signal changed
+                observeLoading: (loading) => {
+                    console.log({ loading });
+                },
+            },
+            theme: {
+                button: {
+                    backgroundColor: "#6B2CF5",
+                    right: 20,
+                    bottom: 20,
+                    size: 60, // Bubble size
+                    iconColor: "white",
+                    customIconSrc: "https://databam.cl/assets/images/databam-icon.svg",
+                    boxShadow: "0 4px 20px rgba(107, 44, 245, 0.4)",
+                },
+                tooltip: {
+                    showTooltip: true,
+                    tooltipMessage: 'Chatea con Databam 💬',
+                    tooltipBackgroundColor: '#6B2CF5',
+                    tooltipTextColor: 'white',
+                    tooltipFontSize: 14,
+                },
+                chatWindow: {
+                    showTitle: true,
+                    title: 'Asistente Databam',
+                    titleAvatarSrc: 'https://databam.cl/assets/images/databam-icon.svg',
+                    welcomeMessage: '¡Hola! ¿En qué puedo ayudarte hoy?',
+                    backgroundColor: "#0F0F1A",
+                    height: 600,
+                    width: 400,
+                    fontSize: 14,
+                    poweredByTextColor: "#8B8CA8",
+                    botMessage: {
+                        backgroundColor: "rgba(107, 44, 245, 0.1)",
+                        textColor: "#E8E9F3",
+                        showAvatar: true,
+                        avatarSrc: "https://databam.cl/assets/images/databam-icon.svg",
+                    },
+                    userMessage: {
+                        backgroundColor: "#6B2CF5",
+                        textColor: "#ffffff",
+                        showAvatar: true,
+                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
+                    },
+                    textInput: {
+                        placeholder: 'Escribe tu mensaje...',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        textColor: '#E8E9F3',
+                        sendButtonColor: '#6B2CF5',
+                    }
+                }
+            }
+        })
+    </script>
+    -->
+</body>
+</html>
