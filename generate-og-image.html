@@ -184,39 +184,11 @@
         
         <div class="controls">
             <div class="control-group">
-                <label>📝 Título Principal</label>
-                <input type="text" id="title" value="Desarrollo de Software a Medida" maxlength="60">
-            </div>
-            
-            <div class="control-group">
-                <label>💬 Subtítulo</label>
-                <textarea id="subtitle" maxlength="120">Automatización RPA • Data Engineering • IA para Fintech y PropTech</textarea>
-            </div>
-            
-            <div class="control-group">
-                <label>🎯 Destacado</label>
-                <input type="text" id="highlight" value="+20 Proyectos Exitosos • ROI en 90 días" maxlength="80">
-            </div>
-            
-            <div class="control-group">
-                <label>🎨 Color de Fondo</label>
-                <div class="color-picker">
-                    <div class="color-option active" data-gradient="linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%)" style="background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%)"></div>
-                    <div class="color-option" data-gradient="linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)"></div>
-                    <div class="color-option" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
-                    <div class="color-option" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
-                    <div class="color-option" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
-                    <div class="color-option" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></div>
-                </div>
-            </div>
-            
-            <div class="control-group">
-                <label>🖼️ Estilo</label>
+                <label>🎨 Variante de Diseño</label>
                 <select id="style">
-                    <option value="modern">Moderno con Gradiente</option>
-                    <option value="minimal">Minimalista</option>
-                    <option value="bold">Bold y Llamativo</option>
-                    <option value="tech">Tech & Futurista</option>
+                    <option value="modern">Diseño Original (Blanco + Tecnología)</option>
+                    <option value="dark">Todo Oscuro con Gradiente</option>
+                    <option value="minimal">Minimalista Limpio</option>
                 </select>
             </div>
             
@@ -229,12 +201,12 @@
             
             <div class="info">
                 <strong>📌 Instrucciones:</strong><br>
-                1. Personaliza el texto y los colores según tu necesidad<br>
+                1. Selecciona la variante de diseño que prefieras<br>
                 2. Descarga la imagen OG (1200x630) para Facebook, LinkedIn y WhatsApp<br>
                 3. Descarga la imagen Twitter (1200x600) para Twitter/X<br>
                 4. Guarda las imágenes en <code>assets/images/</code><br>
                 5. Las metaetiquetas ya están configuradas en tu index.html<br><br>
-                <strong>✨ Tip:</strong> Las imágenes se optimizan automáticamente para verse perfectas en todas las redes sociales.
+                <strong>✨ Diseño basado en tu branding:</strong> Fondo blanco + isotipo morado + texto con énfasis en "software" y "justo a tiempo"
             </div>
         </div>
     </div>
@@ -254,24 +226,12 @@
         };
         
         logo.onerror = function() {
-            console.warn('No se pudo cargar el logo SVG, usando isotipo...');
-            logo.src = 'assets/images/Desktop/Isotipo_morado.svg';
+            console.warn('No se pudo cargar el logo, continuando sin él...');
+            generateImage();
         };
         
         // Event listeners
-        document.getElementById('title').addEventListener('input', generateImage);
-        document.getElementById('subtitle').addEventListener('input', generateImage);
-        document.getElementById('highlight').addEventListener('input', generateImage);
         document.getElementById('style').addEventListener('change', generateImage);
-        
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
-                this.classList.add('active');
-                currentGradient = this.dataset.gradient;
-                generateImage();
-            });
-        });
         
         function parseGradient(gradientString) {
             // Extraer colores del gradiente CSS
@@ -289,124 +249,154 @@
             // Limpiar canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Fondo con gradiente
-            const colors = parseGradient(currentGradient);
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, colors[0]);
-            gradient.addColorStop(1, colors[1]);
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // NUEVO DISEÑO INSPIRADO EN LA REFERENCIA
             
-            // Agregar patrón de fondo según estilo
-            if (style === 'tech') {
-                drawTechPattern();
-            } else if (style === 'bold') {
-                drawBoldPattern();
-            }
-            
-            // Logo (arriba a la izquierda)
-            if (logo.complete) {
-                const logoWidth = 250;
-                const logoHeight = (logo.height / logo.width) * logoWidth;
-                ctx.drawImage(logo, 60, 50, logoWidth, logoHeight);
-            }
-            
-            // Título principal
+            // Mitad izquierda - Fondo blanco
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 72px Poppins, sans-serif';
+            ctx.fillRect(0, 0, canvas.width / 2, canvas.height);
+            
+            // Mitad derecha - Imagen de ciudad (usar gradiente oscuro por ahora)
+            const bgGradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width, canvas.height);
+            bgGradient.addColorStop(0, '#2d1b4e');
+            bgGradient.addColorStop(0.5, '#1a2332');
+            bgGradient.addColorStop(1, '#0f1419');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(canvas.width / 2, 0, canvas.width / 2, canvas.height);
+            
+            // Overlay de tecnología en la mitad derecha
+            drawTechOverlay();
+            
+            // Logo pequeño arriba a la izquierda
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 24px Poppins, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Just Dev.It', 40, 50);
+            
+            // URL arriba a la derecha (sobre la imagen)
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '22px Poppins, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('www.justdev.it', canvas.width - 40, 50);
+            
+            // Isotipo grande morado en el centro-derecha de la parte blanca
+            drawIsotipo(420, 180, 280);
+            
+            // Texto principal en la parte blanca
             ctx.textAlign = 'left';
             
-            const titleY = 250;
-            const maxWidth = 1080;
-            wrapText(ctx, title, 60, titleY, maxWidth, 85);
+            // "El" en negro
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 58px Poppins, sans-serif';
+            ctx.fillText('El ', 46, 280);
             
-            // Subtítulo
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-            ctx.font = '32px Poppins, sans-serif';
-            const subtitleY = titleY + 100;
-            wrapText(ctx, subtitle, 60, subtitleY, maxWidth, 45);
+            // "software" en morado
+            ctx.fillStyle = '#8b5ab8';
+            ctx.fillText('software', 110, 280);
             
-            // Destacado con fondo
-            if (highlight) {
-                const highlightY = 530;
-                ctx.fillStyle = 'rgba(0, 255, 135, 0.2)';
-                const highlightPadding = 25;
-                const highlightHeight = 60;
-                
-                // Fondo redondeado
-                roundRect(ctx, 50, highlightY - 40, canvas.width - 100, highlightHeight, 10);
-                ctx.fill();
-                
-                // Texto destacado
-                ctx.fillStyle = '#00ff87';
-                ctx.font = 'bold 28px Poppins, sans-serif';
-                ctx.fillText(highlight, 75, highlightY);
-            }
+            // "que tu negocio" en negro
+            ctx.fillStyle = '#000000';
+            ctx.fillText('que tu negocio', 46, 350);
             
-            // Badge Chile (esquina superior derecha)
-            drawChileBadge();
+            // "necesita," en negro
+            ctx.fillText('necesita, ', 46, 420);
+            
+            // "justo" en morado
+            const necesitaWidth = ctx.measureText('necesita, ').width;
+            ctx.fillStyle = '#8b5ab8';
+            ctx.fillText('justo', 46 + necesitaWidth, 420);
+            
+            // "a tiempo" en morado (segunda línea)
+            ctx.fillText('a tiempo', 46, 490);
+            
+            // Logo grande en la parte derecha (sobre la imagen)
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 72px Poppins, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 5;
+            
+            const logoText = 'Just Dev';
+            const logoWidth = ctx.measureText(logoText).width;
+            ctx.fillText(logoText, canvas.width - 60, 530);
+            
+            // Isotipo pequeño después de "Dev"
+            ctx.fillStyle = '#8b5ab8';
+            ctx.font = 'bold 72px Poppins, sans-serif';
+            ctx.fillText('*', canvas.width - 60 - logoWidth - 20, 530);
+            
+            // "It" después del isotipo
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText('It', canvas.width - 60, 530);
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
         }
         
-        function drawTechPattern() {
+        function drawIsotipo(x, y, size) {
             ctx.save();
-            ctx.globalAlpha = 0.1;
-            ctx.strokeStyle = '#00ff87';
-            ctx.lineWidth = 2;
+            ctx.fillStyle = '#8b5ab8';
+            ctx.strokeStyle = '#8b5ab8';
+            ctx.lineWidth = 35;
+            ctx.lineCap = 'round';
             
-            // Dibujar grid
-            for (let i = 0; i < canvas.width; i += 50) {
+            // Dibujar el asterisco/isotipo
+            const centerX = x + size / 2;
+            const centerY = y + size / 2;
+            const armLength = size / 2.5;
+            
+            // 4 brazos del isotipo
+            for (let i = 0; i < 4; i++) {
+                const angle = (Math.PI / 4) + (i * Math.PI / 2);
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * armLength,
+                    centerY + Math.sin(angle) * armLength
+                );
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+        }
+        
+        function drawTechOverlay() {
+            ctx.save();
+            ctx.globalAlpha = 0.15;
+            
+            // Grid de tecnología
+            ctx.strokeStyle = '#60efff';
+            ctx.lineWidth = 1;
+            
+            for (let i = canvas.width / 2; i < canvas.width; i += 40) {
                 ctx.beginPath();
                 ctx.moveTo(i, 0);
                 ctx.lineTo(i, canvas.height);
                 ctx.stroke();
             }
             
-            for (let i = 0; i < canvas.height; i += 50) {
+            for (let i = 0; i < canvas.height; i += 40) {
                 ctx.beginPath();
-                ctx.moveTo(0, i);
+                ctx.moveTo(canvas.width / 2, i);
                 ctx.lineTo(canvas.width, i);
                 ctx.stroke();
             }
             
-            ctx.restore();
-        }
-        
-        function drawBoldPattern() {
-            ctx.save();
-            ctx.globalAlpha = 0.15;
-            
-            // Círculos decorativos
-            const gradient = ctx.createRadialGradient(1000, 150, 0, 1000, 150, 300);
-            gradient.addColorStop(0, '#00ff87');
-            gradient.addColorStop(1, 'transparent');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Puntos brillantes
+            ctx.fillStyle = '#60efff';
+            for (let i = 0; i < 30; i++) {
+                const x = canvas.width / 2 + Math.random() * (canvas.width / 2);
+                const y = Math.random() * canvas.height;
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
             
             ctx.restore();
-        }
-        
-        function drawChileBadge() {
-            const badgeX = canvas.width - 200;
-            const badgeY = 50;
-            const badgeWidth = 140;
-            const badgeHeight = 45;
-            
-            // Fondo del badge
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-            roundRect(ctx, badgeX, badgeY, badgeWidth, badgeHeight, 23);
-            ctx.fill();
-            
-            // Borde
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            
-            // Texto
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 20px Poppins, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('🇨🇱 CHILE', badgeX + badgeWidth / 2, badgeY + 30);
-            ctx.textAlign = 'left';
         }
         
         function roundRect(ctx, x, y, width, height, radius) {
@@ -421,27 +411,6 @@
             ctx.lineTo(x, y + radius);
             ctx.quadraticCurveTo(x, y, x + radius, y);
             ctx.closePath();
-        }
-        
-        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-            const words = text.split(' ');
-            let line = '';
-            let currentY = y;
-            
-            for (let n = 0; n < words.length; n++) {
-                const testLine = line + words[n] + ' ';
-                const metrics = ctx.measureText(testLine);
-                const testWidth = metrics.width;
-                
-                if (testWidth > maxWidth && n > 0) {
-                    ctx.fillText(line, x, currentY);
-                    line = words[n] + ' ';
-                    currentY += lineHeight;
-                } else {
-                    line = testLine;
-                }
-            }
-            ctx.fillText(line, x, currentY);
         }
         
         function downloadImage(filename) {
