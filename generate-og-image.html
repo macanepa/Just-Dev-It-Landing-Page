@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Imagen OG - Just Dev It</title>
+    <style>
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%);
+            color: white;
+            padding: 40px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .preview {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 255, 135, 0.3);
+        }
+        
+        #canvas {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+        
+        .controls {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #00ff87;
+        }
+        
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #00ff87;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            color: #1a0033;
+            border: none;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 135, 0.5);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .color-picker {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            border-color: #00ff87;
+            box-shadow: 0 0 20px rgba(0, 255, 135, 0.5);
+        }
+        
+        .color-option.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .info {
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid rgba(0, 255, 135, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .info strong {
+            color: #00ff87;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Generador de Imagen Open Graph</h1>
+        
+        <div class="preview">
+            <canvas id="canvas" width="1200" height="630"></canvas>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>📝 Título Principal</label>
+                <input type="text" id="title" value="Desarrollo de Software a Medida" maxlength="60">
+            </div>
+            
+            <div class="control-group">
+                <label>💬 Subtítulo</label>
+                <textarea id="subtitle" maxlength="120">Automatización RPA • Data Engineering • IA para Fintech y PropTech</textarea>
+            </div>
+            
+            <div class="control-group">
+                <label>🎯 Destacado</label>
+                <input type="text" id="highlight" value="+20 Proyectos Exitosos • ROI en 90 días" maxlength="80">
+            </div>
+            
+            <div class="control-group">
+                <label>🎨 Color de Fondo</label>
+                <div class="color-picker">
+                    <div class="color-option active" data-gradient="linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%)" style="background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%)"></div>
+                    <div class="color-option" data-gradient="linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)"></div>
+                    <div class="color-option" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
+                    <div class="color-option" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
+                    <div class="color-option" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
+                    <div class="color-option" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label>🖼️ Estilo</label>
+                <select id="style">
+                    <option value="modern">Moderno con Gradiente</option>
+                    <option value="minimal">Minimalista</option>
+                    <option value="bold">Bold y Llamativo</option>
+                    <option value="tech">Tech & Futurista</option>
+                </select>
+            </div>
+            
+            <div>
+                <button class="btn" onclick="generateImage()">🎨 Regenerar Imagen</button>
+                <button class="btn" onclick="downloadImage('og-image')">⬇️ Descargar OG (1200x630)</button>
+                <button class="btn" onclick="downloadTwitter()">🐦 Descargar Twitter (1200x600)</button>
+                <button class="btn btn-secondary" onclick="copyToClipboard()">📋 Copiar al Portapapeles</button>
+            </div>
+            
+            <div class="info">
+                <strong>📌 Instrucciones:</strong><br>
+                1. Personaliza el texto y los colores según tu necesidad<br>
+                2. Descarga la imagen OG (1200x630) para Facebook, LinkedIn y WhatsApp<br>
+                3. Descarga la imagen Twitter (1200x600) para Twitter/X<br>
+                4. Guarda las imágenes en <code>assets/images/</code><br>
+                5. Las metaetiquetas ya están configuradas en tu index.html<br><br>
+                <strong>✨ Tip:</strong> Las imágenes se optimizan automáticamente para verse perfectas en todas las redes sociales.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let currentGradient = 'linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%)';
+        
+        // Cargar logo
+        const logo = new Image();
+        logo.crossOrigin = 'anonymous';
+        logo.src = 'assets/images/Desktop/logo-principal-blanco.svg';
+        
+        logo.onload = function() {
+            generateImage();
+        };
+        
+        logo.onerror = function() {
+            console.warn('No se pudo cargar el logo SVG, usando isotipo...');
+            logo.src = 'assets/images/Desktop/Isotipo_morado.svg';
+        };
+        
+        // Event listeners
+        document.getElementById('title').addEventListener('input', generateImage);
+        document.getElementById('subtitle').addEventListener('input', generateImage);
+        document.getElementById('highlight').addEventListener('input', generateImage);
+        document.getElementById('style').addEventListener('change', generateImage);
+        
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+                currentGradient = this.dataset.gradient;
+                generateImage();
+            });
+        });
+        
+        function parseGradient(gradientString) {
+            // Extraer colores del gradiente CSS
+            const colors = gradientString.match(/#[0-9a-fA-F]{6}/g);
+            if (!colors || colors.length < 2) return ['#1a0033', '#2d1b4e'];
+            return colors;
+        }
+        
+        function generateImage() {
+            const title = document.getElementById('title').value;
+            const subtitle = document.getElementById('subtitle').value;
+            const highlight = document.getElementById('highlight').value;
+            const style = document.getElementById('style').value;
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Fondo con gradiente
+            const colors = parseGradient(currentGradient);
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, colors[0]);
+            gradient.addColorStop(1, colors[1]);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Agregar patrón de fondo según estilo
+            if (style === 'tech') {
+                drawTechPattern();
+            } else if (style === 'bold') {
+                drawBoldPattern();
+            }
+            
+            // Logo (arriba a la izquierda)
+            if (logo.complete) {
+                const logoWidth = 250;
+                const logoHeight = (logo.height / logo.width) * logoWidth;
+                ctx.drawImage(logo, 60, 50, logoWidth, logoHeight);
+            }
+            
+            // Título principal
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 72px Poppins, sans-serif';
+            ctx.textAlign = 'left';
+            
+            const titleY = 250;
+            const maxWidth = 1080;
+            wrapText(ctx, title, 60, titleY, maxWidth, 85);
+            
+            // Subtítulo
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+            ctx.font = '32px Poppins, sans-serif';
+            const subtitleY = titleY + 100;
+            wrapText(ctx, subtitle, 60, subtitleY, maxWidth, 45);
+            
+            // Destacado con fondo
+            if (highlight) {
+                const highlightY = 530;
+                ctx.fillStyle = 'rgba(0, 255, 135, 0.2)';
+                const highlightPadding = 25;
+                const highlightHeight = 60;
+                
+                // Fondo redondeado
+                roundRect(ctx, 50, highlightY - 40, canvas.width - 100, highlightHeight, 10);
+                ctx.fill();
+                
+                // Texto destacado
+                ctx.fillStyle = '#00ff87';
+                ctx.font = 'bold 28px Poppins, sans-serif';
+                ctx.fillText(highlight, 75, highlightY);
+            }
+            
+            // Badge Chile (esquina superior derecha)
+            drawChileBadge();
+        }
+        
+        function drawTechPattern() {
+            ctx.save();
+            ctx.globalAlpha = 0.1;
+            ctx.strokeStyle = '#00ff87';
+            ctx.lineWidth = 2;
+            
+            // Dibujar grid
+            for (let i = 0; i < canvas.width; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+            
+            for (let i = 0; i < canvas.height; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+        }
+        
+        function drawBoldPattern() {
+            ctx.save();
+            ctx.globalAlpha = 0.15;
+            
+            // Círculos decorativos
+            const gradient = ctx.createRadialGradient(1000, 150, 0, 1000, 150, 300);
+            gradient.addColorStop(0, '#00ff87');
+            gradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.restore();
+        }
+        
+        function drawChileBadge() {
+            const badgeX = canvas.width - 200;
+            const badgeY = 50;
+            const badgeWidth = 140;
+            const badgeHeight = 45;
+            
+            // Fondo del badge
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            roundRect(ctx, badgeX, badgeY, badgeWidth, badgeHeight, 23);
+            ctx.fill();
+            
+            // Borde
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Texto
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 20px Poppins, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('🇨🇱 CHILE', badgeX + badgeWidth / 2, badgeY + 30);
+            ctx.textAlign = 'left';
+        }
+        
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+        
+        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let currentY = y;
+            
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = ctx.measureText(testLine);
+                const testWidth = metrics.width;
+                
+                if (testWidth > maxWidth && n > 0) {
+                    ctx.fillText(line, x, currentY);
+                    line = words[n] + ' ';
+                    currentY += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line, x, currentY);
+        }
+        
+        function downloadImage(filename) {
+            const link = document.createElement('a');
+            link.download = `${filename}.png`;
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+        
+        function downloadTwitter() {
+            // Crear un canvas temporal con dimensiones de Twitter
+            const twitterCanvas = document.createElement('canvas');
+            twitterCanvas.width = 1200;
+            twitterCanvas.height = 600;
+            const twitterCtx = twitterCanvas.getContext('2d');
+            
+            // Copiar la imagen actual recortando la parte inferior
+            twitterCtx.drawImage(canvas, 0, 0, 1200, 600, 0, 0, 1200, 600);
+            
+            const link = document.createElement('a');
+            link.download = 'twitter-card.png';
+            link.href = twitterCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+        
+        async function copyToClipboard() {
+            try {
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 1.0));
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': blob })
+                ]);
+                alert('✅ Imagen copiada al portapapeles!');
+            } catch (err) {
+                alert('❌ No se pudo copiar al portapapeles. Usa el botón de descargar.');
+            }
+        }
+        
+        // Generar imagen inicial
+        if (logo.complete) {
+            generateImage();
+        }
+    </script>
+</body>
+</html>
