@@ -250,10 +250,10 @@
     right: 12px;
     font-size: 6rem;
     font-weight: var(--font-extrabold);
-    color: rgba(155, 97, 164, 0.25);
+    color: rgba(155, 97, 164, 0.4);
     line-height: 1;
     pointer-events: none;
-    z-index: 1;
+    z-index: 10;
     transition: all 0.4s ease;
 }
 
@@ -290,7 +290,7 @@
 
 .slider-card.active::before,
 .slider-card.swiper-slide-active::before {
-    color: rgba(155, 97, 164, 0.35);
+    color: rgba(155, 97, 164, 0.6);
 }
 
 .slider-card-overlay {
