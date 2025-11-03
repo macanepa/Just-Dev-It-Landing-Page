@@ -221,6 +221,10 @@
         logoBlanco.crossOrigin = 'anonymous';
         logoBlanco.src = 'assets/images/Desktop/logo-principal-blanco.svg';
         
+        const logoNegro = new Image();
+        logoNegro.crossOrigin = 'anonymous';
+        logoNegro.src = 'assets/images/Desktop/logo-principal-negro.svg';
+        
         const isotipoMorado = new Image();
         isotipoMorado.crossOrigin = 'anonymous';
         isotipoMorado.src = 'assets/images/Desktop/Isotipo_morado.svg';
@@ -230,7 +234,7 @@
         backgroundImage.src = 'assets/images/Desktop/Recurso 1.webp';
         
         let imagesLoaded = 0;
-        const totalImages = 3;
+        const totalImages = 4;
         
         function checkImagesLoaded() {
             imagesLoaded++;
@@ -242,6 +246,12 @@
         logoBlanco.onload = checkImagesLoaded;
         logoBlanco.onerror = function() {
             console.warn('No se pudo cargar logo blanco');
+            checkImagesLoaded();
+        };
+        
+        logoNegro.onload = checkImagesLoaded;
+        logoNegro.onerror = function() {
+            console.warn('No se pudo cargar logo negro');
             checkImagesLoaded();
         };
         
@@ -277,13 +287,14 @@
             const whiteWidth = canvas.width * 0.70; // 70% para fondo blanco
             const imageWidth = canvas.width * 0.30; // 30% para imagen
             
-            // Fondo blanco (70% izquierda)
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, whiteWidth, canvas.height);
+            // Primero dibujar la imagen de fondo (30% derecha) con clipping
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(whiteWidth, 0, imageWidth, canvas.height);
+            ctx.clip();
             
-            // Imagen de fondo (30% derecha - Recurso 1.webp)
             if (backgroundImage.complete && backgroundImage.naturalWidth > 0) {
-                // Dibujar imagen de fondo cubriendo el 30% derecho
+                // Dibujar imagen de fondo solo en el área recortada
                 const imgAspect = backgroundImage.width / backgroundImage.height;
                 const canvasAspect = imageWidth / canvas.height;
                 
@@ -319,16 +330,17 @@
             // Overlay de tecnología en la parte derecha
             drawTechOverlay(whiteWidth, imageWidth);
             
-            // Logo pequeño arriba a la izquierda (logo-principal-blanco.svg en negro)
-            if (logoBlanco.complete && logoBlanco.naturalWidth > 0) {
+            ctx.restore(); // Restaurar el clip
+            
+            // Ahora dibujar el fondo blanco ENCIMA para asegurar separación
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, whiteWidth, canvas.height);
+            
+            // Logo pequeño arriba a la izquierda (logo-principal-negro.svg)
+            if (logoNegro.complete && logoNegro.naturalWidth > 0) {
                 const logoWidth = 160;
-                const logoHeight = (logoBlanco.height / logoBlanco.width) * logoWidth;
-                
-                // Crear una versión oscura del logo para que se vea sobre blanco
-                ctx.save();
-                ctx.globalCompositeOperation = 'multiply';
-                ctx.drawImage(logoBlanco, 40, 35, logoWidth, logoHeight);
-                ctx.restore();
+                const logoHeight = (logoNegro.height / logoNegro.width) * logoWidth;
+                ctx.drawImage(logoNegro, 40, 35, logoWidth, logoHeight);
             } else {
                 // Fallback texto
                 ctx.fillStyle = '#000000';
@@ -343,15 +355,15 @@
             ctx.textAlign = 'right';
             ctx.fillText('www.justdev.it', canvas.width - 30, 50);
             
-            // Isotipo grande morado - más a la derecha pero aún en zona blanca
+            // Isotipo grande morado - más separado del borde, más a la izquierda
             if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
-                const isotipoSize = 350;
-                const isotipoX = whiteWidth - isotipoSize - 50; // Posicionar cerca del borde derecho del área blanca
+                const isotipoSize = 340;
+                const isotipoX = whiteWidth - isotipoSize - 180; // Más separado (180px del borde)
                 const isotipoY = 140;
                 ctx.drawImage(isotipoMorado, isotipoX, isotipoY, isotipoSize, isotipoSize);
             } else {
                 // Fallback: dibujar isotipo con canvas
-                drawIsotipo(whiteWidth - 330, 140, 350);
+                drawIsotipo(whiteWidth - 500, 140, 340);
             }
             
             // Texto principal en la parte blanca
