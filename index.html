@@ -595,6 +595,7 @@
     <link rel="stylesheet" href="css/components/preloader.css" />
     <link rel="stylesheet" href="css/components/navigation.css" />
     <link rel="stylesheet" href="css/components/hero.css" />
+    <link rel="stylesheet" href="css/components/language-selector.css" />
     
     <!-- NON-CRITICAL CSS (Below-the-fold - Deferred con media trick) -->
     <!-- Estos se cargan asíncronamente para no bloquear el render -->
@@ -948,7 +949,7 @@
             <div class="preloader-bar-fill" id="progressBar"></div>
           </div>
         </div>
-        <div class="preloader-text">
+        <div class="preloader-text" data-i18n="preloader.text">
           Cargando experiencia<span class="loading-dots"
             ><span>.</span><span>.</span><span>.</span></span
           >
@@ -965,6 +966,18 @@
         style="display: none; visibility: hidden"
       ></iframe>
     </noscript>
+
+    <!-- ===== LANGUAGE SELECTOR ===== -->
+    <button 
+      id="language-selector" 
+      class="language-selector" 
+      aria-label="Cambiar idioma"
+      title="Cambiar idioma"
+    >
+      <span class="language-flag" aria-hidden="true">🇨🇱</span>
+      <span class="language-text">ES</span>
+      <span class="language-tooltip">Switch to English</span>
+    </button>
 
     <!-- ===== NAVIGATION ===== -->
     <header class="site-header" role="banner">
@@ -984,14 +997,14 @@
 
           <div class="nav-menu" id="nav-menu">
             <ul class="nav-list" role="list">
-              <li><a href="#servicios" class="nav-link">Servicios</a></li>
-              <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
-              <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+              <li><a href="#servicios" class="nav-link" data-i18n="nav.services">Servicios</a></li>
+              <li><a href="#portafolio" class="nav-link" data-i18n="nav.portfolio">Portafolio</a></li>
+              <li><a href="#nosotros" class="nav-link" data-i18n="nav.about">Nosotros</a></li>
               <li><a href="#clientes" class="nav-link">Clientes</a></li>
-              <li><a href="#contacto" class="nav-link">Contacto</a></li>
+              <li><a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
             </ul>
 
-            <a href="#contacto" class="btn btn-primary">Cotizar Proyecto</a>
+            <a href="#contacto" class="btn btn-primary" data-i18n="nav.cta">Cotizar Proyecto</a>
           </div>
 
           <button
@@ -1015,46 +1028,46 @@
       <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="hero-container">
           <div class="hero-content">
-            <p class="hero-subtitle">Desarrollo de Software</p>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">Desarrollo de Software</p>
 
             <h1 id="hero-title" class="hero-title">
-              El software que tu empresa necesita
-              <span class="gradient-text">Justo a Tiempo</span>
+              <span data-i18n="hero.title">El software que tu empresa necesita</span>
+              <span class="gradient-text" data-i18n="hero.titleAccent">Justo a Tiempo</span>
             </h1>
 
-            <p class="hero-description">
+            <p class="hero-description" data-i18n-html="hero.description">
               Automatización, datos e integraciones.
               <strong>RPA, ETL, IA y cloud</strong> para empresas que buscan
               resultados.
             </p>
 
-            <p class="hero-subtext">
+            <p class="hero-subtext" data-i18n-html="hero.subtext">
               • <strong>PropTech, Fintech, Energía, Legales y Retail</strong><br />
               • Entregas <strong>predecibles</strong><br />
               • <strong>+20 proyectos</strong> exitosos<br />
             </p>
 
             <div class="hero-cta">
-              <a href="#contacto" class="btn btn-primary btn-lg">
+              <a href="#contacto" class="btn btn-primary btn-lg" data-i18n="hero.ctaPrimary">
                 Cotizar Proyecto
               </a>
-              <a href="#portafolio" class="btn btn-secondary btn-lg">
+              <a href="#portafolio" class="btn btn-secondary btn-lg" data-i18n="hero.ctaSecondary">
                 Ver Casos
               </a>
             </div>
 
             <div class="hero-stats">
               <div class="stat-item">
-                <span class="stat-number">20+</span>
-                <span class="stat-label">Proyectos</span>
+                <span class="stat-number" data-i18n="hero.stats.stat1Number">20+</span>
+                <span class="stat-label" data-i18n="hero.stats.stat1Label">Proyectos</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">5+</span>
-                <span class="stat-label">Años</span>
+                <span class="stat-number" data-i18n="hero.stats.stat2Number">5+</span>
+                <span class="stat-label" data-i18n="hero.stats.stat2Label">Años</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Satisfacción</span>
+                <span class="stat-number" data-i18n="hero.stats.stat3Number">100%</span>
+                <span class="stat-label" data-i18n="hero.stats.stat3Label">Satisfacción</span>
               </div>
             </div>
           </div>
@@ -1078,29 +1091,29 @@
         <div class="intro-decoration intro-decoration-2"></div>
 
         <div class="intro-content">
-          <span class="intro-badge">Software Empresarial</span>
+          <span class="intro-badge" data-i18n="intro1.badge">Software Empresarial</span>
           <h2 class="intro-title">
-            <span class="intro-title-gradient">Automatización & Data</span
+            <span class="intro-title-gradient" data-i18n="intro1.title">Automatización & Data</span
             ><br />
-            que Genera <span class="intro-title-highlight">Resultados</span>
+            <span data-i18n="intro1.titleSuffix">que Genera</span> <span class="intro-title-highlight" data-i18n="intro1.titleAccent">Resultados</span>
           </h2>
-          <p class="intro-subtitle">
+          <p class="intro-subtitle" data-i18n="intro1.subtitle">
             RPA, cloud y pipelines de datos que reducen costos operativos y
             mejoran la toma de decisiones.
           </p>
 
           <div class="intro-stats">
             <div class="intro-stat">
-              <span class="intro-stat-number">20+</span>
-              <span class="intro-stat-label">Proyectos<br />Exitosos</span>
+              <span class="intro-stat-number" data-i18n="intro1.stats.stat1Number">20+</span>
+              <span class="intro-stat-label" data-i18n-html="intro1.stats.stat1Label">Proyectos<br />Exitosos</span>
             </div>
             <div class="intro-stat">
-              <span class="intro-stat-number">99.9%</span>
-              <span class="intro-stat-label">Uptime<br />Garantizado</span>
+              <span class="intro-stat-number" data-i18n="intro1.stats.stat2Number">99.9%</span>
+              <span class="intro-stat-label" data-i18n-html="intro1.stats.stat2Label">Uptime<br />Garantizado</span>
             </div>
             <div class="intro-stat">
-              <span class="intro-stat-number">350+</span>
-              <span class="intro-stat-label">Clientes<br />Activos</span>
+              <span class="intro-stat-number" data-i18n="intro1.stats.stat3Number">350+</span>
+              <span class="intro-stat-label" data-i18n-html="intro1.stats.stat3Label">Clientes<br />Activos</span>
             </div>
           </div>
         </div>
@@ -1191,14 +1204,14 @@
         <div class="slider-content">
           <!-- Main content -->
           <div class="slider-main">
-            <h2 id="servicios-title" class="slider-title">
+            <h2 id="servicios-title" class="slider-title" data-i18n-html="services.title">
               <span class="gradient-text">Soluciones</span> que Impulsan tu
               Negocio
             </h2>
-            <p class="slider-description">
+            <p class="slider-description" data-i18n="services.subtitle">
               Automatización, datos e integraciones.
             </p>
-            <a href="#contacto" class="btn btn-primary btn-lg"
+            <a href="#contacto" class="btn btn-primary btn-lg" data-i18n="services.cta"
               >Solicitar Demo</a
             >
           </div>
@@ -1230,12 +1243,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">Desarrollo</span>
+                  <span class="slider-card-category" data-i18n="services.service1.category">Desarrollo</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="services.service1.title">
                       Software a Medida
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="services.service1.description">
                       Apps web, APIs y RPA que reducen tiempos operativos y toma de decisiones para tu empresa.
                       Cloud-native con monitoreo 24/7.
                     </p>
@@ -1271,12 +1284,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">Cloud & Data</span>
+                  <span class="slider-card-category" data-i18n="services.service2.category">Cloud & Data</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="services.service2.title">
                       Data Engineering
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="services.service2.description">
                       Pipelines ETL enterprise con BigQuery/Databricks.
                       Procesamos millones de registros diarios.
                     </p>
@@ -1312,12 +1325,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">IA</span>
+                  <span class="slider-card-category" data-i18n="services.service3.category">IA</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="services.service3.title">
                       Inteligencia Artificial
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="services.service3.description">
                       Automatización inteligente con los principales LLM's del mercado. Reduce y eficienta
                       el tiempo en tareas repetitivas.
                     </p>
@@ -1351,12 +1364,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">Fintech & PropTech</span>
+                  <span class="slider-card-category" data-i18n="services.service4.category">Fintech & PropTech</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="services.service4.title">
                       Fintech & PropTech
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="services.service4.description">
                       Plataformas de inversión y dashboards ejecutivos con datos
                       en tiempo real.
                     </p>
@@ -1390,12 +1403,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">Integraciones</span>
+                  <span class="slider-card-category" data-i18n="services.service5.category">Integraciones</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="services.service5.title">
                       Integraciones Enterprise
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="services.service5.description">
                       Conectamos ERPs, CRMs y e-commerce con sincronización
                       automática 24/7.
                     </p>
@@ -1429,12 +1442,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">Analytics</span>
+                  <span class="slider-card-category" data-i18n="services.service6.category">Analytics</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="services.service6.title">
                       Business Intelligence
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="services.service6.description">
                       Dashboards con KPIs en tiempo real. Datos complejos
                       convertidos en decisiones.
                     </p>
@@ -1475,12 +1488,12 @@
         <div class="intro-decoration intro-decoration-2"></div>
 
         <div class="intro-content">
-          <span class="intro-badge">Impacto Real</span>
+          <span class="intro-badge" data-i18n="intro2.badge">Impacto Real</span>
           <h2 class="intro-title">
-            <span class="intro-title-gradient">PropTech, LegalTech & Fintech</span><br />
-            de Clase <span class="intro-title-highlight">Mundial</span>
+            <span class="intro-title-gradient" data-i18n="intro2.title">PropTech, LegalTech & Fintech</span><br />
+            <span data-i18n="intro2.titleSuffix">de Clase</span> <span class="intro-title-highlight" data-i18n="intro2.titleAccent">Mundial</span>
           </h2>
-          <p class="intro-subtitle">
+          <p class="intro-subtitle" data-i18n="intro2.subtitle">
             Plataformas empresariales que procesan millones de datos diarios.
             Automatización de portales, ETL para BigQuery/Databricks y APIs
             escalables.
@@ -1488,16 +1501,16 @@
 
           <div class="intro-stats">
             <div class="intro-stat">
-              <span class="intro-stat-number">Fintech</span>
-              <span class="intro-stat-label">Portafolios<br />Automatizados</span>
+              <span class="intro-stat-number" data-i18n="intro2.stats.fintech">Fintech</span>
+              <span class="intro-stat-label" data-i18n-html="intro2.stats.fintechLabel">Portafolios<br />Automatizados</span>
             </div>
             <div class="intro-stat">
-              <span class="intro-stat-number">PropTech</span>
-              <span class="intro-stat-label">Líderes en<br />Data inmobiliaria en Chile</span>
+              <span class="intro-stat-number" data-i18n="intro2.stats.proptech">PropTech</span>
+              <span class="intro-stat-label" data-i18n-html="intro2.stats.proptechLabel">Líderes en<br />Data inmobiliaria en Chile</span>
             </div>
             <div class="intro-stat">
-              <span class="intro-stat-number">LegalTech</span>
-              <span class="intro-stat-label">Automatizacion<br />De Documentos & Procesos</span>
+              <span class="intro-stat-number" data-i18n="intro2.stats.legaltech">LegalTech</span>
+              <span class="intro-stat-label" data-i18n-html="intro2.stats.legaltechLabel">Automatizacion<br />De Documentos & Procesos</span>
             </div>
           </div>
         </div>
@@ -1631,14 +1644,14 @@
         <div class="slider-content">
           <!-- Main content -->
           <div class="slider-main">
-            <h2 id="portafolio-title" class="slider-title">
+            <h2 id="portafolio-title" class="slider-title" data-i18n-html="portfolio.title">
               <span class="gradient-text">Proyectos</span> que Transforman
             </h2>
-            <p class="slider-description">
+            <p class="slider-description" data-i18n="portfolio.subtitle">
               +20 casos de éxito. Soluciones que escalan
               negocios.
             </p>
-            <a href="#contacto" class="btn btn-primary btn-lg"
+            <a href="#contacto" class="btn btn-primary btn-lg" data-i18n="portfolio.cta"
               >Empezar Mi Proyecto</a
             >
           </div>
@@ -1671,12 +1684,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">IA/ML & Enterprise</span>
+                  <span class="slider-card-category" data-i18n="portfolio.project1.category">IA/ML & Enterprise</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project1.title">
                       Agentes de IA
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project1.description">
                       Asistentes inteligentes con IA para
                       automatización empresarial.
                     </p>
@@ -1713,14 +1726,14 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category"
+                  <span class="slider-card-category" data-i18n="portfolio.project2.category"
                     >Fintech & Automatización</span
                   >
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project2.title">
                       Apps Financieras
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project2.description">
                       Estados de resultados y reportes financieros automatizados
                       en tiempo real.
                     </p>
@@ -1757,14 +1770,14 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category"
+                  <span class="slider-card-category" data-i18n="portfolio.project3.category"
                     >Retail & Integraciones</span
                   >
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project3.title">
                       Integraciones E-commerce
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project3.description">
                       Conectores multi-plataforma con sincronización en tiempo
                       real de Inventarios y Stock.
                     </p>
@@ -1801,14 +1814,14 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category"
+                  <span class="slider-card-category" data-i18n="portfolio.project4.category"
                     >Cloud & Infraestructura</span
                   >
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project4.title">
                       Infraestructura Cloud
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project4.description">
                       Arquitecturas escalables multi-cloud con bases de datos
                       distribuidas.
                     </p>
@@ -1845,12 +1858,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">IA & Integraciones</span>
+                  <span class="slider-card-category" data-i18n="portfolio.project5.category">IA & Integraciones</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project5.title">
                       Flujos IA Empresariales
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project5.description">
                       Integración de IA en workflows empresariales para
                       decisiones automatizadas.
                     </p>
@@ -1887,12 +1900,12 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">LegalTech & RPA</span>
+                  <span class="slider-card-category" data-i18n="portfolio.project6.category">LegalTech & RPA</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project6.title">
                       RPA Judicial
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project6.description">
                       Automatización de procesos legales. 1000+ documentos
                       diarios.
                     </p>
@@ -1933,12 +1946,12 @@
                   itemprop="image"
                 />
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">Fintech & Data</span>
+                  <span class="slider-card-category" data-i18n="portfolio.project7.category">Fintech & Data</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project7.title">
                       Backtesting Portafolios
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project7.description">
                       Automatizaciones de Portafolio y Backtesting con Data Real.
                     </p>
                     <div class="slider-card-tags">
@@ -1971,10 +1984,10 @@
                   itemprop="image"
                 /> -->
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category">PropTech</span>
+                  <span class="slider-card-category" data-i18n="portfolio.project8.category">PropTech</span>
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">Databam</h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project8.title">Databam</h3>
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project8.description">
                       Plataforma de data inmobiliaria con +500K propiedades en
                       tiempo real con precios de transacción y propietarios.
                     </p>
@@ -2011,15 +2024,15 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category"
+                  <span class="slider-card-category" data-i18n="portfolio.project9.category"
                     >Energía & Automatización</span
                   >
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
-                      DGA Tickets, Coordinador Eléctrico Nacional
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project9.title">
+                      Automatización Sector Energético
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
-                      Automatización de tickets de mediciones. Costos Marginales en tiempo Real. SCADA.
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project9.description">
+                      Sistema de medición automática y cálculo de costos marginales. SCADA en tiempo real para generación eléctrica.
                     </p>
                     <div class="slider-card-tags">
                       <span class="slider-card-tag">Azure</span>
@@ -2054,14 +2067,14 @@
                   />
                 </picture>
                 <div class="slider-card-overlay">
-                  <span class="slider-card-category"
+                  <span class="slider-card-category" data-i18n="portfolio.project10.category"
                     >Seguridad & Blockchain</span
                   >
                   <div>
-                    <h3 class="slider-card-title" itemprop="name">
+                    <h3 class="slider-card-title" itemprop="name" data-i18n="portfolio.project10.title">
                       Encriptado Zero-Knowledge
                     </h3>
-                    <p class="slider-card-description" itemprop="description">
+                    <p class="slider-card-description" itemprop="description" data-i18n="portfolio.project10.description">
                       Validaciones seguras sin exponer datos sensibles.
                       Criptografía avanzada.
                     </p>
@@ -2105,12 +2118,12 @@
         <div class="intro-decoration intro-decoration-2"></div>
 
         <div class="intro-content">
-          <span class="intro-badge">Nearshore Premium</span>
+          <span class="intro-badge" data-i18n="intro3.badge">Nearshore Premium</span>
           <h2 class="intro-title">
-            <span class="intro-title-gradient">Partner Tecnológico</span><br />
-            para <span class="intro-title-highlight">Chile y LATAM</span>
+            <span class="intro-title-gradient" data-i18n="intro3.title">Partner Tecnológico</span><br />
+            <span data-i18n="intro3.titleSuffix">para</span> <span class="intro-title-highlight" data-i18n="intro3.titleAccent">Chile y LATAM</span>
           </h2>
-          <p class="intro-subtitle">
+          <p class="intro-subtitle" data-i18n="intro3.subtitle">
             Expertise internacional con presencia local. Misma zona horaria,
             idioma y cultura de negocios. Desarrollo ágil para proyectos
             críticos.
@@ -2118,16 +2131,16 @@
 
           <div class="intro-stats">
             <div class="intro-stat">
-              <span class="intro-stat-number">100%</span>
-              <span class="intro-stat-label">Clientes<br />Satisfechos</span>
+              <span class="intro-stat-number" data-i18n="intro3.stats.stat1Number">100%</span>
+              <span class="intro-stat-label" data-i18n-html="intro3.stats.stat1Label">Clientes<br />Satisfechos</span>
             </div>
             <div class="intro-stat">
-              <span class="intro-stat-number">5+ Años</span>
-              <span class="intro-stat-label">Relaciones<br />Estratégicas</span>
+              <span class="intro-stat-number" data-i18n="intro3.stats.stat2Number">5+ Años</span>
+              <span class="intro-stat-label" data-i18n-html="intro3.stats.stat2Label">Relaciones<br />Estratégicas</span>
             </div>
             <div class="intro-stat">
-              <span class="intro-stat-number">20+</span>
-              <span class="intro-stat-label">Proyectos<br />Completados</span>
+              <span class="intro-stat-number" data-i18n="intro3.stats.stat3Number">20+</span>
+              <span class="intro-stat-label" data-i18n-html="intro3.stats.stat3Label">Proyectos<br />Completados</span>
             </div>
           </div>
         </div>
@@ -2137,10 +2150,10 @@
       <section class="section" id="clientes" aria-labelledby="clientes-title">
         <div class="container">
           <div class="section-header">
-            <h2 id="clientes-title" class="section-title">
+            <h2 id="clientes-title" class="section-title" data-i18n-html="clients.title">
               <span class="gradient-text">Clientes</span> que Confían
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-i18n="clients.subtitle">
               Empresas líderes que transforman con nuestra tecnología
             </p>
           </div>
@@ -2206,10 +2219,10 @@
       >
         <div class="container">
           <div class="section-header">
-            <h2 id="equipo-title" class="section-title">
+            <h2 id="equipo-title" class="section-title" data-i18n-html="team.title">
               <span class="gradient-text">Equipo</span> Fundador
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-i18n="team.subtitle">
               Expertise en Fintech, PropTech y Data
             </p>
           </div>
@@ -2231,9 +2244,9 @@
                   itemprop="image"
                 />
               </div>
-              <h3 class="card-title" itemprop="name">Joaquín Espildora M.</h3>
-              <p class="team-card-role" itemprop="jobTitle">Fundador & CEO</p>
-              <p class="card-body" itemprop="description">
+              <h3 class="card-title" itemprop="name" data-i18n="team.founder1.name">Joaquín Espildora M.</h3>
+              <p class="team-card-role" itemprop="jobTitle" data-i18n="team.founder1.role">Fundador & CEO</p>
+              <p class="card-body" itemprop="description" data-i18n="team.founder1.description">
                 Ingeniero Civil (U. de los Andes). Ex Penta Vida (carteras >$3B
                 USD). Especialista en PropTech y Fintech.
               </p>
@@ -2255,11 +2268,11 @@
                   itemprop="image"
                 />
               </div>
-              <h3 class="card-title" itemprop="name">Matías Cánepa G.</h3>
-              <p class="team-card-role" itemprop="jobTitle">
+              <h3 class="card-title" itemprop="name" data-i18n="team.founder2.name">Matías Cánepa G.</h3>
+              <p class="team-card-role" itemprop="jobTitle" data-i18n="team.founder2.role">
                 CTO & Co-Fundador
               </p>
-              <p class="card-body" itemprop="description">
+              <p class="card-body" itemprop="description" data-i18n="team.founder2.description">
                 Arquitecto de datos AWS/Azure/GCP. Profesor Big Data UANDES.
                 Especialista en ETL y cloud serverless.
               </p>
@@ -2272,13 +2285,13 @@
       <section class="section" id="contacto" aria-labelledby="contacto-title">
         <div class="container">
           <div class="section-header">
-            <h2 id="contacto-title" class="section-title">
+            <h2 id="contacto-title" class="section-title" data-i18n-html="contact.title">
               <span class="gradient-text">Cotiza</span> Tu Proyecto
             </h2>
-            <p class="section-subtitle">
+            <p class="section-subtitle" data-i18n="contact.subtitle">
               Propuesta en 24hrs. Entregas desde 2-4 semanas.
             </p>
-            <p class="text-brand text-lg mt-4">
+            <p class="text-brand text-lg mt-4" data-i18n="contact.location">
               Santiago, Chile | Respuesta inmediata
             </p>
           </div>
@@ -2294,12 +2307,13 @@
             >
               <div class="form-row">
                 <div class="form-group">
-                  <label for="name" class="form-label required">Nombre</label>
+                  <label for="name" class="form-label required" data-i18n="contact.form.nameLabel">Nombre</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     class="form-input"
+                    data-i18n-placeholder="contact.form.namePlaceholder"
                     placeholder="Tu nombre"
                     required
                     minlength="2"
@@ -2308,7 +2322,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="lastname" class="form-label required"
+                  <label for="lastname" class="form-label required" data-i18n="contact.form.lastnameLabel"
                     >Apellido</label
                   >
                   <input
@@ -2316,6 +2330,7 @@
                     id="lastname"
                     name="lastname"
                     class="form-input"
+                    data-i18n-placeholder="contact.form.lastnamePlaceholder"
                     placeholder="Tu apellido"
                     required
                     minlength="2"
@@ -2326,12 +2341,13 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="email" class="form-label required">Email</label>
+                  <label for="email" class="form-label required" data-i18n="contact.form.emailLabel">Email</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     class="form-input"
+                    data-i18n-placeholder="contact.form.emailPlaceholder"
                     placeholder="tu@email.com"
                     required
                     aria-required="true"
@@ -2339,7 +2355,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="phone" class="form-label required"
+                  <label for="phone" class="form-label required" data-i18n="contact.form.phoneLabel"
                     >Teléfono</label
                   >
                   <input
@@ -2347,6 +2363,7 @@
                     id="phone"
                     name="phone"
                     class="form-input"
+                    data-i18n-placeholder="contact.form.phonePlaceholder"
                     placeholder="+56 9 1234 5678"
                     required
                     aria-required="true"
@@ -2355,11 +2372,12 @@
               </div>
 
               <div class="form-group">
-                <label for="message" class="form-label required">Mensaje</label>
+                <label for="message" class="form-label required" data-i18n="contact.form.messageLabel">Mensaje</label>
                 <textarea
                   id="message"
                   name="message"
                   class="form-textarea"
+                  data-i18n-placeholder="contact.form.messagePlaceholder"
                   placeholder="Cuéntanos sobre tu proyecto..."
                   required
                   minlength="10"
@@ -2378,7 +2396,7 @@
               />
 
               <div class="form-submit">
-                <button type="submit" class="btn btn-primary btn-lg">
+                <button type="submit" class="btn btn-primary btn-lg" data-i18n="contact.form.submitButton">
                   Enviar Mensaje
                 </button>
               </div>
@@ -2401,7 +2419,7 @@
                 height="auto"
               />
             </div>
-            <p class="footer-description">
+            <p class="footer-description" data-i18n="footer.description">
               Transformando ideas en soluciones tecnológicas de primer nivel.
             </p>
             <div class="footer-social">
@@ -2427,30 +2445,30 @@
           </div>
 
           <div class="footer-column">
-            <h3 class="footer-title">Servicios</h3>
+            <h3 class="footer-title" data-i18n="footer.services.title">Servicios</h3>
             <ul class="footer-links">
-              <li><a href="#servicios">Desarrollo de Software</a></li>
-              <li><a href="#servicios">Cloud & Data Engineering</a></li>
-              <li><a href="#servicios">IA Aplicada</a></li>
-              <li><a href="#servicios">Ecosistemas Fintech</a></li>
+              <li><a href="#servicios" data-i18n="footer.services.item1">Desarrollo de Software</a></li>
+              <li><a href="#servicios" data-i18n="footer.services.item2">Cloud & Data Engineering</a></li>
+              <li><a href="#servicios" data-i18n="footer.services.item3">IA Aplicada</a></li>
+              <li><a href="#servicios" data-i18n="footer.services.item4">Ecosistemas Fintech</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h3 class="footer-title">Empresa</h3>
+            <h3 class="footer-title" data-i18n="footer.company.title">Empresa</h3>
             <ul class="footer-links">
-              <li><a href="#nosotros">Sobre Nosotros</a></li>
-              <li><a href="#portafolio">Portfolio</a></li>
-              <li><a href="#clientes">Clientes</a></li>
-              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="#nosotros" data-i18n="footer.company.item1">Sobre Nosotros</a></li>
+              <li><a href="#portafolio" data-i18n="footer.company.item2">Portfolio</a></li>
+              <li><a href="#clientes" data-i18n="footer.company.item3">Clientes</a></li>
+              <li><a href="#contacto" data-i18n="footer.company.item4">Contacto</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h3 class="footer-title">Contacto</h3>
+            <h3 class="footer-title" data-i18n="footer.contactInfo.title">Contacto</h3>
             <ul class="footer-contact">
-              <li>Santiago, Chile</li>
-              <li>contacto@justdev.it</li>
+              <li data-i18n="footer.contactInfo.location">Santiago, Chile</li>
+              <li data-i18n="footer.contactInfo.email">contacto@justdev.it</li>
               <li>
                 🌐
                 <a href="https://www.justdev.it" target="_blank" rel="noopener"
@@ -2462,8 +2480,8 @@
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2025 Just Dev It. Todos los derechos reservados.</p>
-          <p class="footer-credits">Hecho con 💜 en Chile</p>
+          <p data-i18n-html="footer.bottom.copyright">&copy; 2025 Just Dev It. Todos los derechos reservados.</p>
+          <p class="footer-credits" data-i18n-html="footer.bottom.credits">Hecho con 💜 en Chile</p>
         </div>
 
         <!-- ===== CONTENIDO SEMÁNTICO PARA SEO/GEO (Oculto visualmente) ===== -->
@@ -2628,6 +2646,9 @@
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- ===== SCRIPTS PRINCIPALES (Individuales Restaurados) ===== -->
+    <!-- i18n System - Must load FIRST before any other script -->
+    <script type="module" src="js/i18n.js"></script>
+    
     <!-- Critical Scripts - Preloader primero -->
     <script src="js/epic-preloader.js"></script>
     
