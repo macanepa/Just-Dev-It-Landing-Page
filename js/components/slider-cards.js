@@ -115,22 +115,32 @@ function updateBackground(swiper, sliderType) {
   if (!backgroundContainer) return;
   
   const activeSlide = swiper.slides[swiper.activeIndex];
-  const cardImage = activeSlide?.querySelector('.slider-card-image');
+  
+  // Buscar la imagen dentro de picture o directamente
+  let cardImage = activeSlide?.querySelector('.slider-card-image');
   
   if (!cardImage) return;
   
-  const imageSrc = cardImage.getAttribute('src');
+  // Obtener el src real de la imagen (puede estar en picture > img)
+  const imageSrc = cardImage.getAttribute('src') || cardImage.currentSrc;
   
   // Usar cache para evitar búsquedas repetidas del DOM
   let backgroundImages = backgroundCache.get(sliderType);
   if (!backgroundImages) {
+    // Buscar imágenes dentro de picture o directamente
     backgroundImages = Array.from(backgroundContainer.querySelectorAll('.slider-bg-image'));
     backgroundCache.set(sliderType, backgroundImages);
   }
   
   // OPTIMIZACIÓN: Solo actualizar si hay cambio
   const currentActive = backgroundImages.find(bg => bg.classList.contains('active'));
-  const newActive = backgroundImages.find(bg => bg.getAttribute('src') === imageSrc);
+  
+  // Buscar coincidencia por nombre de archivo (sin ruta completa)
+  const imageFileName = imageSrc ? imageSrc.split('/').pop() : '';
+  const newActive = backgroundImages.find(bg => {
+    const bgSrc = bg.getAttribute('src') || bg.currentSrc;
+    return bgSrc && bgSrc.includes(imageFileName);
+  });
   
   if (currentActive === newActive) return;
   
