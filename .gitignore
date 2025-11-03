@@ -1,0 +1,79 @@
+# ==========================================
+# Just Dev It - Landing Page
+# .gitignore
+# ==========================================
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Editor =====
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== Node Modules (si usas npm en el futuro) =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ===== Build & Distribution =====
+dist/
+build/
+.cache/
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Temporary Files =====
+*.tmp
+*.temp
+*.bak
+*.backup
+~$*
+
+# ===== Reports & Analysis =====
+reports/
+lighthouse/
+coverage/
+
+# ===== Environment Variables =====
+.env
+.env.local
+.env.*.local
+
+# ===== Netlify =====
+.netlify/
+
+# ===== Testing =====
+.nyc_output/
+test-results/
+
+# ===== Python (para scripts) =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+venv/
+env/
+
+# ===== PowerShell =====
+*.ps1~
+
+# ===== Archivos de caché de imágenes =====
+*.cache
+
+# ===== Archivos específicos del proyecto =====
+# (Puedes agregar archivos que no quieras versionar)

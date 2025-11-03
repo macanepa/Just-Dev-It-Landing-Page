@@ -4,8 +4,8 @@
 # =====================================================
 
 [build]
-  # Directorio de publicación (root del proyecto)
-  publish = "."
+  # Directorio de publicación (carpeta src)
+  publish = "src"
   
   # Comando de build (si usas algún build process en el futuro)
   # command = "npm run build"

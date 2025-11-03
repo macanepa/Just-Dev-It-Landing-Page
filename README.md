@@ -47,49 +47,52 @@
 
 ```
 Just-Dev-It-Landing-Page/
-├── index.html               # Página principal ⭐
-├── about-us.html            # Página nosotros
-├── robots.txt               # SEO
-├── sitemap.xml              # SEO
-├── CNAME                    # Dominio custom
+├── 📂 src/                         # Código fuente (directorio de publicación)
+│   ├── index.html                  # Página principal ⭐
+│   ├── about-us.html              # Página nosotros
+│   ├── robots.txt                 # SEO
+│   ├── sitemap.xml                # SEO
+│   ├── CNAME                      # Dominio custom
+│   ├── _headers                   # Headers de Netlify
+│   │
+│   ├── 📂 pages/                  # Páginas HTML adicionales
+│   │   ├── swiper.html
+│   │   └── test-images.html
+│   │
+│   ├── 📂 assets/                 # Assets estáticos
+│   │   ├── images/                # Imágenes WebP optimizadas
+│   │   ├── icons/                 # Iconos SVG
+│   │   ├── fonts/                 # Fuentes web
+│   │   └── Just Dev It/           # Recursos de marca
+│   │
+│   ├── 📂 css/                    # Estilos organizados
+│   │   ├── core/                  # Reset, variables, tipografía
+│   │   ├── layouts/               # Grid, sections
+│   │   ├── components/            # Componentes modulares
+│   │   └── utils/                 # Utilidades
+│   │
+│   └── 📂 js/                     # JavaScript modular
+│       ├── app-standalone.js      # App principal
+│       ├── conversion-tracking.js # GA4 eventos
+│       └── components/            # Componentes JS
 │
-├── assets/
-│   ├── images/              # Imágenes WebP optimizadas
-│   ├── icons/               # Iconos SVG
-│   └── Just Dev It/         # Recursos de marca
+├── 📂 scripts/                    # Scripts de desarrollo
+│   ├── fixes/                     # Scripts de corrección
+│   ├── optimization/              # Scripts de optimización
+│   ├── build/                     # Scripts de build
+│   └── README.md                  # Documentación de scripts
 │
-├── css/
-│   ├── core/
-│   │   ├── reset.css        # Reset moderno
-│   │   ├── variables.css    # 150+ variables
-│   │   └── typography.css   # Sistema tipográfico
-│   ├── layouts/
-│   │   ├── grid.css         # Sistema de grillas
-│   │   └── sections.css     # Layouts + scroll-margin-top
-│   ├── components/
-│   │   ├── navigation.css   # Nav responsive
-│   │   ├── hero.css         # Hero section
-│   │   ├── slider-cards.css # Carrusel optimizado
-│   │   ├── cards.css        # Tarjetas
-│   │   ├── forms.css        # Formularios
-│   │   └── footer.css       # Footer
-│   └── main.css             # Orquestador
+├── 📂 config/                     # Configuración
+│   ├── config.js                  # Config global
+│   └── swiper_package*.json       # Config de Swiper
 │
-├── js/
-│   ├── app-standalone.js    # App principal (partículas + nav)
-│   ├── conversion-tracking.js # GA4 eventos
-│   └── components/
-│       ├── intro-parallax.js
-│       └── slider-cards.js  # Lógica del carrusel
+├── 📂 docs/                       # Documentación técnica
+│   ├── README.md                  # Índice documentación
+│   └── archive/                   # Archivos históricos
 │
-├── config/
-│   └── config.js            # Configuraciones globales
-│
-├── docs/
-│   ├── README.md            # Índice documentación
-│   └── archive/             # 33+ archivos históricos
-│
-└── scripts/                 # Automatizaciones
+├── netlify.toml                   # Config de Netlify
+├── README.md                      # Este archivo
+└── .gitignore                     # Archivos ignorados
 ```
 
 ---
