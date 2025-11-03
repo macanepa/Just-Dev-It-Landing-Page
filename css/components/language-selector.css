@@ -2,11 +2,6 @@
 /* Botón elegante y responsive para cambiar entre español e inglés */
 
 .language-selector {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  
   display: flex;
   align-items: center;
   gap: 8px;
@@ -29,11 +24,48 @@
   -moz-user-select: none;
 }
 
+/* Desktop: posición fija en la esquina superior derecha */
+@media (min-width: 1024px) {
+  .language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+}
+
+/* Mobile: dentro del menú hamburguesa */
+@media (max-width: 1023px) {
+  .language-selector {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 20px;
+    justify-content: center;
+    background: rgba(155, 97, 164, 0.1);
+    border: 2px solid rgba(155, 97, 164, 0.3);
+    box-shadow: none;
+  }
+  
+  .language-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+}
+
 .language-selector:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12),
               0 3px 10px rgba(0, 0, 0, 0.06);
   border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile: hover diferente */
+@media (max-width: 1023px) {
+  .language-selector:hover {
+    transform: translateX(0);
+    background: rgba(155, 97, 164, 0.2);
+    border-color: rgba(155, 97, 164, 0.5);
+    box-shadow: none;
+  }
 }
 
 .language-selector:active {
@@ -117,8 +149,8 @@
 
 /* ===== RESPONSIVE ===== */
 
-/* Tablets */
-@media (max-width: 768px) {
+/* Tablets - mantener posición fija */
+@media (max-width: 768px) and (min-width: 1024px) {
   .language-selector {
     top: 15px;
     right: 15px;
@@ -140,21 +172,19 @@
   }
 }
 
-/* Mobile */
+/* Mobile pequeño - dentro del menú */
 @media (max-width: 480px) {
   .language-selector {
-    top: 10px;
-    right: 10px;
-    padding: 8px 12px;
-    gap: 5px;
+    padding: 12px 16px;
+    gap: 6px;
   }
   
   .language-flag {
-    font-size: 18px;
+    font-size: 20px;
   }
   
   .language-text {
-    font-size: 12px;
+    font-size: 14px;
   }
   
   /* Ocultar tooltip en mobile */
@@ -235,21 +265,6 @@
   }
   50% {
     box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
-  }
-}
-
-/* ===== INTEGRACIÓN CON NAVEGACIÓN EXISTENTE ===== */
-/* Si el sitio tiene una barra de navegación fija, ajustar posición */
-
-/* Cuando hay navegación con altura conocida */
-body.has-navigation .language-selector {
-  top: 80px; /* Ajustar según altura de la nav */
-}
-
-/* En mobile, posicionar debajo del menú hamburguesa si existe */
-@media (max-width: 768px) {
-  body.has-mobile-menu .language-selector {
-    top: 60px;
   }
 }
 

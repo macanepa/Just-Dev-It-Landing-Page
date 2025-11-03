@@ -241,7 +241,7 @@ const translations = {
       founder1: {
         name: "Joaquín Espildora M.",
         role: "Fundador & CEO",
-        description: "Ingeniero Civil (Universidad de los Andes). Ex Portfolio Manager Penta Vida (+$3B USD AUM). Especialista en PropTech y Fintech."
+        description: "Ingeniero Civil (Universidad de los Andes). Ex Portfolio Manager con más de $3B USD de AUM. Especialista en PropTech y Fintech."
       },
       
       founder2: {
@@ -555,7 +555,7 @@ const translations = {
       founder1: {
         name: "Joaquín Espildora M.",
         role: "Founder & CEO",
-        description: "Civil Engineer (Universidad de los Andes). Former Portfolio Manager at Penta Vida (+$3B USD AUM). Specialist in PropTech and Fintech."
+        description: "Civil Engineer (Universidad de los Andes). Former Portfolio Manager with over $3B USD AUM. Specialist in PropTech and Fintech."
       },
       
       founder2: {
