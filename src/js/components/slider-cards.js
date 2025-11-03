@@ -62,8 +62,13 @@ function initSliders() {
       dynamicBullets: false,
     },
     on: {
+      slideChange: function() {
+        // slideChange se dispara en todos los casos (touch, drag, botones)
+        updateBackground(this, 'services');
+        updateCardStates(this);
+      },
       slideChangeTransitionStart: function() {
-        // Usar transitionStart para mejor performance
+        // Backup para transiciones suaves
         updateBackground(this, 'services');
         updateCardStates(this);
       },
@@ -87,8 +92,13 @@ function initSliders() {
       dynamicBullets: false,
     },
     on: {
+      slideChange: function() {
+        // slideChange se dispara en todos los casos (touch, drag, botones)
+        updateBackground(this, 'portfolio');
+        updateCardStates(this);
+      },
       slideChangeTransitionStart: function() {
-        // Usar transitionStart para mejor performance
+        // Backup para transiciones suaves
         updateBackground(this, 'portfolio');
         updateCardStates(this);
       },
