@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just Dev It - Nosotros</title>
+    <link
+      rel="icon"
+      href="assets\images\Isotipo_morado.svg"
+      type="image/x-icon"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/css/utils/variables.css" />
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link rel="stylesheet" href="src/css/components/nav.css" />
+    <link rel="stylesheet" href="src/css/components/hero.css" />
+    <link rel="stylesheet" href="src/css/components/services.css" />
+    <link rel="stylesheet" href="src/css/components/portfolio.css" />
+    <link rel="stylesheet" href="src/css/components/team.css" />
+    <link rel="stylesheet" href="src/css/components/contact.css" />
+  </head>
+
+  <body class="bg-slate-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="orbitron text-2xl font-bold gradient-text">
+            <a href="index.html">
+              <img
+                src="assets\images\Logo principal - blanco.svg"
+                alt="Just Dev It"
+                width="120"
+                height="120"
+              />
+            </a>
+          </div>
+
+          <!-- Menú desktop -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html#services"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Servicios</a
+            >
+            <a
+              href="index.html#portfolio"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Portafolio</a
+            >
+            <a
+              href="about-us.html#historia"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Equipo</a
+            >
+            <a
+              href="index.html#contact"
+              class="hover:text-[#04C7AA] transition-colors"
+              >Contacto</a
+            >
+          </div>
+
+          <!-- Botón hamburguesa para móvil -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden flex flex-col space-y-1.5 p-2 rounded-lg hover:bg-[#152636] transition-colors"
+          >
+            <span
+              class="w-6 h-0.5 bg-white transform transition-transform duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-white transform transition-transform duration-300"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-white transform transition-transform duration-300"
+            ></span>
+          </button>
+
+          <!-- Botón Empezar (visible solo en desktop) -->
+          <button
+            class="hidden md:block bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all"
+          >
+            Empezar
+          </button>
+        </div>
+
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="md:hidden hidden pt-4 pb-3">
+          <div class="space-y-3">
+            <a
+              href="index.html#services"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Servicios
+            </a>
+            <a
+              href="index.html#portfolio"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Portafolio
+            </a>
+            <a
+              href="about-us.html#historia"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Equipo
+            </a>
+            <a
+              href="index.html#contact"
+              class="block px-4 py-2 text-white hover:bg-[#152636] rounded-lg transition-colors"
+            >
+              Contacto
+            </a>
+            <a href="https://justdevit.databam.cl">
+              <button
+                class="w-full bg-gradient-to-br from-[#B37BBF] via-[#9B61A4] to-[#6A3B7E] text-white px-6 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition-all"
+              >
+                Empezar
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient min-h-screen relative overflow-hidden h-dvh">
+      <div class="content container mx-auto px-6 pt-32 pb-20">
+        <div
+          class="grid md:grid-cols-1 gap-12 items-center justify-center min-h-[80vh]"
+        >
+          <div class="space-y-8 text-center max-w-3xl mx-auto">
+            <h1 class="main-font text-5xl md:text-7xl font-bold leading-tight">
+              Impulsando la <span class="gradient-text2">Innovación</span>
+            </h1>
+            <p class="text-[#BEC3C7] text-xl">
+              Transforma tu negocio con soluciones de datos y desarrollo de
+              software de vanguardia.
+            </p>
+            <div class="flex space-x-4 justify-center">
+              <a href="about-us.html#historia">
+                <button
+                  class="bg-[#9B61A4] hover:bg-[#9B61A4]/10 border border-[#9B61A4] transition-colors px-8 py-3 rounded-full"
+                >
+                  Quiénes Somos
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Nuestra Historia -->
+    <section class="py-20">
+      <div id="historia" class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-8">Nuestra Historia</h2>
+          <p class="text-[#BEC3C7] mb-12">
+            Just Dev It nació de la visión de dos profesionales apasionados por
+            la tecnología y la innovación. Nuestra misión es simple pero
+            poderosa: transformar ideas en soluciones digitales excepcionales.
+          </p>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-black/30 p-6 rounded-xl">
+              <h3 class="text-xl font-bold text-[#BEC3C7] mb-4">Misión</h3>
+              <p class="text-[#BEC3C7]">
+                Proporcionar soluciones tecnológicas innovadoras que impulsen el
+                crecimiento y la eficiencia de nuestros clientes.
+              </p>
+            </div>
+            <div class="bg-black/30 p-6 rounded-xl">
+              <h3 class="text-xl font-bold text-[#BEC3C7] mb-4">Visión</h3>
+              <p class="text-[#BEC3C7]">
+                Ser líderes en el desarrollo de soluciones digitales que
+                transforman la manera en que las empresas operan y crecen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-slate-800">
+      <div class="container mx-auto px-6">
+        <h2 class="orbitron text-4xl font-bold text-center mb-16">
+          Nuestros Fundadores
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div
+            class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center"
+          >
+            <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+              <img
+                src="src/assets/images/joaquin-espildora.webp"
+                alt="Joaquin Espildora"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="orbitron text-xl font-bold mb-2">
+              Joaquin Espildora Moraga
+            </h3>
+            <p class="text-[#04C7AA] mb-4">Fundador & CEO</p>
+            <p class="text-slate-300">
+              Ingeniero Civil con más de 5 años de experiencia en el sector
+              financiero e inversiones inmobiliarias. Líder visionario con
+              experiencia en gestión de portafolios que superan $1B USD y
+              desarrollo de soluciones tecnológicas financieras innovadoras.
+            </p>
+          </div>
+          <div
+            class="bg-slate-900/50 p-8 rounded-2xl backdrop-blur-sm text-center"
+          >
+            <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
+              <img
+                src="src/assets/images/matias-canepa.webp"
+                alt="Matías Cánepa"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="orbitron text-xl font-bold mb-2">
+              Matías Cánepa González
+            </h3>
+            <p class="text-[#04C7AA] mb-4">Fundador & CTO</p>
+            <p class="text-slate-300">
+              Cloud Engineer experto con amplia experiencia en desarrollo de
+              software y data engineering. Lidera el desarrollo tecnológico y la
+              infraestructura de nuestros servicios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clientes y Colaboradores -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">
+          Clientes y Colaboradores
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <!-- Logos de clientes con efecto hover -->
+          <div
+            class="flex items-center justify-center p-8 bg-[#152636] rounded-lg hover:bg-[#9B61A4]/20 transition-colors"
+          >
+            <img
+              src="src/assets/images/partner1.webp"
+              alt="Cliente 1"
+              class="max-w-[120px] opacity-70 hover:opacity-100 transition-opacity"
+            />
+          </div>
+          <!-- Repetir para más clientes -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Valores -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Nuestros Valores</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-[#152636]/50 p-8 rounded-2xl backdrop-blur-sm">
+            <div class="text-[#04C7AA] text-4xl mb-4">💡</div>
+            <h3 class="text-xl font-bold mb-4">Innovación Continua</h3>
+            <p class="text-[#BEC3C7]">
+              Buscamos constantemente nuevas formas de resolver desafíos y
+              mejorar soluciones.
+            </p>
+          </div>
+          <div class="bg-[#152636]/50 p-8 rounded-2xl backdrop-blur-sm">
+            <div class="text-[#04C7AA] text-4xl mb-4">🤝</div>
+            <h3 class="text-xl font-bold mb-4">Compromiso</h3>
+            <p class="text-[#BEC3C7]">
+              Nos dedicamos a entregar excelencia en cada proyecto y superar
+              expectativas.
+            </p>
+          </div>
+          <div class="bg-[#152636]/50 p-8 rounded-2xl backdrop-blur-sm">
+            <div class="text-[#04C7AA] text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-bold mb-4">Orientación a Resultados</h3>
+            <p class="text-[#BEC3C7]">
+              Nos enfocamos en crear impacto medible y valor real para nuestros
+              clientes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Áreas de Interés -->
+    <section class="py-20 bg-slate-800 content">
+      <div class="container mx-auto px-6 item">
+        <h2 class="text-4xl font-bold text-center mb-16">Áreas de Interés</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="content items-center">
+            <h3 class="text-2xl mb-6 text-[#04C7AA]">Tecnologías Emergentes</h3>
+            <ul class="space-y-4 text-[#BEC3C7]">
+              <li>• Inteligencia Artificial y Machine Learning</li>
+              <li>• Blockchain y Tecnologías Descentralizadas</li>
+              <li>• IoT y Sistemas Conectados</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-[#04C7AA]">
+              Sectores de Impacto
+            </h3>
+            <ul class="space-y-4 text-[#BEC3C7]">
+              <li>• Fintech e Inversiones</li>
+              <li>• Real Estate y Proptech</li>
+              <li>• E-commerce y Retail Digital</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Componentes -->
+    <script src="src/js/components/nav.js"></script>
+  </body>
+</html>
