@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Favicon y Preview OG - Just Dev It</title>
+    <style>
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%);
+            color: white;
+            padding: 40px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .preview-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .preview-card h2 {
+            margin-top: 0;
+            color: #00ff87;
+            font-size: 1.2rem;
+        }
+        
+        canvas {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background: white;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            color: #1a0033;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 135, 0.5);
+        }
+        
+        .info {
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid rgba(0, 255, 135, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .info strong {
+            color: #00ff87;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Generador de Favicon y Preview OG</h1>
+        
+        <div class="preview-grid">
+            <!-- Preview pequeño para links -->
+            <div class="preview-card">
+                <h2>📱 Preview Link (200x200)</h2>
+                <canvas id="previewCanvas" width="200" height="200"></canvas>
+                <button class="btn" onclick="downloadImage('previewCanvas', 'og-preview-200x200')">
+                    ⬇️ Descargar Preview 200x200
+                </button>
+                <p style="font-size: 12px; opacity: 0.8; margin-top: 10px;">
+                    Ideal para WhatsApp, Facebook preview, Twitter preview
+                </p>
+            </div>
+            
+            <!-- Favicon -->
+            <div class="preview-card">
+                <h2>🔖 Favicon (512x512)</h2>
+                <canvas id="faviconCanvas" width="512" height="512"></canvas>
+                <button class="btn" onclick="downloadImage('faviconCanvas', 'favicon-512x512')">
+                    ⬇️ Descargar Favicon 512x512
+                </button>
+                <p style="font-size: 12px; opacity: 0.8; margin-top: 10px;">
+                    Para favicon.png y apple-touch-icon
+                </p>
+            </div>
+            
+            <!-- Apple Touch Icon -->
+            <div class="preview-card">
+                <h2>🍎 Apple Touch Icon (180x180)</h2>
+                <canvas id="appleCanvas" width="180" height="180"></canvas>
+                <button class="btn" onclick="downloadImage('appleCanvas', 'apple-touch-icon')">
+                    ⬇️ Descargar Apple Icon 180x180
+                </button>
+                <p style="font-size: 12px; opacity: 0.8; margin-top: 10px;">
+                    Para dispositivos iOS y Safari
+                </p>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>📌 Instrucciones:</strong><br>
+            1. Descarga las 3 imágenes generadas<br>
+            2. Guarda <code>og-preview-200x200.png</code> en <code>assets/images/</code><br>
+            3. Guarda <code>favicon-512x512.png</code> en <code>assets/images/</code><br>
+            4. Guarda <code>apple-touch-icon.png</code> en <code>assets/images/</code><br>
+            5. Las imágenes usan el isotipo morado de Just Dev It sobre fondo oscuro<br><br>
+            <strong>✨ Uso:</strong><br>
+            • Preview Link: Para metaetiquetas og:image cuando se necesita versión cuadrada<br>
+            • Favicon: Para el ícono del navegador<br>
+            • Apple Touch Icon: Para cuando se añade el sitio a la pantalla de inicio en iOS
+        </div>
+    </div>
+    
+    <script>
+        // Cargar isotipo morado
+        const isotipoMorado = new Image();
+        isotipoMorado.crossOrigin = 'anonymous';
+        isotipoMorado.src = 'assets/images/Desktop/Isotipo_morado.svg';
+        
+        isotipoMorado.onload = function() {
+            generateAllImages();
+        };
+        
+        isotipoMorado.onerror = function() {
+            console.warn('No se pudo cargar el isotipo, usando fallback...');
+            generateAllImages();
+        };
+        
+        function generateAllImages() {
+            generatePreview();
+            generateFavicon();
+            generateAppleIcon();
+        }
+        
+        function generatePreview() {
+            const canvas = document.getElementById('previewCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Fondo negro
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Isotipo centrado
+            if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
+                const size = canvas.width * 0.65; // 65% del tamaño
+                const x = (canvas.width - size) / 2;
+                const y = (canvas.height - size) / 2;
+                ctx.drawImage(isotipoMorado, x, y, size, size);
+            } else {
+                // Fallback: dibujar isotipo con canvas
+                drawIsotipoFallback(ctx, canvas.width / 2, canvas.height / 2, canvas.width * 0.3);
+            }
+        }
+        
+        function generateFavicon() {
+            const canvas = document.getElementById('faviconCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Fondo negro
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Isotipo centrado
+            if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
+                const size = canvas.width * 0.7; // 70% del tamaño
+                const x = (canvas.width - size) / 2;
+                const y = (canvas.height - size) / 2;
+                ctx.drawImage(isotipoMorado, x, y, size, size);
+            } else {
+                drawIsotipoFallback(ctx, canvas.width / 2, canvas.height / 2, canvas.width * 0.35);
+            }
+        }
+        
+        function generateAppleIcon() {
+            const canvas = document.getElementById('appleCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Fondo negro
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Isotipo centrado
+            if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
+                const size = canvas.width * 0.65; // 65% del tamaño
+                const x = (canvas.width - size) / 2;
+                const y = (canvas.height - size) / 2;
+                ctx.drawImage(isotipoMorado, x, y, size, size);
+            } else {
+                drawIsotipoFallback(ctx, canvas.width / 2, canvas.height / 2, canvas.width * 0.3);
+            }
+        }
+        
+        function drawIsotipoFallback(ctx, centerX, centerY, size) {
+            ctx.save();
+            ctx.fillStyle = '#8b5ab8';
+            ctx.strokeStyle = '#8b5ab8';
+            ctx.lineWidth = size * 0.15;
+            ctx.lineCap = 'round';
+            
+            const armLength = size;
+            
+            // 4 brazos del isotipo
+            for (let i = 0; i < 4; i++) {
+                const angle = (Math.PI / 4) + (i * Math.PI / 2);
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * armLength,
+                    centerY + Math.sin(angle) * armLength
+                );
+                ctx.stroke();
+            }
+            
+            ctx.restore();
+        }
+        
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = `${filename}.png`;
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+        
+        // Generar imágenes iniciales si el isotipo ya está cargado
+        if (isotipoMorado.complete) {
+            generateAllImages();
+        }
+    </script>
+</body>
+</html>
