@@ -355,15 +355,15 @@
             ctx.textAlign = 'right';
             ctx.fillText('www.justdev.it', canvas.width - 30, 50);
             
-            // Isotipo grande morado - más separado del borde, más a la izquierda
+            // Isotipo morado - más pequeño (15% reducción) y más a la derecha pero sin salirse del blanco
             if (isotipoMorado.complete && isotipoMorado.naturalWidth > 0) {
-                const isotipoSize = 340;
-                const isotipoX = whiteWidth - isotipoSize - 180; // Más separado (180px del borde)
-                const isotipoY = 140;
+                const isotipoSize = 290; // Reducido de 340 a 290 (15% más pequeño)
+                const isotipoX = whiteWidth - isotipoSize - 80; // Más cerca del borde (80px del límite)
+                const isotipoY = 170; // Centrado verticalmente
                 ctx.drawImage(isotipoMorado, isotipoX, isotipoY, isotipoSize, isotipoSize);
             } else {
                 // Fallback: dibujar isotipo con canvas
-                drawIsotipo(whiteWidth - 500, 140, 340);
+                drawIsotipo(whiteWidth - 370, 170, 290);
             }
             
             // Texto principal en la parte blanca
