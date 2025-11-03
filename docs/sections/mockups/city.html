@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="city">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just City Companion | Mockup Visual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #8B5CF6; --secondary: #10B981; --accent: #F43F5E;
+            --gradient: linear-gradient(135deg, #8B5CF6 0%, #10B981 100%);
+            --bg: #0f1020; --surface: #141527; --text: #e6e7ee; --muted: #9aa3af; --stroke: #2a2b3f;
+            --font-primary: 'Poppins', sans-serif; --font-secondary: 'Manrope', sans-serif;
+            --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+            --radius: 16px; --shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;600;700&display=swap');
+        body { font-family: var(--font-secondary); background: var(--bg); color: var(--text); line-height: 1.6; }
+        h1, h2, h3 { font-family: var(--font-primary); font-weight: 700; line-height: 1.2; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-6); }
+        .header { padding: var(--space-6) 0; border-bottom: 1px solid var(--stroke); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(139, 92, 246, 0.15); color: var(--primary); border-radius: 100px; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; }
+        .hero { padding: var(--space-24) 0; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150%; height: 100%; background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%); }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: var(--space-6) 0; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--muted); margin-bottom: var(--space-8); }
+        .hero-visual { background: var(--gradient); border-radius: var(--radius); aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); color: white; font-size: 1.5rem; font-weight: 600; text-align: center; }
+        .section { padding: var(--space-16) 0; }
+        .section-header { text-align: center; margin-bottom: var(--space-12); }
+        .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: var(--space-4); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); }
+        .feature-card { background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius); padding: var(--space-8); transition: all 0.3s; }
+        .feature-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: var(--shadow); }
+        .feature-icon { font-size: 3rem; margin-bottom: var(--space-4); }
+        .feature-title { font-size: 1.5rem; margin-bottom: var(--space-4); color: var(--text); }
+        .feature-description { color: var(--muted); line-height: 1.7; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-8); margin-top: var(--space-12); }
+        .step { text-align: center; }
+        .step-number { width: 60px; height: 60px; margin: 0 auto var(--space-4); background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; color: white; }
+        .step-title { font-size: 1.25rem; margin-bottom: var(--space-4); }
+        .btn { padding: 1rem 2rem; border-radius: var(--radius); font-weight: 600; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s; border: 2px solid transparent; }
+        .btn-primary { background: var(--gradient); color: white; box-shadow: var(--shadow); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(139, 92, 246, 0.4); }
+        .final-cta { text-align: center; padding: var(--space-24) 0; background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.05) 100%); }
+        @media (max-width: 1024px) { .hero-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .hero, .section { padding: var(--space-16) 0; } .features-grid, .steps { grid-template-columns: 1fr; } }
+        .mockup-badge { position: fixed; top: 20px; right: 20px; background: rgba(255,0,0,0.8); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.875rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge">🎨 MOCKUP VISUAL</div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">Chrome Extension</span>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <span class="badge">Just City Companion</span>
+                    <h1>Compra Mejor con Data Real</h1>
+                    <p class="hero-subtitle">Extensión de Chrome que muestra precios reales, propietarios y comparables en Portal Inmobiliario. Powered by Databam.</p>
+                    <a href="#" class="btn btn-primary">Agregar a Chrome</a>
+                </div>
+                <div class="hero-visual">Screenshot<br>Extensión Chrome</div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Qué Verás en Portal Inmobiliario</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Precio/m² Real</h3>
+                    <p class="feature-description">Histórico de transacciones reales del Conservador de Bienes Raíces, no precios de publicación.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3 class="feature-title">Propietario Actual</h3>
+                    <p class="feature-description">Nombre del propietario registrado en CBR. Valida que quien vende es realmente el dueño.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Comparables</h3>
+                    <p class="feature-description">Propiedades similares vendidas en la zona con precio real de transacción.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Capa Databam</h3>
+                    <p class="feature-description">Deudas, hipotecas, plusvalía histórica y riesgo de inversión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" style="background: rgba(139, 92, 246, 0.05);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cómo Funciona</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Instala la Extensión</h4>
+                    <p class="feature-description">Desde Chrome Web Store en 1 clic</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Navega Portal Inmobiliario</h4>
+                    <p class="feature-description">Busca propiedades como siempre</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">Ve Data Real</h4>
+                    <p class="feature-description">La extensión muestra info automáticamente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para tomar mejores decisiones inmobiliarias?</h2>
+            <a href="#" class="btn btn-primary" style="margin-top: 2rem;">Agregar a Chrome (Gratis)</a>
+        </div>
+    </section>
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container"><p>Mockup Visual - Just City Companion by Just Dev It</p></div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="databam">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databam | Mockup Visual | Just Dev It</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== VARIABLES BASE ===== */
+        :root {
+            /* Databam Theme */
+            --primary: #6B2CF5;
+            --secondary: #2EC5FF;
+            --accent: #F9C23C;
+            --gradient: linear-gradient(135deg, #6B2CF5 0%, #2EC5FF 100%);
+            
+            /* Neutrales */
+            --bg: #0f1020;
+            --surface: #141527;
+            --text: #e6e7ee;
+            --muted: #9aa3af;
+            --stroke: #2a2b3f;
+            
+            /* Tipografía */
+            --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+            --font-secondary: 'Manrope', system-ui, -apple-system, sans-serif;
+            
+            /* Espaciado */
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-24: 6rem;
+            
+            /* Efectos */
+            --radius: 16px;
+            --shadow: 0 10px 40px rgba(107, 44, 245, 0.3);
+        }
+
+        /* ===== TIPOGRAFÍA ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: var(--font-secondary);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* ===== HEADER SIMPLE ===== */
+        .header {
+            padding: var(--space-6) 0;
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(107, 44, 245, 0.15);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: var(--space-24) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(107, 44, 245, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: var(--space-6) 0;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bullets {
+            list-style: none;
+            margin: var(--space-8) 0;
+        }
+
+        .hero-bullets li {
+            padding: var(--space-4) 0;
+            font-size: 1.125rem;
+            color: var(--muted);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .hero-bullets li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: 700;
+            margin-right: var(--space-4);
+            font-size: 1.5rem;
+        }
+
+        .hero-visual {
+            background: var(--gradient);
+            border-radius: var(--radius);
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-visual::after {
+            content: 'Dashboard Databam';
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* ===== BUTTONS ===== */
+        .cta-group {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(107, 44, 245, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(46, 197, 255, 0.1);
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: var(--space-24) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--space-4);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            padding: var(--space-8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-4);
+            color: var(--text);
+        }
+
+        .card-description {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ===== MÓDULOS GRID ===== */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .module-card {
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            padding: var(--space-6);
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            border-color: var(--primary);
+            background: rgba(107, 44, 245, 0.05);
+        }
+
+        .module-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-4);
+            color: var(--secondary);
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-8);
+            text-align: center;
+        }
+
+        .stat {
+            padding: var(--space-6);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: var(--space-4);
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            color: var(--muted);
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            text-align: center;
+            padding: var(--space-24) 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(107, 44, 245, 0.05) 100%);
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--space-8);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: var(--space-16) 0;
+            }
+
+            .section {
+                padding: var(--space-16) 0;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== MOCKUP WATERMARK ===== */
+        .mockup-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mockup Badge -->
+    <div class="mockup-badge">🎨 MOCKUP VISUAL - Solo diseño</div>
+
+    <!-- Header Simple -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">PropTech Analytics</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="badge">Databam by Just Dev It</span>
+                    
+                    <h1>La plataforma de data inmobiliaria más completa de Chile</h1>
+                    
+                    <ul class="hero-bullets">
+                        <li>+500,000 propiedades con precios reales de transacción</li>
+                        <li>Histórico completo de 15 años + propietarios actuales</li>
+                        <li>API REST en tiempo real para desarrolladores</li>
+                    </ul>
+
+                    <div class="cta-group">
+                        <a href="https://databam.cl" class="btn btn-primary">
+                            Ir a Databam →
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            Solicitar demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <!-- Placeholder para mockup/screenshot -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: ¿Qué Resuelve? -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Qué Resuelve Databam?</h2>
+                <p class="section-subtitle">Data confiable para decisiones inteligentes</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3 class="card-title">Valuación Precisa</h3>
+                    <p class="card-description">
+                        Accede a precios reales de transacción del Conservador de Bienes Raíces, 
+                        no solo precios de publicación. Decisiones de inversión basadas en data real.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Análisis de Mercado</h3>
+                    <p class="card-description">
+                        Encuentra propiedades comparables, identifica tendencias y analiza plusvalía 
+                        zona por zona. Insights que tu competencia no tiene.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">Due Diligence Completo</h3>
+                    <p class="card-description">
+                        Propietarios, hipotecas, deudas, embargos y gravámenes. Todo en un solo lugar. 
+                        Reduce riesgo en tus transacciones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Módulos -->
+    <section class="section" style="background: rgba(20, 21, 39, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Módulos de Databam</h2>
+                <p class="section-subtitle">Todo lo que necesitas en una plataforma</p>
+            </div>
+
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h4 class="module-title">🔍 Buscador Avanzado</h4>
+                    <p class="card-description">
+                        Filtros por ubicación, precio, m², tipo de propiedad, año construcción y más.
+                    </p>
+                </div>
+
+                <div class="module-card">
+                    <h4 class="module-title">🗺️ Mapas Interactivos</h4>
+                    <p class="card-description">
+                        Visualiza propiedades, transacciones y tendencias en mapas de calor.
+                    </p>
+                </div>
+
+                <div class="module-card">
+                    <h4 class="module-title">📈 Dashboard Ejecutivo</h4>
+                    <p class="card-description">
+                        KPIs personalizables con métricas de mercado en tiempo real.
+                    </p>
+                </div>
+
+                <div class="module-card">
+                    <h4 class="module-title">🔔 Alertas Automatizadas</h4>
+                    <p class="card-description">
+                        Notificaciones cuando aparecen propiedades que cumplen tus criterios.
+                    </p>
+                </div>
+
+                <div class="module-card">
+                    <h4 class="module-title">📥 Exportación de Data</h4>
+                    <p class="card-description">
+                        Descarga reportes en Excel, CSV o PDF con tu marca.
+                    </p>
+                </div>
+
+                <div class="module-card">
+                    <h4 class="module-title">🔌 Integraciones API</h4>
+                    <p class="card-description">
+                        Conecta Databam con tu CRM, ERP o software interno vía API REST.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: En Números -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Databam en Números</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-number">500K+</span>
+                    <span class="stat-label">Propiedades Indexadas</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Años de Histórico</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">Uptime Garantizado</span>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-number">API</span>
+                    <span class="stat-label">REST Documentada</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para acceder a la mejor data inmobiliaria de Chile?</h2>
+            
+            <div class="cta-group" style="justify-content: center;">
+                <a href="https://databam.cl" class="btn btn-primary">
+                    Ir a Databam →
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    Solicitar demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Simple -->
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container">
+            <p>Mockup Visual - Databam by Just Dev It</p>
+            <p style="font-size: 0.875rem; margin-top: 1rem;">
+                Este es solo un mockup de diseño. La implementación final incluirá funcionalidad completa.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

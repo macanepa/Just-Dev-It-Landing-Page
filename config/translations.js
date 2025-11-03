@@ -31,7 +31,7 @@ const translations = {
       description: "Automatización, datos e integraciones. <strong>RPA, ETL, IA y cloud</strong> para empresas que buscan resultados.",
       subtext: "• <strong>PropTech, Fintech, Energía, Legales y Retail</strong><br />• Entregas <strong>predecibles</strong><br />• <strong>+20 proyectos</strong> exitosos<br />",
       ctaPrimary: "Cotizar Proyecto",
-      ctaSecondary: "Ver Casos",
+      ctaSecondary: "Ver Proyectos",
       stats: {
         stat1Number: "20+",
         stat1Label: "Proyectos",
@@ -345,7 +345,7 @@ const translations = {
       description: "Automation, data and integrations. <strong>RPA, ETL, AI and cloud</strong> for companies seeking results.",
       subtext: "• <strong>PropTech, Fintech, Energy, Legal and Retail</strong><br />• <strong>Predictable</strong> deliveries<br />• <strong>+20 successful</strong> projects<br />",
       ctaPrimary: "Get a Quote",
-      ctaSecondary: "View Cases",
+      ctaSecondary: "View Projects",
       stats: {
         stat1Number: "20+",
         stat1Label: "Projects",

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="data">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Data | Mockup Visual | Just Dev It</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #4338CA; --secondary: #06B6D4; --accent: #84CC16;
+            --gradient: linear-gradient(135deg, #4338CA 0%, #06B6D4 100%);
+            --bg: #0f1020; --surface: #141527; --text: #e6e7ee; --muted: #9aa3af; --stroke: #2a2b3f;
+            --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+            --font-secondary: 'Manrope', system-ui, -apple-system, sans-serif;
+            --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+            --radius: 16px; --shadow: 0 10px 40px rgba(67, 56, 202, 0.3);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+        body { font-family: var(--font-secondary); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-primary); font-weight: 700; line-height: 1.2; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-6); }
+        
+        .header { padding: var(--space-6) 0; border-bottom: 1px solid var(--stroke); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(67, 56, 202, 0.15); color: var(--primary); border-radius: 100px; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .hero { padding: var(--space-24) 0; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150%; height: 100%; background: radial-gradient(ellipse at center, rgba(67, 56, 202, 0.15) 0%, transparent 70%); pointer-events: none; }
+        .hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: var(--space-6) 0; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--muted); margin-bottom: var(--space-8); }
+
+        .section { padding: var(--space-16) 0; }
+        .section-header { text-align: center; margin-bottom: var(--space-12); }
+        .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: var(--space-4); }
+
+        .datasets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--space-8); }
+        
+        .dataset-card { background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius); padding: var(--space-8); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .dataset-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient); transform: scaleX(0); transition: transform 0.3s ease; }
+        .dataset-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: var(--shadow); }
+        .dataset-card:hover::before { transform: scaleX(1); }
+
+        .dataset-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); }
+        .dataset-tags { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+        .tag { padding: 0.25rem 0.75rem; background: rgba(67, 56, 202, 0.2); color: var(--primary); border-radius: 100px; font-size: 0.75rem; font-weight: 600; }
+        .tag.size { background: rgba(6, 182, 212, 0.2); color: var(--secondary); }
+
+        .dataset-title { font-size: 1.5rem; margin-bottom: var(--space-4); color: var(--text); }
+        .dataset-description { color: var(--muted); line-height: 1.7; margin-bottom: var(--space-6); }
+        
+        .dataset-preview { background: rgba(67, 56, 202, 0.05); border: 1px solid var(--stroke); border-radius: 8px; padding: var(--space-4); margin-bottom: var(--space-6); font-family: monospace; font-size: 0.875rem; color: var(--accent); }
+
+        .btn { padding: 1rem 2rem; border-radius: var(--radius); font-weight: 600; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent; width: 100%; }
+        .btn-primary { background: var(--gradient); color: white; box-shadow: var(--shadow); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(67, 56, 202, 0.4); }
+        .btn-secondary { background: transparent; border: 2px solid var(--secondary); color: var(--secondary); }
+        .btn-secondary:hover { background: rgba(6, 182, 212, 0.1); }
+
+        .final-cta { text-align: center; padding: var(--space-24) 0; background: linear-gradient(180deg, transparent 0%, rgba(67, 56, 202, 0.05) 100%); }
+
+        @media (max-width: 768px) {
+            .hero, .section { padding: var(--space-16) 0; }
+            .datasets-grid { grid-template-columns: 1fr; }
+        }
+
+        .mockup-badge { position: fixed; top: 20px; right: 20px; background: rgba(255, 0, 0, 0.8); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.875rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge">🎨 MOCKUP VISUAL</div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">Datasets Públicos</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Just Data</span>
+                <h1>Catálogo de Datos Listos para Usar</h1>
+                <p class="hero-subtitle">Bases de datos chilenas procesadas y actualizadas. API REST disponible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Datasets Disponibles</h2>
+            </div>
+
+            <div class="datasets-grid">
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-tags">
+                            <span class="tag">SII</span>
+                            <span class="tag size">1.2M registros</span>
+                        </div>
+                    </div>
+                    <h3 class="dataset-title">Rutificador</h3>
+                    <p class="dataset-description">Base de datos completa de RUTs chilenos con nombre y razón social.</p>
+                    <div class="dataset-preview">
+                        RUT: 12.345.678-9<br>
+                        Nombre: Juan Pérez González<br>
+                        Estado: Activo
+                    </div>
+                    <div style="display: flex; gap: var(--space-4);">
+                        <a href="#" class="btn btn-secondary">Ver Muestra</a>
+                        <a href="#" class="btn btn-primary">Solicitar API</a>
+                    </div>
+                </div>
+
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-tags">
+                            <span class="tag">SII</span>
+                            <span class="tag size">500K empresas</span>
+                        </div>
+                    </div>
+                    <h3 class="dataset-title">Nómina Contribuyentes</h3>
+                    <p class="dataset-description">Empresas chilenas con representantes legales, giro y dirección.</p>
+                    <div class="dataset-preview">
+                        RUT: 76.123.456-7<br>
+                        Razón Social: ACME S.A.<br>
+                        Rep. Legal: María González
+                    </div>
+                    <div style="display: flex; gap: var(--space-4);">
+                        <a href="#" class="btn btn-secondary">Ver Muestra</a>
+                        <a href="#" class="btn btn-primary">Solicitar API</a>
+                    </div>
+                </div>
+
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-tags">
+                            <span class="tag">Databam</span>
+                            <span class="tag size">100K propiedades</span>
+                        </div>
+                    </div>
+                    <h3 class="dataset-title">Propiedades con Deuda</h3>
+                    <p class="dataset-description">Hipotecas, deudas, gravámenes y embargos de propiedades chilenas.</p>
+                    <div class="dataset-preview">
+                        Dirección: Av. Providencia 123<br>
+                        Hipotecas: 2 vigentes<br>
+                        Deuda total: $45.000.000
+                    </div>
+                    <a href="https://databam.cl" class="btn btn-primary">Ver en Databam →</a>
+                </div>
+
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-tags">
+                            <span class="tag">PJUD</span>
+                            <span class="tag size">2M causas</span>
+                        </div>
+                    </div>
+                    <h3 class="dataset-title">Data Poder Judicial</h3>
+                    <p class="dataset-description">Histórico de causas civiles, penales y laborales. Actualización semanal.</p>
+                    <div class="dataset-preview">
+                        ROL: C-1234-2024<br>
+                        Tipo: Civil<br>
+                        Estado: En tramitación
+                    </div>
+                    <div style="display: flex; gap: var(--space-4);">
+                        <a href="#" class="btn btn-secondary">Ver Muestra</a>
+                        <a href="#" class="btn btn-primary">Solicitar API</a>
+                    </div>
+                </div>
+
+                <div class="dataset-card">
+                    <div class="dataset-header">
+                        <div class="dataset-tags">
+                            <span class="tag">INE</span>
+                            <span class="tag size">Varios datasets</span>
+                        </div>
+                    </div>
+                    <h3 class="dataset-title">Data INE</h3>
+                    <p class="dataset-description">Censos, empleo, vivienda, población. Data oficial del Instituto Nacional de Estadísticas.</p>
+                    <div class="dataset-preview">
+                        Región: Metropolitana<br>
+                        Población: 7.112.808<br>
+                        Viviendas: 2.304.000
+                    </div>
+                    <div style="display: flex; gap: var(--space-4);">
+                        <a href="#" class="btn btn-secondary">Ver Muestra</a>
+                        <a href="#" class="btn btn-primary">Solicitar API</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Necesitas un dataset específico?</h2>
+            <p style="color: var(--muted); margin: var(--space-4) 0;">Podemos procesar y estructurar cualquier dataset público chileno.</p>
+            <a href="#" class="btn btn-primary" style="max-width: 400px; margin: var(--space-8) auto 0;">
+                Solicitar Dataset Custom
+            </a>
+        </div>
+    </section>
+
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container"><p>Mockup Visual - Just Data by Just Dev It</p></div>
+    </footer>
+</body>
+</html>

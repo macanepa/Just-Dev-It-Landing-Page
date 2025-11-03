@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo: Sistema de Theming - Just Dev It</title>
+    <link rel="stylesheet" href="../../../css/core/reset.css">
+    <link rel="stylesheet" href="../../../css/core/variables.css">
+    <link rel="stylesheet" href="../../../css/core/themes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: var(--font-secondary);
+            background: var(--bg-primary);
+            color: var(--color-neutral-lightest);
+            padding: var(--space-8);
+            line-height: var(--leading-normal);
+        }
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .demo-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+        .demo-header h1 {
+            font-family: var(--font-primary);
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .theme-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            justify-content: center;
+            margin-bottom: var(--space-12);
+        }
+        .theme-btn {
+            padding: var(--space-3) var(--space-6);
+            border: 2px solid var(--color-neutral-dark);
+            border-radius: var(--radius-lg);
+            background: var(--bg-secondary);
+            color: var(--color-neutral-lightest);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-weight: var(--font-semibold);
+        }
+        .theme-btn:hover {
+            border-color: var(--color-brand-primary);
+            transform: translateY(-2px);
+        }
+        .theme-btn.active {
+            background: var(--gradient-primary);
+            border-color: var(--color-brand-primary);
+        }
+        .theme-showcase {
+            display: grid;
+            gap: var(--space-8);
+        }
+        .showcase-section {
+            padding: var(--space-12);
+            border-radius: var(--radius-2xl);
+            border: 2px solid var(--color-neutral-dark);
+        }
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-6);
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-6);
+        }
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+        .color-swatch {
+            text-align: center;
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-neutral-dark);
+        }
+        .color-label {
+            font-size: var(--text-sm);
+            margin-top: var(--space-3);
+            color: var(--color-neutral-light);
+        }
+        .code-block {
+            background: var(--color-neutral-darker);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            overflow-x: auto;
+            margin-top: var(--space-4);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <header class="demo-header">
+            <h1>🎨 Sistema de Theming - Just Dev It</h1>
+            <p style="color: var(--color-neutral-light); font-size: var(--text-lg);">
+                9 temas especializados para cada sección del sitio
+            </p>
+        </header>
+
+        <div class="theme-selector">
+            <button class="theme-btn active" data-theme-name="databam">🏠 Databam</button>
+            <button class="theme-btn" data-theme-name="tools">🛠️ Tools</button>
+            <button class="theme-btn" data-theme-name="energy">⚡ Energy</button>
+            <button class="theme-btn" data-theme-name="data">📊 Data</button>
+            <button class="theme-btn" data-theme-name="city">🏙️ City</button>
+            <button class="theme-btn" data-theme-name="investing">📈 Investing</button>
+            <button class="theme-btn" data-theme-name="finance">💳 Finance</button>
+            <button class="theme-btn" data-theme-name="ai">🤖 AI</button>
+            <button class="theme-btn" data-theme-name="logistics">🚚 Logistics</button>
+        </div>
+
+        <div class="theme-showcase" id="showcase" data-theme="databam">
+            <!-- Paleta de Colores -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Paleta de Colores</h2>
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: var(--theme-primary);">
+                        <div class="color-label">Primary</div>
+                    </div>
+                    <div class="color-swatch" style="background: var(--theme-secondary);">
+                        <div class="color-label">Secondary</div>
+                    </div>
+                    <div class="color-swatch" style="background: var(--theme-accent);">
+                        <div class="color-label">Accent</div>
+                    </div>
+                    <div class="color-swatch" style="background: var(--theme-gradient);">
+                        <div class="color-label">Gradient</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Badges -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Badges</h2>
+                <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                    <span class="badge-theme">Just Dev It</span>
+                    <span class="badge-theme">PropTech</span>
+                    <span class="badge-theme">Beta</span>
+                </div>
+                <div class="code-block">
+&lt;span class="badge-theme"&gt;Just Dev It&lt;/span&gt;
+                </div>
+            </section>
+
+            <!-- Buttons -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Buttons</h2>
+                <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                    <button class="btn-theme">Primary Button</button>
+                    <button class="btn-theme-outline">Outline Button</button>
+                </div>
+                <div class="code-block">
+&lt;button class="btn-theme"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn-theme-outline"&gt;Outline Button&lt;/button&gt;
+                </div>
+            </section>
+
+            <!-- Cards -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Cards</h2>
+                <div class="component-grid">
+                    <div class="card-theme">
+                        <h3 style="color: var(--theme-primary); margin-bottom: var(--space-3);">Card con Tema</h3>
+                        <p style="color: var(--color-neutral-light); margin-bottom: var(--space-4);">
+                            Este card usa el sistema de theming y cambia según el tema activo.
+                        </p>
+                        <button class="btn-theme-outline" style="width: 100%;">Acción</button>
+                    </div>
+                    <div class="card-theme hover-theme-glow">
+                        <h3 style="color: var(--theme-secondary); margin-bottom: var(--space-3);">Card con Hover Glow</h3>
+                        <p style="color: var(--color-neutral-light); margin-bottom: var(--space-4);">
+                            Pasa el mouse sobre este card para ver el efecto de glow temático.
+                        </p>
+                        <button class="btn-theme" style="width: 100%;">Ver más</button>
+                    </div>
+                </div>
+                <div class="code-block">
+&lt;div class="card-theme"&gt;...&lt;/div&gt;
+&lt;div class="card-theme hover-theme-glow"&gt;...&lt;/div&gt;
+                </div>
+            </section>
+
+            <!-- Headings -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Headings con Gradiente</h2>
+                <h1 class="heading-theme-gradient" style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">
+                    Heading XL
+                </h1>
+                <h2 class="heading-theme-gradient" style="font-size: var(--text-3xl); margin-bottom: var(--space-4);">
+                    Heading Large
+                </h2>
+                <h3 class="heading-theme-gradient" style="font-size: var(--text-2xl);">
+                    Heading Medium
+                </h3>
+                <div class="code-block">
+&lt;h1 class="heading-theme-gradient"&gt;Heading&lt;/h1&gt;
+                </div>
+            </section>
+
+            <!-- Backgrounds -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Backgrounds Temáticos</h2>
+                <div style="display: grid; gap: var(--space-4);">
+                    <div class="bg-theme-subtle" style="padding: var(--space-6); border-radius: var(--radius-lg);">
+                        <strong>bg-theme-subtle</strong> - Background sutil con 5% de opacidad
+                    </div>
+                    <div class="bg-theme-muted" style="padding: var(--space-6); border-radius: var(--radius-lg);">
+                        <strong>bg-theme-muted</strong> - Background muted con 10% de opacidad
+                    </div>
+                    <div class="bg-theme-emphasis" style="padding: var(--space-6); border-radius: var(--radius-lg);">
+                        <strong>bg-theme-emphasis</strong> - Background emphasis con 15% de opacidad
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hero Background -->
+            <section class="showcase-section hero-theme-bg" style="min-height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <div style="position: relative; z-index: 1; text-align: center;">
+                    <h2 class="heading-theme-gradient" style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">
+                        Hero con Background Temático
+                    </h2>
+                    <p style="color: var(--color-neutral-light); margin-bottom: var(--space-6);">
+                        Efecto de gradiente radial de fondo
+                    </p>
+                    <button class="btn-theme">Call to Action</button>
+                </div>
+                <div class="code-block" style="position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4); z-index: 2;">
+&lt;section class="hero-theme-bg"&gt;...&lt;/section&gt;
+                </div>
+            </section>
+
+            <!-- Uso del Sistema -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Cómo Usar</h2>
+                <div style="color: var(--color-neutral-light); line-height: var(--leading-relaxed);">
+                    <p style="margin-bottom: var(--space-4);"><strong>1. Agrega el atributo data-theme a tu contenedor:</strong></p>
+                    <div class="code-block">
+&lt;div data-theme="databam"&gt;
+    &lt;!-- Todo el contenido aquí usará el tema Databam --&gt;
+&lt;/div&gt;
+                    </div>
+                    
+                    <p style="margin: var(--space-6) 0 var(--space-4);"><strong>2. Usa las clases utility temáticas:</strong></p>
+                    <div class="code-block">
+&lt;span class="badge-theme"&gt;Badge&lt;/span&gt;
+&lt;button class="btn-theme"&gt;Button&lt;/button&gt;
+&lt;div class="card-theme"&gt;Card&lt;/div&gt;
+&lt;h1 class="heading-theme-gradient"&gt;Heading&lt;/h1&gt;
+                    </div>
+                    
+                    <p style="margin: var(--space-6) 0 var(--space-4);"><strong>3. O usa variables CSS directamente:</strong></p>
+                    <div class="code-block">
+.custom-element {
+    color: var(--theme-primary);
+    background: var(--theme-gradient);
+    border: 2px solid var(--theme-border);
+    box-shadow: var(--theme-shadow);
+}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lista de Temas -->
+            <section class="showcase-section">
+                <h2 class="section-title heading-theme-gradient">Temas Disponibles</h2>
+                <div style="display: grid; gap: var(--space-3); color: var(--color-neutral-light);">
+                    <div>🏠 <strong>databam</strong> - PropTech (Púrpura/Cyan)</div>
+                    <div>🛠️ <strong>tools</strong> - Utilities (Cyan/Verde)</div>
+                    <div>⚡ <strong>energy</strong> - Sector Eléctrico (Azul Eléctrico)</div>
+                    <div>📊 <strong>data</strong> - Datasets (Índigo/Cyan)</div>
+                    <div>🏙️ <strong>city</strong> - Chrome Extension (Morado/Verde)</div>
+                    <div>📈 <strong>investing</strong> - FinTech (Verde/Cyan)</div>
+                    <div>💳 <strong>finance</strong> - Automatización Financiera (Slate/Teal)</div>
+                    <div>🤖 <strong>ai</strong> - Agentes IA (Púrpura/Rosa)</div>
+                    <div>🚚 <strong>logistics</strong> - E-Commerce (Naranja/Cyan)</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Theme Switcher
+        const showcase = document.getElementById('showcase');
+        const themeButtons = document.querySelectorAll('.theme-btn');
+
+        themeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const themeName = btn.dataset.themeName;
+                
+                // Update showcase theme
+                showcase.setAttribute('data-theme', themeName);
+                
+                // Update active button
+                themeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

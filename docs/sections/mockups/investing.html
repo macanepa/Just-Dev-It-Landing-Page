@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="investing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Investing | Mockup Visual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #16A34A; --secondary: #0EA5E9; --accent: #F4C430;
+            --gradient: linear-gradient(135deg, #16A34A 0%, #0EA5E9 100%);
+            --bg: #0f1020; --surface: #141527; --text: #e6e7ee; --muted: #9aa3af; --stroke: #2a2b3f;
+            --font-primary: 'Poppins', sans-serif; --font-secondary: 'Manrope', sans-serif;
+            --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+            --radius: 16px; --shadow: 0 10px 40px rgba(22, 163, 74, 0.3);
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;600;700&display=swap');
+        body { font-family: var(--font-secondary); background: var(--bg); color: var(--text); line-height: 1.6; }
+        h1, h2, h3 { font-family: var(--font-primary); font-weight: 700; line-height: 1.2; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-6); }
+        .header { padding: var(--space-6) 0; border-bottom: 1px solid var(--stroke); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(22, 163, 74, 0.15); color: var(--primary); border-radius: 100px; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; }
+        .hero { padding: var(--space-24) 0; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150%; height: 100%; background: radial-gradient(ellipse at center, rgba(22, 163, 74, 0.15) 0%, transparent 70%); }
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: var(--space-6) 0; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--muted); margin-bottom: var(--space-8); }
+        .search-box { max-width: 600px; margin: var(--space-8) auto; display: flex; gap: var(--space-4); }
+        .search-input { flex: 1; padding: 1rem 1.5rem; background: var(--surface); border: 2px solid var(--stroke); border-radius: var(--radius); color: var(--text); font-size: 1rem; }
+        .search-input:focus { outline: none; border-color: var(--primary); }
+        .section { padding: var(--space-16) 0; }
+        .section-block { background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius); padding: var(--space-8); margin-bottom: var(--space-8); }
+        .section-block h3 { font-size: 1.75rem; margin-bottom: var(--space-4); color: var(--primary); }
+        .section-block p { color: var(--muted); margin-bottom: var(--space-6); line-height: 1.7; }
+        .section-block ul { list-style: none; padding: 0; margin: var(--space-6) 0; }
+        .section-block li { padding: var(--space-4) 0; color: var(--muted); display: flex; align-items: center; }
+        .section-block li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: var(--space-4); font-size: 1.25rem; }
+        .btn { padding: 1rem 2rem; border-radius: var(--radius); font-weight: 600; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s; border: 2px solid transparent; }
+        .btn-primary { background: var(--gradient); color: white; box-shadow: var(--shadow); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(22, 163, 74, 0.4); }
+        .final-cta { text-align: center; padding: var(--space-24) 0; background: linear-gradient(180deg, transparent 0%, rgba(22, 163, 74, 0.05) 100%); }
+        @media (max-width: 768px) { .hero, .section { padding: var(--space-16) 0; } .search-box { flex-direction: column; } }
+        .mockup-badge { position: fixed; top: 20px; right: 20px; background: rgba(255,0,0,0.8); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.875rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge">🎨 MOCKUP VISUAL</div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">FinTech Tools</span>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Just Investing</span>
+                <h1>Invierte con Data, no con Intuición</h1>
+                <p class="hero-subtitle">Herramientas de análisis financiero y portafolios para inversionistas chilenos.</p>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Buscar activo: CMPC, COPEC, AGUAS-A...">
+                    <button class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="section-block">
+                <h3>🚗 Comparador de Vehículos de Inversión</h3>
+                <p>Compara acciones, ETFs y fondos mutuos side-by-side con métricas clave.</p>
+                <ul>
+                    <li>Rendimiento histórico ajustado por dividendos</li>
+                    <li>Volatilidad y Sharpe Ratio</li>
+                    <li>Correlación entre activos</li>
+                    <li>P/E, P/B, Dividend Yield</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Probar Comparador</a>
+            </div>
+
+            <div class="section-block">
+                <h3>📊 Generador de Portafolios Automático</h3>
+                <p>Algoritmo de optimización basado en Modern Portfolio Theory (Markowitz).</p>
+                <ul>
+                    <li>Ingresa monto, perfil de riesgo y horizonte</li>
+                    <li>Recibe portafolio óptimo con pesos por activo</li>
+                    <li>Backtesting con data histórica real</li>
+                    <li>Rebalanceo automático sugerido</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Generar Mi Portafolio</a>
+            </div>
+
+            <div class="section-block">
+                <h3>💼 Valores Cuota Diarios CMF</h3>
+                <p>Todos los fondos mutuos de Chile actualizados diariamente desde la CMF.</p>
+                <ul>
+                    <li>1,000+ fondos indexados</li>
+                    <li>Rentabilidad 7d, 30d, 90d, 1y, 3y, 5y</li>
+                    <li>Filtros por tipo: renta fija, renta variable, mixtos</li>
+                    <li>Exportar a Excel o CSV</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Ver Tabla Completa</a>
+            </div>
+
+            <div class="section-block">
+                <h3>📈 Acciones Chile (IPSA + Small Caps)</h3>
+                <p>Data completa de todas las acciones chilenas con fundamentales y técnicos.</p>
+                <ul>
+                    <li>Precios en tiempo real (delay 15 min)</li>
+                    <li>P/E, P/B, ROE, ROA, Dividend Yield</li>
+                    <li>Gráficos históricos interactivos</li>
+                    <li>Alertas de precio configura bles</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Analizar Acciones</a>
+            </div>
+
+            <div class="section-block">
+                <h3>💱 Convertidor de Divisas</h3>
+                <p>Tipos de cambio actualizados con histórico y gráficos.</p>
+                <ul>
+                    <li>USD, EUR, CLP, UF, UTM, BTC</li>
+                    <li>Histórico de 10 años</li>
+                    <li>Alertas de tipo de cambio</li>
+                    <li>API disponible para integraciones</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Ver Convertidor</a>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para optimizar tus inversiones?</h2>
+            <a href="#" class="btn btn-primary" style="margin-top: 2rem;">Comenzar Gratis</a>
+        </div>
+    </section>
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container"><p>Mockup Visual - Just Investing by Just Dev It</p></div>
+    </footer>
+</body>
+</html>

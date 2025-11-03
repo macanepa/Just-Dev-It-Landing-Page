@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="tools">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Tools | Mockup Visual | Just Dev It</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== VARIABLES BASE ===== */
+        :root {
+            /* Just Tools Theme */
+            --primary: #06B6D4;
+            --secondary: #22C55E;
+            --accent: #F59E0B;
+            --gradient: linear-gradient(135deg, #06B6D4 0%, #22C55E 100%);
+            
+            /* Neutrales */
+            --bg: #0f1020;
+            --surface: #141527;
+            --text: #e6e7ee;
+            --muted: #9aa3af;
+            --stroke: #2a2b3f;
+            
+            /* Tipografía */
+            --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+            --font-secondary: 'Manrope', system-ui, -apple-system, sans-serif;
+            
+            /* Espaciado */
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-24: 6rem;
+            
+            /* Efectos */
+            --radius: 16px;
+            --shadow: 0 10px 40px rgba(6, 182, 212, 0.3);
+        }
+
+        /* ===== TIPOGRAFÍA ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: var(--font-secondary);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* ===== HEADER SIMPLE ===== */
+        .header {
+            padding: var(--space-6) 0;
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: var(--space-24) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: var(--space-6) 0;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--muted);
+            margin-bottom: var(--space-8);
+        }
+
+        /* ===== TOOLS GRID ===== */
+        .tools-section {
+            padding: var(--space-16) 0 var(--space-24);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            padding: var(--space-8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: var(--space-6);
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .tool-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-4);
+            color: var(--text);
+        }
+
+        .tool-description {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-6);
+            flex: 1;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        /* ===== COMING SOON SECTION ===== */
+        .coming-soon {
+            padding: var(--space-24) 0;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(6, 182, 212, 0.05) 100%);
+        }
+
+        .coming-soon h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--space-6);
+        }
+
+        .coming-soon p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: var(--space-8);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: var(--space-16) 0;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+
+            .tool-card {
+                padding: var(--space-6);
+            }
+        }
+
+        /* ===== MOCKUP WATERMARK ===== */
+        .mockup-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mockup Badge -->
+    <div class="mockup-badge">🎨 MOCKUP VISUAL - Solo diseño</div>
+
+    <!-- Header Simple -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">Dev Utilities</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Just Tools</span>
+                
+                <h1>Herramientas que Simplifican tu Día</h1>
+                
+                <p class="hero-subtitle">
+                    Generadores, conversores y viewers sin instalación. Gratis y sin registro.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- Tool 1: QR Generator -->
+                <div class="tool-card">
+                    <div class="tool-icon">📱</div>
+                    <h3 class="tool-title">Generador de Códigos QR</h3>
+                    <p class="tool-description">
+                        Genera códigos QR personalizados con logo y colores. Descarga en alta resolución.
+                    </p>
+                    <a href="#" class="btn btn-primary">Generar QR</a>
+                </div>
+
+                <!-- Tool 2: JSON Viewer -->
+                <div class="tool-card">
+                    <div class="tool-icon">📋</div>
+                    <h3 class="tool-title">JSON Viewer & Formatter</h3>
+                    <p class="tool-description">
+                        Visualiza, formatea y valida JSON fácilmente. Syntax highlighting y tree view.
+                    </p>
+                    <a href="#" class="btn btn-primary">Abrir Viewer</a>
+                </div>
+
+                <!-- Tool 3: PDF to Excel -->
+                <div class="tool-card">
+                    <div class="tool-icon">📄</div>
+                    <h3 class="tool-title">Convertidor PDF a Excel</h3>
+                    <p class="tool-description">
+                        Convierte PDFs con tablas a Excel editable. Extracción inteligente de datos.
+                    </p>
+                    <a href="#" class="btn btn-primary">Convertir PDF</a>
+                </div>
+
+                <!-- Tool 4: Image Editor -->
+                <div class="tool-card">
+                    <div class="tool-icon">🖼️</div>
+                    <h3 class="tool-title">Editor de Imágenes</h3>
+                    <p class="tool-description">
+                        Recorta, redimensiona y optimiza imágenes al instante. Soporta JPG, PNG, WEBP.
+                    </p>
+                    <a href="#" class="btn btn-primary">Editar Imagen</a>
+                </div>
+
+                <!-- Tool 5: DWG Viewer -->
+                <div class="tool-card">
+                    <div class="tool-icon">📐</div>
+                    <h3 class="tool-title">Visor de Archivos DWG</h3>
+                    <p class="tool-description">
+                        Visualiza archivos CAD/DWG en el navegador. Zoom, pan y medición incluidos.
+                    </p>
+                    <a href="#" class="btn btn-primary">Ver DWG</a>
+                </div>
+
+                <!-- Tool 6: Currency Converter -->
+                <div class="tool-card">
+                    <div class="tool-icon">💱</div>
+                    <h3 class="tool-title">Convertidor de Divisas</h3>
+                    <p class="tool-description">
+                        Tipos de cambio en tiempo real. USD, EUR, CLP, UF, UTM y más.
+                    </p>
+                    <a href="#" class="btn btn-primary">Convertir</a>
+                </div>
+
+                <!-- Tool 7: Timezone Converter -->
+                <div class="tool-card">
+                    <div class="tool-icon">🕐</div>
+                    <h3 class="tool-title">Convertidor de Zonas Horarias</h3>
+                    <p class="tool-description">
+                        Convierte entre UTC y zonas horarias al instante. Detección automática.
+                    </p>
+                    <a href="#" class="btn btn-primary">Convertir Hora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <h2>Más Herramientas Próximamente</h2>
+            <p>Estamos desarrollando más utilidades. ¿Qué te gustaría ver?</p>
+            <a href="#" class="btn btn-secondary" style="max-width: 300px; margin: 0 auto;">
+                Sugerir Herramienta
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Simple -->
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container">
+            <p>Mockup Visual - Just Tools by Just Dev It</p>
+            <p style="font-size: 0.875rem; margin-top: 1rem;">
+                Este es solo un mockup de diseño. Las herramientas funcionales se desarrollarán en Python.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

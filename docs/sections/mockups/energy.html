@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="energy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Energy | Mockup Visual | Just Dev It</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== VARIABLES BASE ===== */
+        :root {
+            /* Just Energy Theme */
+            --primary: #1479FF;
+            --secondary: #00E0FF;
+            --accent: #7DD3FC;
+            --gradient: linear-gradient(135deg, #1479FF 0%, #00E0FF 100%);
+            
+            /* Neutrales */
+            --bg: #0f1020;
+            --surface: #141527;
+            --text: #e6e7ee;
+            --muted: #9aa3af;
+            --stroke: #2a2b3f;
+            
+            /* Tipografía */
+            --font-primary: 'Poppins', system-ui, -apple-system, sans-serif;
+            --font-secondary: 'Manrope', system-ui, -apple-system, sans-serif;
+            
+            /* Espaciado */
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-24: 6rem;
+            
+            /* Efectos */
+            --radius: 16px;
+            --shadow: 0 10px 40px rgba(20, 121, 255, 0.3);
+        }
+
+        /* ===== TIPOGRAFÍA ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: var(--font-secondary);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        .header {
+            padding: var(--space-6) 0;
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(20, 121, 255, 0.15);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: var(--space-24) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(20, 121, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: var(--space-6) 0;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: var(--space-8);
+        }
+
+        /* ===== TABS ===== */
+        .tabs-section {
+            padding: var(--space-16) 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-12);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--stroke);
+            border-radius: var(--radius);
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--gradient);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-features {
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            padding: var(--space-8);
+            margin-bottom: var(--space-8);
+        }
+
+        .tab-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tab-features li {
+            padding: var(--space-4) 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            color: var(--muted);
+        }
+
+        .tab-features li::before {
+            content: '⚡';
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-right: var(--space-4);
+        }
+
+        /* ===== CARDS ===== */
+        .section {
+            padding: var(--space-24) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--space-4);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            padding: var(--space-8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-4);
+            color: var(--text);
+        }
+
+        .card-description {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(20, 121, 255, 0.4);
+        }
+
+        .final-cta {
+            text-align: center;
+            padding: var(--space-24) 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(20, 121, 255, 0.05) 100%);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero, .section {
+                padding: var(--space-16) 0;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-btn {
+                width: 100%;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mockup-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge">🎨 MOCKUP VISUAL - Solo diseño</div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">Sector Energético</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Just Energy</span>
+                <h1>Data Eléctrica de Chile en tu Dashboard</h1>
+                <p class="hero-subtitle">
+                    Costos marginales, SCADA, DGA y más. Data del sector energético chileno en tiempo real.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tabs-section">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active">Data Diferida (Free)</button>
+                <button class="tab-btn">Tiempo Real (Pro)</button>
+            </div>
+
+            <div class="tab-content active">
+                <div class="tab-features">
+                    <ul>
+                        <li>Costos marginales históricos del Coordinador Eléctrico</li>
+                        <li>Datos DGA (caudales, niveles de embalses)</li>
+                        <li>Reportes mensuales consolidados</li>
+                        <li>Exportación en Excel y CSV</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-features">
+                    <ul>
+                        <li>SCADA en vivo desde centrales eléctricas</li>
+                        <li>Alertas automatizadas de eventos críticos</li>
+                        <li>API REST con 99.9% uptime garantizado</li>
+                        <li>Dashboard personalizado con KPIs en tiempo real</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Casos de Uso</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Visor de Data</h3>
+                    <p class="card-description">
+                        Dashboard ejecutivo para generadoras eléctricas con métricas operacionales en tiempo real.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3 class="card-title">Automatización Tickets DGA</h3>
+                    <p class="card-description">
+                        RPA para trámites automáticos en portal DGA. Reduce tiempo de gestión en 90%.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔌</div>
+                    <h3 class="card-title">Integración API Custom</h3>
+                    <p class="card-description">
+                        Conecta data energética con tu ERP, CRM o sistema interno vía API REST.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Necesitas data energética para tu operación?</h2>
+            <a href="#" class="btn btn-primary" style="margin-top: 2rem;">
+                Cotizar Implementación
+            </a>
+        </div>
+    </section>
+
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container">
+            <p>Mockup Visual - Just Energy by Just Dev It</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching (solo para mockup visual)
+        document.querySelectorAll('.tab-btn').forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.tab-content')[index].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

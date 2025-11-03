@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="logistics">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport="width=device-width, initial-scale=1.0">
+    <title>Just Logistics | Mockup Visual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #F97316; --secondary: #0EA5E9; --accent: #22C55E;
+            --gradient: linear-gradient(135deg, #F97316 0%, #0EA5E9 100%);
+            --bg: #0a0e18; --surface: #0f1320; --text: #e6e7ee; --muted: #9aa3af; --stroke: #1e2538;
+            --font-primary: 'Poppins', sans-serif; --font-secondary: 'Manrope', sans-serif;
+            --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+            --radius: 16px; --shadow: 0 10px 40px rgba(249, 115, 22, 0.3);
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;600;700&display=swap');
+        body { font-family: var(--font-secondary); background: var(--bg); color: var(--text); line-height: 1.6; }
+        h1, h2, h3 { font-family: var(--font-primary); font-weight: 700; line-height: 1.2; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--space-6); }
+        .header { padding: var(--space-6) 0; border-bottom: 1px solid var(--stroke); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(249, 115, 22, 0.15); color: var(--primary); border-radius: 100px; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; }
+        .hero { padding: var(--space-24) 0; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150%; height: 100%; background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.15) 0%, transparent 70%); }
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: var(--space-6) 0; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--muted); margin-bottom: var(--space-8); }
+        .section { padding: var(--space-16) 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-12); }
+        .feature-card { background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius); padding: var(--space-6); text-align: center; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: var(--shadow); }
+        .feature-icon { font-size: 3rem; margin-bottom: var(--space-4); }
+        .feature-card h3 { font-size: 1.25rem; margin-bottom: var(--space-4); color: var(--primary); }
+        .feature-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+        .block-section { background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius); padding: var(--space-8); margin-bottom: var(--space-8); }
+        .block-section h3 { font-size: 1.75rem; margin-bottom: var(--space-6); color: var(--secondary); display: flex; align-items: center; gap: var(--space-4); }
+        .block-section h3 span { font-size: 2rem; }
+        .block-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); }
+        .integration-card { background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: 12px; padding: var(--space-6); }
+        .integration-card h4 { font-size: 1.125rem; color: var(--text); margin-bottom: var(--space-4); }
+        .integration-card ul { list-style: none; padding: 0; }
+        .integration-card li { padding: 0.5rem 0; color: var(--muted); font-size: 0.9rem; display: flex; align-items: flex-start; }
+        .integration-card li::before { content: '✓'; color: var(--accent); font-weight: 700; margin-right: var(--space-4); }
+        .btn { padding: 1rem 2rem; border-radius: var(--radius); font-weight: 600; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s; border: 2px solid transparent; }
+        .btn-primary { background: var(--gradient); color: white; box-shadow: var(--shadow); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(249, 115, 22, 0.4); }
+        .final-cta { text-align: center; padding: var(--space-24) 0; background: linear-gradient(180deg, transparent 0%, rgba(249, 115, 22, 0.05) 100%); }
+        @media (max-width: 768px) { .hero, .section { padding: var(--space-16) 0; } .features-grid { grid-template-columns: 1fr; } .block-content { grid-template-columns: 1fr; } }
+        .mockup-badge { position: fixed; top: 20px; right: 20px; background: rgba(255,0,0,0.8); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.875rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge">🎨 MOCKUP VISUAL</div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-text">Just Dev It</div>
+                <span class="badge">E-Commerce & Logistics</span>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Just Logistics</span>
+                <h1>Full Stack E-Commerce & Logística</h1>
+                <p class="hero-subtitle">Integraciones, automatización de stock, OMS/WMS a medida y conectores para todos los marketplaces.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-12); color: var(--text);">¿Qué Automatizamos?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Pasarelas de Pago</h3>
+                    <p>Integraciones con Transbank, Mercado Pago, Flow, Khipu, Stripe y más.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Gestión de Stock</h3>
+                    <p>Actualización automática en tiempo real entre tu tienda y marketplaces.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>OMS/WMS Custom</h3>
+                    <p>Order Management System y Warehouse Management a tu medida.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Conectores Marketplace</h3>
+                    <p>Sincroniza con Mercado Libre, Paris, Falabella, Linio y más.</p>
+                </div>
+            </div>
+
+            <div class="block-section">
+                <h3><span>🔌</span> Integraciones de Pasarelas</h3>
+                <div class="block-content">
+                    <div class="integration-card">
+                        <h4>Transbank Webpay Plus</h4>
+                        <ul>
+                            <li>OneClick para pagos recurrentes</li>
+                            <li>Webpay Plus con 3DS</li>
+                            <li>Anulaciones y reversos automáticos</li>
+                            <li>Reportería de transacciones</li>
+                        </ul>
+                    </div>
+                    <div class="integration-card">
+                        <h4>Mercado Pago</h4>
+                        <ul>
+                            <li>Checkout Pro y Transparent</li>
+                            <li>Suscripciones recurrentes</li>
+                            <li>Split de pagos (marketplace)</li>
+                            <li>Webhooks de notificación</li>
+                        </ul>
+                    </div>
+                    <div class="integration-card">
+                        <h4>Flow, Khipu, Stripe</h4>
+                        <ul>
+                            <li>Múltiples métodos de pago</li>
+                            <li>Pagos internacionales (Stripe)</li>
+                            <li>Transferencias bancarias (Khipu)</li>
+                            <li>Dashboard unificado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-section">
+                <h3><span>📊</span> Actualización de Stock</h3>
+                <p style="color: var(--muted); margin-bottom: var(--space-6);">Sistema centralizado que sincroniza inventario entre tu tienda principal, sucursales y todos los canales de venta.</p>
+                <div class="block-content">
+                    <div class="integration-card">
+                        <h4>Sincronización Multi-Canal</h4>
+                        <ul>
+                            <li>Tienda propia (WooCommerce, Shopify, custom)</li>
+                            <li>Mercado Libre, Paris, Falabella, Linio</li>
+                            <li>Actualizaciones cada 5 minutos o en tiempo real</li>
+                            <li>Alertas de stock crítico</li>
+                        </ul>
+                    </div>
+                    <div class="integration-card">
+                        <h4>Gestión de Variantes</h4>
+                        <ul>
+                            <li>SKU por talla, color, modelo</li>
+                            <li>Stock por sucursal/bodega</li>
+                            <li>Reglas de asignación inteligente</li>
+                            <li>Reservas de stock por venta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-section">
+                <h3><span>🏭</span> OMS/WMS a Medida</h3>
+                <p style="color: var(--muted); margin-bottom: var(--space-6);">Desarrollamos tu Order Management System y Warehouse Management System personalizado según tus procesos.</p>
+                <div class="block-content">
+                    <div class="integration-card">
+                        <h4>Order Management (OMS)</h4>
+                        <ul>
+                            <li>Dashboard unificado de pedidos</li>
+                            <li>Picking, packing, shipping automation</li>
+                            <li>Integración con carriers (Chilexpress, Starken, Correos)</li>
+                            <li>Tracking en tiempo real</li>
+                            <li>Gestión de devoluciones</li>
+                        </ul>
+                    </div>
+                    <div class="integration-card">
+                        <h4>Warehouse Management (WMS)</h4>
+                        <ul>
+                            <li>Gestión de ubicaciones (bins, racks)</li>
+                            <li>Ingreso y egreso de mercadería</li>
+                            <li>Inventario cíclico y trazabilidad</li>
+                            <li>Optimización de rutas de picking</li>
+                            <li>App móvil para operarios</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-section">
+                <h3><span>🛍️</span> Conectores Marketplace</h3>
+                <div class="block-content">
+                    <div class="integration-card">
+                        <h4>Mercado Libre</h4>
+                        <ul>
+                            <li>Publicación masiva de productos</li>
+                            <li>Sincronización de stock y precios</li>
+                            <li>Gestión de preguntas automática</li>
+                            <li>Mercado Envíos Full integrado</li>
+                        </ul>
+                    </div>
+                    <div class="integration-card">
+                        <h4>Paris, Falabella, Linio</h4>
+                        <ul>
+                            <li>APIs de integración nativas</li>
+                            <li>Actualización de catálogo</li>
+                            <li>Gestión de órdenes centralizada</li>
+                            <li>Reportería de ventas unificada</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para Escalar tu E-Commerce?</h2>
+            <p style="color: var(--muted); max-width: 700px; margin: var(--space-6) auto;">Agenda una consultoría y diseñamos tu stack logístico completo.</p>
+            <a href="#" class="btn btn-primary" style="margin-top: var(--space-6);">Planificar Implementación</a>
+        </div>
+    </section>
+    <footer style="padding: 3rem 0; text-align: center; border-top: 1px solid var(--stroke); color: var(--muted);">
+        <div class="container"><p>Mockup Visual - Just Logistics by Just Dev It</p></div>
+    </footer>
+</body>
+</html>
