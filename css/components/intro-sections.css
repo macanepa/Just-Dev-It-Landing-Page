@@ -126,7 +126,7 @@
 }
 
 .intro-stat-number {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
   font-weight: 900;
   background: linear-gradient(135deg, var(--color-brand-secondary), var(--color-brand-accent));
   -webkit-background-clip: text;
@@ -136,6 +136,7 @@
   line-height: 1.1;
   margin-bottom: 0.5rem;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .intro-stat-label {
@@ -186,7 +187,7 @@
   }
   
   .intro-stat-number {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
     margin-bottom: 0.6rem;
   }
   
@@ -241,7 +242,7 @@
   }
   
   .intro-stat-number {
-    font-size: clamp(1.75rem, 3.8vw, 2.5rem);
+    font-size: clamp(1.5rem, 3.3vw, 2.2rem);
     margin-bottom: 0.7rem;
   }
   
@@ -293,7 +294,7 @@
   }
   
   .intro-stat-number {
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
     margin-bottom: 0.75rem;
   }
   
@@ -349,7 +350,7 @@
   }
   
   .intro-stat-number {
-    font-size: clamp(2.25rem, 3.3vw, 3rem);
+    font-size: clamp(2rem, 2.8vw, 2.6rem);
     margin-bottom: 0.85rem;
   }
   
@@ -400,7 +401,7 @@
   }
   
   .intro-stat-number {
-    font-size: clamp(2.25rem, 3.2vw, 3rem);
+    font-size: clamp(2rem, 2.8vw, 2.6rem);
   }
   
   .intro-stat-label {
@@ -442,7 +443,7 @@
   }
   
   .intro-stat-number {
-    font-size: 3.25rem;
+    font-size: 2.8rem;
   }
   
   .intro-stat-label {
