@@ -1,0 +1,261 @@
+/* ===== SELECTOR DE IDIOMA ===== */
+/* Botón elegante y responsive para cambiar entre español e inglés */
+
+.language-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08),
+              0 2px 8px rgba(0, 0, 0, 0.04);
+  
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Evitar selección de texto */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.language-selector:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12),
+              0 3px 10px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.language-selector:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Bandera/icono del idioma */
+.language-flag {
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Texto del idioma (ES/EN) */
+.language-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+/* Tooltip al hacer hover */
+.language-tooltip {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap;
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.language-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.85);
+}
+
+.language-selector:hover .language-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Animación de cambio de idioma */
+.language-selector.switching {
+  animation: languageSwitch 0.4s ease;
+}
+
+@keyframes languageSwitch {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.95) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .language-selector {
+    top: 15px;
+    right: 15px;
+    padding: 8px 14px;
+    gap: 6px;
+  }
+  
+  .language-flag {
+    font-size: 20px;
+  }
+  
+  .language-text {
+    font-size: 13px;
+  }
+  
+  .language-tooltip {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .language-selector {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    gap: 5px;
+  }
+  
+  .language-flag {
+    font-size: 18px;
+  }
+  
+  .language-text {
+    font-size: 12px;
+  }
+  
+  /* Ocultar tooltip en mobile */
+  .language-tooltip {
+    display: none;
+  }
+}
+
+/* ===== DARK MODE (opcional) ===== */
+@media (prefers-color-scheme: dark) {
+  .language-selector {
+    background: rgba(30, 30, 30, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .language-selector:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .language-text {
+    color: #ffffff;
+  }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+.language-selector:focus {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+.language-selector:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Reducir movimiento para usuarios con preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .language-selector,
+  .language-tooltip,
+  .language-selector.switching {
+    animation: none;
+    transition: none;
+  }
+  
+  .language-selector:hover {
+    transform: none;
+  }
+}
+
+/* ===== ESTADOS ADICIONALES ===== */
+
+/* Loading state (mientras detecta el idioma) */
+.language-selector.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.language-selector.loading .language-flag {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Success state (cuando cambia el idioma) */
+.language-selector.success {
+  animation: successPulse 0.6s ease;
+}
+
+@keyframes successPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+  }
+}
+
+/* ===== INTEGRACIÓN CON NAVEGACIÓN EXISTENTE ===== */
+/* Si el sitio tiene una barra de navegación fija, ajustar posición */
+
+/* Cuando hay navegación con altura conocida */
+body.has-navigation .language-selector {
+  top: 80px; /* Ajustar según altura de la nav */
+}
+
+/* En mobile, posicionar debajo del menú hamburguesa si existe */
+@media (max-width: 768px) {
+  body.has-mobile-menu .language-selector {
+    top: 60px;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .language-selector {
+    display: none;
+  }
+}
