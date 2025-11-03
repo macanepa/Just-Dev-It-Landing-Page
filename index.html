@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-CL">
   <head>
     <!-- ===== META BÁSICAS ===== -->
@@ -512,12 +512,12 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="src/assets/images/Desktop/Isotipo_morado.svg"
+      href="assets/images/Desktop/Isotipo_morado.svg"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="src/assets/images/apple-touch-icon.png"
+      href="assets/images/apple-touch-icon.png"
     />
 
     <!-- ===== SITEMAP ===== -->
@@ -550,19 +550,19 @@
     <!-- ===== PREFETCH RECURSOS CRíTICOS ===== -->
     <link
       rel="preload"
-      href="src/assets/images/Desktop/logo-principal-blanco.svg"
+      href="assets/images/Desktop/logo-principal-blanco.svg"
       as="image"
       type="image/svg+xml"
     />
     <link
       rel="preload"
-      href="src/assets/Just Dev It/Isotipo/Isotipo_blanco.svg"
+      href="assets/Just Dev It/Isotipo/Isotipo_blanco.svg"
       as="image"
       type="image/svg+xml"
     />
     <link
       rel="preload"
-      href="src/assets/images/Desktop/Isotipo_morado.svg"
+      href="assets/images/Desktop/Isotipo_morado.svg"
       as="image"
       type="image/svg+xml"
       fetchpriority="high"
@@ -572,47 +572,47 @@
     
     <!-- CRITICAL CSS (Above-the-fold - Render Blocking) -->
     <!-- Estos se cargan síncronamente porque son necesarios para First Paint -->
-    <link rel="stylesheet" href="src/css/core/reset.css" />
-    <link rel="stylesheet" href="src/css/core/variables.css" />
-    <link rel="stylesheet" href="src/css/core/typography.css" />
-    <link rel="stylesheet" href="src/css/components/preloader.css" />
-    <link rel="stylesheet" href="src/css/components/navigation.css" />
-    <link rel="stylesheet" href="src/css/components/hero.css" />
+    <link rel="stylesheet" href="css/core/reset.css" />
+    <link rel="stylesheet" href="css/core/variables.css" />
+    <link rel="stylesheet" href="css/core/typography.css" />
+    <link rel="stylesheet" href="css/components/preloader.css" />
+    <link rel="stylesheet" href="css/components/navigation.css" />
+    <link rel="stylesheet" href="css/components/hero.css" />
     
     <!-- NON-CRITICAL CSS (Below-the-fold - Deferred con media trick) -->
     <!-- Estos se cargan asíncronamente para no bloquear el render -->
-    <link rel="preload" href="src/css/layouts/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/layouts/sections.css"></noscript>
+    <link rel="preload" href="css/layouts/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/layouts/sections.css"></noscript>
     
-    <link rel="preload" href="src/css/layouts/grid.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/layouts/grid.css"></noscript>
+    <link rel="preload" href="css/layouts/grid.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/layouts/grid.css"></noscript>
     
-    <link rel="preload" href="src/css/components/cards.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/cards.css"></noscript>
+    <link rel="preload" href="css/components/cards.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/cards.css"></noscript>
     
-    <link rel="preload" href="src/css/components/slider-cards.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/slider-cards.css"></noscript>
+    <link rel="preload" href="css/components/slider-cards.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/slider-cards.css"></noscript>
     
-    <link rel="preload" href="src/css/components/intro-sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/intro-sections.css"></noscript>
+    <link rel="preload" href="css/components/intro-sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/intro-sections.css"></noscript>
     
-    <link rel="preload" href="src/css/components/forms.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/forms.css"></noscript>
+    <link rel="preload" href="css/components/forms.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/forms.css"></noscript>
     
-    <link rel="preload" href="src/css/components/portfolio-filter.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/portfolio-filter.css"></noscript>
+    <link rel="preload" href="css/components/portfolio-filter.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/portfolio-filter.css"></noscript>
     
-    <link rel="preload" href="src/css/components/button-fix.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/button-fix.css"></noscript>
+    <link rel="preload" href="css/components/button-fix.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/button-fix.css"></noscript>
     
-    <link rel="preload" href="src/css/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/components/footer.css"></noscript>
+    <link rel="preload" href="css/components/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/footer.css"></noscript>
     
-    <link rel="preload" href="src/css/utils/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/utils/animations.css"></noscript>
+    <link rel="preload" href="css/utils/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/utils/animations.css"></noscript>
     
-    <link rel="preload" href="src/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="src/css/main.css"></noscript>
+    <link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/main.css"></noscript>
 
 
     <!-- ===== SCHEMA.ORG JSON-LD PARA IA GENERATIVA ===== -->
@@ -916,7 +916,7 @@
       <div class="preloader-content">
         <div class="preloader-logo">
           <img
-            src="src/assets/Just Dev It/Isotipo/Isotipo_blanco.svg"
+            src="assets/Just Dev It/Isotipo/Isotipo_blanco.svg"
             alt="Just Dev It"
             width="120"
             height="120"
@@ -961,7 +961,7 @@
           <div class="nav-brand">
             <a href="/" aria-label="Just Dev It - Inicio">
               <img
-                src="src/assets/images/Desktop/logo-principal-blanco.svg"
+                src="assets/images/Desktop/logo-principal-blanco.svg"
                 alt="Logo Just Dev It"
                 width="140"
                 height="50"
@@ -1049,7 +1049,7 @@
 
           <div class="hero-visual" id="hero-3d-container">
             <img
-              src="src/assets/images/Desktop/Isotipo_morado.svg"
+              src="assets/images/Desktop/Isotipo_morado.svg"
               alt="Just Dev It - Isotipo"
               class="hero-isotipo-static"
               width="400"
@@ -1106,7 +1106,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso3.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 1.webp">
             <img
-              src="src/assets/images/Desktop/Recurso3.webp"
+              src="assets/images/Desktop/Recurso3.webp"
               alt=""
               class="slider-bg-image active"
               width="1920"
@@ -1118,7 +1118,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso7.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 2.webp">
             <img
-              src="src/assets/images/Desktop/Recurso7.webp"
+              src="assets/images/Desktop/Recurso7.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1130,7 +1130,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso10.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 4.webp">
             <img
-              src="src/assets/images/Desktop/Recurso10.webp"
+              src="assets/images/Desktop/Recurso10.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1142,7 +1142,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso3.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 1.webp">
             <img
-              src="src/assets/images/Desktop/Recurso3.webp"
+              src="assets/images/Desktop/Recurso3.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1154,7 +1154,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso7.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 2.webp">
             <img
-              src="src/assets/images/Desktop/Recurso7.webp"
+              src="assets/images/Desktop/Recurso7.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1166,7 +1166,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso10.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 4.webp">
             <img
-              src="src/assets/images/Desktop/Recurso10.webp"
+              src="assets/images/Desktop/Recurso10.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1209,7 +1209,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso3.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 1.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso3.webp"
+                    src="assets/images/Desktop/Recurso3.webp"
                     alt="Desarrollo de Software a Medida"
                     class="slider-card-image"
                     width="800"
@@ -1250,7 +1250,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso7.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 2.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso7.webp"
+                    src="assets/images/Desktop/Recurso7.webp"
                     alt="Cloud & Data Engineering"
                     class="slider-card-image"
                     width="800"
@@ -1291,7 +1291,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso10.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 4.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso10.webp"
+                    src="assets/images/Desktop/Recurso10.webp"
                     alt="Agentes de IA y Machine Learning"
                     class="slider-card-image"
                     width="800"
@@ -1332,7 +1332,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso3.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 5.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso3.webp"
+                    src="assets/images/Desktop/Recurso3.webp"
                     alt="Ecosistemas Fintech e Inmobiliarios"
                     class="slider-card-image"
                     loading="lazy"
@@ -1371,7 +1371,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso7.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 6.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso7.webp"
+                    src="assets/images/Desktop/Recurso7.webp"
                     alt="Integraciones de Sistemas"
                     class="slider-card-image"
                     loading="lazy"
@@ -1410,7 +1410,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso10.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 8.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso10.webp"
+                    src="assets/images/Desktop/Recurso10.webp"
                     alt="Data Analytics & Reporting"
                     class="slider-card-image"
                     loading="lazy"
@@ -1503,7 +1503,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto7.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto7.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto7.webp"
+              src="assets/images/Desktop/Proyecto7.webp"
               alt=""
               class="slider-bg-image active"
               width="1920"
@@ -1515,7 +1515,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto1.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto1.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto1.webp"
+              src="assets/images/Desktop/Proyecto1.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1527,7 +1527,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto5.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto5.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto5.webp"
+              src="assets/images/Desktop/Proyecto5.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1539,7 +1539,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto7.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto7.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto7.webp"
+              src="assets/images/Desktop/Proyecto7.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1551,7 +1551,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto3.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto3.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto3.webp"
+              src="assets/images/Desktop/Proyecto3.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1563,7 +1563,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto4.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto4.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto4.webp"
+              src="assets/images/Desktop/Proyecto4.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1575,7 +1575,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto1.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto1.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto1.webp"
+              src="assets/images/Desktop/Proyecto1.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1587,7 +1587,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto5.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto5.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto5.webp"
+              src="assets/images/Desktop/Proyecto5.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1599,7 +1599,7 @@
             <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto6.webp">
             <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto6.webp">
             <img
-              src="src/assets/images/Desktop/Proyecto6.webp"
+              src="assets/images/Desktop/Proyecto6.webp"
               alt=""
               class="slider-bg-image"
               width="1920"
@@ -1607,7 +1607,7 @@
             loading="lazy"
           />
           <img
-            src="src/assets/images/Proyecto7.webp"
+            src="assets/images/Proyecto7.webp"
             alt=""
             class="slider-bg-image"
             width="1920"
@@ -1649,7 +1649,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto7.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto7.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto7.webp"
+                    src="assets/images/Desktop/Proyecto7.webp"
                     alt="Agentes de Inteligencia Artificial"
                     class="slider-card-image"
                     width="800"
@@ -1691,7 +1691,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto1.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto1.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto1.webp"
+                    src="assets/images/Desktop/Proyecto1.webp"
                     alt="Automatización de Estados Financieros"
                     class="slider-card-image"
                     width="800"
@@ -1735,7 +1735,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto5.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto5.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto5.webp"
+                    src="assets/images/Desktop/Proyecto5.webp"
                     alt="Integraciones E-commerce"
                     class="slider-card-image"
                     width="800"
@@ -1779,7 +1779,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto7.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto7.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto7.webp"
+                    src="assets/images/Desktop/Proyecto7.webp"
                     alt="Infraestructura Cloud y Bases de Datos"
                     class="slider-card-image"
                     width="800"
@@ -1823,7 +1823,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Recurso3.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Recurso 1.webp">
                   <img
-                    src="src/assets/images/Desktop/Recurso3.webp"
+                    src="assets/images/Desktop/Recurso3.webp"
                     alt="Integración de IA en Procesos Empresariales"
                     class="slider-card-image"
                     width="800"
@@ -1865,7 +1865,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto3.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto3.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto3.webp"
+                    src="assets/images/Desktop/Proyecto3.webp"
                     alt="Automatización PJUD - Carga y Envíos"
                     class="slider-card-image"
                     width="800"
@@ -1907,7 +1907,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto1.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto1.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto1.webp"
+                    src="assets/images/Desktop/Proyecto1.webp"
                     alt="Portafolios Top-N y Backtesting"
                     class="slider-card-image"
                     width="800"
@@ -1950,7 +1950,7 @@
               >
                 <!-- Imagen Databam.png no existe - TODO: agregar imagen real -->
                 <!-- <img
-                  src="src/assets/images/Databam.png"
+                  src="assets/images/Databam.png"
                   alt="Databam - Plataforma de Data Inmobiliaria"
                   class="slider-card-image"
                   width="800"
@@ -1989,7 +1989,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto4.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto4.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto4.webp"
+                    src="assets/images/Desktop/Proyecto4.webp"
                     alt="Tickets DGA - Alta y Seguimiento"
                     class="slider-card-image"
                     width="800"
@@ -2032,7 +2032,7 @@
                   <source media="(min-width: 768px)" srcset="assets/images/Desktop/Proyecto6.webp">
                   <source media="(max-width: 767px)" srcset="assets/images/mobile/Proyecto6.webp">
                   <img
-                    src="src/assets/images/Desktop/Proyecto6.webp"
+                    src="assets/images/Desktop/Proyecto6.webp"
                     alt="CBRS Datos PropTech"
                     class="slider-card-image"
                     width="800"
@@ -2138,7 +2138,7 @@
               class="card card-flat flex items-center justify-center p-8 client-logo-card"
             >
               <img
-                src="src/assets/images/Desktop/partner1.webp"
+                src="assets/images/Desktop/partner1.webp"
                 alt="Pacific Hydro"
                 width="200"
                 height="80"
@@ -2150,7 +2150,7 @@
               class="card card-flat flex items-center justify-center p-8 client-logo-card"
             >
               <img
-                src="src/assets/images/Desktop/partner2.webp"
+                src="assets/images/Desktop/partner2.webp"
                 alt="Cliente"
                 width="200"
                 height="80"
@@ -2162,7 +2162,7 @@
               class="card card-flat flex items-center justify-center p-8 client-logo-card"
             >
               <img
-                src="src/assets/images/Desktop/partner3.webp"
+                src="assets/images/Desktop/partner3.webp"
                 alt="Cliente"
                 width="200"
                 height="80"
@@ -2174,7 +2174,7 @@
               class="card card-flat flex items-center justify-center p-8 client-logo-card"
             >
               <img
-                src="src/assets/images/Desktop/partner4.webp"
+                src="assets/images/Desktop/partner4.webp"
                 alt="Cliente"
                 width="200"
                 height="80"
@@ -2211,7 +2211,7 @@
             >
               <div class="team-card-avatar">
                 <img
-                  src="src/assets/images/Desktop/joaquin-espildora.webp"
+                  src="assets/images/Desktop/joaquin-espildora.webp"
                   alt="Joaquín Espildora M."
                   width="300"
                   height="300"
@@ -2235,7 +2235,7 @@
             >
               <div class="team-card-avatar">
                 <img
-                  src="src/assets/images/Desktop/matias-canepa.webp"
+                  src="assets/images/Desktop/matias-canepa.webp"
                   alt="Matías Cánepa G."
                   width="300"
                   height="300"
@@ -2383,7 +2383,7 @@
           <div class="footer-column">
             <div class="footer-logo">
               <img
-                src="src/assets/images/Desktop/logo-principal-blanco.svg"
+                src="assets/images/Desktop/logo-principal-blanco.svg"
                 alt="Just Dev It"
                 width="140"
                 height="auto"
@@ -2607,7 +2607,7 @@
     <!--
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
-    <script async src="src/js/logo-3d-animation.js"></script>
+    <script async src="js/logo-3d-animation.js"></script>
     -->
 
     <!-- Swiper JS Library - Lazy load con defer -->
@@ -2617,12 +2617,12 @@
 
     <!-- ===== SCRIPTS PRINCIPALES (Individuales Restaurados) ===== -->
     <!-- Critical Scripts - Preloader primero -->
-    <script src="src/js/epic-preloader.js"></script>
+    <script src="js/epic-preloader.js"></script>
     
     <!-- Core Scripts - defer para mejor rendimiento -->
-    <script defer src="src/js/app-standalone.js"></script>
-    <script defer src="src/js/hero-background.js"></script>
-    <script defer src="src/js/conversion-tracking.js"></script>
+    <script defer src="js/app-standalone.js"></script>
+    <script defer src="js/hero-background.js"></script>
+    <script defer src="js/conversion-tracking.js"></script>
     
     <!-- Non-critical animations - lazy load después del preloader -->
     <script>
