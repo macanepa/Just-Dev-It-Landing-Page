@@ -136,7 +136,16 @@ function updateBackground(swiper, sliderType) {
   
   // Actualizar backgrounds con transición más rápida
   if (currentActive) currentActive.classList.remove('active');
-  if (newActive) newActive.classList.add('active');
+  
+  // Si encontramos la imagen coincidente, activarla
+  if (newActive) {
+    newActive.classList.add('active');
+  } else if (backgroundImages.length > 0) {
+    // FALLBACK: Si no hay coincidencia, usar la primera imagen o mantener una activa
+    // Calcular qué imagen usar basado en el índice de la slide
+    const fallbackIndex = swiper.realIndex % backgroundImages.length;
+    backgroundImages[fallbackIndex].classList.add('active');
+  }
 }
 
 // Actualizar estados de las cards (ultra optimizado)
