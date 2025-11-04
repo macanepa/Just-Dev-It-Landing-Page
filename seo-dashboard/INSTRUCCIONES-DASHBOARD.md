@@ -5,23 +5,27 @@
 ### Lo que se ha agregado:
 
 1. **KPIs Principales** (4 tarjetas con animación):
+
    - Impresiones Totales
-   - Clics Totales  
+   - Clics Totales
    - CTR Promedio
    - Posición Promedio
 
 2. **KPIs Secundarios** (4 métricas adicionales):
+
    - Keywords Top 3
    - Keywords Top 10
    - Alta Prioridad (≥70)
    - Alto Potencial de Conversión (≥70)
 
 3. **Alertas Críticas** (dinámicas según datos):
+
    - Keywords sin clics (crítico)
    - Oportunidades de mejora cerca del Top 10 (advertencia)
    - Keywords Top 3 con rendimiento excepcional (éxito)
 
 4. **Gráficos Profesionales con Chart.js**:
+
    - **Tendencia de Rendimiento**: Gráfico de líneas (Impresiones vs Clics)
    - **Distribución por Prioridad**: Gráfico de dona (Alta/Media/Baja)
    - **Distribución de Posiciones**: Gráfico de barras (Top 3, 4-10, 11-20, 20+)
@@ -36,11 +40,13 @@
 ## 🚀 CÓMO PROBAR EL DASHBOARD
 
 ### Opción 1: Abrir Directamente
+
 1. Navega a: `c:\Users\Joaquin Espildora M\Local Projects\Just-Dev-It-Landing-Page\seo-dashboard\`
 2. Doble clic en: `dashboard-enterprise.html`
 3. Se abrirá en tu navegador predeterminado
 
 ### Opción 2: Con Servidor Local (Recomendado)
+
 ```powershell
 cd "c:\Users\Joaquin Espildora M\Local Projects\Just-Dev-It-Landing-Page\seo-dashboard"
 python -m http.server 8080
@@ -49,12 +55,14 @@ python -m http.server 8080
 Luego abre: `http://localhost:8080/dashboard-enterprise.html`
 
 ### Opción 3: Con VS Code Live Server
+
 1. Click derecho en `dashboard-enterprise.html`
 2. Selecciona "Open with Live Server"
 
 ## 📊 DATOS UTILIZADOS
 
 El dashboard carga automáticamente desde `keywords-database.json` que contiene:
+
 - 7 keywords analizadas
 - 90 días de datos históricos
 - Scoring completo (Priority, Conversion Potential, Improvement Opportunity)
@@ -71,7 +79,9 @@ El dashboard carga automáticamente desde `keywords-database.json` que contiene:
 ## 🔜 PRÓXIMAS SECCIONES
 
 ### SECCIÓN 8: Histórico de Eficiencia ⏳
+
 Para validar la herramienta a largo plazo y eventualmente venderla como producto:
+
 - Gráfico de evolución de métricas desde el inicio
 - Comparativa mes a mes
 - Tasa de crecimiento
@@ -79,7 +89,9 @@ Para validar la herramienta a largo plazo y eventualmente venderla como producto
 - Validación de la herramienta
 
 ### SECCIÓN 9: GEO (Generative Engine Optimization) 🤖
+
 Optimización para motores generativos:
+
 - Análisis de presencia en ChatGPT, Claude, Gemini
 - Recomendaciones de contenido para GEO
 - Automatización de keywords NO VISIBLES optimizadas para IA
