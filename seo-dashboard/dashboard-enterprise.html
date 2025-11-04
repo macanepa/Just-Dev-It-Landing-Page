@@ -1345,6 +1345,467 @@
         font-size: 1rem;
       }
 
+      /* ============================================ */
+      /* SECCIÓN 3: ESTILOS PARA KEYWORDS MASTER */
+      /* ============================================ */
+
+      /* Filtros y Búsqueda */
+      .keywords-filters {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .search-box {
+        position: relative;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .search-box i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 12px 45px 12px 45px;
+        background: var(--bg-tertiary);
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: all var(--transition-fast);
+      }
+
+      .search-box input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .search-clear {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 8px;
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-fast);
+      }
+
+      .search-clear:hover {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+      }
+
+      .filters-row {
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .filter-group {
+        flex: 1;
+        min-width: 150px;
+      }
+
+      .filter-group label {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+
+      .filter-select {
+        width: 100%;
+        padding: 10px 12px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+      }
+
+      .filter-select:hover {
+        border-color: var(--border-light);
+      }
+
+      .filter-select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      /* Filter Summary */
+      .filter-summary {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
+
+      .filter-summary-text {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .filter-summary-text strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      #active-filters {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .active-filter-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        background: rgba(59, 130, 246, 0.15);
+        color: var(--primary);
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .active-filter-badge i {
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity var(--transition-fast);
+      }
+
+      .active-filter-badge i:hover {
+        opacity: 1;
+      }
+
+      /* Table Controls */
+      .table-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-md);
+      }
+
+      .table-info {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .table-pagination {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .table-pagination label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      /* Keywords Table */
+      .keywords-table {
+        font-size: 0.9rem;
+      }
+
+      .keywords-table th {
+        background: var(--bg-tertiary);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .keywords-table th.sortable {
+        cursor: pointer;
+        user-select: none;
+        transition: background var(--transition-fast);
+      }
+
+      .keywords-table th.sortable:hover {
+        background: var(--bg-secondary);
+      }
+
+      .sort-icon {
+        margin-left: 6px;
+        font-size: 0.75rem;
+        opacity: 0.5;
+        transition: all var(--transition-fast);
+      }
+
+      .keywords-table th.sortable.sorted .sort-icon {
+        opacity: 1;
+        color: var(--primary);
+      }
+
+      .keywords-table th.sortable.asc .sort-icon::before {
+        content: "\f0de";
+      }
+
+      .keywords-table th.sortable.desc .sort-icon::before {
+        content: "\f0dd";
+      }
+
+      .keywords-table tbody tr {
+        transition: all var(--transition-fast);
+      }
+
+      .keywords-table tbody tr:hover {
+        background: var(--bg-tertiary);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .keywords-table tbody tr.row-high-priority {
+        border-left: 3px solid var(--error);
+      }
+
+      .keywords-table tbody tr.row-medium-priority {
+        border-left: 3px solid var(--warning);
+      }
+
+      .keywords-table tbody tr.row-low-priority {
+        border-left: 3px solid var(--text-secondary);
+      }
+
+      /* Position Cell */
+      .position-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .position-main {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+
+      .position-range {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      /* Score Bar */
+      .score-bar {
+        width: 100%;
+        max-width: 80px;
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 4px auto;
+      }
+
+      .score-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.6s ease;
+      }
+
+      .score-bar-fill.high {
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+      }
+
+      .score-bar-fill.medium {
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+      }
+
+      .score-bar-fill.low {
+        background: linear-gradient(90deg, #6b7280, #4b5563);
+      }
+
+      .score-bar-fill.success {
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+
+      /* Action Buttons */
+      .action-buttons {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+      }
+
+      .action-btn {
+        padding: 6px 10px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        color: var(--text-primary);
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+      }
+
+      .action-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+
+      .action-btn i {
+        font-size: 0.875rem;
+      }
+
+      /* Pagination Controls */
+      .table-pagination-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: var(--spacing-lg) 0;
+      }
+
+      .pagination-info {
+        padding: 8px 16px;
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-sm);
+        font-size: 0.875rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* Quick Stats */
+      .quick-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+      }
+
+      .quick-stat-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: center;
+        transition: all var(--transition-normal);
+      }
+
+      .quick-stat-card:hover {
+        border-color: var(--border-light);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+      }
+
+      .quick-stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .quick-stat-content {
+        flex: 1;
+      }
+
+      .quick-stat-value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .quick-stat-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      /* Pages Pills */
+      .pages-pills {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .page-pill {
+        display: inline-block;
+        padding: 4px 8px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        font-size: 0.7rem;
+        color: var(--text-secondary);
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .filters-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .filter-group {
+          min-width: 100%;
+        }
+
+        .table-container {
+          overflow-x: auto;
+        }
+
+        .keywords-table {
+          font-size: 0.85rem;
+        }
+
+        .quick-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .table-controls {
+          flex-direction: column;
+          gap: var(--spacing-sm);
+          align-items: flex-start;
+        }
+
+        .quick-stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+        }
+      }
+
       /* RESPONSIVE */
       @media (max-width: 1200px) {
         .history-analysis-grid {
@@ -1720,11 +2181,237 @@
           </div>
         </div>
 
-        <!-- Placeholder para otras tabs -->
+        <!-- ============================================ -->
+        <!-- SECCIÓN 3: KEYWORDS MASTER -->
+        <!-- ============================================ -->
+        
         <div id="keywords-master-tab" class="tab-content" style="display: none">
+          <!-- Header con Controles -->
           <div class="dashboard-card">
-            <h3>Keywords Master</h3>
-            <p>Contenido próximamente...</p>
+            <div class="card-header">
+              <div>
+                <h2 style="margin-bottom: 8px;">🔑 Keywords Master Database</h2>
+                <p style="color: var(--text-secondary); margin: 0;">
+                  Base de datos completa · <span id="total-keywords-count">0</span> keywords analizadas
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-secondary" id="btn-export-keywords">
+                  <i class="fas fa-file-excel"></i>
+                  Exportar CSV
+                </button>
+                <button class="btn btn-primary" id="btn-refresh-keywords">
+                  <i class="fas fa-sync-alt"></i>
+                  Actualizar
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Filtros y Búsqueda -->
+          <div class="keywords-filters">
+            <!-- Barra de Búsqueda -->
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input 
+                type="text" 
+                id="keyword-search" 
+                placeholder="Buscar keywords..."
+                autocomplete="off"
+              >
+              <button class="search-clear" id="clear-search" style="display: none;">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters-row">
+              <div class="filter-group">
+                <label>Prioridad</label>
+                <select id="filter-priority" class="filter-select">
+                  <option value="all">Todas</option>
+                  <option value="high">Alta (≥70)</option>
+                  <option value="medium">Media (40-69)</option>
+                  <option value="low">Baja (<40)</option>
+                </select>
+              </div>
+              
+              <div class="filter-group">
+                <label>Posición</label>
+                <select id="filter-position" class="filter-select">
+                  <option value="all">Todas</option>
+                  <option value="top3">Top 3</option>
+                  <option value="top10">Top 10</option>
+                  <option value="11-20">11-20</option>
+                  <option value="21-50">21-50</option>
+                  <option value="50+">50+</option>
+                </select>
+              </div>
+              
+              <div class="filter-group">
+                <label>CTR</label>
+                <select id="filter-ctr" class="filter-select">
+                  <option value="all">Todos</option>
+                  <option value="excellent">Excelente (>10%)</option>
+                  <option value="good">Bueno (5-10%)</option>
+                  <option value="average">Promedio (2-5%)</option>
+                  <option value="low">Bajo (<2%)</option>
+                </select>
+              </div>
+              
+              <div class="filter-group">
+                <label>Conversión</label>
+                <select id="filter-conversion" class="filter-select">
+                  <option value="all">Todas</option>
+                  <option value="high">Alta (≥70)</option>
+                  <option value="medium">Media (40-69)</option>
+                  <option value="low">Baja (<40)</option>
+                </select>
+              </div>
+              
+              <button class="btn btn-secondary btn-sm" id="btn-reset-filters">
+                <i class="fas fa-redo"></i>
+                Reset
+              </button>
+            </div>
+          </div>
+          
+          <!-- Resumen de Filtros Activos -->
+          <div id="filter-summary" class="filter-summary" style="display: none;">
+            <span class="filter-summary-text">Mostrando <strong id="filtered-count">0</strong> de <strong id="total-count">0</strong> keywords</span>
+            <div id="active-filters"></div>
+          </div>
+          
+          <!-- Tabla de Keywords -->
+          <div class="dashboard-card">
+            <div class="table-controls">
+              <div class="table-info">
+                <span id="showing-range">Mostrando 1-10 de 0 keywords</span>
+              </div>
+              <div class="table-pagination">
+                <label>Mostrar:</label>
+                <select id="rows-per-page" class="filter-select">
+                  <option value="10">10</option>
+                  <option value="25" selected>25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="all">Todas</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="table-container">
+              <table class="data-table keywords-table" id="keywords-master-table">
+                <thead>
+                  <tr>
+                    <th class="sortable" data-sort="keyword" style="text-align: left; min-width: 200px;">
+                      Keyword
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="avg_position" style="min-width: 120px;">
+                      Posición
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="impressions" style="min-width: 100px;">
+                      Impresiones
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="clicks" style="min-width: 80px;">
+                      Clics
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="ctr" style="min-width: 80px;">
+                      CTR
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="priority" style="min-width: 100px;">
+                      Prioridad
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="conversion_potential" style="min-width: 100px;">
+                      Conversión
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th class="sortable" data-sort="improvement_opportunity" style="min-width: 100px;">
+                      Mejora
+                      <i class="fas fa-sort sort-icon"></i>
+                    </th>
+                    <th style="min-width: 120px;">Páginas</th>
+                    <th style="min-width: 100px;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="keywords-master-tbody">
+                  <tr>
+                    <td colspan="10" style="text-align: center; padding: 60px; color: var(--text-secondary);">
+                      <i class="fas fa-spinner fa-spin" style="font-size: 32px; margin-bottom: 15px;"></i>
+                      <div style="font-size: 1.1rem;">Cargando keywords...</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <!-- Paginación -->
+            <div class="table-pagination-controls" id="pagination-controls" style="display: none;">
+              <button class="btn btn-secondary btn-sm" id="btn-first-page" disabled>
+                <i class="fas fa-angle-double-left"></i>
+              </button>
+              <button class="btn btn-secondary btn-sm" id="btn-prev-page" disabled>
+                <i class="fas fa-angle-left"></i>
+              </button>
+              <div class="pagination-info" id="pagination-info">
+                Página 1 de 1
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btn-next-page" disabled>
+                <i class="fas fa-angle-right"></i>
+              </button>
+              <button class="btn btn-secondary btn-sm" id="btn-last-page" disabled>
+                <i class="fas fa-angle-double-right"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Estadísticas Rápidas -->
+          <div class="quick-stats-grid">
+            <div class="quick-stat-card">
+              <div class="quick-stat-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-value" id="stat-top-performer">-</div>
+                <div class="quick-stat-label">Top Performer</div>
+              </div>
+            </div>
+            
+            <div class="quick-stat-card">
+              <div class="quick-stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-value" id="stat-best-opportunity">-</div>
+                <div class="quick-stat-label">Mejor Oportunidad</div>
+              </div>
+            </div>
+            
+            <div class="quick-stat-card">
+              <div class="quick-stat-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-value" id="stat-needs-attention">-</div>
+                <div class="quick-stat-label">Necesita Atención</div>
+              </div>
+            </div>
+            
+            <div class="quick-stat-card">
+              <div class="quick-stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="quick-stat-content">
+                <div class="quick-stat-value" id="stat-avg-growth">-</div>
+                <div class="quick-stat-label">Crecimiento Promedio</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -4027,6 +4714,522 @@
           });
         }
 
+        // ============================================
+        // SECCIÓN 3: JAVASCRIPT PARA KEYWORDS MASTER
+        // ============================================
+
+        // Estado de la tabla
+        const keywordsTableState = {
+          allKeywords: [],
+          filteredKeywords: [],
+          currentPage: 1,
+          rowsPerPage: 25,
+          sortColumn: 'priority',
+          sortDirection: 'desc',
+          filters: {
+            search: '',
+            priority: 'all',
+            position: 'all',
+            ctr: 'all',
+            conversion: 'all'
+          }
+        };
+
+        // Inicializar sección Keywords Master
+        function initializeKeywordsMaster(data) {
+          if (!data || !data.keywords) return;
+
+          keywordsTableState.allKeywords = data.keywords;
+          keywordsTableState.filteredKeywords = [...data.keywords];
+
+          // Actualizar contador
+          document.getElementById('total-keywords-count').textContent = data.keywords.length;
+
+          // Aplicar filtros y renderizar
+          applyAllFilters();
+          updateQuickStats();
+
+          // Event listeners
+          setupKeywordsMasterEvents();
+        }
+
+        // Setup Event Listeners
+        function setupKeywordsMasterEvents() {
+          // Búsqueda
+          const searchInput = document.getElementById('keyword-search');
+          if (searchInput) {
+            searchInput.addEventListener('input', debounce(function(e) {
+              keywordsTableState.filters.search = e.target.value.toLowerCase();
+              const clearBtn = document.getElementById('clear-search');
+              if (clearBtn) {
+                clearBtn.style.display = e.target.value ? 'block' : 'none';
+              }
+              applyAllFilters();
+            }, 300));
+          }
+
+          // Clear search
+          const clearSearch = document.getElementById('clear-search');
+          if (clearSearch) {
+            clearSearch.addEventListener('click', function() {
+              searchInput.value = '';
+              keywordsTableState.filters.search = '';
+              this.style.display = 'none';
+              applyAllFilters();
+            });
+          }
+
+          // Filtros
+          ['filter-priority', 'filter-position', 'filter-ctr', 'filter-conversion'].forEach(id => {
+            const select = document.getElementById(id);
+            if (select) {
+              select.addEventListener('change', function() {
+                const filterName = id.replace('filter-', '');
+                keywordsTableState.filters[filterName] = this.value;
+                applyAllFilters();
+              });
+            }
+          });
+
+          // Reset filters
+          const resetBtn = document.getElementById('btn-reset-filters');
+          if (resetBtn) {
+            resetBtn.addEventListener('click', function() {
+              // Reset all filters
+              keywordsTableState.filters = {
+                search: '',
+                priority: 'all',
+                position: 'all',
+                ctr: 'all',
+                conversion: 'all'
+              };
+
+              // Reset UI
+              document.getElementById('keyword-search').value = '';
+              document.getElementById('clear-search').style.display = 'none';
+              document.getElementById('filter-priority').value = 'all';
+              document.getElementById('filter-position').value = 'all';
+              document.getElementById('filter-ctr').value = 'all';
+              document.getElementById('filter-conversion').value = 'all';
+
+              applyAllFilters();
+            });
+          }
+
+          // Rows per page
+          const rowsSelect = document.getElementById('rows-per-page');
+          if (rowsSelect) {
+            rowsSelect.addEventListener('change', function() {
+              keywordsTableState.rowsPerPage = this.value === 'all' ? 999999 : parseInt(this.value);
+              keywordsTableState.currentPage = 1;
+              renderKeywordsTable();
+            });
+          }
+
+          // Pagination
+          document.getElementById('btn-first-page')?.addEventListener('click', () => goToPage(1));
+          document.getElementById('btn-prev-page')?.addEventListener('click', () => goToPage(keywordsTableState.currentPage - 1));
+          document.getElementById('btn-next-page')?.addEventListener('click', () => goToPage(keywordsTableState.currentPage + 1));
+          document.getElementById('btn-last-page')?.addEventListener('click', () => {
+            const totalPages = Math.ceil(keywordsTableState.filteredKeywords.length / keywordsTableState.rowsPerPage);
+            goToPage(totalPages);
+          });
+
+          // Sorting
+          document.querySelectorAll('.keywords-table th.sortable').forEach(th => {
+            th.addEventListener('click', function() {
+              const column = this.dataset.sort;
+              if (keywordsTableState.sortColumn === column) {
+                keywordsTableState.sortDirection = keywordsTableState.sortDirection === 'asc' ? 'desc' : 'asc';
+              } else {
+                keywordsTableState.sortColumn = column;
+                keywordsTableState.sortDirection = 'desc';
+              }
+              sortAndRender();
+            });
+          });
+
+          // Export
+          document.getElementById('btn-export-keywords')?.addEventListener('click', exportKeywordsToCSV);
+
+          // Refresh
+          document.getElementById('btn-refresh-keywords')?.addEventListener('click', function() {
+            if (appState.data) {
+              initializeKeywordsMaster(appState.data);
+              alert('✅ Keywords actualizadas!');
+            }
+          });
+        }
+
+        // Aplicar todos los filtros
+        function applyAllFilters() {
+          let filtered = [...keywordsTableState.allKeywords];
+
+          // Búsqueda
+          if (keywordsTableState.filters.search) {
+            filtered = filtered.filter(kw =>
+              kw.keyword.toLowerCase().includes(keywordsTableState.filters.search)
+            );
+          }
+
+          // Prioridad
+          if (keywordsTableState.filters.priority !== 'all') {
+            filtered = filtered.filter(kw => {
+              const priority = kw.priority;
+              switch (keywordsTableState.filters.priority) {
+                case 'high': return priority >= 70;
+                case 'medium': return priority >= 40 && priority < 70;
+                case 'low': return priority < 40;
+                default: return true;
+              }
+            });
+          }
+
+          // Posición
+          if (keywordsTableState.filters.position !== 'all') {
+            filtered = filtered.filter(kw => {
+              const pos = kw.avg_position;
+              switch (keywordsTableState.filters.position) {
+                case 'top3': return pos <= 3;
+                case 'top10': return pos > 3 && pos <= 10;
+                case '11-20': return pos > 10 && pos <= 20;
+                case '21-50': return pos > 20 && pos <= 50;
+                case '50+': return pos > 50;
+                default: return true;
+              }
+            });
+          }
+
+          // CTR
+          if (keywordsTableState.filters.ctr !== 'all') {
+            filtered = filtered.filter(kw => {
+              const ctr = kw.ctr;
+              switch (keywordsTableState.filters.ctr) {
+                case 'excellent': return ctr > 10;
+                case 'good': return ctr >= 5 && ctr <= 10;
+                case 'average': return ctr >= 2 && ctr < 5;
+                case 'low': return ctr < 2;
+                default: return true;
+              }
+            });
+          }
+
+          // Conversión
+          if (keywordsTableState.filters.conversion !== 'all') {
+            filtered = filtered.filter(kw => {
+              const conv = kw.conversion_potential;
+              switch (keywordsTableState.filters.conversion) {
+                case 'high': return conv >= 70;
+                case 'medium': return conv >= 40 && conv < 70;
+                case 'low': return conv < 40;
+                default: return true;
+              }
+            });
+          }
+
+          keywordsTableState.filteredKeywords = filtered;
+          keywordsTableState.currentPage = 1;
+
+          updateFilterSummary();
+          sortAndRender();
+        }
+
+        // Actualizar resumen de filtros
+        function updateFilterSummary() {
+          const summary = document.getElementById('filter-summary');
+          const filteredCount = document.getElementById('filtered-count');
+          const totalCount = document.getElementById('total-count');
+          const activeFiltersDiv = document.getElementById('active-filters');
+
+          if (!summary) return;
+
+          const hasActiveFilters = Object.values(keywordsTableState.filters).some(v => v !== 'all' && v !== '');
+
+          if (hasActiveFilters) {
+            summary.style.display = 'flex';
+            filteredCount.textContent = keywordsTableState.filteredKeywords.length;
+            totalCount.textContent = keywordsTableState.allKeywords.length;
+
+            // Mostrar badges de filtros activos
+            const badges = [];
+            if (keywordsTableState.filters.search) {
+              badges.push(`Búsqueda: "${keywordsTableState.filters.search}"`);
+            }
+            if (keywordsTableState.filters.priority !== 'all') {
+              badges.push(`Prioridad: ${keywordsTableState.filters.priority}`);
+            }
+            if (keywordsTableState.filters.position !== 'all') {
+              badges.push(`Posición: ${keywordsTableState.filters.position}`);
+            }
+            if (keywordsTableState.filters.ctr !== 'all') {
+              badges.push(`CTR: ${keywordsTableState.filters.ctr}`);
+            }
+            if (keywordsTableState.filters.conversion !== 'all') {
+              badges.push(`Conversión: ${keywordsTableState.filters.conversion}`);
+            }
+
+            activeFiltersDiv.innerHTML = badges.map(badge =>
+              `<span class="active-filter-badge">${badge}</span>`
+            ).join('');
+          } else {
+            summary.style.display = 'none';
+          }
+        }
+
+        // Ordenar y renderizar
+        function sortAndRender() {
+          const sorted = [...keywordsTableState.filteredKeywords].sort((a, b) => {
+            const col = keywordsTableState.sortColumn;
+            let aVal = a[col];
+            let bVal = b[col];
+
+            // Para strings
+            if (typeof aVal === 'string') {
+              aVal = aVal.toLowerCase();
+              bVal = bVal.toLowerCase();
+            }
+
+            if (keywordsTableState.sortDirection === 'asc') {
+              return aVal > bVal ? 1 : -1;
+            } else {
+              return aVal < bVal ? 1 : -1;
+            }
+          });
+
+          keywordsTableState.filteredKeywords = sorted;
+          renderKeywordsTable();
+          updateSortIcons();
+        }
+
+        // Actualizar iconos de ordenamiento
+        function updateSortIcons() {
+          document.querySelectorAll('.keywords-table th.sortable').forEach(th => {
+            th.classList.remove('sorted', 'asc', 'desc');
+            if (th.dataset.sort === keywordsTableState.sortColumn) {
+              th.classList.add('sorted', keywordsTableState.sortDirection);
+            }
+          });
+        }
+
+        // Renderizar tabla
+        function renderKeywordsTable() {
+          const tbody = document.getElementById('keywords-master-tbody');
+          if (!tbody) return;
+
+          const totalPages = Math.ceil(keywordsTableState.filteredKeywords.length / keywordsTableState.rowsPerPage);
+          const start = (keywordsTableState.currentPage - 1) * keywordsTableState.rowsPerPage;
+          const end = start + keywordsTableState.rowsPerPage;
+          const pageKeywords = keywordsTableState.filteredKeywords.slice(start, end);
+
+          if (pageKeywords.length === 0) {
+            tbody.innerHTML = `
+              <tr>
+                <td colspan="10" style="text-align: center; padding: 60px; color: var(--text-secondary);">
+                  <i class="fas fa-search" style="font-size: 32px; margin-bottom: 15px; opacity: 0.5;"></i>
+                  <div style="font-size: 1.1rem;">No se encontraron keywords con los filtros aplicados</div>
+                  <button class="btn btn-secondary btn-sm" onclick="document.getElementById('btn-reset-filters').click()" style="margin-top: 15px;">
+                    Reset Filtros
+                  </button>
+                </td>
+              </tr>
+            `;
+            return;
+          }
+
+          tbody.innerHTML = pageKeywords.map(kw => {
+            const priorityClass = kw.priority >= 70 ? 'high' : kw.priority >= 40 ? 'medium' : 'low';
+            const priorityLabel = kw.priority >= 70 ? 'Alta' : kw.priority >= 40 ? 'Media' : 'Baja';
+            const positionClass = kw.avg_position <= 3 ? 'top3' : kw.avg_position <= 10 ? 'top10' : 'opportunity';
+
+            // Determinar color de fila
+            const rowClass = `row-${priorityClass}-priority`;
+
+            // Páginas (primeras 3)
+            const pages = kw.pages.slice(0, 3);
+            const pagesHtml = pages.length > 0
+              ? pages.map(p => `<span class="page-pill" title="${escapeHtml(p)}">${escapeHtml(p.split('/').pop() || '/')}</span>`).join('')
+              : '<span class="page-pill">N/A</span>';
+
+            return `
+              <tr class="${rowClass}">
+                <td style="text-align: left;">
+                  <div class="keyword-cell">
+                    <strong>${escapeHtml(kw.keyword)}</strong>
+                  </div>
+                </td>
+                <td>
+                  <div class="position-cell">
+                    <span class="position-badge ${positionClass}">
+                      #${kw.avg_position.toFixed(1)}
+                    </span>
+                    <span class="position-range">
+                      ${kw.best_position.toFixed(1)} - ${kw.worst_position.toFixed(1)}
+                    </span>
+                  </div>
+                </td>
+                <td><strong>${formatNumber(kw.impressions)}</strong></td>
+                <td><strong>${formatNumber(kw.clicks)}</strong></td>
+                <td>
+                  <strong style="color: ${kw.ctr >= kw.expected_ctr ? 'var(--success)' : 'var(--warning)'};">
+                    ${kw.ctr.toFixed(2)}%
+                  </strong>
+                  <div style="font-size: 0.7rem; color: var(--text-secondary);">
+                    vs ${kw.expected_ctr.toFixed(2)}%
+                  </div>
+                </td>
+                <td>
+                  <span class="priority-badge ${priorityClass}">
+                    <i class="fas fa-circle"></i>
+                    ${priorityLabel}
+                  </span>
+                  <div class="score-bar">
+                    <div class="score-bar-fill ${priorityClass}" style="width: ${kw.priority}%;"></div>
+                  </div>
+                </td>
+                <td>
+                  <strong>${kw.conversion_potential.toFixed(0)}</strong>/100
+                  <div class="score-bar">
+                    <div class="score-bar-fill success" style="width: ${kw.conversion_potential}%;"></div>
+                  </div>
+                </td>
+                <td>
+                  <strong>${kw.improvement_opportunity.toFixed(0)}</strong>/100
+                  <div class="score-bar">
+                    <div class="score-bar-fill ${kw.improvement_opportunity >= 70 ? 'high' : kw.improvement_opportunity >= 40 ? 'medium' : 'low'}" style="width: ${kw.improvement_opportunity}%;"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="pages-pills">
+                    ${pagesHtml}
+                  </div>
+                </td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn" title="Ver Detalles" onclick="alert('Detalles de: ${escapeHtml(kw.keyword).replace(/'/g, "\\'")}')">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn" title="Optimizar" onclick="alert('Optimizar: ${escapeHtml(kw.keyword).replace(/'/g, "\\'")}')">
+                      <i class="fas fa-magic"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+
+          // Actualizar info y paginación
+          updateTableInfo();
+          updatePagination();
+        }
+
+        // Actualizar info de tabla
+        function updateTableInfo() {
+          const showingRange = document.getElementById('showing-range');
+          if (!showingRange) return;
+
+          const total = keywordsTableState.filteredKeywords.length;
+          const start = (keywordsTableState.currentPage - 1) * keywordsTableState.rowsPerPage + 1;
+          const end = Math.min(start + keywordsTableState.rowsPerPage - 1, total);
+
+          showingRange.textContent = `Mostrando ${start}-${end} de ${total} keywords`;
+        }
+
+        // Actualizar paginación
+        function updatePagination() {
+          const totalPages = Math.ceil(keywordsTableState.filteredKeywords.length / keywordsTableState.rowsPerPage);
+          const controls = document.getElementById('pagination-controls');
+          const info = document.getElementById('pagination-info');
+
+          if (!controls || !info) return;
+
+          if (totalPages <= 1) {
+            controls.style.display = 'none';
+            return;
+          }
+
+          controls.style.display = 'flex';
+          info.textContent = `Página ${keywordsTableState.currentPage} de ${totalPages}`;
+
+          // Botones
+          document.getElementById('btn-first-page').disabled = keywordsTableState.currentPage === 1;
+          document.getElementById('btn-prev-page').disabled = keywordsTableState.currentPage === 1;
+          document.getElementById('btn-next-page').disabled = keywordsTableState.currentPage === totalPages;
+          document.getElementById('btn-last-page').disabled = keywordsTableState.currentPage === totalPages;
+        }
+
+        // Ir a página
+        function goToPage(page) {
+          const totalPages = Math.ceil(keywordsTableState.filteredKeywords.length / keywordsTableState.rowsPerPage);
+          if (page < 1 || page > totalPages) return;
+
+          keywordsTableState.currentPage = page;
+          renderKeywordsTable();
+        }
+
+        // Actualizar estadísticas rápidas
+        function updateQuickStats() {
+          const keywords = keywordsTableState.allKeywords;
+          if (keywords.length === 0) return;
+
+          // Top Performer
+          const topPerformer = [...keywords].sort((a, b) => b.priority - a.priority)[0];
+          document.getElementById('stat-top-performer').textContent = topPerformer.keyword.substring(0, 20) + (topPerformer.keyword.length > 20 ? '...' : '');
+
+          // Mejor Oportunidad
+          const bestOpportunity = [...keywords].sort((a, b) => b.improvement_opportunity - a.improvement_opportunity)[0];
+          document.getElementById('stat-best-opportunity').textContent = bestOpportunity.keyword.substring(0, 20) + (bestOpportunity.keyword.length > 20 ? '...' : '');
+
+          // Necesita Atención (muchas impresiones, pocos clics)
+          const needsAttention = keywords.filter(k => k.impressions > 5 && k.clicks === 0);
+          document.getElementById('stat-needs-attention').textContent = needsAttention.length;
+
+          // Crecimiento promedio
+          const avgGrowth = keywords.reduce((sum, k) => sum + (k.clicks / Math.max(k.impressions, 1) * 100), 0) / keywords.length;
+          document.getElementById('stat-avg-growth').textContent = '+' + avgGrowth.toFixed(1) + '%';
+        }
+
+        // Exportar a CSV
+        function exportKeywordsToCSV() {
+          const keywords = keywordsTableState.filteredKeywords;
+          if (keywords.length === 0) {
+            alert('⚠️ No hay keywords para exportar');
+            return;
+          }
+
+          // Crear CSV
+          let csv = 'Keyword,Posición,Impresiones,Clics,CTR,Prioridad,Conversión,Mejora,Páginas\n';
+
+          keywords.forEach(kw => {
+            csv += `"${kw.keyword}",${kw.avg_position},${kw.impressions},${kw.clicks},${kw.ctr},${kw.priority},${kw.conversion_potential},${kw.improvement_opportunity},"${kw.pages.join('; ')}"\n`;
+          });
+
+          // Descargar
+          const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+          const link = document.createElement('a');
+          const url = URL.createObjectURL(blob);
+          link.setAttribute('href', url);
+          link.setAttribute('download', `keywords-justdevit-${new Date().toISOString().split('T')[0]}.csv`);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          alert('✅ Keywords exportadas correctamente!');
+        }
+
+        // Utilidad: Debounce
+        function debounce(func, wait) {
+          let timeout;
+          return function executedFunction(...args) {
+            const later = () => {
+              clearTimeout(timeout);
+              func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+          };
+        }
+
         // Cargar GEO cuando se cambie a la tab de settings
         const settingsLink = document.querySelector('[data-tab="settings"]');
         if (settingsLink) {
@@ -4034,6 +5237,18 @@
             setTimeout(() => {
               if (appState.data) {
                 initializeGEOSection(appState.data);
+              }
+            }, 100);
+          });
+        }
+
+        // Cargar Keywords Master cuando se cambie a la tab
+        const keywordsMasterLink = document.querySelector('[data-tab="keywords-master"]');
+        if (keywordsMasterLink) {
+          keywordsMasterLink.addEventListener("click", function () {
+            setTimeout(() => {
+              if (appState.data) {
+                initializeKeywordsMaster(appState.data);
               }
             }, 100);
           });
