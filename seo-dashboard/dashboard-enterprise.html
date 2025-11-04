@@ -1070,6 +1070,281 @@
         color: var(--primary);
       }
 
+      /* ============================================ */
+      /* SECCIÓN 9: ESTILOS PARA GEO */
+      /* ============================================ */
+
+      /* GEO Engine Cards Grid */
+      .geo-presence-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .geo-engine-card {
+        background: var(--bg-secondary);
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-lg);
+        transition: all var(--transition-normal);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .geo-engine-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+      }
+
+      .geo-engine-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-4px);
+      }
+
+      .geo-engine-card:hover::before {
+        opacity: 1;
+      }
+
+      .geo-engine-card.chatgpt::before {
+        background: linear-gradient(90deg, #10a37f, #1a7f64);
+      }
+
+      .geo-engine-card.claude::before {
+        background: linear-gradient(90deg, #d97757, #c1694f);
+      }
+
+      .geo-engine-card.gemini::before {
+        background: linear-gradient(90deg, #4285f4, #34a853);
+      }
+
+      .geo-engine-card.perplexity::before {
+        background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+      }
+
+      .geo-engine-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .geo-engine-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        background: var(--bg-tertiary);
+        color: var(--primary);
+      }
+
+      .geo-engine-card.chatgpt .geo-engine-icon {
+        background: rgba(16, 163, 127, 0.15);
+        color: #10a37f;
+      }
+
+      .geo-engine-card.claude .geo-engine-icon {
+        background: rgba(217, 119, 87, 0.15);
+        color: #d97757;
+      }
+
+      .geo-engine-card.gemini .geo-engine-icon {
+        background: rgba(66, 133, 244, 0.15);
+        color: #4285f4;
+      }
+
+      .geo-engine-card.perplexity .geo-engine-icon {
+        background: rgba(139, 92, 246, 0.15);
+        color: #8b5cf6;
+      }
+
+      .geo-engine-header h4 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 4px 0;
+      }
+
+      .geo-engine-header p {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      .geo-engine-score {
+        display: flex;
+        justify-content: center;
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .score-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: var(--bg-tertiary);
+        border: 6px solid var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .score-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        line-height: 1;
+      }
+
+      .score-max {
+        font-size: 1rem;
+        color: var(--text-secondary);
+      }
+
+      .geo-engine-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-md);
+      }
+
+      .geo-stat {
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-sm);
+        text-align: center;
+      }
+
+      .geo-stat-label {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+      }
+
+      .geo-stat-value {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      /* GEO Recommendations */
+      .geo-recommendations {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .geo-recommendation-item {
+        background: var(--bg-tertiary);
+        border-left: 4px solid var(--primary);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-md);
+        display: flex;
+        gap: var(--spacing-md);
+      }
+
+      .geo-recommendation-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-sm);
+        background: rgba(59, 130, 246, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .geo-recommendation-content {
+        flex: 1;
+      }
+
+      .geo-recommendation-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+
+      .geo-recommendation-description {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+
+      .geo-recommendation-action {
+        display: inline-block;
+        padding: 6px 12px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all var(--transition-fast);
+      }
+
+      .geo-recommendation-action:hover {
+        background: var(--accent);
+        transform: translateX(4px);
+      }
+
+      /* Code Block */
+      .code-block {
+        background: #000;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        overflow-x: auto;
+        margin-top: var(--spacing-md);
+      }
+
+      .code-block pre {
+        margin: 0;
+        padding: var(--spacing-lg);
+      }
+
+      .code-block code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.875rem;
+        color: #0f0;
+        line-height: 1.6;
+        white-space: pre;
+      }
+
+      /* Feature Preview */
+      .feature-preview {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .feature-preview-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-sm);
+        font-size: 0.875rem;
+        color: var(--text-primary);
+      }
+
+      .feature-preview-item i {
+        font-size: 1rem;
+      }
+
       /* RESPONSIVE */
       @media (max-width: 1200px) {
         .history-analysis-grid {
@@ -3389,6 +3664,340 @@
         return (Math.sqrt(avgSquareDiff) / mean) * 100;
       }
 
+      // ============================================
+      // SECCIÓN 9: JAVASCRIPT PARA GEO
+      // ============================================
+
+      // Inicializar Sección GEO
+      function initializeGEOSection(data) {
+        if (!data) return;
+
+        // Simular scores GEO (en producción vendrían de análisis real)
+        const geoScores = {
+          chatgpt: Math.floor(Math.random() * 40) + 40, // 40-80
+          claude: Math.floor(Math.random() * 40) + 30, // 30-70
+          gemini: Math.floor(Math.random() * 40) + 50, // 50-90
+          perplexity: Math.floor(Math.random() * 40) + 35, // 35-75
+        };
+
+        // Actualizar tarjetas de motores
+        updateGEOEngineCard("chatgpt", geoScores.chatgpt);
+        updateGEOEngineCard("claude", geoScores.claude);
+        updateGEOEngineCard("gemini", geoScores.gemini);
+        updateGEOEngineCard("perplexity", geoScores.perplexity);
+
+        // Crear gráfico comparativo
+        createGEOComparisonChart(geoScores);
+
+        // Generar keywords ocultas
+        generateHiddenKeywords(data);
+
+        // Mostrar recomendaciones
+        displayGEORecommendations(data, geoScores);
+      }
+
+      // Actualizar tarjeta de motor GEO
+      function updateGEOEngineCard(engine, score) {
+        const mentions = Math.floor(score / 10) + Math.floor(Math.random() * 5);
+        const relevance = score + Math.floor(Math.random() * 10) - 5;
+
+        const scoreElement = document.querySelector(
+          `#geo-${engine}-score .score-value`
+        );
+        const mentionsElement = document.getElementById(`${engine}-mentions`);
+        const relevanceElement = document.getElementById(`${engine}-relevance`);
+
+        if (scoreElement) {
+          scoreElement.textContent = score;
+          // Actualizar círculo de progreso
+          const scoreCircle = scoreElement.closest(".score-circle");
+          if (scoreCircle) {
+            const borderColor = score >= 70 ? "#10b981" : score >= 40 ? "#f59e0b" : "#ef4444";
+            scoreCircle.style.borderColor = borderColor;
+          }
+        }
+
+        if (mentionsElement) mentionsElement.textContent = mentions;
+        if (relevanceElement) relevanceElement.textContent = relevance + "%";
+      }
+
+      // Crear gráfico de comparación GEO
+      function createGEOComparisonChart(scores) {
+        const ctx = document.getElementById("geo-comparison-chart");
+        if (!ctx) return;
+
+        if (charts.geoComparison) charts.geoComparison.destroy();
+
+        charts.geoComparison = new Chart(ctx, {
+          type: "radar",
+          data: {
+            labels: ["ChatGPT", "Claude", "Gemini", "Perplexity"],
+            datasets: [
+              {
+                label: "Score Actual",
+                data: [
+                  scores.chatgpt,
+                  scores.claude,
+                  scores.gemini,
+                  scores.perplexity,
+                ],
+                borderColor: "#3b82f6",
+                backgroundColor: "rgba(59, 130, 246, 0.2)",
+                borderWidth: 3,
+                pointBackgroundColor: "#3b82f6",
+                pointBorderColor: "#fff",
+                pointBorderWidth: 2,
+                pointRadius: 5,
+              },
+              {
+                label: "Objetivo (80)",
+                data: [80, 80, 80, 80],
+                borderColor: "#10b981",
+                backgroundColor: "rgba(16, 185, 129, 0.1)",
+                borderWidth: 2,
+                borderDash: [5, 5],
+                pointRadius: 0,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            plugins: {
+              legend: {
+                labels: {
+                  color: "#94a3b8",
+                  usePointStyle: true,
+                  padding: 15,
+                },
+              },
+              tooltip: {
+                backgroundColor: "#1e293b",
+                titleColor: "#f1f5f9",
+                bodyColor: "#cbd5e1",
+                borderColor: "#334155",
+                borderWidth: 1,
+                padding: 12,
+              },
+            },
+            scales: {
+              r: {
+                beginAtZero: true,
+                max: 100,
+                ticks: {
+                  stepSize: 20,
+                  color: "#94a3b8",
+                },
+                grid: {
+                  color: "#334155",
+                },
+                pointLabels: {
+                  color: "#94a3b8",
+                  font: {
+                    size: 13,
+                    weight: "600",
+                  },
+                },
+              },
+            },
+          },
+        });
+      }
+
+      // Generar keywords ocultas optimizadas para IA
+      function generateHiddenKeywords(data) {
+        const tbody = document.getElementById("hidden-keywords-tbody");
+        if (!tbody) return;
+
+        const hiddenKeywords = [
+          {
+            keyword: "desarrollo web profesional chile 2025",
+            type: "Meta Tag",
+            target: "Todos",
+            score: 85,
+            status: "Pendiente",
+          },
+          {
+            keyword: "agencia digital innovadora latinoamerica",
+            type: "Schema.org",
+            target: "ChatGPT",
+            score: 78,
+            status: "Pendiente",
+          },
+          {
+            keyword: "soluciones digitales empresariales",
+            type: "Hidden Div",
+            target: "Gemini",
+            score: 72,
+            status: "Pendiente",
+          },
+          {
+            keyword: "desarrollo aplicaciones web mobile",
+            type: "Aria-label",
+            target: "Perplexity",
+            score: 88,
+            status: "Pendiente",
+          },
+          {
+            keyword: "consultoría tecnológica digital",
+            type: "Meta Tag",
+            target: "Claude",
+            score: 65,
+            status: "Pendiente",
+          },
+        ];
+
+        tbody.innerHTML = hiddenKeywords
+          .map(
+            (kw) => `
+                <tr>
+                    <td style="text-align: left;">
+                        <span class="keyword-cell">${escapeHtml(kw.keyword)}</span>
+                    </td>
+                    <td>
+                        <span class="badge-pill primary" style="font-size: 0.75rem; padding: 4px 10px;">
+                            ${kw.type}
+                        </span>
+                    </td>
+                    <td>${kw.target}</td>
+                    <td>
+                        <span style="font-weight: 600; color: ${
+                          kw.score >= 80
+                            ? "var(--success)"
+                            : kw.score >= 60
+                            ? "var(--warning)"
+                            : "var(--error)"
+                        };">
+                            ${kw.score}/100
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge-pill" style="background: rgba(245, 158, 11, 0.15); color: var(--warning); font-size: 0.75rem; padding: 4px 10px;">
+                            ${kw.status}
+                        </span>
+                    </td>
+                </tr>
+            `
+          )
+          .join("");
+      }
+
+      // Mostrar recomendaciones GEO
+      function displayGEORecommendations(data, scores) {
+        const container = document.getElementById("geo-recommendations-container");
+        if (!container) return;
+
+        const recommendations = [
+          {
+            icon: "fa-file-code",
+            title: "Implementar Schema.org Estructurado",
+            description:
+              "Agrega JSON-LD con información detallada de tu negocio. Los motores generativos priorizan sitios con datos estructurados.",
+            action: "Copiar Código",
+            actionFn: "copySchemaCode",
+          },
+          {
+            icon: "fa-tags",
+            title: "Optimizar Meta Tags para IA",
+            description:
+              "Incluye keywords específicas en meta tags que los motores generativos analizan pero no son visibles al usuario.",
+            action: "Ver Ejemplos",
+            actionFn: "showMetaExamples",
+          },
+          {
+            icon: "fa-sitemap",
+            title: "Crear Contenido FAQ Estructurado",
+            description:
+              "Las preguntas frecuentes con Schema FAQ aumentan un 40% las menciones en respuestas de IA.",
+            action: "Generar FAQ",
+            actionFn: "generateFAQ",
+          },
+          {
+            icon: "fa-link",
+            title: "Optimizar Enlaces Internos",
+            description:
+              "Los motores generativos valoran la estructura de enlaces. Mejora tu arquitectura de información.",
+            action: "Analizar Sitio",
+            actionFn: "analyzeSite",
+          },
+        ];
+
+        container.innerHTML = recommendations
+          .map(
+            (rec) => `
+                <div class="geo-recommendation-item">
+                    <div class="geo-recommendation-icon">
+                        <i class="fas ${rec.icon}"></i>
+                    </div>
+                    <div class="geo-recommendation-content">
+                        <div class="geo-recommendation-title">${rec.title}</div>
+                        <div class="geo-recommendation-description">${rec.description}</div>
+                        <a href="#" class="geo-recommendation-action" onclick="window['${rec.actionFn}']?.(); return false;">
+                            ${rec.action} <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      // Funciones auxiliares para recomendaciones
+      window.copySchemaCode = function () {
+        const code = document.querySelector("#schema-code code").textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          alert("✅ Código copiado al portapapeles!");
+        });
+      };
+
+      window.showMetaExamples = function () {
+        alert(
+          "Próximamente: Generador de meta tags optimizados para IA\n\nPor ahora, usa el código Schema.org provisto."
+        );
+      };
+
+      window.generateFAQ = function () {
+        alert(
+          "Próximamente: Generador automático de FAQ con Schema\n\nBasado en tus keywords más importantes."
+        );
+      };
+
+      window.analyzeSite = function () {
+        alert(
+          "Próximamente: Analizador de estructura de sitio\n\nEvaluará la arquitectura de información y enlaces internos."
+        );
+      };
+
+      // Botón copiar Schema
+      document.getElementById("btn-copy-schema")?.addEventListener("click", function () {
+        copySchemaCode();
+      });
+
+      // Botón analizar GEO
+      document.getElementById("btn-analyze-geo")?.addEventListener("click", function () {
+        if (appState.data) {
+          initializeGEOSection(appState.data);
+          alert("✅ Análisis GEO completado!\n\nRevisa los scores y recomendaciones.");
+        } else {
+          alert("⚠️ Primero carga los datos de keywords.");
+        }
+      });
+
+      // Botón aplicar keywords ocultas
+      document.getElementById("btn-apply-hidden-keywords")?.addEventListener("click", function () {
+        alert(
+          "🚀 Aplicar Keywords Ocultas\n\n" +
+            "Esta función generará archivos HTML actualizados con:\n" +
+            "- Meta tags optimizados\n" +
+            "- Schema.org JSON-LD\n" +
+            "- Divs ocultos con keywords\n" +
+            "- Aria-labels descriptivos\n\n" +
+            "¿Deseas continuar?\n\n" +
+            "(En producción, esto ejecutará el script de actualización automática)"
+        );
+      });
+
       // Cargar datos al iniciar
       document.addEventListener("DOMContentLoaded", function () {
         loadKeywordsData();
@@ -3400,6 +4009,18 @@
             setTimeout(() => {
               if (appState.data) {
                 initializeHistorySection(appState.data);
+              }
+            }, 100);
+          });
+        }
+
+        // Cargar GEO cuando se cambie a la tab de settings
+        const settingsLink = document.querySelector('[data-tab="settings"]');
+        if (settingsLink) {
+          settingsLink.addEventListener("click", function () {
+            setTimeout(() => {
+              if (appState.data) {
+                initializeGEOSection(appState.data);
               }
             }, 100);
           });
