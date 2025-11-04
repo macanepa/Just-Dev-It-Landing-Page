@@ -1,0 +1,114 @@
+{
+  "last_update": "2025-11-04T16:34:39.301322",
+  "period": {
+    "start_date": "2025-08-06",
+    "end_date": "2025-11-04",
+    "days": 90
+  },
+  "summary": {
+    "total_keywords": 7,
+    "high_priority": 0,
+    "medium_priority": 3,
+    "low_priority": 4,
+    "top_3_positions": 3,
+    "top_10_positions": 3,
+    "total_impressions": 22,
+    "total_clicks": 2,
+    "avg_ctr": 7.14,
+    "avg_position": 22.5,
+    "high_conversion_potential": 1
+  },
+  "keywords": [
+    {
+      "keyword": "justdev",
+      "impressions": 4,
+      "clicks": 2,
+      "ctr": 50.0,
+      "avg_position": 2.2,
+      "best_position": 1.5,
+      "worst_position": 3,
+      "total_pages": 1,
+      "conversion_potential": 70,
+      "improvement_opportunity": 0,
+      "priority": 67.4
+    },
+    {
+      "keyword": "devs it",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0,
+      "avg_position": 1,
+      "best_position": 1,
+      "worst_position": 1,
+      "total_pages": 1,
+      "conversion_potential": 40,
+      "improvement_opportunity": 30,
+      "priority": 45.7
+    },
+    {
+      "keyword": "just dev",
+      "impressions": 9,
+      "clicks": 0,
+      "ctr": 0.0,
+      "avg_position": 1.6,
+      "best_position": 1,
+      "worst_position": 3,
+      "total_pages": 1,
+      "conversion_potential": 40,
+      "improvement_opportunity": 30,
+      "priority": 45.7
+    },
+    {
+      "keyword": "dev it",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0.0,
+      "avg_position": 12.2,
+      "best_position": 8,
+      "worst_position": 16.5,
+      "total_pages": 1,
+      "conversion_potential": 15,
+      "improvement_opportunity": 80,
+      "priority": 32.4
+    },
+    {
+      "keyword": "just deploy it",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0,
+      "avg_position": 44,
+      "best_position": 44,
+      "worst_position": 44,
+      "total_pages": 1,
+      "conversion_potential": 0,
+      "improvement_opportunity": 30,
+      "priority": 16.8
+    },
+    {
+      "keyword": "just it",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0.0,
+      "avg_position": 48,
+      "best_position": 43,
+      "worst_position": 53,
+      "total_pages": 1,
+      "conversion_potential": 0,
+      "improvement_opportunity": 30,
+      "priority": 15.6
+    },
+    {
+      "keyword": "it just it",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0.0,
+      "avg_position": 48.5,
+      "best_position": 48.5,
+      "worst_position": 48.5,
+      "total_pages": 1,
+      "conversion_potential": 0,
+      "improvement_opportunity": 30,
+      "priority": 15.5
+    }
+  ]
+}
