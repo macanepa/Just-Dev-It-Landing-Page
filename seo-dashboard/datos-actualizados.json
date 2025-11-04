@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "total_impressions": 3,
+    "total_clicks": 0,
+    "avg_ctr": 0.0,
+    "avg_position": 4.7
+  },
+  "keywords": [
+    {
+      "keyword": "dev it",
+      "position": 8.0,
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0
+    },
+    {
+      "keyword": "just dev",
+      "position": 3.0,
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0
+    },
+    {
+      "keyword": "justdev",
+      "position": 3.0,
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0
+    }
+  ],
+  "trend": [
+    {
+      "date": "2025-10-30",
+      "impressions": 1,
+      "clicks": 0
+    },
+    {
+      "date": "2025-10-31",
+      "impressions": 1,
+      "clicks": 0
+    },
+    {
+      "date": "2025-11-02",
+      "impressions": 1,
+      "clicks": 0
+    }
+  ],
+  "last_updated": "2025-11-04T16:21:24.905776"
+}

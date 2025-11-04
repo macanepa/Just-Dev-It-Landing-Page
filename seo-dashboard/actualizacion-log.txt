@@ -1,0 +1,37 @@
+[2025-11-04 16:13:27] ============================================================
+[2025-11-04 16:13:27] Iniciando actualización automática de SEO Dashboard
+[2025-11-04 16:13:27] ============================================================
+[2025-11-04 16:13:27] ERROR: No se encontró config.json
+[2025-11-04 16:13:27] Por favor configura el dashboard primero desde la interfaz web
+[2025-11-04 16:15:58] ============================================================
+[2025-11-04 16:15:58] Iniciando actualización automática de SEO Dashboard
+[2025-11-04 16:15:58] ============================================================
+[2025-11-04 16:15:58] ERROR: No se encontró config.json
+[2025-11-04 16:15:58] Por favor configura el dashboard primero desde la interfaz web
+[2025-11-04 16:17:00] ============================================================
+[2025-11-04 16:17:00] Iniciando actualización automática de SEO Dashboard
+[2025-11-04 16:17:00] ============================================================
+[2025-11-04 16:17:00] Propiedad: https://www.justdev.it
+[2025-11-04 16:17:00] Consultando datos desde 2025-10-28 hasta 2025-11-04...
+[2025-11-04 16:17:01] ERROR HTTP: 403 - User does not have sufficient permission for site 'https://www.justdev.it'. See also: https://support.google.com/webmasters/answer/2451999.
+[2025-11-04 16:17:01] Verifica que la cuenta de servicio tiene permisos en Search Console
+[2025-11-04 16:19:24] ============================================================
+[2025-11-04 16:19:24] Iniciando actualización automática de SEO Dashboard
+[2025-11-04 16:19:24] ============================================================
+[2025-11-04 16:19:24] Propiedad: sc-domain:justdev.it
+[2025-11-04 16:19:24] Consultando datos desde 2025-10-28 hasta 2025-11-04...
+[2025-11-04 16:19:25] Datos procesados: 3 keywords, 3 impresiones
+[2025-11-04 16:19:25] Datos guardados en datos-actualizados.json
+[2025-11-04 16:19:25] ============================================================
+[2025-11-04 16:19:25] ✅ Actualización completada exitosamente
+[2025-11-04 16:19:25] ============================================================
+[2025-11-04 16:21:23] ============================================================
+[2025-11-04 16:21:23] Iniciando actualización automática de SEO Dashboard
+[2025-11-04 16:21:23] ============================================================
+[2025-11-04 16:21:23] Propiedad: sc-domain:justdev.it
+[2025-11-04 16:21:23] Consultando datos desde 2025-10-28 hasta 2025-11-04...
+[2025-11-04 16:21:24] Datos procesados: 3 keywords, 3 impresiones
+[2025-11-04 16:21:24] Datos guardados en datos-actualizados.json
+[2025-11-04 16:21:24] ============================================================
+[2025-11-04 16:21:24] ✅ Actualización completada exitosamente
+[2025-11-04 16:21:24] ============================================================
