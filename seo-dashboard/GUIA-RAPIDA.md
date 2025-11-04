@@ -3,6 +3,7 @@
 ## ⚡ EN 3 PASOS
 
 ### PASO 1: Abrir el Dashboard
+
 ```powershell
 # Navega a la carpeta
 cd "c:\Users\Joaquin Espildora M\Local Projects\Just-Dev-It-Landing-Page\seo-dashboard"
@@ -14,12 +15,14 @@ dashboard-enterprise.html
 ### PASO 2: Navegar por las Secciones Completadas
 
 #### 📊 SECCIÓN 2: Overview (Tab principal)
+
 - Mira los 4 KPIs principales
 - Revisa las alertas críticas
 - Explora los 4 gráficos interactivos
 - Revisa la tabla Top 10 Keywords
 
 #### 📈 SECCIÓN 8: Histórico (Click en "Reportes" en el sidebar)
+
 - Ve el crecimiento total
 - Revisa el Score de Validación
 - Explora los 4 gráficos de evolución
@@ -27,6 +30,7 @@ dashboard-enterprise.html
 - Analiza las 4 métricas de validación del producto
 
 #### 🤖 SECCIÓN 9: GEO (Click en "Configuración" en el sidebar)
+
 - Click en "Analizar GEO"
 - Revisa scores de ChatGPT, Claude, Gemini, Perplexity
 - Ve las keywords ocultas optimizadas para IA
@@ -34,6 +38,7 @@ dashboard-enterprise.html
 - Click en "Copiar Código" para el Schema.org
 
 ### PASO 3: Actualizar Datos (Opcional)
+
 ```powershell
 # Si quieres nuevos datos reales
 python test-keywords-analysis.py
@@ -45,6 +50,7 @@ python test-keywords-analysis.py
 ## 🎯 QUÉ ESPERAR
 
 ### ✅ FUNCIONA:
+
 - Navegación entre tabs
 - Gráficos interactivos (hover para detalles)
 - KPIs dinámicos
@@ -54,6 +60,7 @@ python test-keywords-analysis.py
 - Responsive design
 
 ### ⏳ PRÓXIMAMENTE:
+
 - Keywords Master (tabla completa)
 - Analytics (GA4 integration)
 - Performance (PageSpeed)
@@ -83,6 +90,7 @@ python test-keywords-analysis.py
 ## 📊 DATOS ACTUALES
 
 Con los 7 keywords analizados verás:
+
 - Impresiones: 22
 - Clics: 2
 - CTR: 7.14%
@@ -93,12 +101,14 @@ Con los 7 keywords analizados verás:
 ## 🔥 FEATURES ESPECIALES
 
 ### Sección 2 (Overview):
+
 - 📊 4 gráficos interactivos
 - 🎯 8 KPIs principales
 - ⚠️ Alertas dinámicas
 - 📈 Sparklines en tabla
 
 ### Sección 8 (Histórico):
+
 - 📈 Evolución completa (12 meses simulados)
 - 🏆 4 hitos con timeline
 - ✅ 4 métricas de validación
@@ -106,6 +116,7 @@ Con los 7 keywords analizados verás:
 - 💰 ROI calculado
 
 ### Sección 9 (GEO):
+
 - 🤖 4 motores IA (ChatGPT, Claude, Gemini, Perplexity)
 - 🔒 5 keywords ocultas optimizadas
 - 📋 Código Schema.org completo
@@ -125,6 +136,7 @@ Con los 7 keywords analizados verás:
 ## 🚀 SIGUIENTE NIVEL
 
 Si te gusta el resultado, puedo continuar con:
+
 1. **Sección 3: Keywords Master** - Tabla completa con filtros
 2. **Sección 4: Analytics** - Google Analytics 4
 3. **Sección 5: Performance** - PageSpeed Insights

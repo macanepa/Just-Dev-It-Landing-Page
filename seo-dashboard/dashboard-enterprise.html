@@ -1093,7 +1093,7 @@
       }
 
       .geo-engine-card::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -1316,7 +1316,7 @@
       }
 
       .code-block code {
-        font-family: 'Courier New', monospace;
+        font-family: "Courier New", monospace;
         font-size: 0.875rem;
         color: #0f0;
         line-height: 1.6;
@@ -3712,7 +3712,8 @@
           // Actualizar círculo de progreso
           const scoreCircle = scoreElement.closest(".score-circle");
           if (scoreCircle) {
-            const borderColor = score >= 70 ? "#10b981" : score >= 40 ? "#f59e0b" : "#ef4444";
+            const borderColor =
+              score >= 70 ? "#10b981" : score >= 40 ? "#f59e0b" : "#ef4444";
             scoreCircle.style.borderColor = borderColor;
           }
         }
@@ -3853,7 +3854,9 @@
             (kw) => `
                 <tr>
                     <td style="text-align: left;">
-                        <span class="keyword-cell">${escapeHtml(kw.keyword)}</span>
+                        <span class="keyword-cell">${escapeHtml(
+                          kw.keyword
+                        )}</span>
                     </td>
                     <td>
                         <span class="badge-pill primary" style="font-size: 0.75rem; padding: 4px 10px;">
@@ -3885,7 +3888,9 @@
 
       // Mostrar recomendaciones GEO
       function displayGEORecommendations(data, scores) {
-        const container = document.getElementById("geo-recommendations-container");
+        const container = document.getElementById(
+          "geo-recommendations-container"
+        );
         if (!container) return;
 
         const recommendations = [
@@ -3970,33 +3975,41 @@
       };
 
       // Botón copiar Schema
-      document.getElementById("btn-copy-schema")?.addEventListener("click", function () {
-        copySchemaCode();
-      });
+      document
+        .getElementById("btn-copy-schema")
+        ?.addEventListener("click", function () {
+          copySchemaCode();
+        });
 
       // Botón analizar GEO
-      document.getElementById("btn-analyze-geo")?.addEventListener("click", function () {
-        if (appState.data) {
-          initializeGEOSection(appState.data);
-          alert("✅ Análisis GEO completado!\n\nRevisa los scores y recomendaciones.");
-        } else {
-          alert("⚠️ Primero carga los datos de keywords.");
-        }
-      });
+      document
+        .getElementById("btn-analyze-geo")
+        ?.addEventListener("click", function () {
+          if (appState.data) {
+            initializeGEOSection(appState.data);
+            alert(
+              "✅ Análisis GEO completado!\n\nRevisa los scores y recomendaciones."
+            );
+          } else {
+            alert("⚠️ Primero carga los datos de keywords.");
+          }
+        });
 
       // Botón aplicar keywords ocultas
-      document.getElementById("btn-apply-hidden-keywords")?.addEventListener("click", function () {
-        alert(
-          "🚀 Aplicar Keywords Ocultas\n\n" +
-            "Esta función generará archivos HTML actualizados con:\n" +
-            "- Meta tags optimizados\n" +
-            "- Schema.org JSON-LD\n" +
-            "- Divs ocultos con keywords\n" +
-            "- Aria-labels descriptivos\n\n" +
-            "¿Deseas continuar?\n\n" +
-            "(En producción, esto ejecutará el script de actualización automática)"
-        );
-      });
+      document
+        .getElementById("btn-apply-hidden-keywords")
+        ?.addEventListener("click", function () {
+          alert(
+            "🚀 Aplicar Keywords Ocultas\n\n" +
+              "Esta función generará archivos HTML actualizados con:\n" +
+              "- Meta tags optimizados\n" +
+              "- Schema.org JSON-LD\n" +
+              "- Divs ocultos con keywords\n" +
+              "- Aria-labels descriptivos\n\n" +
+              "¿Deseas continuar?\n\n" +
+              "(En producción, esto ejecutará el script de actualización automática)"
+          );
+        });
 
       // Cargar datos al iniciar
       document.addEventListener("DOMContentLoaded", function () {
