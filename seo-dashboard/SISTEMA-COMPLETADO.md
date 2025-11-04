@@ -7,12 +7,14 @@
 ## 📋 RESUMEN DE LO QUE SE LOGRÓ
 
 ### 1. Dashboard SEO Funcional ✅
+
 - ✅ Conectado a Google Search Console
 - ✅ Mostrando datos reales de keywords
 - ✅ Gráficos de tendencias funcionando
 - ✅ Exportación a CSV disponible
 
 ### 2. Automatización Completa ✅
+
 - ✅ Script de actualización automática creado
 - ✅ Tarea programada en Windows configurada
 - ✅ Se ejecutará **cada lunes a las 9:00 AM**
@@ -107,6 +109,7 @@ Get-Content seo-dashboard\actualizacion-log.txt | Select-Object -Last 20
 ```
 
 Deberías ver:
+
 ```
 [2025-11-04 16:21:24] ✅ Actualización completada exitosamente
 ```
@@ -181,6 +184,7 @@ Get-ScheduledTask -TaskName "SEO Dashboard - Actualización Semanal" | Get-Sched
 ### "No se actualizaron los datos"
 
 **Solución:**
+
 1. Abre `actualizacion-log.txt`
 2. Busca mensajes de error
 3. Errores comunes:
@@ -191,6 +195,7 @@ Get-ScheduledTask -TaskName "SEO Dashboard - Actualización Semanal" | Get-Sched
 ### "La tarea no se ejecutó"
 
 **Solución:**
+
 1. Abre el Programador de Tareas (`taskschd.msc`)
 2. Busca la tarea
 3. Haz clic derecho → "Ejecutar"
@@ -199,6 +204,7 @@ Get-ScheduledTask -TaskName "SEO Dashboard - Actualización Semanal" | Get-Sched
 ### "Error 403 - Sin permisos"
 
 **Solución:**
+
 1. Ve a [Search Console](https://search.google.com/search-console)
 2. Selecciona tu propiedad `justdev.it`
 3. Ve a Ajustes → Usuarios y permisos
@@ -207,6 +213,7 @@ Get-ScheduledTask -TaskName "SEO Dashboard - Actualización Semanal" | Get-Sched
 ### "Config.json no existe"
 
 **Solución:**
+
 ```powershell
 cd seo-dashboard
 python crear-config.py
@@ -239,6 +246,7 @@ Estos archivos están en `.gitignore` y NO se subirán a GitHub.
 ### 1. Agregar Google Analytics (Opcional):
 
 Si quieres ver datos de Analytics además de Search Console:
+
 1. Habilita Google Analytics Data API en Google Cloud
 2. Agrega el ID de propiedad en la configuración del dashboard
 3. El dashboard ya está preparado para mostrar datos de Analytics
@@ -246,6 +254,7 @@ Si quieres ver datos de Analytics además de Search Console:
 ### 2. Cambiar la frecuencia de actualización:
 
 Si quieres actualizar más seguido (ej: cada día):
+
 1. Abre el Programador de Tareas
 2. Modifica el desencadenador de la tarea
 3. Cambia de "Semanal" a "Diario"
@@ -253,6 +262,7 @@ Si quieres actualizar más seguido (ej: cada día):
 ### 3. Notificaciones por Email (Avanzado):
 
 Puedes configurar el Programador de Tareas para que te envíe un email cuando:
+
 - La actualización sea exitosa
 - Haya un error
 

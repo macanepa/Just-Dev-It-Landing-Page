@@ -1,6 +1,7 @@
 # 🚀 PASOS FINALES - Activar Automatización Completa
 
 ## ✅ Lo que ya está listo:
+
 1. ✅ Servidor API corriendo en `http://localhost:5000`
 2. ✅ Dashboard mostrando datos reales
 3. ✅ Scripts de automatización creados (.bat y .py)
@@ -12,6 +13,7 @@
 El dashboard ya tiene tu configuración guardada en el navegador, pero necesitamos guardarla también en un archivo `config.json` para que el script automático la use.
 
 **Instrucciones:**
+
 1. Ve al dashboard en tu navegador (ya lo tienes abierto)
 2. Haz clic en la pestaña **"⚙️ Configuración"**
 3. Verifica que los 3 campos estén llenos:
@@ -30,17 +32,20 @@ Esto creará el archivo `config.json` que necesita el script automático.
 Una vez guardada la configuración, ejecuta el script para verificar que funciona:
 
 **Opción A: Desde PowerShell**
+
 ```powershell
 cd "C:\Users\Joaquin Espildora M\Local Projects\Just-Dev-It-Landing-Page\seo-dashboard"
 .\actualizar-seo-automatico.bat
 ```
 
 **Opción B: Doble clic**
+
 - Ve a la carpeta `seo-dashboard`
 - Doble clic en `actualizar-seo-automatico.bat`
 
 **Resultado esperado:**
 Deberías ver:
+
 ```
 ========================================
  Actualización completada exitosamente!
@@ -59,7 +64,7 @@ Ahora configura Windows para que ejecute el script automáticamente cada lunes a
 2. **Escribe:** `taskschd.msc` y presiona Enter
 3. **Haz clic en:** "Crear tarea básica..."
 4. **Nombre:** `SEO Dashboard - Actualización Semanal`
-5. **Desencadenador:** 
+5. **Desencadenador:**
    - Semanalmente
    - Días: Lunes
    - Hora: 09:00
@@ -89,12 +94,14 @@ Ahora configura Windows para que ejecute el script automáticamente cada lunes a
 ## 🎉 ¡LISTO! Automatización Completa
 
 A partir de ahora, **cada lunes a las 9:00 AM**, Windows ejecutará automáticamente el script que:
+
 1. Se conectará a Google Search Console
 2. Obtendrá los datos de tus keywords
 3. Guardará todo en `datos-actualizados.json`
 4. Registrará el resultado en `actualizacion-log.txt`
 
 **Para ver los resultados:**
+
 - Abre el dashboard en cualquier momento
 - Haz clic en "🔄 Actualizar Datos"
 - Verás las keywords actualizadas automáticamente
@@ -104,6 +111,7 @@ A partir de ahora, **cada lunes a las 9:00 AM**, Windows ejecutará automáticam
 ## 📊 Rutina de Monitoreo Recomendada
 
 **Cada Lunes (5 minutos):**
+
 1. Abre el dashboard (`seo-dashboard/index.html`)
 2. Revisa las estadísticas generales (impresiones, clics, CTR)
 3. Ve a la pestaña "Keywords"
@@ -118,6 +126,7 @@ A partir de ahora, **cada lunes a las 9:00 AM**, Windows ejecutará automáticam
 Si algo falla, revisa el archivo `actualizacion-log.txt` que tiene todos los detalles de cada ejecución.
 
 **Errores comunes:**
+
 - **"No se encontró config.json"** → Ve al Paso 1 y re-guarda la configuración
 - **"403 Forbidden"** → Verifica permisos en Search Console
 - **"Python no está instalado"** → Asegúrate de que Python esté en PATH

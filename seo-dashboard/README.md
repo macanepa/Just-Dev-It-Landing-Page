@@ -20,9 +20,11 @@ Dashboard personalizado para monitorear tu posicionamiento orgánico en Google. 
 Si solo quieres ver el dashboard con datos de ejemplo:
 
 1. **Abre el archivo:**
+
    ```
    seo-dashboard/index.html
    ```
+
    Doble clic o abre con tu navegador
 
 2. **Haz clic en "Actualizar Datos"**
@@ -47,10 +49,12 @@ pip install -r requirements.txt
 2. **Crea un proyecto** (o usa uno existente)
 
 3. **Habilita las APIs:**
+
    - Google Search Console API
    - Google Analytics Data API (opcional)
 
 4. **Crea Service Account:**
+
    - Ve a "Credentials" → "Create Credentials" → "Service Account"
    - Dale un nombre: "SEO Dashboard"
    - Rol: "Viewer"
@@ -70,6 +74,7 @@ python api-server.py
 ```
 
 Verás:
+
 ```
 🚀 SEO Dashboard API Server
 ✅ Servidor iniciado en: http://localhost:5000
@@ -83,6 +88,7 @@ Verás:
 2. **Ve a la pestaña "Configuración"**
 
 3. **Pega tus credenciales:**
+
    - Property URL: `https://justdev.it`
    - Service Account JSON: Pega el contenido del archivo JSON descargado
    - GA Property ID: `G-E47YX9JYCS` (si quieres Analytics)
@@ -129,9 +135,11 @@ seo-dashboard/
 Si quieres integrar con otras herramientas:
 
 ### GET `/api/health`
+
 Verificar que el servidor está funcionando
 
 **Respuesta:**
+
 ```json
 {
   "status": "ok",
@@ -141,9 +149,11 @@ Verificar que el servidor está funcionando
 ```
 
 ### POST `/api/search-console/query`
+
 Obtener datos de Search Console
 
 **Request:**
+
 ```json
 {
   "property_url": "https://justdev.it",
@@ -154,6 +164,7 @@ Obtener datos de Search Console
 ```
 
 **Response:**
+
 ```json
 {
   "summary": {
@@ -175,12 +186,15 @@ Obtener datos de Search Console
 ```
 
 ### POST `/api/search-console/trend`
+
 Obtener tendencia de los últimos 7 días
 
 ### POST `/api/test-connection`
+
 Probar conexión con Google Search Console
 
 ### GET `/api/mock-data`
+
 Obtener datos de ejemplo (para desarrollo)
 
 ## 🎨 Personalización
@@ -203,7 +217,11 @@ Edita en `index.html` (línea ~10):
 
 ```css
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* ← Cambiar colores */
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 100%
+  ); /* ← Cambiar colores */
 }
 ```
 
@@ -224,6 +242,7 @@ keywords_examples = [
 ### ❌ Error: "google-auth not found"
 
 **Solución:**
+
 ```powershell
 pip install -r requirements.txt
 ```
@@ -231,6 +250,7 @@ pip install -r requirements.txt
 ### ❌ Error: "403 Forbidden" al consultar API
 
 **Solución:**
+
 - Verifica que el Service Account esté agregado en Search Console
 - Verifica que la propiedad URL sea correcta (con https://)
 - Verifica que las APIs estén habilitadas en Google Cloud
@@ -238,6 +258,7 @@ pip install -r requirements.txt
 ### ❌ Dashboard no muestra datos
 
 **Solución:**
+
 1. Abre la consola del navegador (F12)
 2. Ve a la pestaña "Console"
 3. Busca errores en rojo
@@ -246,6 +267,7 @@ pip install -r requirements.txt
 ### ❌ Servidor no inicia
 
 **Solución:**
+
 ```powershell
 # Verifica que Python esté instalado
 python --version
@@ -260,6 +282,7 @@ pip install flask flask-cors --upgrade
 ### ❌ Datos no se actualizan
 
 **Solución:**
+
 - Limpia caché del navegador (Ctrl + Shift + Delete)
 - Limpia localStorage: Consola → `localStorage.clear()`
 - Reinicia el servidor Python
@@ -295,4 +318,4 @@ MIT License - Úsalo libremente para tus proyectos
 
 **Creado con 💜 por Just Dev It**
 
-*Dashboard SEO personalizado para monitorear tu posicionamiento orgánico*
+_Dashboard SEO personalizado para monitorear tu posicionamiento orgánico_

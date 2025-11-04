@@ -67,16 +67,19 @@ Si quieres datos de Google Analytics:
 ### Paso 3.2: Detalles del Service Account
 
 **Paso 1 - Service account details:**
+
 - **Service account name:** `seo-dashboard-api`
 - **Service account ID:** Se genera automáticamente
 - **Description:** `Service account para SEO Dashboard - acceso a Search Console`
 - Haz clic en **CREATE AND CONTINUE**
 
 **Paso 2 - Grant this service account access:**
+
 - **Role:** Selecciona `Viewer` (o `Owner` si quieres permisos completos)
 - Haz clic en **CONTINUE**
 
 **Paso 3 - Grant users access:**
+
 - Déjalo vacío (no es necesario)
 - Haz clic en **DONE**
 
@@ -85,6 +88,7 @@ Si quieres datos de Google Analytics:
 ### Paso 3.3: Crear Clave JSON
 
 1. En la lista de service accounts, haz clic en el email que se creó
+
    - Ejemplo: `seo-dashboard-api@proyecto-123456.iam.gserviceaccount.com`
 
 2. Ve a la pestaña **KEYS**
@@ -100,6 +104,7 @@ Si quieres datos de Google Analytics:
    - Ejemplo: `proyecto-123456-abc123def456.json`
 
 ⚠️ **IMPORTANTE:**
+
 - **NO compartas este archivo** con nadie
 - **NO lo subas a GitHub**
 - **Guárdalo en un lugar seguro**
@@ -129,6 +134,7 @@ Si quieres datos de Google Analytics:
 5. Haz clic en **ADD USER** (arriba a la derecha)
 
 6. **Email address:** Pega el email del service account
+
    - Ejemplo: `seo-dashboard-api@proyecto-123456.iam.gserviceaccount.com`
 
 7. **Permission level:** Selecciona **Full**
@@ -154,16 +160,19 @@ Si quieres datos de Google Analytics:
 ### Paso 5.3: Pegar Credenciales
 
 **Property URL:**
+
 ```
 https://justdev.it
 ```
 
 **Service Account JSON:**
+
 1. Abre el archivo JSON descargado con un editor de texto (Notepad, VSCode, etc.)
 2. Copia TODO el contenido (Ctrl+A → Ctrl+C)
 3. Pega en el campo "Service Account JSON (Credentials)"
 
 Debería verse algo así:
+
 ```json
 {
   "type": "service_account",
@@ -176,6 +185,7 @@ Debería verse algo así:
 ```
 
 **Google Analytics (Opcional):**
+
 - Property ID: `G-E47YX9JYCS`
 - Measurement ID: (si lo tienes)
 
@@ -193,12 +203,14 @@ Debería verse algo así:
 ### Paso 6.1: Iniciar el Servidor API
 
 **Opción A: Script automático (recomendado)**
+
 ```powershell
 cd seo-dashboard
 .\start.ps1
 ```
 
 **Opción B: Manual**
+
 ```powershell
 cd seo-dashboard
 pip install -r requirements.txt
@@ -206,6 +218,7 @@ python api-server.py
 ```
 
 Deberías ver:
+
 ```
 🚀 SEO Dashboard API Server
 ✅ Servidor iniciado en: http://localhost:5000
@@ -220,17 +233,21 @@ Deberías ver:
 3. Deberías ver uno de estos mensajes:
 
    ✅ **"Conexión exitosa con Google Search Console"**
+
    - ¡Todo funcionó! Puedes continuar
 
    ⚠️ **"Error al conectar: 403 Forbidden"**
+
    - El service account no tiene permisos
    - Verifica el Paso 4 (agregar usuario en Search Console)
 
    ⚠️ **"Error al conectar: Property not found"**
+
    - La URL de la propiedad está mal
    - Verifica que sea exactamente: `https://justdev.it`
 
    ❌ **"Librerías de Google no instaladas"**
+
    - Ejecuta: `pip install -r requirements.txt`
 
 ### Paso 6.3: Actualizar Datos
@@ -256,15 +273,18 @@ Tu SEO Dashboard está completamente configurado y funcionando.
 ### Próximos Pasos:
 
 1. **Explora el dashboard:**
+
    - Pestaña "Overview": Vista general
    - Pestaña "Keywords": Análisis detallado
    - Pestaña "Objetivos": Metas mensuales
 
 2. **Configura tus metas:**
+
    - Edita los objetivos según tus necesidades
    - Trackea tu progreso semana a semana
 
 3. **Exporta datos:**
+
    - Usa el botón "📥 Exportar CSV"
    - Analiza en Excel o Google Sheets
 
@@ -281,6 +301,7 @@ Tu SEO Dashboard está completamente configurado y funcionando.
 **Causa:** Service account no tiene permisos
 
 **Solución:**
+
 1. Ve a Search Console
 2. Settings → Users and permissions
 3. Verifica que el email del service account esté con permisos "Full"
@@ -291,6 +312,7 @@ Tu SEO Dashboard está completamente configurado y funcionando.
 **Causa:** URL de la propiedad incorrecta
 
 **Solución:**
+
 1. Ve a Search Console
 2. Copia la URL exacta de tu propiedad
 3. Pégala en el dashboard (debe incluir `https://`)
@@ -300,6 +322,7 @@ Tu SEO Dashboard está completamente configurado y funcionando.
 **Causa:** Tu sitio todavía no tiene datos en Search Console
 
 **Solución:**
+
 1. Espera 2-3 días después de agregar el sitio a Search Console
 2. Mientras tanto, usa datos de ejemplo (botón "Actualizar Datos" sin servidor)
 
@@ -308,6 +331,7 @@ Tu SEO Dashboard está completamente configurado y funcionando.
 **Causa:** Dependencias no instaladas
 
 **Solución:**
+
 ```powershell
 pip install -r requirements.txt --upgrade
 ```

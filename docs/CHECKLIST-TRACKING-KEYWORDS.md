@@ -3,20 +3,29 @@
 ## 🚀 HOY (30 minutos) - HACER AHORA
 
 ### 1. Verificar Google Analytics está funcionando
+
 ```javascript
 // Abre tu sitio: justdev.it
 // Presiona F12 (Consola del navegador)
 // Pega este código:
 
-console.log("Google Analytics ID: ", window.gtag ? "✅ Funcionando" : "❌ No detectado");
-console.log("GTM ID: ", window.dataLayer ? "✅ Funcionando" : "❌ No detectado");
+console.log(
+  "Google Analytics ID: ",
+  window.gtag ? "✅ Funcionando" : "❌ No detectado"
+);
+console.log(
+  "GTM ID: ",
+  window.dataLayer ? "✅ Funcionando" : "❌ No detectado"
+);
 
 // Deberías ver: ✅ Funcionando en ambos
 ```
+
 - [ ] Google Analytics (G-E47YX9JYCS) funcionando
 - [ ] Google Tag Manager (GTM-N67BW2PN) funcionando
 
 **Si alguno dice ❌ No detectado:**
+
 - Revisa que los scripts estén en el `<head>` de index.html
 - Limpia caché del navegador (Ctrl + F5)
 - Prueba en modo incógnito
@@ -32,23 +41,27 @@ console.log("GTM ID: ", window.dataLayer ? "✅ Funcionando" : "❌ No detectado
 2. **Haz clic en:** "Agregar propiedad"
 
 3. **Elige tipo de propiedad:**
+
    - ✅ Prefijo de URL: `https://justdev.it`
    - (Más fácil que Dominio)
 
 4. **Método de verificación recomendado:** Etiqueta HTML
 
    Te darán un código como este:
+
    ```html
    <meta name="google-site-verification" content="ABC123XYZ..." />
    ```
 
 5. **Agrégalo a tu index.html:**
+
    - Abre `index.html`
    - Busca la sección `<head>`
    - Pega el meta tag ANTES del `</head>`
    - Guarda el archivo
 
 6. **Sube los cambios:**
+
    ```powershell
    git add index.html
    git commit -m "Add Google Search Console verification"
@@ -66,29 +79,32 @@ console.log("GTM ID: ", window.dataLayer ? "✅ Funcionando" : "❌ No detectado
 - [ ] Search Console configurado
 - [ ] Meta tag de verificación agregado
 - [ ] Propiedad verificada exitosamente
-- [ ] Fecha de inicio anotada: ___________
+- [ ] Fecha de inicio anotada: ****\_\_\_****
 
 ---
 
 ### 3. Verificar que el sitio está indexado (2 min)
 
 **En Google, busca:**
+
 ```
 site:justdev.it
 ```
 
 **¿Qué deberías ver?**
+
 - ✅ **Si aparece tu sitio:** Ya estás indexado, perfecto!
 - ❌ **Si no aparece:** No estás indexado todavía
 
 **Si NO estás indexado:**
+
 1. Ve a Search Console → Inspección de URL
 2. Pega tu URL: `https://justdev.it`
 3. Haz clic en "Solicitar indexación"
 4. Espera 2-7 días
 
 - [ ] Sitio indexado en Google
-- [ ] Fecha verificada: ___________
+- [ ] Fecha verificada: ****\_\_\_****
 
 ---
 
@@ -115,6 +131,7 @@ site:justdev.it
 ```
 
 **Súbelo a Search Console:**
+
 1. Search Console → Sitemaps
 2. Ingresa: `sitemap.xml`
 3. Haz clic en "Enviar"
@@ -136,6 +153,7 @@ Sitemap: https://justdev.it/sitemap.xml
 ```
 
 **Verifica que NO tengas:**
+
 ```txt
 Disallow: /  ← ❌ Esto bloquea todo!
 ```
@@ -152,6 +170,7 @@ Disallow: /  ← ❌ Esto bloquea todo!
 1. **Ve a:** https://sheets.google.com
 2. **Crea nuevo sheet:** "SEO Tracking - Just Dev It"
 3. **Crea estas 4 hojas:**
+
    - Dashboard Principal
    - Keywords Principales
    - Conversiones
@@ -160,7 +179,7 @@ Disallow: /  ← ❌ Esto bloquea todo!
 4. **Usa el template de:** `docs/TEMPLATE-GOOGLE-SHEET-TRACKING.md`
 
 - [ ] Google Sheet creado
-- [ ] Link del Sheet guardado: ___________
+- [ ] Link del Sheet guardado: ****\_\_\_****
 - [ ] Template básico implementado
 
 ---
@@ -183,6 +202,7 @@ Disallow: /  ← ❌ Esto bloquea todo!
 ```
 
 **Para cada una, anota:**
+
 - ¿Apareces en las primeras 5 páginas? (top 50)
 - Si apareces, ¿en qué posición aproximada?
 - ¿Quiénes son tus competidores en top 3?
@@ -199,29 +219,30 @@ Disallow: /  ← ❌ Esto bloquea todo!
 
 ```javascript
 // Busca el evento submit del formulario
-document.querySelector('form').addEventListener('submit', function(e) {
+document.querySelector("form").addEventListener("submit", function (e) {
   // Agrega este código ANTES de enviar el formulario
-  
+
   // Track en Google Analytics
-  gtag('event', 'form_submit', {
-    'event_category': 'Contact',
-    'event_label': 'Contact Form',
-    'form_location': 'hero_section'
+  gtag("event", "form_submit", {
+    event_category: "Contact",
+    event_label: "Contact Form",
+    form_location: "hero_section",
   });
-  
+
   // Track en GTM
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
-    'event': 'formSubmit',
-    'formType': 'contacto',
-    'formLocation': window.location.pathname
+    event: "formSubmit",
+    formType: "contacto",
+    formLocation: window.location.pathname,
   });
-  
-  console.log('✅ Evento de conversión enviado');
+
+  console.log("✅ Evento de conversión enviado");
 });
 ```
 
 **Prueba que funciona:**
+
 1. Abre tu sitio en modo incógnito
 2. Abre consola (F12)
 3. Llena el formulario
@@ -260,15 +281,17 @@ document.querySelector('form').addEventListener('submit', function(e) {
 4. **Ordena por:** Impresiones (descendente)
 
 **Lo que buscas:**
+
 - ¿Cuántas impresiones tienes en total?
 - ¿Qué keywords están generando impresiones?
 - ¿Algún clic ya?
 - ¿Posición promedio de tus keywords?
 
 **Anota en tu Google Sheet:**
-- Total impresiones semana 1: ___________
-- Total clics semana 1: ___________
-- Top 3 keywords con impresiones: ___________
+
+- Total impresiones semana 1: ****\_\_\_****
+- Total clics semana 1: ****\_\_\_****
+- Top 3 keywords con impresiones: ****\_\_\_****
 
 - [ ] Primeros datos en Search Console
 - [ ] Datos anotados en Google Sheet
@@ -281,6 +304,7 @@ document.querySelector('form').addEventListener('submit', function(e) {
 **Para tus top 5 keywords, busca en Google:**
 
 **Formato de análisis:**
+
 ```
 Keyword: desarrollo de software fintech Santiago
 
@@ -333,9 +357,10 @@ TU POSICIÓN: No aparezco / Página 2-3 / Posición X
 → Acción: Crear landing page específica o blog post
 
 **Identifica 3 keywords para optimizar:**
-1. ___________  → Acción: ___________
-2. ___________  → Acción: ___________
-3. ___________  → Acción: ___________
+
+1. ****\_\_\_**** → Acción: ****\_\_\_****
+2. ****\_\_\_**** → Acción: ****\_\_\_****
+3. ****\_\_\_**** → Acción: ****\_\_\_****
 
 - [ ] 3 keywords prioritarias identificadas
 - [ ] Plan de acción definido
@@ -402,6 +427,7 @@ CHECKLIST SEMANAL
 ## 🎯 METAS POR MES
 
 ### Mes 1 - Fundación
+
 - [x] Search Console configurado
 - [ ] Sitio indexado
 - [ ] 100+ impresiones/semana
@@ -409,6 +435,7 @@ CHECKLIST SEMANAL
 - [ ] 10+ keywords apareciendo
 
 ### Mes 2 - Crecimiento
+
 - [ ] 500+ impresiones/semana
 - [ ] 15+ clics/semana
 - [ ] 20+ keywords apareciendo
@@ -416,6 +443,7 @@ CHECKLIST SEMANAL
 - [ ] Primera conversión orgánica
 
 ### Mes 3 - Consolidación
+
 - [ ] 1,000+ impresiones/semana
 - [ ] 30+ clics/semana
 - [ ] 5+ keywords en top 10
@@ -476,6 +504,6 @@ En 30 minutos tendrás la base configurada y en 2 semanas tus primeros datos par
 
 ---
 
-Fecha de inicio: ___________
-Responsable: ___________
-Objetivo 3 meses: ___________
+Fecha de inicio: ****\_\_\_****
+Responsable: ****\_\_\_****
+Objetivo 3 meses: ****\_\_\_****

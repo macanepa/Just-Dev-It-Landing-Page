@@ -3,6 +3,7 @@
 ## Cómo crear tu Dashboard de Keywords
 
 ### 1. Crea un nuevo Google Sheet
+
 Ve a: https://sheets.google.com → Crear nuevo
 
 ---
@@ -32,6 +33,7 @@ Conversiones           | 0         | 2         | 0%
 ```
 
 **Fórmulas:**
+
 - % Logrado: `=(B6/C6)*100`
 - Copia para todas las filas
 
@@ -61,7 +63,7 @@ M: Notas
 
 ```
 desarrollo de software fintech Santiago | Fintech | ALTA | - | - | - | - | - | - | - | - | =SI(J2<D2,"↑","↓") | Lanzamiento semana 1
-desarrollo de software energía Santiago | Energía | ALTA | - | - | - | - | - | - | - | - | - | 
+desarrollo de software energía Santiago | Energía | ALTA | - | - | - | - | - | - | - | - | - |
 desarrollo a medida Ruby Santiago | Tecnología | ALTA | - | - | - | - | - | - | - | - | - |
 web scraping selenium Chile | Servicios | ALTA | - | - | - | - | - | - | - | - | - |
 data engineering Chile | Servicios | ALTA | - | - | - | - | - | - | - | - | - |
@@ -260,6 +262,7 @@ H: URL Final
 ## CÓMO USAR ESTE TEMPLATE
 
 ### Paso 1: Crear el Sheet
+
 1. Copia la estructura arriba
 2. Crea las 7 hojas mencionadas
 3. Aplica formato condicional (colores según valores)
@@ -280,11 +283,13 @@ B11 (Keywords Top 10): =CONTAR.SI('Keywords Principales'!J2:J22,"<=10")
 ### Paso 3: Actualización Semanal (Lunes)
 
 1. **Exporta datos de Google Search Console:**
+
    - Ve a Rendimiento → Consultas
    - Últimos 7 días
    - Descarga CSV
 
 2. **Actualiza tu Sheet:**
+
    - Busca cada keyword de tu lista
    - Rellena columnas de Posición y CTR
    - Google Sheet calculará tendencias automáticamente
@@ -306,22 +311,26 @@ B11 (Keywords Top 10): =CONTAR.SI('Keywords Principales'!J2:J22,"<=10")
 ## GRÁFICOS RECOMENDADOS
 
 ### Gráfico 1: Evolución de Posiciones (Líneas)
+
 - Eje X: Semanas
 - Eje Y: Posición (invertido, 1 arriba)
 - Series: Top 5 keywords
 
 ### Gráfico 2: CTR por Keyword (Barras)
+
 - Eje X: Keywords
 - Eje Y: CTR %
 - Colores: Verde > 3%, Amarillo 1-3%, Rojo < 1%
 
 ### Gráfico 3: Distribución de Posiciones (Pastel)
+
 - Top 3: X keywords
 - Top 10: X keywords
 - Top 20: X keywords
 - Página 2+: X keywords
 
 ### Gráfico 4: Conversiones por Fuente (Columnas)
+
 - Eje X: Mes
 - Eje Y: # Conversiones
 - Series: Orgánico, Directo, Referral
@@ -333,6 +342,7 @@ B11 (Keywords Top 10): =CONTAR.SI('Keywords Principales'!J2:J22,"<=10")
 ### Conectar Google Search Console a Google Sheets
 
 **Opción 1: Google Apps Script**
+
 ```javascript
 // Código para importar datos automáticamente de Search Console
 // Requiere autorización de API
@@ -342,10 +352,12 @@ function importSearchConsole() {
 ```
 
 **Opción 2: Zapier/Make.com (Paid)**
+
 - Conecta Search Console → Google Sheets
 - Actualización automática cada semana
 
 **Opción 3: Manual (Recomendado al inicio)**
+
 - 5 minutos cada lunes
 - Más control sobre los datos
 - Aprende qué keywords importan
@@ -357,11 +369,13 @@ function importSearchConsole() {
 ### Configura alertas automáticas:
 
 1. **Si posición baja > 5 lugares:**
+
    ```
    =SI(J2-D2>5, "⚠️ ALERTA: " & A2 & " bajó " & (J2-D2) & " posiciones", "")
    ```
 
 2. **Si CTR < 1% en Top 10:**
+
    ```
    =SI(Y(J2<=10, K2<0.01), "🔴 CTR bajo en " & A2, "")
    ```
