@@ -61,7 +61,8 @@ if (Test-Path $keywordsFile) {
     $keywords.keywords[0..2] | ForEach-Object {
         Write-Host "   • $($_.keyword) - Pos: $($_.position) | Clicks: $($_.clicks) | CTR: $($_.ctr)%" -ForegroundColor DarkGray
     }
-} else {
+}
+else {
     Show-Status "keywords-database.json" "error" "Archivo NO encontrado"
 }
 
@@ -72,7 +73,8 @@ if (Test-Path $improvementsFile) {
     $improvements = Get-Content $improvementsFile -Raw | ConvertFrom-Json
     $impCount = $improvements.improvements.Count
     Show-Status "data/improvements.json" "success" "$impCount mejoras automáticas"
-} else {
+}
+else {
     Show-Status "data/improvements.json" "warning" "Archivo NO encontrado - ejecuta generar-mejoras-automaticas.py"
 }
 
@@ -91,18 +93,21 @@ if (Test-Path $configFile) {
     # Verificar Search Console
     if ($config.propertyUrl) {
         Show-Status "Property URL" "success" "$($config.propertyUrl)"
-    } else {
+    }
+    else {
         Show-Status "Property URL" "error" "No configurado"
     }
     
     # Verificar Service Account
     if ($config.serviceAccountJson.client_email) {
         Show-Status "Service Account" "success" "$($config.serviceAccountJson.client_email)"
-    } else {
+    }
+    else {
         Show-Status "Service Account" "error" "No configurado"
     }
     
-} else {
+}
+else {
     Show-Status "config.json" "error" "Archivo NO encontrado"
     Write-Host "`n   Para crear la configuración, ejecuta:" -ForegroundColor Gray
     Write-Host "   python scripts/crear-config.py" -ForegroundColor Cyan
@@ -115,17 +120,18 @@ Write-Host "`n`n🐍 SCRIPTS DE ACTUALIZACIÓN DISPONIBLES" -ForegroundColor Yel
 Write-Host "─────────────────────────────────────────────────────" -ForegroundColor DarkGray
 
 $scripts = @(
-    @{Name="actualizar-datos-manual.py"; Desc="Actualización manual desde Search Console"},
-    @{Name="actualizar-datos-auto.py"; Desc="Actualización automática programada"},
-    @{Name="generar-mejoras-automaticas.py"; Desc="Generar sugerencias de mejoras"},
-    @{Name="diagnostico-conexion.py"; Desc="Probar conexión con APIs"}
+    @{Name = "actualizar-datos-manual.py"; Desc = "Actualización manual desde Search Console" },
+    @{Name = "actualizar-datos-auto.py"; Desc = "Actualización automática programada" },
+    @{Name = "generar-mejoras-automaticas.py"; Desc = "Generar sugerencias de mejoras" },
+    @{Name = "diagnostico-conexion.py"; Desc = "Probar conexión con APIs" }
 )
 
 foreach ($script in $scripts) {
     $path = "scripts/$($script.Name)"
     if (Test-Path $path) {
         Show-Status $script.Name "success" $script.Desc
-    } else {
+    }
+    else {
         Show-Status $script.Name "error" "Script NO encontrado"
     }
 }
@@ -140,7 +146,8 @@ Write-Host "──────────────────────�
 try {
     $pythonVersion = python --version 2>&1
     Show-Status "Python" "success" "$pythonVersion"
-} catch {
+}
+catch {
     Show-Status "Python" "error" "Python NO instalado"
 }
 
@@ -151,7 +158,8 @@ foreach ($lib in $libraries) {
     $installed = pip show $lib 2>&1 | Select-String "Name:"
     if ($installed) {
         Show-Status $lib "success" "Instalado"
-    } else {
+    }
+    else {
         Show-Status $lib "error" "NO instalado"
     }
 }
@@ -228,7 +236,8 @@ Write-Host "`n🔍 CONCLUSIÓN:" -ForegroundColor Yellow
 if (Test-Path $keywordsFile) {
     Write-Host "   El dashboard está usando DATOS ESTÁTICOS desde keywords-database.json" -ForegroundColor White
     Write-Host "   NO hay conexión en tiempo real a las APIs de Google." -ForegroundColor Yellow
-} else {
+}
+else {
     Write-Host "   ❌ El dashboard NO tiene datos. Genera datos mock o conecta con APIs." -ForegroundColor Red
 }
 

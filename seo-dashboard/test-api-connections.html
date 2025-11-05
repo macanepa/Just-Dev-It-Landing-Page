@@ -1,428 +1,479 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🔍 Test API Connections - SEO Dashboard</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        h1 {
-            color: #667eea;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-        }
-        .test-section {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
-        }
-        .test-section h2 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        .test-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 6px;
-            border: 1px solid #dee2e6;
-        }
-        .test-item h3 {
-            font-size: 1rem;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        .status.loading {
-            background: #ffc107;
-            color: #000;
-        }
-        .status.success {
-            background: #10b981;
-            color: white;
-        }
-        .status.error {
-            background: #ef4444;
-            color: white;
-        }
-        .status.warning {
-            background: #f59e0b;
-            color: white;
-        }
-        .result {
-            margin-top: 10px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            white-space: pre-wrap;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: transform 0.2s;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        .summary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-        .summary h2 {
-            color: white;
-            margin-bottom: 15px;
-        }
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        .summary-card {
-            background: rgba(255,255,255,0.2);
-            padding: 15px;
-            border-radius: 6px;
-            text-align: center;
-        }
-        .summary-card .number {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .summary-card .label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        .code-block {
-            background: #1e293b;
-            color: #f1f5f9;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-        .alert {
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-        }
-        .alert.info {
-            background: #dbeafe;
-            border-left: 4px solid #3b82f6;
-            color: #1e40af;
-        }
-        .alert.warning {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            color: #92400e;
-        }
-        .alert.error {
-            background: #fee2e2;
-            border-left: 4px solid #ef4444;
-            color: #991b1b;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        color: #667eea;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+      }
+      .test-section {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 4px solid #667eea;
+      }
+      .test-section h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+      .test-item {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #dee2e6;
+      }
+      .test-item h3 {
+        font-size: 1rem;
+        color: #495057;
+        margin-bottom: 8px;
+      }
+      .status {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+      .status.loading {
+        background: #ffc107;
+        color: #000;
+      }
+      .status.success {
+        background: #10b981;
+        color: white;
+      }
+      .status.error {
+        background: #ef4444;
+        color: white;
+      }
+      .status.warning {
+        background: #f59e0b;
+        color: white;
+      }
+      .result {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        white-space: pre-wrap;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: transform 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+      .summary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+      .summary h2 {
+        color: white;
+        margin-bottom: 15px;
+      }
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .summary-card {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px;
+        border-radius: 6px;
+        text-align: center;
+      }
+      .summary-card .number {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .summary-card .label {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+      .code-block {
+        background: #1e293b;
+        color: #f1f5f9;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .alert {
+        padding: 15px;
+        border-radius: 6px;
+        margin: 15px 0;
+      }
+      .alert.info {
+        background: #dbeafe;
+        border-left: 4px solid #3b82f6;
+        color: #1e40af;
+      }
+      .alert.warning {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        color: #92400e;
+      }
+      .alert.error {
+        background: #fee2e2;
+        border-left: 4px solid #ef4444;
+        color: #991b1b;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>🔍 Diagnóstico de Conexiones API</h1>
-        <p class="subtitle">Validación de fuentes de datos del Dashboard SEO</p>
+      <h1>🔍 Diagnóstico de Conexiones API</h1>
+      <p class="subtitle">Validación de fuentes de datos del Dashboard SEO</p>
+
+      <div class="alert info">
+        <strong>ℹ️ Información:</strong> Este dashboard está usando
+        <strong>datos estáticos desde archivos JSON locales</strong>. No hay
+        conexión directa a las APIs de Google. Para datos en tiempo real,
+        necesitas configurar la integración con las APIs.
+      </div>
+
+      <button class="btn" onclick="runAllTests()">
+        🚀 Ejecutar Diagnóstico Completo
+      </button>
+
+      <!-- Test 1: Archivos JSON Locales -->
+      <div class="test-section">
+        <h2>📁 Archivos JSON Locales (Datos Actuales)</h2>
+
+        <div class="test-item">
+          <h3>
+            keywords-database.json
+            <span class="status loading" id="status-keywords"
+              >Esperando...</span
+            >
+          </h3>
+          <div class="result" id="result-keywords"></div>
+        </div>
+
+        <div class="test-item">
+          <h3>
+            data/improvements.json
+            <span class="status loading" id="status-improvements"
+              >Esperando...</span
+            >
+          </h3>
+          <div class="result" id="result-improvements"></div>
+        </div>
+      </div>
+
+      <!-- Test 2: Variables de Estado -->
+      <div class="test-section">
+        <h2>🔧 Estado de la Aplicación</h2>
+
+        <div class="test-item">
+          <h3>
+            appState Global
+            <span class="status loading" id="status-appstate"
+              >Esperando...</span
+            >
+          </h3>
+          <div class="result" id="result-appstate"></div>
+        </div>
+
+        <div class="test-item">
+          <h3>
+            Keywords en Memoria
+            <span class="status loading" id="status-keywords-memory"
+              >Esperando...</span
+            >
+          </h3>
+          <div class="result" id="result-keywords-memory"></div>
+        </div>
+      </div>
+
+      <!-- Test 3: APIs de Google (Potenciales) -->
+      <div class="test-section">
+        <h2>🌐 APIs de Google (NO Configuradas)</h2>
+
+        <div class="alert warning">
+          <strong>⚠️ Advertencia:</strong> Actualmente el dashboard NO está
+          conectado a las APIs de Google. Los datos se cargan desde archivos
+          JSON locales estáticos.
+        </div>
+
+        <div class="test-item">
+          <h3>
+            Google Search Console API
+            <span class="status error">❌ No Configurado</span>
+          </h3>
+          <div class="result">
+            Para conectar con Search Console necesitas: 1. Crear proyecto en
+            Google Cloud Console 2. Habilitar Search Console API 3. Obtener
+            credenciales OAuth 2.0 4. Implementar autenticación en el código
+          </div>
+        </div>
+
+        <div class="test-item">
+          <h3>
+            Google Analytics API
+            <span class="status error">❌ No Configurado</span>
+          </h3>
+          <div class="result">
+            Para conectar con Analytics necesitas: 1. Habilitar Analytics
+            Reporting API v4 2. Configurar Service Account o OAuth 3. Dar
+            permisos en GA4 4. Implementar queries en el código
+          </div>
+        </div>
+
+        <div class="test-item">
+          <h3>
+            PageSpeed Insights API
+            <span class="status warning">⚠️ Posible Uso</span>
+          </h3>
+          <div class="result">
+            PageSpeed Insights tiene API pública:
+            https://pagespeedinsights.googleapis.com/pagespeedinsights/v5/runPagespeed?url=URL&key=YOUR_API_KEY
+            Solo necesitas una API key (gratis hasta 25,000 requests/día)
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen -->
+      <div class="summary">
+        <h2>📊 Resumen del Diagnóstico</h2>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="number" id="summary-local">-</div>
+            <div class="label">Archivos Locales</div>
+          </div>
+          <div class="summary-card">
+            <div class="number" id="summary-apis">0</div>
+            <div class="label">APIs Conectadas</div>
+          </div>
+          <div class="summary-card">
+            <div class="number" id="summary-keywords">-</div>
+            <div class="label">Keywords Cargadas</div>
+          </div>
+          <div class="summary-card">
+            <div class="number" id="summary-status">-</div>
+            <div class="label">Estado General</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solución -->
+      <div class="test-section" style="margin-top: 30px">
+        <h2>💡 Cómo Obtener Datos Reales de Google</h2>
 
         <div class="alert info">
-            <strong>ℹ️ Información:</strong> Este dashboard está usando <strong>datos estáticos desde archivos JSON locales</strong>. 
-            No hay conexión directa a las APIs de Google. Para datos en tiempo real, necesitas configurar la integración con las APIs.
+          <strong>Opción 1: Usar Scripts de Python (Recomendado)</strong>
+          <div class="code-block">
+            # Instalar bibliotecas pip install google-auth google-auth-oauthlib
+            google-auth-httplib2 google-api-python-client # Ejecutar script de
+            extracción python scripts/fetch-search-console-data.py python
+            scripts/fetch-analytics-data.py python
+            scripts/fetch-pagespeed-data.py # Los scripts generarán archivos
+            JSON que el dashboard puede usar
+          </div>
         </div>
 
-        <button class="btn" onclick="runAllTests()">🚀 Ejecutar Diagnóstico Completo</button>
-
-        <!-- Test 1: Archivos JSON Locales -->
-        <div class="test-section">
-            <h2>📁 Archivos JSON Locales (Datos Actuales)</h2>
-            
-            <div class="test-item">
-                <h3>keywords-database.json <span class="status loading" id="status-keywords">Esperando...</span></h3>
-                <div class="result" id="result-keywords"></div>
-            </div>
-
-            <div class="test-item">
-                <h3>data/improvements.json <span class="status loading" id="status-improvements">Esperando...</span></h3>
-                <div class="result" id="result-improvements"></div>
-            </div>
+        <div class="alert info">
+          <strong>Opción 2: API Backend</strong>
+          <div class="code-block">
+            # Crear servidor backend que maneje las APIs python
+            api-server-enterprise.py # Modificar el dashboard para hacer fetch
+            a: # http://localhost:5000/api/keywords #
+            http://localhost:5000/api/analytics #
+            http://localhost:5000/api/performance
+          </div>
         </div>
 
-        <!-- Test 2: Variables de Estado -->
-        <div class="test-section">
-            <h2>🔧 Estado de la Aplicación</h2>
-            
-            <div class="test-item">
-                <h3>appState Global <span class="status loading" id="status-appstate">Esperando...</span></h3>
-                <div class="result" id="result-appstate"></div>
-            </div>
-
-            <div class="test-item">
-                <h3>Keywords en Memoria <span class="status loading" id="status-keywords-memory">Esperando...</span></h3>
-                <div class="result" id="result-keywords-memory"></div>
-            </div>
+        <div class="alert warning">
+          <strong>Opción 3: Integración Directa (Complejo)</strong>
+          <p>
+            Requiere implementar OAuth 2.0 en el frontend, lo cual es complejo y
+            no recomendado por seguridad (expones credenciales).
+          </p>
         </div>
-
-        <!-- Test 3: APIs de Google (Potenciales) -->
-        <div class="test-section">
-            <h2>🌐 APIs de Google (NO Configuradas)</h2>
-            
-            <div class="alert warning">
-                <strong>⚠️ Advertencia:</strong> Actualmente el dashboard NO está conectado a las APIs de Google. 
-                Los datos se cargan desde archivos JSON locales estáticos.
-            </div>
-
-            <div class="test-item">
-                <h3>Google Search Console API <span class="status error">❌ No Configurado</span></h3>
-                <div class="result">
-Para conectar con Search Console necesitas:
-1. Crear proyecto en Google Cloud Console
-2. Habilitar Search Console API
-3. Obtener credenciales OAuth 2.0
-4. Implementar autenticación en el código
-                </div>
-            </div>
-
-            <div class="test-item">
-                <h3>Google Analytics API <span class="status error">❌ No Configurado</span></h3>
-                <div class="result">
-Para conectar con Analytics necesitas:
-1. Habilitar Analytics Reporting API v4
-2. Configurar Service Account o OAuth
-3. Dar permisos en GA4
-4. Implementar queries en el código
-                </div>
-            </div>
-
-            <div class="test-item">
-                <h3>PageSpeed Insights API <span class="status warning">⚠️ Posible Uso</span></h3>
-                <div class="result">
-PageSpeed Insights tiene API pública:
-https://pagespeedinsights.googleapis.com/pagespeedinsights/v5/runPagespeed?url=URL&key=YOUR_API_KEY
-
-Solo necesitas una API key (gratis hasta 25,000 requests/día)
-                </div>
-            </div>
-        </div>
-
-        <!-- Resumen -->
-        <div class="summary">
-            <h2>📊 Resumen del Diagnóstico</h2>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <div class="number" id="summary-local">-</div>
-                    <div class="label">Archivos Locales</div>
-                </div>
-                <div class="summary-card">
-                    <div class="number" id="summary-apis">0</div>
-                    <div class="label">APIs Conectadas</div>
-                </div>
-                <div class="summary-card">
-                    <div class="number" id="summary-keywords">-</div>
-                    <div class="label">Keywords Cargadas</div>
-                </div>
-                <div class="summary-card">
-                    <div class="number" id="summary-status">-</div>
-                    <div class="label">Estado General</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Solución -->
-        <div class="test-section" style="margin-top: 30px;">
-            <h2>💡 Cómo Obtener Datos Reales de Google</h2>
-            
-            <div class="alert info">
-                <strong>Opción 1: Usar Scripts de Python (Recomendado)</strong>
-                <div class="code-block">
-# Instalar bibliotecas
-pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
-
-# Ejecutar script de extracción
-python scripts/fetch-search-console-data.py
-python scripts/fetch-analytics-data.py
-python scripts/fetch-pagespeed-data.py
-
-# Los scripts generarán archivos JSON que el dashboard puede usar
-                </div>
-            </div>
-
-            <div class="alert info">
-                <strong>Opción 2: API Backend</strong>
-                <div class="code-block">
-# Crear servidor backend que maneje las APIs
-python api-server-enterprise.py
-
-# Modificar el dashboard para hacer fetch a:
-# http://localhost:5000/api/keywords
-# http://localhost:5000/api/analytics
-# http://localhost:5000/api/performance
-                </div>
-            </div>
-
-            <div class="alert warning">
-                <strong>Opción 3: Integración Directa (Complejo)</strong>
-                <p>Requiere implementar OAuth 2.0 en el frontend, lo cual es complejo y no recomendado por seguridad (expones credenciales).</p>
-            </div>
-        </div>
+      </div>
     </div>
 
     <script>
-        async function runAllTests() {
-            console.log('🚀 Iniciando diagnóstico...');
-            
-            let localFiles = 0;
-            let totalKeywords = 0;
+      async function runAllTests() {
+        console.log("🚀 Iniciando diagnóstico...");
 
-            // Test 1: keywords-database.json
-            try {
-                const response = await fetch('keywords-database.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    document.getElementById('status-keywords').className = 'status success';
-                    document.getElementById('status-keywords').textContent = '✅ Encontrado';
-                    document.getElementById('result-keywords').textContent = 
-                        `✅ Archivo cargado exitosamente\n` +
-                        `📊 Keywords encontradas: ${data.keywords?.length || 0}\n` +
-                        `📅 Última modificación: ${new Date().toLocaleString()}\n\n` +
-                        `Primeros 3 keywords:\n${JSON.stringify(data.keywords?.slice(0, 3), null, 2)}`;
-                    localFiles++;
-                    totalKeywords = data.keywords?.length || 0;
-                } else {
-                    throw new Error('Archivo no encontrado');
-                }
-            } catch (error) {
-                document.getElementById('status-keywords').className = 'status error';
-                document.getElementById('status-keywords').textContent = '❌ Error';
-                document.getElementById('result-keywords').textContent = 
-                    `❌ No se pudo cargar: ${error.message}\n\n` +
-                    `El dashboard está usando datos MOCK generados dinámicamente.`;
-            }
+        let localFiles = 0;
+        let totalKeywords = 0;
 
-            // Test 2: improvements.json
-            try {
-                const response = await fetch('data/improvements.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    document.getElementById('status-improvements').className = 'status success';
-                    document.getElementById('status-improvements').textContent = '✅ Encontrado';
-                    document.getElementById('result-improvements').textContent = 
-                        `✅ Archivo cargado exitosamente\n` +
-                        `📊 Mejoras encontradas: ${data.improvements?.length || 0}\n` +
-                        `Estructura: ${JSON.stringify(Object.keys(data), null, 2)}`;
-                    localFiles++;
-                } else {
-                    throw new Error('Archivo no encontrado');
-                }
-            } catch (error) {
-                document.getElementById('status-improvements').className = 'status warning';
-                document.getElementById('status-improvements').textContent = '⚠️ No encontrado';
-                document.getElementById('result-improvements').textContent = 
-                    `⚠️ Archivo no existe\n\n` +
-                    `Para generar este archivo, ejecuta:\n` +
-                    `python scripts/generate-improvements.py`;
-            }
-
-            // Test 3: appState
-            setTimeout(() => {
-                if (typeof appState !== 'undefined') {
-                    document.getElementById('status-appstate').className = 'status success';
-                    document.getElementById('status-appstate').textContent = '✅ Activo';
-                    document.getElementById('result-appstate').textContent = 
-                        `✅ Variable global appState existe\n` +
-                        `📊 Datos cargados: ${appState.data ? 'Sí' : 'No'}\n` +
-                        `🔧 Propiedades: ${Object.keys(appState).join(', ')}`;
-                } else {
-                    document.getElementById('status-appstate').className = 'status error';
-                    document.getElementById('status-appstate').textContent = '❌ No encontrado';
-                    document.getElementById('result-appstate').textContent = 
-                        `❌ La variable appState no está definida\n` +
-                        `Asegúrate de que index.html se haya cargado completamente.`;
-                }
-
-                // Test 4: Keywords en memoria
-                if (typeof window.currentPageKeywords !== 'undefined') {
-                    document.getElementById('status-keywords-memory').className = 'status success';
-                    document.getElementById('status-keywords-memory').textContent = '✅ Cargadas';
-                    document.getElementById('result-keywords-memory').textContent = 
-                        `✅ Keywords en memoria: ${window.currentPageKeywords?.length || 0}\n` +
-                        `📍 Primeras 3:\n${JSON.stringify(window.currentPageKeywords?.slice(0, 3), null, 2)}`;
-                } else {
-                    document.getElementById('status-keywords-memory').className = 'status warning';
-                    document.getElementById('status-keywords-memory').textContent = '⚠️ Sin cargar';
-                    document.getElementById('result-keywords-memory').textContent = 
-                        `⚠️ No hay keywords en memoria\n` +
-                        `Navega a la pestaña "Keywords" en el dashboard para cargarlas.`;
-                }
-
-                // Actualizar resumen
-                document.getElementById('summary-local').textContent = localFiles;
-                document.getElementById('summary-apis').textContent = '0';
-                document.getElementById('summary-keywords').textContent = totalKeywords;
-                document.getElementById('summary-status').textContent = 
-                    localFiles > 0 ? '✅ Datos Locales' : '❌ Sin Datos';
-
-            }, 1000);
-
-            console.log('✅ Diagnóstico completado');
+        // Test 1: keywords-database.json
+        try {
+          const response = await fetch("keywords-database.json");
+          if (response.ok) {
+            const data = await response.json();
+            document.getElementById("status-keywords").className =
+              "status success";
+            document.getElementById("status-keywords").textContent =
+              "✅ Encontrado";
+            document.getElementById("result-keywords").textContent =
+              `✅ Archivo cargado exitosamente\n` +
+              `📊 Keywords encontradas: ${data.keywords?.length || 0}\n` +
+              `📅 Última modificación: ${new Date().toLocaleString()}\n\n` +
+              `Primeros 3 keywords:\n${JSON.stringify(
+                data.keywords?.slice(0, 3),
+                null,
+                2
+              )}`;
+            localFiles++;
+            totalKeywords = data.keywords?.length || 0;
+          } else {
+            throw new Error("Archivo no encontrado");
+          }
+        } catch (error) {
+          document.getElementById("status-keywords").className = "status error";
+          document.getElementById("status-keywords").textContent = "❌ Error";
+          document.getElementById("result-keywords").textContent =
+            `❌ No se pudo cargar: ${error.message}\n\n` +
+            `El dashboard está usando datos MOCK generados dinámicamente.`;
         }
 
-        // Ejecutar automáticamente al cargar
-        window.addEventListener('load', () => {
-            setTimeout(runAllTests, 500);
-        });
+        // Test 2: improvements.json
+        try {
+          const response = await fetch("data/improvements.json");
+          if (response.ok) {
+            const data = await response.json();
+            document.getElementById("status-improvements").className =
+              "status success";
+            document.getElementById("status-improvements").textContent =
+              "✅ Encontrado";
+            document.getElementById("result-improvements").textContent =
+              `✅ Archivo cargado exitosamente\n` +
+              `📊 Mejoras encontradas: ${data.improvements?.length || 0}\n` +
+              `Estructura: ${JSON.stringify(Object.keys(data), null, 2)}`;
+            localFiles++;
+          } else {
+            throw new Error("Archivo no encontrado");
+          }
+        } catch (error) {
+          document.getElementById("status-improvements").className =
+            "status warning";
+          document.getElementById("status-improvements").textContent =
+            "⚠️ No encontrado";
+          document.getElementById("result-improvements").textContent =
+            `⚠️ Archivo no existe\n\n` +
+            `Para generar este archivo, ejecuta:\n` +
+            `python scripts/generate-improvements.py`;
+        }
+
+        // Test 3: appState
+        setTimeout(() => {
+          if (typeof appState !== "undefined") {
+            document.getElementById("status-appstate").className =
+              "status success";
+            document.getElementById("status-appstate").textContent =
+              "✅ Activo";
+            document.getElementById("result-appstate").textContent =
+              `✅ Variable global appState existe\n` +
+              `📊 Datos cargados: ${appState.data ? "Sí" : "No"}\n` +
+              `🔧 Propiedades: ${Object.keys(appState).join(", ")}`;
+          } else {
+            document.getElementById("status-appstate").className =
+              "status error";
+            document.getElementById("status-appstate").textContent =
+              "❌ No encontrado";
+            document.getElementById("result-appstate").textContent =
+              `❌ La variable appState no está definida\n` +
+              `Asegúrate de que index.html se haya cargado completamente.`;
+          }
+
+          // Test 4: Keywords en memoria
+          if (typeof window.currentPageKeywords !== "undefined") {
+            document.getElementById("status-keywords-memory").className =
+              "status success";
+            document.getElementById("status-keywords-memory").textContent =
+              "✅ Cargadas";
+            document.getElementById("result-keywords-memory").textContent =
+              `✅ Keywords en memoria: ${
+                window.currentPageKeywords?.length || 0
+              }\n` +
+              `📍 Primeras 3:\n${JSON.stringify(
+                window.currentPageKeywords?.slice(0, 3),
+                null,
+                2
+              )}`;
+          } else {
+            document.getElementById("status-keywords-memory").className =
+              "status warning";
+            document.getElementById("status-keywords-memory").textContent =
+              "⚠️ Sin cargar";
+            document.getElementById("result-keywords-memory").textContent =
+              `⚠️ No hay keywords en memoria\n` +
+              `Navega a la pestaña "Keywords" en el dashboard para cargarlas.`;
+          }
+
+          // Actualizar resumen
+          document.getElementById("summary-local").textContent = localFiles;
+          document.getElementById("summary-apis").textContent = "0";
+          document.getElementById("summary-keywords").textContent =
+            totalKeywords;
+          document.getElementById("summary-status").textContent =
+            localFiles > 0 ? "✅ Datos Locales" : "❌ Sin Datos";
+        }, 1000);
+
+        console.log("✅ Diagnóstico completado");
+      }
+
+      // Ejecutar automáticamente al cargar
+      window.addEventListener("load", () => {
+        setTimeout(runAllTests, 500);
+      });
     </script>
-</body>
+  </body>
 </html>

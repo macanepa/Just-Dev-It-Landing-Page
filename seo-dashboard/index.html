@@ -6182,60 +6182,85 @@
         ?.addEventListener("click", async function () {
           this.classList.add("loading");
           this.disabled = true;
-          
-          const btnText = this.querySelector('span');
-          const originalText = btnText ? btnText.textContent : 'Actualizar Datos';
-          if (btnText) btnText.textContent = 'Actualizando...';
+
+          const btnText = this.querySelector("span");
+          const originalText = btnText
+            ? btnText.textContent
+            : "Actualizar Datos";
+          if (btnText) btnText.textContent = "Actualizando...";
 
           try {
             // 1. Verificar que el servidor API esté corriendo
             showNotification("🔄 Conectando con API de Google...", "info");
-            
-            const statusResponse = await fetch("http://localhost:5000/api/status");
+
+            const statusResponse = await fetch(
+              "http://localhost:5000/api/status"
+            );
             if (!statusResponse.ok) {
-              throw new Error("API Server no está corriendo. Ejecuta: python api-server-realtime.py");
+              throw new Error(
+                "API Server no está corriendo. Ejecuta: python api-server-realtime.py"
+              );
             }
 
             // 2. Actualizar datos de Search Console
-            showNotification("📊 Obteniendo datos de Search Console...", "info");
-            const searchConsoleResponse = await fetch("http://localhost:5000/api/update-search-console", {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
+            showNotification(
+              "📊 Obteniendo datos de Search Console...",
+              "info"
+            );
+            const searchConsoleResponse = await fetch(
+              "http://localhost:5000/api/update-search-console",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
               }
-            });
-            
+            );
+
             if (!searchConsoleResponse.ok) {
               const errorData = await searchConsoleResponse.json();
-              throw new Error(errorData.error || "Error al actualizar Search Console");
+              throw new Error(
+                errorData.error || "Error al actualizar Search Console"
+              );
             }
-            
+
             const searchConsoleData = await searchConsoleResponse.json();
             console.log("✅ Search Console actualizado:", searchConsoleData);
 
             // 3. Actualizar datos de PageSpeed (opcional)
             try {
-              showNotification("⚡ Analizando performance con PageSpeed...", "info");
-              const pagespeedResponse = await fetch("http://localhost:5000/api/update-pagespeed", {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  url: 'https://justdev.it'
-                })
-              });
-              
+              showNotification(
+                "⚡ Analizando performance con PageSpeed...",
+                "info"
+              );
+              const pagespeedResponse = await fetch(
+                "http://localhost:5000/api/update-pagespeed",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    url: "https://justdev.it",
+                  }),
+                }
+              );
+
               if (pagespeedResponse.ok) {
                 const pagespeedData = await pagespeedResponse.json();
                 console.log("✅ PageSpeed actualizado:", pagespeedData);
               }
             } catch (pagespeedError) {
-              console.warn("⚠️ PageSpeed no pudo actualizarse:", pagespeedError);
+              console.warn(
+                "⚠️ PageSpeed no pudo actualizarse:",
+                pagespeedError
+              );
             }
 
             // 4. Recargar datos actualizados desde los JSON
-            const response = await fetch("keywords-database.json?t=" + Date.now());
+            const response = await fetch(
+              "keywords-database.json?t=" + Date.now()
+            );
             if (response.ok) {
               const data = await response.json();
               appState.data = data;
@@ -6246,14 +6271,21 @@
               );
               updateDashboardWithData(data);
 
-              showNotification(`✅ Datos actualizados correctamente! ${searchConsoleData.message}`, "success");
+              showNotification(
+                `✅ Datos actualizados correctamente! ${searchConsoleData.message}`,
+                "success"
+              );
             } else {
               throw new Error("Error al cargar datos actualizados");
             }
           } catch (error) {
             console.error("Error al actualizar:", error);
             showNotification(
-              "❌ Error: " + error.message + (error.message.includes("API Server") ? "\n\n💡 Ejecuta: python api-server-realtime.py" : ""),
+              "❌ Error: " +
+                error.message +
+                (error.message.includes("API Server")
+                  ? "\n\n💡 Ejecuta: python api-server-realtime.py"
+                  : ""),
               "error"
             );
           } finally {
@@ -8094,31 +8126,40 @@
               const btn = this;
               btn.disabled = true;
               btn.textContent = "Actualizando...";
-              
+
               try {
                 // Verificar conexión con API
-                const statusResponse = await fetch("http://localhost:5000/api/status");
+                const statusResponse = await fetch(
+                  "http://localhost:5000/api/status"
+                );
                 if (!statusResponse.ok) {
-                  throw new Error("API Server no está corriendo. Inicia: python api-server-realtime.py");
+                  throw new Error(
+                    "API Server no está corriendo. Inicia: python api-server-realtime.py"
+                  );
                 }
-                
+
                 // Actualizar datos desde Search Console
-                const response = await fetch("http://localhost:5000/api/update-search-console", {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json'
+                const response = await fetch(
+                  "http://localhost:5000/api/update-search-console",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
                   }
-                });
-                
+                );
+
                 if (!response.ok) {
                   const errorData = await response.json();
                   throw new Error(errorData.error || "Error al actualizar");
                 }
-                
+
                 const result = await response.json();
-                
+
                 // Recargar datos actualizados
-                const dataResponse = await fetch("keywords-database.json?t=" + Date.now());
+                const dataResponse = await fetch(
+                  "keywords-database.json?t=" + Date.now()
+                );
                 if (dataResponse.ok) {
                   const data = await dataResponse.json();
                   appState.data = data;

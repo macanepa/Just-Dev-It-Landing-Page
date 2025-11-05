@@ -9,7 +9,7 @@ Tu dashboard ahora puede actualizar datos en **TIEMPO REAL** desde las APIs de G
 ## 📁 Archivos Creados
 
 1. **`api-server-realtime.py`** - Servidor API que conecta con Google APIs
-2. **`INICIAR-CON-APIS.bat`** - Script para iniciar todo automáticamente  
+2. **`INICIAR-CON-APIS.bat`** - Script para iniciar todo automáticamente
 3. **`index.html`** - Modificado para llamar a las APIs reales
 
 ---
@@ -17,11 +17,13 @@ Tu dashboard ahora puede actualizar datos en **TIEMPO REAL** desde las APIs de G
 ## 🎯 CÓMO FUNCIONA
 
 ### Antes (Datos Estáticos)
+
 ```
 Dashboard → keywords-database.json (datos antiguos)
 ```
 
 ### Ahora (Datos en Tiempo Real)
+
 ```
 1. Carga Inicial:
    Dashboard → keywords-database.json (última versión guardada)
@@ -55,6 +57,7 @@ Te pedirá el JSON de Service Account de Google Cloud.
 ### Paso 3: Iniciar Todo
 
 **Opción A - Automático (Recomendado)**:
+
 ```bash
 .\INICIAR-CON-APIS.bat
 ```
@@ -62,11 +65,13 @@ Te pedirá el JSON de Service Account de Google Cloud.
 **Opción B - Manual**:
 
 Terminal 1 - API Server:
+
 ```bash
 python api-server-realtime.py
 ```
 
 Terminal 2 - Dashboard:
+
 ```bash
 python -m http.server 8001
 ```
@@ -118,21 +123,29 @@ Todos estos botones ahora llaman a las APIs reales:
 ## 📡 ENDPOINTS DE LA API
 
 ### POST `/api/update-search-console`
+
 Actualiza keywords desde Google Search Console
+
 - Guarda en: `keywords-database.json`
 - Retorna: datos actualizados + mensaje de éxito
 
 ### POST `/api/update-pagespeed`
+
 Analiza performance con PageSpeed Insights
+
 - Guarda en: `data/performance-opportunities.json`
 - Requiere: `{url: "https://tu-sitio.com"}`
 
 ### GET `/api/status`
+
 Verifica que el servidor esté corriendo
+
 - Retorna: estado del servidor + configuración
 
 ### GET `/api/get-keywords`
+
 Obtiene keywords actuales sin actualizar
+
 - Retorna: contenido de `keywords-database.json`
 
 ---
@@ -140,24 +153,32 @@ Obtiene keywords actuales sin actualizar
 ## ⚠️ SOLUCIÓN DE PROBLEMAS
 
 ### Error: "API Server no está corriendo"
+
 **Solución**: Inicia el servidor API
+
 ```bash
 python api-server-realtime.py
 ```
 
 ### Error: "Configuración no encontrada"
+
 **Solución**: Configura las credenciales
+
 ```bash
 python scripts/crear-config.py
 ```
 
 ### Error: "Credenciales inválidas"
+
 **Solución**: Verifica que `config/config.json` tenga:
+
 - Service Account JSON correcto
 - propertyUrl de tu sitio (ej: `https://justdev.it/`)
 
 ### Dashboard muestra datos antiguos
+
 **Solución**: Recarga forzada
+
 - Presiona `Ctrl + Shift + R`
 - O borra caché del navegador
 
@@ -173,7 +194,7 @@ python scripts/crear-config.py
 
 2. Actualizar Search Console
    fetch('http://localhost:5000/api/update-search-console', {method: 'POST'})
-   
+
 3. Actualizar PageSpeed (opcional)
    fetch('http://localhost:5000/api/update-pagespeed', {
      method: 'POST',
@@ -195,7 +216,7 @@ python scripts/crear-config.py
 ✅ **Sin Comandos Manuales**: No necesitas ejecutar scripts Python  
 ✅ **Mantiene Historial**: Los JSON se guardan para consulta offline  
 ✅ **Fácil de Usar**: Solo presiona "Actualizar Datos"  
-✅ **Flexible**: Puedes actualizar solo una sección específica  
+✅ **Flexible**: Puedes actualizar solo una sección específica
 
 ---
 
@@ -221,6 +242,7 @@ python scripts/crear-config.py
 ## 🆘 SOPORTE
 
 Si tienes problemas:
+
 1. Verifica que ambos servidores estén corriendo (5000 y 8001)
 2. Revisa la consola del navegador (F12) para errores
 3. Mira los logs del API Server en la terminal

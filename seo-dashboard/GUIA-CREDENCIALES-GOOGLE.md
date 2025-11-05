@@ -5,6 +5,7 @@
 ### 1️⃣ Ir a Google Cloud Console
 
 Abre tu navegador y ve a:
+
 ```
 https://console.cloud.google.com
 ```
@@ -14,12 +15,14 @@ https://console.cloud.google.com
 ### 2️⃣ Crear o Seleccionar Proyecto
 
 **Si NO tienes proyecto:**
+
 1. Click en el menú desplegable de proyectos (arriba a la izquierda)
 2. Click en "NUEVO PROYECTO"
 3. Nombre: "SEO Dashboard" (o el que prefieras)
 4. Click en "CREAR"
 
 **Si YA tienes proyecto:**
+
 1. Selecciónalo del menú desplegable
 
 ---
@@ -139,6 +142,7 @@ python api-server-realtime.py
 ```
 
 Si todo está bien, verás:
+
 ```
 ============================================================
 🚀 API SERVER - SEO Dashboard
@@ -168,6 +172,7 @@ Si todo está bien, verás:
 **Causa**: El JSON no está completo o está mal formateado
 
 **Solución**:
+
 1. Vuelve a descargar la clave JSON desde Google Cloud
 2. Asegúrate de copiar TODO el contenido
 3. No edites el archivo manualmente
@@ -179,6 +184,7 @@ Si todo está bien, verás:
 **Causa**: La cuenta de servicio no tiene permisos en Search Console
 
 **Solución**:
+
 1. Ve a Search Console → Configuración → Usuarios y permisos
 2. Busca el email de la cuenta de servicio
 3. Si no está, agrégala con permisos de PROPIETARIO
@@ -193,16 +199,19 @@ Si todo está bien, verás:
 **Solución**:
 
 Si tu propiedad es de tipo **Dominio**:
+
 ```json
 "propertyUrl": "sc-domain:justdev.it"
 ```
 
 Si tu propiedad es de tipo **Prefijo de URL**:
+
 ```json
 "propertyUrl": "https://justdev.it/"
 ```
 
 Para verificar el tipo:
+
 1. Ve a Search Console
 2. Mira el nombre de tu propiedad en el selector
 3. Si tiene `sc-domain:` es de tipo dominio
@@ -215,6 +224,7 @@ Para verificar el tipo:
 **Causa**: No habilitaste la Search Console API
 
 **Solución**:
+
 1. Ve a Google Cloud Console
 2. APIs y servicios → Biblioteca
 3. Busca "Search Console API"
