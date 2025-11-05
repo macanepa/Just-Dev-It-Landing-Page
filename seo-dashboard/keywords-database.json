@@ -64,6 +64,16 @@
       "keyword": "just dev",
       "page": "https://justdev.it/",
       "device": "DESKTOP",
+      "country": "arg",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keyword": "just dev",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
       "country": "col",
       "clicks": 0,
       "impressions": 1,
@@ -78,7 +88,7 @@
       "clicks": 0,
       "impressions": 3,
       "ctr": 0,
-      "position": 2.666666666666667
+      "position": 2.7
     },
     {
       "keyword": "just dev",
@@ -151,16 +161,12 @@
       "position": 2
     }
   ],
-  "updated_at": "2025-11-05T00:48:51.999736",
-  "property_url": "sc-domain:justdev.it",
-  "period": {
-    "start": "2025-08-07",
-    "end": "2025-11-05"
-  },
-  "summary": {
-    "total_keywords": 15,
-    "total_impressions": 21,
-    "total_clicks": 2,
-    "average_ctr": 9.523809523809524
+  "metadata": {
+    "lastUpdate": "2025-11-05T13:02:23.025913",
+    "period": {
+      "start": "2025-08-07",
+      "end": "2025-11-05"
+    },
+    "totalKeywords": 16
   }
 }
