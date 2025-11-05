@@ -6627,11 +6627,20 @@
         const ctx = document.getElementById("priority-chart");
         if (!ctx) return;
 
-        const high = keywords.filter((k) => k.priority >= 70).length;
-        const medium = keywords.filter(
+        // Calcular prioridad para cada keyword
+        const keywordsWithPriority = keywords.map(k => {
+          const priority = (k.position <= 5 && k.clicks > 0) ? 80 
+            : (k.position <= 10) ? 60 
+            : (k.position <= 20) ? 40 
+            : 20;
+          return { ...k, priority };
+        });
+
+        const high = keywordsWithPriority.filter((k) => k.priority >= 70).length;
+        const medium = keywordsWithPriority.filter(
           (k) => k.priority >= 40 && k.priority < 70
         ).length;
-        const low = keywords.filter((k) => k.priority < 40).length;
+        const low = keywordsWithPriority.filter((k) => k.priority < 40).length;
 
         if (charts.priority) charts.priority.destroy();
 
@@ -6680,14 +6689,14 @@
         const ctx = document.getElementById("position-chart");
         if (!ctx) return;
 
-        const top3 = keywords.filter((k) => k.avg_position <= 3).length;
+        const top3 = keywords.filter((k) => (k.position || k.avg_position || 0) <= 3).length;
         const top10 = keywords.filter(
-          (k) => k.avg_position > 3 && k.avg_position <= 10
+          (k) => (k.position || k.avg_position || 0) > 3 && (k.position || k.avg_position || 0) <= 10
         ).length;
         const top20 = keywords.filter(
-          (k) => k.avg_position > 10 && k.avg_position <= 20
+          (k) => (k.position || k.avg_position || 0) > 10 && (k.position || k.avg_position || 0) <= 20
         ).length;
-        const beyond20 = keywords.filter((k) => k.avg_position > 20).length;
+        const beyond20 = keywords.filter((k) => (k.position || k.avg_position || 0) > 20).length;
 
         if (charts.position) charts.position.destroy();
 
@@ -6750,8 +6759,24 @@
         const ctx = document.getElementById("ctr-comparison-chart");
         if (!ctx) return;
 
-        // Tomar top 10 keywords por impresiones
+        // CTR esperado según posición (datos de búsqueda orgánica promedio)
+        const getExpectedCTR = (position) => {
+          if (position <= 1) return 31.7;
+          if (position <= 2) return 24.7;
+          if (position <= 3) return 18.7;
+          if (position <= 4) return 13.6;
+          if (position <= 5) return 9.5;
+          if (position <= 6) return 6.3;
+          if (position <= 7) return 4.5;
+          if (position <= 8) return 3.5;
+          if (position <= 9) return 2.7;
+          if (position <= 10) return 2.1;
+          return 1.0; // Más allá de posición 10
+        };
+
+        // Tomar top 10 keywords por impresiones que tengan clicks
         const topKeywords = [...keywords]
+          .filter(k => k.impressions > 0)
           .sort((a, b) => b.impressions - a.impressions)
           .slice(0, 10);
 
@@ -6759,8 +6784,8 @@
           (k) =>
             k.keyword.substring(0, 15) + (k.keyword.length > 15 ? "..." : "")
         );
-        const realCTR = topKeywords.map((k) => k.ctr);
-        const expectedCTR = topKeywords.map((k) => k.expected_ctr);
+        const realCTR = topKeywords.map((k) => k.ctr || 0);
+        const expectedCTR = topKeywords.map((k) => getExpectedCTR(k.position || 0));
 
         if (charts.ctrComparison) charts.ctrComparison.destroy();
 
@@ -7973,22 +7998,25 @@
               goToPage(totalPages);
             });
 
-          // Sorting
-          document
-            .querySelectorAll(".keywords-table th.sortable")
-            .forEach((th) => {
-              th.addEventListener("click", function () {
-                const column = this.dataset.sort;
-                if (keywordsTableState.sortColumn === column) {
-                  keywordsTableState.sortDirection =
-                    keywordsTableState.sortDirection === "asc" ? "desc" : "asc";
-                } else {
-                  keywordsTableState.sortColumn = column;
-                  keywordsTableState.sortDirection = "desc";
-                }
-                sortAndRender();
-              });
+          // Sorting - Usar delegación de eventos en la tabla completa
+          const keywordsTable = document.getElementById("keywords-master-table");
+          if (keywordsTable && !keywordsTable.dataset.sortListenerAdded) {
+            keywordsTable.addEventListener("click", function(e) {
+              const th = e.target.closest("th.sortable");
+              if (!th) return;
+              
+              const column = th.dataset.sort;
+              if (keywordsTableState.sortColumn === column) {
+                keywordsTableState.sortDirection =
+                  keywordsTableState.sortDirection === "asc" ? "desc" : "asc";
+              } else {
+                keywordsTableState.sortColumn = column;
+                keywordsTableState.sortDirection = "desc";
+              }
+              sortAndRender();
             });
+            keywordsTable.dataset.sortListenerAdded = "true";
+          }
 
           // Export
           document
@@ -10612,7 +10640,7 @@
                       </div>
                       <div style="flex: 1;">
                         <strong style="color: var(--success);">Sugerido:</strong>
-                        <div style="background: var(--success)11; padding: 8px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: auto; border: 1px solid var(--success)33;">
+                        <div style="background: #10b98111; padding: 8px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: auto; border: 1px solid #10b98133;">
                           ${escapeHtml(imp.suggested.substring(0, 150))}${imp.suggested.length > 150 ? '...' : ''}
                         </div>
                       </div>
@@ -10743,7 +10771,7 @@
                       </button>
                     </h3>
                     <div id="suggested-view-${improvement.id}">
-                      <pre style="background: var(--success)11; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(improvement.suggested)}</pre>
+                      <pre style="background: #10b98111; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(improvement.suggested)}</pre>
                     </div>
                     <div id="suggested-edit-${improvement.id}" style="display: none;">
                       <textarea id="suggested-textarea-${improvement.id}" 
@@ -11054,8 +11082,8 @@ python scripts/aplicar-mejoras.py
           return prompt;
         }
 
-        // Mostrar modal con el prompt generado
-        function showPromptModal(prompt, improvement) {
+        // Mostrar modal con el prompt generado (función global)
+        window.showPromptModal = function(prompt, improvement) {
           const modal = `
             <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;" onclick="this.remove()">
               <div style="background: var(--bg-primary); border-radius: 12px; max-width: 1000px; width: 100%; max-height: 90vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column;" onclick="event.stopPropagation()">
@@ -11092,8 +11120,8 @@ python scripts/aplicar-mejoras.py
           document.body.insertAdjacentHTML('beforeend', modal);
         }
 
-        // Copiar prompt al portapapeles
-        function copyPromptToClipboard(elementId, button) {
+        // Copiar prompt al portapapeles (función global)
+        window.copyPromptToClipboard = function(elementId, button) {
           const element = document.getElementById(elementId);
           if (!element) return;
 
@@ -11149,12 +11177,8 @@ python scripts/aplicar-mejoras.py
           }, 3000);
         }
 
-        // Helper para generar prompt de Performance por índice
-        function generatePerformancePromptByIndex(index) {
-          if (window.performanceOpportunities && window.performanceOpportunities[index]) {
-            generatePerformancePrompt(window.performanceOpportunities[index]);
-          }
-        }
+        // Nota: Las funciones generatePerformancePrompt y generateKeywordPrompt
+        // están definidas globalmente al final del script para ser accesibles desde onclick
 
         // Generar prompt para optimización de Performance
         function generatePerformancePrompt(opportunity) {
@@ -11432,52 +11456,37 @@ ${opportunityAnalysis}
    - ¿Qué keywords relacionadas usan?
 
 ### Paso 2: Optimizar Meta Tags
-Modifica en \`index.html\`:
+Modifica en index.html:
 
 **Title Tag** (debe contener la keyword):
-\`\`\`html
 <title>${keyword.keyword} | Just Dev It - Desarrollo Web Profesional</title>
-\`\`\`
 
 **Meta Description** (debe ser atractiva y contener keyword):
-\`\`\`html
 <meta name="description" content="¿Buscas ${keyword.keyword}? En Just Dev It ofrecemos [beneficio específico]. [Call to action]. Contáctanos hoy.">
-\`\`\`
 
 **Meta Keywords**:
-\`\`\`html
 <meta name="keywords" content="${keyword.keyword}, [variantes], [keywords relacionadas]">
-\`\`\`
 
 ### Paso 3: Optimizar Contenido Visible
-En el \`<body>\` de index.html:
+En el <body> de index.html:
 
 1. **H1 principal** (debe contener keyword):
-\`\`\`html
 <h1>${keyword.keyword} - Soluciones Profesionales</h1>
-\`\`\`
 
 2. **Párrafos optimizados** (usar keyword 3-5 veces naturalmente):
-\`\`\`html
 <p>Si necesitas ${keyword.keyword}, nuestro equipo especializado...</p>
-\`\`\`
 
 3. **H2/H3 secundarios** (usar variantes de keyword):
-\`\`\`html
 <h2>¿Por qué elegir nuestros servicios de ${keyword.keyword}?</h2>
 <h3>Beneficios de ${keyword.keyword} con Just Dev It</h3>
-\`\`\`
 
 4. **ALT text en imágenes**:
-\`\`\`html
 <img src="..." alt="${keyword.keyword} - ejemplo proyecto">
-\`\`\`
 
 ### Paso 4: Crear Sección Dedicada (si no existe)
 Si "${keyword.keyword}" tiene muchas impresiones pero tu página no tiene contenido específico:
 
-\`\`\`html
-<section id="${keyword.keyword.toLowerCase().replace(/\s+/g, '-')}" class="service-section">
+<section id="${keyword.keyword.toLowerCase().replace(/\\s+/g, '-')}" class="service-section">
   <div class="container">
     <h2>${keyword.keyword}</h2>
     <p>Descripción detallada sobre ${keyword.keyword}...</p>
@@ -11488,19 +11497,16 @@ Si "${keyword.keyword}" tiene muchas impresiones pero tu página no tiene conten
         <h3>Beneficio 1</h3>
         <p>Explicación...</p>
       </div>
-      <!-- Más features -->
     </div>
     
     <a href="#contacto" class="btn btn-primary">Solicitar ${keyword.keyword}</a>
   </div>
 </section>
-\`\`\`
 
 ### Paso 5: Optimizar Datos Estructurados
 Agrega Schema.org para esta keyword:
 
-\`\`\`html
-<script type="application/ld+json">
+JSON-LD Schema:
 {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -11511,18 +11517,14 @@ Agrega Schema.org para esta keyword:
     "name": "Just Dev It"
   }
 }
-</script>
-\`\`\`
 
 ### Paso 6: Enlaces Internos
 Agrega enlaces internos relevantes que apunten a esta sección:
 
-\`\`\`html
-<a href="#${keyword.keyword.toLowerCase().replace(/\s+/g, '-')}" 
+<a href="#${keyword.keyword.toLowerCase().replace(/\\\\s+/g, '-')}" 
    title="${keyword.keyword}">
   Conoce más sobre ${keyword.keyword}
 </a>
-\`\`\`
 
 ---
 
@@ -11574,11 +11576,10 @@ Después de implementar los cambios, verifica:
 4. Verifica mejora en posición e impresiones
 
 **Analizar competencia**:
-\`\`\`powershell
+Comando PowerShell:
 # Buscar la keyword en tu HTML actual
-cd "c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page"
-Select-String -Path .\\index.html -Pattern "${keyword.keyword}" -CaseSensitive
-\`\`\`
+cd "c:\\\\Users\\\\Joaquin Espildora M\\\\Local Projects\\\\Just-Dev-It-Landing-Page"
+Select-String -Path .\\\\index.html -Pattern "${keyword.keyword}" -CaseSensitive
 
 ---
 
@@ -11586,18 +11587,17 @@ Select-String -Path .\\index.html -Pattern "${keyword.keyword}" -CaseSensitive
 
 Para verificar optimización actual:
 
-\`\`\`powershell
-cd "c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page"
+Comando PowerShell:
+cd "c:\\\\Users\\\\Joaquin Espildora M\\\\Local Projects\\\\Just-Dev-It-Landing-Page"
 
 # Contar apariciones de la keyword
 $keyword = "${keyword.keyword}"
-$content = Get-Content .\\index.html -Raw
+$content = Get-Content .\\\\index.html -Raw
 $count = ([regex]::Matches($content, [regex]::Escape($keyword), "IgnoreCase")).Count
 Write-Host "La keyword '$keyword' aparece $count veces en index.html"
 
 # Ver contexto de apariciones
-Select-String -Path .\\index.html -Pattern $keyword -Context 1,1
-\`\`\`
+Select-String -Path .\\\\index.html -Pattern $keyword -Context 1,1
 
 ---
 
@@ -12263,6 +12263,229 @@ ${keyword.position > 10 ? '- Subida de posiciones hacia la primera página' : '-
           });
         }
       });
+
+      // ============================================
+      // FUNCIONES GLOBALES PARA PROMPTS (fuera de DOMContentLoaded)
+      // ============================================
+      
+      // Helper para generar prompt de Performance por índice
+      window.generatePerformancePromptByIndex = function(index) {
+        if (window.performanceOpportunities && window.performanceOpportunities[index]) {
+          generatePerformancePrompt(window.performanceOpportunities[index]);
+        } else {
+          console.error('Performance opportunity not found at index:', index);
+        }
+      };
+
+      // Generar prompt para optimización de Performance
+      window.generatePerformancePrompt = function(opportunity) {
+        const impactLabels = {
+          high: 'ALTA ⚡',
+          medium: 'MEDIA 📊',
+          low: 'BAJA 📈'
+        };
+
+        const impactLabel = impactLabels[opportunity.impact] || 'MEDIA';
+
+        const prompt = `# ⚡ OPTIMIZACIÓN DE PERFORMANCE
+
+## 📋 CONTEXTO
+**Archivo**: c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html
+**Tipo de optimización**: Performance Web
+**Impacto**: ${impactLabel}
+**Ahorro potencial**: ${opportunity.savings}
+**Herramienta de medición**: Google Lighthouse / PageSpeed Insights
+
+---
+
+## 🎯 OPORTUNIDAD DE MEJORA
+**${opportunity.title}**
+
+${opportunity.description}
+
+---
+
+## 🔍 ANÁLISIS ACTUAL
+Esta optimización ha sido identificada como una oportunidad para mejorar los Core Web Vitals:
+
+- **LCP (Largest Contentful Paint)**: Tiempo de carga del elemento más grande visible
+- **FID (First Input Delay)**: Tiempo hasta que la página responde a la primera interacción
+- **CLS (Cumulative Layout Shift)**: Estabilidad visual durante la carga
+
+**Ahorro estimado**: ${opportunity.savings}
+
+---
+
+## 💡 INSTRUCCIONES PARA IMPLEMENTAR
+
+Analiza el código actual en c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html y aplica las optimizaciones necesarias para resolver esta oportunidad de mejora.
+
+### Paso 1: Analizar el problema
+Revisa el código actual relacionado con esta optimización y identifica las áreas que necesitan mejora.
+
+### Paso 2: Implementar solución
+Aplica los cambios necesarios siguiendo las mejores prácticas de performance web.
+
+### Paso 3: Validar cambios
+Ejecuta Google Lighthouse nuevamente para verificar que la métrica ha mejorado.
+
+---
+
+## ✅ RESULTADO ESPERADO
+
+Después de implementar la optimización:
+- **${opportunity.title}** debe estar resuelto
+- **Ahorro logrado**: ${opportunity.savings}
+- **Impacto**: Mejora en ${impactLabel.toLowerCase()} de Core Web Vitals
+
+---
+
+**Generado el**: ${new Date().toLocaleString('es-ES')}
+`;
+
+        window.showPromptModal(prompt, { 
+          id: 'perf_' + Date.now(), 
+          type: 'performance',
+          title: opportunity.title 
+        });
+      };
+
+      // Helper para generar prompt de Keyword por índice
+      window.generateKeywordPromptByIndex = function(index) {
+        if (window.currentPageKeywords && window.currentPageKeywords[index]) {
+          window.generateKeywordPrompt(window.currentPageKeywords[index]);
+        } else {
+          console.error('Keyword not found at index:', index);
+        }
+      };
+
+      // Generar prompt para optimización de Keyword
+      window.generateKeywordPrompt = function(keyword) {
+        const priorityLabels = {
+          high: 'ALTA 🔥',
+          medium: 'MEDIA 📊',
+          low: 'BAJA 📉'
+        };
+
+        // Determinar prioridad
+        const priority = keyword.position <= 5 && keyword.clicks > 0 ? 'high' 
+          : keyword.position <= 10 ? 'medium' 
+          : 'low';
+        
+        const priorityLabel = priorityLabels[priority] || 'MEDIA';
+
+        // Determinar estrategia según posición
+        let strategy = '';
+        let objective = '';
+        
+        if (keyword.position <= 3) {
+          strategy = 'Mantener y Defender Posición Top';
+          objective = 'Ya estás en el Top 3. El objetivo es mantener esta posición y mejorar el CTR.';
+        } else if (keyword.position <= 10) {
+          strategy = 'Subir al Top 3';
+          objective = 'Estás en la primera página. Con optimización puedes llegar al Top 3 y multiplicar tu tráfico.';
+        } else if (keyword.position <= 20) {
+          strategy = 'Entrar al Top 10';
+          objective = 'Estás en la segunda página. Necesitas optimización para entrar a la primera página.';
+        } else {
+          strategy = 'Mejorar Contenido y Relevancia';
+          objective = 'Posición baja. Necesitas contenido más relevante y autoridad para esta keyword.';
+        }
+
+        // Analizar oportunidad
+        let opportunityAnalysis = '';
+        if (keyword.impressions > 100 && keyword.clicks === 0) {
+          opportunityAnalysis = '⚠️ **ALTA OPORTUNIDAD**: Muchas impresiones sin clicks. Mejora tu meta description y title para aumentar CTR.';
+        } else if (keyword.impressions > 50 && keyword.ctr < 2) {
+          opportunityAnalysis = '📊 **OPORTUNIDAD MEDIA**: CTR bajo. Optimiza snippets para atraer más clicks.';
+        } else if (keyword.position > 10 && keyword.impressions > 20) {
+          opportunityAnalysis = '🎯 **POTENCIAL DE ESCALADA**: Con optimización de contenido puedes subir a primera página.';
+        } else if (keyword.clicks > 10) {
+          opportunityAnalysis = '✅ **KEYWORD ACTIVA**: Ya genera tráfico. Mantén y mejora el contenido.';
+        }
+
+        const prompt = `# 🔍 OPTIMIZACIÓN DE KEYWORD SEO
+
+## 📋 CONTEXTO
+**Archivo**: c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html
+**Keyword**: "${keyword.keyword}"
+**Posición actual**: #${keyword.position.toFixed(1)}
+**Prioridad**: ${priorityLabel}
+**Página**: ${keyword.page || 'index.html'}
+
+---
+
+## 📊 DATOS ACTUALES DE LA KEYWORD
+
+| Métrica | Valor | Estado |
+|---------|-------|--------|
+| **Posición** | #${keyword.position.toFixed(1)} | ${keyword.position <= 10 ? '✅ Primera página' : '⚠️ Fuera del Top 10'} |
+| **Impresiones** | ${keyword.impressions || 0} | ${keyword.impressions > 100 ? '✅ Alto' : keyword.impressions > 50 ? '📊 Medio' : '⚠️ Bajo'} |
+| **Clicks** | ${keyword.clicks || 0} | ${keyword.clicks > 10 ? '✅ Activo' : keyword.clicks > 0 ? '📊 Bajo' : '⚠️ Sin clicks'} |
+| **CTR** | ${(keyword.ctr || 0).toFixed(2)}% | ${keyword.ctr > 5 ? '✅ Excelente' : keyword.ctr > 2 ? '📊 Bueno' : '⚠️ Bajo'} |
+
+---
+
+## 🎯 ESTRATEGIA DE OPTIMIZACIÓN
+**${strategy}**
+
+${objective}
+
+${opportunityAnalysis}
+
+---
+
+## 💡 PLAN DE ACCIÓN PASO A PASO
+
+### Paso 1: Análisis de Competencia
+1. Abre Google en modo incógnito
+2. Busca: "${keyword.keyword}"
+3. Analiza los 3 primeros resultados:
+   - ¿Qué estructura de título usan?
+   - ¿Qué prometen en la meta description?
+   - ¿Qué tipo de contenido ofrecen?
+   - ¿Qué keywords relacionadas usan?
+
+### Paso 2: Optimizar Meta Tags
+Modifica en index.html el título y meta description para incluir la keyword de forma natural y atractiva.
+
+### Paso 3: Optimizar Contenido Visible
+Asegúrate que la keyword aparece en H1, H2, y párrafos principales de forma natural.
+
+### Paso 4: Enlaces Internos
+Agrega enlaces internos relevantes que apunten a esta sección usando la keyword como anchor text.
+
+---
+
+## ✅ VALIDACIÓN POST-OPTIMIZACIÓN
+
+Después de implementar los cambios, verifica:
+
+- [ ] Keyword en Title tag
+- [ ] Keyword en H1 principal
+- [ ] Meta Description optimizada
+- [ ] Contenido relevante (300+ palabras)
+- [ ] Densidad correcta (1-2%)
+- [ ] ALT text en imágenes
+- [ ] Enlaces internos (mínimo 2)
+- [ ] Mobile-friendly
+
+---
+
+**Keyword**: ${keyword.keyword}
+**Posición actual**: #${keyword.position.toFixed(1)}
+**CTR actual**: ${(keyword.ctr || 0).toFixed(2)}%
+**Prioridad**: ${priority.toUpperCase()}
+**Generado el**: ${new Date().toLocaleString('es-ES')}
+`;
+
+        window.showPromptModal(prompt, { 
+          id: 'kw_' + Date.now(), 
+          type: 'keyword',
+          title: keyword.keyword 
+        });
+      };
+
     </script>
   </body>
 </html>
