@@ -6628,15 +6628,21 @@
         if (!ctx) return;
 
         // Calcular prioridad para cada keyword
-        const keywordsWithPriority = keywords.map(k => {
-          const priority = (k.position <= 5 && k.clicks > 0) ? 80 
-            : (k.position <= 10) ? 60 
-            : (k.position <= 20) ? 40 
-            : 20;
+        const keywordsWithPriority = keywords.map((k) => {
+          const priority =
+            k.position <= 5 && k.clicks > 0
+              ? 80
+              : k.position <= 10
+              ? 60
+              : k.position <= 20
+              ? 40
+              : 20;
           return { ...k, priority };
         });
 
-        const high = keywordsWithPriority.filter((k) => k.priority >= 70).length;
+        const high = keywordsWithPriority.filter(
+          (k) => k.priority >= 70
+        ).length;
         const medium = keywordsWithPriority.filter(
           (k) => k.priority >= 40 && k.priority < 70
         ).length;
@@ -6689,14 +6695,22 @@
         const ctx = document.getElementById("position-chart");
         if (!ctx) return;
 
-        const top3 = keywords.filter((k) => (k.position || k.avg_position || 0) <= 3).length;
+        const top3 = keywords.filter(
+          (k) => (k.position || k.avg_position || 0) <= 3
+        ).length;
         const top10 = keywords.filter(
-          (k) => (k.position || k.avg_position || 0) > 3 && (k.position || k.avg_position || 0) <= 10
+          (k) =>
+            (k.position || k.avg_position || 0) > 3 &&
+            (k.position || k.avg_position || 0) <= 10
         ).length;
         const top20 = keywords.filter(
-          (k) => (k.position || k.avg_position || 0) > 10 && (k.position || k.avg_position || 0) <= 20
+          (k) =>
+            (k.position || k.avg_position || 0) > 10 &&
+            (k.position || k.avg_position || 0) <= 20
         ).length;
-        const beyond20 = keywords.filter((k) => (k.position || k.avg_position || 0) > 20).length;
+        const beyond20 = keywords.filter(
+          (k) => (k.position || k.avg_position || 0) > 20
+        ).length;
 
         if (charts.position) charts.position.destroy();
 
@@ -6776,7 +6790,7 @@
 
         // Tomar top 10 keywords por impresiones que tengan clicks
         const topKeywords = [...keywords]
-          .filter(k => k.impressions > 0)
+          .filter((k) => k.impressions > 0)
           .sort((a, b) => b.impressions - a.impressions)
           .slice(0, 10);
 
@@ -6785,7 +6799,9 @@
             k.keyword.substring(0, 15) + (k.keyword.length > 15 ? "..." : "")
         );
         const realCTR = topKeywords.map((k) => k.ctr || 0);
-        const expectedCTR = topKeywords.map((k) => getExpectedCTR(k.position || 0));
+        const expectedCTR = topKeywords.map((k) =>
+          getExpectedCTR(k.position || 0)
+        );
 
         if (charts.ctrComparison) charts.ctrComparison.destroy();
 
@@ -7999,12 +8015,14 @@
             });
 
           // Sorting - Usar delegación de eventos en la tabla completa
-          const keywordsTable = document.getElementById("keywords-master-table");
+          const keywordsTable = document.getElementById(
+            "keywords-master-table"
+          );
           if (keywordsTable && !keywordsTable.dataset.sortListenerAdded) {
-            keywordsTable.addEventListener("click", function(e) {
+            keywordsTable.addEventListener("click", function (e) {
               const th = e.target.closest("th.sortable");
               if (!th) return;
-              
+
               const column = th.dataset.sort;
               if (keywordsTableState.sortColumn === column) {
                 keywordsTableState.sortDirection =
@@ -10458,14 +10476,18 @@
         // Cargar mejoras automáticas reales desde improvements.json
         async function loadRealImprovements() {
           try {
-            const response = await fetch('data/improvements.json');
+            const response = await fetch("data/improvements.json");
             if (!response.ok) {
-              console.warn('No se encontró data/improvements.json - ejecuta el script de mejoras automáticas');
+              console.warn(
+                "No se encontró data/improvements.json - ejecuta el script de mejoras automáticas"
+              );
               return;
             }
 
             const improvementsData = await response.json();
-            console.log(`✅ Cargadas ${improvementsData.total_improvements} mejoras automáticas`);
+            console.log(
+              `✅ Cargadas ${improvementsData.total_improvements} mejoras automáticas`
+            );
 
             // Guardar mejoras en estado global
             actionsState.realImprovements = improvementsData;
@@ -10475,57 +10497,65 @@
 
             // Actualizar contador de notificaciones
             updateNotificationBadges();
-
           } catch (error) {
-            console.error('Error cargando mejoras automáticas:', error);
+            console.error("Error cargando mejoras automáticas:", error);
           }
         }
 
         // Actualizar contador de notificaciones en el badge
         function updateNotificationBadges() {
           if (!actionsState.realImprovements) {
-            document.getElementById('suggestions-count').textContent = '0';
+            document.getElementById("suggestions-count").textContent = "0";
             return;
           }
 
           // Contar mejoras que no han sido aplicadas ni rechazadas
-          const pendingImprovements = actionsState.realImprovements.improvements.filter(imp => {
-            const element = document.querySelector(`[data-improvement-id="${imp.id}"]`);
-            if (!element) return false;
-            
-            // Si el elemento está deshabilitado (opacity 0.5), significa que fue aplicado o rechazado
-            return element.style.opacity !== '0.5';
-          });
+          const pendingImprovements =
+            actionsState.realImprovements.improvements.filter((imp) => {
+              const element = document.querySelector(
+                `[data-improvement-id="${imp.id}"]`
+              );
+              if (!element) return false;
+
+              // Si el elemento está deshabilitado (opacity 0.5), significa que fue aplicado o rechazado
+              return element.style.opacity !== "0.5";
+            });
 
           const pendingCount = pendingImprovements.length;
-          const badge = document.getElementById('suggestions-count');
-          
+          const badge = document.getElementById("suggestions-count");
+
           if (badge) {
             badge.textContent = pendingCount;
-            
+
             // Agregar animación cuando cambia el contador
-            badge.style.transform = 'scale(1.2)';
+            badge.style.transform = "scale(1.2)";
             setTimeout(() => {
-              badge.style.transform = 'scale(1)';
+              badge.style.transform = "scale(1)";
             }, 200);
           }
 
-          console.log(`📊 Contador actualizado: ${pendingCount} sugerencias pendientes`);
+          console.log(
+            `📊 Contador actualizado: ${pendingCount} sugerencias pendientes`
+          );
         }
 
         // Mostrar mejoras reales en la interfaz
         function displayRealImprovements(improvementsData) {
-          const container = document.getElementById('actions-list');
+          const container = document.getElementById("actions-list");
           if (!container) return;
 
           const improvements = improvementsData.improvements || [];
-          
+
           // Contar mejoras invisibles
-          const invisibleImprovements = improvements.filter(imp => imp.visibility === 'invisible');
-          const visibleImprovements = improvements.filter(imp => imp.visibility === 'visible');
-          
+          const invisibleImprovements = improvements.filter(
+            (imp) => imp.visibility === "invisible"
+          );
+          const visibleImprovements = improvements.filter(
+            (imp) => imp.visibility === "visible"
+          );
+
           // Crear botón de aplicar todas las invisibles si hay alguna
-          let batchActionHTML = '';
+          let batchActionHTML = "";
           if (invisibleImprovements.length > 0) {
             batchActionHTML = `
               <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);">
@@ -10550,68 +10580,81 @@
               </div>
             `;
           }
-          
+
           // Crear HTML para cada mejora
-          const improvementsHTML = improvements.map((imp, index) => {
-            const priorityColors = {
-              high: '#ef4444',
-              medium: '#f59e0b',
-              low: '#10b981'
-            };
+          const improvementsHTML = improvements
+            .map((imp, index) => {
+              const priorityColors = {
+                high: "#ef4444",
+                medium: "#f59e0b",
+                low: "#10b981",
+              };
 
-            const priorityLabels = {
-              high: 'Alta',
-              medium: 'Media',
-              low: 'Baja'
-            };
+              const priorityLabels = {
+                high: "Alta",
+                medium: "Media",
+                low: "Baja",
+              };
 
-            const typeIcons = {
-              title: 'fa-heading',
-              meta_description: 'fa-tags',
-              add_heading: 'fa-h-square',
-              add_section: 'fa-plus-square'
-            };
+              const typeIcons = {
+                title: "fa-heading",
+                meta_description: "fa-tags",
+                add_heading: "fa-h-square",
+                add_section: "fa-plus-square",
+              };
 
-            const typeLabels = {
-              title: 'Optimizar Title',
-              meta_description: 'Meta Description',
-              add_heading: 'Agregar H2',
-              add_section: 'Nueva Sección'
-            };
+              const typeLabels = {
+                title: "Optimizar Title",
+                meta_description: "Meta Description",
+                add_heading: "Agregar H2",
+                add_section: "Nueva Sección",
+              };
 
-            // Determinar badge de visibilidad
-            const visibilityBadge = imp.visibility === 'invisible' 
-              ? '<span style="background: #10b98122; color: #10b981; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-eye-slash"></i> INVISIBLE</span>'
-              : '<span style="background: #f59e0b22; color: #f59e0b; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-eye"></i> VISIBLE</span>';
+              // Determinar badge de visibilidad
+              const visibilityBadge =
+                imp.visibility === "invisible"
+                  ? '<span style="background: #10b98122; color: #10b981; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-eye-slash"></i> INVISIBLE</span>'
+                  : '<span style="background: #f59e0b22; color: #f59e0b; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-eye"></i> VISIBLE</span>';
 
-            // Badge de i18n si aplica
-            const i18nBadge = imp.requires_i18n 
-              ? '<span style="background: #3b82f622; color: #3b82f6; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-language"></i> i18n</span>'
-              : '';
+              // Badge de i18n si aplica
+              const i18nBadge = imp.requires_i18n
+                ? '<span style="background: #3b82f622; color: #3b82f6; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-language"></i> i18n</span>'
+                : "";
 
-            // Warning de gramática si hay issues
-            const grammarWarning = imp.grammar_issues && imp.grammar_issues.length > 0
-              ? `<div style="background: #ef444422; border-left: 3px solid #ef4444; padding: 8px; margin-top: 8px; border-radius: 4px;">
+              // Warning de gramática si hay issues
+              const grammarWarning =
+                imp.grammar_issues && imp.grammar_issues.length > 0
+                  ? `<div style="background: #ef444422; border-left: 3px solid #ef4444; padding: 8px; margin-top: 8px; border-radius: 4px;">
                    <strong style="color: #ef4444;"><i class="fas fa-exclamation-triangle"></i> Revisar gramática:</strong>
                    <ul style="margin: 5px 0 0 20px; color: var(--text-secondary); font-size: 0.8rem;">
-                     ${imp.grammar_issues.map(issue => `<li>${escapeHtml(issue)}</li>`).join('')}
+                     ${imp.grammar_issues
+                       .map((issue) => `<li>${escapeHtml(issue)}</li>`)
+                       .join("")}
                    </ul>
                  </div>`
-              : '';
+                  : "";
 
-            return `
-              <div class="action-item real-improvement enabled" data-improvement-id="${imp.id}" 
-                   data-visibility="${imp.visibility || 'unknown'}"
-                   style="border-left: 4px solid ${priorityColors[imp.priority]};">
+              return `
+              <div class="action-item real-improvement enabled" data-improvement-id="${
+                imp.id
+              }" 
+                   data-visibility="${imp.visibility || "unknown"}"
+                   style="border-left: 4px solid ${
+                     priorityColors[imp.priority]
+                   };">
                 
-                <div class="action-icon" style="background: ${priorityColors[imp.priority]}22;">
-                  <i class="fas ${typeIcons[imp.type] || 'fa-magic'}" 
+                <div class="action-icon" style="background: ${
+                  priorityColors[imp.priority]
+                }22;">
+                  <i class="fas ${typeIcons[imp.type] || "fa-magic"}" 
                      style="color: ${priorityColors[imp.priority]};"></i>
                 </div>
 
                 <div class="action-content" style="flex: 1;">
                   <div class="action-title" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                    <span style="font-weight: 600;">${typeLabels[imp.type] || imp.type}</span>
+                    <span style="font-weight: 600;">${
+                      typeLabels[imp.type] || imp.type
+                    }</span>
                     <span class="priority-badge" style="
                       background: ${priorityColors[imp.priority]}22;
                       color: ${priorityColors[imp.priority]};
@@ -10635,13 +10678,17 @@
                       <div style="flex: 1;">
                         <strong style="color: var(--text-secondary);">Actual:</strong>
                         <div style="background: var(--bg-secondary); padding: 8px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: auto;">
-                          ${escapeHtml(imp.current.substring(0, 150))}${imp.current.length > 150 ? '...' : ''}
+                          ${escapeHtml(imp.current.substring(0, 150))}${
+                imp.current.length > 150 ? "..." : ""
+              }
                         </div>
                       </div>
                       <div style="flex: 1;">
                         <strong style="color: var(--success);">Sugerido:</strong>
                         <div style="background: #10b98111; padding: 8px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: auto; border: 1px solid #10b98133;">
-                          ${escapeHtml(imp.suggested.substring(0, 150))}${imp.suggested.length > 150 ? '...' : ''}
+                          ${escapeHtml(imp.suggested.substring(0, 150))}${
+                imp.suggested.length > 150 ? "..." : ""
+              }
                         </div>
                       </div>
                     </div>
@@ -10651,22 +10698,30 @@
                 </div>
 
                 <div class="action-controls" style="flex-direction: column; gap: 8px;">
-                  <button class="btn btn-secondary btn-sm" onclick='previewRealImprovement("${imp.id}")' 
+                  <button class="btn btn-secondary btn-sm" onclick='previewRealImprovement("${
+                    imp.id
+                  }")' 
                           style="white-space: nowrap;">
                     <i class="fas fa-eye"></i>
                     Ver Completo
                   </button>
-                  <button class="btn btn-info btn-sm" onclick='generatePromptForImprovement("${imp.id}")' 
+                  <button class="btn btn-info btn-sm" onclick='generatePromptForImprovement("${
+                    imp.id
+                  }")' 
                           style="white-space: nowrap; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
                     <i class="fas fa-code"></i>
                     Generar Prompt
                   </button>
-                  <button class="btn btn-success btn-sm" onclick='applyRealImprovement("${imp.id}")'
+                  <button class="btn btn-success btn-sm" onclick='applyRealImprovement("${
+                    imp.id
+                  }")'
                           style="white-space: nowrap;">
                     <i class="fas fa-check"></i>
                     Aplicar
                   </button>
-                  <button class="btn btn-danger btn-sm" onclick='rejectRealImprovement("${imp.id}")'
+                  <button class="btn btn-danger btn-sm" onclick='rejectRealImprovement("${
+                    imp.id
+                  }")'
                           style="white-space: nowrap;">
                     <i class="fas fa-times"></i>
                     Rechazar
@@ -10674,7 +10729,8 @@
                 </div>
               </div>
             `;
-          }).join('');
+            })
+            .join("");
 
           // Insertar al inicio de la lista (antes de las acciones predefinidas)
           if (improvementsHTML) {
@@ -10685,44 +10741,62 @@
                   Mejoras Automáticas Generadas (${improvements.length})
                 </h4>
                 <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
-                  Generadas el ${new Date(improvementsData.generated_at).toLocaleString('es-ES')}
+                  Generadas el ${new Date(
+                    improvementsData.generated_at
+                  ).toLocaleString("es-ES")}
                   <br>
-                  <span style="color: #10b981;"><i class="fas fa-eye-slash"></i> ${invisibleImprovements.length} invisibles (seguros)</span> | 
-                  <span style="color: #f59e0b;"><i class="fas fa-eye"></i> ${visibleImprovements.length} visibles (revisar)</span>
+                  <span style="color: #10b981;"><i class="fas fa-eye-slash"></i> ${
+                    invisibleImprovements.length
+                  } invisibles (seguros)</span> | 
+                  <span style="color: #f59e0b;"><i class="fas fa-eye"></i> ${
+                    visibleImprovements.length
+                  } visibles (revisar)</span>
                 </p>
               </div>
             `;
-            container.innerHTML = batchActionHTML + separatorHTML + improvementsHTML + '<div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid var(--border);"></div>' + container.innerHTML;
+            container.innerHTML =
+              batchActionHTML +
+              separatorHTML +
+              improvementsHTML +
+              '<div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid var(--border);"></div>' +
+              container.innerHTML;
           }
 
           // Actualizar contadores
-          document.getElementById('pending-actions-count').textContent = improvements.length;
+          document.getElementById("pending-actions-count").textContent =
+            improvements.length;
         }
 
         // Previsualizar mejora real completa
         function previewRealImprovement(improvementId) {
           if (!actionsState.realImprovements) return;
 
-          const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+          const improvement = actionsState.realImprovements.improvements.find(
+            (imp) => imp.id === improvementId
+          );
           if (!improvement) return;
 
           // Badges de visibilidad e i18n
-          const visibilityBadge = improvement.visibility === 'invisible' 
-            ? '<span style="background: #10b98122; color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-eye-slash"></i> INVISIBLE (Seguro)</span>'
-            : '<span style="background: #f59e0b22; color: #f59e0b; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-eye"></i> VISIBLE (Revisar)</span>';
+          const visibilityBadge =
+            improvement.visibility === "invisible"
+              ? '<span style="background: #10b98122; color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-eye-slash"></i> INVISIBLE (Seguro)</span>'
+              : '<span style="background: #f59e0b22; color: #f59e0b; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-eye"></i> VISIBLE (Revisar)</span>';
 
-          const i18nBadge = improvement.requires_i18n 
+          const i18nBadge = improvement.requires_i18n
             ? '<span style="background: #3b82f622; color: #3b82f6; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-language"></i> Requiere traducción</span>'
-            : '';
+            : "";
 
-          const grammarWarning = improvement.grammar_issues && improvement.grammar_issues.length > 0
-            ? `<div style="background: #ef444422; border: 1px solid #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
+          const grammarWarning =
+            improvement.grammar_issues && improvement.grammar_issues.length > 0
+              ? `<div style="background: #ef444422; border: 1px solid #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
                  <strong style="color: #ef4444; display: block; margin-bottom: 8px;"><i class="fas fa-exclamation-triangle"></i> Revisar Gramática:</strong>
                  <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary);">
-                   ${improvement.grammar_issues.map(issue => `<li>${escapeHtml(issue)}</li>`).join('')}
+                   ${improvement.grammar_issues
+                     .map((issue) => `<li>${escapeHtml(issue)}</li>`)
+                     .join("")}
                  </ul>
                </div>`
-            : '';
+              : "";
 
           const modal = `
             <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;" onclick="this.remove()">
@@ -10734,7 +10808,9 @@
                       <i class="fas fa-eye" style="color: var(--primary); margin-right: 10px;"></i>
                       Previsualización Completa
                     </h2>
-                    <p style="margin: 0 0 10px 0; color: var(--text-secondary);">${improvement.reason}</p>
+                    <p style="margin: 0 0 10px 0; color: var(--text-secondary);">${
+                      improvement.reason
+                    }</p>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                       ${visibilityBadge}
                       ${i18nBadge}
@@ -10751,7 +10827,9 @@
                       <i class="fas fa-minus-circle" style="color: var(--danger); margin-right: 5px;"></i>
                       Código Actual
                     </h3>
-                    <pre style="background: var(--bg-secondary); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(improvement.current)}</pre>
+                    <pre style="background: var(--bg-secondary); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(
+                      improvement.current
+                    )}</pre>
                   </div>
 
                   <div style="text-align: center; padding: 10px;">
@@ -10764,24 +10842,36 @@
                         <i class="fas fa-plus-circle" style="color: var(--success); margin-right: 5px;"></i>
                         Código Sugerido
                       </span>
-                      <button class="btn btn-sm" onclick="enableEditMode('${improvement.id}')" 
+                      <button class="btn btn-sm" onclick="enableEditMode('${
+                        improvement.id
+                      }')" 
                               style="background: var(--warning); color: white; padding: 4px 12px; font-size: 0.75rem;">
                         <i class="fas fa-edit"></i>
                         Editar
                       </button>
                     </h3>
                     <div id="suggested-view-${improvement.id}">
-                      <pre style="background: #10b98111; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(improvement.suggested)}</pre>
+                      <pre style="background: #10b98111; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(
+                        improvement.suggested
+                      )}</pre>
                     </div>
-                    <div id="suggested-edit-${improvement.id}" style="display: none;">
+                    <div id="suggested-edit-${
+                      improvement.id
+                    }" style="display: none;">
                       <textarea id="suggested-textarea-${improvement.id}" 
-                                style="width: 100%; min-height: 300px; padding: 15px; border-radius: 8px; border: 2px solid var(--success); margin: 0; font-family: 'Courier New', monospace; font-size: 0.9rem; background: var(--bg-secondary); color: var(--text-primary); resize: vertical;">${escapeHtml(improvement.suggested)}</textarea>
+                                style="width: 100%; min-height: 300px; padding: 15px; border-radius: 8px; border: 2px solid var(--success); margin: 0; font-family: 'Courier New', monospace; font-size: 0.9rem; background: var(--bg-secondary); color: var(--text-primary); resize: vertical;">${escapeHtml(
+                                  improvement.suggested
+                                )}</textarea>
                       <div style="display: flex; gap: 10px; margin-top: 10px;">
-                        <button class="btn btn-success btn-sm" onclick="saveEditedSuggestion('${improvement.id}')">
+                        <button class="btn btn-success btn-sm" onclick="saveEditedSuggestion('${
+                          improvement.id
+                        }')">
                           <i class="fas fa-save"></i>
                           Guardar Cambios
                         </button>
-                        <button class="btn btn-secondary btn-sm" onclick="cancelEditMode('${improvement.id}')">
+                        <button class="btn btn-secondary btn-sm" onclick="cancelEditMode('${
+                          improvement.id
+                        }')">
                           <i class="fas fa-times"></i>
                           Cancelar
                         </button>
@@ -10795,7 +10885,9 @@
                     <i class="fas fa-times"></i>
                     Cerrar
                   </button>
-                  <button class="btn btn-success" onclick="applyRealImprovement('${improvement.id}'); this.closest('div[style*=fixed]').remove();">
+                  <button class="btn btn-success" onclick="applyRealImprovement('${
+                    improvement.id
+                  }'); this.closest('div[style*=fixed]').remove();">
                     <i class="fas fa-check"></i>
                     Aplicar Este Cambio
                   </button>
@@ -10804,40 +10896,59 @@
             </div>
           `;
 
-          document.body.insertAdjacentHTML('beforeend', modal);
+          document.body.insertAdjacentHTML("beforeend", modal);
         }
 
         // Habilitar modo de edición para código sugerido
         function enableEditMode(improvementId) {
-          document.getElementById(`suggested-view-${improvementId}`).style.display = 'none';
-          document.getElementById(`suggested-edit-${improvementId}`).style.display = 'block';
-          document.getElementById(`suggested-textarea-${improvementId}`).focus();
+          document.getElementById(
+            `suggested-view-${improvementId}`
+          ).style.display = "none";
+          document.getElementById(
+            `suggested-edit-${improvementId}`
+          ).style.display = "block";
+          document
+            .getElementById(`suggested-textarea-${improvementId}`)
+            .focus();
         }
 
         // Cancelar modo de edición
         function cancelEditMode(improvementId) {
-          document.getElementById(`suggested-view-${improvementId}`).style.display = 'block';
-          document.getElementById(`suggested-edit-${improvementId}`).style.display = 'none';
+          document.getElementById(
+            `suggested-view-${improvementId}`
+          ).style.display = "block";
+          document.getElementById(
+            `suggested-edit-${improvementId}`
+          ).style.display = "none";
         }
 
         // Guardar sugerencia editada
         function saveEditedSuggestion(improvementId) {
-          const textarea = document.getElementById(`suggested-textarea-${improvementId}`);
+          const textarea = document.getElementById(
+            `suggested-textarea-${improvementId}`
+          );
           const newSuggested = textarea.value;
 
           // Actualizar en el estado global
           if (actionsState.realImprovements) {
-            const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+            const improvement = actionsState.realImprovements.improvements.find(
+              (imp) => imp.id === improvementId
+            );
             if (improvement) {
               improvement.suggested = newSuggested;
-              
+
               // Actualizar la vista
-              const viewElement = document.getElementById(`suggested-view-${improvementId}`);
+              const viewElement = document.getElementById(
+                `suggested-view-${improvementId}`
+              );
               if (viewElement) {
-                viewElement.querySelector('pre').textContent = newSuggested;
+                viewElement.querySelector("pre").textContent = newSuggested;
               }
 
-              showToast('✅ Sugerencia actualizada! Ahora puedes aplicarla.', 'success');
+              showToast(
+                "✅ Sugerencia actualizada! Ahora puedes aplicarla.",
+                "success"
+              );
               cancelEditMode(improvementId);
             }
           }
@@ -10847,41 +10958,55 @@
         function applyRealImprovement(improvementId) {
           if (!actionsState.realImprovements) return;
 
-          const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+          const improvement = actionsState.realImprovements.improvements.find(
+            (imp) => imp.id === improvementId
+          );
           if (!improvement) return;
 
           // Validación extra para cambios visibles
-          const warningText = improvement.visibility === 'visible'
-            ? '\n\n⚠️ ATENCIÓN: Este cambio es VISIBLE en la página.\nRevisa que el contenido sea apropiado.'
-            : '\n\n✅ Este cambio es INVISIBLE (meta tags, title, etc.)';
+          const warningText =
+            improvement.visibility === "visible"
+              ? "\n\n⚠️ ATENCIÓN: Este cambio es VISIBLE en la página.\nRevisa que el contenido sea apropiado."
+              : "\n\n✅ Este cambio es INVISIBLE (meta tags, title, etc.)";
 
           const i18nWarning = improvement.requires_i18n
-            ? '\n\n🌐 IMPORTANTE: Este contenido necesita traducción en tu sistema i18n.'
-            : '';
+            ? "\n\n🌐 IMPORTANTE: Este contenido necesita traducción en tu sistema i18n."
+            : "";
 
-          if (!confirm(`¿Aplicar esta mejora?\n\n${improvement.reason}${warningText}${i18nWarning}\n\n⚠️ Esto modificará tu archivo index.html`)) {
+          if (
+            !confirm(
+              `¿Aplicar esta mejora?\n\n${improvement.reason}${warningText}${i18nWarning}\n\n⚠️ Esto modificará tu archivo index.html`
+            )
+          ) {
             return;
           }
 
           // Mostrar instrucciones para aplicar realmente
-          alert(`✅ Mejora Marcada para Aplicar!\n\nTipo: ${improvement.type}\nID: ${improvement.id}\n\n📝 PARA APLICAR REALMENTE:\n\n1. Ejecuta en terminal:\n   python scripts/aplicar-mejoras.py\n\n2. Selecciona prioridad "Alta + Media"\n\n3. El script hará backup automático y aplicará los cambios`);
+          alert(
+            `✅ Mejora Marcada para Aplicar!\n\nTipo: ${improvement.type}\nID: ${improvement.id}\n\n📝 PARA APLICAR REALMENTE:\n\n1. Ejecuta en terminal:\n   python scripts/aplicar-mejoras.py\n\n2. Selecciona prioridad "Alta + Media"\n\n3. El script hará backup automático y aplicará los cambios`
+          );
 
           // Marcar como completada visualmente
-          const element = document.querySelector(`[data-improvement-id="${improvementId}"]`);
+          const element = document.querySelector(
+            `[data-improvement-id="${improvementId}"]`
+          );
           if (element) {
-            element.style.opacity = '0.5';
-            element.style.pointerEvents = 'none';
-            const statusBadge = element.querySelector('.action-status-badge');
+            element.style.opacity = "0.5";
+            element.style.pointerEvents = "none";
+            const statusBadge = element.querySelector(".action-status-badge");
             if (statusBadge) {
-              statusBadge.textContent = 'Aplicada';
-              statusBadge.className = 'action-status-badge completed';
+              statusBadge.textContent = "Aplicada";
+              statusBadge.className = "action-status-badge completed";
             }
           }
 
           // Actualizar contador
-          const pendingCount = document.getElementById('pending-actions-count');
+          const pendingCount = document.getElementById("pending-actions-count");
           if (pendingCount) {
-            pendingCount.textContent = Math.max(0, parseInt(pendingCount.textContent) - 1);
+            pendingCount.textContent = Math.max(
+              0,
+              parseInt(pendingCount.textContent) - 1
+            );
           }
 
           // Actualizar badge de notificaciones
@@ -10892,16 +11017,22 @@
         function applyAllInvisibleImprovements() {
           if (!actionsState.realImprovements) return;
 
-          const invisibleImprovements = actionsState.realImprovements.improvements.filter(imp => imp.visibility === 'invisible');
-          
+          const invisibleImprovements =
+            actionsState.realImprovements.improvements.filter(
+              (imp) => imp.visibility === "invisible"
+            );
+
           if (invisibleImprovements.length === 0) {
-            alert('No hay mejoras invisibles para aplicar.');
+            alert("No hay mejoras invisibles para aplicar.");
             return;
           }
 
-          const confirmText = `🚀 APLICACIÓN AUTOMÁTICA DE CAMBIOS SEGUROS\n\n` +
+          const confirmText =
+            `🚀 APLICACIÓN AUTOMÁTICA DE CAMBIOS SEGUROS\n\n` +
             `Se aplicarán ${invisibleImprovements.length} mejora(s) INVISIBLES:\n\n` +
-            invisibleImprovements.map(imp => `• ${imp.type}: ${imp.reason.substring(0, 60)}...`).join('\n') +
+            invisibleImprovements
+              .map((imp) => `• ${imp.type}: ${imp.reason.substring(0, 60)}...`)
+              .join("\n") +
             `\n\n✅ Estos cambios NO afectan el contenido visible.\n` +
             `✅ Son cambios en meta tags, title, alt text, etc.\n\n` +
             `📝 INSTRUCCIONES:\n` +
@@ -10916,57 +11047,69 @@
 
           // Marcar todas las invisibles como aplicadas
           let appliedCount = 0;
-          invisibleImprovements.forEach(imp => {
-            const element = document.querySelector(`[data-improvement-id="${imp.id}"]`);
+          invisibleImprovements.forEach((imp) => {
+            const element = document.querySelector(
+              `[data-improvement-id="${imp.id}"]`
+            );
             if (element) {
-              element.style.opacity = '0.5';
-              element.style.pointerEvents = 'none';
-              const statusBadge = element.querySelector('.action-status-badge');
+              element.style.opacity = "0.5";
+              element.style.pointerEvents = "none";
+              const statusBadge = element.querySelector(".action-status-badge");
               if (statusBadge) {
-                statusBadge.textContent = 'Aplicada';
-                statusBadge.className = 'action-status-badge completed';
+                statusBadge.textContent = "Aplicada";
+                statusBadge.className = "action-status-badge completed";
               }
               appliedCount++;
             }
           });
 
           // Actualizar contador
-          const pendingCount = document.getElementById('pending-actions-count');
+          const pendingCount = document.getElementById("pending-actions-count");
           if (pendingCount) {
-            pendingCount.textContent = Math.max(0, parseInt(pendingCount.textContent) - appliedCount);
+            pendingCount.textContent = Math.max(
+              0,
+              parseInt(pendingCount.textContent) - appliedCount
+            );
           }
 
           // Actualizar badge de notificaciones
           updateNotificationBadges();
 
           // Mensaje de éxito
-          alert(`✅ ${appliedCount} mejora(s) invisible(s) marcadas!\n\n📝 SIGUIENTE PASO:\n\nEjecuta en terminal:\n   python scripts/aplicar-mejoras.py\n\nEl script detectará automáticamente las mejoras invisibles y las aplicará con backup.`);
+          alert(
+            `✅ ${appliedCount} mejora(s) invisible(s) marcadas!\n\n📝 SIGUIENTE PASO:\n\nEjecuta en terminal:\n   python scripts/aplicar-mejoras.py\n\nEl script detectará automáticamente las mejoras invisibles y las aplicará con backup.`
+          );
         }
 
         // Rechazar mejora real
         function rejectRealImprovement(improvementId) {
-          if (!confirm('¿Estás seguro de rechazar esta mejora?')) {
+          if (!confirm("¿Estás seguro de rechazar esta mejora?")) {
             return;
           }
 
           // Marcar como rechazada visualmente
-          const element = document.querySelector(`[data-improvement-id="${improvementId}"]`);
+          const element = document.querySelector(
+            `[data-improvement-id="${improvementId}"]`
+          );
           if (element) {
-            element.style.opacity = '0.3';
-            element.style.pointerEvents = 'none';
-            const statusBadge = element.querySelector('.action-status-badge');
+            element.style.opacity = "0.3";
+            element.style.pointerEvents = "none";
+            const statusBadge = element.querySelector(".action-status-badge");
             if (statusBadge) {
-              statusBadge.textContent = 'Rechazada';
-              statusBadge.className = 'action-status-badge';
-              statusBadge.style.background = '#ef444422';
-              statusBadge.style.color = '#ef4444';
+              statusBadge.textContent = "Rechazada";
+              statusBadge.className = "action-status-badge";
+              statusBadge.style.background = "#ef444422";
+              statusBadge.style.color = "#ef4444";
             }
           }
 
           // Actualizar contador
-          const pendingCount = document.getElementById('pending-actions-count');
+          const pendingCount = document.getElementById("pending-actions-count");
           if (pendingCount) {
-            pendingCount.textContent = Math.max(0, parseInt(pendingCount.textContent) - 1);
+            pendingCount.textContent = Math.max(
+              0,
+              parseInt(pendingCount.textContent) - 1
+            );
           }
 
           // Actualizar badge de notificaciones
@@ -10979,7 +11122,9 @@
         function generatePromptForImprovement(improvementId) {
           if (!actionsState.realImprovements) return;
 
-          const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+          const improvement = actionsState.realImprovements.improvements.find(
+            (imp) => imp.id === improvementId
+          );
           if (!improvement) return;
 
           // Generar prompt completo con contexto
@@ -10992,29 +11137,35 @@
         // Generar el prompt completo con todo el contexto necesario
         function generateCompleteSEOPrompt(improvement) {
           const typeLabels = {
-            title: 'Optimizar Title Tag',
-            meta_description: 'Optimizar Meta Description',
-            add_heading: 'Agregar Heading H2',
-            add_section: 'Agregar Nueva Sección'
+            title: "Optimizar Title Tag",
+            meta_description: "Optimizar Meta Description",
+            add_heading: "Agregar Heading H2",
+            add_section: "Agregar Nueva Sección",
           };
 
-          const visibilityWarning = improvement.visibility === 'visible' 
-            ? '\n\n⚠️ IMPORTANTE: Este cambio es VISIBLE en la página. Asegúrate de que encaje con el diseño y tono del sitio.'
-            : '\n\n✅ Este cambio es INVISIBLE (meta tags, title). Es seguro aplicarlo.';
+          const visibilityWarning =
+            improvement.visibility === "visible"
+              ? "\n\n⚠️ IMPORTANTE: Este cambio es VISIBLE en la página. Asegúrate de que encaje con el diseño y tono del sitio."
+              : "\n\n✅ Este cambio es INVISIBLE (meta tags, title). Es seguro aplicarlo.";
 
           const i18nInstructions = improvement.requires_i18n
-            ? '\n\n🌐 TRADUCCIÓN REQUERIDA:\nEste contenido usa el sistema i18n. Debes:\n' +
-              '1. Agregar las keys en /js/translations/es.json\n' +
-              '2. Agregar las traducciones en /js/translations/en.json\n' +
+            ? "\n\n🌐 TRADUCCIÓN REQUERIDA:\nEste contenido usa el sistema i18n. Debes:\n" +
+              "1. Agregar las keys en /js/translations/es.json\n" +
+              "2. Agregar las traducciones en /js/translations/en.json\n" +
               '3. Usar data-i18n="key.path" en el HTML'
-            : '';
+            : "";
 
-          const grammarWarning = improvement.grammar_issues && improvement.grammar_issues.length > 0
-            ? '\n\n⚠️ PROBLEMAS GRAMATICALES DETECTADOS:\n' + 
-              improvement.grammar_issues.map((issue, i) => `${i + 1}. ${issue}`).join('\n')
-            : '';
+          const grammarWarning =
+            improvement.grammar_issues && improvement.grammar_issues.length > 0
+              ? "\n\n⚠️ PROBLEMAS GRAMATICALES DETECTADOS:\n" +
+                improvement.grammar_issues
+                  .map((issue, i) => `${i + 1}. ${issue}`)
+                  .join("\n")
+              : "";
 
-          const prompt = `# 🎯 TAREA: ${typeLabels[improvement.type] || improvement.type}
+          const prompt = `# 🎯 TAREA: ${
+            typeLabels[improvement.type] || improvement.type
+          }
 
 ## 📋 CONTEXTO
 
@@ -11022,7 +11173,11 @@
 **Ubicación**: c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html
 **Tipo de cambio**: ${improvement.type}
 **Prioridad**: ${improvement.priority.toUpperCase()}
-**Visibilidad**: ${improvement.visibility === 'invisible' ? '👁️‍🗨️ INVISIBLE (seguro)' : '👁️ VISIBLE (revisar)'}
+**Visibilidad**: ${
+            improvement.visibility === "invisible"
+              ? "👁️‍🗨️ INVISIBLE (seguro)"
+              : "👁️ VISIBLE (revisar)"
+          }
 
 ## 🎯 OBJETIVO
 
@@ -11046,14 +11201,24 @@ ${improvement.suggested}
 2. Busca el código actual mostrado arriba
 3. Reemplázalo con el código sugerido
 4. Verifica que no se rompa la estructura HTML
-${improvement.type === 'add_section' || improvement.type === 'add_heading' ? '5. La nueva sección debe insertarse ANTES del footer (busca <footer> o id="footer")' : ''}
-${improvement.requires_i18n ? '6. Agrega las traducciones correspondientes en los archivos de idioma' : ''}
+${
+  improvement.type === "add_section" || improvement.type === "add_heading"
+    ? '5. La nueva sección debe insertarse ANTES del footer (busca <footer> o id="footer")'
+    : ""
+}
+${
+  improvement.requires_i18n
+    ? "6. Agrega las traducciones correspondientes en los archivos de idioma"
+    : ""
+}
 
 ## ⚙️ DETALLES TÉCNICOS
 
 **Impacto SEO**: ${improvement.impact}
-**Requiere i18n**: ${improvement.requires_i18n ? 'Sí 🌐' : 'No'}
-**Validación gramatical**: ${improvement.grammar_valid ? '✅ Aprobada' : '⚠️ Revisar'}
+**Requiere i18n**: ${improvement.requires_i18n ? "Sí 🌐" : "No"}
+**Validación gramatical**: ${
+            improvement.grammar_valid ? "✅ Aprobada" : "⚠️ Revisar"
+          }
 ${visibilityWarning}${i18nInstructions}${grammarWarning}
 
 ## ✅ VALIDACIÓN POST-CAMBIO
@@ -11061,8 +11226,16 @@ ${visibilityWarning}${i18nInstructions}${grammarWarning}
 Después de aplicar el cambio:
 - [ ] Abre index.html en el navegador
 - [ ] Verifica que no hay errores de consola
-- [ ] ${improvement.visibility === 'visible' ? 'Verifica que el contenido se vea bien visualmente' : 'Verifica el <title> y meta tags en DevTools'}
-- [ ] ${improvement.requires_i18n ? 'Prueba ambos idiomas (ES/EN) con el selector de idioma' : 'Valida que no se rompió el HTML'}
+- [ ] ${
+            improvement.visibility === "visible"
+              ? "Verifica que el contenido se vea bien visualmente"
+              : "Verifica el <title> y meta tags en DevTools"
+          }
+- [ ] ${
+            improvement.requires_i18n
+              ? "Prueba ambos idiomas (ES/EN) con el selector de idioma"
+              : "Valida que no se rompió el HTML"
+          }
 - [ ] Ejecuta: python seo-dashboard/scripts/generar-mejoras-automaticas.py (para regenerar mejoras)
 
 ## 🚀 COMANDO RÁPIDO
@@ -11077,13 +11250,13 @@ python scripts/aplicar-mejoras.py
 ---
 
 **ID de la Mejora**: ${improvement.id}
-**Generado el**: ${new Date().toLocaleString('es-ES')}`;
+**Generado el**: ${new Date().toLocaleString("es-ES")}`;
 
           return prompt;
         }
 
         // Mostrar modal con el prompt generado (función global)
-        window.showPromptModal = function(prompt, improvement) {
+        window.showPromptModal = function (prompt, improvement) {
           const modal = `
             <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;" onclick="this.remove()">
               <div style="background: var(--bg-primary); border-radius: 12px; max-width: 1000px; width: 100%; max-height: 90vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column;" onclick="event.stopPropagation()">
@@ -11100,7 +11273,11 @@ python scripts/aplicar-mejoras.py
                 </div>
 
                 <div style="flex: 1; overflow: auto; padding: 20px;">
-                  <pre id="prompt-content-${improvement.id}" style="background: var(--bg-secondary); padding: 20px; border-radius: 8px; margin: 0; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border);">${escapeHtml(prompt)}</pre>
+                  <pre id="prompt-content-${
+                    improvement.id
+                  }" style="background: var(--bg-secondary); padding: 20px; border-radius: 8px; margin: 0; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border);">${escapeHtml(
+            prompt
+          )}</pre>
                 </div>
 
                 <div style="padding: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end; background: var(--bg-secondary);">
@@ -11108,7 +11285,9 @@ python scripts/aplicar-mejoras.py
                     <i class="fas fa-times"></i>
                     Cerrar
                   </button>
-                  <button class="btn btn-primary" onclick="copyPromptToClipboard('prompt-content-${improvement.id}', this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                  <button class="btn btn-primary" onclick="copyPromptToClipboard('prompt-content-${
+                    improvement.id
+                  }', this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
                     <i class="fas fa-copy"></i>
                     Copiar Prompt
                   </button>
@@ -11117,44 +11296,52 @@ python scripts/aplicar-mejoras.py
             </div>
           `;
 
-          document.body.insertAdjacentHTML('beforeend', modal);
-        }
+          document.body.insertAdjacentHTML("beforeend", modal);
+        };
 
         // Copiar prompt al portapapeles (función global)
-        window.copyPromptToClipboard = function(elementId, button) {
+        window.copyPromptToClipboard = function (elementId, button) {
           const element = document.getElementById(elementId);
           if (!element) return;
 
           const text = element.textContent;
-          
-          navigator.clipboard.writeText(text).then(() => {
-            // Feedback visual
-            const originalHTML = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
-            button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-            
-            setTimeout(() => {
-              button.innerHTML = originalHTML;
-              button.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-            }, 2000);
 
-            // Mensaje de éxito
-            showToast('✅ Prompt copiado al portapapeles!', 'success');
-          }).catch(err => {
-            console.error('Error al copiar:', err);
-            showToast('❌ Error al copiar. Selecciona el texto manualmente.', 'error');
-          });
-        }
+          navigator.clipboard
+            .writeText(text)
+            .then(() => {
+              // Feedback visual
+              const originalHTML = button.innerHTML;
+              button.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+              button.style.background =
+                "linear-gradient(135deg, #10b981 0%, #059669 100%)";
+
+              setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background =
+                  "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+              }, 2000);
+
+              // Mensaje de éxito
+              showToast("✅ Prompt copiado al portapapeles!", "success");
+            })
+            .catch((err) => {
+              console.error("Error al copiar:", err);
+              showToast(
+                "❌ Error al copiar. Selecciona el texto manualmente.",
+                "error"
+              );
+            });
+        };
 
         // Mostrar toast de notificación
-        function showToast(message, type = 'info') {
+        function showToast(message, type = "info") {
           const colors = {
-            success: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-            error: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
-            info: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+            success: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+            error: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
+            info: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
           };
 
-          const toast = document.createElement('div');
+          const toast = document.createElement("div");
           toast.style.cssText = `
             position: fixed;
             bottom: 30px;
@@ -11172,7 +11359,7 @@ python scripts/aplicar-mejoras.py
           document.body.appendChild(toast);
 
           setTimeout(() => {
-            toast.style.animation = 'slideOut 0.3s ease-out';
+            toast.style.animation = "slideOut 0.3s ease-out";
             setTimeout(() => toast.remove(), 300);
           }, 3000);
         }
@@ -11183,12 +11370,12 @@ python scripts/aplicar-mejoras.py
         // Generar prompt para optimización de Performance
         function generatePerformancePrompt(opportunity) {
           const impactLabels = {
-            high: 'ALTA ⚡',
-            medium: 'MEDIA 📊',
-            low: 'BAJA 📈'
+            high: "ALTA ⚡",
+            medium: "MEDIA 📊",
+            low: "BAJA 📈",
           };
 
-          const impactLabel = impactLabels[opportunity.impact] || 'MEDIA';
+          const impactLabel = impactLabels[opportunity.impact] || "MEDIA";
 
           const prompt = `# ⚡ OPTIMIZACIÓN DE PERFORMANCE
 
@@ -11351,13 +11538,13 @@ python -m http.server 8000
 **Oportunidad**: ${opportunity.title}
 **Impacto**: ${opportunity.impact.toUpperCase()}
 **Ahorro**: ${opportunity.savings}
-**Generado el**: ${new Date().toLocaleString('es-ES')}
+**Generado el**: ${new Date().toLocaleString("es-ES")}
 `;
 
-          showPromptModal(prompt, { 
-            id: 'perf_' + Date.now(), 
-            type: 'performance',
-            title: opportunity.title 
+          showPromptModal(prompt, {
+            id: "perf_" + Date.now(),
+            type: "performance",
+            title: opportunity.title,
           });
         }
 
@@ -11371,46 +11558,57 @@ python -m http.server 8000
         // Generar prompt para optimización de Keywords
         function generateKeywordPrompt(keyword) {
           const priorityLabels = {
-            high: 'ALTA 🔥',
-            medium: 'MEDIA 📊',
-            low: 'BAJA 📉'
+            high: "ALTA 🔥",
+            medium: "MEDIA 📊",
+            low: "BAJA 📉",
           };
 
           // Determinar prioridad
-          const priority = keyword.position <= 5 && keyword.clicks > 0 ? 'high' 
-            : keyword.position <= 10 ? 'medium' 
-            : 'low';
-          
-          const priorityLabel = priorityLabels[priority] || 'MEDIA';
+          const priority =
+            keyword.position <= 5 && keyword.clicks > 0
+              ? "high"
+              : keyword.position <= 10
+              ? "medium"
+              : "low";
+
+          const priorityLabel = priorityLabels[priority] || "MEDIA";
 
           // Determinar estrategia según posición
-          let strategy = '';
-          let objective = '';
-          
+          let strategy = "";
+          let objective = "";
+
           if (keyword.position <= 3) {
-            strategy = 'Mantener y Defender Posición Top';
-            objective = 'Ya estás en el Top 3. El objetivo es mantener esta posición y mejorar el CTR.';
+            strategy = "Mantener y Defender Posición Top";
+            objective =
+              "Ya estás en el Top 3. El objetivo es mantener esta posición y mejorar el CTR.";
           } else if (keyword.position <= 10) {
-            strategy = 'Subir al Top 3';
-            objective = 'Estás en la primera página. Con optimización puedes llegar al Top 3 y multiplicar tu tráfico.';
+            strategy = "Subir al Top 3";
+            objective =
+              "Estás en la primera página. Con optimización puedes llegar al Top 3 y multiplicar tu tráfico.";
           } else if (keyword.position <= 20) {
-            strategy = 'Entrar al Top 10';
-            objective = 'Estás en la segunda página. Necesitas optimización para entrar a la primera página.';
+            strategy = "Entrar al Top 10";
+            objective =
+              "Estás en la segunda página. Necesitas optimización para entrar a la primera página.";
           } else {
-            strategy = 'Mejorar Contenido y Relevancia';
-            objective = 'Posición baja. Necesitas contenido más relevante y autoridad para esta keyword.';
+            strategy = "Mejorar Contenido y Relevancia";
+            objective =
+              "Posición baja. Necesitas contenido más relevante y autoridad para esta keyword.";
           }
 
           // Analizar oportunidad
-          let opportunityAnalysis = '';
+          let opportunityAnalysis = "";
           if (keyword.impressions > 100 && keyword.clicks === 0) {
-            opportunityAnalysis = '⚠️ **ALTA OPORTUNIDAD**: Muchas impresiones sin clicks. Mejora tu meta description y title para aumentar CTR.';
+            opportunityAnalysis =
+              "⚠️ **ALTA OPORTUNIDAD**: Muchas impresiones sin clicks. Mejora tu meta description y title para aumentar CTR.";
           } else if (keyword.impressions > 50 && keyword.ctr < 2) {
-            opportunityAnalysis = '📊 **OPORTUNIDAD MEDIA**: CTR bajo. Optimiza snippets para atraer más clicks.';
+            opportunityAnalysis =
+              "📊 **OPORTUNIDAD MEDIA**: CTR bajo. Optimiza snippets para atraer más clicks.";
           } else if (keyword.position > 10 && keyword.impressions > 20) {
-            opportunityAnalysis = '🎯 **POTENCIAL DE ESCALADA**: Con optimización de contenido puedes subir a primera página.';
+            opportunityAnalysis =
+              "🎯 **POTENCIAL DE ESCALADA**: Con optimización de contenido puedes subir a primera página.";
           } else if (keyword.clicks > 10) {
-            opportunityAnalysis = '✅ **KEYWORD ACTIVA**: Ya genera tráfico. Mantén y mejora el contenido.';
+            opportunityAnalysis =
+              "✅ **KEYWORD ACTIVA**: Ya genera tráfico. Mantén y mejora el contenido.";
           }
 
           const prompt = `# 🔍 OPTIMIZACIÓN DE KEYWORD SEO
@@ -11420,7 +11618,7 @@ python -m http.server 8000
 **Keyword**: "${keyword.keyword}"
 **Posición actual**: #${keyword.position.toFixed(1)}
 **Prioridad**: ${priorityLabel}
-**Página**: ${keyword.page || 'index.html'}
+**Página**: ${keyword.page || "index.html"}
 
 ---
 
@@ -11428,10 +11626,30 @@ python -m http.server 8000
 
 | Métrica | Valor | Estado |
 |---------|-------|--------|
-| **Posición** | #${keyword.position.toFixed(1)} | ${keyword.position <= 10 ? '✅ Primera página' : '⚠️ Fuera del Top 10'} |
-| **Impresiones** | ${keyword.impressions || 0} | ${keyword.impressions > 100 ? '✅ Alto' : keyword.impressions > 50 ? '📊 Medio' : '⚠️ Bajo'} |
-| **Clicks** | ${keyword.clicks || 0} | ${keyword.clicks > 10 ? '✅ Activo' : keyword.clicks > 0 ? '📊 Bajo' : '⚠️ Sin clicks'} |
-| **CTR** | ${(keyword.ctr || 0).toFixed(2)}% | ${keyword.ctr > 5 ? '✅ Excelente' : keyword.ctr > 2 ? '📊 Bueno' : '⚠️ Bajo'} |
+| **Posición** | #${keyword.position.toFixed(1)} | ${
+            keyword.position <= 10 ? "✅ Primera página" : "⚠️ Fuera del Top 10"
+          } |
+| **Impresiones** | ${keyword.impressions || 0} | ${
+            keyword.impressions > 100
+              ? "✅ Alto"
+              : keyword.impressions > 50
+              ? "📊 Medio"
+              : "⚠️ Bajo"
+          } |
+| **Clicks** | ${keyword.clicks || 0} | ${
+            keyword.clicks > 10
+              ? "✅ Activo"
+              : keyword.clicks > 0
+              ? "📊 Bajo"
+              : "⚠️ Sin clicks"
+          } |
+| **CTR** | ${(keyword.ctr || 0).toFixed(2)}% | ${
+            keyword.ctr > 5
+              ? "✅ Excelente"
+              : keyword.ctr > 2
+              ? "📊 Bueno"
+              : "⚠️ Bajo"
+          } |
 
 ---
 
@@ -11462,10 +11680,14 @@ Modifica en index.html:
 <title>${keyword.keyword} | Just Dev It - Desarrollo Web Profesional</title>
 
 **Meta Description** (debe ser atractiva y contener keyword):
-<meta name="description" content="¿Buscas ${keyword.keyword}? En Just Dev It ofrecemos [beneficio específico]. [Call to action]. Contáctanos hoy.">
+<meta name="description" content="¿Buscas ${
+            keyword.keyword
+          }? En Just Dev It ofrecemos [beneficio específico]. [Call to action]. Contáctanos hoy.">
 
 **Meta Keywords**:
-<meta name="keywords" content="${keyword.keyword}, [variantes], [keywords relacionadas]">
+<meta name="keywords" content="${
+            keyword.keyword
+          }, [variantes], [keywords relacionadas]">
 
 ### Paso 3: Optimizar Contenido Visible
 En el <body> de index.html:
@@ -11484,9 +11706,13 @@ En el <body> de index.html:
 <img src="..." alt="${keyword.keyword} - ejemplo proyecto">
 
 ### Paso 4: Crear Sección Dedicada (si no existe)
-Si "${keyword.keyword}" tiene muchas impresiones pero tu página no tiene contenido específico:
+Si "${
+            keyword.keyword
+          }" tiene muchas impresiones pero tu página no tiene contenido específico:
 
-<section id="${keyword.keyword.toLowerCase().replace(/\\s+/g, '-')}" class="service-section">
+<section id="${keyword.keyword
+            .toLowerCase()
+            .replace(/\\s+/g, "-")}" class="service-section">
   <div class="container">
     <h2>${keyword.keyword}</h2>
     <p>Descripción detallada sobre ${keyword.keyword}...</p>
@@ -11521,7 +11747,7 @@ JSON-LD Schema:
 ### Paso 6: Enlaces Internos
 Agrega enlaces internos relevantes que apunten a esta sección:
 
-<a href="#${keyword.keyword.toLowerCase().replace(/\\\\s+/g, '-')}" 
+<a href="#${keyword.keyword.toLowerCase().replace(/\\\\s+/g, "-")}" 
    title="${keyword.keyword}">
   Conoce más sobre ${keyword.keyword}
 </a>
@@ -11541,7 +11767,11 @@ Agrega enlaces internos relevantes que apunten a esta sección:
 - "${keyword.keyword} precio"
 
 **Intención de Búsqueda**:
-${keyword.position <= 10 ? 'Tu página ya coincide con la intención. Mejora el CTR.' : 'Analiza si tu contenido responde a la intención de búsqueda de esta keyword.'}
+${
+  keyword.position <= 10
+    ? "Tu página ya coincide con la intención. Mejora el CTR."
+    : "Analiza si tu contenido responde a la intención de búsqueda de esta keyword."
+}
 
 ---
 
@@ -11608,12 +11838,18 @@ Select-String -Path .\\\\index.html -Pattern $keyword -Context 1,1
 - Google re-indexa el contenido actualizado
 
 **Medio plazo (1-2 meses)**:
-${keyword.position > 10 ? '- Subida de posiciones hacia la primera página' : '- Consolidación en el Top 10 o entrada al Top 3'}
+${
+  keyword.position > 10
+    ? "- Subida de posiciones hacia la primera página"
+    : "- Consolidación en el Top 10 o entrada al Top 3"
+}
 - Aumento de impresiones
 - Más tráfico orgánico
 
 **Largo plazo (3+ meses)**:
-- Posicionamiento estable en ${keyword.position <= 10 ? 'Top 3' : 'primera página'}
+- Posicionamiento estable en ${
+            keyword.position <= 10 ? "Top 3" : "primera página"
+          }
 - Incremento constante de tráfico orgánico
 - Mejora de autoridad de dominio
 
@@ -11623,13 +11859,13 @@ ${keyword.position > 10 ? '- Subida de posiciones hacia la primera página' : '-
 **Posición actual**: #${keyword.position.toFixed(1)}
 **CTR actual**: ${(keyword.ctr || 0).toFixed(2)}%
 **Prioridad**: ${priority.toUpperCase()}
-**Generado el**: ${new Date().toLocaleString('es-ES')}
+**Generado el**: ${new Date().toLocaleString("es-ES")}
 `;
 
-          showPromptModal(prompt, { 
-            id: 'kw_' + Date.now(), 
-            type: 'keyword',
-            title: keyword.keyword 
+          showPromptModal(prompt, {
+            id: "kw_" + Date.now(),
+            type: "keyword",
+            title: keyword.keyword,
           });
         }
 
@@ -12267,25 +12503,28 @@ ${keyword.position > 10 ? '- Subida de posiciones hacia la primera página' : '-
       // ============================================
       // FUNCIONES GLOBALES PARA PROMPTS (fuera de DOMContentLoaded)
       // ============================================
-      
+
       // Helper para generar prompt de Performance por índice
-      window.generatePerformancePromptByIndex = function(index) {
-        if (window.performanceOpportunities && window.performanceOpportunities[index]) {
+      window.generatePerformancePromptByIndex = function (index) {
+        if (
+          window.performanceOpportunities &&
+          window.performanceOpportunities[index]
+        ) {
           generatePerformancePrompt(window.performanceOpportunities[index]);
         } else {
-          console.error('Performance opportunity not found at index:', index);
+          console.error("Performance opportunity not found at index:", index);
         }
       };
 
       // Generar prompt para optimización de Performance
-      window.generatePerformancePrompt = function(opportunity) {
+      window.generatePerformancePrompt = function (opportunity) {
         const impactLabels = {
-          high: 'ALTA ⚡',
-          medium: 'MEDIA 📊',
-          low: 'BAJA 📈'
+          high: "ALTA ⚡",
+          medium: "MEDIA 📊",
+          low: "BAJA 📈",
         };
 
-        const impactLabel = impactLabels[opportunity.impact] || 'MEDIA';
+        const impactLabel = impactLabels[opportunity.impact] || "MEDIA";
 
         const prompt = `# ⚡ OPTIMIZACIÓN DE PERFORMANCE
 
@@ -12340,68 +12579,79 @@ Después de implementar la optimización:
 
 ---
 
-**Generado el**: ${new Date().toLocaleString('es-ES')}
+**Generado el**: ${new Date().toLocaleString("es-ES")}
 `;
 
-        window.showPromptModal(prompt, { 
-          id: 'perf_' + Date.now(), 
-          type: 'performance',
-          title: opportunity.title 
+        window.showPromptModal(prompt, {
+          id: "perf_" + Date.now(),
+          type: "performance",
+          title: opportunity.title,
         });
       };
 
       // Helper para generar prompt de Keyword por índice
-      window.generateKeywordPromptByIndex = function(index) {
+      window.generateKeywordPromptByIndex = function (index) {
         if (window.currentPageKeywords && window.currentPageKeywords[index]) {
           window.generateKeywordPrompt(window.currentPageKeywords[index]);
         } else {
-          console.error('Keyword not found at index:', index);
+          console.error("Keyword not found at index:", index);
         }
       };
 
       // Generar prompt para optimización de Keyword
-      window.generateKeywordPrompt = function(keyword) {
+      window.generateKeywordPrompt = function (keyword) {
         const priorityLabels = {
-          high: 'ALTA 🔥',
-          medium: 'MEDIA 📊',
-          low: 'BAJA 📉'
+          high: "ALTA 🔥",
+          medium: "MEDIA 📊",
+          low: "BAJA 📉",
         };
 
         // Determinar prioridad
-        const priority = keyword.position <= 5 && keyword.clicks > 0 ? 'high' 
-          : keyword.position <= 10 ? 'medium' 
-          : 'low';
-        
-        const priorityLabel = priorityLabels[priority] || 'MEDIA';
+        const priority =
+          keyword.position <= 5 && keyword.clicks > 0
+            ? "high"
+            : keyword.position <= 10
+            ? "medium"
+            : "low";
+
+        const priorityLabel = priorityLabels[priority] || "MEDIA";
 
         // Determinar estrategia según posición
-        let strategy = '';
-        let objective = '';
-        
+        let strategy = "";
+        let objective = "";
+
         if (keyword.position <= 3) {
-          strategy = 'Mantener y Defender Posición Top';
-          objective = 'Ya estás en el Top 3. El objetivo es mantener esta posición y mejorar el CTR.';
+          strategy = "Mantener y Defender Posición Top";
+          objective =
+            "Ya estás en el Top 3. El objetivo es mantener esta posición y mejorar el CTR.";
         } else if (keyword.position <= 10) {
-          strategy = 'Subir al Top 3';
-          objective = 'Estás en la primera página. Con optimización puedes llegar al Top 3 y multiplicar tu tráfico.';
+          strategy = "Subir al Top 3";
+          objective =
+            "Estás en la primera página. Con optimización puedes llegar al Top 3 y multiplicar tu tráfico.";
         } else if (keyword.position <= 20) {
-          strategy = 'Entrar al Top 10';
-          objective = 'Estás en la segunda página. Necesitas optimización para entrar a la primera página.';
+          strategy = "Entrar al Top 10";
+          objective =
+            "Estás en la segunda página. Necesitas optimización para entrar a la primera página.";
         } else {
-          strategy = 'Mejorar Contenido y Relevancia';
-          objective = 'Posición baja. Necesitas contenido más relevante y autoridad para esta keyword.';
+          strategy = "Mejorar Contenido y Relevancia";
+          objective =
+            "Posición baja. Necesitas contenido más relevante y autoridad para esta keyword.";
         }
 
         // Analizar oportunidad
-        let opportunityAnalysis = '';
+        let opportunityAnalysis = "";
         if (keyword.impressions > 100 && keyword.clicks === 0) {
-          opportunityAnalysis = '⚠️ **ALTA OPORTUNIDAD**: Muchas impresiones sin clicks. Mejora tu meta description y title para aumentar CTR.';
+          opportunityAnalysis =
+            "⚠️ **ALTA OPORTUNIDAD**: Muchas impresiones sin clicks. Mejora tu meta description y title para aumentar CTR.";
         } else if (keyword.impressions > 50 && keyword.ctr < 2) {
-          opportunityAnalysis = '📊 **OPORTUNIDAD MEDIA**: CTR bajo. Optimiza snippets para atraer más clicks.';
+          opportunityAnalysis =
+            "📊 **OPORTUNIDAD MEDIA**: CTR bajo. Optimiza snippets para atraer más clicks.";
         } else if (keyword.position > 10 && keyword.impressions > 20) {
-          opportunityAnalysis = '🎯 **POTENCIAL DE ESCALADA**: Con optimización de contenido puedes subir a primera página.';
+          opportunityAnalysis =
+            "🎯 **POTENCIAL DE ESCALADA**: Con optimización de contenido puedes subir a primera página.";
         } else if (keyword.clicks > 10) {
-          opportunityAnalysis = '✅ **KEYWORD ACTIVA**: Ya genera tráfico. Mantén y mejora el contenido.';
+          opportunityAnalysis =
+            "✅ **KEYWORD ACTIVA**: Ya genera tráfico. Mantén y mejora el contenido.";
         }
 
         const prompt = `# 🔍 OPTIMIZACIÓN DE KEYWORD SEO
@@ -12411,7 +12661,7 @@ Después de implementar la optimización:
 **Keyword**: "${keyword.keyword}"
 **Posición actual**: #${keyword.position.toFixed(1)}
 **Prioridad**: ${priorityLabel}
-**Página**: ${keyword.page || 'index.html'}
+**Página**: ${keyword.page || "index.html"}
 
 ---
 
@@ -12419,10 +12669,30 @@ Después de implementar la optimización:
 
 | Métrica | Valor | Estado |
 |---------|-------|--------|
-| **Posición** | #${keyword.position.toFixed(1)} | ${keyword.position <= 10 ? '✅ Primera página' : '⚠️ Fuera del Top 10'} |
-| **Impresiones** | ${keyword.impressions || 0} | ${keyword.impressions > 100 ? '✅ Alto' : keyword.impressions > 50 ? '📊 Medio' : '⚠️ Bajo'} |
-| **Clicks** | ${keyword.clicks || 0} | ${keyword.clicks > 10 ? '✅ Activo' : keyword.clicks > 0 ? '📊 Bajo' : '⚠️ Sin clicks'} |
-| **CTR** | ${(keyword.ctr || 0).toFixed(2)}% | ${keyword.ctr > 5 ? '✅ Excelente' : keyword.ctr > 2 ? '📊 Bueno' : '⚠️ Bajo'} |
+| **Posición** | #${keyword.position.toFixed(1)} | ${
+          keyword.position <= 10 ? "✅ Primera página" : "⚠️ Fuera del Top 10"
+        } |
+| **Impresiones** | ${keyword.impressions || 0} | ${
+          keyword.impressions > 100
+            ? "✅ Alto"
+            : keyword.impressions > 50
+            ? "📊 Medio"
+            : "⚠️ Bajo"
+        } |
+| **Clicks** | ${keyword.clicks || 0} | ${
+          keyword.clicks > 10
+            ? "✅ Activo"
+            : keyword.clicks > 0
+            ? "📊 Bajo"
+            : "⚠️ Sin clicks"
+        } |
+| **CTR** | ${(keyword.ctr || 0).toFixed(2)}% | ${
+          keyword.ctr > 5
+            ? "✅ Excelente"
+            : keyword.ctr > 2
+            ? "📊 Bueno"
+            : "⚠️ Bajo"
+        } |
 
 ---
 
@@ -12476,16 +12746,15 @@ Después de implementar los cambios, verifica:
 **Posición actual**: #${keyword.position.toFixed(1)}
 **CTR actual**: ${(keyword.ctr || 0).toFixed(2)}%
 **Prioridad**: ${priority.toUpperCase()}
-**Generado el**: ${new Date().toLocaleString('es-ES')}
+**Generado el**: ${new Date().toLocaleString("es-ES")}
 `;
 
-        window.showPromptModal(prompt, { 
-          id: 'kw_' + Date.now(), 
-          type: 'keyword',
-          title: keyword.keyword 
+        window.showPromptModal(prompt, {
+          id: "kw_" + Date.now(),
+          type: "keyword",
+          title: keyword.keyword,
         });
       };
-
     </script>
   </body>
 </html>
