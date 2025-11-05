@@ -8008,16 +8008,25 @@
           // Búsqueda
           if (keywordsTableState.filters.search) {
             filtered = filtered.filter((kw) =>
-              kw.keyword
+              (kw.keyword || "")
                 .toLowerCase()
                 .includes(keywordsTableState.filters.search)
             );
           }
 
-          // Prioridad
+          // Prioridad (calcular basado en posición y clics)
           if (keywordsTableState.filters.priority !== "all") {
             filtered = filtered.filter((kw) => {
-              const priority = kw.priority;
+              const position = kw.position || 0;
+              const clicks = kw.clicks || 0;
+              const priority =
+                position <= 5 && clicks > 0
+                  ? 80
+                  : position <= 10
+                  ? 60
+                  : position <= 20
+                  ? 40
+                  : 20;
               switch (keywordsTableState.filters.priority) {
                 case "high":
                   return priority >= 70;
@@ -8034,7 +8043,7 @@
           // Posición
           if (keywordsTableState.filters.position !== "all") {
             filtered = filtered.filter((kw) => {
-              const pos = kw.avg_position;
+              const pos = kw.position || 0;
               switch (keywordsTableState.filters.position) {
                 case "top3":
                   return pos <= 3;
@@ -8055,7 +8064,7 @@
           // CTR
           if (keywordsTableState.filters.ctr !== "all") {
             filtered = filtered.filter((kw) => {
-              const ctr = kw.ctr;
+              const ctr = kw.ctr || 0;
               switch (keywordsTableState.filters.ctr) {
                 case "excellent":
                   return ctr > 10;
@@ -8071,17 +8080,21 @@
             });
           }
 
-          // Conversión
+          // Conversión (calcular basado en impresiones y clics)
           if (keywordsTableState.filters.conversion !== "all") {
             filtered = filtered.filter((kw) => {
-              const conv = kw.conversion_potential;
+              const impressions = kw.impressions || 0;
+              const clicks = kw.clicks || 0;
+              const hasConversion = clicks > 0;
+              const hasPotential = impressions > 0 && clicks === 0;
+
               switch (keywordsTableState.filters.conversion) {
                 case "high":
-                  return conv >= 70;
+                  return hasConversion && clicks > 1;
                 case "medium":
-                  return conv >= 40 && conv < 70;
+                  return (hasConversion && clicks === 1) || hasPotential;
                 case "low":
-                  return conv < 40;
+                  return impressions === 0;
                 default:
                   return true;
               }
@@ -8821,10 +8834,11 @@
                 legend: {
                   position: "bottom",
                   labels: {
-                    color: "#cbd5e1",
+                    color: "#ffffff", // BLANCO para mejor visibilidad
                     padding: 15,
                     font: {
-                      size: 12,
+                      size: 13,
+                      weight: "500",
                     },
                     generateLabels: function (chart) {
                       const data = chart.data;
