@@ -7,6 +7,7 @@
 Un servidor API completo con las siguientes capacidades:
 
 #### 📊 **Análisis Completo de Keywords**
+
 - ✅ Obtiene hasta **25,000 keywords** de Google Search Console
 - ✅ Análisis por dispositivo (mobile, desktop, tablet)
 - ✅ Análisis por país/región
@@ -18,6 +19,7 @@ Un servidor API completo con las siguientes capacidades:
 - ✅ CTR comparado con benchmarks de industria
 
 #### 📈 **Google Analytics 4 Integrado**
+
 - ✅ Métricas de usuarios activos
 - ✅ Sesiones y duración promedio
 - ✅ Bounce rate y engagement rate
@@ -27,6 +29,7 @@ Un servidor API completo con las siguientes capacidades:
 - ✅ Eventos personalizados
 
 #### ⚡ **PageSpeed Insights API**
+
 - ✅ Análisis de rendimiento mobile y desktop
 - ✅ Scores de Performance, Accessibility, Best Practices, SEO
 - ✅ Métricas Core Web Vitals:
@@ -40,19 +43,23 @@ Un servidor API completo con las siguientes capacidades:
 - ✅ Diagnósticos técnicos detallados
 
 #### 🤖 **Sistema de Sugerencias Inteligentes**
+
 - ✅ **Acciones Prioritarias Automáticas:**
+
   - Keywords con alto potencial pero bajo CTR
   - Keywords cerca del Top 10 (fáciles de mejorar)
   - Keywords con impresiones desperdiciadas
   - Urgencias críticas (muchas impresiones, 0 clics)
 
 - ✅ **Oportunidades de Keywords Nuevas:**
+
   - Variaciones de keywords exitosas
   - Sugerencias con long-tail
   - Keywords estacionales (+ 2025, + Chile, etc.)
   - Análisis de intención de búsqueda
 
 - ✅ **Sugerencias de Contenido:**
+
   - Agrupación automática por temas
   - Volumen total de impresiones por tema
   - Tipo de contenido recomendado
@@ -65,6 +72,7 @@ Un servidor API completo con las siguientes capacidades:
   - Esfuerzo estimado de implementación
 
 #### 🔄 **Actualización Automática de Keywords en el Sitio**
+
 - ✅ Análisis de keywords actualmente en tu HTML
 - ✅ Comparación con keywords de alto rendimiento
 - ✅ Recomendaciones específicas por página
@@ -76,6 +84,7 @@ Un servidor API completo con las siguientes capacidades:
 ## 📊 ENDPOINTS DISPONIBLES
 
 ### Keywords
+
 ```
 POST /api/keywords/comprehensive
 - Análisis completo de hasta 25,000 keywords
@@ -84,6 +93,7 @@ POST /api/keywords/comprehensive
 ```
 
 ### Analytics
+
 ```
 POST /api/analytics/comprehensive
 - Métricas completas de Google Analytics 4
@@ -92,6 +102,7 @@ POST /api/analytics/comprehensive
 ```
 
 ### PageSpeed
+
 ```
 POST /api/pagespeed/analyze
 - Análisis de rendimiento mobile + desktop
@@ -100,6 +111,7 @@ POST /api/pagespeed/analyze
 ```
 
 ### Sugerencias
+
 ```
 POST /api/suggestions/generate
 - Genera sugerencias inteligentes automáticas
@@ -108,6 +120,7 @@ POST /api/suggestions/generate
 ```
 
 ### Actualización de Keywords
+
 ```
 POST /api/keywords/update-site
 - Analiza keywords en tu sitio web
@@ -142,7 +155,7 @@ Factores:
 ### 3. **Cálculo de Prioridad General** (0-100)
 
 ```
-Prioridad = 
+Prioridad =
   (Potencial de Conversión × 0.4) +
   ((100 - Posición) × 0.3) +
   (Volumen Normalizado × 0.2) +
@@ -202,6 +215,7 @@ pip install google-analytics-data
 ### Paso 4: Actualizar config.json
 
 Agrega tu Property ID de Google Analytics 4:
+
 ```json
 {
   "propertyUrl": "sc-domain:justdev.it",
@@ -212,6 +226,7 @@ Agrega tu Property ID de Google Analytics 4:
 ```
 
 **Para obtener tu Analytics Property ID:**
+
 1. Ve a [Google Analytics](https://analytics.google.com)
 2. Admin → Property Settings
 3. Copia el **Property ID** (formato: `123456789`)
@@ -219,6 +234,7 @@ Agrega tu Property ID de Google Analytics 4:
 ### Paso 5: Crear Dashboard Frontend Empresarial
 
 Te crearé un dashboard HTML completamente nuevo con:
+
 - ✅ Múltiples tabs (Keywords, Analytics, Performance, Sugerencias, Acciones)
 - ✅ Tablas interactivas con filtros y ordenamiento
 - ✅ Gráficos avanzados (Chart.js)
@@ -232,26 +248,31 @@ Te crearé un dashboard HTML completamente nuevo con:
 ## 💡 CARACTERÍSTICAS AVANZADAS INCLUIDAS
 
 ### 🎯 **Análisis de Intención de Búsqueda**
+
 - Detecta si la keyword es informacional, transaccional o navegacional
 - Sugiere tipo de contenido apropiado
 
 ### 📊 **Agrupación Inteligente de Keywords**
+
 - Usa NLP básico para agrupar por tema
 - Identifica clusters de keywords relacionadas
 - Calcula potencial agregado por tema
 
 ### 🔔 **Sistema de Alertas Automáticas**
+
 - Keywords que bajan >5 posiciones
 - Oportunidades críticas (alto volumen, baja conversión)
 - Cambios significativos en tráfico
 - Problemas de rendimiento técnico
 
 ### 📈 **Tracking de Conversiones**
+
 - Integración con Google Analytics 4 Events
 - ROI estimado por keyword
 - Valor de conversión calculado
 
 ### 🤖 **Acciones Automáticas**
+
 - Genera meta descriptions optimizadas
 - Sugiere títulos SEO-friendly
 - Recomienda estructura de contenido
@@ -264,12 +285,14 @@ Te crearé un dashboard HTML completamente nuevo con:
 El dashboard que voy a crear tendrá:
 
 ### 📊 **Tab 1: Overview**
+
 - KPIs principales (impresiones, clics, conversiones)
 - Gráfico de tendencias multi-línea
 - Top 10 keywords con estado
 - Alertas críticas en la parte superior
 
 ### 🔑 **Tab 2: Keywords Master**
+
 - Tabla completa con todas las keywords
 - Filtros por:
   - Prioridad (High/Medium/Low)
@@ -282,6 +305,7 @@ El dashboard que voy a crear tendrá:
 - Colores por rendimiento
 
 ### 📈 **Tab 3: Analytics**
+
 - Usuarios, sesiones, bounce rate
 - Gráfico de fuentes de tráfico (pie chart)
 - Top páginas con métricas
@@ -289,6 +313,7 @@ El dashboard que voy a crear tendrá:
 - Comparativa con período anterior
 
 ### ⚡ **Tab 4: Performance**
+
 - Scores de PageSpeed (mobile + desktop)
 - Core Web Vitals con estado (bueno/mejorar/malo)
 - Lista de oportunidades priorizadas
@@ -296,6 +321,7 @@ El dashboard que voy a crear tendrá:
 - Diagnósticos técnicos
 
 ### 💡 **Tab 5: Sugerencias Inteligentes**
+
 - **Acciones Prioritarias** con badges de urgencia
 - **Oportunidades de Keywords** con variaciones
 - **Sugerencias de Contenido** con estimación de esfuerzo
@@ -303,6 +329,7 @@ El dashboard que voy a crear tendrá:
 - Botón "Marcar como Completada"
 
 ### 🎯 **Tab 6: Acciones Automáticas**
+
 - Lista de keywords a actualizar en el sitio
 - Preview de cambios sugeridos
 - Aplicar cambios con un clic (genera archivos)
@@ -335,6 +362,7 @@ El script de actualización automática ahora incluirá:
 7. **Enviar resumen por email** (opcional)
 
 **Frecuencia recomendada:**
+
 - Keywords completas: Semanal (lunes 9 AM)
 - Analytics: Diario (para conversiones)
 - PageSpeed: Semanal o quincenal
@@ -347,17 +375,20 @@ El script de actualización automática ahora incluirá:
 El dashboard calculará automáticamente:
 
 ### 💰 **ROI y Valor**
+
 - Valor estimado por keyword (basado en conversiones)
 - ROI de esfuerzo de optimización
 - Costo por adquisición estimado
 
 ### 📊 **KPIs Empresariales**
+
 - Tasa de conversión por keyword
 - Valor de vida del cliente (LTV) estimado
 - Costo de oportunidad (tráfico perdido)
 - Proyección de crecimiento
 
 ### 🎯 **Objetivos y Metas**
+
 - Progress hacia objetivos mensuales
 - Comparativa mes actual vs anterior
 - Tendencia de mejora (positiva/negativa)
