@@ -245,6 +245,11 @@
         font-weight: 600;
         padding: 2px 8px;
         border-radius: 10px;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+      }
+
+      .nav-badge:empty {
+        display: none;
       }
 
       /* MAIN CONTENT */
@@ -8214,6 +8219,9 @@
             end
           );
 
+          // Guardar keywords actuales en estado global para los botones
+          window.currentPageKeywords = pageKeywords;
+
           if (pageKeywords.length === 0) {
             tbody.innerHTML = `
               <tr>
@@ -8230,7 +8238,7 @@
           }
 
           tbody.innerHTML = pageKeywords
-            .map((kw) => {
+            .map((kw, kwIndex) => {
               // Calcular prioridad basada en clics y posición
               const priority =
                 kw.position <= 5 && kw.clicks > 0
@@ -8323,6 +8331,11 @@
                     kw.keyword || ""
                   )}')" title="Optimizar">
                     <i class="fas fa-magic"></i>
+                  </button>
+                  <button class="btn-icon" onclick="generateKeywordPromptByIndex(${kwIndex})" 
+                          style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;" 
+                          title="Generar Prompt">
+                    <i class="fas fa-code"></i>
                   </button>
                 </td>
               </tr>
@@ -9452,8 +9465,11 @@
           const list = document.getElementById("opportunities-list");
           if (!list) return;
 
+          // Guardar oportunidades en estado global
+          window.performanceOpportunities = opportunities;
+
           list.innerHTML = opportunities
-            .map((opp) => {
+            .map((opp, index) => {
               const impactColor =
                 opp.impact === "high"
                   ? "#ef4444"
@@ -9476,6 +9492,10 @@
                     Ahorro potencial: ${escapeHtml(opp.savings)}
                   </span>
                 </div>
+                <button class="btn btn-info btn-sm" onclick="generatePerformancePromptByIndex(${index})" 
+                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; margin-left: 10px; flex-shrink: 0;">
+                  <i class="fas fa-code"></i> Prompt
+                </button>
               </div>
             `;
             })
@@ -10391,6 +10411,9 @@
           const actions = generateAvailableActions(data);
           actionsState.actions = actions;
 
+          // Cargar mejoras automáticas reales
+          loadRealImprovements();
+
           // Actualizar estado
           updateActionsStatus();
 
@@ -10402,6 +10425,1212 @@
 
           // Setup event listeners
           setupActionsEvents();
+        }
+
+        // Cargar mejoras automáticas reales desde improvements.json
+        async function loadRealImprovements() {
+          try {
+            const response = await fetch('data/improvements.json');
+            if (!response.ok) {
+              console.warn('No se encontró data/improvements.json - ejecuta el script de mejoras automáticas');
+              return;
+            }
+
+            const improvementsData = await response.json();
+            console.log(`✅ Cargadas ${improvementsData.total_improvements} mejoras automáticas`);
+
+            // Guardar mejoras en estado global
+            actionsState.realImprovements = improvementsData;
+
+            // Actualizar UI con mejoras reales
+            displayRealImprovements(improvementsData);
+
+            // Actualizar contador de notificaciones
+            updateNotificationBadges();
+
+          } catch (error) {
+            console.error('Error cargando mejoras automáticas:', error);
+          }
+        }
+
+        // Actualizar contador de notificaciones en el badge
+        function updateNotificationBadges() {
+          if (!actionsState.realImprovements) {
+            document.getElementById('suggestions-count').textContent = '0';
+            return;
+          }
+
+          // Contar mejoras que no han sido aplicadas ni rechazadas
+          const pendingImprovements = actionsState.realImprovements.improvements.filter(imp => {
+            const element = document.querySelector(`[data-improvement-id="${imp.id}"]`);
+            if (!element) return false;
+            
+            // Si el elemento está deshabilitado (opacity 0.5), significa que fue aplicado o rechazado
+            return element.style.opacity !== '0.5';
+          });
+
+          const pendingCount = pendingImprovements.length;
+          const badge = document.getElementById('suggestions-count');
+          
+          if (badge) {
+            badge.textContent = pendingCount;
+            
+            // Agregar animación cuando cambia el contador
+            badge.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+              badge.style.transform = 'scale(1)';
+            }, 200);
+          }
+
+          console.log(`📊 Contador actualizado: ${pendingCount} sugerencias pendientes`);
+        }
+
+        // Mostrar mejoras reales en la interfaz
+        function displayRealImprovements(improvementsData) {
+          const container = document.getElementById('actions-list');
+          if (!container) return;
+
+          const improvements = improvementsData.improvements || [];
+          
+          // Contar mejoras invisibles
+          const invisibleImprovements = improvements.filter(imp => imp.visibility === 'invisible');
+          const visibleImprovements = improvements.filter(imp => imp.visibility === 'visible');
+          
+          // Crear botón de aplicar todas las invisibles si hay alguna
+          let batchActionHTML = '';
+          if (invisibleImprovements.length > 0) {
+            batchActionHTML = `
+              <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                  <div style="flex: 1; min-width: 250px;">
+                    <h3 style="margin: 0 0 8px 0; color: white; display: flex; align-items: center; gap: 10px;">
+                      <i class="fas fa-eye-slash"></i>
+                      Cambios Seguros (Invisibles)
+                    </h3>
+                    <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 0.9rem;">
+                      <strong>${invisibleImprovements.length}</strong> mejora(s) que no afectan el contenido visible de la página.
+                      <br>
+                      <span style="font-size: 0.85rem; opacity: 0.8;">Pueden aplicarse automáticamente sin riesgo.</span>
+                    </p>
+                  </div>
+                  <button class="btn btn-light btn-lg" onclick="applyAllInvisibleImprovements()" 
+                          style="white-space: nowrap; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <i class="fas fa-bolt"></i>
+                    Aplicar Todas (${invisibleImprovements.length})
+                  </button>
+                </div>
+              </div>
+            `;
+          }
+          
+          // Crear HTML para cada mejora
+          const improvementsHTML = improvements.map((imp, index) => {
+            const priorityColors = {
+              high: '#ef4444',
+              medium: '#f59e0b',
+              low: '#10b981'
+            };
+
+            const priorityLabels = {
+              high: 'Alta',
+              medium: 'Media',
+              low: 'Baja'
+            };
+
+            const typeIcons = {
+              title: 'fa-heading',
+              meta_description: 'fa-tags',
+              add_heading: 'fa-h-square',
+              add_section: 'fa-plus-square'
+            };
+
+            const typeLabels = {
+              title: 'Optimizar Title',
+              meta_description: 'Meta Description',
+              add_heading: 'Agregar H2',
+              add_section: 'Nueva Sección'
+            };
+
+            // Determinar badge de visibilidad
+            const visibilityBadge = imp.visibility === 'invisible' 
+              ? '<span style="background: #10b98122; color: #10b981; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-eye-slash"></i> INVISIBLE</span>'
+              : '<span style="background: #f59e0b22; color: #f59e0b; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-eye"></i> VISIBLE</span>';
+
+            // Badge de i18n si aplica
+            const i18nBadge = imp.requires_i18n 
+              ? '<span style="background: #3b82f622; color: #3b82f6; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-language"></i> i18n</span>'
+              : '';
+
+            // Warning de gramática si hay issues
+            const grammarWarning = imp.grammar_issues && imp.grammar_issues.length > 0
+              ? `<div style="background: #ef444422; border-left: 3px solid #ef4444; padding: 8px; margin-top: 8px; border-radius: 4px;">
+                   <strong style="color: #ef4444;"><i class="fas fa-exclamation-triangle"></i> Revisar gramática:</strong>
+                   <ul style="margin: 5px 0 0 20px; color: var(--text-secondary); font-size: 0.8rem;">
+                     ${imp.grammar_issues.map(issue => `<li>${escapeHtml(issue)}</li>`).join('')}
+                   </ul>
+                 </div>`
+              : '';
+
+            return `
+              <div class="action-item real-improvement enabled" data-improvement-id="${imp.id}" 
+                   data-visibility="${imp.visibility || 'unknown'}"
+                   style="border-left: 4px solid ${priorityColors[imp.priority]};">
+                
+                <div class="action-icon" style="background: ${priorityColors[imp.priority]}22;">
+                  <i class="fas ${typeIcons[imp.type] || 'fa-magic'}" 
+                     style="color: ${priorityColors[imp.priority]};"></i>
+                </div>
+
+                <div class="action-content" style="flex: 1;">
+                  <div class="action-title" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span style="font-weight: 600;">${typeLabels[imp.type] || imp.type}</span>
+                    <span class="priority-badge" style="
+                      background: ${priorityColors[imp.priority]}22;
+                      color: ${priorityColors[imp.priority]};
+                      padding: 2px 8px;
+                      border-radius: 4px;
+                      font-size: 0.75rem;
+                      font-weight: 600;">
+                      ${priorityLabels[imp.priority]}
+                    </span>
+                    ${visibilityBadge}
+                    ${i18nBadge}
+                    <span class="action-status-badge idle">Pendiente</span>
+                  </div>
+                  
+                  <div class="action-description" style="margin-top: 5px; color: var(--text-secondary); font-size: 0.9rem;">
+                    ${escapeHtml(imp.reason)}
+                  </div>
+
+                  <div style="margin-top: 10px; display: grid; gap: 8px;">
+                    <div style="display: flex; gap: 10px; font-size: 0.85rem;">
+                      <div style="flex: 1;">
+                        <strong style="color: var(--text-secondary);">Actual:</strong>
+                        <div style="background: var(--bg-secondary); padding: 8px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: auto;">
+                          ${escapeHtml(imp.current.substring(0, 150))}${imp.current.length > 150 ? '...' : ''}
+                        </div>
+                      </div>
+                      <div style="flex: 1;">
+                        <strong style="color: var(--success);">Sugerido:</strong>
+                        <div style="background: var(--success)11; padding: 8px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.8rem; max-height: 60px; overflow: auto; border: 1px solid var(--success)33;">
+                          ${escapeHtml(imp.suggested.substring(0, 150))}${imp.suggested.length > 150 ? '...' : ''}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  ${grammarWarning}
+                </div>
+
+                <div class="action-controls" style="flex-direction: column; gap: 8px;">
+                  <button class="btn btn-secondary btn-sm" onclick='previewRealImprovement("${imp.id}")' 
+                          style="white-space: nowrap;">
+                    <i class="fas fa-eye"></i>
+                    Ver Completo
+                  </button>
+                  <button class="btn btn-info btn-sm" onclick='generatePromptForImprovement("${imp.id}")' 
+                          style="white-space: nowrap; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                    <i class="fas fa-code"></i>
+                    Generar Prompt
+                  </button>
+                  <button class="btn btn-success btn-sm" onclick='applyRealImprovement("${imp.id}")'
+                          style="white-space: nowrap;">
+                    <i class="fas fa-check"></i>
+                    Aplicar
+                  </button>
+                  <button class="btn btn-danger btn-sm" onclick='rejectRealImprovement("${imp.id}")'
+                          style="white-space: nowrap;">
+                    <i class="fas fa-times"></i>
+                    Rechazar
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          // Insertar al inicio de la lista (antes de las acciones predefinidas)
+          if (improvementsHTML) {
+            const separatorHTML = `
+              <div style="padding: 20px 0; margin: 20px 0; border-top: 2px solid var(--border); border-bottom: 2px solid var(--border);">
+                <h4 style="margin: 0 0 10px 0; color: var(--primary);">
+                  <i class="fas fa-robot" style="margin-right: 8px;"></i>
+                  Mejoras Automáticas Generadas (${improvements.length})
+                </h4>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                  Generadas el ${new Date(improvementsData.generated_at).toLocaleString('es-ES')}
+                  <br>
+                  <span style="color: #10b981;"><i class="fas fa-eye-slash"></i> ${invisibleImprovements.length} invisibles (seguros)</span> | 
+                  <span style="color: #f59e0b;"><i class="fas fa-eye"></i> ${visibleImprovements.length} visibles (revisar)</span>
+                </p>
+              </div>
+            `;
+            container.innerHTML = batchActionHTML + separatorHTML + improvementsHTML + '<div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid var(--border);"></div>' + container.innerHTML;
+          }
+
+          // Actualizar contadores
+          document.getElementById('pending-actions-count').textContent = improvements.length;
+        }
+
+        // Previsualizar mejora real completa
+        function previewRealImprovement(improvementId) {
+          if (!actionsState.realImprovements) return;
+
+          const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+          if (!improvement) return;
+
+          // Badges de visibilidad e i18n
+          const visibilityBadge = improvement.visibility === 'invisible' 
+            ? '<span style="background: #10b98122; color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-eye-slash"></i> INVISIBLE (Seguro)</span>'
+            : '<span style="background: #f59e0b22; color: #f59e0b; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-eye"></i> VISIBLE (Revisar)</span>';
+
+          const i18nBadge = improvement.requires_i18n 
+            ? '<span style="background: #3b82f622; color: #3b82f6; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-language"></i> Requiere traducción</span>'
+            : '';
+
+          const grammarWarning = improvement.grammar_issues && improvement.grammar_issues.length > 0
+            ? `<div style="background: #ef444422; border: 1px solid #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                 <strong style="color: #ef4444; display: block; margin-bottom: 8px;"><i class="fas fa-exclamation-triangle"></i> Revisar Gramática:</strong>
+                 <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary);">
+                   ${improvement.grammar_issues.map(issue => `<li>${escapeHtml(issue)}</li>`).join('')}
+                 </ul>
+               </div>`
+            : '';
+
+          const modal = `
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;" onclick="this.remove()">
+              <div style="background: var(--bg-primary); border-radius: 12px; max-width: 900px; width: 100%; max-height: 90vh; overflow: auto; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);" onclick="event.stopPropagation()">
+                
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                  <div style="flex: 1;">
+                    <h2 style="margin: 0 0 10px 0; color: var(--text-primary);">
+                      <i class="fas fa-eye" style="color: var(--primary); margin-right: 10px;"></i>
+                      Previsualización Completa
+                    </h2>
+                    <p style="margin: 0 0 10px 0; color: var(--text-secondary);">${improvement.reason}</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                      ${visibilityBadge}
+                      ${i18nBadge}
+                    </div>
+                  </div>
+                  <button onclick="this.closest('div[style*=fixed]').remove()" style="background: none; border: none; font-size: 24px; color: var(--text-secondary); cursor: pointer; padding: 0; width: 32px; height: 32px;">×</button>
+                </div>
+
+                ${grammarWarning}
+
+                <div style="display: grid; gap: 20px;">
+                  <div>
+                    <h3 style="margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                      <i class="fas fa-minus-circle" style="color: var(--danger); margin-right: 5px;"></i>
+                      Código Actual
+                    </h3>
+                    <pre style="background: var(--bg-secondary); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(improvement.current)}</pre>
+                  </div>
+
+                  <div style="text-align: center; padding: 10px;">
+                    <i class="fas fa-arrow-down" style="font-size: 24px; color: var(--primary);"></i>
+                  </div>
+
+                  <div>
+                    <h3 style="margin: 0 0 10px 0; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center;">
+                      <span>
+                        <i class="fas fa-plus-circle" style="color: var(--success); margin-right: 5px;"></i>
+                        Código Sugerido
+                      </span>
+                      <button class="btn btn-sm" onclick="enableEditMode('${improvement.id}')" 
+                              style="background: var(--warning); color: white; padding: 4px 12px; font-size: 0.75rem;">
+                        <i class="fas fa-edit"></i>
+                        Editar
+                      </button>
+                    </h3>
+                    <div id="suggested-view-${improvement.id}">
+                      <pre style="background: var(--success)11; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 0; max-height: 300px; overflow: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word;">${escapeHtml(improvement.suggested)}</pre>
+                    </div>
+                    <div id="suggested-edit-${improvement.id}" style="display: none;">
+                      <textarea id="suggested-textarea-${improvement.id}" 
+                                style="width: 100%; min-height: 300px; padding: 15px; border-radius: 8px; border: 2px solid var(--success); margin: 0; font-family: 'Courier New', monospace; font-size: 0.9rem; background: var(--bg-secondary); color: var(--text-primary); resize: vertical;">${escapeHtml(improvement.suggested)}</textarea>
+                      <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <button class="btn btn-success btn-sm" onclick="saveEditedSuggestion('${improvement.id}')">
+                          <i class="fas fa-save"></i>
+                          Guardar Cambios
+                        </button>
+                        <button class="btn btn-secondary btn-sm" onclick="cancelEditMode('${improvement.id}')">
+                          <i class="fas fa-times"></i>
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end;">
+                  <button class="btn btn-secondary" onclick="this.closest('div[style*=fixed]').remove()">
+                    <i class="fas fa-times"></i>
+                    Cerrar
+                  </button>
+                  <button class="btn btn-success" onclick="applyRealImprovement('${improvement.id}'); this.closest('div[style*=fixed]').remove();">
+                    <i class="fas fa-check"></i>
+                    Aplicar Este Cambio
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+
+          document.body.insertAdjacentHTML('beforeend', modal);
+        }
+
+        // Habilitar modo de edición para código sugerido
+        function enableEditMode(improvementId) {
+          document.getElementById(`suggested-view-${improvementId}`).style.display = 'none';
+          document.getElementById(`suggested-edit-${improvementId}`).style.display = 'block';
+          document.getElementById(`suggested-textarea-${improvementId}`).focus();
+        }
+
+        // Cancelar modo de edición
+        function cancelEditMode(improvementId) {
+          document.getElementById(`suggested-view-${improvementId}`).style.display = 'block';
+          document.getElementById(`suggested-edit-${improvementId}`).style.display = 'none';
+        }
+
+        // Guardar sugerencia editada
+        function saveEditedSuggestion(improvementId) {
+          const textarea = document.getElementById(`suggested-textarea-${improvementId}`);
+          const newSuggested = textarea.value;
+
+          // Actualizar en el estado global
+          if (actionsState.realImprovements) {
+            const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+            if (improvement) {
+              improvement.suggested = newSuggested;
+              
+              // Actualizar la vista
+              const viewElement = document.getElementById(`suggested-view-${improvementId}`);
+              if (viewElement) {
+                viewElement.querySelector('pre').textContent = newSuggested;
+              }
+
+              showToast('✅ Sugerencia actualizada! Ahora puedes aplicarla.', 'success');
+              cancelEditMode(improvementId);
+            }
+          }
+        }
+
+        // Aplicar mejora real
+        function applyRealImprovement(improvementId) {
+          if (!actionsState.realImprovements) return;
+
+          const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+          if (!improvement) return;
+
+          // Validación extra para cambios visibles
+          const warningText = improvement.visibility === 'visible'
+            ? '\n\n⚠️ ATENCIÓN: Este cambio es VISIBLE en la página.\nRevisa que el contenido sea apropiado.'
+            : '\n\n✅ Este cambio es INVISIBLE (meta tags, title, etc.)';
+
+          const i18nWarning = improvement.requires_i18n
+            ? '\n\n🌐 IMPORTANTE: Este contenido necesita traducción en tu sistema i18n.'
+            : '';
+
+          if (!confirm(`¿Aplicar esta mejora?\n\n${improvement.reason}${warningText}${i18nWarning}\n\n⚠️ Esto modificará tu archivo index.html`)) {
+            return;
+          }
+
+          // Mostrar instrucciones para aplicar realmente
+          alert(`✅ Mejora Marcada para Aplicar!\n\nTipo: ${improvement.type}\nID: ${improvement.id}\n\n📝 PARA APLICAR REALMENTE:\n\n1. Ejecuta en terminal:\n   python scripts/aplicar-mejoras.py\n\n2. Selecciona prioridad "Alta + Media"\n\n3. El script hará backup automático y aplicará los cambios`);
+
+          // Marcar como completada visualmente
+          const element = document.querySelector(`[data-improvement-id="${improvementId}"]`);
+          if (element) {
+            element.style.opacity = '0.5';
+            element.style.pointerEvents = 'none';
+            const statusBadge = element.querySelector('.action-status-badge');
+            if (statusBadge) {
+              statusBadge.textContent = 'Aplicada';
+              statusBadge.className = 'action-status-badge completed';
+            }
+          }
+
+          // Actualizar contador
+          const pendingCount = document.getElementById('pending-actions-count');
+          if (pendingCount) {
+            pendingCount.textContent = Math.max(0, parseInt(pendingCount.textContent) - 1);
+          }
+
+          // Actualizar badge de notificaciones
+          updateNotificationBadges();
+        }
+
+        // Aplicar todas las mejoras invisibles automáticamente
+        function applyAllInvisibleImprovements() {
+          if (!actionsState.realImprovements) return;
+
+          const invisibleImprovements = actionsState.realImprovements.improvements.filter(imp => imp.visibility === 'invisible');
+          
+          if (invisibleImprovements.length === 0) {
+            alert('No hay mejoras invisibles para aplicar.');
+            return;
+          }
+
+          const confirmText = `🚀 APLICACIÓN AUTOMÁTICA DE CAMBIOS SEGUROS\n\n` +
+            `Se aplicarán ${invisibleImprovements.length} mejora(s) INVISIBLES:\n\n` +
+            invisibleImprovements.map(imp => `• ${imp.type}: ${imp.reason.substring(0, 60)}...`).join('\n') +
+            `\n\n✅ Estos cambios NO afectan el contenido visible.\n` +
+            `✅ Son cambios en meta tags, title, alt text, etc.\n\n` +
+            `📝 INSTRUCCIONES:\n` +
+            `1. Se marcarán todas como aplicadas\n` +
+            `2. Ejecuta: python scripts/aplicar-mejoras.py\n` +
+            `3. El script aplicará SOLO las invisibles automáticamente\n\n` +
+            `¿Continuar?`;
+
+          if (!confirm(confirmText)) {
+            return;
+          }
+
+          // Marcar todas las invisibles como aplicadas
+          let appliedCount = 0;
+          invisibleImprovements.forEach(imp => {
+            const element = document.querySelector(`[data-improvement-id="${imp.id}"]`);
+            if (element) {
+              element.style.opacity = '0.5';
+              element.style.pointerEvents = 'none';
+              const statusBadge = element.querySelector('.action-status-badge');
+              if (statusBadge) {
+                statusBadge.textContent = 'Aplicada';
+                statusBadge.className = 'action-status-badge completed';
+              }
+              appliedCount++;
+            }
+          });
+
+          // Actualizar contador
+          const pendingCount = document.getElementById('pending-actions-count');
+          if (pendingCount) {
+            pendingCount.textContent = Math.max(0, parseInt(pendingCount.textContent) - appliedCount);
+          }
+
+          // Actualizar badge de notificaciones
+          updateNotificationBadges();
+
+          // Mensaje de éxito
+          alert(`✅ ${appliedCount} mejora(s) invisible(s) marcadas!\n\n📝 SIGUIENTE PASO:\n\nEjecuta en terminal:\n   python scripts/aplicar-mejoras.py\n\nEl script detectará automáticamente las mejoras invisibles y las aplicará con backup.`);
+        }
+
+        // Rechazar mejora real
+        function rejectRealImprovement(improvementId) {
+          if (!confirm('¿Estás seguro de rechazar esta mejora?')) {
+            return;
+          }
+
+          // Marcar como rechazada visualmente
+          const element = document.querySelector(`[data-improvement-id="${improvementId}"]`);
+          if (element) {
+            element.style.opacity = '0.3';
+            element.style.pointerEvents = 'none';
+            const statusBadge = element.querySelector('.action-status-badge');
+            if (statusBadge) {
+              statusBadge.textContent = 'Rechazada';
+              statusBadge.className = 'action-status-badge';
+              statusBadge.style.background = '#ef444422';
+              statusBadge.style.color = '#ef4444';
+            }
+          }
+
+          // Actualizar contador
+          const pendingCount = document.getElementById('pending-actions-count');
+          if (pendingCount) {
+            pendingCount.textContent = Math.max(0, parseInt(pendingCount.textContent) - 1);
+          }
+
+          // Actualizar badge de notificaciones
+          updateNotificationBadges();
+
+          console.log(`❌ Mejora rechazada: ${improvementId}`);
+        }
+
+        // Generar prompt completo para GitHub Copilot
+        function generatePromptForImprovement(improvementId) {
+          if (!actionsState.realImprovements) return;
+
+          const improvement = actionsState.realImprovements.improvements.find(imp => imp.id === improvementId);
+          if (!improvement) return;
+
+          // Generar prompt completo con contexto
+          const prompt = generateCompleteSEOPrompt(improvement);
+
+          // Mostrar modal con el prompt
+          showPromptModal(prompt, improvement);
+        }
+
+        // Generar el prompt completo con todo el contexto necesario
+        function generateCompleteSEOPrompt(improvement) {
+          const typeLabels = {
+            title: 'Optimizar Title Tag',
+            meta_description: 'Optimizar Meta Description',
+            add_heading: 'Agregar Heading H2',
+            add_section: 'Agregar Nueva Sección'
+          };
+
+          const visibilityWarning = improvement.visibility === 'visible' 
+            ? '\n\n⚠️ IMPORTANTE: Este cambio es VISIBLE en la página. Asegúrate de que encaje con el diseño y tono del sitio.'
+            : '\n\n✅ Este cambio es INVISIBLE (meta tags, title). Es seguro aplicarlo.';
+
+          const i18nInstructions = improvement.requires_i18n
+            ? '\n\n🌐 TRADUCCIÓN REQUERIDA:\nEste contenido usa el sistema i18n. Debes:\n' +
+              '1. Agregar las keys en /js/translations/es.json\n' +
+              '2. Agregar las traducciones en /js/translations/en.json\n' +
+              '3. Usar data-i18n="key.path" en el HTML'
+            : '';
+
+          const grammarWarning = improvement.grammar_issues && improvement.grammar_issues.length > 0
+            ? '\n\n⚠️ PROBLEMAS GRAMATICALES DETECTADOS:\n' + 
+              improvement.grammar_issues.map((issue, i) => `${i + 1}. ${issue}`).join('\n')
+            : '';
+
+          const prompt = `# 🎯 TAREA: ${typeLabels[improvement.type] || improvement.type}
+
+## 📋 CONTEXTO
+
+**Archivo**: index.html (Landing Page - Just Dev It)
+**Ubicación**: c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html
+**Tipo de cambio**: ${improvement.type}
+**Prioridad**: ${improvement.priority.toUpperCase()}
+**Visibilidad**: ${improvement.visibility === 'invisible' ? '👁️‍🗨️ INVISIBLE (seguro)' : '👁️ VISIBLE (revisar)'}
+
+## 🎯 OBJETIVO
+
+${improvement.reason}
+
+## 📊 CÓDIGO ACTUAL
+
+\`\`\`html
+${improvement.current}
+\`\`\`
+
+## ✨ CÓDIGO SUGERIDO
+
+\`\`\`html
+${improvement.suggested}
+\`\`\`
+
+## 📝 INSTRUCCIONES PARA IMPLEMENTAR
+
+1. Abre el archivo: \`index.html\` en la raíz del proyecto
+2. Busca el código actual mostrado arriba
+3. Reemplázalo con el código sugerido
+4. Verifica que no se rompa la estructura HTML
+${improvement.type === 'add_section' || improvement.type === 'add_heading' ? '5. La nueva sección debe insertarse ANTES del footer (busca <footer> o id="footer")' : ''}
+${improvement.requires_i18n ? '6. Agrega las traducciones correspondientes en los archivos de idioma' : ''}
+
+## ⚙️ DETALLES TÉCNICOS
+
+**Impacto SEO**: ${improvement.impact}
+**Requiere i18n**: ${improvement.requires_i18n ? 'Sí 🌐' : 'No'}
+**Validación gramatical**: ${improvement.grammar_valid ? '✅ Aprobada' : '⚠️ Revisar'}
+${visibilityWarning}${i18nInstructions}${grammarWarning}
+
+## ✅ VALIDACIÓN POST-CAMBIO
+
+Después de aplicar el cambio:
+- [ ] Abre index.html en el navegador
+- [ ] Verifica que no hay errores de consola
+- [ ] ${improvement.visibility === 'visible' ? 'Verifica que el contenido se vea bien visualmente' : 'Verifica el <title> y meta tags en DevTools'}
+- [ ] ${improvement.requires_i18n ? 'Prueba ambos idiomas (ES/EN) con el selector de idioma' : 'Valida que no se rompió el HTML'}
+- [ ] Ejecuta: python seo-dashboard/scripts/generar-mejoras-automaticas.py (para regenerar mejoras)
+
+## 🚀 COMANDO RÁPIDO
+
+Para aplicar automáticamente con el script:
+\`\`\`bash
+cd "c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\seo-dashboard"
+python scripts/aplicar-mejoras.py
+# Selecciona la opción correspondiente a la prioridad ${improvement.priority}
+\`\`\`
+
+---
+
+**ID de la Mejora**: ${improvement.id}
+**Generado el**: ${new Date().toLocaleString('es-ES')}`;
+
+          return prompt;
+        }
+
+        // Mostrar modal con el prompt generado
+        function showPromptModal(prompt, improvement) {
+          const modal = `
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;" onclick="this.remove()">
+              <div style="background: var(--bg-primary); border-radius: 12px; max-width: 1000px; width: 100%; max-height: 90vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column;" onclick="event.stopPropagation()">
+                
+                <div style="padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                  <div>
+                    <h2 style="margin: 0; color: white; display: flex; align-items: center; gap: 10px;">
+                      <i class="fas fa-code"></i>
+                      Prompt para GitHub Copilot
+                    </h2>
+                    <p style="margin: 5px 0 0 0; color: rgba(255,255,255,0.9); font-size: 0.9rem;">Copia y pega este prompt en tu conversación</p>
+                  </div>
+                  <button onclick="this.closest('div[style*=fixed]').remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 24px; cursor: pointer; padding: 5px 10px; border-radius: 4px; width: 36px; height: 36px;">×</button>
+                </div>
+
+                <div style="flex: 1; overflow: auto; padding: 20px;">
+                  <pre id="prompt-content-${improvement.id}" style="background: var(--bg-secondary); padding: 20px; border-radius: 8px; margin: 0; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border);">${escapeHtml(prompt)}</pre>
+                </div>
+
+                <div style="padding: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end; background: var(--bg-secondary);">
+                  <button class="btn btn-secondary" onclick="this.closest('div[style*=fixed]').remove()">
+                    <i class="fas fa-times"></i>
+                    Cerrar
+                  </button>
+                  <button class="btn btn-primary" onclick="copyPromptToClipboard('prompt-content-${improvement.id}', this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                    <i class="fas fa-copy"></i>
+                    Copiar Prompt
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+
+          document.body.insertAdjacentHTML('beforeend', modal);
+        }
+
+        // Copiar prompt al portapapeles
+        function copyPromptToClipboard(elementId, button) {
+          const element = document.getElementById(elementId);
+          if (!element) return;
+
+          const text = element.textContent;
+          
+          navigator.clipboard.writeText(text).then(() => {
+            // Feedback visual
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+            button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            }, 2000);
+
+            // Mensaje de éxito
+            showToast('✅ Prompt copiado al portapapeles!', 'success');
+          }).catch(err => {
+            console.error('Error al copiar:', err);
+            showToast('❌ Error al copiar. Selecciona el texto manualmente.', 'error');
+          });
+        }
+
+        // Mostrar toast de notificación
+        function showToast(message, type = 'info') {
+          const colors = {
+            success: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+            error: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+            info: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+          };
+
+          const toast = document.createElement('div');
+          toast.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: ${colors[type]};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10001;
+            font-weight: 500;
+            animation: slideIn 0.3s ease-out;
+          `;
+          toast.textContent = message;
+          document.body.appendChild(toast);
+
+          setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => toast.remove(), 300);
+          }, 3000);
+        }
+
+        // Helper para generar prompt de Performance por índice
+        function generatePerformancePromptByIndex(index) {
+          if (window.performanceOpportunities && window.performanceOpportunities[index]) {
+            generatePerformancePrompt(window.performanceOpportunities[index]);
+          }
+        }
+
+        // Generar prompt para optimización de Performance
+        function generatePerformancePrompt(opportunity) {
+          const impactLabels = {
+            high: 'ALTA ⚡',
+            medium: 'MEDIA 📊',
+            low: 'BAJA 📈'
+          };
+
+          const impactLabel = impactLabels[opportunity.impact] || 'MEDIA';
+
+          const prompt = `# ⚡ OPTIMIZACIÓN DE PERFORMANCE
+
+## 📋 CONTEXTO
+**Archivo**: c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html
+**Tipo de optimización**: Performance Web
+**Impacto**: ${impactLabel}
+**Ahorro potencial**: ${opportunity.savings}
+**Herramienta de medición**: Google Lighthouse / PageSpeed Insights
+
+---
+
+## 🎯 OPORTUNIDAD DE MEJORA
+**${opportunity.title}**
+
+${opportunity.description}
+
+---
+
+## 🔍 ANÁLISIS ACTUAL
+Esta optimización ha sido identificada como una oportunidad para mejorar los Core Web Vitals:
+
+- **LCP (Largest Contentful Paint)**: Tiempo de carga del elemento más grande visible
+- **FID (First Input Delay)**: Tiempo hasta que la página responde a la primera interacción
+- **CLS (Cumulative Layout Shift)**: Estabilidad visual durante la carga
+
+**Ahorro estimado**: ${opportunity.savings}
+
+---
+
+## 💡 INSTRUCCIONES PARA IMPLEMENTAR
+
+### Paso 1: Analizar el problema
+1. Abre Google Chrome DevTools (F12)
+2. Ve a la pestaña "Lighthouse"
+3. Ejecuta un análisis de Performance
+4. Identifica los recursos específicos mencionados en "${opportunity.title}"
+
+### Paso 2: Aplicar la optimización
+Según el tipo de oportunidad, implementa una de estas soluciones:
+
+**Si es sobre imágenes**:
+- Convierte imágenes a formato WebP/AVIF
+- Implementa lazy loading con \`loading="lazy"\`
+- Usa \`<picture>\` con responsive images
+- Comprime imágenes manteniendo calidad
+
+**Si es sobre JavaScript**:
+- Implementa code splitting
+- Usa \`defer\` o \`async\` en scripts
+- Elimina JavaScript no utilizado
+- Minifica archivos JS
+
+**Si es sobre CSS**:
+- Extrae CSS crítico inline
+- Carga CSS no crítico de forma asíncrona
+- Elimina CSS no utilizado
+- Minifica archivos CSS
+
+**Si es sobre fuentes**:
+- Usa \`font-display: swap\`
+- Precarga fuentes críticas con \`<link rel="preload">\`
+- Usa fuentes del sistema cuando sea posible
+- Implementa subset de fuentes
+
+### Paso 3: Verificar recursos afectados
+1. Ejecuta en PowerShell desde la raíz del proyecto:
+\`\`\`powershell
+# Buscar imágenes grandes
+Get-ChildItem -Path .\\assets\\images -Recurse -File | Where-Object { $_.Length -gt 500KB } | Select-Object Name, @{Name="Size(MB)";Expression={[math]::Round($_.Length/1MB, 2)}}
+
+# Buscar archivos JS no minificados
+Get-ChildItem -Path .\\js -Recurse -Filter "*.js" | Where-Object { $_.Name -notmatch "\\.min\\.js$" }
+
+# Buscar archivos CSS no minificados
+Get-ChildItem -Path .\\css -Recurse -Filter "*.css" | Where-Object { $_.Name -notmatch "\\.min\\.css$" }
+\`\`\`
+
+### Paso 4: Implementar cambios
+Modifica los archivos identificados aplicando las técnicas mencionadas arriba.
+
+### Paso 5: Validar mejora
+1. Vuelve a ejecutar Lighthouse
+2. Compara el score de Performance (debe aumentar)
+3. Verifica que ${opportunity.savings} se refleje como mejorado
+4. Prueba la página en diferentes dispositivos
+
+---
+
+## ⚙️ DETALLES TÉCNICOS
+
+**Impacto en Core Web Vitals**: ${opportunity.impact.toUpperCase()}
+
+**Beneficios esperados**:
+- Mejora en el score de Performance de Google Lighthouse
+- Reducción en el tiempo de carga de la página
+- Mejor experiencia de usuario (UX)
+- Mejor posicionamiento SEO (Google considera Performance como factor de ranking)
+- Ahorro de ${opportunity.savings}
+
+**Archivos típicamente afectados**:
+- \`index.html\` - Estructura HTML
+- \`css/bundle.min.css\` - Estilos
+- \`js/bundle.min.js\` - Scripts
+- \`assets/images/**/*\` - Imágenes
+- \`assets/fonts/**/*\` - Fuentes
+
+---
+
+## ✅ VALIDACIÓN POST-OPTIMIZACIÓN
+
+Después de implementar los cambios, verifica:
+
+- [ ] **Lighthouse Performance Score**: Debe aumentar al menos 5-10 puntos
+- [ ] **LCP**: Debe ser < 2.5s (verde)
+- [ ] **FID**: Debe ser < 100ms (verde)
+- [ ] **CLS**: Debe ser < 0.1 (verde)
+- [ ] **Funcionalidad**: La página funciona correctamente en Desktop y Mobile
+- [ ] **Apariencia visual**: No hay cambios visuales no deseados
+- [ ] **Tamaño de archivos**: Los recursos pesados han sido optimizados
+- [ ] **PageSpeed Insights**: Score móvil y desktop mejorado
+
+---
+
+## 🔧 HERRAMIENTAS ÚTILES
+
+**Análisis**:
+- Google Lighthouse (Chrome DevTools)
+- PageSpeed Insights: https://pagespeed.web.dev/
+- WebPageTest: https://www.webpagetest.org/
+
+**Optimización de imágenes**:
+- Script PowerShell: \`optimize-images-balanced.ps1\`
+- Convertir a WebP: \`convert-images-to-webp.ps1\`
+
+**Minificación**:
+- CSS: \`npm run minify:css\`
+- JS: \`npm run minify:js\`
+
+---
+
+## 🚀 COMANDO RÁPIDO
+
+Para ejecutar análisis de Performance automáticamente:
+
+\`\`\`powershell
+cd "c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page"
+
+# Ejecutar Lighthouse desde CLI
+npx lighthouse http://localhost:5000 --output=html --output-path=./lighthouse-report.html --view
+
+# O usar el dashboard
+cd seo-dashboard
+python -m http.server 8000
+# Abrir http://localhost:8000 y navegar a Performance tab
+\`\`\`
+
+---
+
+**Oportunidad**: ${opportunity.title}
+**Impacto**: ${opportunity.impact.toUpperCase()}
+**Ahorro**: ${opportunity.savings}
+**Generado el**: ${new Date().toLocaleString('es-ES')}
+`;
+
+          showPromptModal(prompt, { 
+            id: 'perf_' + Date.now(), 
+            type: 'performance',
+            title: opportunity.title 
+          });
+        }
+
+        // Helper para generar prompt de Keyword por índice
+        function generateKeywordPromptByIndex(index) {
+          if (window.currentPageKeywords && window.currentPageKeywords[index]) {
+            generateKeywordPrompt(window.currentPageKeywords[index]);
+          }
+        }
+
+        // Generar prompt para optimización de Keywords
+        function generateKeywordPrompt(keyword) {
+          const priorityLabels = {
+            high: 'ALTA 🔥',
+            medium: 'MEDIA 📊',
+            low: 'BAJA 📉'
+          };
+
+          // Determinar prioridad
+          const priority = keyword.position <= 5 && keyword.clicks > 0 ? 'high' 
+            : keyword.position <= 10 ? 'medium' 
+            : 'low';
+          
+          const priorityLabel = priorityLabels[priority] || 'MEDIA';
+
+          // Determinar estrategia según posición
+          let strategy = '';
+          let objective = '';
+          
+          if (keyword.position <= 3) {
+            strategy = 'Mantener y Defender Posición Top';
+            objective = 'Ya estás en el Top 3. El objetivo es mantener esta posición y mejorar el CTR.';
+          } else if (keyword.position <= 10) {
+            strategy = 'Subir al Top 3';
+            objective = 'Estás en la primera página. Con optimización puedes llegar al Top 3 y multiplicar tu tráfico.';
+          } else if (keyword.position <= 20) {
+            strategy = 'Entrar al Top 10';
+            objective = 'Estás en la segunda página. Necesitas optimización para entrar a la primera página.';
+          } else {
+            strategy = 'Mejorar Contenido y Relevancia';
+            objective = 'Posición baja. Necesitas contenido más relevante y autoridad para esta keyword.';
+          }
+
+          // Analizar oportunidad
+          let opportunityAnalysis = '';
+          if (keyword.impressions > 100 && keyword.clicks === 0) {
+            opportunityAnalysis = '⚠️ **ALTA OPORTUNIDAD**: Muchas impresiones sin clicks. Mejora tu meta description y title para aumentar CTR.';
+          } else if (keyword.impressions > 50 && keyword.ctr < 2) {
+            opportunityAnalysis = '📊 **OPORTUNIDAD MEDIA**: CTR bajo. Optimiza snippets para atraer más clicks.';
+          } else if (keyword.position > 10 && keyword.impressions > 20) {
+            opportunityAnalysis = '🎯 **POTENCIAL DE ESCALADA**: Con optimización de contenido puedes subir a primera página.';
+          } else if (keyword.clicks > 10) {
+            opportunityAnalysis = '✅ **KEYWORD ACTIVA**: Ya genera tráfico. Mantén y mejora el contenido.';
+          }
+
+          const prompt = `# 🔍 OPTIMIZACIÓN DE KEYWORD SEO
+
+## 📋 CONTEXTO
+**Archivo**: c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page\\index.html
+**Keyword**: "${keyword.keyword}"
+**Posición actual**: #${keyword.position.toFixed(1)}
+**Prioridad**: ${priorityLabel}
+**Página**: ${keyword.page || 'index.html'}
+
+---
+
+## 📊 DATOS ACTUALES DE LA KEYWORD
+
+| Métrica | Valor | Estado |
+|---------|-------|--------|
+| **Posición** | #${keyword.position.toFixed(1)} | ${keyword.position <= 10 ? '✅ Primera página' : '⚠️ Fuera del Top 10'} |
+| **Impresiones** | ${keyword.impressions || 0} | ${keyword.impressions > 100 ? '✅ Alto' : keyword.impressions > 50 ? '📊 Medio' : '⚠️ Bajo'} |
+| **Clicks** | ${keyword.clicks || 0} | ${keyword.clicks > 10 ? '✅ Activo' : keyword.clicks > 0 ? '📊 Bajo' : '⚠️ Sin clicks'} |
+| **CTR** | ${(keyword.ctr || 0).toFixed(2)}% | ${keyword.ctr > 5 ? '✅ Excelente' : keyword.ctr > 2 ? '📊 Bueno' : '⚠️ Bajo'} |
+
+---
+
+## 🎯 ESTRATEGIA DE OPTIMIZACIÓN
+**${strategy}**
+
+${objective}
+
+${opportunityAnalysis}
+
+---
+
+## 💡 PLAN DE ACCIÓN PASO A PASO
+
+### Paso 1: Análisis de Competencia
+1. Abre Google en modo incógnito
+2. Busca: "${keyword.keyword}"
+3. Analiza los 3 primeros resultados:
+   - ¿Qué estructura de título usan?
+   - ¿Qué prometen en la meta description?
+   - ¿Qué tipo de contenido ofrecen?
+   - ¿Qué keywords relacionadas usan?
+
+### Paso 2: Optimizar Meta Tags
+Modifica en \`index.html\`:
+
+**Title Tag** (debe contener la keyword):
+\`\`\`html
+<title>${keyword.keyword} | Just Dev It - Desarrollo Web Profesional</title>
+\`\`\`
+
+**Meta Description** (debe ser atractiva y contener keyword):
+\`\`\`html
+<meta name="description" content="¿Buscas ${keyword.keyword}? En Just Dev It ofrecemos [beneficio específico]. [Call to action]. Contáctanos hoy.">
+\`\`\`
+
+**Meta Keywords**:
+\`\`\`html
+<meta name="keywords" content="${keyword.keyword}, [variantes], [keywords relacionadas]">
+\`\`\`
+
+### Paso 3: Optimizar Contenido Visible
+En el \`<body>\` de index.html:
+
+1. **H1 principal** (debe contener keyword):
+\`\`\`html
+<h1>${keyword.keyword} - Soluciones Profesionales</h1>
+\`\`\`
+
+2. **Párrafos optimizados** (usar keyword 3-5 veces naturalmente):
+\`\`\`html
+<p>Si necesitas ${keyword.keyword}, nuestro equipo especializado...</p>
+\`\`\`
+
+3. **H2/H3 secundarios** (usar variantes de keyword):
+\`\`\`html
+<h2>¿Por qué elegir nuestros servicios de ${keyword.keyword}?</h2>
+<h3>Beneficios de ${keyword.keyword} con Just Dev It</h3>
+\`\`\`
+
+4. **ALT text en imágenes**:
+\`\`\`html
+<img src="..." alt="${keyword.keyword} - ejemplo proyecto">
+\`\`\`
+
+### Paso 4: Crear Sección Dedicada (si no existe)
+Si "${keyword.keyword}" tiene muchas impresiones pero tu página no tiene contenido específico:
+
+\`\`\`html
+<section id="${keyword.keyword.toLowerCase().replace(/\s+/g, '-')}" class="service-section">
+  <div class="container">
+    <h2>${keyword.keyword}</h2>
+    <p>Descripción detallada sobre ${keyword.keyword}...</p>
+    
+    <div class="features-grid">
+      <div class="feature">
+        <i class="fas fa-check"></i>
+        <h3>Beneficio 1</h3>
+        <p>Explicación...</p>
+      </div>
+      <!-- Más features -->
+    </div>
+    
+    <a href="#contacto" class="btn btn-primary">Solicitar ${keyword.keyword}</a>
+  </div>
+</section>
+\`\`\`
+
+### Paso 5: Optimizar Datos Estructurados
+Agrega Schema.org para esta keyword:
+
+\`\`\`html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "${keyword.keyword}",
+  "description": "Descripción completa del servicio...",
+  "provider": {
+    "@type": "Organization",
+    "name": "Just Dev It"
+  }
+}
+</script>
+\`\`\`
+
+### Paso 6: Enlaces Internos
+Agrega enlaces internos relevantes que apunten a esta sección:
+
+\`\`\`html
+<a href="#${keyword.keyword.toLowerCase().replace(/\s+/g, '-')}" 
+   title="${keyword.keyword}">
+  Conoce más sobre ${keyword.keyword}
+</a>
+\`\`\`
+
+---
+
+## ⚙️ DETALLES TÉCNICOS
+
+**Densidad de Keyword Óptima**: 1-2% del contenido total
+- Usa la keyword en: Title, H1, 1 H2, primer párrafo, último párrafo
+- Usa variantes naturales en el resto del contenido
+
+**Long-Tail Keywords**: Busca variantes de "${keyword.keyword}":
+- "${keyword.keyword} profesional"
+- "${keyword.keyword} en [ciudad]"
+- "mejor ${keyword.keyword}"
+- "${keyword.keyword} precio"
+
+**Intención de Búsqueda**:
+${keyword.position <= 10 ? 'Tu página ya coincide con la intención. Mejora el CTR.' : 'Analiza si tu contenido responde a la intención de búsqueda de esta keyword.'}
+
+---
+
+## ✅ VALIDACIÓN POST-OPTIMIZACIÓN
+
+Después de implementar los cambios, verifica:
+
+- [ ] **Keyword en Title**: La keyword aparece en el title tag
+- [ ] **Keyword en H1**: El H1 principal contiene la keyword
+- [ ] **Keyword en URL**: Si es posible, la URL contiene la keyword
+- [ ] **Meta Description optimizada**: Atractiva y con keyword
+- [ ] **Contenido relevante**: Al menos 300 palabras sobre el tema
+- [ ] **Densidad correcta**: Keyword aparece 3-5 veces naturalmente
+- [ ] **ALT text**: Imágenes relacionadas tienen ALT con keyword
+- [ ] **Enlaces internos**: Al menos 2 enlaces internos a esta sección
+- [ ] **Schema.org**: Datos estructurados implementados
+- [ ] **Mobile-friendly**: Contenido se ve bien en móvil
+
+---
+
+## 🔧 HERRAMIENTAS DE VALIDACIÓN
+
+**Verificar optimización on-page**:
+1. Abre Chrome DevTools → Elements
+2. Busca la keyword en el HTML (Ctrl+F)
+3. Verifica que aparece en lugares estratégicos
+
+**Verificar en Google Search Console**:
+1. Espera 7-14 días después de los cambios
+2. Ve a Performance → Queries
+3. Filtra por "${keyword.keyword}"
+4. Verifica mejora en posición e impresiones
+
+**Analizar competencia**:
+\`\`\`powershell
+# Buscar la keyword en tu HTML actual
+cd "c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page"
+Select-String -Path .\\index.html -Pattern "${keyword.keyword}" -CaseSensitive
+\`\`\`
+
+---
+
+## 🚀 COMANDOS RÁPIDOS
+
+Para verificar optimización actual:
+
+\`\`\`powershell
+cd "c:\\Users\\Joaquin Espildora M\\Local Projects\\Just-Dev-It-Landing-Page"
+
+# Contar apariciones de la keyword
+$keyword = "${keyword.keyword}"
+$content = Get-Content .\\index.html -Raw
+$count = ([regex]::Matches($content, [regex]::Escape($keyword), "IgnoreCase")).Count
+Write-Host "La keyword '$keyword' aparece $count veces en index.html"
+
+# Ver contexto de apariciones
+Select-String -Path .\\index.html -Pattern $keyword -Context 1,1
+\`\`\`
+
+---
+
+## 📈 RESULTADOS ESPERADOS
+
+**Corto plazo (1-2 semanas)**:
+- Mejora en CTR (más clicks con mismas impresiones)
+- Google re-indexa el contenido actualizado
+
+**Medio plazo (1-2 meses)**:
+${keyword.position > 10 ? '- Subida de posiciones hacia la primera página' : '- Consolidación en el Top 10 o entrada al Top 3'}
+- Aumento de impresiones
+- Más tráfico orgánico
+
+**Largo plazo (3+ meses)**:
+- Posicionamiento estable en ${keyword.position <= 10 ? 'Top 3' : 'primera página'}
+- Incremento constante de tráfico orgánico
+- Mejora de autoridad de dominio
+
+---
+
+**Keyword**: ${keyword.keyword}
+**Posición actual**: #${keyword.position.toFixed(1)}
+**CTR actual**: ${(keyword.ctr || 0).toFixed(2)}%
+**Prioridad**: ${priority.toUpperCase()}
+**Generado el**: ${new Date().toLocaleString('es-ES')}
+`;
+
+          showPromptModal(prompt, { 
+            id: 'kw_' + Date.now(), 
+            type: 'keyword',
+            title: keyword.keyword 
+          });
         }
 
         // Generar acciones disponibles
