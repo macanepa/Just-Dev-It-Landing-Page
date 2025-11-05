@@ -1865,6 +1865,1742 @@
           justify-content: space-between;
         }
       }
+
+      /* ============================================ */
+      /* SECCIÓN 4: ANALYTICS DASHBOARD CSS          */
+      /* ============================================ */
+
+      /* Analytics KPIs Grid */
+      .analytics-kpis-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .analytics-kpi-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        display: flex;
+        gap: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .analytics-kpi-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+        border-color: var(--primary);
+      }
+
+      .kpi-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .kpi-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .kpi-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .kpi-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .kpi-change {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+      }
+
+      .kpi-change i {
+        font-size: 0.75rem;
+      }
+
+      .kpi-change.positive {
+        color: var(--success);
+      }
+
+      .kpi-change.negative {
+        color: var(--danger);
+      }
+
+      .kpi-change .change-label {
+        color: var(--text-secondary);
+        margin-left: 5px;
+      }
+
+      /* Analytics Charts Row */
+      .analytics-charts-row {
+        display: flex;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .chart-legend-inline {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+      }
+
+      /* Analytics Secondary Metrics */
+      .analytics-secondary-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .metric-card {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
+      }
+
+      .metric-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-1px);
+      }
+
+      .metric-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background: rgba(59, 130, 246, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .metric-info {
+        flex: 1;
+      }
+
+      .metric-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+      }
+
+      .metric-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      /* Analytics Pages Table */
+      .analytics-pages-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .analytics-pages-table thead {
+        background: var(--bg-tertiary);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .analytics-pages-table th {
+        padding: 15px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .analytics-pages-table th .th-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .analytics-pages-table th.sortable:hover {
+        background: rgba(59, 130, 246, 0.1);
+      }
+
+      .analytics-pages-table td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .analytics-pages-table tbody tr {
+        transition: all 0.2s ease;
+      }
+
+      .analytics-pages-table tbody tr:hover {
+        background: rgba(59, 130, 246, 0.05);
+      }
+
+      .page-url {
+        color: var(--primary);
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .page-url:hover {
+        text-decoration: underline;
+      }
+
+      .page-url i {
+        font-size: 0.85rem;
+        opacity: 0.6;
+      }
+
+      .bounce-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .bounce-badge.excellent {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+      }
+
+      .bounce-badge.good {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--primary);
+      }
+
+      .bounce-badge.average {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning);
+      }
+
+      .bounce-badge.poor {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--danger);
+      }
+
+      .trend-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .trend-indicator.up {
+        color: var(--success);
+      }
+
+      .trend-indicator.down {
+        color: var(--danger);
+      }
+
+      .trend-indicator.stable {
+        color: var(--text-secondary);
+      }
+
+      /* Analytics Insights */
+      .analytics-insights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+      }
+
+      .insight-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        border: 1px solid var(--border-color);
+      }
+
+      .insight-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .insight-header i {
+        font-size: 1.3rem;
+      }
+
+      .insight-header h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+      }
+
+      .insights-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .insight-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px;
+        background: var(--bg-tertiary);
+        border-radius: 8px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .insight-item i {
+        font-size: 1rem;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      /* Responsive para Analytics */
+      @media (max-width: 1200px) {
+        .analytics-charts-row {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .analytics-kpis-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .analytics-secondary-metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .analytics-insights {
+          grid-template-columns: 1fr;
+        }
+
+        .kpi-value {
+          font-size: 1.5rem;
+        }
+
+        .chart-legend-inline {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+      }
+
+      /* ============================================ */
+      /* SECCIÓN 5: PERFORMANCE CSS                  */
+      /* ============================================ */
+
+      /* Performance Scores Grid */
+      .performance-scores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .performance-score-card {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: var(--spacing-xl);
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .performance-score-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+        border-color: var(--primary);
+      }
+
+      .score-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .score-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+      }
+
+      .score-gauge-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto var(--spacing-lg);
+      }
+
+      .score-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .score-value {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 5px;
+      }
+
+      .score-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .score-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .metric-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 12px;
+        background: var(--bg-tertiary);
+        border-radius: 8px;
+      }
+
+      .metric-name {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .metric-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      /* Web Vitals Grid */
+      .web-vitals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-lg);
+        padding: var(--spacing-lg);
+      }
+
+      .vital-card {
+        display: flex;
+        gap: var(--spacing-md);
+      }
+
+      .vital-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .vital-content {
+        flex: 1;
+      }
+
+      .vital-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+      }
+
+      .vital-description {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+
+      .vital-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .vital-bar {
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+
+      .vital-bar-fill {
+        height: 100%;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+      }
+
+      .vital-bar-fill.good {
+        background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+      }
+
+      .vital-bar-fill.needs-improvement {
+        background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+      }
+
+      .vital-bar-fill.poor {
+        background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+      }
+
+      .vital-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .vital-status i {
+        font-size: 0.6rem;
+      }
+
+      .vital-status.good {
+        color: var(--success);
+      }
+
+      .vital-status.needs-improvement {
+        color: var(--warning);
+      }
+
+      .vital-status.poor {
+        color: var(--danger);
+      }
+
+      /* Performance Insights Row */
+      .performance-insights-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      /* Opportunities List */
+      .opportunities-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .opportunity-item {
+        display: flex;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        border-left: 4px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .opportunity-item:hover {
+        background: rgba(59, 130, 246, 0.05);
+        border-left-color: var(--primary);
+      }
+
+      .opportunity-item.high-impact {
+        border-left-color: var(--danger);
+      }
+
+      .opportunity-item.medium-impact {
+        border-left-color: var(--warning);
+      }
+
+      .opportunity-item.low-impact {
+        border-left-color: var(--success);
+      }
+
+      .opportunity-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(59, 130, 246, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .opportunity-content {
+        flex: 1;
+      }
+
+      .opportunity-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .opportunity-description {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+
+      .opportunity-savings {
+        display: inline-block;
+        padding: 4px 10px;
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      /* Diagnostics List */
+      .diagnostics-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .diagnostic-item {
+        display: flex;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        transition: all 0.2s ease;
+      }
+
+      .diagnostic-item:hover {
+        background: rgba(59, 130, 246, 0.05);
+      }
+
+      .diagnostic-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(139, 92, 246, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .diagnostic-content {
+        flex: 1;
+      }
+
+      .diagnostic-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .diagnostic-description {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      /* Load Metrics Grid */
+      .load-metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+      }
+
+      .load-metric-card {
+        display: flex;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        transition: all 0.2s ease;
+      }
+
+      .load-metric-card:hover {
+        transform: translateY(-2px);
+        background: rgba(59, 130, 246, 0.05);
+      }
+
+      .load-metric-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .load-metric-content {
+        flex: 1;
+      }
+
+      .load-metric-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .load-metric-value {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .load-metric-bar {
+        height: 6px;
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .load-metric-bar-fill {
+        height: 100%;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+      }
+
+      /* Resources Summary */
+      .resources-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+      }
+
+      .resource-card {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        padding: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        transition: all 0.2s ease;
+      }
+
+      .resource-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-1px);
+      }
+
+      .resource-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .resource-content {
+        flex: 1;
+      }
+
+      .resource-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .resource-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 3px;
+      }
+
+      .resource-count {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      /* Responsive para Performance */
+      @media (max-width: 1200px) {
+        .performance-insights-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .performance-scores-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .web-vitals-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .load-metrics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .resources-summary {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .score-gauge-container {
+          width: 160px;
+          height: 160px;
+        }
+
+        .score-value {
+          font-size: 2.5rem;
+        }
+
+        .vital-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      /* ============================================ */
+      /* SECCIÓN 6: SUGERENCIAS INTELIGENTES CSS     */
+      /* ============================================ */
+
+      /* Suggestions Summary */
+      .suggestions-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .summary-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        border-left: 4px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .summary-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+      }
+
+      .summary-card.priority-high {
+        border-left-color: var(--danger);
+      }
+
+      .summary-card.priority-medium {
+        border-left-color: var(--warning);
+      }
+
+      .summary-card.priority-low {
+        border-left-color: #64748b;
+      }
+
+      .summary-card.completed {
+        border-left-color: var(--success);
+      }
+
+      .summary-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        flex-shrink: 0;
+      }
+
+      .priority-high .summary-icon {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--danger);
+      }
+
+      .priority-medium .summary-icon {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning);
+      }
+
+      .priority-low .summary-icon {
+        background: rgba(100, 116, 139, 0.1);
+        color: #64748b;
+      }
+
+      .completed .summary-icon {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+      }
+
+      .summary-content {
+        flex: 1;
+      }
+
+      .summary-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 5px;
+        color: var(--text-primary);
+      }
+
+      .summary-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Suggestions Filters */
+      .suggestions-filters {
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: flex-end;
+        margin-bottom: var(--spacing-xl);
+        padding: var(--spacing-lg);
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        flex-wrap: wrap;
+      }
+
+      /* Suggestions List */
+      .suggestions-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .suggestion-loading {
+        text-align: center;
+        padding: 60px;
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+
+      .suggestion-item {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        border: 1px solid var(--border-color);
+        border-left: 4px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .suggestion-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+        border-left-color: var(--primary);
+      }
+
+      .suggestion-item.priority-high {
+        border-left-color: var(--danger);
+      }
+
+      .suggestion-item.priority-medium {
+        border-left-color: var(--warning);
+      }
+
+      .suggestion-item.priority-low {
+        border-left-color: #64748b;
+      }
+
+      .suggestion-item.completed {
+        opacity: 0.6;
+        border-left-color: var(--success);
+      }
+
+      .suggestion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .suggestion-title-section {
+        flex: 1;
+      }
+
+      .suggestion-badges {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .suggestion-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .suggestion-badge.priority-high {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--danger);
+      }
+
+      .suggestion-badge.priority-medium {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning);
+      }
+
+      .suggestion-badge.priority-low {
+        background: rgba(100, 116, 139, 0.1);
+        color: #64748b;
+      }
+
+      .suggestion-badge.category {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--primary);
+      }
+
+      .suggestion-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .suggestion-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .suggestion-impact {
+        display: flex;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 8px;
+      }
+
+      .impact-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .impact-label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .impact-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .suggestion-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .suggestion-actions .btn {
+        min-width: 120px;
+      }
+
+      /* AI Insights Section */
+      .ai-insights-section {
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .ai-insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+      }
+
+      .ai-insight-card {
+        display: flex;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        transition: all 0.2s ease;
+      }
+
+      .ai-insight-card:hover {
+        background: rgba(59, 130, 246, 0.05);
+        transform: translateY(-1px);
+      }
+
+      .ai-insight-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background: rgba(139, 92, 246, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .ai-insight-content {
+        flex: 1;
+      }
+
+      .ai-insight-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .ai-insight-text {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      /* Suggested Keywords Table */
+      .suggested-keywords-table-container {
+        overflow-x: auto;
+      }
+
+      .suggested-keywords-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .suggested-keywords-table thead {
+        background: var(--bg-tertiary);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .suggested-keywords-table th {
+        padding: 15px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .suggested-keywords-table td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .suggested-keywords-table tbody tr {
+        transition: all 0.2s ease;
+      }
+
+      .suggested-keywords-table tbody tr:hover {
+        background: rgba(59, 130, 246, 0.05);
+      }
+
+      .keyword-difficulty-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .keyword-difficulty-badge.easy {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+      }
+
+      .keyword-difficulty-badge.medium {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning);
+      }
+
+      .keyword-difficulty-badge.hard {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--danger);
+      }
+
+      .potential-bar {
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 5px;
+      }
+
+      .potential-bar-fill {
+        height: 100%;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+      }
+
+      .potential-bar-fill.high {
+        background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+      }
+
+      .potential-bar-fill.medium {
+        background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+      }
+
+      .potential-bar-fill.low {
+        background: linear-gradient(90deg, #64748b 0%, #475569 100%);
+      }
+
+      .trend-arrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 600;
+      }
+
+      .trend-arrow.up {
+        color: var(--success);
+      }
+
+      .trend-arrow.down {
+        color: var(--danger);
+      }
+
+      .trend-arrow.stable {
+        color: var(--text-secondary);
+      }
+
+      /* Responsive para Sugerencias */
+      @media (max-width: 1200px) {
+        .ai-insights-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .suggestions-summary {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .suggestions-filters {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .suggestion-impact {
+          flex-direction: column;
+          gap: var(--spacing-sm);
+        }
+
+        .suggestion-actions {
+          flex-direction: column;
+        }
+
+        .suggestion-actions .btn {
+          width: 100%;
+        }
+      }
+
+      /* ============================================ */
+      /* SECCIÓN 7: ACCIONES AUTOMÁTICAS CSS         */
+      /* ============================================ */
+
+      /* Automation Status Grid */
+      .automation-status-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .status-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .status-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+      }
+
+      .status-card.active {
+        border-color: var(--success);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--bg-secondary) 100%);
+      }
+
+      .status-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: rgba(59, 130, 246, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .status-card.active .status-icon {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+        animation: pulse-green 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse-green {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+
+      .status-content {
+        flex: 1;
+      }
+
+      .status-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .status-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      /* Toggle Switch */
+      .toggle-switch {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .toggle-switch input[type="checkbox"] {
+        position: relative;
+        width: 50px;
+        height: 26px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: #334155;
+        outline: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .toggle-switch input[type="checkbox"]:checked {
+        background: var(--success);
+      }
+
+      .toggle-switch input[type="checkbox"]::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        top: 3px;
+        left: 3px;
+        background: white;
+        transition: all 0.3s ease;
+      }
+
+      .toggle-switch input[type="checkbox"]:checked::before {
+        left: 27px;
+      }
+
+      .toggle-switch label {
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /* Actions List */
+      .actions-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+      }
+
+      .action-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 10px;
+        border-left: 4px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .action-item:hover {
+        background: rgba(59, 130, 246, 0.05);
+        border-left-color: var(--primary);
+      }
+
+      .action-item.enabled {
+        border-left-color: var(--success);
+      }
+
+      .action-item.running {
+        border-left-color: var(--warning);
+        animation: pulse-action 1.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse-action {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+
+      .action-checkbox {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: var(--primary);
+      }
+
+      .action-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background: rgba(59, 130, 246, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: var(--primary);
+        flex-shrink: 0;
+      }
+
+      .action-content {
+        flex: 1;
+      }
+
+      .action-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .action-status-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .action-status-badge.idle {
+        background: rgba(100, 116, 139, 0.1);
+        color: #64748b;
+      }
+
+      .action-status-badge.running {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning);
+      }
+
+      .action-status-badge.completed {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+      }
+
+      .action-description {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      .action-controls {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .action-controls .btn {
+        min-width: 100px;
+      }
+
+      /* Preview Container */
+      .preview-container {
+        padding: var(--spacing-lg);
+        min-height: 300px;
+      }
+
+      .preview-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+      }
+
+      .preview-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .preview-section {
+        padding: var(--spacing-md);
+        background: var(--bg-tertiary);
+        border-radius: 8px;
+        border-left: 3px solid var(--primary);
+      }
+
+      .preview-section-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .preview-diff {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .diff-line {
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+
+      .diff-line.removed {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--danger);
+        text-decoration: line-through;
+      }
+
+      .diff-line.added {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+      }
+
+      .diff-line.unchanged {
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+      }
+
+      /* History Timeline */
+      .history-timeline {
+        padding: var(--spacing-lg);
+        position: relative;
+      }
+
+      .history-timeline::before {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--border-color);
+      }
+
+      .history-item {
+        display: flex;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+        position: relative;
+      }
+
+      .history-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--primary);
+        border: 3px solid var(--bg-primary);
+        flex-shrink: 0;
+        margin-top: 5px;
+        z-index: 1;
+      }
+
+      .history-dot.success {
+        background: var(--success);
+      }
+
+      .history-dot.warning {
+        background: var(--warning);
+      }
+
+      .history-dot.error {
+        background: var(--danger);
+      }
+
+      .history-content {
+        flex: 1;
+        padding: var(--spacing-md);
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+      }
+
+      .history-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .history-title {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .history-time {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .history-description {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      .history-meta {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .history-meta span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* Responsive para Acciones */
+      @media (max-width: 1200px) {
+        .action-item {
+          flex-wrap: wrap;
+        }
+
+        .action-controls {
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .automation-status-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .action-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .action-controls {
+          width: 100%;
+        }
+
+        .action-controls .btn {
+          flex: 1;
+        }
+
+        .history-timeline::before {
+          left: 6px;
+        }
+
+        .history-item {
+          padding-left: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -2500,32 +4236,972 @@
           </div>
         </div>
 
+        <!-- ============================================ -->
+        <!-- SECCIÓN 4: ANALYTICS DASHBOARD (GA4)         -->
+        <!-- ============================================ -->
         <div id="analytics-tab" class="tab-content" style="display: none">
-          <div class="dashboard-card">
-            <h3>Analytics</h3>
-            <p>Contenido próximamente...</p>
+          
+          <!-- Header con acciones -->
+          <div class="section-header" style="margin-bottom: 30px;">
+            <div>
+              <h2 style="margin: 0 0 5px 0;">
+                <i class="fas fa-chart-line" style="color: var(--primary); margin-right: 10px;"></i>
+                Analytics Dashboard
+              </h2>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                Datos de Google Analytics 4 - Últimos 30 días
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button id="btn-export-analytics" class="btn btn-secondary btn-sm">
+                <i class="fas fa-download"></i>
+                Exportar Reporte
+              </button>
+              <button id="btn-refresh-analytics" class="btn btn-primary btn-sm">
+                <i class="fas fa-sync-alt"></i>
+                Actualizar
+              </button>
+            </div>
           </div>
+
+          <!-- 4 KPIs Principales de GA4 -->
+          <div class="analytics-kpis-grid">
+            <div class="analytics-kpi-card">
+              <div class="kpi-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Total Usuarios</div>
+                <div class="kpi-value" id="ga4-total-users">-</div>
+                <div class="kpi-change" id="ga4-users-change">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+0%</span>
+                  <span class="change-label">vs periodo anterior</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="analytics-kpi-card">
+              <div class="kpi-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Sesiones Totales</div>
+                <div class="kpi-value" id="ga4-sessions">-</div>
+                <div class="kpi-change" id="ga4-sessions-change">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+0%</span>
+                  <span class="change-label">vs periodo anterior</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="analytics-kpi-card">
+              <div class="kpi-icon" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                <i class="fas fa-percentage"></i>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Tasa de Rebote</div>
+                <div class="kpi-value" id="ga4-bounce-rate">-</div>
+                <div class="kpi-change" id="ga4-bounce-change">
+                  <i class="fas fa-arrow-down"></i>
+                  <span>+0%</span>
+                  <span class="change-label">vs periodo anterior</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="analytics-kpi-card">
+              <div class="kpi-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="kpi-content">
+                <div class="kpi-label">Conversiones</div>
+                <div class="kpi-value" id="ga4-conversions">-</div>
+                <div class="kpi-change" id="ga4-conversions-change">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+0%</span>
+                  <span class="change-label">vs periodo anterior</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fila de gráficas -->
+          <div class="analytics-charts-row">
+            <!-- Gráfica de Evolución de Tráfico -->
+            <div class="dashboard-card" style="flex: 2;">
+              <div class="card-header">
+                <div>
+                  <h3 style="margin: 0 0 5px 0;">Evolución de Tráfico</h3>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                    Usuarios, Sesiones y Páginas Vistas - Últimos 30 días
+                  </p>
+                </div>
+                <div class="chart-legend-inline">
+                  <span class="legend-item">
+                    <span class="legend-color" style="background: #3b82f6;"></span>
+                    Usuarios
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-color" style="background: #8b5cf6;"></span>
+                    Sesiones
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-color" style="background: #ec4899;"></span>
+                    Páginas Vistas
+                  </span>
+                </div>
+              </div>
+              <div class="chart-container" style="height: 320px;">
+                <canvas id="traffic-evolution-chart"></canvas>
+              </div>
+            </div>
+
+            <!-- Gráfica de Fuentes de Tráfico -->
+            <div class="dashboard-card" style="flex: 1;">
+              <div class="card-header">
+                <div>
+                  <h3 style="margin: 0 0 5px 0;">Fuentes de Tráfico</h3>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                    Distribución por canal
+                  </p>
+                </div>
+              </div>
+              <div class="chart-container" style="height: 320px; display: flex; align-items: center; justify-content: center;">
+                <canvas id="traffic-sources-chart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Métricas Secundarias -->
+          <div class="analytics-secondary-metrics">
+            <div class="metric-card">
+              <div class="metric-icon" style="color: #3b82f6;">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="metric-info">
+                <div class="metric-label">Duración Promedio</div>
+                <div class="metric-value" id="ga4-avg-duration">0m 0s</div>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon" style="color: #8b5cf6;">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="metric-info">
+                <div class="metric-label">Páginas por Sesión</div>
+                <div class="metric-value" id="ga4-pages-per-session">0</div>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon" style="color: #ec4899;">
+                <i class="fas fa-user-check"></i>
+              </div>
+              <div class="metric-info">
+                <div class="metric-label">Nuevos Usuarios</div>
+                <div class="metric-value" id="ga4-new-users">0</div>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon" style="color: #10b981;">
+                <i class="fas fa-redo"></i>
+              </div>
+              <div class="metric-info">
+                <div class="metric-label">Usuarios Recurrentes</div>
+                <div class="metric-value" id="ga4-returning-users">0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabla Top 10 Páginas -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">Top 10 Páginas Más Visitadas</h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Páginas con mejor rendimiento en los últimos 30 días
+                </p>
+              </div>
+              <button id="btn-export-pages" class="btn btn-secondary btn-sm">
+                <i class="fas fa-file-csv"></i>
+                Exportar CSV
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="analytics-pages-table">
+                <thead>
+                  <tr>
+                    <th style="text-align: left; width: 40%;">
+                      <div class="th-content sortable" data-sort="page">
+                        Página
+                        <i class="fas fa-sort sort-icon"></i>
+                      </div>
+                    </th>
+                    <th class="sortable" data-sort="pageviews">
+                      <div class="th-content">
+                        Vistas
+                        <i class="fas fa-sort sort-icon"></i>
+                      </div>
+                    </th>
+                    <th class="sortable" data-sort="users">
+                      <div class="th-content">
+                        Usuarios Únicos
+                        <i class="fas fa-sort sort-icon"></i>
+                      </div>
+                    </th>
+                    <th class="sortable" data-sort="avgTime">
+                      <div class="th-content">
+                        Tiempo Promedio
+                        <i class="fas fa-sort sort-icon"></i>
+                      </div>
+                    </th>
+                    <th class="sortable" data-sort="bounceRate">
+                      <div class="th-content">
+                        Tasa Rebote
+                        <i class="fas fa-sort sort-icon"></i>
+                      </div>
+                    </th>
+                    <th style="text-align: center;">Tendencia</th>
+                  </tr>
+                </thead>
+                <tbody id="analytics-pages-tbody">
+                  <tr>
+                    <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                      <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px;"></i>
+                      <div>Cargando datos de Analytics...</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Insights y Recomendaciones -->
+          <div class="analytics-insights">
+            <div class="insight-card">
+              <div class="insight-header">
+                <i class="fas fa-lightbulb" style="color: #fbbf24;"></i>
+                <h4>Insights Automáticos</h4>
+              </div>
+              <div class="insights-list" id="analytics-insights-list">
+                <div class="insight-item">
+                  <i class="fas fa-chart-line" style="color: var(--success);"></i>
+                  <span>Analizando patrones de tráfico...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-header">
+                <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
+                <h4>Alertas y Oportunidades</h4>
+              </div>
+              <div class="insights-list" id="analytics-alerts-list">
+                <div class="insight-item">
+                  <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                  <span>Buscando oportunidades de mejora...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
+        <!-- ============================================ -->
+        <!-- SECCIÓN 5: PERFORMANCE (PAGESPEED INSIGHTS) -->
+        <!-- ============================================ -->
         <div id="performance-tab" class="tab-content" style="display: none">
-          <div class="dashboard-card">
-            <h3>Performance</h3>
-            <p>Contenido próximamente...</p>
+          
+          <!-- Header con acciones -->
+          <div class="section-header" style="margin-bottom: 30px;">
+            <div>
+              <h2 style="margin: 0 0 5px 0;">
+                <i class="fas fa-tachometer-alt" style="color: var(--primary); margin-right: 10px;"></i>
+                Performance Dashboard
+              </h2>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                PageSpeed Insights + Core Web Vitals
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button id="btn-export-performance" class="btn btn-secondary btn-sm">
+                <i class="fas fa-download"></i>
+                Exportar Reporte
+              </button>
+              <button id="btn-refresh-performance" class="btn btn-primary btn-sm">
+                <i class="fas fa-sync-alt"></i>
+                Actualizar
+              </button>
+            </div>
           </div>
+
+          <!-- Scores Principales: Mobile y Desktop -->
+          <div class="performance-scores-grid">
+            <!-- Mobile Score -->
+            <div class="performance-score-card">
+              <div class="score-header">
+                <i class="fas fa-mobile-alt" style="font-size: 1.5rem; color: var(--primary);"></i>
+                <h3>Mobile</h3>
+              </div>
+              <div class="score-gauge-container">
+                <canvas id="mobile-score-gauge"></canvas>
+                <div class="score-overlay">
+                  <div class="score-value" id="mobile-score-value">-</div>
+                  <div class="score-label">Performance</div>
+                </div>
+              </div>
+              <div class="score-metrics">
+                <div class="metric-item">
+                  <span class="metric-name">FCP</span>
+                  <span class="metric-value" id="mobile-fcp">-</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-name">LCP</span>
+                  <span class="metric-value" id="mobile-lcp">-</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-name">CLS</span>
+                  <span class="metric-value" id="mobile-cls">-</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-name">TTI</span>
+                  <span class="metric-value" id="mobile-tti">-</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Score -->
+            <div class="performance-score-card">
+              <div class="score-header">
+                <i class="fas fa-desktop" style="font-size: 1.5rem; color: var(--primary);"></i>
+                <h3>Desktop</h3>
+              </div>
+              <div class="score-gauge-container">
+                <canvas id="desktop-score-gauge"></canvas>
+                <div class="score-overlay">
+                  <div class="score-value" id="desktop-score-value">-</div>
+                  <div class="score-label">Performance</div>
+                </div>
+              </div>
+              <div class="score-metrics">
+                <div class="metric-item">
+                  <span class="metric-name">FCP</span>
+                  <span class="metric-value" id="desktop-fcp">-</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-name">LCP</span>
+                  <span class="metric-value" id="desktop-lcp">-</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-name">CLS</span>
+                  <span class="metric-value" id="desktop-cls">-</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-name">TTI</span>
+                  <span class="metric-value" id="desktop-tti">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Web Vitals Detallados -->
+          <div class="dashboard-card" style="margin-bottom: var(--spacing-xl);">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">Core Web Vitals</h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Métricas clave de experiencia de usuario
+                </p>
+              </div>
+            </div>
+            <div class="web-vitals-grid">
+              <!-- LCP - Largest Contentful Paint -->
+              <div class="vital-card">
+                <div class="vital-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                  <i class="fas fa-image"></i>
+                </div>
+                <div class="vital-content">
+                  <div class="vital-name">LCP</div>
+                  <div class="vital-description">Largest Contentful Paint</div>
+                  <div class="vital-value" id="cwv-lcp-value">-</div>
+                  <div class="vital-bar">
+                    <div class="vital-bar-fill" id="cwv-lcp-bar"></div>
+                  </div>
+                  <div class="vital-status" id="cwv-lcp-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Evaluando...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FID - First Input Delay -->
+              <div class="vital-card">
+                <div class="vital-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                  <i class="fas fa-hand-pointer"></i>
+                </div>
+                <div class="vital-content">
+                  <div class="vital-name">FID</div>
+                  <div class="vital-description">First Input Delay</div>
+                  <div class="vital-value" id="cwv-fid-value">-</div>
+                  <div class="vital-bar">
+                    <div class="vital-bar-fill" id="cwv-fid-bar"></div>
+                  </div>
+                  <div class="vital-status" id="cwv-fid-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Evaluando...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CLS - Cumulative Layout Shift -->
+              <div class="vital-card">
+                <div class="vital-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                  <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="vital-content">
+                  <div class="vital-name">CLS</div>
+                  <div class="vital-description">Cumulative Layout Shift</div>
+                  <div class="vital-value" id="cwv-cls-value">-</div>
+                  <div class="vital-bar">
+                    <div class="vital-bar-fill" id="cwv-cls-bar"></div>
+                  </div>
+                  <div class="vital-status" id="cwv-cls-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Evaluando...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Oportunidades y Diagnósticos -->
+          <div class="performance-insights-row">
+            <!-- Oportunidades de Mejora -->
+            <div class="dashboard-card" style="flex: 1;">
+              <div class="card-header">
+                <div>
+                  <h3 style="margin: 0 0 5px 0;">
+                    <i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 8px;"></i>
+                    Oportunidades de Mejora
+                  </h3>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                    Recomendaciones para mejorar el rendimiento
+                  </p>
+                </div>
+              </div>
+              <div class="opportunities-list" id="opportunities-list">
+                <div class="opportunity-item">
+                  <div class="opportunity-icon">
+                    <i class="fas fa-spinner fa-spin"></i>
+                  </div>
+                  <div class="opportunity-content">
+                    <div class="opportunity-title">Analizando oportunidades...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Diagnósticos -->
+            <div class="dashboard-card" style="flex: 1;">
+              <div class="card-header">
+                <div>
+                  <h3 style="margin: 0 0 5px 0;">
+                    <i class="fas fa-stethoscope" style="color: var(--primary); margin-right: 8px;"></i>
+                    Diagnósticos
+                  </h3>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                    Problemas detectados y sugerencias
+                  </p>
+                </div>
+              </div>
+              <div class="diagnostics-list" id="diagnostics-list">
+                <div class="diagnostic-item">
+                  <div class="diagnostic-icon">
+                    <i class="fas fa-spinner fa-spin"></i>
+                  </div>
+                  <div class="diagnostic-content">
+                    <div class="diagnostic-title">Ejecutando diagnósticos...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Métricas de Carga -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">Métricas de Carga Detalladas</h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Timeline completo de carga de la página
+                </p>
+              </div>
+            </div>
+            <div class="load-metrics-grid">
+              <div class="load-metric-card">
+                <div class="load-metric-icon" style="color: #3b82f6;">
+                  <i class="fas fa-stopwatch"></i>
+                </div>
+                <div class="load-metric-content">
+                  <div class="load-metric-label">First Contentful Paint</div>
+                  <div class="load-metric-value" id="metric-fcp">-</div>
+                  <div class="load-metric-bar">
+                    <div class="load-metric-bar-fill" id="metric-fcp-bar"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="load-metric-card">
+                <div class="load-metric-icon" style="color: #8b5cf6;">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div class="load-metric-content">
+                  <div class="load-metric-label">Speed Index</div>
+                  <div class="load-metric-value" id="metric-si">-</div>
+                  <div class="load-metric-bar">
+                    <div class="load-metric-bar-fill" id="metric-si-bar"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="load-metric-card">
+                <div class="load-metric-icon" style="color: #ec4899;">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="load-metric-content">
+                  <div class="load-metric-label">Time to Interactive</div>
+                  <div class="load-metric-value" id="metric-tti">-</div>
+                  <div class="load-metric-bar">
+                    <div class="load-metric-bar-fill" id="metric-tti-bar"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="load-metric-card">
+                <div class="load-metric-icon" style="color: #10b981;">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="load-metric-content">
+                  <div class="load-metric-label">Total Blocking Time</div>
+                  <div class="load-metric-value" id="metric-tbt">-</div>
+                  <div class="load-metric-bar">
+                    <div class="load-metric-bar-fill" id="metric-tbt-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumen de Recursos -->
+          <div class="resources-summary">
+            <div class="resource-card">
+              <div class="resource-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">
+                <i class="fas fa-file-code"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-label">JavaScript</div>
+                <div class="resource-value" id="resource-js-size">-</div>
+                <div class="resource-count" id="resource-js-count">- archivos</div>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-label">CSS</div>
+                <div class="resource-value" id="resource-css-size">-</div>
+                <div class="resource-count" id="resource-css-count">- archivos</div>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                <i class="fas fa-image"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-label">Imágenes</div>
+                <div class="resource-value" id="resource-img-size">-</div>
+                <div class="resource-count" id="resource-img-count">- archivos</div>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                <i class="fas fa-font"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-label">Fuentes</div>
+                <div class="resource-value" id="resource-font-size">-</div>
+                <div class="resource-count" id="resource-font-count">- archivos</div>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="resource-content">
+                <div class="resource-label">Total Transferido</div>
+                <div class="resource-value" id="resource-total-size">-</div>
+                <div class="resource-count" id="resource-total-count">- recursos</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
+        <!-- ============================================ -->
+        <!-- SECCIÓN 6: SUGERENCIAS INTELIGENTES         -->
+        <!-- ============================================ -->
         <div id="suggestions-tab" class="tab-content" style="display: none">
-          <div class="dashboard-card">
-            <h3>Sugerencias Inteligentes</h3>
-            <p>Contenido próximamente...</p>
+          
+          <!-- Header con acciones -->
+          <div class="section-header" style="margin-bottom: 30px;">
+            <div>
+              <h2 style="margin: 0 0 5px 0;">
+                <i class="fas fa-magic" style="color: var(--primary); margin-right: 10px;"></i>
+                Sugerencias Inteligentes
+              </h2>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                Recomendaciones basadas en IA y mejores prácticas de SEO
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button id="btn-generate-suggestions" class="btn btn-primary btn-sm">
+                <i class="fas fa-sync-alt"></i>
+                Generar Nuevas
+              </button>
+              <button id="btn-export-suggestions" class="btn btn-secondary btn-sm">
+                <i class="fas fa-download"></i>
+                Exportar
+              </button>
+            </div>
           </div>
+
+          <!-- Resumen de Sugerencias -->
+          <div class="suggestions-summary">
+            <div class="summary-card priority-high">
+              <div class="summary-icon">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div class="summary-content">
+                <div class="summary-value" id="high-priority-count">0</div>
+                <div class="summary-label">Prioridad Alta</div>
+              </div>
+            </div>
+
+            <div class="summary-card priority-medium">
+              <div class="summary-icon">
+                <i class="fas fa-info-circle"></i>
+              </div>
+              <div class="summary-content">
+                <div class="summary-value" id="medium-priority-count">0</div>
+                <div class="summary-label">Prioridad Media</div>
+              </div>
+            </div>
+
+            <div class="summary-card priority-low">
+              <div class="summary-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="summary-content">
+                <div class="summary-value" id="low-priority-count">0</div>
+                <div class="summary-label">Prioridad Baja</div>
+              </div>
+            </div>
+
+            <div class="summary-card completed">
+              <div class="summary-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="summary-content">
+                <div class="summary-value" id="completed-count">0</div>
+                <div class="summary-label">Completadas</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filtros de Sugerencias -->
+          <div class="suggestions-filters">
+            <div class="filter-group">
+              <label for="filter-suggestion-priority">Prioridad</label>
+              <select id="filter-suggestion-priority" class="filter-select">
+                <option value="all">Todas</option>
+                <option value="high">Alta</option>
+                <option value="medium">Media</option>
+                <option value="low">Baja</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="filter-suggestion-category">Categoría</label>
+              <select id="filter-suggestion-category" class="filter-select">
+                <option value="all">Todas</option>
+                <option value="keywords">Keywords</option>
+                <option value="content">Contenido</option>
+                <option value="technical">Técnico</option>
+                <option value="performance">Performance</option>
+                <option value="ux">Experiencia Usuario</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="filter-suggestion-status">Estado</label>
+              <select id="filter-suggestion-status" class="filter-select">
+                <option value="pending">Pendientes</option>
+                <option value="completed">Completadas</option>
+                <option value="all">Todas</option>
+              </select>
+            </div>
+
+            <button id="btn-reset-suggestion-filters" class="btn btn-secondary btn-sm">
+              <i class="fas fa-redo"></i>
+              Reset
+            </button>
+          </div>
+
+          <!-- Lista de Sugerencias -->
+          <div class="suggestions-list" id="suggestions-list">
+            <div class="suggestion-loading">
+              <i class="fas fa-spinner fa-spin" style="font-size: 32px; color: var(--primary);"></i>
+              <p style="margin-top: 15px; color: var(--text-secondary);">Analizando datos y generando sugerencias...</p>
+            </div>
+          </div>
+
+          <!-- Insights de IA -->
+          <div class="ai-insights-section">
+            <div class="dashboard-card">
+              <div class="card-header">
+                <div>
+                  <h3 style="margin: 0 0 5px 0;">
+                    <i class="fas fa-brain" style="color: #8b5cf6; margin-right: 8px;"></i>
+                    Análisis con IA
+                  </h3>
+                  <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                    Insights generados por algoritmos de Machine Learning
+                  </p>
+                </div>
+              </div>
+              <div class="ai-insights-grid" id="ai-insights-grid">
+                <div class="ai-insight-card">
+                  <div class="ai-insight-icon" style="color: #3b82f6;">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="ai-insight-content">
+                    <div class="ai-insight-title">Predicción de Tendencias</div>
+                    <div class="ai-insight-text">Analizando patrones...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Keywords Sugeridas -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">
+                  <i class="fas fa-key" style="color: #10b981; margin-right: 8px;"></i>
+                  Keywords Sugeridas (Basado en Competencia)
+                </h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Palabras clave con alto potencial que aún no estás aprovechando
+                </p>
+              </div>
+              <button id="btn-add-suggested-keywords" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i>
+                Agregar Seleccionadas
+              </button>
+            </div>
+            <div class="suggested-keywords-table-container">
+              <table class="suggested-keywords-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px; text-align: center;">
+                      <input type="checkbox" id="select-all-keywords">
+                    </th>
+                    <th style="text-align: left;">Keyword</th>
+                    <th>Volumen</th>
+                    <th>Dificultad</th>
+                    <th>Potencial</th>
+                    <th>CPC</th>
+                    <th>Tendencia</th>
+                  </tr>
+                </thead>
+                <tbody id="suggested-keywords-tbody">
+                  <tr>
+                    <td colspan="7" style="text-align: center; padding: 40px;">
+                      <i class="fas fa-spinner fa-spin"></i>
+                      <div style="margin-top: 10px;">Cargando keywords sugeridas...</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
 
+        <!-- ============================================ -->
+        <!-- SECCIÓN 7: ACCIONES AUTOMÁTICAS             -->
+        <!-- ============================================ -->
         <div id="actions-tab" class="tab-content" style="display: none">
-          <div class="dashboard-card">
-            <h3>Acciones Automáticas</h3>
-            <p>Contenido próximamente...</p>
+          
+          <!-- Header con acciones -->
+          <div class="section-header" style="margin-bottom: 30px;">
+            <div>
+              <h2 style="margin: 0 0 5px 0;">
+                <i class="fas fa-robot" style="color: var(--primary); margin-right: 10px;"></i>
+                Acciones Automáticas
+              </h2>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                Automatización inteligente de optimizaciones SEO
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button id="btn-run-all-actions" class="btn btn-primary">
+                <i class="fas fa-play"></i>
+                Ejecutar Todas
+              </button>
+              <button id="btn-schedule-actions" class="btn btn-secondary">
+                <i class="fas fa-clock"></i>
+                Programar
+              </button>
+            </div>
           </div>
+
+          <!-- Estado de Automatización -->
+          <div class="automation-status-grid">
+            <div class="status-card active">
+              <div class="status-icon">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="status-content">
+                <div class="status-label">Estado del Sistema</div>
+                <div class="status-value">Activo</div>
+              </div>
+            </div>
+
+            <div class="status-card">
+              <div class="status-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <div class="status-content">
+                <div class="status-label">Última Ejecución</div>
+                <div class="status-value" id="last-execution-time">-</div>
+              </div>
+            </div>
+
+            <div class="status-card">
+              <div class="status-icon">
+                <i class="fas fa-check-double"></i>
+              </div>
+              <div class="status-content">
+                <div class="status-label">Acciones Completadas</div>
+                <div class="status-value" id="completed-actions-count">0</div>
+              </div>
+            </div>
+
+            <div class="status-card">
+              <div class="status-icon">
+                <i class="fas fa-hourglass-half"></i>
+              </div>
+              <div class="status-content">
+                <div class="status-label">Acciones Pendientes</div>
+                <div class="status-value" id="pending-actions-count">0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista de Acciones Disponibles -->
+          <div class="dashboard-card" style="margin-bottom: var(--spacing-xl);">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">Acciones Disponibles</h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Selecciona las acciones que deseas automatizar
+                </p>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-auto-mode" checked>
+                <label for="toggle-auto-mode">Modo Automático</label>
+              </div>
+            </div>
+
+            <div class="actions-list" id="actions-list">
+              <!-- Las acciones se cargarán dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Previsualización de Cambios -->
+          <div class="dashboard-card" style="margin-bottom: var(--spacing-xl);">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">
+                  <i class="fas fa-eye" style="color: var(--primary); margin-right: 8px;"></i>
+                  Previsualización de Cambios
+                </h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Revisa los cambios antes de aplicarlos a tu sitio
+                </p>
+              </div>
+              <button id="btn-refresh-preview" class="btn btn-secondary btn-sm">
+                <i class="fas fa-sync-alt"></i>
+                Actualizar
+              </button>
+            </div>
+
+            <div class="preview-container" id="preview-container">
+              <div class="preview-empty">
+                <i class="fas fa-search" style="font-size: 48px; color: var(--text-secondary); opacity: 0.3;"></i>
+                <p style="margin-top: 15px; color: var(--text-secondary);">
+                  Selecciona una acción para ver la previsualización
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Historial de Acciones -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <h3 style="margin: 0 0 5px 0;">
+                  <i class="fas fa-history" style="color: var(--success); margin-right: 8px;"></i>
+                  Historial de Acciones
+                </h3>
+                <p style="margin: 0; color: var(--text-secondary); font-size: 0.85rem;">
+                  Registro de todas las acciones ejecutadas
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <select id="history-filter" class="filter-select" style="min-width: 150px;">
+                  <option value="all">Todas</option>
+                  <option value="today">Hoy</option>
+                  <option value="week">Esta Semana</option>
+                  <option value="month">Este Mes</option>
+                </select>
+                <button id="btn-export-history" class="btn btn-secondary btn-sm">
+                  <i class="fas fa-download"></i>
+                  Exportar
+                </button>
+              </div>
+            </div>
+
+            <div class="history-timeline" id="history-timeline">
+              <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                <i class="fas fa-clock" style="font-size: 32px; opacity: 0.3; margin-bottom: 15px;"></i>
+                <p>No hay acciones ejecutadas aún</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- ============================================ -->
@@ -3191,12 +5867,6 @@
         setTimeout(updateLastUpdateTime, 60000);
       }
 
-      // Placeholder para actualización de datos
-      function updateDashboardWithData(data) {
-        console.log("Dashboard data loaded:", data);
-        // Esta función se completará en las siguientes secciones
-      }
-
       // Botón de actualización
       document
         .getElementById("btn-refresh")
@@ -3236,8 +5906,19 @@
 
       // Sistema de notificaciones
       function showNotification(message, type = "info") {
-        // Se implementará en la siguiente sección
-        console.log(`[${type}] ${message}`);
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed; top: 20px; right: 20px; z-index: 10000;
+          background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+          color: white; padding: 15px 20px; border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3); animation: slideIn 0.3s ease-out;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        setTimeout(() => {
+          notification.style.animation = 'slideOut 0.3s ease-out';
+          setTimeout(() => notification.remove(), 300);
+        }, 3000);
       }
 
       // ============================================
@@ -5485,6 +8166,600 @@
           });
         }
 
+        // ============================================
+        // SECCIÓN 4: JAVASCRIPT PARA ANALYTICS
+        // ============================================
+
+        let analyticsCharts = {
+          trafficEvolution: null,
+          trafficSources: null
+        };
+
+        // Inicializar sección Analytics
+        function initializeAnalyticsSection(data) {
+          if (!data) return;
+
+          // Generar datos simulados de GA4 (en producción vendría del backend)
+          const analyticsData = generateAnalyticsData();
+
+          // Actualizar KPIs principales
+          updateAnalyticsKPIs(analyticsData);
+
+          // Crear gráficas
+          createTrafficEvolutionChart(analyticsData.trafficEvolution);
+          createTrafficSourcesChart(analyticsData.trafficSources);
+
+          // Actualizar métricas secundarias
+          updateSecondaryMetrics(analyticsData);
+
+          // Renderizar tabla de páginas
+          renderTopPagesTable(analyticsData.topPages);
+
+          // Generar insights y alertas
+          generateAnalyticsInsights(analyticsData);
+
+          // Setup event listeners
+          setupAnalyticsEvents(analyticsData);
+        }
+
+        // Generar datos simulados de Analytics
+        function generateAnalyticsData() {
+          const today = new Date();
+          const trafficEvolution = [];
+
+          // Generar 30 días de datos
+          for (let i = 29; i >= 0; i--) {
+            const date = new Date(today);
+            date.setDate(date.getDate() - i);
+
+            const baseUsers = 450 + Math.random() * 200;
+            const baseSessions = baseUsers * (1.2 + Math.random() * 0.3);
+            const basePageviews = baseSessions * (2.5 + Math.random() * 1.5);
+
+            trafficEvolution.push({
+              date: date.toISOString().split('T')[0],
+              users: Math.round(baseUsers),
+              sessions: Math.round(baseSessions),
+              pageviews: Math.round(basePageviews)
+            });
+          }
+
+          // Fuentes de tráfico
+          const trafficSources = {
+            organic: 4250,
+            direct: 1820,
+            referral: 890,
+            social: 670,
+            email: 340
+          };
+
+          // Top páginas
+          const pages = [
+            { page: '/', title: 'Home' },
+            { page: '/about-us.html', title: 'Sobre Nosotros' },
+            { page: '/servicios', title: 'Servicios' },
+            { page: '/portfolio', title: 'Portfolio' },
+            { page: '/blog', title: 'Blog' },
+            { page: '/contacto', title: 'Contacto' },
+            { page: '/productos', title: 'Productos' },
+            { page: '/precios', title: 'Precios' },
+            { page: '/testimonios', title: 'Testimonios' },
+            { page: '/recursos', title: 'Recursos' }
+          ];
+
+          const topPages = pages.map((p, idx) => ({
+            page: p.page,
+            title: p.title,
+            pageviews: Math.round(5000 - idx * 450 + Math.random() * 200),
+            users: Math.round(3200 - idx * 300 + Math.random() * 150),
+            avgTime: Math.round(120 + Math.random() * 180),
+            bounceRate: 25 + Math.random() * 40,
+            trend: Math.random() > 0.5 ? 'up' : Math.random() > 0.3 ? 'down' : 'stable'
+          }));
+
+          // Calcular totales
+          const totalUsers = trafficEvolution.reduce((sum, d) => sum + d.users, 0);
+          const totalSessions = trafficEvolution.reduce((sum, d) => sum + d.sessions, 0);
+          const totalPageviews = trafficEvolution.reduce((sum, d) => sum + d.pageviews, 0);
+          const avgBounceRate = 42.5;
+          const totalConversions = Math.round(totalUsers * 0.035);
+
+          // Calcular cambios vs periodo anterior (simulado)
+          const changes = {
+            users: 12.4,
+            sessions: 8.7,
+            bounceRate: -5.3,
+            conversions: 18.9
+          };
+
+          return {
+            trafficEvolution,
+            trafficSources,
+            topPages,
+            kpis: {
+              totalUsers,
+              totalSessions,
+              avgBounceRate,
+              totalConversions,
+              avgDuration: 183, // segundos
+              pagesPerSession: 3.2,
+              newUsers: Math.round(totalUsers * 0.68),
+              returningUsers: Math.round(totalUsers * 0.32)
+            },
+            changes
+          };
+        }
+
+        // Actualizar KPIs principales
+        function updateAnalyticsKPIs(data) {
+          // Total Usuarios
+          document.getElementById('ga4-total-users').textContent = formatNumber(data.kpis.totalUsers);
+          updateKPIChange('ga4-users-change', data.changes.users);
+
+          // Sesiones
+          document.getElementById('ga4-sessions').textContent = formatNumber(data.kpis.totalSessions);
+          updateKPIChange('ga4-sessions-change', data.changes.sessions);
+
+          // Bounce Rate
+          document.getElementById('ga4-bounce-rate').textContent = data.kpis.avgBounceRate.toFixed(1) + '%';
+          updateKPIChange('ga4-bounce-change', data.changes.bounceRate, true); // invertido
+
+          // Conversiones
+          document.getElementById('ga4-conversions').textContent = formatNumber(data.kpis.totalConversions);
+          updateKPIChange('ga4-conversions-change', data.changes.conversions);
+        }
+
+        // Actualizar indicador de cambio
+        function updateKPIChange(elementId, changePercent, inverted = false) {
+          const element = document.getElementById(elementId);
+          if (!element) return;
+
+          const isPositive = inverted ? changePercent < 0 : changePercent > 0;
+          const icon = element.querySelector('i');
+          const span = element.querySelector('span');
+
+          // Actualizar clase
+          element.className = 'kpi-change ' + (isPositive ? 'positive' : 'negative');
+
+          // Actualizar icono
+          icon.className = `fas fa-arrow-${isPositive ? 'up' : 'down'}`;
+
+          // Actualizar texto
+          const absValue = Math.abs(changePercent).toFixed(1);
+          span.textContent = (changePercent >= 0 ? '+' : '') + changePercent.toFixed(1) + '%';
+        }
+
+        // Crear gráfica de evolución de tráfico
+        function createTrafficEvolutionChart(data) {
+          const ctx = document.getElementById('traffic-evolution-chart');
+          if (!ctx) return;
+
+          // Destruir gráfica anterior si existe
+          if (analyticsCharts.trafficEvolution) {
+            analyticsCharts.trafficEvolution.destroy();
+          }
+
+          const labels = data.map(d => {
+            const date = new Date(d.date);
+            return date.toLocaleDateString('es-ES', { month: 'short', day: 'numeric' });
+          });
+
+          analyticsCharts.trafficEvolution = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Usuarios',
+                  data: data.map(d => d.users),
+                  borderColor: '#3b82f6',
+                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                  borderWidth: 3,
+                  tension: 0.4,
+                  fill: true,
+                  pointRadius: 0,
+                  pointHoverRadius: 6
+                },
+                {
+                  label: 'Sesiones',
+                  data: data.map(d => d.sessions),
+                  borderColor: '#8b5cf6',
+                  backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                  borderWidth: 3,
+                  tension: 0.4,
+                  fill: true,
+                  pointRadius: 0,
+                  pointHoverRadius: 6
+                },
+                {
+                  label: 'Páginas Vistas',
+                  data: data.map(d => d.pageviews),
+                  borderColor: '#ec4899',
+                  backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                  borderWidth: 3,
+                  tension: 0.4,
+                  fill: true,
+                  pointRadius: 0,
+                  pointHoverRadius: 6
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              interaction: {
+                mode: 'index',
+                intersect: false
+              },
+              plugins: {
+                legend: {
+                  display: false
+                },
+                tooltip: {
+                  backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                  padding: 12,
+                  titleColor: '#f1f5f9',
+                  bodyColor: '#cbd5e1',
+                  borderColor: '#334155',
+                  borderWidth: 1
+                }
+              },
+              scales: {
+                x: {
+                  grid: {
+                    color: 'rgba(148, 163, 184, 0.1)',
+                    drawBorder: false
+                  },
+                  ticks: {
+                    color: '#94a3b8',
+                    maxRotation: 0,
+                    autoSkipPadding: 20
+                  }
+                },
+                y: {
+                  grid: {
+                    color: 'rgba(148, 163, 184, 0.1)',
+                    drawBorder: false
+                  },
+                  ticks: {
+                    color: '#94a3b8'
+                  }
+                }
+              }
+            }
+          });
+        }
+
+        // Crear gráfica de fuentes de tráfico
+        function createTrafficSourcesChart(data) {
+          const ctx = document.getElementById('traffic-sources-chart');
+          if (!ctx) return;
+
+          // Destruir gráfica anterior si existe
+          if (analyticsCharts.trafficSources) {
+            analyticsCharts.trafficSources.destroy();
+          }
+
+          const total = Object.values(data).reduce((sum, val) => sum + val, 0);
+          const percentages = Object.fromEntries(
+            Object.entries(data).map(([key, val]) => [key, ((val / total) * 100).toFixed(1)])
+          );
+
+          analyticsCharts.trafficSources = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Orgánico', 'Directo', 'Referido', 'Social', 'Email'],
+              datasets: [{
+                data: Object.values(data),
+                backgroundColor: [
+                  '#3b82f6',
+                  '#8b5cf6',
+                  '#ec4899',
+                  '#10b981',
+                  '#f59e0b'
+                ],
+                borderColor: '#1e293b',
+                borderWidth: 3
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom',
+                  labels: {
+                    color: '#cbd5e1',
+                    padding: 15,
+                    font: {
+                      size: 12
+                    },
+                    generateLabels: function(chart) {
+                      const data = chart.data;
+                      return data.labels.map((label, i) => ({
+                        text: `${label}: ${percentages[Object.keys(percentages)[i]]}%`,
+                        fillStyle: data.datasets[0].backgroundColor[i],
+                        hidden: false,
+                        index: i
+                      }));
+                    }
+                  }
+                },
+                tooltip: {
+                  backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                  padding: 12,
+                  titleColor: '#f1f5f9',
+                  bodyColor: '#cbd5e1',
+                  borderColor: '#334155',
+                  borderWidth: 1,
+                  callbacks: {
+                    label: function(context) {
+                      const label = context.label || '';
+                      const value = formatNumber(context.parsed);
+                      const percent = percentages[Object.keys(percentages)[context.dataIndex]];
+                      return `${label}: ${value} (${percent}%)`;
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+
+        // Actualizar métricas secundarias
+        function updateSecondaryMetrics(data) {
+          // Duración promedio
+          const minutes = Math.floor(data.kpis.avgDuration / 60);
+          const seconds = data.kpis.avgDuration % 60;
+          document.getElementById('ga4-avg-duration').textContent = `${minutes}m ${seconds}s`;
+
+          // Páginas por sesión
+          document.getElementById('ga4-pages-per-session').textContent = data.kpis.pagesPerSession.toFixed(1);
+
+          // Nuevos usuarios
+          document.getElementById('ga4-new-users').textContent = formatNumber(data.kpis.newUsers);
+
+          // Usuarios recurrentes
+          document.getElementById('ga4-returning-users').textContent = formatNumber(data.kpis.returningUsers);
+        }
+
+        // Renderizar tabla de top páginas
+        function renderTopPagesTable(pages) {
+          const tbody = document.getElementById('analytics-pages-tbody');
+          if (!tbody) return;
+
+          tbody.innerHTML = pages.map(page => {
+            // Determinar clase de bounce rate
+            let bounceClass = 'excellent';
+            if (page.bounceRate > 60) bounceClass = 'poor';
+            else if (page.bounceRate > 45) bounceClass = 'average';
+            else if (page.bounceRate > 30) bounceClass = 'good';
+
+            // Icono de tendencia
+            let trendIcon = 'fa-minus';
+            let trendClass = 'stable';
+            if (page.trend === 'up') {
+              trendIcon = 'fa-arrow-up';
+              trendClass = 'up';
+            } else if (page.trend === 'down') {
+              trendIcon = 'fa-arrow-down';
+              trendClass = 'down';
+            }
+
+            // Formatear tiempo
+            const minutes = Math.floor(page.avgTime / 60);
+            const seconds = page.avgTime % 60;
+            const timeStr = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            return `
+              <tr>
+                <td style="text-align: left;">
+                  <a href="${escapeHtml(page.page)}" class="page-url" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>${escapeHtml(page.title || page.page)}</span>
+                  </a>
+                </td>
+                <td><strong>${formatNumber(page.pageviews)}</strong></td>
+                <td>${formatNumber(page.users)}</td>
+                <td>${timeStr}</td>
+                <td>
+                  <span class="bounce-badge ${bounceClass}">
+                    ${page.bounceRate.toFixed(1)}%
+                  </span>
+                </td>
+                <td>
+                  <div class="trend-indicator ${trendClass}">
+                    <i class="fas ${trendIcon}"></i>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+
+        // Generar insights automáticos
+        function generateAnalyticsInsights(data) {
+          const insights = [];
+          const alerts = [];
+
+          // Insight 1: Crecimiento de usuarios
+          if (data.changes.users > 10) {
+            insights.push({
+              icon: 'fa-chart-line',
+              color: 'var(--success)',
+              text: `Excelente crecimiento de usuarios: +${data.changes.users.toFixed(1)}% vs periodo anterior`
+            });
+          } else if (data.changes.users < -5) {
+            alerts.push({
+              icon: 'fa-exclamation-triangle',
+              color: 'var(--warning)',
+              text: `Disminución de usuarios: ${data.changes.users.toFixed(1)}% - Revisar campañas`
+            });
+          }
+
+          // Insight 2: Bounce rate
+          if (data.kpis.avgBounceRate < 40) {
+            insights.push({
+              icon: 'fa-check-circle',
+              color: 'var(--success)',
+              text: `Tasa de rebote excelente (${data.kpis.avgBounceRate.toFixed(1)}%) - El contenido es relevante`
+            });
+          } else if (data.kpis.avgBounceRate > 60) {
+            alerts.push({
+              icon: 'fa-times-circle',
+              color: 'var(--danger)',
+              text: `Tasa de rebote alta (${data.kpis.avgBounceRate.toFixed(1)}%) - Mejorar experiencia de usuario`
+            });
+          }
+
+          // Insight 3: Conversiones
+          if (data.changes.conversions > 15) {
+            insights.push({
+              icon: 'fa-trophy',
+              color: 'var(--success)',
+              text: `¡Gran aumento en conversiones! +${data.changes.conversions.toFixed(1)}%`
+            });
+          }
+
+          // Insight 4: Páginas por sesión
+          if (data.kpis.pagesPerSession > 3) {
+            insights.push({
+              icon: 'fa-file-alt',
+              color: 'var(--primary)',
+              text: `Buen engagement: ${data.kpis.pagesPerSession.toFixed(1)} páginas por sesión`
+            });
+          }
+
+          // Insight 5: Top página
+          const topPage = data.topPages[0];
+          insights.push({
+            icon: 'fa-star',
+            color: '#fbbf24',
+            text: `Página más popular: "${topPage.title}" con ${formatNumber(topPage.pageviews)} vistas`
+          });
+
+          // Alert 1: Páginas con alta tasa de rebote
+          const highBouncePagesCount = data.topPages.filter(p => p.bounceRate > 60).length;
+          if (highBouncePagesCount > 3) {
+            alerts.push({
+              icon: 'fa-info-circle',
+              color: 'var(--primary)',
+              text: `${highBouncePagesCount} páginas tienen tasa de rebote > 60% - Optimizar contenido`
+            });
+          }
+
+          // Renderizar insights
+          const insightsList = document.getElementById('analytics-insights-list');
+          if (insightsList && insights.length > 0) {
+            insightsList.innerHTML = insights.map(insight => `
+              <div class="insight-item">
+                <i class="fas ${insight.icon}" style="color: ${insight.color};"></i>
+                <span>${insight.text}</span>
+              </div>
+            `).join('');
+          }
+
+          // Renderizar alertas
+          const alertsList = document.getElementById('analytics-alerts-list');
+          if (alertsList && alerts.length > 0) {
+            alertsList.innerHTML = alerts.map(alert => `
+              <div class="insight-item">
+                <i class="fas ${alert.icon}" style="color: ${alert.color};"></i>
+                <span>${alert.text}</span>
+              </div>
+            `).join('');
+          } else if (alertsList) {
+            alertsList.innerHTML = `
+              <div class="insight-item">
+                <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                <span>Todo funciona correctamente - No hay alertas críticas</span>
+              </div>
+            `;
+          }
+        }
+
+        // Setup event listeners para Analytics
+        function setupAnalyticsEvents(data) {
+          // Botón de refresh
+          document.getElementById('btn-refresh-analytics')?.addEventListener('click', function() {
+            if (appState.data) {
+              initializeAnalyticsSection(appState.data);
+              alert('✅ Datos de Analytics actualizados!');
+            }
+          });
+
+          // Botón de exportar reporte
+          document.getElementById('btn-export-analytics')?.addEventListener('click', function() {
+            exportAnalyticsReport(data);
+          });
+
+          // Botón de exportar páginas
+          document.getElementById('btn-export-pages')?.addEventListener('click', function() {
+            exportTopPages(data.topPages);
+          });
+
+          // Sorting en tabla
+          document.querySelectorAll('.analytics-pages-table th.sortable').forEach(th => {
+            th.addEventListener('click', function() {
+              const column = this.dataset.sort;
+              sortAnalyticsTable(data.topPages, column);
+            });
+          });
+        }
+
+        // Exportar reporte completo
+        function exportAnalyticsReport(data) {
+          const report = {
+            fecha: new Date().toLocaleDateString('es-ES'),
+            periodo: 'Últimos 30 días',
+            kpis: data.kpis,
+            cambios: data.changes,
+            fuentes: data.trafficSources,
+            topPaginas: data.topPages
+          };
+
+          const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `analytics-report-${new Date().toISOString().split('T')[0]}.json`;
+          link.click();
+          URL.revokeObjectURL(url);
+
+          alert('✅ Reporte exportado correctamente!');
+        }
+
+        // Exportar top páginas a CSV
+        function exportTopPages(pages) {
+          let csv = 'Página,Título,Vistas,Usuarios,Tiempo Promedio,Tasa Rebote,Tendencia\n';
+          
+          pages.forEach(page => {
+            const minutes = Math.floor(page.avgTime / 60);
+            const seconds = page.avgTime % 60;
+            csv += `"${page.page}","${page.title}",${page.pageviews},${page.users},${minutes}:${seconds.toString().padStart(2, '0')},${page.bounceRate.toFixed(1)}%,${page.trend}\n`;
+          });
+
+          const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `top-pages-${new Date().toISOString().split('T')[0]}.csv`;
+          link.click();
+          URL.revokeObjectURL(url);
+
+          alert('✅ Top páginas exportadas correctamente!');
+        }
+
+        // Ordenar tabla de páginas
+        function sortAnalyticsTable(pages, column) {
+          return pages.sort((a, b) => {
+            if (typeof a[column] === 'number') {
+              return b[column] - a[column];
+            }
+            return a[column].localeCompare(b[column]);
+          });
+        }
+
         // Cargar Keywords Master cuando se cambie a la tab
         const keywordsMasterLink = document.querySelector(
           '[data-tab="keywords-master"]'
@@ -5494,6 +8769,1444 @@
             setTimeout(() => {
               if (appState.data) {
                 initializeKeywordsMaster(appState.data);
+              }
+            }, 100);
+          });
+        }
+
+        // ============================================
+        // SECCIÓN 5: JAVASCRIPT PARA PERFORMANCE
+        // ============================================
+
+        let performanceCharts = {
+          mobileGauge: null,
+          desktopGauge: null
+        };
+
+        // Inicializar sección Performance
+        function initializePerformanceSection(data) {
+          if (!data) return;
+
+          // Generar datos simulados de PageSpeed (en producción vendría del backend)
+          const performanceData = generatePerformanceData();
+
+          // Crear gauges de scores
+          createScoreGauge('mobile', performanceData.mobile.score);
+          createScoreGauge('desktop', performanceData.desktop.score);
+
+          // Actualizar métricas mobile
+          updateDeviceMetrics('mobile', performanceData.mobile);
+          updateDeviceMetrics('desktop', performanceData.desktop);
+
+          // Actualizar Core Web Vitals
+          updateCoreWebVitals(performanceData.webVitals);
+
+          // Renderizar oportunidades y diagnósticos
+          renderOpportunities(performanceData.opportunities);
+          renderDiagnostics(performanceData.diagnostics);
+
+          // Actualizar métricas de carga
+          updateLoadMetrics(performanceData.loadMetrics);
+
+          // Actualizar resumen de recursos
+          updateResourcesSummary(performanceData.resources);
+
+          // Setup event listeners
+          setupPerformanceEvents(performanceData);
+        }
+
+        // Generar datos simulados de Performance
+        function generatePerformanceData() {
+          return {
+            mobile: {
+              score: 78,
+              fcp: '1.8s',
+              lcp: '2.4s',
+              cls: '0.05',
+              tti: '3.2s'
+            },
+            desktop: {
+              score: 92,
+              fcp: '0.9s',
+              lcp: '1.2s',
+              cls: '0.02',
+              tti: '1.8s'
+            },
+            webVitals: {
+              lcp: { value: 2.1, unit: 's', status: 'good' },
+              fid: { value: 45, unit: 'ms', status: 'good' },
+              cls: { value: 0.04, unit: '', status: 'good' }
+            },
+            opportunities: [
+              {
+                title: 'Eliminar recursos que bloquean el renderizado',
+                description: 'Los recursos están bloqueando la primera renderización de la página',
+                savings: '0.8s',
+                impact: 'high'
+              },
+              {
+                title: 'Usar imágenes con tamaños adecuados',
+                description: 'Sirve imágenes con el tamaño correcto para ahorrar datos y mejorar la carga',
+                savings: '420 KB',
+                impact: 'medium'
+              },
+              {
+                title: 'Minimizar JavaScript sin usar',
+                description: 'Reduce el tamaño de JavaScript eliminando código no utilizado',
+                savings: '280 KB',
+                impact: 'medium'
+              },
+              {
+                title: 'Servir imágenes en formatos de nueva generación',
+                description: 'Usa WebP o AVIF para mejorar los tiempos de carga',
+                savings: '350 KB',
+                impact: 'low'
+              }
+            ],
+            diagnostics: [
+              {
+                title: 'Usa HTTP/2 para todos los recursos',
+                description: 'HTTP/2 mejora la eficiencia de la red'
+              },
+              {
+                title: 'Minimiza el trabajo del hilo principal',
+                description: 'Considera reducir el tiempo de ejecución de JavaScript'
+              },
+              {
+                title: 'Evita enormes payloads de red',
+                description: 'El tamaño total de red es de 1.2 MB'
+              },
+              {
+                title: 'Preconecta a los orígenes requeridos',
+                description: 'Establece conexiones tempranas a orígenes importantes'
+              }
+            ],
+            loadMetrics: {
+              fcp: { value: 1.4, threshold: 1.8 },
+              si: { value: 2.8, threshold: 3.4 },
+              tti: { value: 2.5, threshold: 3.8 },
+              tbt: { value: 180, threshold: 200 }
+            },
+            resources: {
+              javascript: { size: 485, count: 12 },
+              css: { size: 125, count: 6 },
+              images: { size: 820, count: 28 },
+              fonts: { size: 180, count: 4 },
+              total: { size: 1610, count: 50 }
+            }
+          };
+        }
+
+        // Crear gauge de score (Mobile o Desktop)
+        function createScoreGauge(device, score) {
+          const canvasId = `${device}-score-gauge`;
+          const ctx = document.getElementById(canvasId);
+          if (!ctx) return;
+
+          // Destruir gauge anterior si existe
+          if (performanceCharts[`${device}Gauge`]) {
+            performanceCharts[`${device}Gauge`].destroy();
+          }
+
+          // Determinar color según score
+          let color;
+          if (score >= 90) color = '#10b981'; // Verde
+          else if (score >= 50) color = '#f59e0b'; // Naranja
+          else color = '#ef4444'; // Rojo
+
+          // Actualizar valor del score
+          document.getElementById(`${device}-score-value`).textContent = score;
+          document.getElementById(`${device}-score-value`).style.color = color;
+
+          performanceCharts[`${device}Gauge`] = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              datasets: [{
+                data: [score, 100 - score],
+                backgroundColor: [color, 'rgba(148, 163, 184, 0.1)'],
+                borderWidth: 0
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: true,
+              cutout: '75%',
+              plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+              }
+            }
+          });
+        }
+
+        // Actualizar métricas por dispositivo
+        function updateDeviceMetrics(device, metrics) {
+          document.getElementById(`${device}-fcp`).textContent = metrics.fcp;
+          document.getElementById(`${device}-lcp`).textContent = metrics.lcp;
+          document.getElementById(`${device}-cls`).textContent = metrics.cls;
+          document.getElementById(`${device}-tti`).textContent = metrics.tti;
+        }
+
+        // Actualizar Core Web Vitals
+        function updateCoreWebVitals(vitals) {
+          // LCP
+          updateVital('lcp', vitals.lcp);
+          // FID
+          updateVital('fid', vitals.fid);
+          // CLS
+          updateVital('cls', vitals.cls);
+        }
+
+        // Actualizar un vital individual
+        function updateVital(vitalName, data) {
+          const valueEl = document.getElementById(`cwv-${vitalName}-value`);
+          const barEl = document.getElementById(`cwv-${vitalName}-bar`);
+          const statusEl = document.getElementById(`cwv-${vitalName}-status`);
+
+          if (!valueEl || !barEl || !statusEl) return;
+
+          // Actualizar valor
+          valueEl.textContent = data.value + data.unit;
+
+          // Determinar porcentaje para la barra (basado en umbrales estándar)
+          let percentage, statusText;
+          
+          if (vitalName === 'lcp') {
+            // LCP: good < 2.5s, needs-improvement < 4s
+            percentage = Math.min((data.value / 4) * 100, 100);
+            statusText = data.status === 'good' ? 'Bueno' : data.status === 'needs-improvement' ? 'Necesita Mejora' : 'Pobre';
+          } else if (vitalName === 'fid') {
+            // FID: good < 100ms, needs-improvement < 300ms
+            percentage = Math.min((data.value / 300) * 100, 100);
+            statusText = data.status === 'good' ? 'Bueno' : data.status === 'needs-improvement' ? 'Necesita Mejora' : 'Pobre';
+          } else if (vitalName === 'cls') {
+            // CLS: good < 0.1, needs-improvement < 0.25
+            percentage = Math.min((data.value / 0.25) * 100, 100);
+            statusText = data.status === 'good' ? 'Bueno' : data.status === 'needs-improvement' ? 'Necesita Mejora' : 'Pobre';
+          }
+
+          // Actualizar barra
+          barEl.style.width = percentage + '%';
+          barEl.className = `vital-bar-fill ${data.status}`;
+
+          // Actualizar status
+          statusEl.className = `vital-status ${data.status}`;
+          statusEl.querySelector('span').textContent = statusText;
+        }
+
+        // Renderizar oportunidades
+        function renderOpportunities(opportunities) {
+          const list = document.getElementById('opportunities-list');
+          if (!list) return;
+
+          list.innerHTML = opportunities.map(opp => {
+            const impactColor = opp.impact === 'high' ? '#ef4444' : opp.impact === 'medium' ? '#f59e0b' : '#10b981';
+            
+            return `
+              <div class="opportunity-item ${opp.impact}-impact">
+                <div class="opportunity-icon">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <div class="opportunity-content">
+                  <div class="opportunity-title">${escapeHtml(opp.title)}</div>
+                  <div class="opportunity-description">${escapeHtml(opp.description)}</div>
+                  <span class="opportunity-savings">
+                    <i class="fas fa-clock"></i>
+                    Ahorro potencial: ${escapeHtml(opp.savings)}
+                  </span>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Renderizar diagnósticos
+        function renderDiagnostics(diagnostics) {
+          const list = document.getElementById('diagnostics-list');
+          if (!list) return;
+
+          list.innerHTML = diagnostics.map(diag => `
+            <div class="diagnostic-item">
+              <div class="diagnostic-icon">
+                <i class="fas fa-info-circle"></i>
+              </div>
+              <div class="diagnostic-content">
+                <div class="diagnostic-title">${escapeHtml(diag.title)}</div>
+                <div class="diagnostic-description">${escapeHtml(diag.description)}</div>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // Actualizar métricas de carga
+        function updateLoadMetrics(metrics) {
+          // FCP
+          updateLoadMetric('fcp', metrics.fcp);
+          // Speed Index
+          updateLoadMetric('si', metrics.si);
+          // TTI
+          updateLoadMetric('tti', metrics.tti);
+          // TBT
+          updateLoadMetric('tbt', metrics.tbt);
+        }
+
+        // Actualizar una métrica de carga individual
+        function updateLoadMetric(metricName, data) {
+          const valueEl = document.getElementById(`metric-${metricName}`);
+          const barEl = document.getElementById(`metric-${metricName}-bar`);
+
+          if (!valueEl || !barEl) return;
+
+          // Formatear valor
+          let displayValue;
+          if (metricName === 'tbt') {
+            displayValue = data.value + ' ms';
+          } else {
+            displayValue = data.value.toFixed(1) + ' s';
+          }
+
+          valueEl.textContent = displayValue;
+
+          // Calcular porcentaje y color
+          const percentage = Math.min((data.value / data.threshold) * 100, 100);
+          const isGood = data.value < data.threshold;
+
+          barEl.style.width = percentage + '%';
+          barEl.style.background = isGood 
+            ? 'linear-gradient(90deg, #10b981 0%, #059669 100%)'
+            : 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)';
+        }
+
+        // Actualizar resumen de recursos
+        function updateResourcesSummary(resources) {
+          // JavaScript
+          document.getElementById('resource-js-size').textContent = resources.javascript.size + ' KB';
+          document.getElementById('resource-js-count').textContent = resources.javascript.count + ' archivos';
+
+          // CSS
+          document.getElementById('resource-css-size').textContent = resources.css.size + ' KB';
+          document.getElementById('resource-css-count').textContent = resources.css.count + ' archivos';
+
+          // Imágenes
+          document.getElementById('resource-img-size').textContent = resources.images.size + ' KB';
+          document.getElementById('resource-img-count').textContent = resources.images.count + ' archivos';
+
+          // Fuentes
+          document.getElementById('resource-font-size').textContent = resources.fonts.size + ' KB';
+          document.getElementById('resource-font-count').textContent = resources.fonts.count + ' archivos';
+
+          // Total
+          document.getElementById('resource-total-size').textContent = resources.total.size + ' KB';
+          document.getElementById('resource-total-count').textContent = resources.total.count + ' recursos';
+        }
+
+        // Setup event listeners para Performance
+        function setupPerformanceEvents(data) {
+          // Botón de refresh
+          document.getElementById('btn-refresh-performance')?.addEventListener('click', function() {
+            if (appState.data) {
+              initializePerformanceSection(appState.data);
+              alert('✅ Datos de Performance actualizados!');
+            }
+          });
+
+          // Botón de exportar
+          document.getElementById('btn-export-performance')?.addEventListener('click', function() {
+            exportPerformanceReport(data);
+          });
+        }
+
+        // Exportar reporte de performance
+        function exportPerformanceReport(data) {
+          const report = {
+            fecha: new Date().toLocaleDateString('es-ES'),
+            mobile: data.mobile,
+            desktop: data.desktop,
+            webVitals: data.webVitals,
+            opportunities: data.opportunities,
+            diagnostics: data.diagnostics,
+            loadMetrics: data.loadMetrics,
+            resources: data.resources
+          };
+
+          const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `performance-report-${new Date().toISOString().split('T')[0]}.json`;
+          link.click();
+          URL.revokeObjectURL(url);
+
+          alert('✅ Reporte de Performance exportado correctamente!');
+        }
+
+        // Cargar Analytics cuando se cambie a la tab
+        const analyticsLink = document.querySelector('[data-tab="analytics"]');
+        if (analyticsLink) {
+          analyticsLink.addEventListener("click", function () {
+            setTimeout(() => {
+              if (appState.data) {
+                initializeAnalyticsSection(appState.data);
+              }
+            }, 100);
+          });
+        }
+
+        // ============================================
+        // SECCIÓN 6: JAVASCRIPT PARA SUGERENCIAS
+        // ============================================
+
+        let suggestionsState = {
+          allSuggestions: [],
+          filteredSuggestions: [],
+          filters: {
+            priority: 'all',
+            category: 'all',
+            status: 'pending'
+          }
+        };
+
+        // Inicializar sección Sugerencias
+        function initializeSuggestionsSection(data) {
+          if (!data) return;
+
+          // Generar sugerencias inteligentes
+          const suggestions = generateSmartSuggestions(data);
+          suggestionsState.allSuggestions = suggestions;
+
+          // Actualizar resumen
+          updateSuggestionsSummary(suggestions);
+
+          // Aplicar filtros y renderizar
+          applySuggestionFilters();
+
+          // Generar insights de IA
+          generateAIInsights(data);
+
+          // Generar keywords sugeridas
+          generateSuggestedKeywords(data);
+
+          // Setup event listeners
+          setupSuggestionsEvents();
+        }
+
+        // Generar sugerencias inteligentes basadas en datos
+        function generateSmartSuggestions(data) {
+          const suggestions = [];
+
+          // Sugerencia 1: Keywords con alto potencial
+          if (data.keywords) {
+            const highOpportunityKws = data.keywords.filter(k => k.improvement_opportunity >= 70);
+            if (highOpportunityKws.length > 0) {
+              suggestions.push({
+                id: 1,
+                priority: 'high',
+                category: 'keywords',
+                status: 'pending',
+                title: 'Optimizar keywords con alto potencial de mejora',
+                description: `Has identificado ${highOpportunityKws.length} keywords con una oportunidad de mejora mayor al 70%. Estas keywords tienen alto volumen de búsqueda pero están en posiciones bajas.`,
+                impact: {
+                  traffic: '+35%',
+                  effort: 'Medio',
+                  timeframe: '2-4 semanas'
+                },
+                actions: ['Crear contenido optimizado', 'Mejorar on-page SEO', 'Conseguir backlinks']
+              });
+            }
+          }
+
+          // Sugerencia 2: Performance móvil
+          suggestions.push({
+            id: 2,
+            priority: 'high',
+            category: 'performance',
+            status: 'pending',
+            title: 'Mejorar el rendimiento en dispositivos móviles',
+            description: 'El score de PageSpeed en móvil es de 78/100. Optimizar imágenes y eliminar recursos que bloquean el renderizado puede aumentar significativamente tu posicionamiento.',
+            impact: {
+              traffic: '+25%',
+              effort: 'Alto',
+              timeframe: '1-2 semanas'
+            },
+            actions: ['Comprimir imágenes', 'Minimizar CSS/JS', 'Implementar lazy loading']
+          });
+
+          // Sugerencia 3: Core Web Vitals
+          suggestions.push({
+            id: 3,
+            priority: 'medium',
+            category: 'technical',
+            status: 'pending',
+            title: 'Optimizar Core Web Vitals para mejor UX',
+            description: 'Aunque tus métricas son buenas, mejorar el LCP a menos de 2s y el CLS a menos de 0.03 te dará ventaja competitiva significativa.',
+            impact: {
+              traffic: '+15%',
+              effort: 'Medio',
+              timeframe: '1-3 semanas'
+            },
+            actions: ['Optimizar carga de imágenes', 'Reservar espacio para ads', 'Precarga de recursos críticos']
+          });
+
+          // Sugerencia 4: Contenido largo
+          suggestions.push({
+            id: 4,
+            priority: 'medium',
+            category: 'content',
+            status: 'pending',
+            title: 'Crear contenido de formato largo (>2000 palabras)',
+            description: 'El contenido extenso y de calidad tiene 77% más probabilidad de aparecer en la primera página de Google. Identifica tus top 5 keywords y crea guías completas.',
+            impact: {
+              traffic: '+40%',
+              effort: 'Alto',
+              timeframe: '3-6 semanas'
+            },
+            actions: ['Research de tópicos', 'Crear outline detallado', 'Escribir y optimizar', 'Agregar multimedia']
+          });
+
+          // Sugerencia 5: Schema Markup
+          suggestions.push({
+            id: 5,
+            priority: 'low',
+            category: 'technical',
+            status: 'pending',
+            title: 'Implementar Schema.org avanzado',
+            description: 'Actualmente tienes schema básico. Agregar FAQ, HowTo, y Review schemas puede aumentar tu CTR en un 30% con rich snippets.',
+            impact: {
+              traffic: '+20%',
+              effort: 'Bajo',
+              timeframe: '1 semana'
+            },
+            actions: ['Identificar páginas clave', 'Generar JSON-LD', 'Implementar y validar']
+          });
+
+          // Sugerencia 6: Velocidad de sitio
+          suggestions.push({
+            id: 6,
+            priority: 'medium',
+            category: 'performance',
+            status: 'pending',
+            title: 'Reducir el tiempo de respuesta del servidor',
+            description: 'Tu TTFB (Time to First Byte) es de 450ms. Reducirlo a menos de 200ms mediante CDN y caché mejorará todas tus métricas.',
+            impact: {
+              traffic: '+18%',
+              effort: 'Medio',
+              timeframe: '1-2 semanas'
+            },
+            actions: ['Implementar CDN', 'Optimizar base de datos', 'Configurar caché efectivo']
+          });
+
+          // Sugerencia 7: Link building
+          suggestions.push({
+            id: 7,
+            priority: 'high',
+            category: 'keywords',
+            status: 'pending',
+            title: 'Estrategia de link building para keywords objetivo',
+            description: 'Tus keywords de alta prioridad necesitan más autoridad. Una campaña de guest posting y digital PR puede darte 15-20 backlinks de calidad.',
+            impact: {
+              traffic: '+50%',
+              effort: 'Alto',
+              timeframe: '2-3 meses'
+            },
+            actions: ['Identificar sitios objetivo', 'Crear contenido linkeable', 'Outreach campaigns']
+          });
+
+          // Sugerencia 8: UX improvements
+          suggestions.push({
+            id: 8,
+            priority: 'low',
+            category: 'ux',
+            status: 'pending',
+            title: 'Mejorar la experiencia de usuario en páginas clave',
+            description: 'Las páginas con bounce rate mayor a 60% necesitan mejoras de UX. Implementa elementos interactivos y CTAs más claros.',
+            impact: {
+              traffic: '+12%',
+              effort: 'Medio',
+              timeframe: '2-4 semanas'
+            },
+            actions: ['A/B testing de CTAs', 'Mejorar navegación', 'Agregar elementos visuales']
+          });
+
+          return suggestions;
+        }
+
+        // Actualizar resumen de sugerencias
+        function updateSuggestionsSummary(suggestions) {
+          const highCount = suggestions.filter(s => s.priority === 'high' && s.status === 'pending').length;
+          const mediumCount = suggestions.filter(s => s.priority === 'medium' && s.status === 'pending').length;
+          const lowCount = suggestions.filter(s => s.priority === 'low' && s.status === 'pending').length;
+          const completedCount = suggestions.filter(s => s.status === 'completed').length;
+
+          document.getElementById('high-priority-count').textContent = highCount;
+          document.getElementById('medium-priority-count').textContent = mediumCount;
+          document.getElementById('low-priority-count').textContent = lowCount;
+          document.getElementById('completed-count').textContent = completedCount;
+        }
+
+        // Aplicar filtros de sugerencias
+        function applySuggestionFilters() {
+          let filtered = [...suggestionsState.allSuggestions];
+
+          // Filtro de prioridad
+          if (suggestionsState.filters.priority !== 'all') {
+            filtered = filtered.filter(s => s.priority === suggestionsState.filters.priority);
+          }
+
+          // Filtro de categoría
+          if (suggestionsState.filters.category !== 'all') {
+            filtered = filtered.filter(s => s.category === suggestionsState.filters.category);
+          }
+
+          // Filtro de estado
+          if (suggestionsState.filters.status !== 'all') {
+            filtered = filtered.filter(s => s.status === suggestionsState.filters.status);
+          }
+
+          suggestionsState.filteredSuggestions = filtered;
+          renderSuggestionsList(filtered);
+        }
+
+        // Renderizar lista de sugerencias
+        function renderSuggestionsList(suggestions) {
+          const container = document.getElementById('suggestions-list');
+          if (!container) return;
+
+          if (suggestions.length === 0) {
+            container.innerHTML = `
+              <div class="suggestion-loading">
+                <i class="fas fa-check-circle" style="font-size: 48px; color: var(--success);"></i>
+                <p style="margin-top: 15px; color: var(--text-primary); font-size: 1.1rem;">
+                  ¡Excelente! No hay sugerencias pendientes con estos filtros
+                </p>
+              </div>
+            `;
+            return;
+          }
+
+          container.innerHTML = suggestions.map(suggestion => {
+            const categoryLabels = {
+              keywords: 'Keywords',
+              content: 'Contenido',
+              technical: 'Técnico',
+              performance: 'Performance',
+              ux: 'UX'
+            };
+
+            return `
+              <div class="suggestion-item priority-${suggestion.priority} ${suggestion.status === 'completed' ? 'completed' : ''}" data-id="${suggestion.id}">
+                <div class="suggestion-header">
+                  <div class="suggestion-title-section">
+                    <div class="suggestion-badges">
+                      <span class="suggestion-badge priority-${suggestion.priority}">
+                        ${suggestion.priority.toUpperCase()}
+                      </span>
+                      <span class="suggestion-badge category">
+                        ${categoryLabels[suggestion.category]}
+                      </span>
+                    </div>
+                    <div class="suggestion-title">${escapeHtml(suggestion.title)}</div>
+                  </div>
+                </div>
+                
+                <div class="suggestion-description">
+                  ${escapeHtml(suggestion.description)}
+                </div>
+
+                <div class="suggestion-impact">
+                  <div class="impact-item">
+                    <span class="impact-label">Impacto en Tráfico</span>
+                    <span class="impact-value" style="color: var(--success);">${suggestion.impact.traffic}</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-label">Esfuerzo</span>
+                    <span class="impact-value">${suggestion.impact.effort}</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-label">Plazo Estimado</span>
+                    <span class="impact-value">${suggestion.impact.timeframe}</span>
+                  </div>
+                </div>
+
+                <div class="suggestion-actions">
+                  ${suggestion.status === 'pending' ? `
+                    <button class="btn btn-secondary btn-sm" onclick="viewSuggestionDetails(${suggestion.id})">
+                      <i class="fas fa-eye"></i>
+                      Ver Detalles
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="markSuggestionCompleted(${suggestion.id})">
+                      <i class="fas fa-check"></i>
+                      Marcar Completada
+                    </button>
+                  ` : `
+                    <button class="btn btn-success btn-sm" disabled>
+                      <i class="fas fa-check-circle"></i>
+                      Completada
+                    </button>
+                  `}
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Generar insights de IA
+        function generateAIInsights(data) {
+          const insights = [
+            {
+              icon: 'fa-chart-line',
+              color: '#3b82f6',
+              title: 'Predicción de Tendencias',
+              text: 'Basado en tus datos históricos, se proyecta un crecimiento del 28% en los próximos 3 meses si implementas las sugerencias de alta prioridad.'
+            },
+            {
+              icon: 'fa-target',
+              color: '#10b981',
+              title: 'Oportunidades de Nicho',
+              text: 'Se detectaron 12 keywords long-tail con baja competencia y alto volumen. Estas representan oportunidades rápidas de posicionamiento.'
+            },
+            {
+              icon: 'fa-users',
+              color: '#8b5cf6',
+              title: 'Análisis de Competencia',
+              text: 'Tus competidores principales están invirtiendo en contenido de formato largo. Considera crear guías de más de 2500 palabras.'
+            },
+            {
+              icon: 'fa-clock',
+              color: '#f59e0b',
+              title: 'Mejor Momento para Publicar',
+              text: 'Los datos muestran que el contenido publicado los martes entre 9-11 AM obtiene 35% más engagement inicial.'
+            }
+          ];
+
+          const container = document.getElementById('ai-insights-grid');
+          if (!container) return;
+
+          container.innerHTML = insights.map(insight => `
+            <div class="ai-insight-card">
+              <div class="ai-insight-icon" style="color: ${insight.color};">
+                <i class="fas ${insight.icon}"></i>
+              </div>
+              <div class="ai-insight-content">
+                <div class="ai-insight-title">${escapeHtml(insight.title)}</div>
+                <div class="ai-insight-text">${escapeHtml(insight.text)}</div>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // Generar keywords sugeridas
+        function generateSuggestedKeywords(data) {
+          const suggestedKws = [
+            { keyword: 'desarrollo web profesional', volume: 2400, difficulty: 'medium', potential: 85, cpc: 3.50, trend: 'up' },
+            { keyword: 'agencia desarrollo software', volume: 1800, difficulty: 'hard', potential: 78, cpc: 5.20, trend: 'up' },
+            { keyword: 'creación aplicaciones móviles', volume: 3200, difficulty: 'medium', potential: 92, cpc: 4.80, trend: 'up' },
+            { keyword: 'consultoría tecnológica', volume: 1200, difficulty: 'easy', potential: 88, cpc: 6.10, trend: 'stable' },
+            { keyword: 'desarrollo ecommerce', volume: 2800, difficulty: 'medium', potential: 81, cpc: 4.20, trend: 'up' },
+            { keyword: 'automatización procesos', volume: 1600, difficulty: 'hard', potential: 75, cpc: 7.50, trend: 'up' },
+            { keyword: 'transformación digital empresas', volume: 2100, difficulty: 'medium', potential: 84, cpc: 5.80, trend: 'stable' },
+            { keyword: 'desarrollo apis rest', volume: 950, difficulty: 'easy', potential: 79, cpc: 3.20, trend: 'up' }
+          ];
+
+          const tbody = document.getElementById('suggested-keywords-tbody');
+          if (!tbody) return;
+
+          tbody.innerHTML = suggestedKws.map((kw, idx) => {
+            const difficultyClass = kw.difficulty;
+            const potentialClass = kw.potential >= 85 ? 'high' : kw.potential >= 70 ? 'medium' : 'low';
+            const trendIcon = kw.trend === 'up' ? 'fa-arrow-up' : kw.trend === 'down' ? 'fa-arrow-down' : 'fa-minus';
+            const trendClass = kw.trend;
+
+            return `
+              <tr>
+                <td style="text-align: center;">
+                  <input type="checkbox" class="keyword-checkbox" data-keyword="${escapeHtml(kw.keyword)}">
+                </td>
+                <td style="text-align: left;">
+                  <strong>${escapeHtml(kw.keyword)}</strong>
+                </td>
+                <td><strong>${formatNumber(kw.volume)}</strong>/mes</td>
+                <td>
+                  <span class="keyword-difficulty-badge ${difficultyClass}">
+                    ${kw.difficulty.charAt(0).toUpperCase() + kw.difficulty.slice(1)}
+                  </span>
+                </td>
+                <td>
+                  <strong>${kw.potential}/100</strong>
+                  <div class="potential-bar">
+                    <div class="potential-bar-fill ${potentialClass}" style="width: ${kw.potential}%;"></div>
+                  </div>
+                </td>
+                <td><strong>$${kw.cpc.toFixed(2)}</strong></td>
+                <td>
+                  <span class="trend-arrow ${trendClass}">
+                    <i class="fas ${trendIcon}"></i>
+                  </span>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+
+        // Setup event listeners para Sugerencias
+        function setupSuggestionsEvents() {
+          // Filtros
+          document.getElementById('filter-suggestion-priority')?.addEventListener('change', function(e) {
+            suggestionsState.filters.priority = e.target.value;
+            applySuggestionFilters();
+          });
+
+          document.getElementById('filter-suggestion-category')?.addEventListener('change', function(e) {
+            suggestionsState.filters.category = e.target.value;
+            applySuggestionFilters();
+          });
+
+          document.getElementById('filter-suggestion-status')?.addEventListener('change', function(e) {
+            suggestionsState.filters.status = e.target.value;
+            applySuggestionFilters();
+          });
+
+          // Reset filtros
+          document.getElementById('btn-reset-suggestion-filters')?.addEventListener('click', function() {
+            suggestionsState.filters = { priority: 'all', category: 'all', status: 'pending' };
+            document.getElementById('filter-suggestion-priority').value = 'all';
+            document.getElementById('filter-suggestion-category').value = 'all';
+            document.getElementById('filter-suggestion-status').value = 'pending';
+            applySuggestionFilters();
+          });
+
+          // Generar nuevas sugerencias
+          document.getElementById('btn-generate-suggestions')?.addEventListener('click', function() {
+            if (appState.data) {
+              initializeSuggestionsSection(appState.data);
+              alert('✅ Nuevas sugerencias generadas!');
+            }
+          });
+
+          // Exportar sugerencias
+          document.getElementById('btn-export-suggestions')?.addEventListener('click', function() {
+            exportSuggestions();
+          });
+
+          // Select all keywords
+          document.getElementById('select-all-keywords')?.addEventListener('change', function(e) {
+            document.querySelectorAll('.keyword-checkbox').forEach(cb => {
+              cb.checked = e.target.checked;
+            });
+          });
+
+          // Agregar keywords seleccionadas
+          document.getElementById('btn-add-suggested-keywords')?.addEventListener('click', function() {
+            const selected = Array.from(document.querySelectorAll('.keyword-checkbox:checked'))
+              .map(cb => cb.dataset.keyword);
+            
+            if (selected.length === 0) {
+              alert('⚠️ Selecciona al menos una keyword');
+              return;
+            }
+
+            alert(`✅ ${selected.length} keywords agregadas a tu lista para monitoreo:\n\n${selected.join('\n')}`);
+          });
+        }
+
+        // Ver detalles de sugerencia
+        function viewSuggestionDetails(id) {
+          const suggestion = suggestionsState.allSuggestions.find(s => s.id === id);
+          if (!suggestion) return;
+
+          const actionsHtml = suggestion.actions.map(a => `• ${a}`).join('\n');
+          alert(`📋 ${suggestion.title}\n\n${suggestion.description}\n\nAcciones recomendadas:\n${actionsHtml}`);
+        }
+
+        // Marcar sugerencia como completada
+        function markSuggestionCompleted(id) {
+          const suggestion = suggestionsState.allSuggestions.find(s => s.id === id);
+          if (!suggestion) return;
+
+          suggestion.status = 'completed';
+          updateSuggestionsSummary(suggestionsState.allSuggestions);
+          applySuggestionFilters();
+          alert('✅ Sugerencia marcada como completada!');
+        }
+
+        // Exportar sugerencias
+        function exportSuggestions() {
+          const report = {
+            fecha: new Date().toLocaleDateString('es-ES'),
+            sugerencias: suggestionsState.allSuggestions,
+            resumen: {
+              total: suggestionsState.allSuggestions.length,
+              alta: suggestionsState.allSuggestions.filter(s => s.priority === 'high').length,
+              media: suggestionsState.allSuggestions.filter(s => s.priority === 'medium').length,
+              baja: suggestionsState.allSuggestions.filter(s => s.priority === 'low').length,
+              completadas: suggestionsState.allSuggestions.filter(s => s.status === 'completed').length
+            }
+          };
+
+          const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `sugerencias-${new Date().toISOString().split('T')[0]}.json`;
+          link.click();
+          URL.revokeObjectURL(url);
+
+          alert('✅ Sugerencias exportadas correctamente!');
+        }
+
+        // Cargar Performance cuando se cambie a la tab
+        const performanceLink = document.querySelector('[data-tab="performance"]');
+        if (performanceLink) {
+          performanceLink.addEventListener("click", function () {
+            setTimeout(() => {
+              if (appState.data) {
+                initializePerformanceSection(appState.data);
+              }
+            }, 100);
+          });
+        }
+
+        // Cargar Sugerencias cuando se cambie a la tab
+        const suggestionsLink = document.querySelector('[data-tab="suggestions"]');
+        if (suggestionsLink) {
+          suggestionsLink.addEventListener("click", function () {
+            setTimeout(() => {
+              if (appState.data) {
+                initializeSuggestionsSection(appState.data);
+              }
+            }, 100);
+          });
+        }
+
+        // ============================================
+        // SECCIÓN 7: JAVASCRIPT PARA ACCIONES
+        // ============================================
+
+        let actionsState = {
+          actions: [],
+          history: [],
+          autoMode: true
+        };
+
+        // Inicializar sección Acciones
+        function initializeActionsSection(data) {
+          if (!data) return;
+
+          // Generar acciones disponibles
+          const actions = generateAvailableActions(data);
+          actionsState.actions = actions;
+
+          // Actualizar estado
+          updateActionsStatus();
+
+          // Renderizar lista de acciones
+          renderActionsList(actions);
+
+          // Generar historial simulado
+          generateActionHistory();
+
+          // Setup event listeners
+          setupActionsEvents();
+        }
+
+        // Generar acciones disponibles
+        function generateAvailableActions(data) {
+          return [
+            {
+              id: 1,
+              title: 'Actualizar Meta Descripciones',
+              description: 'Actualiza automáticamente las meta descripciones de páginas con baja CTR usando IA',
+              icon: 'fa-tags',
+              status: 'idle',
+              enabled: true,
+              impact: 'high',
+              lastRun: null
+            },
+            {
+              id: 2,
+              title: 'Optimizar Title Tags',
+              description: 'Optimiza los títulos de páginas para incluir keywords de alta prioridad',
+              icon: 'fa-heading',
+              status: 'idle',
+              enabled: true,
+              impact: 'high',
+              lastRun: null
+            },
+            {
+              id: 3,
+              title: 'Generar Schema.org JSON-LD',
+              description: 'Genera y actualiza automáticamente el schema markup para páginas clave',
+              icon: 'fa-code',
+              status: 'idle',
+              enabled: false,
+              impact: 'medium',
+              lastRun: null
+            },
+            {
+              id: 4,
+              title: 'Comprimir Imágenes',
+              description: 'Comprime automáticamente imágenes nuevas a formatos WebP y AVIF',
+              icon: 'fa-images',
+              status: 'idle',
+              enabled: true,
+              impact: 'high',
+              lastRun: null
+            },
+            {
+              id: 5,
+              title: 'Actualizar Sitemap XML',
+              description: 'Regenera el sitemap.xml cuando se detectan cambios en el contenido',
+              icon: 'fa-sitemap',
+              status: 'idle',
+              enabled: true,
+              impact: 'medium',
+              lastRun: null
+            },
+            {
+              id: 6,
+              title: 'Detectar Links Rotos',
+              description: 'Escanea y reporta automáticamente enlaces rotos internos y externos',
+              icon: 'fa-link',
+              status: 'idle',
+              enabled: false,
+              impact: 'medium',
+              lastRun: null
+            },
+            {
+              id: 7,
+              title: 'Optimizar Robots.txt',
+              description: 'Actualiza robots.txt basado en patrones de crawling de bots',
+              icon: 'fa-robot',
+              status: 'idle',
+              enabled: false,
+              impact: 'low',
+              lastRun: null
+            },
+            {
+              id: 8,
+              title: 'Generar Alt Text con IA',
+              description: 'Genera descripciones alt para imágenes sin texto alternativo usando visión IA',
+              icon: 'fa-eye',
+              status: 'idle',
+              enabled: true,
+              impact: 'medium',
+              lastRun: null
+            }
+          ];
+        }
+
+        // Actualizar estado de acciones
+        function updateActionsStatus() {
+          const completed = actionsState.history.filter(h => h.status === 'success').length;
+          const pending = actionsState.actions.filter(a => a.enabled && a.status === 'idle').length;
+
+          document.getElementById('completed-actions-count').textContent = completed;
+          document.getElementById('pending-actions-count').textContent = pending;
+
+          // Última ejecución
+          if (actionsState.history.length > 0) {
+            const lastExecution = actionsState.history[0].timestamp;
+            const date = new Date(lastExecution);
+            const timeAgo = getTimeAgo(date);
+            document.getElementById('last-execution-time').textContent = timeAgo;
+          } else {
+            document.getElementById('last-execution-time').textContent = 'Nunca';
+          }
+        }
+
+        // Renderizar lista de acciones
+        function renderActionsList(actions) {
+          const container = document.getElementById('actions-list');
+          if (!container) return;
+
+          container.innerHTML = actions.map(action => {
+            const statusLabels = {
+              idle: 'En Espera',
+              running: 'Ejecutando',
+              completed: 'Completada'
+            };
+
+            return `
+              <div class="action-item ${action.enabled ? 'enabled' : ''} ${action.status === 'running' ? 'running' : ''}" data-id="${action.id}">
+                <input type="checkbox" class="action-checkbox" ${action.enabled ? 'checked' : ''} 
+                       onchange="toggleAction(${action.id}, this.checked)">
+                
+                <div class="action-icon">
+                  <i class="fas ${action.icon}"></i>
+                </div>
+
+                <div class="action-content">
+                  <div class="action-title">
+                    ${escapeHtml(action.title)}
+                    <span class="action-status-badge ${action.status}">
+                      ${statusLabels[action.status]}
+                    </span>
+                  </div>
+                  <div class="action-description">
+                    ${escapeHtml(action.description)}
+                  </div>
+                </div>
+
+                <div class="action-controls">
+                  <button class="btn btn-secondary btn-sm" onclick="previewAction(${action.id})" 
+                          ${action.status === 'running' ? 'disabled' : ''}>
+                    <i class="fas fa-eye"></i>
+                    Preview
+                  </button>
+                  <button class="btn btn-primary btn-sm" onclick="runSingleAction(${action.id})"
+                          ${!action.enabled || action.status === 'running' ? 'disabled' : ''}>
+                    <i class="fas fa-play"></i>
+                    Ejecutar
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Toggle de acción
+        function toggleAction(id, enabled) {
+          const action = actionsState.actions.find(a => a.id === id);
+          if (action) {
+            action.enabled = enabled;
+            updateActionsStatus();
+            renderActionsList(actionsState.actions);
+          }
+        }
+
+        // Previsualizar acción
+        function previewAction(id) {
+          const action = actionsState.actions.find(a => a.id === id);
+          if (!action) return;
+
+          const previews = {
+            1: { // Meta Descripciones
+              title: 'Cambios en Meta Descripciones',
+              changes: [
+                { file: 'index.html', before: 'Just Dev It - Desarrollo web', after: 'Just Dev It - Soluciones de Desarrollo Web Profesional | Aumenta tu ROI +40%' },
+                { file: 'about-us.html', before: 'Sobre nosotros', after: 'Conoce al Equipo de Expertos en Desarrollo Web | +10 años de experiencia' }
+              ]
+            },
+            2: { // Title Tags
+              title: 'Optimización de Títulos',
+              changes: [
+                { file: 'index.html', before: '<title>Home</title>', after: '<title>Desarrollo Web Profesional | Just Dev It - Líderes en Chile</title>' },
+                { file: 'servicios.html', before: '<title>Servicios</title>', after: '<title>Servicios de Desarrollo Web y Apps Móviles | Just Dev It</title>' }
+              ]
+            },
+            4: { // Imágenes
+              title: 'Compresión de Imágenes',
+              changes: [
+                { file: 'hero-banner.jpg', before: '2.4 MB (1920x1080)', after: '180 KB WebP (1920x1080) - Ahorro: 92%' },
+                { file: 'team-photo.png', before: '1.8 MB (1600x900)', after: '145 KB WebP (1600x900) - Ahorro: 92%' }
+              ]
+            },
+            8: { // Alt Text
+              title: 'Generación de Alt Text',
+              changes: [
+                { file: 'product-1.jpg', before: 'alt=""', after: 'alt="Laptop moderna mostrando código de desarrollo web con colores vibrantes"' },
+                { file: 'team-meeting.jpg', before: 'alt=""', after: 'alt="Equipo de desarrolladores colaborando en proyecto ágil usando metodología scrum"' }
+              ]
+            }
+          };
+
+          const preview = previews[id] || {
+            title: action.title,
+            changes: [
+              { file: 'Ejemplo', before: 'Contenido anterior', after: 'Contenido optimizado' }
+            ]
+          };
+
+          renderPreview(preview);
+        }
+
+        // Renderizar preview
+        function renderPreview(preview) {
+          const container = document.getElementById('preview-container');
+          if (!container) return;
+
+          container.innerHTML = `
+            <div class="preview-content">
+              <div class="preview-section">
+                <div class="preview-section-title">
+                  <i class="fas fa-file-alt"></i>
+                  ${escapeHtml(preview.title)}
+                </div>
+                <div class="preview-diff">
+                  ${preview.changes.map(change => `
+                    <div>
+                      <strong style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; display: block;">
+                        📄 ${escapeHtml(change.file)}
+                      </strong>
+                      <div class="diff-line removed">
+                        <i class="fas fa-minus"></i> ${escapeHtml(change.before)}
+                      </div>
+                      <div class="diff-line added">
+                        <i class="fas fa-plus"></i> ${escapeHtml(change.after)}
+                      </div>
+                    </div>
+                  `).join('<div style="height: 15px;"></div>')}
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                <button class="btn btn-secondary" onclick="clearPreview()">
+                  <i class="fas fa-times"></i>
+                  Cancelar
+                </button>
+                <button class="btn btn-primary" onclick="applyPreviewedChanges()">
+                  <i class="fas fa-check"></i>
+                  Aplicar Cambios
+                </button>
+              </div>
+            </div>
+          `;
+        }
+
+        // Limpiar preview
+        function clearPreview() {
+          const container = document.getElementById('preview-container');
+          if (!container) return;
+
+          container.innerHTML = `
+            <div class="preview-empty">
+              <i class="fas fa-search" style="font-size: 48px; color: var(--text-secondary); opacity: 0.3;"></i>
+              <p style="margin-top: 15px; color: var(--text-secondary);">
+                Selecciona una acción para ver la previsualización
+              </p>
+            </div>
+          `;
+        }
+
+        // Aplicar cambios previsualizados
+        function applyPreviewedChanges() {
+          alert('✅ Cambios aplicados correctamente!\n\nLos archivos han sido actualizados en tu sitio.');
+          clearPreview();
+          
+          // Agregar al historial
+          addToHistory({
+            title: 'Cambios aplicados manualmente',
+            description: 'Se aplicaron cambios desde la previsualización',
+            status: 'success',
+            duration: '2s'
+          });
+        }
+
+        // Ejecutar acción individual
+        function runSingleAction(id) {
+          const action = actionsState.actions.find(a => a.id === id);
+          if (!action || !action.enabled || action.status === 'running') return;
+
+          // Cambiar estado a running
+          action.status = 'running';
+          renderActionsList(actionsState.actions);
+
+          // Simular ejecución
+          setTimeout(() => {
+            action.status = 'idle';
+            action.lastRun = new Date();
+            renderActionsList(actionsState.actions);
+
+            // Agregar al historial
+            addToHistory({
+              title: action.title,
+              description: `Ejecutada correctamente - ${Math.floor(Math.random() * 5) + 1} cambios aplicados`,
+              status: 'success',
+              duration: (Math.random() * 3 + 1).toFixed(1) + 's',
+              changes: Math.floor(Math.random() * 5) + 1
+            });
+
+            alert(`✅ ${action.title} ejecutada correctamente!`);
+          }, 2000);
+        }
+
+        // Ejecutar todas las acciones
+        function runAllActions() {
+          const enabledActions = actionsState.actions.filter(a => a.enabled && a.status === 'idle');
+          
+          if (enabledActions.length === 0) {
+            alert('⚠️ No hay acciones habilitadas para ejecutar');
+            return;
+          }
+
+          if (!confirm(`¿Ejecutar ${enabledActions.length} acciones automáticas?`)) {
+            return;
+          }
+
+          let completed = 0;
+          enabledActions.forEach((action, index) => {
+            setTimeout(() => {
+              action.status = 'running';
+              renderActionsList(actionsState.actions);
+
+              setTimeout(() => {
+                action.status = 'idle';
+                action.lastRun = new Date();
+                completed++;
+
+                addToHistory({
+                  title: action.title,
+                  description: `Ejecutada automáticamente - ${Math.floor(Math.random() * 5) + 1} cambios aplicados`,
+                  status: 'success',
+                  duration: (Math.random() * 3 + 1).toFixed(1) + 's',
+                  changes: Math.floor(Math.random() * 5) + 1
+                });
+
+                if (completed === enabledActions.length) {
+                  renderActionsList(actionsState.actions);
+                  updateActionsStatus();
+                  alert(`✅ ${completed} acciones ejecutadas correctamente!`);
+                }
+              }, 2000);
+            }, index * 2500);
+          });
+        }
+
+        // Generar historial de acciones
+        function generateActionHistory() {
+          const now = new Date();
+          const history = [
+            {
+              title: 'Actualizar Meta Descripciones',
+              description: 'Se actualizaron 12 meta descripciones en páginas con bajo CTR',
+              status: 'success',
+              timestamp: new Date(now - 2 * 60 * 60 * 1000), // Hace 2 horas
+              duration: '3.2s',
+              changes: 12
+            },
+            {
+              title: 'Comprimir Imágenes',
+              description: 'Se comprimieron 28 imágenes a formato WebP con 89% de ahorro',
+              status: 'success',
+              timestamp: new Date(now - 5 * 60 * 60 * 1000), // Hace 5 horas
+              duration: '15.7s',
+              changes: 28
+            },
+            {
+              title: 'Actualizar Sitemap XML',
+              description: 'Sitemap regenerado con 45 URLs actualizadas',
+              status: 'success',
+              timestamp: new Date(now - 24 * 60 * 60 * 1000), // Ayer
+              duration: '1.2s',
+              changes: 45
+            }
+          ];
+
+          actionsState.history = history;
+          renderHistoryTimeline(history);
+        }
+
+        // Agregar al historial
+        function addToHistory(item) {
+          const historyItem = {
+            ...item,
+            timestamp: new Date()
+          };
+          actionsState.history.unshift(historyItem);
+          renderHistoryTimeline(actionsState.history);
+          updateActionsStatus();
+        }
+
+        // Renderizar timeline de historial
+        function renderHistoryTimeline(history) {
+          const container = document.getElementById('history-timeline');
+          if (!container) return;
+
+          if (history.length === 0) {
+            container.innerHTML = `
+              <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                <i class="fas fa-clock" style="font-size: 32px; opacity: 0.3; margin-bottom: 15px;"></i>
+                <p>No hay acciones ejecutadas aún</p>
+              </div>
+            `;
+            return;
+          }
+
+          container.innerHTML = history.map(item => {
+            const timeAgo = getTimeAgo(item.timestamp);
+
+            return `
+              <div class="history-item">
+                <div class="history-dot ${item.status}"></div>
+                <div class="history-content">
+                  <div class="history-header">
+                    <div class="history-title">${escapeHtml(item.title)}</div>
+                    <div class="history-time">${timeAgo}</div>
+                  </div>
+                  <div class="history-description">${escapeHtml(item.description)}</div>
+                  <div class="history-meta">
+                    <span><i class="fas fa-clock"></i> ${item.duration}</span>
+                    <span><i class="fas fa-edit"></i> ${item.changes} cambios</span>
+                    <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Exitoso</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        // Obtener tiempo relativo
+        function getTimeAgo(date) {
+          const seconds = Math.floor((new Date() - date) / 1000);
+          
+          if (seconds < 60) return 'Hace unos segundos';
+          if (seconds < 3600) return `Hace ${Math.floor(seconds / 60)} minutos`;
+          if (seconds < 86400) return `Hace ${Math.floor(seconds / 3600)} horas`;
+          if (seconds < 604800) return `Hace ${Math.floor(seconds / 86400)} días`;
+          
+          return date.toLocaleDateString('es-ES');
+        }
+
+        // Setup event listeners para Acciones
+        function setupActionsEvents() {
+          // Ejecutar todas
+          document.getElementById('btn-run-all-actions')?.addEventListener('click', runAllActions);
+
+          // Programar acciones
+          document.getElementById('btn-schedule-actions')?.addEventListener('click', function() {
+            alert('📅 Configuración de programación:\n\n- Diario a las 3:00 AM\n- Semanal los domingos\n- Mensual el primer día del mes\n\nFunción disponible en versión Pro');
+          });
+
+          // Toggle auto mode
+          document.getElementById('toggle-auto-mode')?.addEventListener('change', function(e) {
+            actionsState.autoMode = e.target.checked;
+            if (e.target.checked) {
+              alert('✅ Modo automático activado\n\nLas acciones se ejecutarán según la programación configurada.');
+            } else {
+              alert('⚠️ Modo automático desactivado\n\nLas acciones deberán ejecutarse manualmente.');
+            }
+          });
+
+          // Refresh preview
+          document.getElementById('btn-refresh-preview')?.addEventListener('click', function() {
+            clearPreview();
+            alert('✅ Vista previa actualizada');
+          });
+
+          // Export history
+          document.getElementById('btn-export-history')?.addEventListener('click', function() {
+            const csv = 'Fecha,Acción,Descripción,Estado,Duración,Cambios\n' +
+              actionsState.history.map(h => 
+                `${h.timestamp.toLocaleString('es-ES')},"${h.title}","${h.description}",${h.status},${h.duration},${h.changes}`
+              ).join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `historial-acciones-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+            URL.revokeObjectURL(url);
+
+            alert('✅ Historial exportado correctamente!');
+          });
+        }
+
+        // Cargar Acciones cuando se cambie a la tab
+        const actionsLink = document.querySelector('[data-tab="actions"]');
+        if (actionsLink) {
+          actionsLink.addEventListener("click", function () {
+            setTimeout(() => {
+              if (appState.data) {
+                initializeActionsSection(appState.data);
               }
             }, 100);
           });

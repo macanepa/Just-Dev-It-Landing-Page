@@ -1,6 +1,9 @@
 # Archivos de configuración y datos sensibles
-config.json
-credentials.json
+config/config.json
+config/credentials.json
+config/*.json.backup
+data/*.json
+data/*.txt
 *.json.backup
 
 # Python
