@@ -31,10 +31,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Configuración
-CONFIG_FILE = 'config/config.json'
-KEYWORDS_FILE = 'data/keywords-database.json'
-SUGGESTIONS_FILE = 'data/suggestions.json'
-PERFORMANCE_FILE = 'data/performance-history.json'
+CONFIG_FILE = 'config.json'
+KEYWORDS_FILE = 'keywords-database.json'
+SUGGESTIONS_FILE = 'suggestions.json'
+PERFORMANCE_FILE = 'performance-history.json'
 
 def load_config():
     """Cargar configuración"""

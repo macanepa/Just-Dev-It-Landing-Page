@@ -1,0 +1,166 @@
+{
+  "keywords": [
+    {
+      "keyword": "justdev",
+      "page": "https://justdev.it/",
+      "device": "MOBILE",
+      "country": "chl",
+      "clicks": 2,
+      "impressions": 2,
+      "ctr": 100,
+      "position": 1.5
+    },
+    {
+      "keyword": "dev it",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "esp",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 16.5
+    },
+    {
+      "keyword": "dev it",
+      "page": "https://justdev.it/",
+      "device": "MOBILE",
+      "country": "chl",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "keyword": "devs it",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "arg",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keyword": "it just it",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "esp",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 48.5
+    },
+    {
+      "keyword": "just deploy it",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "esp",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 44
+    },
+    {
+      "keyword": "just dev",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "col",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keyword": "just dev",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "esp",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 2.666666666666667
+    },
+    {
+      "keyword": "just dev",
+      "page": "https://justdev.it/",
+      "device": "MOBILE",
+      "country": "arg",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keyword": "just dev",
+      "page": "https://justdev.it/",
+      "device": "MOBILE",
+      "country": "chl",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keyword": "just dev",
+      "page": "https://justdev.it/",
+      "device": "MOBILE",
+      "country": "ind",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keyword": "just it",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "mex",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keyword": "just it",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "ukr",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "keyword": "justdev",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "per",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "keyword": "justdev",
+      "page": "https://justdev.it/",
+      "device": "DESKTOP",
+      "country": "prt",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    }
+  ],
+  "updated_at": "2025-11-05T00:48:51.999736",
+  "property_url": "sc-domain:justdev.it",
+  "period": {
+    "start": "2025-08-07",
+    "end": "2025-11-05"
+  },
+  "summary": {
+    "total_keywords": 15,
+    "total_impressions": 21,
+    "total_clicks": 2,
+    "average_ctr": 9.523809523809524
+  }
+}

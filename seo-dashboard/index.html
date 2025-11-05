@@ -5880,7 +5880,7 @@
             if (response.ok) {
               const data = await response.json();
               appState.data = data;
-              appState.lastUpdate = new Date(data.last_update);
+              appState.lastUpdate = new Date(data.updated_at || data.last_update);
               localStorage.setItem(
                 "seo-dashboard-enterprise",
                 JSON.stringify(data)
@@ -5895,8 +5895,8 @@
               );
             }
           } catch (error) {
-            console.error("Error:", error);
-            showNotification("Error al cargar datos", "error");
+            console.error("Error al cargar datos:", error);
+            showNotification("Error al cargar datos: " + error.message, "error");
           } finally {
             this.classList.remove("loading");
             this.disabled = false;
@@ -5932,7 +5932,7 @@
           if (response.ok) {
             const data = await response.json();
             appState.data = data;
-            appState.lastUpdate = new Date(data.last_update);
+            appState.lastUpdate = new Date(data.updated_at || data.last_update);
             updateOverviewSection(data);
             initializeCharts(data);
           } else {
@@ -5943,41 +5943,51 @@
         }
       }
 
+      // Función principal para actualizar todo el dashboard con nuevos datos
+      function updateDashboardWithData(data) {
+        if (!data) return;
+        updateOverviewSection(data);
+        initializeCharts(data);
+        updateLastUpdateTime();
+      }
+
       // Actualizar sección Overview con datos
       function updateOverviewSection(data) {
-        if (!data || !data.summary || !data.keywords) return;
+        if (!data || !data.keywords) return;
 
-        const summary = data.summary;
-        const keywords = data.keywords;
+        const summary = data.summary || {};
+        const keywords = data.keywords || [];
 
         // Actualizar KPIs Principales
         document.getElementById("kpi-impressions").textContent = formatNumber(
-          summary.total_impressions
+          summary.total_impressions || 0
         );
         document.getElementById("kpi-clicks").textContent = formatNumber(
-          summary.total_clicks
+          summary.total_clicks || 0
         );
         document.getElementById("kpi-ctr").textContent =
-          summary.avg_ctr.toFixed(2) + "%";
-        document.getElementById("kpi-position").textContent =
-          summary.avg_position.toFixed(1);
+          summary.average_ctr ? summary.average_ctr.toFixed(2) + "%" : "0%";
+        
+        // Calcular posición promedio de los datos reales
+        const avgPosition = keywords.length > 0 
+          ? (keywords.reduce((sum, k) => sum + (k.position || 0), 0) / keywords.length)
+          : 0;
+        document.getElementById("kpi-position").textContent = avgPosition.toFixed(1);
 
-        // Actualizar KPIs Secundarios
-        document.getElementById("kpi-top3").textContent =
-          summary.top_3_positions;
-        document.getElementById("kpi-top10").textContent =
-          summary.top_10_positions;
+        // Calcular keywords en Top 3 y Top 10
+        const top3Count = keywords.filter(k => k.position <= 3).length;
+        const top10Count = keywords.filter(k => k.position <= 10).length;
+        
+        document.getElementById("kpi-top3").textContent = top3Count;
+        document.getElementById("kpi-top10").textContent = top10Count;
 
-        // Calcular keywords con alta prioridad (>=70)
-        const highPriority = keywords.filter((k) => k.priority >= 70).length;
+        // Calcular keywords con alta prioridad (posición <= 5 y clicks > 0)
+        const highPriority = keywords.filter(k => k.position <= 5 && k.clicks > 0).length;
         document.getElementById("kpi-high-priority").textContent = highPriority;
 
-        // Calcular keywords con alto potencial de conversión (>=70)
-        const highConversion = keywords.filter(
-          (k) => k.conversion_potential >= 70
-        ).length;
-        document.getElementById("kpi-high-conversion").textContent =
-          highConversion;
+        // Calcular keywords con alto potencial (posición <= 20 y impresiones > 0 pero clicks = 0)
+        const highConversion = keywords.filter(k => k.position <= 20 && k.impressions > 0 && k.clicks === 0).length;
+        document.getElementById("kpi-high-conversion").textContent = highConversion;
 
         // Actualizar tabla de Top Keywords
         updateTopKeywordsTable(keywords);
@@ -5991,9 +6001,12 @@
         const tbody = document.getElementById("top-keywords-tbody");
         if (!tbody) return;
 
-        // Ordenar por prioridad (descendente) y tomar top 10
+        // Ordenar por clics (descendente) y luego por impresiones, tomar top 10
         const topKeywords = [...keywords]
-          .sort((a, b) => b.priority - a.priority)
+          .sort((a, b) => {
+            if (b.clicks !== a.clicks) return b.clicks - a.clicks;
+            return b.impressions - a.impressions;
+          })
           .slice(0, 10);
 
         if (topKeywords.length === 0) {
@@ -6009,35 +6022,37 @@
 
         tbody.innerHTML = topKeywords
           .map((kw) => {
+            const position = kw.position || 0;
             const positionClass =
-              kw.avg_position <= 3
+              position <= 3
                 ? "top3"
-                : kw.avg_position <= 10
+                : position <= 10
                 ? "top10"
                 : "opportunity";
-            const priorityClass =
-              kw.priority >= 70 ? "high" : kw.priority >= 40 ? "medium" : "low";
-            const priorityLabel =
-              kw.priority >= 70 ? "Alta" : kw.priority >= 40 ? "Media" : "Baja";
+            
+            // Calcular prioridad basada en posición y clics
+            const priority = position <= 5 && kw.clicks > 0 ? 80 : 
+                           position <= 10 ? 60 : 
+                           position <= 20 ? 40 : 20;
+            const priorityClass = priority >= 70 ? "high" : priority >= 40 ? "medium" : "low";
+            const priorityLabel = priority >= 70 ? "Alta" : priority >= 40 ? "Media" : "Baja";
 
             // Crear sparkline simple con posiciones históricas
-            const sparkline = createSparkline(kw.positions || []);
+            const sparkline = createSparkline(kw.positions || [position]);
 
             return `
                     <tr>
                         <td style="text-align: left;">
-                            <span class="keyword-cell">${escapeHtml(
-                              kw.keyword
-                            )}</span>
+                            <span class="keyword-cell">${escapeHtml(kw.keyword || '')}</span>
                         </td>
                         <td>
                             <span class="position-badge ${positionClass}">
-                                #${kw.avg_position.toFixed(1)}
+                                #${position.toFixed(1)}
                             </span>
                         </td>
-                        <td>${formatNumber(kw.impressions)}</td>
-                        <td>${formatNumber(kw.clicks)}</td>
-                        <td>${kw.ctr.toFixed(2)}%</td>
+                        <td>${formatNumber(kw.impressions || 0)}</td>
+                        <td>${formatNumber(kw.clicks || 0)}</td>
+                        <td>${(kw.ctr || 0).toFixed(2)}%</td>
                         <td>
                             <span class="priority-badge ${priorityClass}">
                                 <i class="fas fa-circle"></i>
@@ -6092,32 +6107,29 @@
           });
         }
 
-        // Alerta: Keywords con alto potencial en posición 11-20
+        // Alerta: Keywords con potencial en posición 11-20
         const opportunities = keywords.filter(
-          (k) =>
-            k.avg_position >= 11 &&
-            k.avg_position <= 20 &&
-            k.improvement_opportunity >= 70
+          (k) => k.position >= 11 && k.position <= 20 && k.impressions > 0
         );
         if (opportunities.length > 0) {
           alerts.push({
             type: "warning",
             icon: "fa-star",
             title: "Oportunidades de Mejora",
-            message: `${opportunities.length} keyword(s) cerca del Top 10 con alto potencial. ¡Fácil de optimizar!`,
+            message: `${opportunities.length} keyword(s) cerca del Top 10 con potencial. ¡Fácil de optimizar!`,
           });
         }
 
-        // Alerta: Keywords en Top 3 con excelente rendimiento
+        // Alerta: Keywords en Top 3 con buen rendimiento
         const topPerformers = keywords.filter(
-          (k) => k.avg_position <= 3 && k.ctr >= k.expected_ctr * 1.5
+          (k) => k.position <= 3 && k.clicks > 0
         );
         if (topPerformers.length > 0) {
           alerts.push({
             type: "success",
             icon: "fa-trophy",
             title: "Excelente Rendimiento",
-            message: `${topPerformers.length} keyword(s) en Top 3 con CTR superior al esperado. ¡Mantén la estrategia!`,
+            message: `${topPerformers.length} keyword(s) en Top 3 con clics. ¡Mantén la estrategia!`,
           });
         }
 
@@ -7877,137 +7889,79 @@
 
           tbody.innerHTML = pageKeywords
             .map((kw) => {
-              const priorityClass =
-                kw.priority >= 70
-                  ? "high"
-                  : kw.priority >= 40
-                  ? "medium"
-                  : "low";
-              const priorityLabel =
-                kw.priority >= 70
-                  ? "Alta"
-                  : kw.priority >= 40
-                  ? "Media"
-                  : "Baja";
-              const positionClass =
-                kw.avg_position <= 3
-                  ? "top3"
-                  : kw.avg_position <= 10
-                  ? "top10"
-                  : "opportunity";
+              // Calcular prioridad basada en clics y posición
+              const priority = kw.position <= 5 && kw.clicks > 0 ? 80 : 
+                             kw.position <= 10 ? 60 : 
+                             kw.position <= 20 ? 40 : 20;
+              const priorityClass = priority >= 70 ? "high" : priority >= 40 ? "medium" : "low";
+              const priorityLabel = priority >= 70 ? "Alta" : priority >= 40 ? "Media" : "Baja";
+              
+              const position = kw.position || 0;
+              const positionClass = position <= 3 ? "top3" : position <= 10 ? "top10" : "opportunity";
 
               // Determinar color de fila
               const rowClass = `row-${priorityClass}-priority`;
 
-              // Páginas (primeras 3)
-              const pages = kw.pages.slice(0, 3);
-              const pagesHtml =
-                pages.length > 0
-                  ? pages
-                      .map(
-                        (p) =>
-                          `<span class="page-pill" title="${escapeHtml(
-                            p
-                          )}">${escapeHtml(p.split("/").pop() || "/")}</span>`
-                      )
-                      .join("")
-                  : '<span class="page-pill">N/A</span>';
+              // Página
+              const pagePath = kw.page || '';
+              const pageShort = pagePath.split("/").pop() || pagePath.substring(0, 30) || "N/A";
 
               return `
               <tr class="${rowClass}">
                 <td style="text-align: left;">
                   <div class="keyword-cell">
-                    <strong>${escapeHtml(kw.keyword)}</strong>
+                    <strong>${escapeHtml(kw.keyword || '')}</strong>
                   </div>
                 </td>
                 <td>
                   <div class="position-cell">
                     <span class="position-badge ${positionClass}">
-                      #${kw.avg_position.toFixed(1)}
-                    </span>
-                    <span class="position-range">
-                      ${kw.best_position.toFixed(
-                        1
-                      )} - ${kw.worst_position.toFixed(1)}
+                      #${position.toFixed(1)}
                     </span>
                   </div>
                 </td>
-                <td><strong>${formatNumber(kw.impressions)}</strong></td>
-                <td><strong>${formatNumber(kw.clicks)}</strong></td>
+                <td><strong>${formatNumber(kw.impressions || 0)}</strong></td>
+                <td><strong>${formatNumber(kw.clicks || 0)}</strong></td>
                 <td>
-                  <strong style="color: ${
-                    kw.ctr >= kw.expected_ctr
-                      ? "var(--success)"
-                      : "var(--warning)"
-                  };">
-                    ${kw.ctr.toFixed(2)}%
-                  </strong>
-                  <div style="font-size: 0.7rem; color: var(--text-secondary);">
-                    vs ${kw.expected_ctr.toFixed(2)}%
-                  </div>
+                  <strong style="color: ${(kw.ctr || 0) >= 3 ? 'var(--success)' : 'var(--text-primary)'}">${(kw.ctr || 0).toFixed(2)}%</strong>
                 </td>
                 <td>
                   <span class="priority-badge ${priorityClass}">
                     <i class="fas fa-circle"></i>
                     ${priorityLabel}
                   </span>
-                  <div class="score-bar">
-                    <div class="score-bar-fill ${priorityClass}" style="width: ${
-                kw.priority
-              }%;"></div>
-                  </div>
                 </td>
                 <td>
-                  <strong>${kw.conversion_potential.toFixed(0)}</strong>/100
-                  <div class="score-bar">
-                    <div class="score-bar-fill success" style="width: ${
-                      kw.conversion_potential
-                    }%;"></div>
-                  </div>
+                  <span class="conversion-badge medium">
+                    ${kw.impressions > 0 && kw.clicks === 0 ? 'Potencial' : kw.clicks > 0 ? 'Activo' : 'Bajo'}
+                  </span>
+                </td>
+                <td class="improvement-cell">
+                  ${position > 10 && kw.impressions > 0 ? `<i class="fas fa-arrow-up" style="color: var(--success);"></i> +${Math.floor((position - 10) / 2)}` : '-'}
+                </td>
+                <td class="pages-cell" title="${escapeHtml(pagePath)}">
+                  <span class="page-pill">${escapeHtml(pageShort)}</span>
                 </td>
                 <td>
-                  <strong>${kw.improvement_opportunity.toFixed(0)}</strong>/100
-                  <div class="score-bar">
-                    <div class="score-bar-fill ${
-                      kw.improvement_opportunity >= 70
-                        ? "high"
-                        : kw.improvement_opportunity >= 40
-                        ? "medium"
-                        : "low"
-                    }" style="width: ${kw.improvement_opportunity}%;"></div>
-                  </div>
-                </td>
-                <td>
-                  <div class="pages-pills">
-                    ${pagesHtml}
-                  </div>
-                </td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="action-btn" title="Ver Detalles" onclick="alert('Detalles de: ${escapeHtml(
-                      kw.keyword
-                    ).replace(/'/g, "\\'")}')">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="action-btn" title="Optimizar" onclick="alert('Optimizar: ${escapeHtml(
-                      kw.keyword
-                    ).replace(/'/g, "\\'")}')">
-                      <i class="fas fa-magic"></i>
-                    </button>
-                  </div>
+                  <button class="btn-icon" onclick="viewKeywordDetails('${escapeHtml(kw.keyword || '')}')" title="Ver detalles">
+                    <i class="fas fa-chart-line"></i>
+                  </button>
+                  <button class="btn-icon" onclick="optimizeKeyword('${escapeHtml(kw.keyword || '')}')" title="Optimizar">
+                    <i class="fas fa-magic"></i>
+                  </button>
                 </td>
               </tr>
             `;
             })
             .join("");
 
-          // Actualizar info y paginación
-          updateTableInfo();
-          updatePagination();
+          // Actualizar paginación
+          updatePaginationInfo();
+          renderPagination(totalPages);
         }
 
-        // Actualizar info de tabla
-        function updateTableInfo() {
+        // Actualizar información de paginación
+        function updatePaginationInfo() {
           const showingRange = document.getElementById("showing-range");
           if (!showingRange) return;
 
@@ -8022,6 +7976,11 @@
           );
 
           showingRange.textContent = `Mostrando ${start}-${end} de ${total} keywords`;
+        }
+
+        // Actualizar info de tabla (legacy)
+        function updateTableInfo() {
+          updatePaginationInfo();
         }
 
         // Actualizar paginación
@@ -8452,11 +8411,11 @@
               datasets: [{
                 data: Object.values(data),
                 backgroundColor: [
-                  '#3b82f6',
-                  '#8b5cf6',
-                  '#ec4899',
-                  '#10b981',
-                  '#f59e0b'
+                  '#60a5fa',  // Azul más brillante
+                  '#a78bfa',  // Púrpura más brillante
+                  '#f472b6',  // Rosa más brillante
+                  '#34d399',  // Verde más brillante
+                  '#fbbf24'   // Amarillo más brillante
                 ],
                 borderColor: '#1e293b',
                 borderWidth: 3
