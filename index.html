@@ -630,17 +630,36 @@
       fetchpriority="high"
     />
 
-    <!-- ===== ESTILOS CSS INDIVIDUALES OPTIMIZADOS (Sin Bundle) ===== -->
+    <!-- ===== GOOGLE FONTS (Async - No render blocking) ===== -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"></noscript>
+
+    <!-- ===== CRITICAL CSS INLINE (Elimina render-blocking) ===== -->
+    <style>
+      :root{--color-brand-primary:#9B61A4;--color-brand-secondary:#04C7AA;--bg-primary:#0A0E1A;--bg-secondary:#152636;--transition-base:300ms cubic-bezier(.4,0,.2,1);--z-fixed:1000;--backdrop-blur:blur(10px)}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}body{min-height:100vh;font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;background:#0A0E1A;color:#fff;overflow-x:hidden}img{max-width:100%;display:block}.epic-preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#000;opacity:1;transition:opacity .6s cubic-bezier(.4,0,.2,1)}.epic-preloader.loaded{opacity:0;pointer-events:none}.preloader-content{width:280px;height:300px;text-align:center;z-index:2}.preloader-logo{width:120px;height:120px;margin:0 auto 40px}.preloader-logo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 30px rgba(155,97,164,.6));animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}.preloader-counter{font-size:48px;font-weight:700;min-height:58px;margin-bottom:30px;background:linear-gradient(135deg,#9B61A4 0%,#04C7AA 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.counter-percent{font-size:32px;opacity:.8;display:inline-block;min-width:24px}.preloader-bar-wrapper{width:100%;padding:0 20px}.preloader-bar{width:100%;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}.preloader-bar-fill{height:100%;width:0;background:linear-gradient(90deg,#9B61A4,#04C7AA);border-radius:2px;transition:width .3s ease}.preloader-text{margin-top:20px;font-size:14px;color:rgba(255,255,255,.6);letter-spacing:1px}.site-header{position:fixed;top:0;left:0;right:0;z-index:1030;background-color:rgba(10,14,26,.85);backdrop-filter:blur(12px) saturate(180%);border-bottom:1px solid rgba(155,97,164,.1)}.nav-container{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;max-width:1400px;margin:0 auto}.nav-brand a{display:flex;align-items:center}.nav-brand img{height:40px;width:auto}.nav-menu{display:none}.hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:140px 20px 100px;background:linear-gradient(135deg,#0d0d14 0%,#1a1a2e 50%,#0d0d14 100%);overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(155,97,164,.1) 0%,transparent 50%);pointer-events:none}.hero-container{position:relative;width:100%;max-width:1400px;min-height:600px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:60px;align-items:center;z-index:1}@media(min-width:768px){.hero-container{grid-template-columns:1fr 1fr}.nav-menu{display:flex;align-items:center;gap:2rem}}.hero-content{position:relative;z-index:1;display:flex;flex-direction:column;gap:24px;padding:40px;background:rgba(20,20,30,.85);border-radius:16px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.4)}.hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;color:#fff;margin:0}.gradient-text{color:#d4a5e0;font-weight:700}.hero-subtitle{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#b77cc5;margin:0}.hero-description{font-size:clamp(1rem,2vw,1.2rem);line-height:1.6;color:rgba(255,255,255,.9)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;font-size:16px;font-weight:600;text-decoration:none;border-radius:8px;transition:transform .3s,box-shadow .3s,background .3s;cursor:pointer}.btn-primary{background:linear-gradient(135deg,#9B61A4 0%,#b77cc5 100%);color:#fff;border:2px solid transparent}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(155,97,164,.3)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+    </style>
+
+    <!-- ===== CSS DIFERIDO (Previously render-blocking → now async) ===== -->
+    <link rel="preload" href="css/core/reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/core/reset.css"></noscript>
     
-    <!-- CRITICAL CSS (Above-the-fold - Render Blocking) -->
-    <!-- Estos se cargan síncronamente porque son necesarios para First Paint -->
-    <link rel="stylesheet" href="css/core/reset.css" />
-    <link rel="stylesheet" href="css/core/variables.css" />
-    <link rel="stylesheet" href="css/core/typography.css" />
-    <link rel="stylesheet" href="css/components/preloader.css" />
-    <link rel="stylesheet" href="css/components/navigation.css" />
-    <link rel="stylesheet" href="css/components/hero.css" />
-    <link rel="stylesheet" href="css/components/language-selector.css" />
+    <link rel="preload" href="css/core/variables.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/core/variables.css"></noscript>
+    
+    <link rel="preload" href="css/core/typography.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/core/typography.css"></noscript>
+    
+    <link rel="preload" href="css/components/preloader.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/preloader.css"></noscript>
+    
+    <link rel="preload" href="css/components/navigation.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/navigation.css"></noscript>
+    
+    <link rel="preload" href="css/components/hero.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/hero.css"></noscript>
+    
+    <link rel="preload" href="css/components/language-selector.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/components/language-selector.css"></noscript>
     
     <!-- NON-CRITICAL CSS (Below-the-fold - Deferred con media trick) -->
     <!-- Estos se cargan asíncronamente para no bloquear el render -->
@@ -2493,8 +2512,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- ===== SCRIPTS PRINCIPALES (Individuales Restaurados) ===== -->
-    <!-- i18n System - defer to not block rendering -->
-    <script type="module" src="js/i18n.js" defer></script>
+    <!-- Preload module dependency to break sequential chain -->
+    <link rel="modulepreload" href="config/translations.js">
+    
+    <!-- i18n System - module (inherently deferred) -->
+    <script type="module" src="js/i18n.js"></script>
     
     <!-- Preloader - async for earliest execution without blocking parser -->
     <script async src="js/epic-preloader.js"></script>

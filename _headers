@@ -13,55 +13,61 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
-# CSS - Caché agresivo con immutable (incluye query strings)
+# CSS - Caché agresivo con immutable (incluye subdirectorios)
 /css/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.css
+/css/core/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-# JavaScript - Caché agresivo con immutable (incluye query strings)
+/css/components/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/css/layouts/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/css/utils/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# JavaScript - Caché agresivo con immutable (incluye subdirectorios)
 /js/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.js
+/js/components/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-# Imágenes - Caché agresivo
-/*.jpg
+/config/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.jpeg
+# Imágenes - Caché agresivo (incluyendo subdirectorios)
+/assets/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.png
+/assets/images/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.gif
+/assets/images/Desktop/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.webp
+/assets/images/mobile/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
-/*.avif
+/assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
   X-Content-Type-Options: nosniff
-
-/*.svg
-  Cache-Control: public, max-age=31536000, immutable
-  X-Content-Type-Options: nosniff
-
-/*.ico
-  Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
 # Fuentes - Caché agresivo con CORS

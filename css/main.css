@@ -522,7 +522,7 @@ body.loading::after {
 }
 
 /* Firefox */
-* {
+html {
     scrollbar-width: thin;
     scrollbar-color: var(--color-brand-primary) var(--bg-primary);
 }
