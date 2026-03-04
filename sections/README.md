@@ -6,7 +6,7 @@ Esta carpeta contiene las páginas HTML de producción para cada una de las 9 se
 
 ```
 sections/
-├── databam/              # 🟣 Databam - Plataforma de Data Inmobiliaria
+├── databam/              # 🟣 Data Inmobiliaria - Plataforma de Datos Inmobiliarios
 │   └── databam.html      # Página de producción
 ├── tools/                # 🔧 Just Tools - Herramientas de Desarrollo
 │   ├── generate-favicon-og.html    # Generador de Favicon y OG Preview
@@ -25,7 +25,7 @@ sections/
 
 | Sección | Estado | Archivo |
 |---------|--------|---------|
-| **Databam** | ✅ Completado | `databam/databam.html` |
+| **Data Inmobiliaria** | ✅ Completado | `databam/databam.html` |
 | **Just Tools** | ⚙️ Herramientas listas | `tools/*.html` |
 | **Just Energy** | 📝 Pendiente | - |
 | **Just Data** | 📝 Pendiente | - |
@@ -57,7 +57,7 @@ Ejemplo de uso:
 ```
 
 Temas disponibles:
-- `databam` - Morado (#6B2CF5)
+- `databam` - Morado (#6B2CF5) — Data Inmobiliaria
 - `tools` - Cyan (#00D9FF)
 - `energy` - Verde (#00FF87)
 - `data` - Azul (#4169E1)
