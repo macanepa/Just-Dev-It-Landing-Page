@@ -154,10 +154,10 @@ const translations = {
       },
       
       project3: {
-        category: "Retail & Integraciones",
-        title: "Integraciones E-commerce",
-        description: "Conectores multi-plataforma con sincronización en tiempo real de Inventarios y Stock.",
-        tags: ["Shopify", "Wordpress", "WSM"]
+        category: "Integraciones & ERP",
+        title: "Integración ERP & CRM",
+        description: "Sincronización automática bidireccional entre sistemas ERP y CRM. Datos unificados multi-empresa en tiempo real.",
+        tags: ["APIs", "Python", "ETL"]
       },
       
       project4: {
@@ -468,10 +468,10 @@ const translations = {
       },
       
       project3: {
-        category: "Retail & Integrations",
-        title: "E-commerce Integrations",
-        description: "Multi-platform connectors with real-time synchronization of Inventory and Stock.",
-        tags: ["Shopify", "Wordpress", "WSM"]
+        category: "Integrations & ERP",
+        title: "ERP & CRM Integration",
+        description: "Automatic bidirectional synchronization between ERP and CRM systems. Unified multi-company data in real-time.",
+        tags: ["APIs", "Python", "ETL"]
       },
       
       project4: {
