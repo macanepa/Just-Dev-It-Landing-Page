@@ -111,10 +111,8 @@
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                const formData = new FormData(contactForm);
+                // NO enviar PII (name, email) a GA4 — viola ToS de Google
                 trackConversion(CONVERSION_EVENTS.FORM_SUBMIT, {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
                     category: 'lead_generation',
                     label: 'contact_form_submission',
                     value: 100
@@ -209,9 +207,23 @@
             }, { once: false, passive: true });
         });
         
-        // 7. Flush tracking queue al salir
+        // 7. Flush tracking queue al salir (usando sendBeacon para confiabilidad)
         window.addEventListener('beforeunload', () => {
-            flushTrackingQueue();
+            if (trackingQueue.length > 0) {
+                const eventsToSend = [...trackingQueue];
+                trackingQueue = [];
+                // sendBeacon es confiable en beforeunload, setTimeout no lo es
+                eventsToSend.forEach(({ eventName, eventParams }) => {
+                    if (window.dataLayer) {
+                        window.dataLayer.push({ event: eventName, ...eventParams });
+                    }
+                    // Fallback beacon para GA4
+                    if (navigator.sendBeacon) {
+                        const url = `https://www.google-analytics.com/g/collect?v=2&tid=G-E47YX9JYCS&en=${eventName}`;
+                        navigator.sendBeacon(url);
+                    }
+                });
+            }
         });
         
         // 8. Flush periódico cada 5 segundos si hay eventos
