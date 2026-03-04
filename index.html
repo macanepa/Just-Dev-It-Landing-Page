@@ -630,18 +630,12 @@
       fetchpriority="high"
     />
 
-    <!-- ===== GOOGLE FONTS (Async - No render blocking) ===== -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"></noscript>
+    <!-- ===== GOOGLE FONTS (Async - display=optional evita CLS por font swap) ===== -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=optional"></noscript>
 
-    <!-- ===== CRITICAL CSS (Above-the-fold - Render Blocking for CLS=0) ===== -->
-    <link rel="stylesheet" href="css/core/reset.css" />
-    <link rel="stylesheet" href="css/core/variables.css" />
-    <link rel="stylesheet" href="css/core/typography.css" />
-    <link rel="stylesheet" href="css/components/preloader.css" />
-    <link rel="stylesheet" href="css/components/navigation.css" />
-    <link rel="stylesheet" href="css/components/hero.css" />
-    <link rel="stylesheet" href="css/components/language-selector.css" />
+    <!-- ===== CRITICAL CSS (1 archivo = 1 request en vez de 7) ===== -->
+    <link rel="stylesheet" href="css/critical-bundle.css" />
     
     <!-- NON-CRITICAL CSS (Below-the-fold - Deferred) -->
     <link rel="preload" href="css/layouts/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
