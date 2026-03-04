@@ -125,7 +125,7 @@ const translations = {
         stat2Number: "PropTech",
         stat2Label: "Líderes en<br />Data inmobiliaria en Chile",
         stat3Number: "LegalTech",
-        stat3Label: "Automatizacion<br />De Documentos & Procesos"
+        stat3Label: "Automatización<br />De Documentos & Procesos"
       }
     },
 
@@ -190,8 +190,8 @@ const translations = {
       
       project8: {
         category: "PropTech",
-        title: "Databam",
-        description: "Plataforma de data inmobiliaria con +500K propiedades en tiempo real con precios de transacción y propietarios.",
+        title: "Data Inmobiliaria",
+        description: "Plataforma de data inmobiliaria con 9.5M propiedades indexadas en tiempo real con precios de transacción y propietarios.",
         tags: ["Rails", "Python", "BigQuery"]
       },
       
@@ -299,7 +299,7 @@ const translations = {
       },
       
       bottom: {
-        copyright: "&copy; 2025 Just Dev It. Todos los derechos reservados.",
+        copyright: "&copy; 2026 Just Dev It. Todos los derechos reservados.",
         credits: "Hecho con 💜 en Chile"
       }
     },
@@ -504,8 +504,8 @@ const translations = {
       
       project8: {
         category: "PropTech",
-        title: "Databam",
-        description: "Real estate data platform with +500K properties in real-time with transaction prices and owners.",
+        title: "Data Inmobiliaria",
+        description: "Real estate data platform with 9.5M indexed properties in real-time with transaction prices and owners.",
         tags: ["Rails", "Python", "BigQuery"]
       },
       
@@ -613,7 +613,7 @@ const translations = {
       },
       
       bottom: {
-        copyright: "&copy; 2025 Just Dev It. All rights reserved.",
+        copyright: "&copy; 2026 Just Dev It. All rights reserved.",
         credits: "Made with 💜 in Chile"
       }
     },

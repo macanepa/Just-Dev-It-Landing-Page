@@ -105,9 +105,9 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 1030;
     background-color: rgba(10, 14, 26, 0.85);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px) saturate(180%);
     border-bottom: 1px solid rgba(155, 97, 164, 0.1);
 }
 
@@ -116,7 +116,7 @@ img {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    max-width: 1536px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -226,7 +226,7 @@ img {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #9B61A4 0%, #7a4d84 100%);
+    background: linear-gradient(135deg, #9B61A4 0%, #b77cc5 100%);
     color: #fff;
     border: 2px solid transparent;
 }
