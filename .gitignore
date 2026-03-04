@@ -79,21 +79,27 @@ env/
 # Biblia ADN (estrategia, precios, clientes)
 BIBLIA_ADN_JUST_DEV_IT.md
 
-# SEO Dashboard completo (scripts, credenciales, auditorias)
+# SEO Dashboard (eliminado)
 seo-dashboard/
 
-# Keyword analysis (estrategia SEO interna)
+# Keyword analysis
 keyword-analysis-results/
 
-# Documentacion interna de desarrollo
+# Documentacion interna
 docs/
 CAMBIOS-SEO-IMPLEMENTADOS.md
+
+# Secciones secundarias (no parte del landing)
+sections/
 
 # Backups
 config/translations.backup.js
 css/components/slider-cards-backup.css
 
-# Config sensible (si se agrega en el futuro)
+# Config sensible
 config/credentials*.json
 config/.env
 *.secret
+
+# Apache (no se usa en Netlify)
+.htaccess
