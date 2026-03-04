@@ -4,9 +4,9 @@
  * Fuentes: Poppins (headings), Manrope (body), Fira Code (code)
  */
 
-/* ===== IMPORTACIÓN DE FUENTES (Google Fonts CDN con display=swap) ===== */
-/* Nota: Para performance óptima, considerar self-hosting fonts en el futuro */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+/* ===== FUENTES ===== */
+/* Google Fonts se carga mediante <link> en el HTML para evitar @import render-blocking */
+/* Ver index.html: fonts.googleapis.com con preload + display=swap */
 
 /* ===== ESTILOS BASE ===== */
 body {

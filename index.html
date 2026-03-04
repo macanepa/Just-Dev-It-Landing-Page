@@ -593,14 +593,11 @@
       href="/sitemap.xml"
     />
 
-    <!-- ===== PRECONNECT PARA PERFORMANCE ===== -->
-    <!-- Conexiones tempranas a CDNs críticos para reducir latencia -->
+    <!-- ===== PRECONNECT PARA PERFORMANCE (máx 4) ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     <!-- ===== PERFORMANCE & WEB VITALS ===== -->
     <meta name="theme-color" content="#9B61A4" />
@@ -954,22 +951,33 @@
       }
     </script>
 
-    <!-- ===== GOOGLE TAG MANAGER ===== -->
+    <!-- ===== GOOGLE TAG MANAGER (diferido para no bloquear LCP) ===== -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-N67BW2PN");
+      // GTM delayed: loads after first paint to avoid blocking LCP/FCP
+      window.dataLayer = window.dataLayer || [];
+      function loadGTM() {
+        (function (w, d, s, l, i) {
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-N67BW2PN");
+      }
+      // Load GTM after 3.5s or on user interaction, whichever comes first
+      var gtmLoaded = false;
+      function triggerGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        loadGTM();
+      }
+      setTimeout(triggerGTM, 3500);
+      ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(function(evt) {
+        window.addEventListener(evt, triggerGTM, { once: true, passive: true });
+      });
     </script>
-
-    <!-- GA4 se gestiona exclusivamente desde GTM (GTM-N67BW2PN) -->
-    <!-- Snippet gtag.js eliminado para evitar pageviews duplicados -->
   </head>
 
   <body>
@@ -2379,7 +2387,8 @@
                 src="assets/images/Desktop/logo-principal-blanco.svg"
                 alt="Just Dev It"
                 width="140"
-                height="auto"
+                height="50"
+                loading="lazy"
               />
             </div>
             <p class="footer-description" data-i18n="footer.description">
@@ -2484,11 +2493,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- ===== SCRIPTS PRINCIPALES (Individuales Restaurados) ===== -->
-    <!-- i18n System - Must load FIRST before any other script -->
-    <script type="module" src="js/i18n.js"></script>
+    <!-- i18n System - defer to not block rendering -->
+    <script type="module" src="js/i18n.js" defer></script>
     
-    <!-- Critical Scripts - Preloader primero -->
-    <script src="js/epic-preloader.js"></script>
+    <!-- Preloader - async for earliest execution without blocking parser -->
+    <script async src="js/epic-preloader.js"></script>
     
     <!-- Core Scripts - defer para mejor rendimiento -->
     <script defer src="js/app-standalone.js"></script>
