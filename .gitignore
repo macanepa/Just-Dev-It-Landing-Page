@@ -75,5 +75,25 @@ env/
 # ===== Archivos de caché de imágenes =====
 *.cache
 
-# ===== Archivos específicos del proyecto =====
-# (Puedes agregar archivos que no quieras versionar)
+# ===== ARCHIVOS SENSIBLES / INTERNOS =====
+# Biblia ADN (estrategia, precios, clientes)
+BIBLIA_ADN_JUST_DEV_IT.md
+
+# SEO Dashboard completo (scripts, credenciales, auditorias)
+seo-dashboard/
+
+# Keyword analysis (estrategia SEO interna)
+keyword-analysis-results/
+
+# Documentacion interna de desarrollo
+docs/
+CAMBIOS-SEO-IMPLEMENTADOS.md
+
+# Backups
+config/translations.backup.js
+css/components/slider-cards-backup.css
+
+# Config sensible (si se agrega en el futuro)
+config/credentials*.json
+config/.env
+*.secret
