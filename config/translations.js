@@ -257,6 +257,22 @@ const translations = {
       subtitle: "Propuesta en 24hrs.",
       location: "Santiago, Chile | Respuesta inmediata",
       
+      formCard: {
+        title: "Envíanos un Mensaje",
+        description: "Completa el formulario y te responderemos en menos de 24 horas con una propuesta personalizada."
+      },
+
+      calendarCard: {
+        title: "Agenda una Reunión",
+        description: "Reserva directamente una videollamada de 45 minutos con nuestro equipo. Sin compromiso.",
+        feature1: "Videollamada de 45 minutos",
+        feature2: "Hablamos de tu proyecto en detalle",
+        feature3: "Recibes una propuesta personalizada",
+        feature4: "Sin compromiso ni costos",
+        cta: "Agendar Reunión",
+        note: "Selecciona el horario que mejor te acomode"
+      },
+
       form: {
         nameLabel: "Nombre",
         namePlaceholder: "Tu nombre",
@@ -571,6 +587,22 @@ const translations = {
       subtitle: "Proposal in 24hrs.",
       location: "Santiago, Chile | Immediate response",
       
+      formCard: {
+        title: "Send Us a Message",
+        description: "Fill out the form and we'll get back to you within 24 hours with a personalized proposal."
+      },
+
+      calendarCard: {
+        title: "Schedule a Meeting",
+        description: "Book a 45-minute video call directly with our team. No commitment required.",
+        feature1: "45-minute video call",
+        feature2: "We discuss your project in detail",
+        feature3: "You receive a personalized proposal",
+        feature4: "No commitment or costs",
+        cta: "Schedule Meeting",
+        note: "Choose the time that works best for you"
+      },
+
       form: {
         nameLabel: "Name",
         namePlaceholder: "Your name",

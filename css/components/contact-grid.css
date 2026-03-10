@@ -1,0 +1,170 @@
+/**
+ * Contact Grid Component - Just Dev It
+ * Layout de dos columnas para formulario + calendario
+ */
+
+/* ===== CONTACT GRID ===== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-10);
+        align-items: start;
+    }
+}
+
+/* ===== CONTACT CARD ===== */
+.contact-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(155, 97, 164, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+
+.contact-card--calendar::before {
+    background: var(--gradient-secondary);
+}
+
+/* ===== CONTACT CARD HEADER ===== */
+.contact-card-header {
+    margin-bottom: var(--space-8);
+    text-align: center;
+}
+
+.contact-card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(155, 97, 164, 0.2) 0%, rgba(155, 97, 164, 0.05) 100%);
+    color: var(--color-brand-primary);
+    margin: 0 auto var(--space-5);
+}
+
+.contact-card-icon--secondary {
+    background: linear-gradient(135deg, rgba(4, 199, 170, 0.2) 0%, rgba(4, 199, 170, 0.05) 100%);
+    color: var(--color-brand-secondary);
+}
+
+.contact-card-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--color-neutral-lightest);
+    margin-bottom: var(--space-3);
+}
+
+.contact-card-description {
+    font-size: var(--text-sm);
+    color: var(--color-neutral-light);
+    line-height: var(--leading-relaxed);
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+/* ===== CALENDAR CARD BODY ===== */
+.calendar-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.calendar-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.calendar-feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-neutral-lighter);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(4, 199, 170, 0.04);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(4, 199, 170, 0.08);
+    transition: all var(--transition-fast);
+}
+
+.calendar-feature-item:hover {
+    background: rgba(4, 199, 170, 0.08);
+    border-color: rgba(4, 199, 170, 0.15);
+}
+
+.calendar-feature-item svg {
+    flex-shrink: 0;
+}
+
+/* ===== CALENDAR CTA ===== */
+.calendar-cta {
+    width: 100%;
+    padding: var(--space-5) var(--space-8) !important;
+    font-size: var(--text-lg) !important;
+    justify-content: center;
+}
+
+.calendar-note {
+    font-size: var(--text-xs);
+    color: var(--color-neutral-medium);
+    text-align: center;
+    margin: 0;
+}
+
+/* ===== FORM SUBMIT FIX ===== */
+.contact-card .form-submit {
+    margin-top: var(--space-4);
+}
+
+.contact-card .form-submit .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 480px) {
+    .contact-card {
+        padding: var(--space-6);
+    }
+
+    .contact-card-header {
+        margin-bottom: var(--space-6);
+    }
+
+    .contact-card-title {
+        font-size: var(--text-xl);
+    }
+
+    .calendar-feature-item {
+        font-size: var(--text-sm);
+        padding: var(--space-3);
+    }
+}
