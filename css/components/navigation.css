@@ -383,3 +383,10 @@
     outline-offset: 4px;
     border-radius: var(--radius-sm);
 }
+
+/* === NOTEBOOK/LAPTOP RESPONSIVE FIXES === */
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .nav-menu { gap: var(--space-4); }
+    .nav-link { padding: var(--space-2); font-size: var(--text-sm); }
+    .nav-container { padding: var(--space-3) var(--space-6); }
+}

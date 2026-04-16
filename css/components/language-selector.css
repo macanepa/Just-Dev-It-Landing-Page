@@ -24,13 +24,13 @@
   -moz-user-select: none;
 }
 
-/* Desktop: posición fija en la esquina superior derecha */
+/* Desktop: dentro del nav, inline con el CTA */
 @media (min-width: 1024px) {
   .language-selector {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
+    position: relative;
+    z-index: 10;
+    margin-left: 8px;
+    flex-shrink: 0;
   }
 }
 
@@ -149,11 +149,9 @@
 
 /* ===== RESPONSIVE ===== */
 
-/* Tablets - mantener posición fija */
+/* Tablets - dentro del nav */
 @media (max-width: 1024px) and (min-width: 769px) {
   .language-selector {
-    top: 15px;
-    right: 15px;
     padding: 8px 14px;
     gap: 6px;
   }

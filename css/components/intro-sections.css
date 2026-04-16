@@ -454,3 +454,14 @@
     max-width: 100%;
   }
 }
+
+/* === NOTEBOOK/LAPTOP RESPONSIVE FIXES === */
+@media (min-width: 768px) {
+    .intro-section { min-height: auto; }
+}
+
+@media (max-height: 900px) and (min-width: 768px) {
+    .intro-section { min-height: auto; padding-top: 4rem; padding-bottom: 2rem; }
+    .intro-stats { min-height: auto; padding: 1.5rem 1.5rem; margin-top: 1.5rem; }
+    .intro-stat { min-height: auto; padding: 1rem 0.75rem; }
+}

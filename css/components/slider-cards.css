@@ -185,14 +185,15 @@
 }
 
 .slider-card {
-    /* Swiper maneja flex y width a través de slidesPerView */
+    /* Swiper maneja el ancho via slidesPerView - NO poner width/min-width fijos */
     width: 100%;
-    min-height: 460px;
-    height: auto;
+    height: 100%;
     position: relative;
     border-radius: 1.5rem;
     overflow: hidden;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
     transition: 
         opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
         transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -206,7 +207,6 @@
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    contain: layout style paint;
     background: linear-gradient(
         135deg,
         rgba(25, 25, 35, 0.98) 0%,
@@ -253,7 +253,7 @@
     color: rgba(155, 97, 164, 0.4);
     line-height: 1;
     pointer-events: none;
-    z-index: 10;
+    z-index: 1;
     transition: opacity 0.4s ease, transform 0.4s ease, color 0.4s ease;
 }
 
@@ -294,14 +294,14 @@
 }
 
 .slider-card-overlay {
-    position: absolute;
-    inset: 0;
+    position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1.5rem;
-    min-height: 100%;
+    flex: 1;
+    min-height: 400px;
     /* Gradiente oscuro sobre la imagen para mejor legibilidad */
     background: linear-gradient(
         135deg,
@@ -467,11 +467,6 @@
         font-size: clamp(0.95rem, 2.5vw, 1.15rem);
     }
     
-    .slider-card {
-        min-height: 440px;
-        height: auto;
-    }
-    
     .slider-card-overlay {
         padding: 1.5rem;
     }
@@ -513,14 +508,6 @@
     .slider-description {
         font-size: clamp(1rem, 2.3vw, 1.2rem);
         margin-bottom: 2rem;
-    }
-    
-    .slider-card {
-        width: calc(75vw);
-        min-width: calc(75vw);
-        max-width: 360px;
-        min-height: 460px;
-        height: auto;
     }
     
     .slider-card::before {
@@ -611,11 +598,7 @@
     }
     
     .slider-card {
-        width: 360px;
-        min-width: 360px;
-        max-width: 380px;
-        min-height: 480px;
-        height: auto;
+        max-width: 480px;
     }
     
     .slider-card::before {
@@ -705,11 +688,7 @@
     }
     
     .slider-card {
-        width: 380px;
-        min-width: 380px;
-        max-width: 400px;
-        min-height: 500px;
-        height: auto;
+        max-width: 500px;
     }
     
     .slider-card-overlay {
@@ -766,11 +745,7 @@
     }
     
     .slider-card {
-        width: 400px;
-        min-width: 400px;
-        max-width: 420px;
-        min-height: 520px;
-        height: auto;
+        max-width: 520px;
     }
     
     .slider-card-overlay {
@@ -839,11 +814,7 @@
     }
     
     .slider-card {
-        width: 420px;
-        min-width: 420px;
-        max-width: 440px;
-        min-height: 540px;
-        height: auto;
+        max-width: 540px;
     }
     
     .slider-card::before {
@@ -903,9 +874,9 @@
         padding: 80px 0 60px;
     }
     
-    .slider-card {
-        min-height: 360px !important;
-        height: auto !important;
+    .slider-card-overlay {
+        min-height: 340px;
+        padding: 1.25rem;
     }
     
     .slider-main {
@@ -919,9 +890,9 @@
         padding: 70px 0 50px;
     }
     
-    .slider-card {
-        min-height: 300px !important;
-        height: auto !important;
+    .slider-card-overlay {
+        min-height: 280px;
+        padding: 1rem;
     }
     
     .slider-title {
@@ -964,4 +935,35 @@
 /* Transiciones suaves para las slides duplicadas del loop */
 .swiper-slide-duplicate {
     transition: opacity 0.4s ease, transform 0.4s ease !important;
+}
+
+/* === NOTEBOOK/LAPTOP RESPONSIVE FIXES === */
+@media (min-width: 768px) {
+    .slider-section { min-height: auto; }
+}
+
+@media (max-height: 900px) and (min-width: 768px) {
+    .slider-section { min-height: auto; padding-top: 5rem; padding-bottom: 2rem; }
+    .slider-main { margin-bottom: 1.5rem; }
+    .slider-controls { margin-top: 1.5rem; }
+    .slider-dots { margin-top: 1rem; }
+}
+
+/* Cards: texto y tags siempre visibles en rango notebook */
+@media (min-width: 768px) and (max-width: 1399px) {
+    .slider-card-description {
+        opacity: 1 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        -webkit-line-clamp: unset !important;
+    }
+    .slider-card-tags {
+        opacity: 1 !important;
+    }
+    .slider-card-title {
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+    .slider-card::before {
+        font-size: clamp(4.5rem, 7vw, 8rem);
+    }
 }
