@@ -2397,10 +2397,8 @@
                 </ul>
                 <button
                   class="btn btn-secondary btn-lg calendar-cta"
-                  data-cal-link="team/just-dev-it/just-dev-it-45-min"
-                  data-cal-namespace="just-dev-it-45-min"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                   data-i18n="contact.calendarCard.cta"
+                  onclick="document.getElementById('gcal-modal').classList.add('gcal-modal--open')"
                 >
                   Agendar Reunión
                 </button>
@@ -2582,11 +2580,31 @@
       }
     </script>
     
-    <!-- ===== CAL.COM EMBED - AGENDAR REUNIÓN ===== -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "just-dev-it-45-min", {origin:"https://app.cal.com"});
-      Cal.ns["just-dev-it-45-min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#9B61A4"}},"hideEventTypeDetails":false,"layout":"month_view"});
+    <!-- ===== GOOGLE CALENDAR MODAL ===== -->
+    <div id="gcal-modal" class="gcal-modal" onclick="if(event.target===this){this.classList.remove('gcal-modal--open');this.querySelector('iframe').src='about:blank'}">
+      <div class="gcal-modal__content">
+        <button class="gcal-modal__close" aria-label="Cerrar" onclick="var m=document.getElementById('gcal-modal');m.classList.remove('gcal-modal--open');m.querySelector('iframe').src='about:blank'">&times;</button>
+        <iframe class="gcal-modal__iframe" src="about:blank" allow="payment" loading="lazy"></iframe>
+      </div>
+    </div>
+    <style>
+      .gcal-modal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+      .gcal-modal--open{opacity:1;visibility:visible}
+      .gcal-modal__content{position:relative;width:min(94vw,720px);height:min(90vh,700px);background:var(--surface-primary,#fff);border-radius:16px;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.25)}
+      .gcal-modal__close{position:absolute;top:8px;right:12px;z-index:1;background:none;border:none;font-size:28px;color:var(--text-secondary,#666);cursor:pointer;line-height:1;padding:4px 8px}
+      .gcal-modal__close:hover{color:var(--text-primary,#333)}
+      .gcal-modal__iframe{width:100%;height:100%;border:0}
+    </style>
+    <script>
+      document.getElementById('gcal-modal').addEventListener('transitionend',function(){
+        if(this.classList.contains('gcal-modal--open')){
+          var iframe=this.querySelector('iframe');
+          if(iframe.src==='about:blank')iframe.src='https://calendar.google.com/calendar/appointments/schedules/AcZssZ2KXV5NlhC7coafOvqG3LWGuziupBn6XFbri7fEMF72sPPKa-Y7Pa1zogtosHY0CG2nU4zdIhB_?gv=true';
+        }
+      });
+      document.addEventListener('keydown',function(e){
+        if(e.key==='Escape'){var m=document.getElementById('gcal-modal');m.classList.remove('gcal-modal--open');m.querySelector('iframe').src='about:blank'}
+      });
     </script>
 
     <!-- ===== TRACKING SCRIPTS YA CARGADOS EN <head> ===== -->
