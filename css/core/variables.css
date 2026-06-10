@@ -10,7 +10,11 @@
     --color-brand-secondary: #04C7AA;
     --color-brand-accent: #B37BBF;
     --color-brand-dark: #6A3B7E;
-    
+    --color-brand-soft: #D4A5E0;             /* énfasis suave sobre fondo oscuro (cumple contraste AA) */
+    --color-brand-deep: #543062;             /* estados pressed */
+    --color-brand-secondary-light: #26E0C0;  /* hover de elementos verdes */
+    --color-gris-brandbook: #BEC3C7;         /* "Gris" del brandbook */
+
     /* Neutros */
     --color-neutral-darkest: #0F172A;    /* slate-900 */
     --color-neutral-darker: #1E293B;     /* slate-800 */
@@ -30,8 +34,21 @@
     --bg-primary: #0A0E1A;
     --bg-secondary: #152636;
     --bg-tertiary: #1E293B;
+    --bg-deep: #0D0D14;
     --bg-card: rgba(30, 41, 59, 0.6);
     --bg-card-hover: rgba(30, 41, 59, 0.8);
+
+    /* Bordes de marca */
+    --border-brand: rgba(155, 97, 164, 0.1);         /* hairline morado por defecto */
+    --border-brand-strong: rgba(155, 97, 164, 0.3);  /* hover / énfasis */
+    --border-neutral: rgba(255, 255, 255, 0.08);
+
+    /* Glow de marca */
+    --glow-purple: 0 0 40px rgba(155, 97, 164, 0.6);
+    --glow-green: 0 0 30px rgba(4, 199, 170, 0.4);
+    --glow-dual: 0 0 30px rgba(155, 97, 164, 0.4), 0 0 60px rgba(4, 199, 170, 0.2);
+    --gradient-cta-hover: linear-gradient(135deg, #6A3B7E 0%, #7D4A8F 100%);
+    --glass-blur: blur(12px) saturate(180%);
     
     /* ===== TIPOGRAFÍA ===== */
     /* Font Families */
