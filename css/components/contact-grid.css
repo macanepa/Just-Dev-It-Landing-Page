@@ -168,3 +168,26 @@
         padding: var(--space-3);
     }
 }
+
+/* ===== CANALES DE CONTACTO DIRECTO ===== */
+.contact-channels {
+    margin-top: var(--space-10);
+    text-align: center;
+}
+
+.contact-channels-label {
+    color: var(--color-neutral-light);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.contact-channels-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+.contact-channel {
+    white-space: nowrap;
+}

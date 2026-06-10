@@ -6,8 +6,8 @@ const translations = {
   es: {
     // Meta tags y SEO - ESPAÑOL (Chile/LATAM)
     meta: {
-      title: "Desarrollo de Software Chile | Just Dev It - Automatización y Data",
-      description: "Desarrollo de software a medida en Chile. Automatización RPA, Data Engineering e IA para Fintech y PropTech. +20 proyectos exitosos. ROI en 90 días. ¡Cotiza ahora!",
+      title: "Desarrollo de Software a Medida en Chile | Just Dev It",
+      description: "Desarrollo de software a medida en Chile: automatización RPA, data engineering e IA aplicada con resultados medibles. Cotiza tu proyecto en 24 horas.",
       keywords: "desarrollo software chile, desarrolladora web santiago chile, programación empresarial chile, software a medida chile, automatización empresas chile, rpa chile, data engineering chile, inteligencia artificial chile, proptech chile, fintech chile, legaltech chile, desarrollo web profesional, agencia software santiago, nearshore development chile, empresas tecnología chile, soluciones digitales chile, etl bigquery chile, integraciones erp crm chile, pipelines datos chile, databricks chile, software financiero chile, desarrollo cloud chile, aws azure gcp chile, web scraping chile, agentes ia chile, power bi chile, webpay transbank chile, shopify chile, transformación digital chile, consultora tecnológica chile, software empresarial chile, desarrolladores python santiago, desarrolladores ruby chile, desarrolladores node chile, business intelligence chile, machine learning chile",
       lang: "es-CL",
       language: "Spanish"
@@ -336,8 +336,8 @@ const translations = {
   en: {
     // Meta tags y SEO - ENGLISH (USA/International)
     meta: {
-      title: "Software Development Chile | Just Dev It - Automation & Data",
-      description: "Custom software development in Chile. RPA Automation, Data Engineering & AI for Fintech and PropTech. +20 successful projects. ROI in 90 days. Get a quote now!",
+      title: "Custom Software Development in Chile | Just Dev It",
+      description: "Custom software development in Chile: RPA automation, data engineering and applied AI with measurable results. Get a project quote within 24 hours.",
       keywords: "software development chile, web development santiago chile, enterprise programming chile, custom software chile, business automation chile, rpa chile, data engineering chile, artificial intelligence chile, proptech chile, fintech chile, legaltech chile, professional web development, software agency santiago, nearshore development chile, technology companies chile, digital solutions chile, etl bigquery chile, erp crm integrations chile, data pipelines chile, databricks chile, financial software chile, cloud development chile, aws azure gcp chile, web scraping chile, ai agents chile, power bi chile, payment gateways chile, shopify chile, digital transformation chile, technology consulting chile, enterprise software chile, python developers santiago, ruby developers chile, node developers chile, business intelligence chile, machine learning chile",
       lang: "en-US",
       language: "English"

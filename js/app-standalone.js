@@ -351,6 +351,7 @@
                         });
                         
                         if (response.ok) {
+                            document.dispatchEvent(new CustomEvent('jdi:lead_submitted'));
                             showSuccessMessage('¡Mensaje enviado con éxito! Te contactaremos pronto.');
                             form.reset();
                         } else {
