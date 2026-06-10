@@ -108,17 +108,30 @@
     
     function initConversionTracking() {
         // 1. Tracking de formulario de contacto
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                // NO enviar PII (name, email) a GA4 — viola ToS de Google
-                trackConversion(CONVERSION_EVENTS.FORM_SUBMIT, {
-                    category: 'lead_generation',
-                    label: 'contact_form_submission',
-                    value: 100
-                });
+        // Se dispara solo cuando Formspree confirma el envío (evento emitido
+        // por app-standalone.js tras response.ok), no en cada intento de submit.
+        document.addEventListener('jdi:lead_submitted', function() {
+            // NO enviar PII (name, email) a GA4 — viola ToS de Google
+            trackConversion(CONVERSION_EVENTS.FORM_SUBMIT, {
+                category: 'lead_generation',
+                label: 'contact_form_submission',
+                value: 100
             });
-        }
+        });
+
+        // 1b. Tracking de canales de contacto directo (WhatsApp / teléfono / email)
+        document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const href = this.getAttribute('href') || '';
+                const channel = this.dataset.channel ||
+                    (href.indexOf('wa.me') !== -1 ? 'whatsapp' : href.indexOf('tel:') === 0 ? 'telefono' : 'email');
+                trackConversion(CONVERSION_EVENTS.CTA_CLICK, {
+                    category: 'lead_generation',
+                    label: 'contact_channel_' + channel,
+                    value: 50
+                });
+            }, { passive: true });
+        });
         
         // 2. Tracking de botones CTA (con debounce)
         const ctaButtons = document.querySelectorAll('a[href="#contacto"], .btn-primary');
@@ -216,11 +229,6 @@
                 eventsToSend.forEach(({ eventName, eventParams }) => {
                     if (window.dataLayer) {
                         window.dataLayer.push({ event: eventName, ...eventParams });
-                    }
-                    // Fallback beacon para GA4
-                    if (navigator.sendBeacon) {
-                        const url = `https://www.google-analytics.com/g/collect?v=2&tid=G-E47YX9JYCS&en=${eventName}`;
-                        navigator.sendBeacon(url);
                     }
                 });
             }

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-N67BW2PN");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <title>Caso Data Inmobiliaria: 9,5M de propiedades | Just Dev It</title>
+    <meta
+      name="description"
+      content="Cómo Just Dev It construyó Data Inmobiliaria: web scraping a escala y pipelines de datos para indexar 9,5 millones de propiedades en Chile. Citada por CNN y T13."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://justdev.it/casos/data-inmobiliaria/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://justdev.it/casos/data-inmobiliaria/" />
+    <meta property="og:title" content="Caso Data Inmobiliaria: 9,5M de propiedades indexadas | Just Dev It" />
+    <meta property="og:description" content="Web scraping a escala, pipelines de datos y una plataforma pública gratuita citada por CNN Chile y T13. Construida por Just Dev It." />
+    <meta property="og:image" content="https://justdev.it/assets/images/Desktop/og-image.webp" />
+    <meta property="og:site_name" content="Just Dev It" />
+    <meta property="og:locale" content="es_CL" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Desktop/Isotipo_morado.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/bundle.min.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://justdev.it/" },
+            { "@type": "ListItem", "position": 2, "name": "Casos", "item": "https://justdev.it/#portafolio" },
+            { "@type": "ListItem", "position": 3, "name": "Data Inmobiliaria", "item": "https://justdev.it/casos/data-inmobiliaria/" }
+          ]
+        },
+        {
+          "@type": "Article",
+          "headline": "Data Inmobiliaria: 9,5 millones de propiedades indexadas en Chile",
+          "url": "https://justdev.it/casos/data-inmobiliaria/",
+          "inLanguage": "es-CL",
+          "author": { "@id": "https://justdev.it/#organization" },
+          "publisher": { "@id": "https://justdev.it/#organization" },
+          "about": {
+            "@type": "SoftwareApplication",
+            "name": "Data Inmobiliaria",
+            "url": "https://datainmobiliaria.cl",
+            "applicationCategory": "BusinessApplication",
+            "description": "Plataforma gratuita de datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas. Producto propio de Just Dev It.",
+            "creator": { "@id": "https://justdev.it/#organization" }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es Data Inmobiliaria?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Una plataforma gratuita de datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas, disponible en datainmobiliaria.cl. Permite explorar precios, propiedades y tendencias del mercado." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Quién construyó Data Inmobiliaria?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Just Dev It, consultora chilena de desarrollo de software fundada en 2023 por Joaquín Espíldora y Matías Cánepa. Data Inmobiliaria es su producto propio y la prueba pública de su capacidad en web scraping a escala y pipelines de datos." }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Pueden construir una plataforma de datos así para mi empresa?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Sí. La misma base técnica — extracción de datos a escala, pipelines y dashboards — se aplica a proyectos de empresas. Just Dev It entrega cotización en 24 horas con alcance, precio y plazo cerrados." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+      :root { --border-brand: rgba(155, 97, 164, 0.1); --border-brand-strong: rgba(155, 97, 164, 0.3); --color-brand-soft: #D4A5E0; }
+      body { font-family: var(--font-primary); background: var(--bg-primary); color: var(--color-neutral-light); }
+      .subnav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.5rem; background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-brand); }
+      .subnav-logo img { height: 32px; width: auto; }
+      .subnav-links { display: flex; align-items: center; gap: 1.25rem; }
+      .subnav-links a { color: var(--color-neutral-lighter); text-decoration: none; font-size: 0.9rem; }
+      .subnav-links a:hover { color: var(--color-brand-secondary); }
+      .page-hero { padding: 5rem 1.5rem 3.5rem; text-align: center; background: linear-gradient(135deg, #0D0D14 0%, #1A1A2E 50%, #0D0D14 100%); }
+      .page-eyebrow { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-brand-secondary); margin-bottom: 1rem; }
+      .page-hero h1 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; color: var(--color-neutral-lightest); line-height: 1.2; max-width: 56rem; margin: 0 auto 1.25rem; }
+      .page-hero p.lead { max-width: 44rem; margin: 0 auto 2rem; font-size: 1.1rem; }
+      .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+      .page-section { max-width: 56rem; margin: 0 auto; padding: 3rem 1.5rem; }
+      .page-section h2 { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 700; color: var(--color-neutral-lightest); margin-bottom: 1.25rem; }
+      .page-section p { margin-bottom: 1rem; line-height: 1.7; }
+      .page-section a { color: var(--color-brand-secondary); }
+      .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+      .feature-card { background: var(--bg-card); border: 1px solid var(--border-brand); border-radius: 1.5rem; padding: 1.5rem; transition: border-color 0.3s, transform 0.3s; }
+      .feature-card:hover { border-color: var(--border-brand-strong); transform: translateY(-4px); }
+      .feature-icon { width: 48px; height: 48px; border-radius: 0.75rem; background: linear-gradient(135deg, #9B61A4 0%, #B37BBF 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+      .feature-icon img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
+      .feature-card h3 { color: var(--color-neutral-lightest); font-size: 1.05rem; margin-bottom: 0.5rem; }
+      .feature-card p { font-size: 0.92rem; margin: 0; }
+      .stats-band { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; text-align: center; padding: 2rem 0; }
+      .stat-n { display: block; font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #B37BBF, #04C7AA); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .stat-l { font-size: 0.85rem; }
+      .press-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+      .press-list li { background: var(--bg-card); border: 1px solid var(--border-brand); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+      .press-list .press-source { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand-soft); margin-bottom: 0.25rem; }
+      details.faq { background: var(--bg-card); border: 1px solid var(--border-brand); border-radius: 0.75rem; margin-bottom: 0.75rem; padding: 1rem 1.25rem; }
+      details.faq summary { cursor: pointer; font-weight: 600; color: var(--color-neutral-lightest); }
+      details.faq p { margin: 0.85rem 0 0.25rem; }
+      .final-cta { text-align: center; padding: 3.5rem 1.5rem 4.5rem; background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); }
+      .final-cta h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--color-neutral-lightest); margin-bottom: 1rem; }
+      .final-cta p { margin-bottom: 1.75rem; }
+      .page-footer { border-top: 1px solid var(--border-brand); padding: 2rem 1.5rem; text-align: center; font-size: 0.85rem; }
+      .page-footer a { color: var(--color-neutral-light); margin: 0 0.6rem; text-decoration: none; }
+      .page-footer a:hover { color: var(--color-brand-secondary); }
+      @media (prefers-reduced-motion: reduce) { .feature-card, .feature-card:hover { transition: none; transform: none; } }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <nav class="subnav" aria-label="Navegación">
+      <a class="subnav-logo" href="/" aria-label="Just Dev It — Inicio">
+        <img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="140" height="32" />
+      </a>
+      <div class="subnav-links">
+        <a href="/#servicios">Servicios</a>
+        <a href="/#portafolio">Proyectos</a>
+        <a href="/#contacto" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Cotizar Proyecto</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="page-eyebrow">Casos · Producto propio</span>
+      <h1>Data Inmobiliaria: 9,5 millones de propiedades indexadas en Chile</h1>
+      <p class="lead">
+        Nuestro producto propio es la prueba pública de lo que construimos: web scraping a escala,
+        pipelines de datos y una plataforma gratuita que la prensa chilena ya cita en sus análisis
+        del mercado inmobiliario.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://datainmobiliaria.cl" target="_blank" rel="noopener" class="btn btn-primary">Ver la plataforma</a>
+        <a href="/#contacto" class="btn btn-secondary">Cotizar algo así para mi empresa</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-section">
+        <h2>El desafío técnico</h2>
+        <p>
+          Los datos inmobiliarios de Chile están dispersos: portales de propiedades, registros del
+          SII, Conservadores de Bienes Raíces. No existía una fuente pública, estructurada y
+          gratuita que los reuniera. Construirla exige extraer datos a escala de fuentes que no
+          fueron diseñadas para entregarlos, limpiarlos, cruzarlos y servirlos en una plataforma
+          rápida.
+        </p>
+      </section>
+
+      <section class="page-section">
+        <h2>Lo que construimos</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><img src="/assets/icons/icon-128.svg" alt="" loading="lazy" /></div>
+            <h3>Web scraping a escala</h3>
+            <p>Extracción automatizada desde portales inmobiliarios, SII y Conservadores de Bienes Raíces, con técnicas anti-detección (Selenium, Playwright).</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><img src="/assets/icons/icon-110.svg" alt="" loading="lazy" /></div>
+            <h3>Pipelines de datos</h3>
+            <p>Procesamiento con Python y PySpark para limpiar, deduplicar y cruzar millones de registros de propiedades y transacciones.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><img src="/assets/icons/icon-86.svg" alt="" loading="lazy" /></div>
+            <h3>Plataforma pública</h3>
+            <p>Aplicación web gratuita con mapas y reportes por comuna, propiedad y tendencia de mercado: datainmobiliaria.cl.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><img src="/assets/icons/icon-130.svg" alt="" loading="lazy" /></div>
+            <h3>Estudios de mercado</h3>
+            <p>Análisis de rentabilidad e inversión por comuna que los medios chilenos citan en sus notas del sector.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <h2>Resultados</h2>
+        <div class="stats-band">
+          <div><span class="stat-n">9,5M</span><span class="stat-l">Propiedades indexadas</span></div>
+          <div><span class="stat-n">100%</span><span class="stat-l">Acceso gratuito</span></div>
+          <div><span class="stat-n">2026</span><span class="stat-l">Citada por prensa nacional</span></div>
+        </div>
+        <p>Cobertura de prensa sobre Data Inmobiliaria y sus estudios:</p>
+        <ul class="press-list">
+          <li>
+            <span class="press-source">CNN Chile · abril 2026</span>
+            <a href="https://www.cnnchile.com/negocios/comunas-mayor-rentabilidad-inversion-inmobiliaria-santiago_20260413/" target="_blank" rel="noopener">Las comunas con mayor rentabilidad para invertir en Santiago</a>
+          </li>
+          <li>
+            <span class="press-source">T13 · abril 2026</span>
+            <a href="https://www.t13.cl/noticia/nacional/estudio-revela-comunas-dejaron-ser-buenas-para-invertir-departamentos-29-4-2026" target="_blank" rel="noopener">Estudio revela qué comunas dejaron de ser buenas para invertir en departamentos</a>
+          </li>
+          <li>
+            <span class="press-source">G5noticias · abril 2026</span>
+            <a href="https://g5noticias.cl/2026/04/15/data-inmobiliaria-la-plataforma-gratuita-que-democratiza-el-acceso-a-la-inteligencia-inmobiliaria-en-chile/" target="_blank" rel="noopener">Data Inmobiliaria: la plataforma gratuita que democratiza el acceso a la inteligencia inmobiliaria</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="page-section">
+        <h2>Qué significa esto para tu empresa</h2>
+        <p>
+          Data Inmobiliaria no es una promesa de capacidades: es un sistema en producción que
+          cualquiera puede usar hoy. La misma base técnica — extracción de datos a escala,
+          <a href="/servicios/automatizacion-rpa/">automatización de procesos</a>, pipelines y
+          dashboards — es la que aplicamos en proyectos para empresas de
+          <a href="/industrias/energia-renovable/">energía</a>, finanzas y servicios.
+        </p>
+      </section>
+
+      <section class="page-section">
+        <h2>Preguntas frecuentes</h2>
+        <details class="faq">
+          <summary>¿Qué es Data Inmobiliaria?</summary>
+          <p>Una plataforma gratuita de datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas, disponible en datainmobiliaria.cl. Permite explorar precios, propiedades y tendencias del mercado.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Quién construyó Data Inmobiliaria?</summary>
+          <p>Just Dev It, consultora chilena de desarrollo de software fundada en 2023 por Joaquín Espíldora y Matías Cánepa. Data Inmobiliaria es nuestro producto propio y la prueba pública de nuestra capacidad en web scraping a escala y pipelines de datos.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Pueden construir una plataforma de datos así para mi empresa?</summary>
+          <p>Sí. Cuéntanos qué datos necesitas y en 24 horas recibes una cotización con alcance, precio y plazo cerrados.</p>
+        </details>
+      </section>
+    </main>
+
+    <section class="final-cta">
+      <h2>¿Necesitas datos que hoy no puedes conseguir?</h2>
+      <p>Extracción a escala, pipelines y plataformas de datos — construidos por el mismo equipo que hizo Data Inmobiliaria.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Cotizar proyecto</a>
+        <a href="https://wa.me/56994545281?text=Hola%2C%20vi%20el%20caso%20Data%20Inmobiliaria%20y%20quiero%20cotizar%20un%20proyecto%20de%20datos" target="_blank" rel="noopener" class="btn btn-secondary" data-channel="whatsapp">Hablar por WhatsApp</a>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <nav aria-label="Enlaces">
+        <a href="/">Inicio</a>
+        <a href="/servicios/automatizacion-rpa/">Automatización RPA</a>
+        <a href="/industrias/energia-renovable/">Energía Renovable</a>
+        <a href="https://datainmobiliaria.cl" target="_blank" rel="noopener">datainmobiliaria.cl</a>
+      </nav>
+      <p style="margin-top: 1rem;">&copy; 2026 Just Dev It · Santiago, Chile · Hecho con 💜 en Chile</p>
+    </footer>
+
+    <script defer src="/js/conversion-tracking.js"></script>
+  </body>
+</html>

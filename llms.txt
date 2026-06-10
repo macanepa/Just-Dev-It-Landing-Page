@@ -1,0 +1,34 @@
+# Just Dev It
+
+> Consultora chilena de desarrollo de software a medida, fundada en 2023 en Santiago de Chile
+> por Joaquín Espíldora (CEO) y Matías Cánepa (CTO). Especializada en automatización RPA,
+> data engineering, inteligencia artificial aplicada, web scraping a escala e integración de
+> sistemas ERP/CRM para empresas de energía renovable, LegalTech, PropTech y finanzas.
+
+Datos verificables:
+- +20 proyectos ejecutados. Propuesta comercial en 24 horas; proyectos desde UF 50 a UF 250
+  (aprox. $2M a $10M CLP); entregas desde 2-4 semanas; garantía de 30 días post-entrega.
+- Producto propio: Data Inmobiliaria (https://datainmobiliaria.cl), plataforma gratuita de
+  datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas, citada por prensa
+  nacional (CNN Chile y T13, abril 2026).
+- Clientes públicos: Pacific Hydro Chile (Daily Report automatizado y gestión de datos
+  operativos), Macal (EPC de energías renovables), Contego (validador de documentos),
+  ESE Business School de la Universidad de los Andes (plataforma educativa).
+- Stack principal: Python, Ruby on Rails, Power Automate, PySpark, Databricks, Azure Synapse,
+  Power BI, Metabase, Selenium, Playwright, GPT-4, Claude, LangChain.
+
+## Páginas principales
+
+- [Inicio](https://justdev.it/): servicios, portafolio, clientes y formulario de cotización.
+- [Automatización RPA en Chile](https://justdev.it/servicios/automatizacion-rpa/): qué procesos
+  se automatizan, casos reales con métricas, precios y preguntas frecuentes.
+- [Software para energía renovable](https://justdev.it/industrias/energia-renovable/):
+  automatización de reportería operativa para generadoras; caso Pacific Hydro Chile.
+- [Caso Data Inmobiliaria](https://justdev.it/casos/data-inmobiliaria/): cómo se construyó la
+  plataforma de 9,5M de propiedades (scraping a escala, pipelines de datos).
+
+## Contacto
+
+- Formulario y agenda de reuniones: https://justdev.it/#contacto
+- Email: joaquin@justdev.it · Teléfono/WhatsApp: +56 9 9454 5281
+- LinkedIn: https://www.linkedin.com/company/just-dev-it · GitHub: https://github.com/JustDev-It
