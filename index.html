@@ -616,16 +616,23 @@
          OJO: este bloque NO está en docs/scripts/new_home_css_v3.txt; si se
          reconstruye el home con build_home_v3.py hay que conservarlo. -->
     <style>
-      /* El drawer off-canvas (.nav-menu cerrado, translateX(100%)) expandía el
-         layout viewport en Chrome móvil a 641px tras el primer scroll: todo el
-         sitio se veía encogido ~56% y el final del footer quedaba inalcanzable. */
+      /* El drawer del menú móvil cerrado se sacaba de pantalla con
+         translateX(100%), pero un position:fixed off-canvas NO lo contiene
+         ni overflow-x:clip ni visibility:hidden de forma fiable: en Safari/iOS
+         seguía alcanzable con un swipe horizontal (la página "se desplazaba"
+         y aparecía el panel al lado). Solución a prueba de motores: cuando
+         está cerrado no se renderiza (display:none); al abrir entra animado. */
       html { overflow-x: clip; }
       @media (max-width: 960px) {
-        .nav-menu {
-          visibility: hidden;
-          transition: transform var(--transition-base), visibility var(--transition-base);
+        .nav-menu { display: none; }
+        .nav-menu.active {
+          display: flex;
+          animation: navDrawerIn var(--transition-base) var(--ease-standard, ease);
         }
-        .nav-menu.active { visibility: visible; }
+      }
+      @keyframes navDrawerIn {
+        from { transform: translateX(100%); }
+        to   { transform: translateX(0); }
       }
       /* El tooltip de idioma desborda el viewport cerca del borde derecho */
       @media (max-width: 1280px) { .language-tooltip { display: none; } }
