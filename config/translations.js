@@ -91,13 +91,13 @@ const translations = {
       },
 
       service4: {
-        category: "Fintech & PropTech",
+        category: "Industrias",
         title: "Fintech & PropTech",
         description: "Plataformas de inversión y dashboards ejecutivos con datos en tiempo real."
       },
 
       service5: {
-        category: "Integraciones",
+        category: "ERP & CRM",
         title: "Integraciones Enterprise",
         description: "Conectamos ERPs (Laudus, SAP), CRMs (Zoho, Salesforce) con sincronización automática 24/7."
       },
@@ -378,6 +378,7 @@ const translations = {
 
     // Rutas profundas (páginas de servicio / vertical / caso)
     routes: {
+      eyebrow: "En profundidad",
       title: "Servicios e industrias en profundidad",
       subtitle: "Páginas dedicadas con casos reales, preguntas frecuentes y el detalle técnico completo.",
       cta: "Ver página",
@@ -491,13 +492,13 @@ const translations = {
       },
 
       service4: {
-        category: "Fintech & PropTech",
+        category: "Industries",
         title: "Fintech & PropTech",
         description: "Investment platforms and executive dashboards with real-time data."
       },
 
       service5: {
-        category: "Integrations",
+        category: "ERP & CRM",
         title: "Enterprise Integrations",
         description: "We connect ERPs (Laudus, SAP) and CRMs (Zoho, Salesforce) with automatic 24/7 synchronization."
       },
@@ -778,6 +779,7 @@ const translations = {
 
     // Rutas profundas (páginas de servicio / vertical / caso)
     routes: {
+      eyebrow: "In depth",
       title: "Services and industries in depth",
       subtitle: "Dedicated pages with real cases, FAQs and the full technical detail.",
       cta: "View page",
