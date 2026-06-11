@@ -30,5 +30,5 @@ Datos verificables:
 ## Contacto
 
 - Formulario y agenda de reuniones: https://justdev.it/#contacto
-- Email: joaquin@justdev.it · Teléfono/WhatsApp: +56 9 9454 5281
+- Email: joaquin@justdev.it · WhatsApp vía justdev.it/#contacto
 - LinkedIn: https://www.linkedin.com/company/just-dev-it · GitHub: https://github.com/JustDev-It
