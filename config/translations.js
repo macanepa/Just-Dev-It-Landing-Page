@@ -342,7 +342,30 @@ const translations = {
 
     // Accesibilidad
     a11y: {
-      close: "Cerrar"
+      close: "Cerrar",
+      skip: "Saltar al contenido"
+    },
+
+    // Rutas profundas (páginas de servicio / vertical / caso)
+    routes: {
+      title: "Servicios e industrias en profundidad",
+      subtitle: "Páginas dedicadas con casos reales, preguntas frecuentes y el detalle técnico completo.",
+      cta: "Ver página",
+      rpa: {
+        kicker: "Servicio",
+        title: "Automatización RPA",
+        desc: "Robots de software para reportería, integraciones ERP-CRM y procesos documentales."
+      },
+      energia: {
+        kicker: "Industria",
+        title: "Energía Renovable",
+        desc: "Reportería operativa automática para generadoras. Caso real: Pacific Hydro Chile."
+      },
+      casoDI: {
+        kicker: "Caso de éxito",
+        title: "Data Inmobiliaria",
+        desc: "9,5 millones de propiedades indexadas. Nuestro producto propio, citado por la prensa."
+      }
     },
 
     // Preloader
@@ -689,7 +712,30 @@ const translations = {
 
     // Accesibilidad
     a11y: {
-      close: "Close"
+      close: "Close",
+      skip: "Skip to content"
+    },
+
+    // Rutas profundas (páginas de servicio / vertical / caso)
+    routes: {
+      title: "Services and industries in depth",
+      subtitle: "Dedicated pages with real cases, FAQs and the full technical detail.",
+      cta: "View page",
+      rpa: {
+        kicker: "Service",
+        title: "RPA Automation",
+        desc: "Software robots for reporting, ERP-CRM integrations and document workflows."
+      },
+      energia: {
+        kicker: "Industry",
+        title: "Renewable Energy",
+        desc: "Automated operational reporting for power generators. Real case: Pacific Hydro Chile."
+      },
+      casoDI: {
+        kicker: "Case study",
+        title: "Data Inmobiliaria",
+        desc: "9.5 million properties indexed. Our own product, cited by the press."
+      }
     },
 
     // Preloader
