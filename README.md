@@ -33,7 +33,8 @@
 - **13+ Eventos**: Tracking automático de conversiones
 - **Meta Tags Completos**: Open Graph + Twitter Cards
 - **Schema.org**: Structured data implementado
-- **Sitemap.xml**: Con hreflang alternates
+- **Sitemap.xml**: URLs reales de servicios/industrias/casos (sin anclas; el sitio no usa hreflang porque no hay URLs por idioma)
+- **IndexNow**: ping automático a Bing/Yandex en cada deploy (GitHub Action)
 
 ### ♿ Accesibilidad
 - **WCAG 2.1 Level AA**: Compliant

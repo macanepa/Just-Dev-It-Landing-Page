@@ -1901,13 +1901,13 @@ body.loaded .hero {
   -moz-user-select: none;
 }
 
-/* Desktop: posiciÃ³n fija en la esquina superior derecha */
+/* Desktop: dentro del nav, inline con el CTA (la posiciÃ³n fija se eliminÃ³ en d3f766e) */
 @media (min-width: 1024px) {
   .language-selector {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
+    position: relative;
+    z-index: 10;
+    margin-left: 8px;
+    flex-shrink: 0;
   }
 }
 
