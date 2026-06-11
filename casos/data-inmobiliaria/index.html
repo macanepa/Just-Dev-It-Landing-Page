@@ -22,14 +22,18 @@
     <title>Caso Data Inmobiliaria: 9,5M de propiedades | Just Dev It</title>
     <meta
       name="description"
-      content="Cómo Just Dev It construyó Data Inmobiliaria: web scraping a escala y pipelines de datos para indexar 9,5 millones de propiedades en Chile. Citada por CNN y T13."
+      content="Just Dev It construyó Data Inmobiliaria: web scraping a escala y pipelines de datos para indexar 9,5 millones de propiedades en Chile. Citada por CNN y T13."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://justdev.it/casos/data-inmobiliaria/" />
+    <meta name="geo.region" content="CL-RM" />
+    <meta name="geo.placename" content="Santiago, Chile" />
+    <meta name="geo.position" content="-33.4489;-70.6693" />
+    <meta name="ICBM" content="-33.4489, -70.6693" />
 
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://justdev.it/casos/data-inmobiliaria/" />
-    <meta property="og:title" content="Caso Data Inmobiliaria: 9,5M de propiedades indexadas | Just Dev It" />
+    <meta property="og:title" content="Caso Data Inmobiliaria: 9,5M de propiedades | Just Dev It" />
     <meta property="og:description" content="Web scraping a escala, pipelines de datos y una plataforma pública gratuita citada por CNN Chile y T13. Construida por Just Dev It." />
     <meta property="og:image" content="https://justdev.it/assets/images/Desktop/og-image.webp" />
     <meta property="og:site_name" content="Just Dev It" />
@@ -46,6 +50,14 @@
     {
       "@context": "https://schema.org",
       "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://justdev.it/#organization",
+          "name": "Just Dev It",
+          "url": "https://justdev.it/",
+          "logo": "https://justdev.it/assets/images/Desktop/logo-principal-blanco.svg",
+          "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressRegion": "Región Metropolitana", "addressCountry": "CL" }
+        },
         {
           "@type": "BreadcrumbList",
           "itemListElement": [
@@ -97,9 +109,9 @@
     <style>
       :root { --border-brand: rgba(155, 97, 164, 0.1); --border-brand-strong: rgba(155, 97, 164, 0.3); --color-brand-soft: #D4A5E0; }
       body { font-family: var(--font-primary); background: var(--bg-primary); color: var(--color-neutral-light); }
-      .subnav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.5rem; background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-brand); }
+      .subnav { position: sticky; top: 0; z-index: 100; display: flex; flex-wrap: wrap; row-gap: 0.5rem; align-items: center; justify-content: space-between; padding: 0.9rem 1.5rem; background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-brand); }
       .subnav-logo img { height: 32px; width: auto; }
-      .subnav-links { display: flex; align-items: center; gap: 1.25rem; }
+      .subnav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; }
       .subnav-links a { color: var(--color-neutral-lighter); text-decoration: none; font-size: 0.9rem; }
       .subnav-links a:hover { color: var(--color-brand-secondary); }
       .page-hero { padding: 5rem 1.5rem 3.5rem; text-align: center; background: linear-gradient(135deg, #0D0D14 0%, #1A1A2E 50%, #0D0D14 100%); }
@@ -147,7 +159,7 @@
       </a>
       <div class="subnav-links">
         <a href="/#servicios">Servicios</a>
-        <a href="/#portafolio">Proyectos</a>
+        <a href="/#portafolio">Portafolio</a>
         <a href="/#contacto" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Cotizar Proyecto</a>
       </div>
     </nav>

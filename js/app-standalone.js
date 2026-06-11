@@ -295,6 +295,12 @@
     // ==========================================
     // VALIDACIÓN DE FORMULARIO
     // ==========================================
+    // Mensajes vía i18n (window.i18n la expone js/i18n.js); fallback en español
+    function formMsg(key, fallback) {
+        const text = window.i18n && window.i18n.t('contact.form.messages.' + key);
+        return text || fallback;
+    }
+
     function initFormValidation() {
         const form = document.getElementById('contact-form');
         
@@ -311,7 +317,7 @@
                 
                 // Validar nombre
                 if (name && name.value.trim().length < 2) {
-                    showError(name, 'El nombre debe tener al menos 2 caracteres');
+                    showError(name, formMsg('nameError', 'El nombre debe tener al menos 2 caracteres'));
                     isValid = false;
                 } else if (name) {
                     clearError(name);
@@ -319,7 +325,7 @@
                 
                 // Validar email
                 if (email && !isValidEmail(email.value)) {
-                    showError(email, 'Por favor ingresa un email válido');
+                    showError(email, formMsg('emailError', 'Por favor ingresa un email válido'));
                     isValid = false;
                 } else if (email) {
                     clearError(email);
@@ -327,7 +333,7 @@
                 
                 // Validar mensaje
                 if (message && message.value.trim().length < 10) {
-                    showError(message, 'El mensaje debe tener al menos 10 caracteres');
+                    showError(message, formMsg('messageError', 'El mensaje debe tener al menos 10 caracteres'));
                     isValid = false;
                 } else if (message) {
                     clearError(message);
@@ -337,7 +343,7 @@
                     // Enviar formulario
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'Enviando...';
+                    submitBtn.textContent = formMsg('sending', 'Enviando...');
                     submitBtn.disabled = true;
                     
                     try {
@@ -352,13 +358,13 @@
                         
                         if (response.ok) {
                             document.dispatchEvent(new CustomEvent('jdi:lead_submitted'));
-                            showSuccessMessage('¡Mensaje enviado con éxito! Te contactaremos pronto.');
+                            showSuccessMessage(formMsg('success', '¡Mensaje enviado con éxito! Te contactaremos pronto.'));
                             form.reset();
                         } else {
-                            showErrorMessage('Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
+                            showErrorMessage(formMsg('error', 'Hubo un error al enviar el mensaje. Por favor intenta nuevamente.'));
                         }
                     } catch (error) {
-                        showErrorMessage('Error de conexión. Por favor verifica tu internet.');
+                        showErrorMessage(formMsg('connection', 'Error de conexión. Por favor verifica tu internet.'));
                     } finally {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;

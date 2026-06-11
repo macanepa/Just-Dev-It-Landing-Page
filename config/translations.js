@@ -1,6 +1,7 @@
 // ===== SISTEMA DE TRADUCCIONES =====
 // Español (es) e Inglés (en)
-// IMPORTANTE: Contenido EXACTO del sitio justdev.it
+// IMPORTANTE: El bloque `es` es espejo EXACTO del contenido estático de index.html
+// (fuente de verdad). El bloque `en` es la traducción fiel de ese copy.
 
 const translations = {
   es: {
@@ -26,10 +27,10 @@ const translations = {
     // Hero Section
     hero: {
       subtitle: "Desarrollo de Software",
-      title: "El software que tu empresa necesita",
-      titleAccent: "Justo a Tiempo",
-      description: "Automatización, datos e integraciones. <strong>RPA, ETL, IA y cloud</strong> para empresas que buscan resultados.",
-      subtext: "• <strong>PropTech, Fintech, Energía, Legales y Retail</strong><br />• Entregas <strong>predecibles</strong><br />• <strong>+20 proyectos</strong> exitosos<br />",
+      title: "Desarrollo de Software a Medida para",
+      titleAccent: "Fintech, Energía y PropTech",
+      description: "Data Engineering, Web Scraping, Agentes IA y Automatización RPA. <strong>Ruby, Python, SQL</strong> para empresas en Santiago, Chile.",
+      subtext: "• <strong>Energía, LegalTech, PropTech y Fintech</strong><br />• Entregas <strong>en semanas</strong>, no meses<br />• <strong>+20 proyectos</strong> ejecutados<br />",
       ctaPrimary: "Cotizar Proyecto",
       ctaSecondary: "Ver Proyectos",
       stats: {
@@ -44,11 +45,11 @@ const translations = {
 
     // Intro Section 1 (entre Hero y Servicios)
     intro1: {
-      badge: "Software Empresarial",
-      title: "Automatización & Data",
-      titleSuffix: "que Genera",
-      titleAccent: "Resultados",
-      subtitle: "RPA, cloud y pipelines de datos que reducen costos operativos y mejoran la toma de decisiones.",
+      badge: "Software a Medida en Chile",
+      title: "Energía, LegalTech & PropTech",
+      titleSuffix: "Soluciones",
+      titleAccent: "que Funcionan",
+      subtitle: "Automatización RPA con Power Automate. Data Engineering con PySpark y Azure Synapse. Dashboards Metabase y Power BI. Web Scraping a escala. IA aplicada con GPT-4 y LangChain. Cloud AWS.",
       stats: {
         stat1Number: "20+",
         stat1Label: "Proyectos<br />Exitosos",
@@ -60,6 +61,7 @@ const translations = {
     },
 
     // Services Section (Slider de 6 servicios)
+    // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     services: {
       title: "<span class=\"gradient-text\">Soluciones</span> que Impulsan tu Negocio",
       subtitle: "Automatización, datos e integraciones.",
@@ -68,57 +70,51 @@ const translations = {
         prev: "Anterior",
         next: "Siguiente"
       },
-      
+
       service1: {
         category: "Desarrollo",
         title: "Software a Medida",
-        description: "Apps web, APIs y RPA que reducen tiempos operativos y toma de decisiones para tu empresa. Cloud-native con monitoreo 24/7.",
-        tags: ["Python", "Rails", "Node.js"]
+        description: "Apps web, APIs y RPA que reducen tiempos operativos y toma de decisiones para tu empresa. Cloud-native con monitoreo 24/7."
       },
-      
+
       service2: {
         category: "Cloud & Data",
         title: "Data Engineering",
-        description: "Pipelines ETL enterprise con BigQuery/Databricks. Procesamos millones de registros diarios.",
-        tags: ["BigQuery", "AWS", "Azure"]
+        description: "Pipelines ETL enterprise con PySpark y Azure Synapse. Procesamos millones de registros diarios."
       },
-      
+
       service3: {
         category: "IA",
         title: "Inteligencia Artificial",
-        description: "Automatización inteligente con los principales LLM's del mercado. Reduce y eficienta el tiempo en tareas repetitivas.",
-        tags: ["OpenAi", "Claude", "Gemini"]
+        description: "Automatización inteligente con los principales LLM's del mercado. Reduce y eficienta el tiempo en tareas repetitivas."
       },
-      
+
       service4: {
         category: "Fintech & PropTech",
         title: "Fintech & PropTech",
-        description: "Plataformas de inversión y dashboards ejecutivos con datos en tiempo real.",
-        tags: ["Python", "Power BI", "Web Scraping"]
+        description: "Plataformas de inversión y dashboards ejecutivos con datos en tiempo real."
       },
-      
+
       service5: {
         category: "Integraciones",
         title: "Integraciones Enterprise",
-        description: "Conectamos ERPs, CRMs y e-commerce con sincronización automática 24/7.",
-        tags: ["SAP", "Salesforce", "APIs"]
+        description: "Conectamos ERPs (Laudus, SAP), CRMs (Zoho, Salesforce) con sincronización automática 24/7."
       },
-      
+
       service6: {
         category: "Analytics",
         title: "Business Intelligence",
-        description: "Dashboards con KPIs en tiempo real. Datos complejos convertidos en decisiones.",
-        tags: ["Power BI", "Metabase", "SQL"]
+        description: "Dashboards con KPIs en tiempo real. Datos complejos convertidos en decisiones."
       }
     },
 
     // Intro Section 2 (entre Servicios y Portfolio)
     intro2: {
-      badge: "Impacto Real",
+      badge: "Experiencia Comprobada",
       title: "PropTech, LegalTech & Fintech",
-      titleSuffix: "de Clase",
-      titleAccent: "Mundial",
-      subtitle: "Plataformas empresariales que procesan millones de datos diarios. Automatización de portales, ETL para BigQuery/Databricks y APIs escalables.",
+      titleSuffix: "Soluciones",
+      titleAccent: "Empresariales",
+      subtitle: "Web Scraping con Selenium y Playwright, ETL con PySpark y Azure Synapse, APIs escalables con Ruby on Rails. Cloud en AWS y Azure para empresas en Santiago, Chile.",
       stats: {
         stat1Number: "Fintech",
         stat1Label: "Portafolios<br />Automatizados",
@@ -130,98 +126,90 @@ const translations = {
     },
 
     // Portfolio Section (Slider de 10 proyectos)
+    // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     portfolio: {
       title: "<span class=\"gradient-text\">Proyectos</span> que Transforman",
-      subtitle: "+20 casos de éxito. Soluciones que escalan negocios.",
+      subtitle: "+20 proyectos ejecutados. Soluciones que escalan negocios.",
       cta: "Empezar Mi Proyecto",
       controls: {
         prev: "Anterior",
         next: "Siguiente"
       },
-      
+
       project1: {
         category: "IA/ML & Enterprise",
         title: "Agentes de IA",
-        description: "Asistentes inteligentes con IA para automatización empresarial.",
-        tags: ["OpenAi", "Claude", "Gemini"]
+        description: "Asistentes inteligentes con IA para automatización empresarial."
       },
-      
+
       project2: {
         category: "Fintech & Automatización",
         title: "Apps Financieras",
-        description: "Estados de resultados y reportes financieros automatizados en tiempo real.",
-        tags: ["Python", "Power BI", "SQL"]
+        description: "Estados de resultados y reportes financieros automatizados en tiempo real."
       },
-      
+
       project3: {
         category: "Integraciones & ERP",
         title: "Integración ERP & CRM",
-        description: "Sincronización automática bidireccional entre sistemas ERP y CRM. Datos unificados multi-empresa en tiempo real.",
-        tags: ["APIs", "Python", "ETL"]
+        description: "Sincronización automática bidireccional entre sistemas ERP y CRM. Datos unificados multi-empresa en tiempo real."
       },
-      
+
       project4: {
         category: "Cloud & Infraestructura",
         title: "Infraestructura Cloud",
-        description: "Arquitecturas escalables multi-cloud con bases de datos distribuidas.",
-        tags: ["AWS", "GCP", "Azure"]
+        description: "Arquitecturas escalables multi-cloud con bases de datos distribuidas."
       },
-      
+
       project5: {
         category: "IA & Integraciones",
         title: "Flujos IA Empresariales",
-        description: "Integración de IA en workflows empresariales para decisiones automatizadas.",
-        tags: ["Flasks", "APIs", "OCR"]
+        description: "Integración de IA en workflows empresariales para decisiones automatizadas."
       },
-      
+
       project6: {
         category: "LegalTech & RPA",
         title: "RPA Judicial",
-        description: "Automatización de procesos legales. 1000+ documentos diarios.",
-        tags: ["Playwright", "Python", "RPA"]
+        description: "Automatización de procesos legales. 1000+ documentos diarios."
       },
-      
+
       project7: {
         category: "Fintech & Data",
         title: "Backtesting Portafolios",
-        description: "Automatizaciones de Portafolio y Backtesting con Data Real.",
-        tags: ["Python", "Stocks", "Web Scraping"]
+        description: "Automatizaciones de Portafolio y Backtesting con Data Real."
       },
-      
+
+      // project8: el título "Data Inmobiliaria" es marca y está hardcodeado en el HTML
       project8: {
         category: "PropTech",
-        title: "Data Inmobiliaria",
-        description: "Plataforma de data inmobiliaria con 9.5M propiedades indexadas en tiempo real con precios de transacción y propietarios.",
-        tags: ["Rails", "Python", "BigQuery"]
+        description: "Plataforma gratuita de datos inmobiliarios con 9.5M propiedades indexadas. Datos catastrales SII, ofertas y transacciones CBR.",
+        cta: "Ver Plataforma"
       },
-      
+
       project9: {
         category: "Energía & Automatización",
         title: "Automatización Sector Energético",
-        description: "Sistema de medición automática y cálculo de costos marginales. SCADA en tiempo real para generación eléctrica.",
-        tags: ["Azure", "Web Scraping", "Data Engineering"]
+        description: "Sistema de medición automática y cálculo de costos marginales. SCADA en tiempo real para generación eléctrica."
       },
-      
+
       project10: {
         category: "Seguridad & Blockchain",
         title: "Encriptado Zero-Knowledge",
-        description: "Validaciones seguras sin exponer datos sensibles. Criptografía avanzada.",
-        tags: ["ZK-Proofs", "Cryptography", "Validations"]
+        description: "Validaciones seguras sin exponer datos sensibles. Criptografía avanzada para plataforma de votación electrónica."
       }
     },
 
     // Intro Section 3 (Nearshore/About)
     intro3: {
-      badge: "Nearshore Premium",
-      title: "Partner Tecnológico",
-      titleSuffix: "para",
-      titleAccent: "Chile y LATAM",
-      subtitle: "Expertise internacional con presencia local. Misma zona horaria, idioma y cultura de negocios. Desarrollo ágil para proyectos críticos.",
+      badge: "Equipo Senior en Santiago",
+      title: "Tu Partner Tecnológico",
+      titleSuffix: "en",
+      titleAccent: "Chile",
+      subtitle: "Cotización en 24 hrs con alcance, precio y plazo cerrados. Entregas incrementales cada 2 semanas. Garantía de 30 días post-entrega. Ruby on Rails, Python, Power BI y Metabase.",
       stats: {
-        stat1Number: "100%",
-        stat1Label: "Clientes<br />Satisfechos",
-        stat2Number: "5+ Años",
-        stat2Label: "Relaciones<br />Estratégicas",
+        stat1Number: "24 hrs",
+        stat1Label: "Cotización<br />Personalizada",
+        stat2Number: "30 días",
+        stat2Label: "Garantía<br />Post-Entrega",
         stat3Number: "20+",
         stat3Label: "Proyectos<br />Completados"
       }
@@ -236,30 +224,30 @@ const translations = {
     // Team Section
     team: {
       title: "<span class=\"gradient-text\">Equipo</span> Fundador",
-      subtitle: "Expertise en Fintech, PropTech y Data",
-      
+      subtitle: "Expertise en Energía, LegalTech, PropTech y Data",
+
       founder1: {
         name: "Joaquín Espildora M.",
         role: "Fundador & CEO",
-        description: "Ingeniero Civil (Universidad de los Andes). Ex Portfolio Manager con más de $3B USD de AUM. Especialista en PropTech y Fintech."
+        description: "Ingeniero Civil (U. de los Andes). Ex Penta Vida (carteras >$7B USD). Especialista en PropTech y Fintech."
       },
-      
+
       founder2: {
         name: "Matías Cánepa G.",
         role: "CTO & Co-Fundador",
-        description: "Arquitecto de datos AWS/Azure/GCP. Profesor Big Data Universidad de los Andes. Especialista en ETL y cloud serverless."
+        description: "Ingeniero Civil, Magíster en Ciencias de la Computación. Profesor Big Data UANDES. Experto en data engineering, IA aplicada y arquitectura cloud AWS/Azure."
       }
     },
 
     // Contact Section
     contact: {
       title: "<span class=\"gradient-text\">Cotiza</span> Tu Proyecto",
-      subtitle: "Propuesta en 24hrs.",
+      subtitle: "Propuesta en 24hrs. Entregas desde 2-4 semanas.",
       location: "Santiago, Chile | Respuesta inmediata",
-      
+
       formCard: {
         title: "Envíanos un Mensaje",
-        description: "Completa el formulario y te responderemos en menos de 24 horas con una propuesta personalizada."
+        description: "Completa el formulario y te responderemos con una propuesta personalizada."
       },
 
       calendarCard: {
@@ -273,6 +261,11 @@ const translations = {
         note: "Selecciona el horario que mejor te acomode"
       },
 
+      channels: {
+        label: "¿Prefieres hablar directo con nosotros?",
+        whatsapp: "WhatsApp directo"
+      },
+
       form: {
         nameLabel: "Nombre",
         namePlaceholder: "Tu nombre",
@@ -284,22 +277,37 @@ const translations = {
         phonePlaceholder: "+56 9 1234 5678",
         messageLabel: "Mensaje",
         messagePlaceholder: "Cuéntanos sobre tu proyecto...",
-        submitButton: "Enviar Mensaje"
+        submitButton: "Enviar Mensaje",
+        messages: {
+          nameError: "El nombre debe tener al menos 2 caracteres",
+          emailError: "Por favor ingresa un email válido",
+          messageError: "El mensaje debe tener al menos 10 caracteres",
+          sending: "Enviando...",
+          success: "¡Mensaje enviado con éxito! Te contactaremos pronto.",
+          error: "Hubo un error al enviar el mensaje. Por favor intenta nuevamente.",
+          connection: "Error de conexión. Por favor verifica tu internet."
+        }
       }
     },
 
     // Footer
     footer: {
-      description: "Transformando ideas en soluciones tecnológicas de primer nivel.",
-      
       services: {
         title: "Servicios",
-        item1: "Desarrollo de Software",
-        item2: "Cloud & Data Engineering",
-        item3: "IA Aplicada",
-        item4: "Ecosistemas Fintech"
+        item1: "Desarrollo Ruby on Rails",
+        item2: "Web Scraping Selenium",
+        item3: "Data Engineering Python",
+        item4: "Dashboards Metabase",
+        item5: "Cloud AWS Azure GCP"
       },
-      
+
+      industries: {
+        title: "Industrias",
+        item1: "Fintech",
+        item3: "PropTech",
+        item4: "LegalTech"
+      },
+
       company: {
         title: "Empresa",
         item1: "Sobre Nosotros",
@@ -307,13 +315,20 @@ const translations = {
         item3: "Clientes",
         item4: "Contacto"
       },
-      
+
       contactInfo: {
         title: "Contacto",
         location: "Santiago, Chile",
-        email: "contacto@justdev.it"
+        email: "joaquin@justdev.it"
       },
-      
+
+      // Enlaces internos a páginas de servicio/vertical (fase 1 SEO)
+      links: {
+        rpa: "Automatización RPA",
+        energia: "Energía Renovable",
+        casoDI: "Caso: Data Inmobiliaria"
+      },
+
       bottom: {
         copyright: "&copy; 2026 Just Dev It. Todos los derechos reservados.",
         credits: "Hecho con 💜 en Chile"
@@ -322,9 +337,12 @@ const translations = {
 
     // Language Selector
     language: {
-      current: "ES",
-      switch: "Switch to English",
-      tooltip: "Cambiar idioma"
+      switch: "Switch to English"
+    },
+
+    // Accesibilidad
+    a11y: {
+      close: "Cerrar"
     },
 
     // Preloader
@@ -356,10 +374,10 @@ const translations = {
     // Hero Section
     hero: {
       subtitle: "Software Development",
-      title: "The software your company needs",
-      titleAccent: "Just in Time",
-      description: "Automation, data and integrations. <strong>RPA, ETL, AI and cloud</strong> for companies seeking results.",
-      subtext: "• <strong>PropTech, Fintech, Energy, Legal and Retail</strong><br />• <strong>Predictable</strong> deliveries<br />• <strong>+20 successful</strong> projects<br />",
+      title: "Custom Software Development for",
+      titleAccent: "Fintech, Energy and PropTech",
+      description: "Data Engineering, Web Scraping, AI Agents and RPA Automation. <strong>Ruby, Python, SQL</strong> for companies in Santiago, Chile.",
+      subtext: "• <strong>Energy, LegalTech, PropTech and Fintech</strong><br />• Deliveries <strong>in weeks</strong>, not months<br />• <strong>+20 projects</strong> delivered<br />",
       ctaPrimary: "Get a Quote",
       ctaSecondary: "View Projects",
       stats: {
@@ -374,11 +392,11 @@ const translations = {
 
     // Intro Section 1
     intro1: {
-      badge: "Enterprise Software",
-      title: "Automation & Data",
-      titleSuffix: "that Generate",
-      titleAccent: "Results",
-      subtitle: "RPA, cloud and data pipelines that reduce operational costs and improve decision-making.",
+      badge: "Custom Software in Chile",
+      title: "Energy, LegalTech & PropTech",
+      titleSuffix: "Solutions",
+      titleAccent: "that Work",
+      subtitle: "RPA automation with Power Automate. Data engineering with PySpark and Azure Synapse. Metabase and Power BI dashboards. Web scraping at scale. Applied AI with GPT-4 and LangChain. AWS cloud.",
       stats: {
         stat1Number: "20+",
         stat1Label: "Successful<br />Projects",
@@ -390,6 +408,7 @@ const translations = {
     },
 
     // Services Section
+    // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     services: {
       title: "<span class=\"gradient-text\">Solutions</span> that Drive Your Business",
       subtitle: "Automation, data and integrations.",
@@ -398,57 +417,51 @@ const translations = {
         prev: "Previous",
         next: "Next"
       },
-      
+
       service1: {
         category: "Development",
         title: "Custom Software",
-        description: "Web apps, APIs and RPA that reduce operational times and decision-making for your company. Cloud-native with 24/7 monitoring.",
-        tags: ["Python", "Rails", "Node.js"]
+        description: "Web apps, APIs and RPA that cut operating times and speed up decision-making for your company. Cloud-native with 24/7 monitoring."
       },
-      
+
       service2: {
         category: "Cloud & Data",
         title: "Data Engineering",
-        description: "Enterprise ETL pipelines with BigQuery/Databricks. We process millions of daily records.",
-        tags: ["BigQuery", "AWS", "Azure"]
+        description: "Enterprise ETL pipelines with PySpark and Azure Synapse. We process millions of records daily."
       },
-      
+
       service3: {
         category: "AI",
         title: "Artificial Intelligence",
-        description: "Intelligent automation with the market's leading LLMs. Reduce and streamline time on repetitive tasks.",
-        tags: ["OpenAi", "Claude", "Gemini"]
+        description: "Intelligent automation with the market's leading LLMs. Reduce and streamline time spent on repetitive tasks."
       },
-      
+
       service4: {
         category: "Fintech & PropTech",
         title: "Fintech & PropTech",
-        description: "Investment platforms and executive dashboards with real-time data.",
-        tags: ["Python", "Power BI", "Web Scraping"]
+        description: "Investment platforms and executive dashboards with real-time data."
       },
-      
+
       service5: {
         category: "Integrations",
         title: "Enterprise Integrations",
-        description: "We connect ERPs, CRMs and e-commerce with 24/7 automatic synchronization.",
-        tags: ["SAP", "Salesforce", "APIs"]
+        description: "We connect ERPs (Laudus, SAP) and CRMs (Zoho, Salesforce) with automatic 24/7 synchronization."
       },
-      
+
       service6: {
         category: "Analytics",
         title: "Business Intelligence",
-        description: "Dashboards with real-time KPIs. Complex data converted into decisions.",
-        tags: ["Power BI", "Metabase", "SQL"]
+        description: "Dashboards with real-time KPIs. Complex data turned into decisions."
       }
     },
 
     // Intro Section 2
     intro2: {
-      badge: "Real Impact",
+      badge: "Proven Track Record",
       title: "PropTech, LegalTech & Fintech",
-      titleSuffix: "of",
-      titleAccent: "World-Class",
-      subtitle: "Enterprise platforms processing millions of daily data points. Portal automation, ETL for BigQuery/Databricks and scalable APIs.",
+      titleSuffix: "Enterprise",
+      titleAccent: "Solutions",
+      subtitle: "Web scraping with Selenium and Playwright, ETL with PySpark and Azure Synapse, scalable APIs with Ruby on Rails. Cloud on AWS and Azure for companies in Santiago, Chile.",
       stats: {
         stat1Number: "Fintech",
         stat1Label: "Automated<br />Portfolios",
@@ -460,98 +473,90 @@ const translations = {
     },
 
     // Portfolio Section
+    // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     portfolio: {
       title: "<span class=\"gradient-text\">Projects</span> that Transform",
-      subtitle: "+20 success stories. Solutions that scale businesses.",
+      subtitle: "+20 projects delivered. Solutions that scale businesses.",
       cta: "Start My Project",
       controls: {
         prev: "Previous",
         next: "Next"
       },
-      
+
       project1: {
         category: "AI/ML & Enterprise",
         title: "AI Agents",
-        description: "Intelligent assistants with AI for enterprise automation.",
-        tags: ["OpenAi", "Claude", "Gemini"]
+        description: "Intelligent AI assistants for enterprise automation."
       },
-      
+
       project2: {
         category: "Fintech & Automation",
         title: "Financial Apps",
-        description: "Income statements and automated financial reports in real-time.",
-        tags: ["Python", "Power BI", "SQL"]
+        description: "Automated income statements and financial reports in real time."
       },
-      
+
       project3: {
         category: "Integrations & ERP",
         title: "ERP & CRM Integration",
-        description: "Automatic bidirectional synchronization between ERP and CRM systems. Unified multi-company data in real-time.",
-        tags: ["APIs", "Python", "ETL"]
+        description: "Automatic bidirectional synchronization between ERP and CRM systems. Unified multi-company data in real time."
       },
-      
+
       project4: {
         category: "Cloud & Infrastructure",
         title: "Cloud Infrastructure",
-        description: "Scalable multi-cloud architectures with distributed databases.",
-        tags: ["AWS", "GCP", "Azure"]
+        description: "Scalable multi-cloud architectures with distributed databases."
       },
-      
+
       project5: {
         category: "AI & Integrations",
         title: "Enterprise AI Workflows",
-        description: "AI integration in business workflows for automated decisions.",
-        tags: ["Flasks", "APIs", "OCR"]
+        description: "AI integration into business workflows for automated decisions."
       },
-      
+
       project6: {
         category: "LegalTech & RPA",
         title: "Judicial RPA",
-        description: "Legal process automation. 1000+ daily documents.",
-        tags: ["Playwright", "Python", "RPA"]
+        description: "Legal process automation. 1,000+ documents per day."
       },
-      
+
       project7: {
         category: "Fintech & Data",
         title: "Portfolio Backtesting",
-        description: "Portfolio automations and Backtesting with Real Data.",
-        tags: ["Python", "Stocks", "Web Scraping"]
+        description: "Portfolio automation and backtesting with real data."
       },
-      
+
+      // project8: el título "Data Inmobiliaria" es marca y está hardcodeado en el HTML
       project8: {
         category: "PropTech",
-        title: "Data Inmobiliaria",
-        description: "Real estate data platform with 9.5M indexed properties in real-time with transaction prices and owners.",
-        tags: ["Rails", "Python", "BigQuery"]
+        description: "Free real estate data platform with 9.5M indexed properties. SII cadastral data, listings and CBR transactions.",
+        cta: "View Platform"
       },
-      
+
       project9: {
         category: "Energy & Automation",
         title: "Energy Sector Automation",
-        description: "Automatic measurement system and marginal cost calculation. Real-time SCADA for electric power generation.",
-        tags: ["Azure", "Web Scraping", "Data Engineering"]
+        description: "Automatic metering system and marginal cost calculation. Real-time SCADA for power generation."
       },
-      
+
       project10: {
         category: "Security & Blockchain",
         title: "Zero-Knowledge Encryption",
-        description: "Secure validations without exposing sensitive data. Advanced cryptography.",
-        tags: ["ZK-Proofs", "Cryptography", "Validations"]
+        description: "Secure validations without exposing sensitive data. Advanced cryptography for an electronic voting platform."
       }
     },
 
     // Intro Section 3 (Nearshore/About)
     intro3: {
-      badge: "Premium Nearshore",
-      title: "Technology Partner",
-      titleSuffix: "for",
-      titleAccent: "Chile & LATAM",
-      subtitle: "International expertise with local presence. Same time zone, language and business culture. Agile development for critical projects.",
+      badge: "Senior Team in Santiago",
+      title: "Your Technology Partner",
+      titleSuffix: "in",
+      titleAccent: "Chile",
+      subtitle: "Quote in 24 hrs with fixed scope, price and timeline. Incremental deliveries every 2 weeks. 30-day post-delivery warranty. Ruby on Rails, Python, Power BI and Metabase.",
       stats: {
-        stat1Number: "100%",
-        stat1Label: "Satisfied<br />Clients",
-        stat2Number: "5+ Years",
-        stat2Label: "Strategic<br />Relationships",
+        stat1Number: "24 hrs",
+        stat1Label: "Personalized<br />Quote",
+        stat2Number: "30 days",
+        stat2Label: "Post-Delivery<br />Warranty",
         stat3Number: "20+",
         stat3Label: "Completed<br />Projects"
       }
@@ -566,30 +571,30 @@ const translations = {
     // Team Section
     team: {
       title: "<span class=\"gradient-text\">Founding</span> Team",
-      subtitle: "Expertise in Fintech, PropTech and Data",
-      
+      subtitle: "Expertise in Energy, LegalTech, PropTech and Data",
+
       founder1: {
         name: "Joaquín Espildora M.",
         role: "Founder & CEO",
-        description: "Civil Engineer (Universidad de los Andes). Former Portfolio Manager with over $3B USD AUM. Specialist in PropTech and Fintech."
+        description: "Civil Engineer (U. de los Andes). Formerly at Penta Vida (portfolios over $7B USD). Specialist in PropTech and Fintech."
       },
-      
+
       founder2: {
         name: "Matías Cánepa G.",
         role: "CTO & Co-Founder",
-        description: "Data Architect AWS/Azure/GCP. Big Data Professor at Universidad de los Andes. Specialist in ETL and serverless cloud."
+        description: "Civil Engineer, MSc in Computer Science. Big Data Professor at UANDES. Expert in data engineering, applied AI and AWS/Azure cloud architecture."
       }
     },
 
     // Contact Section
     contact: {
       title: "<span class=\"gradient-text\">Quote</span> Your Project",
-      subtitle: "Proposal in 24hrs.",
+      subtitle: "Proposal in 24hrs. Deliveries from 2-4 weeks.",
       location: "Santiago, Chile | Immediate response",
-      
+
       formCard: {
         title: "Send Us a Message",
-        description: "Fill out the form and we'll get back to you within 24 hours with a personalized proposal."
+        description: "Fill out the form and we'll get back to you with a personalized proposal."
       },
 
       calendarCard: {
@@ -603,6 +608,11 @@ const translations = {
         note: "Choose the time that works best for you"
       },
 
+      channels: {
+        label: "Prefer to talk to us directly?",
+        whatsapp: "Direct WhatsApp"
+      },
+
       form: {
         nameLabel: "Name",
         namePlaceholder: "Your name",
@@ -614,22 +624,37 @@ const translations = {
         phonePlaceholder: "+1 234 567 8900",
         messageLabel: "Message",
         messagePlaceholder: "Tell us about your project...",
-        submitButton: "Send Message"
+        submitButton: "Send Message",
+        messages: {
+          nameError: "Name must be at least 2 characters",
+          emailError: "Please enter a valid email",
+          messageError: "Message must be at least 10 characters",
+          sending: "Sending...",
+          success: "Message sent! We'll get back to you soon.",
+          error: "There was an error sending your message. Please try again.",
+          connection: "Connection error. Please check your internet."
+        }
       }
     },
 
     // Footer
     footer: {
-      description: "Transforming ideas into world-class technology solutions.",
-      
       services: {
         title: "Services",
-        item1: "Software Development",
-        item2: "Cloud & Data Engineering",
-        item3: "Applied AI",
-        item4: "Fintech Ecosystems"
+        item1: "Ruby on Rails Development",
+        item2: "Selenium Web Scraping",
+        item3: "Python Data Engineering",
+        item4: "Metabase Dashboards",
+        item5: "Cloud AWS Azure GCP"
       },
-      
+
+      industries: {
+        title: "Industries",
+        item1: "Fintech",
+        item3: "PropTech",
+        item4: "LegalTech"
+      },
+
       company: {
         title: "Company",
         item1: "About Us",
@@ -637,13 +662,20 @@ const translations = {
         item3: "Clients",
         item4: "Contact"
       },
-      
+
       contactInfo: {
         title: "Contact",
         location: "Santiago, Chile",
-        email: "contacto@justdev.it"
+        email: "joaquin@justdev.it"
       },
-      
+
+      // Enlaces internos a páginas de servicio/vertical (fase 1 SEO)
+      links: {
+        rpa: "RPA Automation",
+        energia: "Renewable Energy",
+        casoDI: "Case Study: Data Inmobiliaria"
+      },
+
       bottom: {
         copyright: "&copy; 2026 Just Dev It. All rights reserved.",
         credits: "Made with 💜 in Chile"
@@ -652,9 +684,12 @@ const translations = {
 
     // Language Selector
     language: {
-      current: "EN",
-      switch: "Cambiar a Español",
-      tooltip: "Change language"
+      switch: "Cambiar a Español"
+    },
+
+    // Accesibilidad
+    a11y: {
+      close: "Close"
     },
 
     // Preloader
