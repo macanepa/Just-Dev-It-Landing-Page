@@ -1,0 +1,26 @@
+name: IndexNow — notificar cambios a Bing
+
+# Cada vez que se mergea a main algo que toque páginas o el sitemap,
+# se notifica a IndexNow (Bing/Yandex/Seznam/Naver) para indexación rápida.
+# No requiere cuenta de Bing Webmaster Tools ni secretos: la llave de
+# IndexNow es pública por diseño (vive en /51986cd8391652d7b04c0d46b58d6d8b.txt).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - "sitemap.xml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enviar URLs del sitemap a IndexNow
+        run: python3 .github/scripts/indexnow_submit.py
