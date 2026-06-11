@@ -31,6 +31,7 @@ const translations = {
       titleAccent: "Fintech, Energía y PropTech",
       description: "Data Engineering, Web Scraping, Agentes IA y Automatización RPA. <strong>Ruby, Python, SQL</strong> para empresas en Santiago, Chile.",
       subtext: "• <strong>Energía, LegalTech, PropTech y Fintech</strong><br />• Entregas <strong>en semanas</strong>, no meses<br />• <strong>+20 proyectos</strong> ejecutados<br />",
+      tagline: "El software que tu negocio necesita, <strong>justo a tiempo.</strong>",
       ctaPrimary: "Cotizar Proyecto",
       ctaSecondary: "Ver Proyectos",
       stats: {
@@ -128,6 +129,14 @@ const translations = {
     // Portfolio Section (Slider de 10 proyectos)
     // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     portfolio: {
+      filters: {
+        all: "Todos",
+        fintech: "Fintech",
+        proptech: "PropTech",
+        ia: "IA",
+        data: "Data",
+        legaltech: "LegalTech"
+      },
       title: "<span class=\"gradient-text\">Proyectos</span> que Transforman",
       subtitle: "+20 proyectos ejecutados. Soluciones que escalan negocios.",
       cta: "Empezar Mi Proyecto",
@@ -180,6 +189,7 @@ const translations = {
 
       // project8: el título "Data Inmobiliaria" es marca y está hardcodeado en el HTML
       project8: {
+        title: "Data Inmobiliaria",
         category: "PropTech",
         description: "Plataforma gratuita de datos inmobiliarios con 9.5M propiedades indexadas. Datos catastrales SII, ofertas y transacciones CBR.",
         cta: "Ver Plataforma"
@@ -241,6 +251,12 @@ const translations = {
 
     // Contact Section
     contact: {
+      stats: {
+        s1Number: "24 hrs",
+        s1Label: "Tiempo de respuesta",
+        s2Number: "2-4 sem",
+        s2Label: "Primera entrega"
+      },
       title: "<span class=\"gradient-text\">Cotiza</span> Tu Proyecto",
       subtitle: "Propuesta en 24hrs. Entregas desde 2-4 semanas.",
       location: "Santiago, Chile | Respuesta inmediata",
@@ -292,6 +308,7 @@ const translations = {
 
     // Footer
     footer: {
+      tagline: "El software que tu negocio necesita, justo a tiempo. Desarrollo a medida desde Santiago de Chile.",
       services: {
         title: "Servicios",
         item1: "Desarrollo Ruby on Rails",
@@ -344,6 +361,19 @@ const translations = {
     a11y: {
       close: "Cerrar",
       skip: "Saltar al contenido"
+    },
+
+    // Banda de resultados (design system handoff)
+    band: {
+      eyebrow: "Resultados, no promesas",
+      title: "Tecnología que se traduce en",
+      titleAccent: "eficiencia",
+      stat1Number: "20+",
+      stat1Label: "Proyectos exitosos",
+      stat2Number: "99.9%",
+      stat2Label: "Uptime garantizado",
+      stat3Number: "24 hrs",
+      stat3Label: "Cotización personalizada"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
@@ -401,6 +431,7 @@ const translations = {
       titleAccent: "Fintech, Energy and PropTech",
       description: "Data Engineering, Web Scraping, AI Agents and RPA Automation. <strong>Ruby, Python, SQL</strong> for companies in Santiago, Chile.",
       subtext: "• <strong>Energy, LegalTech, PropTech and Fintech</strong><br />• Deliveries <strong>in weeks</strong>, not months<br />• <strong>+20 projects</strong> delivered<br />",
+      tagline: "The software your business needs, <strong>just in time.</strong>",
       ctaPrimary: "Get a Quote",
       ctaSecondary: "View Projects",
       stats: {
@@ -498,6 +529,14 @@ const translations = {
     // Portfolio Section
     // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     portfolio: {
+      filters: {
+        all: "All",
+        fintech: "Fintech",
+        proptech: "PropTech",
+        ia: "AI",
+        data: "Data",
+        legaltech: "LegalTech"
+      },
       title: "<span class=\"gradient-text\">Projects</span> that Transform",
       subtitle: "+20 projects delivered. Solutions that scale businesses.",
       cta: "Start My Project",
@@ -550,6 +589,7 @@ const translations = {
 
       // project8: el título "Data Inmobiliaria" es marca y está hardcodeado en el HTML
       project8: {
+        title: "Data Inmobiliaria",
         category: "PropTech",
         description: "Free real estate data platform with 9.5M indexed properties. SII cadastral data, listings and CBR transactions.",
         cta: "View Platform"
@@ -611,6 +651,12 @@ const translations = {
 
     // Contact Section
     contact: {
+      stats: {
+        s1Number: "24 hrs",
+        s1Label: "Response time",
+        s2Number: "2-4 wks",
+        s2Label: "First delivery"
+      },
       title: "<span class=\"gradient-text\">Quote</span> Your Project",
       subtitle: "Proposal in 24hrs. Deliveries from 2-4 weeks.",
       location: "Santiago, Chile | Immediate response",
@@ -662,6 +708,7 @@ const translations = {
 
     // Footer
     footer: {
+      tagline: "The software your business needs, just in time. Custom software development from Santiago, Chile.",
       services: {
         title: "Services",
         item1: "Ruby on Rails Development",
@@ -714,6 +761,19 @@ const translations = {
     a11y: {
       close: "Close",
       skip: "Skip to content"
+    },
+
+    // Banda de resultados (design system handoff)
+    band: {
+      eyebrow: "Results, not promises",
+      title: "Technology that translates into",
+      titleAccent: "efficiency",
+      stat1Number: "20+",
+      stat1Label: "Successful projects",
+      stat2Number: "99.9%",
+      stat2Label: "Guaranteed uptime",
+      stat3Number: "24 hrs",
+      stat3Label: "Custom quote"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
