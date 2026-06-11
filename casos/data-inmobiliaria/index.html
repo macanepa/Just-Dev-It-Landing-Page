@@ -390,6 +390,39 @@
         .btn-primary:hover, .feature-card:hover { transform: none; }
       }
     </style>
+
+    <!-- ===== Ajustes responsive móvil/tablet v3.1 ===== -->
+    <style>
+      /* números de las stat cards alineados al tope (centrarlos desalineaba
+         el número cuya etiqueta ocupa más líneas) */
+      .stat { display: flex; flex-direction: column; justify-content: flex-start; }
+      /* FAQ: chevron propio en vez del marcador nativo del navegador,
+         con sangría correcta cuando la pregunta ocupa 2+ líneas */
+      details.faq summary { position: relative; list-style: none; padding-right: 3rem; }
+      details.faq summary::-webkit-details-marker { display: none; }
+      details.faq summary::after {
+        content: '+'; position: absolute; right: 1.2rem; top: 50%;
+        transform: translateY(-50%); width: 1.4rem; text-align: center;
+        font-size: 1.3rem; font-weight: 600; color: var(--brand-soft);
+      }
+      details.faq[open] summary::after { content: '−'; }
+      /* móvil: header de una sola fila, stats en fila compacta, CTAs apilados */
+      @media (max-width: 640px) {
+        .subnav { flex-wrap: nowrap; gap: 12px; padding: 0.55rem 1rem; background: rgba(10, 14, 26, 0.97); }
+        .subnav-links > a:not(.btn) { display: none; }
+        /* el wordmark es muy apaisado (viewBox 7.2:1): limitar por ancho */
+        .subnav-logo img { width: 138px; height: auto; }
+        .subnav .btn { min-height: 38px; padding: 0.45rem 1.05rem; font-size: 0.8rem; margin-left: 0; }
+        .stats-band { gap: 0.6rem; padding: 2rem 1rem 0; flex-wrap: nowrap; }
+        .stat { flex: 1 1 0; min-width: 0; max-width: none; padding: 1rem 0.4rem; }
+        .stat-n { font-size: 1.3rem; }
+        .stat-l { font-size: 0.72rem; line-height: 1.35; }
+        .page-section { padding: 2.25rem 1.25rem 0.5rem; }
+        .final-cta { padding: 2.75rem 1.25rem 3.5rem; margin-top: 2rem; }
+        .hero-ctas { flex-direction: column; align-items: center; }
+        .hero-ctas .btn { width: 100%; max-width: 320px; }
+      }
+    </style>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -582,7 +615,7 @@
         <a href="/industrias/energia-renovable/">Energía Renovable</a>
         <a href="https://datainmobiliaria.cl" target="_blank" rel="noopener">datainmobiliaria.cl</a>
       </nav>
-      <p>&copy; 2026 Just Dev It · Santiago, Chile · Hecho con 💜 en Chile</p>
+      <p>&copy; 2026 Just Dev It · Santiago, Chile · <span style="white-space: nowrap;">Hecho con 💜 en Chile</span></p>
     </footer>
 
     <script defer src="/js/conversion-tracking.js"></script>
