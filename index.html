@@ -1009,10 +1009,17 @@
         gtmLoaded = true;
         loadGTM();
       }
-      setTimeout(triggerGTM, 8000);
-      ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(function(evt) {
-        window.addEventListener(evt, triggerGTM, { once: true, passive: true });
-      });
+      // Tráfico de campaña (Google/Bing/Meta/LinkedIn Ads, UTM): cargar GTM de
+      // inmediato para no perder la atribución de clics pagados que rebotan rápido.
+      // Tráfico orgánico/directo: mantener la carga diferida para proteger el LCP.
+      if (/[?&](utm_|gclid|gbraid|wbraid|msclkid|fbclid|li_fat_id|ttclid)/i.test(window.location.search)) {
+        triggerGTM();
+      } else {
+        setTimeout(triggerGTM, 8000);
+        ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(function(evt) {
+          window.addEventListener(evt, triggerGTM, { once: true, passive: true });
+        });
+      }
     </script>
   </head>
 
