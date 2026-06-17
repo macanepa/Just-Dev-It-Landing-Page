@@ -210,19 +210,161 @@
       }
     </style>
   
-    <!-- ===== Estilos del blog ===== -->
+    <!-- ===== Blog — diseño editorial inmersivo JDI ===== -->
     <style>
-      .breadcrumb{max-width:48rem;margin:0 auto;padding:1.4rem 1.5rem 0;font-size:.82rem;color:#9aa6b8}
-      .breadcrumb a{color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
-      .breadcrumb a:hover{text-decoration:underline}
-      .post-meta{max-width:48rem;margin:.35rem auto 0;padding:0 1.5rem;font-size:.82rem;color:#8b94a6;letter-spacing:.02em}
-      .post-body :is(h2,h3){scroll-margin-top:90px}
-      .post-body a{color:var(--jdi-purple-light,#b9a7e6)}
-      .blog-card a.blog-readmore{display:inline-block;margin-top:.6rem;font-weight:600;color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
-      .blog-card a.blog-readmore:hover{text-decoration:underline}
-      .blog-card .post-tag{display:inline-block;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:#8b94a6;margin-bottom:.5rem}
-      .related-box ul{margin:.5rem 0 0;padding-left:1.1rem}
-      .related-box li{margin:.3rem 0}
+      :root{ --blog-ink:#E8EaF4; --blog-dim:#9aa6bc; --blog-faint:#6c768c; --measure:42rem; --blog-max:74rem; }
+      /* Ocultamos el subnav heredado en favor de un masthead propio del blog;
+         dejamos el logo accesible arriba a la izquierda */
+      body{ background:var(--surface-page,#0A0E1A); }
+      .blog-topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+        gap:1rem;padding:0.9rem 1.5rem;background:rgba(10,14,26,.72);backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border-default,rgba(155,97,164,.10))}
+      .blog-topbar img{height:26px;width:auto;display:block}
+      .blog-topbar nav{display:flex;gap:1.4rem;align-items:center;font-size:.86rem}
+      .blog-topbar nav a{color:var(--blog-dim);text-decoration:none;transition:color .2s}
+      .blog-topbar nav a:hover{color:#fff}
+      .blog-topbar .tb-cta{color:#fff;border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:999px;
+        padding:.4rem 1rem;font-weight:600}
+      .blog-topbar .tb-cta:hover{background:var(--jdi-purple,#9B61A4);border-color:transparent}
+      @media (max-width:680px){ .blog-topbar nav a.tb-hide{display:none} }
+
+      /* barra de progreso de lectura (solo en posts) */
+      .read-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:80;
+        background:var(--gradient-cta,linear-gradient(135deg,#9B61A4,#B37BBF));box-shadow:0 0 12px rgba(179,123,191,.6)}
+
+      .blog-kicker{font-family:var(--font-display,'Poppins',sans-serif);font-size:.72rem;letter-spacing:.26em;
+        text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600;display:inline-block}
+      .grad{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));-webkit-background-clip:text;
+        background-clip:text;color:transparent}
+
+      /* ===== Masthead del indice ===== */
+      .blog-masthead{max-width:var(--blog-max);margin:0 auto;padding:5rem 1.5rem 2rem}
+      .blog-masthead h1{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;line-height:.92;
+        font-size:clamp(3.4rem,13vw,8rem);margin:.6rem 0 0;letter-spacing:-.03em}
+      .blog-masthead .dek{color:var(--blog-dim);max-width:33rem;font-size:1.15rem;line-height:1.6;margin:1.4rem 0 0}
+      .blog-rule{max-width:var(--blog-max);margin:0 auto;height:1px;background:var(--border-strong,rgba(155,97,164,.30))}
+
+      /* ===== Post destacado ===== */
+      .feat-wrap{max-width:var(--blog-max);margin:2.5rem auto 0;padding:0 1.5rem}
+      .feat{display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+        border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:var(--radius-lg,.75rem);
+        padding:2.75rem;background:
+          radial-gradient(120% 140% at 100% 0%, rgba(155,97,164,.22) 0%, rgba(155,97,164,0) 55%),
+          var(--surface-raised,#152636);transition:transform .4s var(--ease,ease),border-color .4s}
+      .feat:hover{transform:translateY(-4px);border-color:var(--jdi-purple,#9B61A4)}
+      .feat .tag{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--jdi-green-light,#26E0C0);font-weight:700}
+      .feat h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;letter-spacing:-.02em;
+        line-height:1.02;font-size:clamp(2rem,5.5vw,3.6rem);margin:1rem 0 .9rem;max-width:18ch}
+      .feat p{color:var(--blog-dim);max-width:52ch;font-size:1.08rem;line-height:1.6}
+      .feat .go{margin-top:1.6rem;display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-weight:600}
+      .feat .go span{transition:transform .3s} .feat:hover .go span{transform:translateX(6px)}
+
+      /* ===== Lista editorial ===== */
+      .post-list{max-width:var(--blog-max);margin:1rem auto 0;padding:0 1.5rem 1rem}
+      .post-list .lh{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blog-faint);
+        padding:2.5rem 0 .5rem;font-weight:600}
+      .post-row{display:grid;grid-template-columns:3.5rem 1fr auto;gap:.3rem 2rem;align-items:start;
+        text-decoration:none;color:inherit;padding:2.1rem 0;border-top:1px solid var(--border-default,rgba(155,97,164,.14));
+        position:relative;transition:padding-left .35s var(--ease,ease)}
+      .post-row:last-child{border-bottom:1px solid var(--border-default,rgba(155,97,164,.14))}
+      .post-row:hover{padding-left:.6rem}
+      .post-row .idx{grid-row:1/3;font-family:var(--font-display,'Poppins',sans-serif);font-size:1.05rem;
+        color:var(--blog-faint);font-variant-numeric:tabular-nums;padding-top:.5rem}
+      .post-row .rk{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600}
+      .post-row h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:600;letter-spacing:-.015em;
+        line-height:1.06;font-size:clamp(1.5rem,3.6vw,2.5rem);margin:.45rem 0 .55rem;transition:color .3s}
+      .post-row:hover h2{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+      .post-row p{color:var(--blog-dim);max-width:60ch;font-size:1rem;line-height:1.55;margin:0}
+      .post-row .rmeta{grid-column:2;color:var(--blog-faint);font-size:.82rem;margin-top:.7rem}
+      .post-row .go{grid-row:1/3;align-self:center;color:var(--blog-faint);font-size:1.5rem;transition:transform .3s,color .3s}
+      .post-row:hover .go{color:var(--jdi-purple-light,#B37BBF);transform:translateX(5px)}
+      @media (max-width:640px){
+        .post-row{grid-template-columns:1fr auto;gap:.2rem 1rem}
+        .post-row .idx{grid-row:auto;grid-column:1;padding-top:0}
+        .post-row .go{display:none}
+        .post-row .rmeta{grid-column:1}
+      }
+
+      /* ===== Post: hero editorial ===== */
+      .article-hero{max-width:50rem;margin:0 auto;padding:4.5rem 1.5rem 0;text-align:center}
+      .article-hero .crumbs{font-size:.8rem;color:var(--blog-faint);margin-bottom:1.4rem}
+      .article-hero .crumbs a{color:var(--blog-dim);text-decoration:none}
+      .article-hero .crumbs a:hover{color:#fff}
+      .article-hero h1{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;letter-spacing:-.025em;
+        line-height:1.04;font-size:clamp(2.2rem,6vw,4.2rem);margin:.8rem auto 0;max-width:20ch}
+      .article-hero .dek{color:var(--blog-dim);font-size:1.2rem;line-height:1.6;max-width:42rem;margin:1.5rem auto 0}
+      .article-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;justify-content:center;align-items:center;
+        margin:1.8rem auto 0;font-size:.84rem;color:var(--blog-faint)}
+      .article-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--blog-faint)}
+      .article-divider{max-width:50rem;margin:2.6rem auto 0;padding:0 1.5rem}
+      .article-divider span{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--border-strong,rgba(155,97,164,.4)),transparent)}
+
+      /* ===== Post: cuerpo ===== */
+      .post-body{max-width:var(--measure);margin:2.4rem auto 0;padding:0 1.5rem;color:var(--blog-ink);
+        font-size:1.18rem;line-height:1.78}
+      .post-body section{padding:0;border:0;max-width:none;margin:0}
+      .post-body section + section{margin-top:2.4rem}
+      .post-body p{margin:0 0 1.25rem}
+      .post-body section:first-of-type > p:first-child{font-size:1.36rem;line-height:1.6;color:#fff;font-weight:400}
+      .post-body h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:600;color:#fff;
+        font-size:clamp(1.5rem,3.2vw,2rem);line-height:1.18;letter-spacing:-.015em;margin:2.8rem 0 1.1rem;
+        padding-top:.4rem;position:relative}
+      .post-body h2::before{content:"";position:absolute;top:-.2rem;left:0;width:2.4rem;height:3px;border-radius:2px;
+        background:var(--gradient-cta,linear-gradient(135deg,#9B61A4,#B37BBF))}
+      .post-body h3{font-family:var(--font-display,'Poppins',sans-serif);color:#fff;font-size:1.2rem;margin:1.8rem 0 .7rem}
+      .post-body a{color:var(--jdi-purple-light,#B37BBF);text-decoration:underline;text-underline-offset:3px;
+        text-decoration-color:rgba(179,123,191,.4);transition:text-decoration-color .2s}
+      .post-body a:hover{text-decoration-color:var(--jdi-purple-light,#B37BBF)}
+      .post-body strong{color:#fff;font-weight:600}
+      .post-body ul{margin:0 0 1.3rem;padding:0;list-style:none}
+      .post-body li{position:relative;padding-left:1.5rem;margin:.55rem 0}
+      .post-body li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--jdi-purple-light,#B37BBF)}
+      /* cita destacada */
+      .pullquote{margin:2.8rem 0;padding:.4rem 0 .4rem 1.6rem;border-left:3px solid var(--jdi-purple,#9B61A4);
+        font-family:var(--font-display,'Poppins',sans-serif);font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.3;
+        font-weight:600;letter-spacing:-.01em}
+      .pullquote span{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+      /* takeaways */
+      .takeaways{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+      .takeaways .box{border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:var(--radius-lg,.75rem);
+        background:var(--surface-card,rgba(30,41,59,.6));padding:1.9rem 2rem}
+      .takeaways .blog-kicker{margin-bottom:.9rem}
+      .takeaways ul{margin:0;padding:0;list-style:none}
+      .takeaways li{position:relative;padding-left:1.7rem;margin:.7rem 0;color:var(--blog-ink);line-height:1.55}
+      .takeaways li::before{content:"→";position:absolute;left:0;top:0;color:var(--jdi-green-light,#26E0C0);font-weight:700}
+
+      /* FAQ rediseñado */
+      .faqs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+      .faqs > .blog-kicker{margin-bottom:.4rem}
+      .faqs h2{font-family:var(--font-display,'Poppins',sans-serif);color:#fff;font-size:1.7rem;margin:.3rem 0 1rem;letter-spacing:-.01em}
+      details.q{border-top:1px solid var(--border-default,rgba(155,97,164,.14))}
+      .faqs details.q:last-of-type{border-bottom:1px solid var(--border-default,rgba(155,97,164,.14))}
+      details.q summary{list-style:none;cursor:pointer;padding:1.15rem 2.5rem 1.15rem 0;position:relative;
+        font-family:var(--font-display,'Poppins',sans-serif);font-weight:500;font-size:1.08rem;color:#fff}
+      details.q summary::-webkit-details-marker{display:none}
+      details.q summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
+        font-size:1.4rem;color:var(--jdi-purple-light,#B37BBF);transition:transform .3s}
+      details.q[open] summary::after{content:"−"}
+      details.q p{margin:0 0 1.2rem;color:var(--blog-dim);line-height:1.7;max-width:62ch}
+
+      /* relacionados */
+      .related{max-width:var(--blog-max);margin:4rem auto 0;padding:0 1.5rem}
+      .related .blog-kicker{display:block;margin-bottom:1.2rem}
+      .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+      .rcard{text-decoration:none;color:inherit;border:1px solid var(--border-default,rgba(155,97,164,.14));
+        border-radius:var(--radius-lg,.75rem);padding:1.4rem;transition:transform .3s,border-color .3s,background .3s}
+      .rcard:hover{transform:translateY(-3px);border-color:var(--jdi-purple,#9B61A4);background:var(--surface-card,rgba(30,41,59,.6))}
+      .rcard .rk{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600}
+      .rcard h3{font-family:var(--font-display,'Poppins',sans-serif);font-size:1.1rem;line-height:1.25;margin:.6rem 0 0;color:#fff;font-weight:600}
+
+      /* micro-animaciones al scroll (respeta prefers-reduced-motion) */
+      @media (prefers-reduced-motion:no-preference){
+        .reveal{opacity:0;transform:translateY(22px)}
+        .reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease,cubic-bezier(.22,1,.36,1)),transform .7s var(--ease,cubic-bezier(.22,1,.36,1))}
+      }
     </style>
 
   </head>
@@ -231,111 +373,119 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="subnav" aria-label="Navegación">
-      <a class="subnav-logo" href="/" aria-label="Just Dev It — Inicio">
-        <img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="140" height="32" />
-      </a>
-      <div class="subnav-links">
-        <a href="/#servicios">Servicios</a>
-        <a href="/#portafolio">Portafolio</a>
-        <a href="/#contacto" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Cotizar Proyecto</a>
-      </div>
-    </nav>
+        <div class="blog-topbar">
+      <a href="/" aria-label="Just Dev It — Inicio"><img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="120" height="26" /></a>
+      <nav aria-label="Navegación">
+        <a href="/blog/" class="tb-hide">Blog</a>
+        <a href="/#servicios" class="tb-hide">Servicios</a>
+        <a href="/#contacto" class="tb-cta">Cotizar</a>
+      </nav>
+    </div>
+    <div class="read-progress" aria-hidden="true"></div>
 
-    <header class="page-hero">
-      <span class="page-eyebrow">Blog · LegalTech y RPA</span>
+    <header class="article-hero">
+      <p class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></p>
+      <span class="blog-kicker">LegalTech · RPA</span>
       <h1>Automatización del Poder Judicial (PJUD): carga de demandas y exhortos</h1>
-      <p class="lead">Cómo automatizar la carga de demandas y exhortos en la Oficina Judicial Virtual (PJUD): validación de duplicados, CAPTCHA y RUT. Cotiza a medida desde UF 75.</p>
-      <div class="hero-ctas">
-        <a href="/#contacto" class="btn btn-primary">Cotizar mi proyecto</a>
-        <a href="/blog/" class="btn btn-secondary">Más artículos</a>
+      <p class="dek">Cómo automatizar la carga de demandas y exhortos en la Oficina Judicial Virtual (PJUD): validación de duplicados, CAPTCHA y RUT. Cotiza a medida desde UF 75.</p>
+      <div class="article-meta">
+        <span>2026-06-17</span><span class="dot"></span>
+        <span>7 min de lectura</span><span class="dot"></span>
+        <span>Just Dev It</span>
       </div>
     </header>
+    <div class="article-divider"><span></span></div>
 
-    <nav class="breadcrumb" aria-label="Ruta de navegación">
-      <a href="/">Inicio</a> / <a href="/blog/">Blog</a> / <span>Automatización del Poder Judicial (PJUD): carga de demandas y exhortos</span>
-    </nav>
-    <p class="post-meta">2026-06-17 · 7 min de lectura · Just Dev It</p>
-
-    <main class="post-body">
-      <section class="page-section">
+    <article class="post-body">
+      <section class="reveal">
         <p>Si trabajas en un estudio de cobranza judicial o en el área legal de una empresa, conoces el cuello de botella: subir demandas, escritos y exhortos a la <strong>Oficina Judicial Virtual (OJV) del Poder Judicial</strong>, uno por uno, a mano. Es un proceso repetitivo, lento y propenso al error humano, justo donde un dato mal copiado puede costar caro. Cuando el volumen llega a miles de causas por semana, el equipo deja de hacer trabajo jurídico para convertirse en operadores de un portal.</p><p>La buena noticia: gran parte de esa operación se puede automatizar. En este artículo explicamos qué procesos del PJUD se pueden delegar a un software a medida, cómo funciona técnicamente cuando el portal no expone una API, y dónde están los límites honestos de lo que se puede prometer.</p>
       </section>
-      <section class="page-section">
-        <h2>El problema: carga manual a escala en la OJV</h2>
-        <p>La Oficina Judicial Virtual fue pensada para presentaciones individuales, no para operaciones masivas. Un estudio que ingresa <strong>del orden de 2.000 demandas por semana</strong> enfrenta varios problemas a la vez:</p><ul><li><strong>Volumen vs. tiempo:</strong> cada presentación exige abrir el portal, identificar el tribunal y la materia, completar formularios, adjuntar documentos y enviar. Multiplícalo por miles y el costo en horas-persona es enorme.</li><li><strong>Error humano:</strong> copiar RUT, montos, nombres de partes y datos de la causa a mano genera inconsistencias que después cuestan retrocesos procesales.</li><li><strong>Duplicados:</strong> con tanto volumen es fácil cargar dos veces la misma causa o un escrito repetido.</li><li><strong>Seguimiento post-envío:</strong> no basta con enviar; hay que confirmar que el documento quedó efectivamente cargado y asociado a la causa correcta.</li></ul><p>El resultado es un equipo caro dedicado a tareas mecánicas, con riesgo operativo creciente a medida que sube la cartera de juicios.</p>
-      </section>
-      <section class="page-section">
-        <h2>Cómo se resuelve: automatización de la operación judicial</h2>
-        <p>El enfoque es sacar al humano del trabajo repetitivo y dejarlo solo donde aporta criterio. Para un estudio de cobranza judicial implementamos un conjunto de automatizaciones que cubren el ciclo completo de carga en el PJUD:</p><ul><li><strong>Carga automatizada de demandas</strong> a partir de un archivo estructurado (por ejemplo, una planilla con todos los datos de las causas). El software lee el archivo y replica en la OJV la secuencia que haría un operador, pero a escala y sin descansos.</li><li><strong>Validación de duplicados</strong> antes de ingresar, para no presentar dos veces la misma causa ni el mismo escrito.</li><li><strong>Control de carga de documentos y escritos post-envío:</strong> verificación de que cada presentación quedó efectivamente registrada, con trazabilidad de lo que se cargó y lo que falta.</li><li><strong>Automatización de exhortos:</strong> generación y tramitación de los exhortos que derivan diligencias a otros tribunales, evitando la transcripción manual entre causas.</li><li><strong>Validación de cambios de nombre por RUT:</strong> una herramienta que toma un Excel, consulta por cada RUT si la persona registra un cambio de nombre en el sistema del PJUD y escribe el nombre actualizado en el mismo archivo.</li></ul><p>Todo queda con registro de cada operación, de modo que el estudio puede auditar qué hizo el software, cuándo y con qué resultado.</p>
-      </section>
-      <section class="page-section">
-        <h2>Cómo funciona técnicamente: el portal no tiene API</h2>
-        <p>El desafío central es que la plataforma del Poder Judicial <strong>no expone una API pública</strong> para integrarse de forma directa. No hay un endpoint al que enviarle las demandas. Por eso la solución se construye con <strong>automatización de navegador headless</strong>: un proceso que controla un navegador sin interfaz y ejecuta exactamente los pasos que haría una persona —navegar, completar campos, adjuntar archivos y enviar— pero de forma programática y desatendida.</p><p>Sobre esa base, la arquitectura típica usa:</p><ul><li><strong>Lectura de datos estructurados:</strong> el archivo de entrada (Excel u otro formato) se valida y normaliza con <strong>Python</strong> antes de empezar, para detectar errores de origen.</li><li><strong>Orquestador de flujos:</strong> coordina el lote completo, controla reintentos cuando una presentación falla y deja registro de cada caso.</li><li><strong>Resolución de CAPTCHA:</strong> el portal protege el acceso con CAPTCHA. La automatización lo resuelve de forma automática, lo que permite operar de forma continua sin que una persona tenga que destrabar cada paso.</li><li><strong>Validación y reconciliación:</strong> cruce de duplicados y verificación post-envío para confirmar el estado real de cada causa. En el procesamiento de datos judiciales alcanzamos una efectividad cercana al <strong>98% sobre los escenarios definidos</strong> en cada proyecto.</li></ul><p>La automatización de navegador se ejecuta en infraestructura cloud (por ejemplo <strong>AWS</strong>, <strong>Azure</strong> o <strong>Google Cloud</strong>) según lo que defina cada proyecto, lo que permite escalar la cantidad de procesos en paralelo.</p>
-      </section>
-      <section class="page-section">
-        <h2>Resultados: de horas a minutos, con menos errores</h2>
-        <p>El impacto principal es que el equipo deja de cargar causas a mano. Lo que antes ocupaba horas de trabajo manual pasa a ejecutarse de forma desatendida, liberando a los abogados y paralegales para tareas que sí requieren criterio jurídico.</p><ul><li><strong>Escala real:</strong> el mismo flujo sostiene del orden de <strong>2.000 demandas por semana</strong> sin sumar personas a la operación.</li><li><strong>Menos errores:</strong> al leer los datos desde un archivo estructurado y validarlos antes de enviar, se reducen las inconsistencias que provoca la transcripción manual.</li><li><strong>Trazabilidad:</strong> cada carga, cada duplicado evitado y cada verificación post-envío queda registrada y es auditable.</li><li><strong>Continuidad:</strong> con la resolución automática de CAPTCHA y una efectividad cercana al 98% sobre los escenarios definidos en el procesamiento de datos judiciales, el proceso no se detiene a cada paso.</li></ul><p>Si tu estudio o área legal carga causas en la OJV a mano y el volumen ya es un problema, conviene evaluar qué parte de ese flujo se puede automatizar. Los proyectos son desarrollo a medida y parten <strong>desde UF 75</strong> según el alcance; lo razonable es empezar por un diagnóstico del proceso actual para definir qué se automatiza primero.</p>
-      </section>
-      <section class="page-section">
-        <h2>Consideraciones: legalidad, mantención y límites honestos</h2>
-        <p>Automatizar trámites en el Poder Judicial plantea preguntas legítimas. Esto es orientación general, no asesoría legal; cada estudio debe validar su caso con su propio criterio jurídico:</p><ul><li><strong>Quién es responsable:</strong> la automatización ejecuta presentaciones en nombre del estudio y bajo sus credenciales y supervisión. No reemplaza la responsabilidad profesional ni la decisión jurídica; replica una operación que de todos modos haría una persona autorizada.</li><li><strong>Confidencialidad:</strong> los datos y documentos se manejan dentro del entorno que defina el cliente, con la trazabilidad necesaria para auditar cada operación.</li><li><strong>Dependencia del portal:</strong> el funcionamiento depende de la disponibilidad y estabilidad de la plataforma del PJUD. Si el portal cambia su estructura o sus validaciones, la automatización <strong>requiere ajuste (mantención)</strong>. Es la naturaleza de operar sobre un sistema externo sin API.</li><li><strong>Garantía:</strong> entregamos <strong>30 días de garantía post-entrega</strong> para corregir lo que no funcione según lo acordado.</li></ul><p>Preferimos ser claros con estos límites desde el principio: una automatización sobre un portal de terceros no es un sistema cerrado para siempre, sino una herramienta viva que se mantiene cuando el entorno cambia.</p>
-      </section>
-      <section class="page-section">
-        <div class="case-box">
-          <h3>En resumen</h3>
-          <ul>
+        <section class="reveal">
+          <h2>El problema: carga manual a escala en la OJV</h2>
+          <p>La Oficina Judicial Virtual fue pensada para presentaciones individuales, no para operaciones masivas. Un estudio que ingresa <strong>del orden de 2.000 demandas por semana</strong> enfrenta varios problemas a la vez:</p><ul><li><strong>Volumen vs. tiempo:</strong> cada presentación exige abrir el portal, identificar el tribunal y la materia, completar formularios, adjuntar documentos y enviar. Multiplícalo por miles y el costo en horas-persona es enorme.</li><li><strong>Error humano:</strong> copiar RUT, montos, nombres de partes y datos de la causa a mano genera inconsistencias que después cuestan retrocesos procesales.</li><li><strong>Duplicados:</strong> con tanto volumen es fácil cargar dos veces la misma causa o un escrito repetido.</li><li><strong>Seguimiento post-envío:</strong> no basta con enviar; hay que confirmar que el documento quedó efectivamente cargado y asociado a la causa correcta.</li></ul><p>El resultado es un equipo caro dedicado a tareas mecánicas, con riesgo operativo creciente a medida que sube la cartera de juicios.</p>
+        </section>
+        <section class="reveal">
+          <h2>Cómo se resuelve: automatización de la operación judicial</h2>
+          <p>El enfoque es sacar al humano del trabajo repetitivo y dejarlo solo donde aporta criterio. Para un estudio de cobranza judicial implementamos un conjunto de automatizaciones que cubren el ciclo completo de carga en el PJUD:</p><ul><li><strong>Carga automatizada de demandas</strong> a partir de un archivo estructurado (por ejemplo, una planilla con todos los datos de las causas). El software lee el archivo y replica en la OJV la secuencia que haría un operador, pero a escala y sin descansos.</li><li><strong>Validación de duplicados</strong> antes de ingresar, para no presentar dos veces la misma causa ni el mismo escrito.</li><li><strong>Control de carga de documentos y escritos post-envío:</strong> verificación de que cada presentación quedó efectivamente registrada, con trazabilidad de lo que se cargó y lo que falta.</li><li><strong>Automatización de exhortos:</strong> generación y tramitación de los exhortos que derivan diligencias a otros tribunales, evitando la transcripción manual entre causas.</li><li><strong>Validación de cambios de nombre por RUT:</strong> una herramienta que toma un Excel, consulta por cada RUT si la persona registra un cambio de nombre en el sistema del PJUD y escribe el nombre actualizado en el mismo archivo.</li></ul><p>Todo queda con registro de cada operación, de modo que el estudio puede auditar qué hizo el software, cuándo y con qué resultado.</p>
+        </section>
+      <blockquote class="pullquote reveal"><span>La carga de demandas, escritos y exhortos en la Oficina Judicial Virtual (PJUD) se puede automatizar a partir de un archivo estructurado, con validación de duplicados y verificación post-envío.</span></blockquote>
+        <section class="reveal">
+          <h2>Cómo funciona técnicamente: el portal no tiene API</h2>
+          <p>El desafío central es que la plataforma del Poder Judicial <strong>no expone una API pública</strong> para integrarse de forma directa. No hay un endpoint al que enviarle las demandas. Por eso la solución se construye con <strong>automatización de navegador headless</strong>: un proceso que controla un navegador sin interfaz y ejecuta exactamente los pasos que haría una persona —navegar, completar campos, adjuntar archivos y enviar— pero de forma programática y desatendida.</p><p>Sobre esa base, la arquitectura típica usa:</p><ul><li><strong>Lectura de datos estructurados:</strong> el archivo de entrada (Excel u otro formato) se valida y normaliza con <strong>Python</strong> antes de empezar, para detectar errores de origen.</li><li><strong>Orquestador de flujos:</strong> coordina el lote completo, controla reintentos cuando una presentación falla y deja registro de cada caso.</li><li><strong>Resolución de CAPTCHA:</strong> el portal protege el acceso con CAPTCHA. La automatización lo resuelve de forma automática, lo que permite operar de forma continua sin que una persona tenga que destrabar cada paso.</li><li><strong>Validación y reconciliación:</strong> cruce de duplicados y verificación post-envío para confirmar el estado real de cada causa. En el procesamiento de datos judiciales alcanzamos una efectividad cercana al <strong>98% sobre los escenarios definidos</strong> en cada proyecto.</li></ul><p>La automatización de navegador se ejecuta en infraestructura cloud (por ejemplo <strong>AWS</strong>, <strong>Azure</strong> o <strong>Google Cloud</strong>) según lo que defina cada proyecto, lo que permite escalar la cantidad de procesos en paralelo.</p>
+        </section>
+        <section class="reveal">
+          <h2>Resultados: de horas a minutos, con menos errores</h2>
+          <p>El impacto principal es que el equipo deja de cargar causas a mano. Lo que antes ocupaba horas de trabajo manual pasa a ejecutarse de forma desatendida, liberando a los abogados y paralegales para tareas que sí requieren criterio jurídico.</p><ul><li><strong>Escala real:</strong> el mismo flujo sostiene del orden de <strong>2.000 demandas por semana</strong> sin sumar personas a la operación.</li><li><strong>Menos errores:</strong> al leer los datos desde un archivo estructurado y validarlos antes de enviar, se reducen las inconsistencias que provoca la transcripción manual.</li><li><strong>Trazabilidad:</strong> cada carga, cada duplicado evitado y cada verificación post-envío queda registrada y es auditable.</li><li><strong>Continuidad:</strong> con la resolución automática de CAPTCHA y una efectividad cercana al 98% sobre los escenarios definidos en el procesamiento de datos judiciales, el proceso no se detiene a cada paso.</li></ul><p>Si tu estudio o área legal carga causas en la OJV a mano y el volumen ya es un problema, conviene evaluar qué parte de ese flujo se puede automatizar. Los proyectos son desarrollo a medida y parten <strong>desde UF 75</strong> según el alcance; lo razonable es empezar por un diagnóstico del proceso actual para definir qué se automatiza primero.</p>
+        </section>
+        <section class="reveal">
+          <h2>Consideraciones: legalidad, mantención y límites honestos</h2>
+          <p>Automatizar trámites en el Poder Judicial plantea preguntas legítimas. Esto es orientación general, no asesoría legal; cada estudio debe validar su caso con su propio criterio jurídico:</p><ul><li><strong>Quién es responsable:</strong> la automatización ejecuta presentaciones en nombre del estudio y bajo sus credenciales y supervisión. No reemplaza la responsabilidad profesional ni la decisión jurídica; replica una operación que de todos modos haría una persona autorizada.</li><li><strong>Confidencialidad:</strong> los datos y documentos se manejan dentro del entorno que defina el cliente, con la trazabilidad necesaria para auditar cada operación.</li><li><strong>Dependencia del portal:</strong> el funcionamiento depende de la disponibilidad y estabilidad de la plataforma del PJUD. Si el portal cambia su estructura o sus validaciones, la automatización <strong>requiere ajuste (mantención)</strong>. Es la naturaleza de operar sobre un sistema externo sin API.</li><li><strong>Garantía:</strong> entregamos <strong>30 días de garantía post-entrega</strong> para corregir lo que no funcione según lo acordado.</li></ul><p>Preferimos ser claros con estos límites desde el principio: una automatización sobre un portal de terceros no es un sistema cerrado para siempre, sino una herramienta viva que se mantiene cuando el entorno cambia.</p>
+        </section>
+    </article>
+
+    <div class="takeaways reveal">
+      <div class="box">
+        <span class="blog-kicker">En resumen</span>
+        <ul>
             <li>La carga de demandas, escritos y exhortos en la Oficina Judicial Virtual (PJUD) se puede automatizar a partir de un archivo estructurado, con validación de duplicados y verificación post-envío.</li>
             <li>Como el portal del Poder Judicial no expone API, la solución se construye con automatización de navegador headless e incluye resolución automática de CAPTCHA; en el procesamiento de datos judiciales la efectividad es cercana al 98% sobre los escenarios definidos.</li>
             <li>Un mismo flujo puede sostener del orden de 2.000 demandas por semana, llevando la operación de horas de trabajo manual a minutos y reduciendo el error humano.</li>
             <li>También se automatizan los exhortos y la validación por RUT de cambios de nombre en el sistema del PJUD, escribiendo el dato actualizado en el mismo Excel.</li>
             <li>La automatización opera sobre un portal de terceros: si el PJUD cambia, requiere mantención. Los proyectos son a medida desde UF 75, con 30 días de garantía post-entrega.</li>
-          </ul>
-        </div>
-      </section>
-      <section class="page-section">
-        <h2>Preguntas frecuentes</h2>
-        <details class="faq">
-          <summary>¿Se puede automatizar la carga de demandas en la Oficina Judicial Virtual (PJUD)?</summary>
-          <p>Sí. La carga de demandas y escritos en la OJV se puede automatizar a partir de un archivo estructurado: el software lee los datos y replica en el portal la misma secuencia que haría un operador, pero a escala y sin intervención manual. Como la plataforma no expone una API, se hace con automatización de navegador, e incluye validación de duplicados y verificación de que cada presentación quedó efectivamente cargada.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Es seguro y permitido automatizar trámites en el Poder Judicial?</summary>
-          <p>La automatización opera bajo las credenciales y la supervisión del propio estudio, replicando una operación que de todos modos realizaría una persona autorizada; no reemplaza la responsabilidad profesional ni la decisión jurídica. Los datos se manejan en el entorno que defina el cliente y cada operación queda con trazabilidad auditable. Esto es orientación general y no asesoría legal: cada estudio debe validar su caso con su propio criterio jurídico.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cuántas demandas se pueden cargar de forma automatizada?</summary>
-          <p>Depende del proyecto y de la infraestructura, pero un flujo automatizado puede sostener del orden de 2.000 demandas por semana sin sumar personas a la operación. Como el proceso corre en infraestructura cloud, se pueden ejecutar varios procesos en paralelo para escalar el volumen según la cartera de causas.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cómo se resuelve el CAPTCHA del PJUD?</summary>
-          <p>El portal protege el acceso con CAPTCHA, así que la automatización lo resuelve de forma automática para poder operar de manera desatendida, sin que una persona tenga que destrabar cada paso. Eso mantiene el proceso continuo; en el procesamiento de datos judiciales asociado alcanzamos una efectividad cercana al 98% sobre los escenarios que se definen en cada proyecto.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Qué es un exhorto y se puede automatizar?</summary>
-          <p>Un exhorto es la comunicación por la cual un tribunal solicita a otro que practique una diligencia dentro de su territorio o competencia. Su tramitación implica transcribir datos entre causas, algo repetitivo y propenso a error. Ese flujo se puede automatizar: el software genera y tramita los exhortos a partir de la información ya estructurada, evitando la transcripción manual.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Se puede validar cambios de nombre por RUT en el PJUD?</summary>
-          <p>Sí. Se puede usar una herramienta que toma un Excel, consulta por cada RUT si la persona registra un cambio de nombre en el sistema del PJUD y escribe el nombre actualizado en el mismo archivo. Esto permite reconciliar identidades a escala y mantener actualizada la información de las partes sin revisar caso por caso a mano.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Qué pasa si el portal del Poder Judicial cambia?</summary>
-          <p>Como la automatización opera sobre un portal externo sin API, su funcionamiento depende de la disponibilidad y estabilidad de la plataforma del PJUD. Si el portal cambia su estructura o sus validaciones, la automatización requiere ajuste (mantención). Por eso entregamos 30 días de garantía post-entrega y planteamos la solución como una herramienta que se mantiene en el tiempo, no como un sistema cerrado para siempre.</p>
-        </details>
-      </section>
-      <section class="page-section">
-        <div class="case-box related-box">
-          <h3>Sigue explorando</h3>
-          <ul>
-            <li><a href="https://justdev.it/industrias/legaltech/">LegalTech en Chile</a></li>
-            <li><a href="https://justdev.it/servicios/automatizacion-rpa/">automatización RPA</a></li>
-            <li><a href="https://justdev.it/servicios/agentes-ia/">agentes de IA</a></li>
-            <li><a href="/blog/">Ver todos los artículos del blog</a></li>
-          </ul>
-        </div>
-      </section>
-    </main>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faqs reveal">
+      <span class="blog-kicker">FAQ</span>
+      <h2>Preguntas frecuentes</h2>
+      <details class="q">
+        <summary>¿Se puede automatizar la carga de demandas en la Oficina Judicial Virtual (PJUD)?</summary>
+        <p>Sí. La carga de demandas y escritos en la OJV se puede automatizar a partir de un archivo estructurado: el software lee los datos y replica en el portal la misma secuencia que haría un operador, pero a escala y sin intervención manual. Como la plataforma no expone una API, se hace con automatización de navegador, e incluye validación de duplicados y verificación de que cada presentación quedó efectivamente cargada.</p>
+      </details>
+      <details class="q">
+        <summary>¿Es seguro y permitido automatizar trámites en el Poder Judicial?</summary>
+        <p>La automatización opera bajo las credenciales y la supervisión del propio estudio, replicando una operación que de todos modos realizaría una persona autorizada; no reemplaza la responsabilidad profesional ni la decisión jurídica. Los datos se manejan en el entorno que defina el cliente y cada operación queda con trazabilidad auditable. Esto es orientación general y no asesoría legal: cada estudio debe validar su caso con su propio criterio jurídico.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cuántas demandas se pueden cargar de forma automatizada?</summary>
+        <p>Depende del proyecto y de la infraestructura, pero un flujo automatizado puede sostener del orden de 2.000 demandas por semana sin sumar personas a la operación. Como el proceso corre en infraestructura cloud, se pueden ejecutar varios procesos en paralelo para escalar el volumen según la cartera de causas.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cómo se resuelve el CAPTCHA del PJUD?</summary>
+        <p>El portal protege el acceso con CAPTCHA, así que la automatización lo resuelve de forma automática para poder operar de manera desatendida, sin que una persona tenga que destrabar cada paso. Eso mantiene el proceso continuo; en el procesamiento de datos judiciales asociado alcanzamos una efectividad cercana al 98% sobre los escenarios que se definen en cada proyecto.</p>
+      </details>
+      <details class="q">
+        <summary>¿Qué es un exhorto y se puede automatizar?</summary>
+        <p>Un exhorto es la comunicación por la cual un tribunal solicita a otro que practique una diligencia dentro de su territorio o competencia. Su tramitación implica transcribir datos entre causas, algo repetitivo y propenso a error. Ese flujo se puede automatizar: el software genera y tramita los exhortos a partir de la información ya estructurada, evitando la transcripción manual.</p>
+      </details>
+      <details class="q">
+        <summary>¿Se puede validar cambios de nombre por RUT en el PJUD?</summary>
+        <p>Sí. Se puede usar una herramienta que toma un Excel, consulta por cada RUT si la persona registra un cambio de nombre en el sistema del PJUD y escribe el nombre actualizado en el mismo archivo. Esto permite reconciliar identidades a escala y mantener actualizada la información de las partes sin revisar caso por caso a mano.</p>
+      </details>
+      <details class="q">
+        <summary>¿Qué pasa si el portal del Poder Judicial cambia?</summary>
+        <p>Como la automatización opera sobre un portal externo sin API, su funcionamiento depende de la disponibilidad y estabilidad de la plataforma del PJUD. Si el portal cambia su estructura o sus validaciones, la automatización requiere ajuste (mantención). Por eso entregamos 30 días de garantía post-entrega y planteamos la solución como una herramienta que se mantiene en el tiempo, no como un sistema cerrado para siempre.</p>
+      </details>
+    </div>
+
+    <section class="related reveal">
+      <span class="blog-kicker">Sigue leyendo</span>
+      <div class="related-grid">
+        <a class="rcard" href="/blog/que-es-mcp-conectar-datos-llm-seguro/">
+          <span class="rk">IA · MCP</span>
+          <h3>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</h3>
+        </a>
+        <a class="rcard" href="/blog/web-scraping-a-escala-chile/">
+          <span class="rk">Web scraping · Datos</span>
+          <h3>Web scraping a escala en Chile: arquitectura, legalidad y costos</h3>
+        </a>
+        <a class="rcard" href="/blog/consolidacion-financiera-multisociedad/">
+          <span class="rk">Finanzas · Datos</span>
+          <h3>Consolidación financiera multi-sociedad: del Excel al dashboard</h3>
+        </a>
+      </div>
+    </section>
 
     <section class="final-cta">
       <h2>¿Tienes un caso parecido en tu empresa?</h2>
@@ -349,13 +499,31 @@
     <footer class="page-footer">
       <nav aria-label="Enlaces">
         <a href="/">Inicio</a>
-        <a href="/servicios/inteligencia-artificial/">Inteligencia Artificial</a>
+        <a href="/blog/">Blog</a>
+        <a href="/servicios/agentes-ia/">Agentes de IA</a>
         <a href="/servicios/data-engineering/">Ingeniería de Datos</a>
-        <a href="/casos/data-inmobiliaria/">Caso Data Inmobiliaria</a>
         <a href="/#contacto">Contacto</a>
       </nav>
       <p style="margin-top: 1rem;">&copy; 2026 Just Dev It · Santiago, Chile · <span style="white-space: nowrap;">Hecho con 💜 en Chile</span></p>
     </footer>
+
+
+    <script>
+      (function(){
+        var bar=document.querySelector('.read-progress');
+        if(bar){var f=function(){var h=document.documentElement;var s=h.scrollTop||document.body.scrollTop;
+          var m=(h.scrollHeight-h.clientHeight)||1;bar.style.width=Math.min(100,s/m*100)+'%';};
+          addEventListener('scroll',f,{passive:true});addEventListener('resize',f,{passive:true});f();}
+        var els=document.querySelectorAll('.reveal');
+        if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+          var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+            e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+          els.forEach(function(el){io.observe(el);});
+        } else { els.forEach(function(el){el.classList.add('in');}); }
+      })();
+    </script>
+
+
 
     <script defer src="/js/conversion-tracking.js"></script>
   </body>
