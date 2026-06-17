@@ -69,8 +69,8 @@ const translations = {
     // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     services: {
       title: "<span class=\"gradient-text\">Soluciones</span> que Impulsan tu Negocio",
-      subtitle: "Automatización, datos e integraciones.",
-      cta: "Solicitar Demo",
+      subtitle: "Automatización de procesos, ingeniería de datos e integraciones con tu ERP y CRM. Resolvemos problemas operativos concretos, con alcance y plazo cerrados.",
+      cta: "Cotizar Proyecto",
       controls: {
         prev: "Anterior",
         next: "Siguiente"
@@ -143,7 +143,7 @@ const translations = {
       },
       title: "<span class=\"gradient-text\">Proyectos</span> que Transforman",
       subtitle: "+20 proyectos ejecutados. Soluciones que escalan negocios.",
-      cta: "Empezar Mi Proyecto",
+      cta: "Cotiza un proyecto como estos",
       controls: {
         prev: "Anterior",
         next: "Siguiente"
@@ -224,7 +224,7 @@ const translations = {
     // Clients Section
     clients: {
       title: "<span class=\"gradient-text\">Clientes</span> que Confían",
-      subtitle: "Empresas líderes que transforman con nuestra tecnología"
+      subtitle: "Empresas de energía, legal y servicios que confían en nuestro desarrollo a medida"
     },
 
     // Team Section
@@ -275,7 +275,8 @@ const translations = {
 
       channels: {
         label: "¿Prefieres hablar directo con nosotros?",
-        whatsapp: "WhatsApp directo"
+        whatsapp: "WhatsApp directo",
+        email: "Correo directo"
       },
 
       form: {
@@ -332,7 +333,7 @@ const translations = {
       contactInfo: {
         title: "Contacto",
         location: "Santiago, Chile",
-        email: "joaquin@justdev.it"
+        email: "Correo"
       },
 
       // Enlaces internos a páginas de servicio/vertical (fase 1 SEO)
@@ -489,7 +490,8 @@ const translations = {
       eyebrow: "Desde el blog",
       title: "Guías y artículos <span class=\"gradient-text\">técnicos</span>",
       subtitle: "Cómo automatizamos, ordenamos datos y aplicamos IA en empresas chilenas. Casos reales y guías.",
-      cta: "Ver todo el blog"
+      cta: "Ver todo el blog",
+      ctaContact: "¿Tu empresa tiene un caso así? Conversémoslo"
     },
 
     // Preloader
@@ -563,8 +565,8 @@ const translations = {
     // Los tags de las cards están hardcodeados en el HTML (texto neutro entre idiomas)
     services: {
       title: "<span class=\"gradient-text\">Solutions</span> that Drive Your Business",
-      subtitle: "Automation, data and integrations.",
-      cta: "Request Demo",
+      subtitle: "Process automation, data engineering and integrations with your ERP and CRM. We solve concrete operational problems, with fixed scope and timeline.",
+      cta: "Get a Quote",
       controls: {
         prev: "Previous",
         next: "Next"
@@ -637,7 +639,7 @@ const translations = {
       },
       title: "<span class=\"gradient-text\">Projects</span> that Transform",
       subtitle: "+20 projects delivered. Solutions that scale businesses.",
-      cta: "Start My Project",
+      cta: "Get a project like these",
       controls: {
         prev: "Previous",
         next: "Next"
@@ -718,7 +720,7 @@ const translations = {
     // Clients Section
     clients: {
       title: "<span class=\"gradient-text\">Clients</span> Who Trust Us",
-      subtitle: "Leading companies transforming with our technology"
+      subtitle: "Energy, legal and services companies that rely on our custom development"
     },
 
     // Team Section
@@ -769,7 +771,8 @@ const translations = {
 
       channels: {
         label: "Prefer to talk to us directly?",
-        whatsapp: "Direct WhatsApp"
+        whatsapp: "Direct WhatsApp",
+        email: "Email"
       },
 
       form: {
@@ -826,7 +829,7 @@ const translations = {
       contactInfo: {
         title: "Contact",
         location: "Santiago, Chile",
-        email: "joaquin@justdev.it"
+        email: "Email"
       },
 
       // Enlaces internos a páginas de servicio/vertical (fase 1 SEO)
@@ -983,7 +986,8 @@ const translations = {
       eyebrow: "From the blog",
       title: "Technical guides and <span class=\"gradient-text\">articles</span>",
       subtitle: "How we automate, organize data and apply AI at Chilean companies. Real cases and guides.",
-      cta: "View all posts"
+      cta: "View all posts",
+      ctaContact: "Got a case like this? Let's talk"
     },
 
     // Preloader
