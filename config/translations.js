@@ -8,8 +8,8 @@ const translations = {
     // Meta tags y SEO - ESPAÑOL (Chile/LATAM)
     meta: {
       title: "Desarrollo de Software a Medida en Chile | Just Dev It",
-      description: "Desarrollo de software a medida en Chile: automatización RPA, data engineering e IA aplicada con resultados medibles. Cotiza tu proyecto en 24 horas.",
-      keywords: "desarrollo software chile, desarrolladora web santiago chile, programación empresarial chile, software a medida chile, automatización empresas chile, rpa chile, data engineering chile, inteligencia artificial chile, proptech chile, fintech chile, legaltech chile, desarrollo web profesional, agencia software santiago, nearshore development chile, empresas tecnología chile, soluciones digitales chile, etl bigquery chile, integraciones erp crm chile, pipelines datos chile, databricks chile, software financiero chile, desarrollo cloud chile, aws azure gcp chile, web scraping chile, agentes ia chile, power bi chile, webpay transbank chile, shopify chile, transformación digital chile, consultora tecnológica chile, software empresarial chile, desarrolladores python santiago, desarrolladores ruby chile, desarrolladores node chile, business intelligence chile, machine learning chile",
+      description: "Desarrollo de software a medida en Chile: automatización RPA, data engineering e IA aplicada con resultados medibles. Cotiza tu proyecto con alcance, precio y plazo cerrados.",
+      keywords: "desarrollo software chile, desarrolladora web santiago chile, programación empresarial chile, software a medida chile, automatización empresas chile, rpa chile, data engineering chile, inteligencia artificial chile, proptech chile, fintech chile, legaltech chile, desarrollo web profesional, agencia software santiago, nearshore development chile, empresas tecnología chile, soluciones digitales chile, etl y datos chile, integraciones erp crm chile, pipelines datos chile, procesamiento de datos a escala chile, software financiero chile, desarrollo cloud chile, aws azure gcp chile, web scraping chile, agentes ia chile, dashboards bi chile, medios de pago chile, ecommerce chile, transformación digital chile, consultora tecnológica chile, software empresarial chile, desarrolladores python santiago, desarrolladores javascript chile, business intelligence chile, machine learning chile",
       lang: "es-CL",
       language: "Spanish"
     },
@@ -29,7 +29,7 @@ const translations = {
       subtitle: "Desarrollo de Software",
       title: "Desarrollo de Software a Medida para",
       titleAccent: "Fintech, Energía y PropTech",
-      description: "Data Engineering, Web Scraping, Agentes IA y Automatización RPA. <strong>Ruby, Python, SQL</strong> para empresas en Santiago, Chile.",
+      description: "Data Engineering, Web Scraping, Agentes IA y Automatización RPA. <strong>Python, SQL, JavaScript</strong> para empresas en Santiago, Chile.",
       subtext: "• <strong>Energía, LegalTech, PropTech y Fintech</strong><br />• Entregas <strong>en semanas</strong>, no meses<br />• <strong>+20 proyectos</strong> ejecutados<br />",
       tagline: "El software que tu negocio necesita, <strong>justo a tiempo.</strong>",
       ctaPrimary: "Cotizar Proyecto",
@@ -50,12 +50,12 @@ const translations = {
       title: "Energía, LegalTech & PropTech",
       titleSuffix: "Soluciones",
       titleAccent: "que Funcionan",
-      subtitle: "Automatización RPA con Power Automate. Data Engineering con PySpark y Azure Synapse. Dashboards Metabase y Power BI. Web Scraping a escala. IA aplicada con GPT-4 y LangChain. Cloud AWS.",
+      subtitle: "Automatización RPA. Data Engineering y procesamiento de datos a escala. Dashboards de BI. Web Scraping a escala. IA aplicada con modelos de IA generativa (LLMs). Cloud AWS.",
       stats: {
         stat1Number: "20+",
         stat1Label: "Proyectos<br />Exitosos",
-        stat2Number: "99.9%",
-        stat2Label: "Uptime<br />Garantizado",
+        stat2Number: "30 días",
+        stat2Label: "Garantía<br />Post-Entrega",
         stat3Number: "350+",
         stat3Label: "Clientes<br />Activos"
       }
@@ -81,7 +81,7 @@ const translations = {
       service2: {
         category: "Cloud & Data",
         title: "Data Engineering",
-        description: "Pipelines ETL enterprise con PySpark y Azure Synapse. Procesamos millones de registros diarios."
+        description: "Pipelines que unifican tus fuentes dispersas en una sola base. Procesamos millones de registros y los dejamos consultables con IA."
       },
 
       service3: {
@@ -99,7 +99,7 @@ const translations = {
       service5: {
         category: "ERP & CRM",
         title: "Integraciones Enterprise",
-        description: "Conectamos ERPs (Laudus, SAP), CRMs (Zoho, Salesforce) con sincronización automática 24/7."
+        description: "Conectamos tu ERP, tu CRM y tus sistemas con sincronización automática, sin doble digitación."
       },
 
       service6: {
@@ -115,7 +115,7 @@ const translations = {
       title: "PropTech, LegalTech & Fintech",
       titleSuffix: "Soluciones",
       titleAccent: "Empresariales",
-      subtitle: "Web Scraping con Selenium y Playwright, ETL con PySpark y Azure Synapse, APIs escalables con Ruby on Rails. Cloud en AWS y Azure para empresas en Santiago, Chile.",
+      subtitle: "Web Scraping a escala, ETL y procesamiento de datos a escala, APIs escalables y desarrollo web a medida. Cloud en AWS y Azure para empresas en Santiago, Chile.",
       stats: {
         stat1Number: "Fintech",
         stat1Label: "Portafolios<br />Automatizados",
@@ -214,10 +214,10 @@ const translations = {
       title: "Tu Partner Tecnológico",
       titleSuffix: "en",
       titleAccent: "Chile",
-      subtitle: "Cotización en 24 hrs con alcance, precio y plazo cerrados. Entregas incrementales cada 2 semanas. Garantía de 30 días post-entrega. Ruby on Rails, Python, Power BI y Metabase.",
+      subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Entregas incrementales cada 2 semanas. Garantía de 30 días post-entrega. Python, desarrollo web a medida y dashboards de BI.",
       stats: {
-        stat1Number: "24 hrs",
-        stat1Label: "Cotización<br />Personalizada",
+        stat1Number: "Cerrado",
+        stat1Label: "Alcance, Precio<br />y Plazo",
         stat2Number: "30 días",
         stat2Label: "Garantía<br />Post-Entrega",
         stat3Number: "20+",
@@ -252,13 +252,13 @@ const translations = {
     // Contact Section
     contact: {
       stats: {
-        s1Number: "24 hrs",
-        s1Label: "Tiempo de respuesta",
+        s1Number: "30 días",
+        s1Label: "Garantía post-entrega",
         s2Number: "2-4 sem",
         s2Label: "Primera entrega"
       },
       title: "<span class=\"gradient-text\">Cotiza</span> Tu Proyecto",
-      subtitle: "Propuesta en 24hrs. Entregas desde 2-4 semanas.",
+      subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Entregas desde 2-4 semanas.",
       location: "Santiago, Chile | Respuesta inmediata",
 
       formCard: {
@@ -311,10 +311,10 @@ const translations = {
       tagline: "El software que tu negocio necesita, justo a tiempo. Desarrollo a medida desde Santiago de Chile.",
       services: {
         title: "Servicios",
-        item1: "Desarrollo Ruby on Rails",
-        item2: "Web Scraping Selenium",
+        item1: "Desarrollo Web a Medida",
+        item2: "Web Scraping a Escala",
         item3: "Data Engineering Python",
-        item4: "Dashboards Metabase",
+        item4: "Dashboards de BI",
         item5: "Cloud AWS Azure GCP"
       },
 
@@ -345,6 +345,7 @@ const translations = {
         energia: "Energía Renovable",
         casoDI: "Caso: Data Inmobiliaria",
         ia: "Inteligencia Artificial",
+        agentesIa: "Agentes de IA",
         mineria: "Minería"
       },
 
@@ -372,10 +373,24 @@ const translations = {
       titleAccent: "eficiencia",
       stat1Number: "20+",
       stat1Label: "Proyectos exitosos",
-      stat2Number: "99.9%",
-      stat2Label: "Uptime garantizado",
-      stat3Number: "24 hrs",
-      stat3Label: "Cotización personalizada"
+      stat2Number: "9,5M",
+      stat2Label: "Propiedades indexadas",
+      stat3Number: "30 días",
+      stat3Label: "Garantía post-entrega"
+    },
+
+    // Sección destacada de Agentes & IA en el home
+    aiSection: {
+      eyebrow: "Inteligencia Artificial",
+      title: 'Conversa con tu empresa y tus <span class="gradient-text">datos</span>',
+      subtitle: "Agentes y asistentes de IA a medida para preguntarle a tu información en lenguaje natural, de forma trazable y segura — sin que tus datos salgan de tu entorno.",
+      card1Title: "Pregúntale a tus datos",
+      card1Body: "Tu equipo consulta en lenguaje natural y obtiene respuestas, tablas y gráficos. La IA conversa; los números salen de datos validados, no inventados.",
+      card2Title: "Trazable y de solo lectura",
+      card2Body: "Cada respuesta cita su fuente y el asistente nunca modifica tus sistemas. La decisión siempre es humana.",
+      card3Title: "Sobre lo que ya tienes",
+      card3Body: "Montamos una capa de IA sobre tu infraestructura actual con servidores MCP a medida. Empiezas acotado y creces por capas.",
+      cta: "Ver Agentes de IA"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
@@ -392,7 +407,7 @@ const translations = {
       energia: {
         kicker: "Industria",
         title: "Energía Renovable",
-        desc: "Reportería operativa automática para generadoras. Caso real: Pacific Hydro Chile."
+        desc: "Reportería operativa automática para generadoras de energía renovable. Casos reales en el sector."
       },
       casoDI: {
         kicker: "Caso de éxito",
@@ -411,8 +426,8 @@ const translations = {
     // Meta tags y SEO - ENGLISH (USA/International)
     meta: {
       title: "Custom Software Development in Chile | Just Dev It",
-      description: "Custom software development in Chile: RPA automation, data engineering and applied AI with measurable results. Get a project quote within 24 hours.",
-      keywords: "software development chile, web development santiago chile, enterprise programming chile, custom software chile, business automation chile, rpa chile, data engineering chile, artificial intelligence chile, proptech chile, fintech chile, legaltech chile, professional web development, software agency santiago, nearshore development chile, technology companies chile, digital solutions chile, etl bigquery chile, erp crm integrations chile, data pipelines chile, databricks chile, financial software chile, cloud development chile, aws azure gcp chile, web scraping chile, ai agents chile, power bi chile, payment gateways chile, shopify chile, digital transformation chile, technology consulting chile, enterprise software chile, python developers santiago, ruby developers chile, node developers chile, business intelligence chile, machine learning chile",
+      description: "Custom software development in Chile: RPA automation, data engineering and applied AI with measurable results. Get a project quote with fixed scope, price and timeline.",
+      keywords: "software development chile, web development santiago chile, enterprise programming chile, custom software chile, business automation chile, rpa chile, data engineering chile, artificial intelligence chile, proptech chile, fintech chile, legaltech chile, professional web development, software agency santiago, nearshore development chile, technology companies chile, digital solutions chile, etl and data chile, erp crm integrations chile, data pipelines chile, large-scale data processing chile, financial software chile, cloud development chile, aws azure gcp chile, web scraping chile, ai agents chile, bi dashboards chile, payment gateways chile, ecommerce chile, digital transformation chile, technology consulting chile, enterprise software chile, python developers santiago, javascript developers chile, business intelligence chile, machine learning chile",
       lang: "en-US",
       language: "English"
     },
@@ -432,7 +447,7 @@ const translations = {
       subtitle: "Software Development",
       title: "Custom Software Development for",
       titleAccent: "Fintech, Energy and PropTech",
-      description: "Data Engineering, Web Scraping, AI Agents and RPA Automation. <strong>Ruby, Python, SQL</strong> for companies in Santiago, Chile.",
+      description: "Data Engineering, Web Scraping, AI Agents and RPA Automation. <strong>Python, SQL, JavaScript</strong> for companies in Santiago, Chile.",
       subtext: "• <strong>Energy, LegalTech, PropTech and Fintech</strong><br />• Deliveries <strong>in weeks</strong>, not months<br />• <strong>+20 projects</strong> delivered<br />",
       tagline: "The software your business needs, <strong>just in time.</strong>",
       ctaPrimary: "Get a Quote",
@@ -453,12 +468,12 @@ const translations = {
       title: "Energy, LegalTech & PropTech",
       titleSuffix: "Solutions",
       titleAccent: "that Work",
-      subtitle: "RPA automation with Power Automate. Data engineering with PySpark and Azure Synapse. Metabase and Power BI dashboards. Web scraping at scale. Applied AI with GPT-4 and LangChain. AWS cloud.",
+      subtitle: "RPA automation. Data engineering and large-scale data processing. BI dashboards. Web scraping at scale. Applied AI with generative AI models (LLMs). AWS cloud.",
       stats: {
         stat1Number: "20+",
         stat1Label: "Successful<br />Projects",
-        stat2Number: "99.9%",
-        stat2Label: "Guaranteed<br />Uptime",
+        stat2Number: "30 days",
+        stat2Label: "Post-Delivery<br />Warranty",
         stat3Number: "350+",
         stat3Label: "Active<br />Clients"
       }
@@ -484,7 +499,7 @@ const translations = {
       service2: {
         category: "Cloud & Data",
         title: "Data Engineering",
-        description: "Enterprise ETL pipelines with PySpark and Azure Synapse. We process millions of records daily."
+        description: "Pipelines that unify your scattered sources into a single base. We process millions of records and make them queryable with AI."
       },
 
       service3: {
@@ -502,7 +517,7 @@ const translations = {
       service5: {
         category: "ERP & CRM",
         title: "Enterprise Integrations",
-        description: "We connect ERPs (Laudus, SAP) and CRMs (Zoho, Salesforce) with automatic 24/7 synchronization."
+        description: "We connect your ERP, CRM and systems with automatic synchronization, no double data entry."
       },
 
       service6: {
@@ -518,7 +533,7 @@ const translations = {
       title: "PropTech, LegalTech & Fintech",
       titleSuffix: "Enterprise",
       titleAccent: "Solutions",
-      subtitle: "Web scraping with Selenium and Playwright, ETL with PySpark and Azure Synapse, scalable APIs with Ruby on Rails. Cloud on AWS and Azure for companies in Santiago, Chile.",
+      subtitle: "Web scraping at scale, ETL and large-scale data processing, scalable APIs and custom web development. Cloud on AWS and Azure for companies in Santiago, Chile.",
       stats: {
         stat1Number: "Fintech",
         stat1Label: "Automated<br />Portfolios",
@@ -617,10 +632,10 @@ const translations = {
       title: "Your Technology Partner",
       titleSuffix: "in",
       titleAccent: "Chile",
-      subtitle: "Quote in 24 hrs with fixed scope, price and timeline. Incremental deliveries every 2 weeks. 30-day post-delivery warranty. Ruby on Rails, Python, Power BI and Metabase.",
+      subtitle: "Tailored proposal with fixed scope, price and timeline. Incremental deliveries every 2 weeks. 30-day post-delivery warranty. Python, custom web development and BI dashboards.",
       stats: {
-        stat1Number: "24 hrs",
-        stat1Label: "Personalized<br />Quote",
+        stat1Number: "Fixed",
+        stat1Label: "Scope, Price<br />and Timeline",
         stat2Number: "30 days",
         stat2Label: "Post-Delivery<br />Warranty",
         stat3Number: "20+",
@@ -655,13 +670,13 @@ const translations = {
     // Contact Section
     contact: {
       stats: {
-        s1Number: "24 hrs",
-        s1Label: "Response time",
+        s1Number: "30 days",
+        s1Label: "Post-delivery warranty",
         s2Number: "2-4 wks",
         s2Label: "First delivery"
       },
       title: "<span class=\"gradient-text\">Quote</span> Your Project",
-      subtitle: "Proposal in 24hrs. Deliveries from 2-4 weeks.",
+      subtitle: "Tailored proposal with fixed scope, price and timeline. Deliveries from 2-4 weeks.",
       location: "Santiago, Chile | Immediate response",
 
       formCard: {
@@ -714,10 +729,10 @@ const translations = {
       tagline: "The software your business needs, just in time. Custom software development from Santiago, Chile.",
       services: {
         title: "Services",
-        item1: "Ruby on Rails Development",
-        item2: "Selenium Web Scraping",
+        item1: "Custom Web Development",
+        item2: "Web Scraping at Scale",
         item3: "Python Data Engineering",
-        item4: "Metabase Dashboards",
+        item4: "BI Dashboards",
         item5: "Cloud AWS Azure GCP"
       },
 
@@ -748,6 +763,7 @@ const translations = {
         energia: "Renewable Energy",
         casoDI: "Case Study: Data Inmobiliaria",
         ia: "Artificial Intelligence",
+        agentesIa: "AI Agents",
         mineria: "Mining"
       },
 
@@ -775,10 +791,24 @@ const translations = {
       titleAccent: "efficiency",
       stat1Number: "20+",
       stat1Label: "Successful projects",
-      stat2Number: "99.9%",
-      stat2Label: "Guaranteed uptime",
-      stat3Number: "24 hrs",
-      stat3Label: "Custom quote"
+      stat2Number: "9.5M",
+      stat2Label: "Indexed properties",
+      stat3Number: "30 days",
+      stat3Label: "Post-delivery warranty"
+    },
+
+    // Sección destacada de Agentes & IA en el home
+    aiSection: {
+      eyebrow: "Artificial Intelligence",
+      title: 'Talk to your company and your <span class="gradient-text">data</span>',
+      subtitle: "Custom AI agents and assistants to ask your information in natural language, traceably and securely — without your data ever leaving your environment.",
+      card1Title: "Ask your data",
+      card1Body: "Your team asks in natural language and gets answers, tables and charts. The AI converses; the numbers come from validated data, not made up.",
+      card2Title: "Traceable and read-only",
+      card2Body: "Every answer cites its source and the assistant never modifies your systems. The decision is always human.",
+      card3Title: "On top of what you have",
+      card3Body: "We add an AI layer over your existing infrastructure with custom MCP servers. Start small and grow in layers.",
+      cta: "See AI Agents"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
@@ -795,7 +825,7 @@ const translations = {
       energia: {
         kicker: "Industry",
         title: "Renewable Energy",
-        desc: "Automated operational reporting for power generators. Real case: Pacific Hydro Chile."
+        desc: "Automated operational reporting for renewable energy generators. Real cases in the sector."
       },
       casoDI: {
         kicker: "Case study",
