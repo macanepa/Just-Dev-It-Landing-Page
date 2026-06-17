@@ -379,6 +379,26 @@
         .reveal{opacity:0;transform:translateY(22px)}
         .reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease,cubic-bezier(.22,1,.36,1)),transform .7s var(--ease,cubic-bezier(.22,1,.36,1))}
       }
+
+      /* ===== Movil (<=600px): titulares proporcionados, sin "letras gigantes" ===== */
+      @media (max-width:600px){
+        /* indice */
+        .blog-masthead{padding:3rem 1.25rem 1.4rem}
+        .blog-masthead h1{font-size:clamp(2.4rem,12vw,3.4rem);line-height:.96}
+        .blog-masthead .dek{font-size:1rem;margin-top:1rem}
+        .feat{padding:1.4rem}
+        .feat h2{font-size:clamp(1.45rem,6vw,1.9rem);line-height:1.16;margin:.7rem 0 .7rem}
+        .feat p{font-size:.95rem}
+        .feat .go{margin-top:1.1rem}
+        /* post: hero contenido y legible */
+        .article-hero{padding:2.4rem 1.25rem 0}
+        .article-hero h1{font-size:clamp(1.55rem,6.4vw,2.1rem);line-height:1.18;max-width:none}
+        .article-hero .dek{font-size:1rem;margin-top:1rem}
+        .article-meta{margin-top:1.1rem;font-size:.78rem}
+        .cover{margin-top:1.6rem;padding:0 1.25rem}
+        .post-body{font-size:1.06rem}
+        .post-body .lead-sec > p:first-child{font-size:1.16rem}
+      }
     </style>
 
   </head>
