@@ -108,8 +108,11 @@
     
     function initConversionTracking() {
         // 1. Tracking de formulario de contacto
-        // Se dispara solo cuando Formspree confirma el envío (evento emitido
-        // por app-standalone.js tras response.ok), no en cada intento de submit.
+        // Se dispara SOLO cuando Formspree confirma el envío (response.ok), no en
+        // cada intento de submit. El evento `jdi:lead_submitted` lo emite el handler
+        // inline del formulario en index.html (script al final del <body>).
+        // OJO: app-standalone.js NO se carga en ninguna página (código muerto);
+        // si tocas el form, edita ese script inline, no app-standalone.js.
         document.addEventListener('jdi:lead_submitted', function() {
             // NO enviar PII (name, email) a GA4 — viola ToS de Google
             trackConversion(CONVERSION_EVENTS.FORM_SUBMIT, {
