@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Tag Manager (mismo contenedor GTM-N67BW2PN, carga diferida) -->
+    <!-- GTM se carga en la primera interacción (scroll/touch/click/tecla) o a
+         los 8 segundos. Los eventos previos quedan encolados en dataLayer. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      (function (w, d, i) {
+        var loaded = false;
+        var events = ["pointerdown", "keydown", "scroll", "touchstart"];
+        function loadGTM() {
+          if (loaded) return;
+          loaded = true;
+          events.forEach(function (e) { w.removeEventListener(e, loadGTM); });
+          w.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var j = d.createElement("script");
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i;
+          d.head.appendChild(j);
+        }
+        events.forEach(function (e) {
+          w.addEventListener(e, loadGTM, { once: true, passive: true });
+        });
+        setTimeout(loadGTM, 8000);
+      })(window, document, "GTM-N67BW2PN");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <title>Qué es un servidor MCP y cómo conectarlo | Just Dev It</title>
+    <meta name="description" content="Qué es un servidor MCP (Model Context Protocol) y cómo conectar tus datos a un LLM de forma segura y trazable, según la Ley 21.719. Cotiza tu proyecto." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/" />
+    <meta name="geo.region" content="CL-RM" />
+    <meta name="geo.placename" content="Santiago, Chile" />
+    <meta name="geo.position" content="-33.4489;-70.6693" />
+    <meta name="ICBM" content="-33.4489, -70.6693" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/" />
+    <meta property="og:title" content="Qué es un servidor MCP y cómo conectarlo | Just Dev It" />
+    <meta property="og:description" content="Qué es un servidor MCP (Model Context Protocol) y cómo conectar tus datos a un LLM de forma segura y trazable, según la Ley 21.719. Cotiza tu proyecto." />
+    <meta property="og:image" content="https://justdev.it/assets/images/Desktop/og-image.webp" />
+    <meta property="og:site_name" content="Just Dev It" />
+    <meta property="og:locale" content="es_CL" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Desktop/Isotipo_morado.svg" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://justdev.it/#organization",
+      "name": "Just Dev It",
+      "url": "https://justdev.it/",
+      "logo": "https://justdev.it/assets/images/Desktop/logo-principal-blanco.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "CL"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://justdev.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://justdev.it/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura",
+          "item": "https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura",
+      "description": "Qué es un servidor MCP (Model Context Protocol) y cómo conectar tus datos a un LLM de forma segura y trazable, según la Ley 21.719. Cotiza tu proyecto.",
+      "datePublished": "2026-06-17",
+      "dateModified": "2026-06-17",
+      "inLanguage": "es-CL",
+      "url": "https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/",
+      "mainEntityOfPage": "https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/",
+      "author": {
+        "@id": "https://justdev.it/#organization"
+      },
+      "publisher": {
+        "@id": "https://justdev.it/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es un servidor MCP (Model Context Protocol)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es un componente que conecta un modelo de lenguaje (como Claude o ChatGPT) con los datos y sistemas de tu empresa usando el estándar abierto Model Context Protocol. En vez de entregarle toda la base al modelo, el servidor expone un conjunto acotado de herramientas y recursos que el modelo puede consultar. El usuario pregunta en lenguaje natural y el servidor ejecuta la consulta contra la fuente real, sin copiar los datos a otro lugar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es seguro conectar un LLM a los datos de mi empresa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, si se hace con la arquitectura correcta. Un servidor MCP bien diseñado usa acceso de solo lectura y acotado: el servidor define qué puede y qué no puede consultar el modelo, los datos permanecen en tu entorno y cada consulta queda registrada para auditoría. El riesgo no está en la IA en sí, sino en darle acceso sin control; el servidor existe justamente para imponer ese control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El modelo de IA aprende de mis datos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Los proveedores serios de LLM empresariales no entrenan sus modelos con los datos del cliente. Tu información se usa para responder esa consulta en ese momento y luego no queda incorporada al modelo. Además, con un servidor MCP los datos ni siquiera salen de tu entorno: el modelo consulta sobre la marcha, no recibe una copia para entrenarse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué exige la Ley 21.719 al usar IA con datos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Como orientación general (no asesoría legal): la Ley 21.719 de Protección de Datos Personales de Chile aplica principios de finalidad, proporcionalidad y minimización, licitud y responsabilidad. Al conectar IA a datos personales conviene exponer solo los datos necesarios, tener clara la base legal del tratamiento y registrar los accesos. Para un caso concreto, valídalo con tu equipo jurídico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre MCP, RAG y fine-tuning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con MCP el modelo consulta tus datos y sistemas en vivo a través de herramientas controladas. Con RAG se recuperan los documentos más relevantes y se inyectan en el contexto antes de que el modelo responda. Con fine-tuning se reentrena el modelo con tus datos, lo que es caro y deja la información estática. Para datos que cambian y donde necesitas trazabilidad, MCP y RAG suelen ser mejores que el fine-tuning, y a menudo se combinan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Funciona con Claude y ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Al ser un estándar abierto, un mismo servidor MCP puede usarse desde distintos asistentes de IA. Nuestro producto propio Data Inmobiliaria ya expone un servidor MCP que permite consultar 9,5 millones de propiedades de Chile en lenguaje natural desde Claude o ChatGPT, sin escribir SQL."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo se controla qué datos puede ver el modelo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El control vive en el servidor MCP, no en el modelo. Tú defines qué tablas, campos y operaciones quedan expuestos como herramientas; todo lo demás sencillamente no existe para la IA. El acceso es de solo lectura, así que el modelo puede consultar pero no modificar ni borrar, y cada consulta queda registrada para que sepas quién preguntó qué y contra qué fuente."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <style>:root{--jdi-purple:#9B61A4;--jdi-purple-light:#B37BBF;--jdi-purple-soft:#D4A5E0;--jdi-green:#04C7AA;--jdi-green-light:#26E0C0;--surface-page:#0A0E1A;--surface-raised:#152636;--surface-card:rgba(30,41,59,0.60);--jdi-neutral-950:#0F172A;--jdi-neutral-700:#334155;--jdi-neutral-500:#64748B;--jdi-neutral-400:#94A3B8;--jdi-neutral-300:#CBD5E1;--jdi-neutral-100:#F1F5F9;--border-default:rgba(155,97,164,0.10);--border-strong:rgba(155,97,164,0.30);--gradient-brand:linear-gradient(135deg,#B37BBF 0%,#9B61A4 50%,#6A3B7E 100%);--gradient-cta:linear-gradient(135deg,#9B61A4 0%,#B37BBF 100%);--gradient-cta-hover:linear-gradient(135deg,#6A3B7E 0%,#7D4A8F 100%);--gradient-hero:linear-gradient(135deg,#0D0D14 0%,#1A1A2E 50%,#0D0D14 100%);--gradient-text:linear-gradient(135deg,#B37BBF 0%,#9B61A4 100%);--shadow-brand:0 10px 40px -10px rgba(155,97,164,0.40);--glass:blur(12px) saturate(180%);--blur-md:blur(8px);--ease:cubic-bezier(0.4,0,0.2,1);--t-base:300ms var(--ease);--font-display:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-2xl:1.5rem;--radius-full:9999px}@font-face{font-family:'Poppins';font-style:normal;font-display:optional;font-weight:400;src:url(data:font/woff2;base64,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) format('woff2')}@font-face{font-family:'Poppins';font-style:normal;font-display:optional;font-weight:600;src:url(data:font/woff2;base64,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) format('woff2')}@font-face{font-family:'Poppins';font-style:normal;font-display:optional;font-weight:800;src:url(data:font/woff2;base64,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) format('woff2')}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}body{font-family:var(--font-display);background:var(--surface-page);color:var(--jdi-neutral-400);line-height:1.7}h1,h2,h3{color:var(--jdi-neutral-100);line-height:1.2;text-wrap:balance}img{max-width:100%;display:block}a{color:var(--jdi-green);text-decoration:none;transition:color 150ms var(--ease)}a:hover{color:var(--jdi-purple-light)}strong{color:var(--jdi-neutral-100);font-weight:600}::selection{background:var(--jdi-purple);color:#fff}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--jdi-purple-light);outline-offset:3px;border-radius:4px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;min-height:48px;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-full);font-family:var(--font-display);font-size:0.95rem;font-weight:600;line-height:1;cursor:pointer;white-space:nowrap;text-decoration:none;transition:background-color var(--t-base),box-shadow var(--t-base),transform var(--t-base),color var(--t-base),border-color var(--t-base)}.btn:active{transform:scale(0.98)}.btn-primary{background:var(--gradient-cta);color:#fff;box-shadow:0 4px 20px rgba(155,97,164,0.30)}.btn-primary:hover{background:var(--gradient-cta-hover);box-shadow:0 8px 30px rgba(155,97,164,0.55);transform:translateY(-2px);color:#fff}.btn-secondary{background:rgba(4,199,170,0.08);color:var(--jdi-green);border:2px solid rgba(4,199,170,0.40);padding:calc(0.75rem - 2px) calc(1.5rem - 2px)}.btn-secondary:hover{background:rgba(4,199,170,0.16);border-color:var(--jdi-green);color:var(--jdi-green-light);transform:translateY(-2px)}.subnav{position:sticky;top:0;z-index:100;display:flex;flex-wrap:wrap;row-gap:0.5rem;align-items:center;justify-content:space-between;padding:0.8rem 1.5rem;background:rgba(10,14,26,0.88);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-bottom:1px solid var(--border-default)}.subnav-logo{display:inline-flex;padding:0.25rem 0}.subnav-logo img{height:32px;width:auto}.subnav-links{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem}.subnav-links>a:not(.btn){color:var(--jdi-neutral-300);font-size:0.92rem;font-weight:500;padding:0.6rem 0.75rem;border-radius:0.5rem}.subnav-links>a:not(.btn):hover{color:var(--jdi-green)}.subnav-links .btn{min-height:40px;padding:0.5rem 1.25rem;font-size:0.85rem;margin-left:0.4rem}.page-hero{position:relative;padding:5rem 1.5rem 3.5rem;text-align:center;background:var(--gradient-hero);overflow:hidden}.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 30%,rgba(155,97,164,0.16),transparent 55%);pointer-events:none}.page-hero>*{position:relative}.page-eyebrow{display:inline-block;font-size:0.75rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--jdi-purple-light);margin-bottom:1rem}.page-hero h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:800;letter-spacing:-0.02em;max-width:56rem;margin:0 auto 1.25rem}.page-hero p.lead{max-width:44rem;margin:0 auto 2rem;font-size:1.1rem;color:var(--jdi-neutral-300)}.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}.page-section{max-width:48rem;margin:0 auto;padding:3.25rem 1.5rem}.page-section h2{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700;margin-bottom:1.25rem}.page-section p{margin-bottom:1rem;line-height:1.75}.page-section a{text-decoration:underline;text-underline-offset:3px}.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.5rem}.feature-card{position:relative;overflow:hidden;background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-2xl);padding:1.6rem;backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md);transition:transform var(--t-base),border-color var(--t-base),box-shadow var(--t-base)}.feature-card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:var(--shadow-brand)}.feature-icon{width:48px;height:48px;border-radius:var(--radius-lg);background:var(--gradient-cta);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;transition:transform var(--t-base)}.feature-card:hover .feature-icon{transform:scale(1.08) rotate(4deg)}.feature-icon img{width:28px;height:28px;filter:brightness(0) invert(1)}.feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:0.5rem}.feature-card p{font-size:0.92rem;margin:0}.case-box{background:var(--surface-card);border:1px solid var(--border-default);border-left:3px solid var(--jdi-purple);border-radius:var(--radius-lg);padding:1.75rem;margin:1.5rem 0;backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md)}.case-box h3{color:var(--jdi-purple-soft);font-size:1.1rem;font-weight:700;margin-bottom:0.6rem}.stats-band{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;text-align:center;padding:2rem 0}.stat-n{display:block;font-size:2rem;font-weight:800;letter-spacing:-0.01em;background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}.stat-l{font-size:0.85rem;color:var(--jdi-neutral-400)}.press-list{list-style:none;margin:1rem 0 0}.press-list li{background:var(--surface-card);border:1px solid var(--border-default);border-left:3px solid var(--jdi-purple);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:0.75rem}.press-list .press-source{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--jdi-purple-soft);margin-bottom:0.25rem}details.faq{background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-lg);margin-bottom:0.75rem;padding:0;backdrop-filter:var(--blur-md);-webkit-backdrop-filter:var(--blur-md)}details.faq[open]{border-color:var(--border-strong)}details.faq summary{cursor:pointer;font-weight:600;color:var(--jdi-neutral-100);padding:1rem 1.25rem}details.faq p{margin:0;padding:0 1.25rem 1.1rem}.final-cta{text-align:center;padding:3.5rem 1.5rem 4.5rem;background:linear-gradient(180deg,var(--surface-page) 0%,var(--surface-raised) 100%)}.final-cta h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:1rem}.final-cta p{margin-bottom:1.75rem}.page-footer{border-top:1px solid var(--border-default);padding:2rem 1.5rem;text-align:center;font-size:0.9rem;background:#000}.page-footer a{color:var(--jdi-neutral-300);margin:0 0.6rem;display:inline-block;padding:0.4rem 0.2rem}.page-footer a:hover{color:var(--jdi-green)}.page-footer p{margin-top:0.9rem;color:var(--jdi-neutral-400)}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}</style>
+
+    <!-- ===== Ajustes responsive móvil/tablet v3.1 ===== -->
+    <style>
+      /* el degradado del hero cortaba en seco contra el fondo de la página */
+      .page-hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(10,14,26,0) 0%,var(--surface-page) 100%);pointer-events:none}
+      /* líneas de lectura contenidas en tablet (60-75 caracteres) */
+      .page-section p{max-width:none}
+      .final-cta p{max-width:40rem;margin-left:auto;margin-right:auto}
+      /* FAQ: chevron propio en vez del marcador nativo del navegador,
+         con sangría correcta cuando la pregunta ocupa 2+ líneas */
+      details.faq summary{position:relative;list-style:none;padding-right:3rem}
+      details.faq summary::-webkit-details-marker{display:none}
+      details.faq summary::after{content:'+';position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);width:1.4rem;text-align:center;font-size:1.3rem;font-weight:600;color:var(--jdi-purple-light)}
+      details.faq[open] summary::after{content:'−'}
+      .feature-card p{line-height:1.6}
+      /* métricas: grilla uniforme (el flex colapsaba en layouts asimétricos) */
+      .stats-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;align-items:start}
+      @media (max-width:900px){
+        .stats-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1rem}
+        .stats-band>div:last-child:nth-child(odd){grid-column:1/-1}
+      }
+      /* móvil: header de una sola fila, secciones más compactas, CTAs apilados */
+      @media (max-width:640px){
+        .subnav{flex-wrap:nowrap;gap:12px;padding:0.55rem 1rem;background:rgba(10,14,26,0.97)}
+        .subnav-links>a:not(.btn){display:none}
+        /* el wordmark es muy apaisado (viewBox 7.2:1): limitar por ancho */
+        .subnav-logo img{width:138px;height:auto}
+        .subnav-links .btn{min-height:38px;padding:0.45rem 1.05rem;font-size:0.8rem;margin-left:0}
+        .page-hero{padding:3.25rem 1.25rem 2.75rem}
+        .page-section{padding:2.25rem 1.25rem}
+        .final-cta{padding:2.75rem 1.25rem 3.5rem}
+        .hero-ctas{flex-direction:column;align-items:center}
+        .hero-ctas .btn{width:100%;max-width:320px}
+        .stat-n{font-size:1.6rem}
+        .stat-l{font-size:0.8rem}
+      }
+    </style>
+  
+    <!-- ===== Estilos del blog ===== -->
+    <style>
+      .breadcrumb{max-width:48rem;margin:0 auto;padding:1.4rem 1.5rem 0;font-size:.82rem;color:#9aa6b8}
+      .breadcrumb a{color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
+      .breadcrumb a:hover{text-decoration:underline}
+      .post-meta{max-width:48rem;margin:.35rem auto 0;padding:0 1.5rem;font-size:.82rem;color:#8b94a6;letter-spacing:.02em}
+      .post-body :is(h2,h3){scroll-margin-top:90px}
+      .post-body a{color:var(--jdi-purple-light,#b9a7e6)}
+      .blog-card a.blog-readmore{display:inline-block;margin-top:.6rem;font-weight:600;color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
+      .blog-card a.blog-readmore:hover{text-decoration:underline}
+      .blog-card .post-tag{display:inline-block;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:#8b94a6;margin-bottom:.5rem}
+      .related-box ul{margin:.5rem 0 0;padding-left:1.1rem}
+      .related-box li{margin:.3rem 0}
+    </style>
+
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <nav class="subnav" aria-label="Navegación">
+      <a class="subnav-logo" href="/" aria-label="Just Dev It — Inicio">
+        <img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="140" height="32" />
+      </a>
+      <div class="subnav-links">
+        <a href="/#servicios">Servicios</a>
+        <a href="/#portafolio">Portafolio</a>
+        <a href="/#contacto" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Cotizar Proyecto</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="page-eyebrow">Blog · IA y MCP</span>
+      <h1>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</h1>
+      <p class="lead">Qué es un servidor MCP (Model Context Protocol) y cómo conectar tus datos a un LLM de forma segura y trazable, según la Ley 21.719. Cotiza tu proyecto.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Cotizar mi proyecto</a>
+        <a href="/blog/" class="btn btn-secondary">Más artículos</a>
+      </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a> / <a href="/blog/">Blog</a> / <span>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</span>
+    </nav>
+    <p class="post-meta">2026-06-17 · 7 min de lectura · Just Dev It</p>
+
+    <main class="post-body">
+      <section class="page-section">
+        <p>Tu empresa ya tiene los datos: están en el ERP, en el data warehouse, en hojas de cálculo y en cientos de documentos. El problema es que <strong>preguntarles algo</strong> sigue dependiendo de alguien que sepa SQL, que arme el reporte o que busque el archivo correcto. Y cuando aparecen los asistentes de IA, surge la duda obvia: ¿cómo le doy acceso a un LLM como Claude o ChatGPT sin subir mis datos a un tercero, sin que la IA invente cifras y sin pasar a llevar la Ley 21.719?</p><p>La respuesta técnica más limpia hoy es un <strong>servidor MCP</strong>. En esta guía explicamos qué es el Model Context Protocol, cómo se conecta un modelo de lenguaje a los datos de una organización de forma controlada y trazable, en qué se diferencia de RAG y fine-tuning, y qué principios legales conviene tener presentes antes de conectar IA a datos personales en Chile.</p>
+      </section>
+      <section class="page-section">
+        <h2>El problema: datos valiosos a los que nadie puede preguntar en lenguaje natural</h2>
+        <p>La mayoría de las empresas no tiene un problema de falta de datos, sino de <strong>acceso</strong>. La información está repartida entre el ERP/CRM, un data warehouse en la nube, planillas y documentos, y cada consulta nueva pasa por el equipo de datos o de TI. Eso genera un cuello de botella: decisiones que esperan días por un reporte, y conocimiento que solo extrae quien domina las herramientas.</p><p>Conectar un LLM directo a esas fuentes parece la solución, pero abre tres riesgos reales:</p><ul><li><strong>Fuga de datos:</strong> copiar la base a una plataforma externa o pegarla en un chat para que el modelo la lea.</li><li><strong>Respuestas inventadas:</strong> un modelo que no consulta la fuente real "alucina" cifras que parecen verosímiles.</li><li><strong>Falta de control y trazabilidad:</strong> no saber qué datos vio el modelo, quién preguntó qué, ni de dónde salió cada respuesta.</li></ul><p>El Model Context Protocol nace precisamente para resolver esos tres puntos sin tener que mover los datos de lugar.</p>
+      </section>
+      <section class="page-section">
+        <h2>Qué es un servidor MCP (Model Context Protocol)</h2>
+        <p><strong>MCP (Model Context Protocol)</strong> es un estándar abierto que conecta modelos de lenguaje con los datos y sistemas de una organización a través de un componente llamado <strong>servidor MCP</strong>. Ese servidor no entrega la base completa al modelo: <strong>expone un conjunto acotado de herramientas y recursos</strong> que el modelo puede usar, y nada más.</p><p>En la práctica funciona así: el usuario pregunta en lenguaje natural, el modelo decide qué herramienta del servidor invocar (por ejemplo, "consultar transacciones de un período"), el servidor ejecuta esa consulta contra la fuente real y devuelve el resultado. El modelo redacta la respuesta sobre datos verdaderos, no sobre suposiciones. Los datos <strong>nunca se copian a otro lugar</strong>: viven donde siempre estuvieron y el servidor actúa como intermediario gobernado.</p><p>La ventaja frente a una integración hecha a la medida para cada modelo es que MCP es un <strong>estándar</strong>: el mismo servidor sirve para distintos asistentes. Hoy en Data Inmobiliaria, nuestro producto propio de datos del mercado inmobiliario chileno, operamos un servidor MCP que permite consultar <strong>9,5 millones de propiedades de Chile en lenguaje natural</strong> desde Claude o ChatGPT, sin que el usuario escriba una sola línea de SQL.</p>
+      </section>
+      <section class="page-section">
+        <h2>Cómo funciona la arquitectura, paso a paso</h2>
+        <p>Una conexión MCP segura se monta sobre la infraestructura que ya tienes, sin reemplazar nada. El flujo típico es:</p><ul><li><strong>1. Pregunta en lenguaje natural.</strong> El usuario conversa con el asistente (Claude o ChatGPT) como lo haría con un analista.</li><li><strong>2. El modelo elige una herramienta.</strong> El servidor MCP publica un catálogo de operaciones permitidas (consultas, búsquedas, lecturas). El modelo no inventa el acceso: solo puede usar lo que el servidor expone.</li><li><strong>3. El servidor ejecuta la consulta de solo lectura.</strong> La operación corre contra el data warehouse, el ERP/CRM o el repositorio documental, dentro de tu entorno.</li><li><strong>4. Devuelve datos reales.</strong> El modelo responde sobre el resultado de la consulta, no sobre su memoria de entrenamiento.</li><li><strong>5. Se registra todo.</strong> Cada consulta queda con su usuario, su hora y su fuente, para auditoría.</li></ul><p>El punto clave de diseño es que <strong>el control vive en el servidor, no en el modelo</strong>. Tú defines qué tablas, qué campos y qué operaciones quedan disponibles; el resto sencillamente no existe para la IA. Lo construimos sobre tecnologías estándar (Python, SQL y tu nube actual, sea AWS, Azure o Google Cloud), reutilizando tu infraestructura en vez de duplicarla.</p>
+      </section>
+      <section class="page-section">
+        <h2>Por qué es seguro: solo lectura, datos en tu entorno y trazabilidad</h2>
+        <p>"Conectar IA a mis datos" suena riesgoso, pero un servidor MCP bien diseñado invierte la lógica: en lugar de abrirle todo al modelo, le abre <strong>solo lo mínimo y de forma controlada</strong>. Los pilares de seguridad son cuatro:</p><ul><li><strong>Acceso de solo lectura y acotado.</strong> El servidor define qué puede y qué no puede consultar el modelo. No puede modificar, borrar ni ejecutar transacciones: consulta y responde.</li><li><strong>Los datos permanecen en tu entorno.</strong> No se copian ni se suben a una plataforma externa para que la IA "aprenda" de ellos. El servidor consulta donde ya están.</li><li><strong>Trazabilidad y auditoría.</strong> Cada consulta queda registrada: quién preguntó, cuándo y qué fuente se tocó. Eso te permite verificar de dónde salió cada respuesta.</li><li><strong>El modelo no entrena con tus datos.</strong> Los proveedores serios de LLM empresariales no usan los datos del cliente para reentrenar sus modelos. Tu información se usa para responderte en ese momento, no para mejorar el modelo de un tercero.</li></ul><p>El resultado práctico lo vemos en el conector de Data Inmobiliaria: millones de registros consultables en lenguaje natural, sin que el usuario acceda directamente a la base ni pueda alterarla.</p>
+      </section>
+      <section class="page-section">
+        <h2>MCP vs RAG vs fine-tuning: cuál usar y cuándo</h2>
+        <p>Son tres formas distintas de "darle contexto" a un LLM, y se suelen confundir. La diferencia importa porque elegir mal encarece el proyecto o lo hace frágil:</p><ul><li><strong>MCP:</strong> el modelo <strong>consulta tus datos y sistemas en vivo</strong> mediante herramientas controladas. Ideal cuando los datos cambian seguido y necesitas trazabilidad y solo lectura gobernada.</li><li><strong>RAG (Retrieval-Augmented Generation):</strong> se <strong>recuperan los documentos más relevantes</strong> y se inyectan en el contexto del modelo antes de que responda. Encaja muy bien con bases documentales (contratos, manuales, normativa).</li><li><strong>Fine-tuning:</strong> se <strong>reentrena el modelo</strong> con tus datos. Es caro, los datos quedan "congelados" al momento del entrenamiento y desactualizarse implica volver a entrenar.</li></ul><p>Como regla general: para <strong>datos que cambian</strong> y donde necesitas saber de dónde viene cada respuesta, MCP y RAG suelen ganar; muchas veces se combinan (MCP para datos estructurados en vivo, RAG para documentos). El fine-tuning tiene sentido para tono o tareas muy específicas, no para mantener al modelo "al día" con tu información.</p>
+      </section>
+      <section class="page-section">
+        <h2>Consideraciones legales: la Ley 21.719 al conectar IA a datos</h2>
+        <p>Lo siguiente es <strong>orientación general, no asesoría legal</strong>: ante datos personales, valida tu caso con tu equipo jurídico. Dicho eso, la Ley 21.719 de Protección de Datos Personales de Chile fija principios que conviene incorporar al diseño desde el inicio:</p><ul><li><strong>Finalidad:</strong> los datos se usan para el propósito declarado. Define para qué se conecta la IA y no excedas ese fin.</li><li><strong>Proporcionalidad y minimización:</strong> expón al modelo solo los datos necesarios. Un servidor MCP ayuda aquí, porque limita por diseño qué campos quedan visibles.</li><li><strong>Licitud:</strong> ten clara la base legal que habilita el tratamiento de esos datos.</li><li><strong>Responsabilidad:</strong> registra los accesos y mantén trazabilidad de las consultas, justo lo que entrega la auditoría del servidor.</li></ul><p>Lo bueno es que un MCP bien diseñado y los principios de la ley apuntan en la misma dirección: minimizar lo expuesto, controlar accesos y dejar registro. La arquitectura de solo lectura con datos en tu propio entorno es, además, un punto de partida favorable.</p><p>Si quieres conectar tus datos a un LLM con este enfoque, lo construimos a medida sobre tu infraestructura actual. <strong>Cotiza tu proyecto desde UF 75</strong> y conversemos qué fuentes tiene sentido exponer primero. Cada desarrollo incluye 30 días de garantía post-entrega.</p>
+      </section>
+      <section class="page-section">
+        <div class="case-box">
+          <h3>En resumen</h3>
+          <ul>
+            <li>Un servidor MCP (Model Context Protocol) conecta un LLM como Claude o ChatGPT con tus datos exponiendo herramientas acotadas, sin copiar la información a otro lugar.</li>
+            <li>La seguridad se basa en cuatro pilares: acceso de solo lectura y acotado, datos que permanecen en tu entorno, trazabilidad de cada consulta y proveedores que no entrenan con tus datos.</li>
+            <li>Para datos que cambian y donde importa saber de dónde sale cada respuesta, MCP y RAG suelen superar al fine-tuning, que es caro y deja los datos estáticos.</li>
+            <li>La Ley 21.719 (orientación general, no asesoría legal) pide finalidad, minimización, licitud y responsabilidad: exponer solo lo necesario y registrar accesos, algo que un MCP facilita por diseño.</li>
+            <li>Caso real: el conector de Data Inmobiliaria es un servidor MCP que permite consultar 9,5 millones de propiedades de Chile en lenguaje natural desde Claude o ChatGPT.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="page-section">
+        <h2>Preguntas frecuentes</h2>
+        <details class="faq">
+          <summary>¿Qué es un servidor MCP (Model Context Protocol)?</summary>
+          <p>Es un componente que conecta un modelo de lenguaje (como Claude o ChatGPT) con los datos y sistemas de tu empresa usando el estándar abierto Model Context Protocol. En vez de entregarle toda la base al modelo, el servidor expone un conjunto acotado de herramientas y recursos que el modelo puede consultar. El usuario pregunta en lenguaje natural y el servidor ejecuta la consulta contra la fuente real, sin copiar los datos a otro lugar.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Es seguro conectar un LLM a los datos de mi empresa?</summary>
+          <p>Sí, si se hace con la arquitectura correcta. Un servidor MCP bien diseñado usa acceso de solo lectura y acotado: el servidor define qué puede y qué no puede consultar el modelo, los datos permanecen en tu entorno y cada consulta queda registrada para auditoría. El riesgo no está en la IA en sí, sino en darle acceso sin control; el servidor existe justamente para imponer ese control.</p>
+        </details>
+        <details class="faq">
+          <summary>¿El modelo de IA aprende de mis datos?</summary>
+          <p>No. Los proveedores serios de LLM empresariales no entrenan sus modelos con los datos del cliente. Tu información se usa para responder esa consulta en ese momento y luego no queda incorporada al modelo. Además, con un servidor MCP los datos ni siquiera salen de tu entorno: el modelo consulta sobre la marcha, no recibe una copia para entrenarse.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Qué exige la Ley 21.719 al usar IA con datos?</summary>
+          <p>Como orientación general (no asesoría legal): la Ley 21.719 de Protección de Datos Personales de Chile aplica principios de finalidad, proporcionalidad y minimización, licitud y responsabilidad. Al conectar IA a datos personales conviene exponer solo los datos necesarios, tener clara la base legal del tratamiento y registrar los accesos. Para un caso concreto, valídalo con tu equipo jurídico.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Cuál es la diferencia entre MCP, RAG y fine-tuning?</summary>
+          <p>Con MCP el modelo consulta tus datos y sistemas en vivo a través de herramientas controladas. Con RAG se recuperan los documentos más relevantes y se inyectan en el contexto antes de que el modelo responda. Con fine-tuning se reentrena el modelo con tus datos, lo que es caro y deja la información estática. Para datos que cambian y donde necesitas trazabilidad, MCP y RAG suelen ser mejores que el fine-tuning, y a menudo se combinan.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Funciona con Claude y ChatGPT?</summary>
+          <p>Sí. Al ser un estándar abierto, un mismo servidor MCP puede usarse desde distintos asistentes de IA. Nuestro producto propio Data Inmobiliaria ya expone un servidor MCP que permite consultar 9,5 millones de propiedades de Chile en lenguaje natural desde Claude o ChatGPT, sin escribir SQL.</p>
+        </details>
+        <details class="faq">
+          <summary>¿Cómo se controla qué datos puede ver el modelo?</summary>
+          <p>El control vive en el servidor MCP, no en el modelo. Tú defines qué tablas, campos y operaciones quedan expuestos como herramientas; todo lo demás sencillamente no existe para la IA. El acceso es de solo lectura, así que el modelo puede consultar pero no modificar ni borrar, y cada consulta queda registrada para que sepas quién preguntó qué y contra qué fuente.</p>
+        </details>
+      </section>
+      <section class="page-section">
+        <div class="case-box related-box">
+          <h3>Sigue explorando</h3>
+          <ul>
+            <li><a href="https://justdev.it/servicios/agentes-ia/">agentes de IA para empresas</a></li>
+            <li><a href="https://justdev.it/servicios/inteligencia-artificial/">inteligencia artificial aplicada</a></li>
+            <li><a href="https://justdev.it/casos/data-inmobiliaria/">caso Data Inmobiliaria</a></li>
+            <li><a href="/blog/">Ver todos los artículos del blog</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <section class="final-cta">
+      <h2>¿Tienes un caso parecido en tu empresa?</h2>
+      <p>Cuéntanos qué necesitas automatizar, consolidar o consultar con IA. Te entregamos una propuesta con alcance, precio y plazo cerrados, desde UF 75 según alcance.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Cotizar proyecto</a>
+        <a href="https://wa.me/56994545281?text=Hola%2C%20le%C3%AD%20un%20art%C3%ADculo%20del%20blog%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" class="btn btn-secondary" data-channel="whatsapp">Hablar por WhatsApp</a>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <nav aria-label="Enlaces">
+        <a href="/">Inicio</a>
+        <a href="/servicios/inteligencia-artificial/">Inteligencia Artificial</a>
+        <a href="/servicios/data-engineering/">Ingeniería de Datos</a>
+        <a href="/casos/data-inmobiliaria/">Caso Data Inmobiliaria</a>
+        <a href="/#contacto">Contacto</a>
+      </nav>
+      <p style="margin-top: 1rem;">&copy; 2026 Just Dev It · Santiago, Chile · <span style="white-space: nowrap;">Hecho con 💜 en Chile</span></p>
+    </footer>
+
+    <script defer src="/js/conversion-tracking.js"></script>
+  </body>
+</html>

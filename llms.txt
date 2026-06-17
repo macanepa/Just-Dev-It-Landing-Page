@@ -23,6 +23,12 @@ Datos verificables:
 - Stack: Python, SQL y JavaScript; nube en AWS, Azure y Google Cloud; IA generativa (LLMs)
   con servidores MCP, RAG y agentes; automatización de procesos (RPA), web scraping a escala
   y dashboards de BI.
+- Dominios de datos que trabajamos a escala (datos públicos y de mercado de Chile, generalizado):
+  regulatorios y financieros de la CMF (carteras de compañías de seguros y fondos, renta fija,
+  acciones, fondos mutuos, valores cuota, patrimonio y activos), catastro de propiedades del SII
+  y Conservadores de Bienes Raíces, Diario Oficial (sociedades, leyes, concesiones, información
+  judicial, derechos de agua), compras públicas (licitaciones del Estado) y datos del Coordinador
+  Eléctrico Nacional. También sobre las fuentes propias del cliente.
 
 ## Páginas principales
 
@@ -36,6 +42,15 @@ Datos verificables:
 - [Software para minería en Chile](https://justdev.it/industrias/mineria/): automatización de reportería de producción, consolidación multi-faena, mantenimiento predictivo e IA.
 - [Software para finanzas, AGFs y fondos](https://justdev.it/industrias/finanzas/): consolidación financiera multi-sociedad, monitoreo de carteras de riesgo y copilotos financieros.
 - [Caso Data Inmobiliaria](https://justdev.it/casos/data-inmobiliaria/): cómo se construyó la plataforma de 9,5M de propiedades (web scraping a escala, pipelines de datos y consulta con IA).
+
+## Blog (guías y casos)
+
+- [Blog](https://justdev.it/blog/): artículos técnicos sobre automatización, datos e IA aplicada en Chile.
+- [Web scraping a escala en Chile: arquitectura, legalidad y costos](https://justdev.it/blog/web-scraping-a-escala-chile/): cómo extraer datos públicos de forma resiliente y conforme a la Ley 21.719.
+- [Consolidación financiera multi-sociedad: del Excel al dashboard](https://justdev.it/blog/consolidacion-financiera-multisociedad/): consolidar datos de varias sociedades y ERPs en un data warehouse, con copilotos de IA de solo lectura.
+- [Automatización para generadoras: Coordinador Eléctrico y DGA](https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/): reportería diaria al Coordinador Eléctrico Nacional y tickets regulatorios a la DGA (MEE).
+- [Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura](https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/): MCP vs RAG vs fine-tuning, seguridad y Ley 21.719.
+- [Automatización del Poder Judicial (PJUD): carga de demandas y exhortos](https://justdev.it/blog/automatizacion-poder-judicial-pjud/): carga masiva de demandas en la Oficina Judicial Virtual, exhortos y validación por RUT con resolución de CAPTCHA.
 
 ## Contacto
 
