@@ -476,6 +476,29 @@
         </div>
       </header>
 
+      <style>
+        .di-frames{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:56rem;margin:0 auto;padding:2.5rem 1.5rem 0}
+        .di-frame{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:#0b1220;box-shadow:0 30px 70px -28px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.04);transition:transform .3s ease}
+        .di-frame:hover{transform:translateY(-4px)}
+        .di-frame__bar{display:flex;align-items:center;gap:.45rem;padding:.5rem .8rem;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07)}
+        .di-frame__bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16)}
+        .di-frame__url{font-size:.72rem;color:#94A3B8;background:rgba(255,255,255,.05);padding:.2rem .7rem;border-radius:5px;margin-left:.3rem}
+        .di-frame img{display:block;width:100%;height:auto}
+        .di-cap{max-width:56rem;margin:1rem auto 0;padding:0 1.5rem;font-size:.85rem;color:#94A3B8;text-align:center}
+        @media (max-width:640px){.di-frames{grid-template-columns:1fr}}
+      </style>
+      <div class="di-frames">
+        <a class="di-frame" href="https://datainmobiliaria.cl" target="_blank" rel="noopener" aria-label="Visitar Data Inmobiliaria">
+          <span class="di-frame__bar"><i></i><i></i><i></i><span class="di-frame__url">datainmobiliaria.cl</span></span>
+          <img src="/assets/images/di/di-home.webp" alt="Plataforma Data Inmobiliaria: explora el mercado inmobiliario chileno con datos" width="1440" height="900" loading="lazy" />
+        </a>
+        <a class="di-frame" href="https://datainmobiliaria.cl/conector-ia" target="_blank" rel="noopener" aria-label="Conector de IA de Data Inmobiliaria">
+          <span class="di-frame__bar"><i></i><i></i><i></i><span class="di-frame__url">/conector-ia</span></span>
+          <img src="/assets/images/di/di-conector.webp" alt="Conector de IA de Data Inmobiliaria: consulta con Claude o ChatGPT en lenguaje natural" width="1440" height="900" loading="lazy" />
+        </a>
+      </div>
+      <p class="di-cap">Capturas reales de la plataforma. Conéctala a <a href="/servicios/agentes-ia/">Claude o ChatGPT</a> y consúltala en lenguaje natural.</p>
+
       <section class="page-section" aria-labelledby="desafio">
         <h2 id="desafio">El desafío: datos inmobiliarios <span class="accent">dispersos e inaccesibles</span></h2>
         <p>

@@ -30,7 +30,7 @@ const translations = {
       title: "Desarrollo de Software a Medida para",
       titleAccent: "Fintech, Energía y PropTech",
       description: "Data Engineering, Web Scraping, Agentes IA y Automatización RPA. <strong>Python, SQL, JavaScript</strong> para empresas en Santiago, Chile.",
-      subtext: "• <strong>Energía, LegalTech, PropTech y Fintech</strong><br />• Entregas <strong>en semanas</strong>, no meses<br />• <strong>+20 proyectos</strong> ejecutados<br />",
+      subtext: "• <strong>Energía, LegalTech, PropTech y Fintech</strong><br />• <strong>Garantía de 30 días</strong> post-entrega<br />• <strong>+20 proyectos</strong> ejecutados<br />",
       tagline: "El software que tu negocio necesita, <strong>justo a tiempo.</strong>",
       ctaPrimary: "Cotizar Proyecto",
       ctaSecondary: "Ver Proyectos",
@@ -214,7 +214,7 @@ const translations = {
       title: "Tu Partner Tecnológico",
       titleSuffix: "en",
       titleAccent: "Chile",
-      subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Entregas incrementales cada 2 semanas. Garantía de 30 días post-entrega. Python, desarrollo web a medida y dashboards de BI.",
+      subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Entregas incrementales por etapas. Garantía de 30 días post-entrega. Python, desarrollo web a medida y dashboards de BI.",
       stats: {
         stat1Number: "Cerrado",
         stat1Label: "Alcance, Precio<br />y Plazo",
@@ -239,7 +239,7 @@ const translations = {
       founder1: {
         name: "Joaquín Espildora M.",
         role: "Fundador & CEO",
-        description: "Ingeniero Civil (U. de los Andes). Ex Penta Vida (carteras >$7B USD). Especialista en PropTech y Fintech."
+        description: "Ingeniero Civil (U. de los Andes), ex Penta Vida. Especialista en gestión de inversiones, PropTech y Fintech."
       },
 
       founder2: {
@@ -254,11 +254,11 @@ const translations = {
       stats: {
         s1Number: "30 días",
         s1Label: "Garantía post-entrega",
-        s2Number: "2-4 sem",
-        s2Label: "Primera entrega"
+        s2Number: "+20",
+        s2Label: "Proyectos ejecutados"
       },
       title: "<span class=\"gradient-text\">Cotiza</span> Tu Proyecto",
-      subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Entregas desde 2-4 semanas.",
+      subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Trabajamos por etapas, con entregas incrementales.",
       location: "Santiago, Chile | Respuesta inmediata",
 
       formCard: {
@@ -393,6 +393,21 @@ const translations = {
       cta: "Ver Agentes de IA"
     },
 
+    // Sección Data Inmobiliaria (showcase de producto propio)
+    diSection: {
+      eyebrow: "Producto propio · Nuestra carta de presentación",
+      title: '<span class="gradient-text">Data Inmobiliaria</span>',
+      sub: "Nuestra plataforma propia de datos del mercado inmobiliario chileno: validada, en producción y citada por la prensa. La prueba viva de lo que construimos a medida para tu empresa.",
+      statProps: "Propiedades indexadas",
+      statComunas: "Comunas",
+      statYears: "de datos",
+      statSources: "Datos oficiales",
+      aiTitle: "Pregúntale a tus datos con IA, en lenguaje natural",
+      aiBody: 'Data Inmobiliaria se conecta a <strong>Claude</strong> o <strong>ChatGPT</strong> y responde sobre cualquier propiedad —tasaciones, precios y comparables— sin planillas ni descargas. Es la misma tecnología de <a href="/servicios/agentes-ia/">agentes de IA a medida</a> que construimos para que tu empresa converse con sus propios datos.',
+      ctaVisit: "Visitar Data Inmobiliaria",
+      ctaCase: "Ver el caso técnico"
+    },
+
     // Rutas profundas (páginas de servicio / vertical / caso)
     routes: {
       eyebrow: "En profundidad",
@@ -448,7 +463,7 @@ const translations = {
       title: "Custom Software Development for",
       titleAccent: "Fintech, Energy and PropTech",
       description: "Data Engineering, Web Scraping, AI Agents and RPA Automation. <strong>Python, SQL, JavaScript</strong> for companies in Santiago, Chile.",
-      subtext: "• <strong>Energy, LegalTech, PropTech and Fintech</strong><br />• Deliveries <strong>in weeks</strong>, not months<br />• <strong>+20 projects</strong> delivered<br />",
+      subtext: "• <strong>Energy, LegalTech, PropTech and Fintech</strong><br />• <strong>30-day warranty</strong> post-delivery<br />• <strong>+20 projects</strong> delivered<br />",
       tagline: "The software your business needs, <strong>just in time.</strong>",
       ctaPrimary: "Get a Quote",
       ctaSecondary: "View Projects",
@@ -632,7 +647,7 @@ const translations = {
       title: "Your Technology Partner",
       titleSuffix: "in",
       titleAccent: "Chile",
-      subtitle: "Tailored proposal with fixed scope, price and timeline. Incremental deliveries every 2 weeks. 30-day post-delivery warranty. Python, custom web development and BI dashboards.",
+      subtitle: "Tailored proposal with fixed scope, price and timeline. Incremental deliveries by stages. 30-day post-delivery warranty. Python, custom web development and BI dashboards.",
       stats: {
         stat1Number: "Fixed",
         stat1Label: "Scope, Price<br />and Timeline",
@@ -657,7 +672,7 @@ const translations = {
       founder1: {
         name: "Joaquín Espildora M.",
         role: "Founder & CEO",
-        description: "Civil Engineer (U. de los Andes). Formerly at Penta Vida (portfolios over $7B USD). Specialist in PropTech and Fintech."
+        description: "Civil Engineer (U. de los Andes), formerly at Penta Vida. Specialist in investment management, PropTech and Fintech."
       },
 
       founder2: {
@@ -672,11 +687,11 @@ const translations = {
       stats: {
         s1Number: "30 days",
         s1Label: "Post-delivery warranty",
-        s2Number: "2-4 wks",
-        s2Label: "First delivery"
+        s2Number: "+20",
+        s2Label: "Projects delivered"
       },
       title: "<span class=\"gradient-text\">Quote</span> Your Project",
-      subtitle: "Tailored proposal with fixed scope, price and timeline. Deliveries from 2-4 weeks.",
+      subtitle: "Tailored proposal with fixed scope, price and timeline. We work in stages, with incremental deliveries.",
       location: "Santiago, Chile | Immediate response",
 
       formCard: {
@@ -809,6 +824,21 @@ const translations = {
       card3Title: "On top of what you have",
       card3Body: "We add an AI layer over your existing infrastructure with custom MCP servers. Start small and grow in layers.",
       cta: "See AI Agents"
+    },
+
+    // Data Inmobiliaria section (own-product showcase)
+    diSection: {
+      eyebrow: "Our own product · Our calling card",
+      title: '<span class="gradient-text">Data Inmobiliaria</span>',
+      sub: "Our own real-estate data platform for Chile: validated, in production and cited by the press. Living proof of what we build, tailor-made, for your company.",
+      statProps: "Indexed properties",
+      statComunas: "Districts",
+      statYears: "of data",
+      statSources: "Official data",
+      aiTitle: "Ask your data with AI, in natural language",
+      aiBody: 'Data Inmobiliaria connects to <strong>Claude</strong> or <strong>ChatGPT</strong> and answers about any property —valuations, prices and comparables— with no spreadsheets or downloads. It is the same custom <a href="/servicios/agentes-ia/">AI agents</a> technology we build so your company can talk to its own data.',
+      ctaVisit: "Visit Data Inmobiliaria",
+      ctaCase: "See the technical case"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
