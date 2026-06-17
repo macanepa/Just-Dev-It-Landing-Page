@@ -30,19 +30,19 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <title>Web scraping a escala en Chile | Just Dev It</title>
-    <meta name="description" content="Web scraping a escala en Chile: arquitectura, legalidad y costos reales. Cómo extraer datos públicos de forma resiliente. Cotiza tu proyecto desde UF 75." />
+    <title>Extraer datos de la DGA: derechos de agua | Just Dev It</title>
+    <meta name="description" content="Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://justdev.it/blog/web-scraping-a-escala-chile/" />
+    <link rel="canonical" href="https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/" />
     <meta name="geo.region" content="CL-RM" />
     <meta name="geo.placename" content="Santiago, Chile" />
     <meta name="geo.position" content="-33.4489;-70.6693" />
     <meta name="ICBM" content="-33.4489, -70.6693" />
 
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://justdev.it/blog/web-scraping-a-escala-chile/" />
-    <meta property="og:title" content="Web scraping a escala en Chile | Just Dev It" />
-    <meta property="og:description" content="Web scraping a escala en Chile: arquitectura, legalidad y costos reales. Cómo extraer datos públicos de forma resiliente. Cotiza tu proyecto desde UF 75." />
+    <meta property="og:url" content="https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/" />
+    <meta property="og:title" content="Extraer datos de la DGA: derechos de agua | Just Dev It" />
+    <meta property="og:description" content="Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75." />
     <meta property="og:image" content="https://justdev.it/assets/images/Desktop/og-image.webp" />
     <meta property="og:site_name" content="Just Dev It" />
     <meta property="og:locale" content="es_CL" />
@@ -85,21 +85,21 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Web scraping a escala en Chile: arquitectura, legalidad y costos",
-          "item": "https://justdev.it/blog/web-scraping-a-escala-chile/"
+          "name": "Cómo extraer y monitorear datos de la DGA (derechos de aprovechamiento de aguas)",
+          "item": "https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/"
         }
       ]
     },
     {
       "@type": "BlogPosting",
-      "headline": "Web scraping a escala en Chile: arquitectura, legalidad y costos",
-      "description": "Web scraping a escala en Chile: arquitectura, legalidad y costos reales. Cómo extraer datos públicos de forma resiliente. Cotiza tu proyecto desde UF 75.",
+      "headline": "Cómo extraer y monitorear datos de la DGA (derechos de aprovechamiento de aguas)",
+      "description": "Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75.",
       "datePublished": "2026-06-17",
       "dateModified": "2026-06-17",
       "inLanguage": "es-CL",
-      "image": "https://justdev.it/assets/images/blog/scraping.svg",
-      "url": "https://justdev.it/blog/web-scraping-a-escala-chile/",
-      "mainEntityOfPage": "https://justdev.it/blog/web-scraping-a-escala-chile/",
+      "image": "https://justdev.it/assets/images/blog/energia.svg",
+      "url": "https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/",
+      "mainEntityOfPage": "https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/",
       "author": {
         "@id": "https://justdev.it/#organization"
       },
@@ -112,58 +112,58 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Es legal hacer web scraping en Chile?",
+          "name": "¿Qué datos publica la DGA y se pueden extraer automáticamente?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Como orientación general (no asesoría legal): extraer datos públicos suele ser admisible si se respetan los términos de uso del sitio y su robots.txt, no se sobrecargan los servidores y no se abusa de datos personales. La extracción de datos personales sin una base de licitud es riesgosa, y hay que considerar la Ley 21.719 de protección de datos. Cada proyecto conviene revisarlo con abogados."
+            "text": "La DGA publica derechos de aprovechamiento de aguas (titularidad, caudal, tipo, ubicación, estado), extracciones efectivas del sistema MEE, y expedientes y resoluciones administrativas. Todos son datos públicos y se pueden extraer automáticamente, aunque los portales no tienen API: se capturan con web scraping y automatización de navegador headless que navega los formularios dinámicos, y luego se estructuran en un data warehouse consultable."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Qué datos públicos se pueden extraer en Chile?",
+          "name": "¿Es legal extraer datos de la DGA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Hay muchas fuentes abiertas y legítimas de consultar: el catastro del Servicio de Impuestos Internos (SII), los Conservadores de Bienes Raíces, los portales inmobiliarios, el Diario Oficial, las compras públicas (Mercado Público) y los registros financieros de la CMF, entre otras. La clave está en distinguir datos públicos y agregados de datos personales, que tienen un tratamiento legal más estricto."
+            "text": "Como orientación general (no asesoría legal): los datos de la DGA son públicos, por lo que extraerlos y analizarlos es en general legítimo. Hay que respetar los términos de uso de los portales, mantener un acceso razonable y cuidar el tratamiento de datos personales conforme a la Ley 21.719 cuando los registros incluyan personas naturales identificables. Cada empresa debe validar su caso concreto con su área jurídica."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto cuesta un proyecto de web scraping?",
+          "name": "¿Para qué sirve monitorear derechos de aprovechamiento de aguas en minería o energía?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Depende del número de fuentes, el volumen de datos, la frecuencia de actualización y la complejidad anti-bot de los sitios de origen. Como referencia, abordamos proyectos desde UF 75 según el alcance. Para una cifra realista conviene conversar el caso concreto: qué fuentes, qué volumen y con qué uso final."
+            "text": "Sirve para due diligence y valorización de activos donde el derecho de agua pesa en el precio, para vigilancia regulatoria y para cumplimiento. En energía, una generadora hidroeléctrica usa el monitoreo para responder a alertas ante el MEE-DGA en minutos en lugar de horas. En minería permite seguir derechos propios y de terceros en zonas de alta competencia por el recurso."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cómo se mantiene un scraper cuando el sitio web cambia?",
+          "name": "¿El portal de la DGA tiene API?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Una arquitectura seria se diseña para resistir cambios de maquetación: cuando una fuente modifica su HTML, el sistema detecta la anomalía y aísla el componente afectado para que no se caiga toda la canalización. A eso se suman extracción modular por fuente y monitoreo continuo, de modo que arreglar un cambio sea acotado y no requiera rehacer el proyecto."
+            "text": "No. Los portales de la DGA no exponen una API abierta y dependen de formularios dinámicos que hay que navegar y paginar para obtener cada registro. Por eso la extracción automática se hace con web scraping más automatización de navegador headless, que reproduce esa navegación de forma repetible y sin intervención manual."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Conviene hacer scraping o usar una API oficial?",
+          "name": "¿Cada cuánto se actualizan estos datos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Si la fuente ofrece una API oficial estable y con los datos que necesitas, casi siempre es preferible: es más confiable y menos frágil ante cambios. El scraping tiene sentido cuando no existe API, cuando la API no expone toda la información pública disponible, o cuando hay que consolidar muchas fuentes heterogéneas. A menudo lo óptimo es combinar ambos: API donde exista y scraping donde no."
+            "text": "La frecuencia de publicación la define la propia DGA y varía según el conjunto de datos (derechos, extracciones del MEE, expedientes y resoluciones se mueven a ritmos distintos). Lo que sí controlamos es la frecuencia de monitoreo: el pipeline puede correr de forma programada con ingesta incremental, capturar solo los cambios nuevos y disparar alertas cuando detecta una variación relevante."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cómo se evita que bloqueen el scraper?",
+          "name": "¿Se puede automatizar el reporte al MEE-DGA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sobre todo comportándose de forma responsable: aplicar control de tasa (rate limiting) para no saturar el sitio, respetar robots.txt y los términos de uso, e identificar el tráfico de manera transparente. Técnicamente, los sitios estáticos se resuelven con parseo HTTP y los dinámicos con automatización de navegador headless que simula navegación real. La meta no es 'engañar', sino extraer de forma sostenible y sin perjudicar la fuente."
+            "text": "Sí. Sobre la base de datos ya estructurada se puede automatizar la generación y el envío de reportes o tickets regulatorios al MEE-DGA que antes se hacían a mano. En el caso de una generadora hidroeléctrica, automatizar la respuesta ante una alerta llevó ese tiempo de horas a aproximadamente 2 minutos, reduciendo el riesgo de incumplir un plazo."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Para qué sirve tener los datos extraídos en un data warehouse?",
+          "name": "¿Cuánto cuesta un proyecto de extracción y monitoreo de datos de la DGA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Una vez que los datos están limpios, deduplicados y centralizados en un data warehouse en la nube (AWS, Azure o Google Cloud), se vuelven consultables con SQL y se pueden conectar a dashboards de BI, alertas, tu ERP/CRM o capas de IA. Incluso es posible sumar copilotos basados en LLM (con asistentes como Claude o ChatGPT) para que un usuario no técnico pregunte sobre los datos en lenguaje natural."
+            "text": "Los proyectos parten desde UF 75 y se cotizan a medida según los conjuntos de datos a extraer, la frecuencia de monitoreo y las automatizaciones de reporte requeridas. Cada desarrollo incluye garantía de 30 días post-entrega. Lo definimos según el alcance que necesites."
           }
         }
       ]
@@ -399,58 +399,63 @@
 
     <header class="article-hero">
       <p class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></p>
-      <span class="blog-kicker">Web scraping · Datos</span>
-      <h1>Web scraping a escala en Chile: arquitectura, legalidad y costos</h1>
-      <p class="dek">Web scraping a escala en Chile: arquitectura, legalidad y costos reales. Cómo extraer datos públicos de forma resiliente. Cotiza tu proyecto desde UF 75.</p>
+      <span class="blog-kicker">Datos · Minería y energía</span>
+      <h1>Cómo extraer y monitorear datos de la DGA (derechos de aprovechamiento de aguas)</h1>
+      <p class="dek">Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75.</p>
       <div class="article-meta">
         <span>2026-06-17</span><span class="dot"></span>
-        <span>7 min de lectura</span><span class="dot"></span>
+        <span>6 min de lectura</span><span class="dot"></span>
         <span>Just Dev It</span>
       </div>
     </header>
 
-    <div class="cover reveal"><div class="frame"><img src="/assets/images/blog/scraping.svg" alt="Ilustración del artículo: Web scraping · Datos" width="1200" height="675" /></div></div>
+    <div class="cover reveal"><div class="frame"><img src="/assets/images/blog/energia.svg" alt="Ilustración del artículo: Datos · Minería y energía" width="1200" height="675" /></div></div>
 
     <div class="reading-zone">
       <aside class="toc-rail" aria-label="Secciones del artículo">
         <span class="toc-label">En este artículo</span>
         <ol>
-          <li><a href="#sec-1"><i></i><span>El problema: datos públicos que nadie puede usar</span></a></li>
-          <li><a href="#sec-2"><i></i><span>Cómo se resuelve: extracción distribuida y datos limpios</span></a></li>
-          <li><a href="#sec-3"><i></i><span>La arquitectura por dentro: cómo funciona</span></a></li>
-          <li><a href="#sec-4"><i></i><span>Resultados: de fuentes dispersas a una base consultable</span></a></li>
-          <li><a href="#sec-5"><i></i><span>Legalidad en Chile: orientación general</span></a></li>
-          <li><a href="#sec-6"><i></i><span>Costos y cómo empezar</span></a></li>
+          <li><a href="#sec-1"><i></i><span>Qué datos publica la DGA y por qué importan</span></a></li>
+          <li><a href="#sec-2"><i></i><span>El problema: portales sin API y formularios dinámicos</span></a></li>
+          <li><a href="#sec-3"><i></i><span>La solución: extracción a escala y un data warehouse consultable</span></a></li>
+          <li><a href="#sec-4"><i></i><span>Cómo funciona el monitoreo y la automatización de reportes</span></a></li>
+          <li><a href="#sec-5"><i></i><span>Casos de uso por sector</span></a></li>
+          <li><a href="#sec-6"><i></i><span>Consideraciones legales (orientación general)</span></a></li>
+          <li><a href="#sec-7"><i></i><span>Conversemos tu proyecto de datos de la DGA</span></a></li>
         </ol>
       </aside>
       <article class="post-body">
         <section class="reveal lead-sec">
-          <p>Los datos que tu empresa necesita ya existen, pero están dispersos en decenas de fuentes públicas: catastros, registros, portales y boletines oficiales. Revisarlos a mano es lento, propenso a errores y se vuelve imposible cuando hablamos de millones de registros que cambian todos los días. El <strong>web scraping a escala</strong> resuelve ese problema: convierte fuentes desordenadas en un flujo de datos estructurado, actualizado y consultable.</p><p>En Just Dev It llevamos esta disciplina al extremo con nuestro producto propio, Data Inmobiliaria, que indexa <strong>9,5 millones de propiedades</strong> de Chile a partir de fuentes públicas. En este artículo explicamos cómo funciona una arquitectura de extracción seria, qué dice la ley chilena y cuánto cuesta un proyecto real.</p>
+          <p>La Dirección General de Aguas (DGA) publica información que decide negocios: <strong>derechos de aprovechamiento de aguas</strong>, extracciones efectivas del sistema de Monitoreo de Extracciones Efectivas (MEE), expedientes y resoluciones. El problema es que esos datos viven en portales sin API, detrás de formularios dinámicos, y revisarlos a mano no escala: cuando un equipo legal o técnico necesita cruzar cientos de derechos para una due diligence o reaccionar a una alerta regulatoria, el trabajo manual se vuelve lento, caro y propenso a error.</p><p>En esta guía explicamos qué publica la DGA, qué se puede extraer de forma automática, cómo se monitorea sin intervención humana y qué considerar en materia legal. Es contenido técnico-comercial; donde tocamos normativa, es <strong>orientación general y no asesoría legal</strong>.</p>
         </section>
         <section id="sec-1" class="reveal">
-          <h2>El problema: datos públicos que nadie puede usar</h2>
-          <p>En Chile hay una cantidad enorme de información pública y legítima de consultar: el catastro del Servicio de Impuestos Internos, los Conservadores de Bienes Raíces, los portales inmobiliarios, el Diario Oficial, las compras públicas y los registros financieros de la Comisión para el Mercado Financiero (CMF), entre muchas otras.</p><p>El problema no es la disponibilidad, sino el formato. Cada fuente tiene su propia estructura, sus propias trabas de navegación y sus propios cambios de maquetación sin aviso. Para un equipo comercial, legal o de inversión, eso significa horas de copiar y pegar, planillas que quedan obsoletas en días y decisiones tomadas con información incompleta.</p><ul><li><strong>Volumen:</strong> revisar manualmente millones de registros es inviable.</li><li><strong>Frecuencia:</strong> los datos cambian a diario y una foto estática pierde valor rápido.</li><li><strong>Heterogeneidad:</strong> cada fuente exige una lógica de extracción distinta.</li></ul><p>El web scraping a escala existe para eliminar ese trabajo repetitivo y dejar la información lista para analizar.</p>
+          <h2>Qué datos publica la DGA y por qué importan</h2>
+          <p>La DGA es el organismo público que administra el recurso hídrico en Chile y publica varios conjuntos de datos abiertos relevantes para el sector privado:</p><ul><li><strong>Derechos de aprovechamiento de aguas:</strong> titularidad, caudal, tipo (consuntivo/no consuntivo, superficial/subterráneo), ubicación y estado del derecho.</li><li><strong>Extracciones efectivas (sistema MEE):</strong> mediciones de cuánta agua se extrae realmente respecto del derecho otorgado.</li><li><strong>Expedientes y resoluciones:</strong> el historial administrativo de solicitudes, traslados, perfeccionamientos y actos de la autoridad.</li></ul><p>Quien necesita esta información rara vez es un curioso: son <strong>empresas de minería, energía, agro, fondos de inversión y estudios legales</strong> que la usan para due diligence sobre activos hídricos, valorización, monitoreo regulatorio y cumplimiento. Un derecho de agua puede ser parte central del valor de un proyecto, y un cambio de estado o una nueva resolución puede gatillar una decisión.</p>
         </section>
         <section id="sec-2" class="reveal">
-          <h2>Cómo se resuelve: extracción distribuida y datos limpios</h2>
-          <p>Un proyecto de scraping serio no es un script que corre en un computador. Es una canalización (pipeline) de datos diseñada para operar de forma continua y resistir cambios. En la práctica trabajamos con tres principios.</p><p><strong>Extracción distribuida.</strong> En lugar de un solo proceso, repartimos la carga entre varios trabajadores coordinados por un orquestador de flujos. Así se cubren muchas fuentes en paralelo sin saturar ninguna.</p><p><strong>Control de tasa y buenas prácticas.</strong> Aplicamos límites de frecuencia (rate limiting) para no sobrecargar los sitios de origen, respetamos el archivo robots.txt y los términos de uso, e identificamos nuestro tráfico de forma responsable. Extraer no significa abusar.</p><p><strong>Datos limpios desde el origen.</strong> Antes de guardar nada, deduplicamos los registros mediante un hash del contenido, de modo que el mismo dato visto en dos fuentes no se cuente dos veces. Luego usamos ingesta incremental: en cada corrida solo procesamos lo nuevo o lo que cambió, en vez de volver a bajar todo. Eso reduce costos y mantiene la base al día.</p>
+          <h2>El problema: portales sin API y formularios dinámicos</h2>
+          <p>Los datos son públicos, pero no son fáciles de consumir de forma programática. Los portales de la DGA <strong>no exponen una API</strong> abierta y dependen de formularios dinámicos: hay que navegar pantallas, completar campos y paginar resultados para obtener cada registro. Eso significa que:</p><ul><li>Revisar manualmente cientos o miles de derechos es inviable cuando hay que repetirlo de forma periódica.</li><li>No existe un punto único donde consultar el dato cruzado con los registros internos de la empresa.</li><li>Detectar un cambio (una nueva resolución, una variación en una extracción) depende de que alguien entre a mirar a tiempo.</li></ul><p>En la práctica, el cuello de botella no es la disponibilidad del dato, sino la <strong>capacidad de capturarlo, estructurarlo y vigilarlo a escala</strong> sin depender de personas revisando portales.</p>
         </section>
-        <blockquote class="pullquote reveal"><span>El web scraping a escala convierte fuentes públicas dispersas (SII, Conservadores, Diario Oficial, CMF, compras públicas) en una base de datos estructurada, deduplicada y actualizada a diario.</span></blockquote>
+        <blockquote class="pullquote reveal"><span>La DGA publica datos públicos clave —derechos de aprovechamiento, extracciones efectivas (MEE), expedientes y resoluciones— pero sin API y tras formularios dinámicos, por lo que revisarlos a mano no escala.</span></blockquote>
         <section id="sec-3" class="reveal">
-          <h2>La arquitectura por dentro: cómo funciona</h2>
-          <p>El stack que sostiene un proyecto a escala combina componentes probados. Esta es la columna vertebral típica:</p><ul><li><strong>Procesamiento en Python.</strong> Es el lenguaje base para la extracción, la limpieza y la transformación de los datos.</li><li><strong>Dos modos de extracción.</strong> Los sitios estáticos se resuelven con parseo HTTP directo, que es rápido y liviano. Los sitios con JavaScript dinámico (contenido que se arma en el navegador) se resuelven con <strong>automatización de navegador headless</strong>, que simula la navegación real para capturar lo que el usuario vería.</li><li><strong>Almacenamiento en la nube.</strong> Los datos consolidados viven en un <strong>data warehouse</strong> sobre AWS, Azure o Google Cloud, consultable con SQL y preparado para escalar a millones de filas.</li><li><strong>Resiliencia a cambios de maquetación.</strong> Cuando una fuente cambia su HTML, el sistema detecta la anomalía y aísla el componente afectado, de modo que un cambio en un sitio no rompe toda la canalización.</li></ul><p>Sobre esa base de datos limpia se puede construir lo que el negocio necesite: <strong>dashboards de BI</strong>, alertas, integraciones con tu ERP/CRM, o capas de IA. Hoy es común sumar agentes y copilotos basados en LLM (con asistentes como Claude o ChatGPT) que consultan el data warehouse mediante patrones como RAG o el Model Context Protocol (MCP), para que un usuario no técnico pregunte en lenguaje natural sobre los datos extraídos.</p>
+          <h2>La solución: extracción a escala y un data warehouse consultable</h2>
+          <p>En Just Dev It resolvemos esto combinando <strong>web scraping con automatización de navegador headless</strong> para los portales que no tienen API. Un navegador automatizado reproduce la navegación que haría una persona —completa formularios, pagina y descarga— pero sin intervención manual y de forma repetible.</p><p>Los datos extraídos se depositan en un <strong>data warehouse en la nube</strong> (AWS, Azure o Google Cloud, con Python y SQL) que queda consultable. El pipeline trabaja con:</p><ul><li><strong>Ingesta incremental:</strong> en cada corrida se capturan solo los cambios y registros nuevos, no toda la base de cero.</li><li><strong>Deduplicación:</strong> el mismo derecho o expediente no se duplica entre ejecuciones, manteniendo la base limpia.</li><li><strong>Datos consultables:</strong> el resultado se cruza con tus propios sistemas (ERP/CRM, planillas, dashboards de BI) para que el dato sea accionable, no solo un archivo.</li></ul><p>Es el mismo enfoque de extracción pública a escala detrás de nuestro producto propio Data Inmobiliaria, con 9,5 millones de propiedades indexadas: capturar fuentes dispersas y dejarlas como una base única y confiable.</p>
         </section>
         <section id="sec-4" class="reveal">
-          <h2>Resultados: de fuentes dispersas a una base consultable</h2>
-          <p>El caso más demostrativo es nuestro propio producto. Data Inmobiliaria indexa <strong>9,5 millones de propiedades</strong> de Chile a partir de fuentes públicas como el catastro del SII, los Conservadores de Bienes Raíces, los portales inmobiliarios y el Diario Oficial. Eso no se logra a mano: es el resultado de una arquitectura de extracción que corre de forma continua y se mantiene sola la mayor parte del tiempo.</p><p>El patrón se repite en proyectos a medida para distintos sectores. Una administradora de fondos (AGF) puede monitorear registros financieros de la CMF; un grupo empresarial multi-sociedad puede consolidar información de compras públicas; un estudio de cobranza judicial puede seguir publicaciones del Diario Oficial. En todos los casos, el resultado es el mismo: tareas que antes tomaban <strong>horas pasan a minutos</strong>, y la información llega estructurada y al día.</p>
+          <h2>Cómo funciona el monitoreo y la automatización de reportes</h2>
+          <p>Una vez que el dato está estructurado, el siguiente paso es <strong>vigilarlo</strong>. El sistema corre de forma programada, compara el estado actual con el anterior y dispara alertas cuando algo cambia: una nueva resolución sobre un derecho de interés, una variación en las extracciones efectivas o un movimiento en un expediente.</p><p>Sobre esa base también se puede automatizar el flujo regulatorio hacia el <strong>MEE-DGA</strong>: la generación y el envío de reportes o tickets que antes se armaban a mano. En el caso de una generadora hidroeléctrica, automatizar la respuesta ante una alerta llevó ese tiempo de <strong>horas a aproximadamente 2 minutos</strong>, eliminando el riesgo de pasar por alto un plazo regulatorio.</p><p>Cuando aporta valor, sumamos una capa de IA aplicada —LLM, agentes o copilotos— para clasificar resoluciones, resumir expedientes largos o permitir consultas en lenguaje natural sobre la base. La automatización del flujo y la inteligencia sobre el contenido se complementan.</p>
         </section>
         <section id="sec-5" class="reveal">
-          <h2>Legalidad en Chile: orientación general</h2>
-          <p>Esta sección es orientación general y no constituye asesoría legal; cada proyecto debe revisarse con sus propios abogados. Dicho eso, hay criterios razonables y ampliamente aceptados.</p><p>Extraer <strong>datos públicos</strong> —los que cualquier persona puede consultar legítimamente en una fuente abierta— suele ser admisible. La práctica responsable implica:</p><ul><li>Respetar los <strong>términos de uso</strong> de cada sitio y el archivo <strong>robots.txt</strong>.</li><li>No sobrecargar los servidores de origen (de ahí el control de tasa).</li><li>Tratar con especial cuidado los <strong>datos personales</strong>: extraerlos sin una base de licitud es riesgoso.</li><li>Considerar la <strong>Ley 21.719</strong> de protección de datos personales y su marco de cumplimiento.</li></ul><p>La regla práctica: datos públicos y agregados, con buenas prácticas técnicas, es terreno sólido; datos personales sin justificación legal, no. Diseñamos cada proyecto para mantenerse del lado correcto de esa línea.</p>
+          <h2>Casos de uso por sector</h2>
+          <p>El mismo motor de extracción y monitoreo sirve a perfiles distintos:</p><ul><li><strong>Energía (una generadora hidroeléctrica):</strong> monitoreo de extracciones y cumplimiento ante el MEE-DGA, con respuesta a alertas en minutos en lugar de horas.</li><li><strong>Minería:</strong> seguimiento de derechos de agua propios y de terceros, clave en zonas de alta competencia por el recurso.</li><li><strong>Fondos de inversión y AGF:</strong> valorización y due diligence de activos donde el derecho de agua pesa en el precio.</li><li><strong>Estudios legales:</strong> vigilancia de expedientes y resoluciones para asesorar a clientes con datos al día, sin revisar portales a mano.</li><li><strong>Agro y grupos multi-sociedad:</strong> consolidación de derechos repartidos entre varias razones sociales en una sola vista.</li></ul>
         </section>
         <section id="sec-6" class="reveal">
-          <h2>Costos y cómo empezar</h2>
-          <p>No existe un precio único, porque el esfuerzo depende de variables concretas:</p><ul><li><strong>Número de fuentes</strong> a integrar y su diversidad.</li><li><strong>Volumen</strong> de registros y su crecimiento esperado.</li><li><strong>Frecuencia de actualización</strong> requerida (diaria, horaria, en tiempo casi real).</li><li><strong>Complejidad anti-bot</strong> de los sitios de origen y la dificultad de su maquetación.</li></ul><p>Como referencia, abordamos proyectos de web scraping <strong>desde UF 75</strong> según el alcance. La mejor forma de tener una cifra realista es conversar tu caso: qué fuentes, qué volumen y para qué se usará la data. Cuéntanos qué necesitas extraer y te preparamos una propuesta con la arquitectura adecuada. Todos nuestros entregables incluyen <strong>30 días de garantía post-entrega</strong>.</p>
+          <h2>Consideraciones legales (orientación general)</h2>
+          <p>Los datos de la DGA son <strong>información pública</strong>, por lo que extraerlos y analizarlos es, en general, legítimo. Dicho esto, lo siguiente es <strong>orientación general y no constituye asesoría legal</strong>; cada empresa debe validar su caso con su área jurídica:</p><ul><li>Respetar los <strong>términos de uso</strong> de los portales y un acceso razonable que no afecte el servicio.</li><li>Cuidar el tratamiento de <strong>datos personales</strong> conforme a la Ley 21.719 cuando los registros incluyan personas naturales identificables.</li><li>Documentar el origen público de los datos y su finalidad.</li></ul><p>El objetivo es construir un proceso sostenible y trazable, no un atajo: extracción de fuentes públicas, ordenada y conforme a la normativa aplicable.</p>
+        </section>
+        <section id="sec-7" class="reveal">
+          <h2>Conversemos tu proyecto de datos de la DGA</h2>
+          <p>Si tu equipo de minería, energía, agro, finanzas o legal necesita extraer y monitorear datos de la DGA sin depender de revisión manual, lo construimos a medida: extracción a escala, data warehouse consultable, alertas y automatización de reportes al MEE-DGA. Los proyectos parten <strong>desde UF 75</strong> y cada desarrollo incluye <strong>garantía de 30 días post-entrega</strong>.</p><p>Cuéntanos qué datos necesitas vigilar y con qué frecuencia, y te proponemos el alcance. Conversemos tu proyecto.</p>
         </section>
       </article>
       <div class="rail-right"><div class="spine" aria-hidden="true"><div class="fill"></div></div></div>
@@ -460,11 +465,11 @@
       <div class="box">
         <span class="blog-kicker">En resumen</span>
         <ul>
-            <li>El web scraping a escala convierte fuentes públicas dispersas (SII, Conservadores, Diario Oficial, CMF, compras públicas) en una base de datos estructurada, deduplicada y actualizada a diario.</li>
-            <li>La arquitectura típica combina extracción distribuida en Python, parseo HTTP para sitios estáticos y navegador headless para los dinámicos, con almacenamiento en un data warehouse sobre AWS, Azure o Google Cloud.</li>
-            <li>Extraer datos públicos suele ser admisible en Chile si se respetan términos de uso y robots.txt; los datos personales exigen base de licitud y considerar la Ley 21.719. Es orientación general, no asesoría legal.</li>
-            <li>El costo depende de número de fuentes, volumen, frecuencia y complejidad anti-bot. Proyectos desde UF 75 según alcance, con 30 días de garantía post-entrega.</li>
-            <li>El producto propio Data Inmobiliaria, con 9,5 millones de propiedades indexadas, demuestra que esta arquitectura opera de forma continua y reduce tareas de horas a minutos.</li>
+            <li>La DGA publica datos públicos clave —derechos de aprovechamiento, extracciones efectivas (MEE), expedientes y resoluciones— pero sin API y tras formularios dinámicos, por lo que revisarlos a mano no escala.</li>
+            <li>Se extraen a escala con web scraping y automatización de navegador headless, y se dejan en un data warehouse en la nube (AWS/Azure/Google Cloud, Python/SQL) con ingesta incremental y deduplicación.</li>
+            <li>El monitoreo programado dispara alertas ante cambios y permite automatizar el reporte al MEE-DGA: para una generadora hidroeléctrica, la respuesta ante una alerta pasó de horas a ~2 minutos.</li>
+            <li>Sirve a minería, energía, agro, fondos/AGF y estudios legales para due diligence, valorización, monitoreo regulatorio y cumplimiento.</li>
+            <li>Son datos públicos: extraerlos es en general legítimo respetando términos de uso y la Ley 21.719 (orientación general, no asesoría legal). Proyectos desde UF 75 con garantía de 30 días post-entrega.</li>
         </ul>
       </div>
     </div>
@@ -473,32 +478,32 @@
       <span class="blog-kicker">FAQ</span>
       <h2>Preguntas frecuentes</h2>
       <details class="q">
-        <summary>¿Es legal hacer web scraping en Chile?</summary>
-        <p>Como orientación general (no asesoría legal): extraer datos públicos suele ser admisible si se respetan los términos de uso del sitio y su robots.txt, no se sobrecargan los servidores y no se abusa de datos personales. La extracción de datos personales sin una base de licitud es riesgosa, y hay que considerar la Ley 21.719 de protección de datos. Cada proyecto conviene revisarlo con abogados.</p>
+        <summary>¿Qué datos publica la DGA y se pueden extraer automáticamente?</summary>
+        <p>La DGA publica derechos de aprovechamiento de aguas (titularidad, caudal, tipo, ubicación, estado), extracciones efectivas del sistema MEE, y expedientes y resoluciones administrativas. Todos son datos públicos y se pueden extraer automáticamente, aunque los portales no tienen API: se capturan con web scraping y automatización de navegador headless que navega los formularios dinámicos, y luego se estructuran en un data warehouse consultable.</p>
       </details>
       <details class="q">
-        <summary>¿Qué datos públicos se pueden extraer en Chile?</summary>
-        <p>Hay muchas fuentes abiertas y legítimas de consultar: el catastro del Servicio de Impuestos Internos (SII), los Conservadores de Bienes Raíces, los portales inmobiliarios, el Diario Oficial, las compras públicas (Mercado Público) y los registros financieros de la CMF, entre otras. La clave está en distinguir datos públicos y agregados de datos personales, que tienen un tratamiento legal más estricto.</p>
+        <summary>¿Es legal extraer datos de la DGA?</summary>
+        <p>Como orientación general (no asesoría legal): los datos de la DGA son públicos, por lo que extraerlos y analizarlos es en general legítimo. Hay que respetar los términos de uso de los portales, mantener un acceso razonable y cuidar el tratamiento de datos personales conforme a la Ley 21.719 cuando los registros incluyan personas naturales identificables. Cada empresa debe validar su caso concreto con su área jurídica.</p>
       </details>
       <details class="q">
-        <summary>¿Cuánto cuesta un proyecto de web scraping?</summary>
-        <p>Depende del número de fuentes, el volumen de datos, la frecuencia de actualización y la complejidad anti-bot de los sitios de origen. Como referencia, abordamos proyectos desde UF 75 según el alcance. Para una cifra realista conviene conversar el caso concreto: qué fuentes, qué volumen y con qué uso final.</p>
+        <summary>¿Para qué sirve monitorear derechos de aprovechamiento de aguas en minería o energía?</summary>
+        <p>Sirve para due diligence y valorización de activos donde el derecho de agua pesa en el precio, para vigilancia regulatoria y para cumplimiento. En energía, una generadora hidroeléctrica usa el monitoreo para responder a alertas ante el MEE-DGA en minutos en lugar de horas. En minería permite seguir derechos propios y de terceros en zonas de alta competencia por el recurso.</p>
       </details>
       <details class="q">
-        <summary>¿Cómo se mantiene un scraper cuando el sitio web cambia?</summary>
-        <p>Una arquitectura seria se diseña para resistir cambios de maquetación: cuando una fuente modifica su HTML, el sistema detecta la anomalía y aísla el componente afectado para que no se caiga toda la canalización. A eso se suman extracción modular por fuente y monitoreo continuo, de modo que arreglar un cambio sea acotado y no requiera rehacer el proyecto.</p>
+        <summary>¿El portal de la DGA tiene API?</summary>
+        <p>No. Los portales de la DGA no exponen una API abierta y dependen de formularios dinámicos que hay que navegar y paginar para obtener cada registro. Por eso la extracción automática se hace con web scraping más automatización de navegador headless, que reproduce esa navegación de forma repetible y sin intervención manual.</p>
       </details>
       <details class="q">
-        <summary>¿Conviene hacer scraping o usar una API oficial?</summary>
-        <p>Si la fuente ofrece una API oficial estable y con los datos que necesitas, casi siempre es preferible: es más confiable y menos frágil ante cambios. El scraping tiene sentido cuando no existe API, cuando la API no expone toda la información pública disponible, o cuando hay que consolidar muchas fuentes heterogéneas. A menudo lo óptimo es combinar ambos: API donde exista y scraping donde no.</p>
+        <summary>¿Cada cuánto se actualizan estos datos?</summary>
+        <p>La frecuencia de publicación la define la propia DGA y varía según el conjunto de datos (derechos, extracciones del MEE, expedientes y resoluciones se mueven a ritmos distintos). Lo que sí controlamos es la frecuencia de monitoreo: el pipeline puede correr de forma programada con ingesta incremental, capturar solo los cambios nuevos y disparar alertas cuando detecta una variación relevante.</p>
       </details>
       <details class="q">
-        <summary>¿Cómo se evita que bloqueen el scraper?</summary>
-        <p>Sobre todo comportándose de forma responsable: aplicar control de tasa (rate limiting) para no saturar el sitio, respetar robots.txt y los términos de uso, e identificar el tráfico de manera transparente. Técnicamente, los sitios estáticos se resuelven con parseo HTTP y los dinámicos con automatización de navegador headless que simula navegación real. La meta no es &#x27;engañar&#x27;, sino extraer de forma sostenible y sin perjudicar la fuente.</p>
+        <summary>¿Se puede automatizar el reporte al MEE-DGA?</summary>
+        <p>Sí. Sobre la base de datos ya estructurada se puede automatizar la generación y el envío de reportes o tickets regulatorios al MEE-DGA que antes se hacían a mano. En el caso de una generadora hidroeléctrica, automatizar la respuesta ante una alerta llevó ese tiempo de horas a aproximadamente 2 minutos, reduciendo el riesgo de incumplir un plazo.</p>
       </details>
       <details class="q">
-        <summary>¿Para qué sirve tener los datos extraídos en un data warehouse?</summary>
-        <p>Una vez que los datos están limpios, deduplicados y centralizados en un data warehouse en la nube (AWS, Azure o Google Cloud), se vuelven consultables con SQL y se pueden conectar a dashboards de BI, alertas, tu ERP/CRM o capas de IA. Incluso es posible sumar copilotos basados en LLM (con asistentes como Claude o ChatGPT) para que un usuario no técnico pregunte sobre los datos en lenguaje natural.</p>
+        <summary>¿Cuánto cuesta un proyecto de extracción y monitoreo de datos de la DGA?</summary>
+        <p>Los proyectos parten desde UF 75 y se cotizan a medida según los conjuntos de datos a extraer, la frecuencia de monitoreo y las automatizaciones de reporte requeridas. Cada desarrollo incluye garantía de 30 días post-entrega. Lo definimos según el alcance que necesites.</p>
       </details>
     </div>
 
@@ -510,15 +515,15 @@
           <div class="rc-body"><span class="rk">IA · MCP</span>
           <h3>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</h3></div>
         </a>
+        <a class="rcard" href="/blog/web-scraping-a-escala-chile/">
+          <div class="rc-art"><img src="/assets/images/blog/scraping.svg" alt="" loading="lazy" width="1200" height="675" /></div>
+          <div class="rc-body"><span class="rk">Web scraping · Datos</span>
+          <h3>Web scraping a escala en Chile: arquitectura, legalidad y costos</h3></div>
+        </a>
         <a class="rcard" href="/blog/automatizacion-poder-judicial-pjud/">
           <div class="rc-art"><img src="/assets/images/blog/legaltech.svg" alt="" loading="lazy" width="1200" height="675" /></div>
           <div class="rc-body"><span class="rk">LegalTech · RPA</span>
           <h3>Automatización del Poder Judicial (PJUD): carga de demandas y exhortos</h3></div>
-        </a>
-        <a class="rcard" href="/blog/cumplir-ley-21719-ia-datos-empresa/">
-          <div class="rc-art"><img src="/assets/images/blog/compliance.svg" alt="" loading="lazy" width="1200" height="675" /></div>
-          <div class="rc-body"><span class="rk">IA · Cumplimiento</span>
-          <h3>Cómo cumplir la Ley 21.719 al conectar IA a los datos de tu empresa</h3></div>
         </a>
       </div>
     </section>
