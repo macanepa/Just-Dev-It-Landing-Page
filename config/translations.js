@@ -187,14 +187,6 @@ const translations = {
         description: "Automatizaciones de Portafolio y Backtesting con Data Real."
       },
 
-      // project8: el título "Data Inmobiliaria" es marca y está hardcodeado en el HTML
-      project8: {
-        title: "Data Inmobiliaria",
-        category: "PropTech",
-        description: "Plataforma gratuita de datos inmobiliarios con 9.5M propiedades indexadas. Datos catastrales SII, ofertas y transacciones CBR.",
-        cta: "Ver Plataforma"
-      },
-
       project9: {
         category: "Energía & Automatización",
         title: "Automatización Sector Energético",
@@ -395,7 +387,7 @@ const translations = {
 
     // Sección Data Inmobiliaria (showcase de producto propio)
     diSection: {
-      eyebrow: "Producto propio · Nuestra carta de presentación",
+      eyebrow: "Producto propio · PropTech",
       title: '<span class="gradient-text">Data Inmobiliaria</span>',
       sub: "Nuestra plataforma propia de datos del mercado inmobiliario chileno: validada, en producción y citada por la prensa. La prueba viva de lo que construimos a medida para tu empresa.",
       statProps: "Propiedades indexadas",
@@ -405,7 +397,8 @@ const translations = {
       aiTitle: "Pregúntale a tus datos con IA, en lenguaje natural",
       aiBody: 'Data Inmobiliaria se conecta a <strong>Claude</strong> o <strong>ChatGPT</strong> y responde sobre cualquier propiedad —tasaciones, precios y comparables— sin planillas ni descargas. Es la misma tecnología de <a href="/servicios/agentes-ia/">agentes de IA a medida</a> que construimos para que tu empresa converse con sus propios datos.',
       ctaVisit: "Visitar Data Inmobiliaria",
-      ctaCase: "Ver el caso técnico"
+      ctaCase: "Ver el caso técnico",
+      pressLabel: "En los medios:"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
@@ -620,14 +613,6 @@ const translations = {
         description: "Portfolio automation and backtesting with real data."
       },
 
-      // project8: el título "Data Inmobiliaria" es marca y está hardcodeado en el HTML
-      project8: {
-        title: "Data Inmobiliaria",
-        category: "PropTech",
-        description: "Free real estate data platform with 9.5M indexed properties. SII cadastral data, listings and CBR transactions.",
-        cta: "View Platform"
-      },
-
       project9: {
         category: "Energy & Automation",
         title: "Energy Sector Automation",
@@ -828,7 +813,7 @@ const translations = {
 
     // Data Inmobiliaria section (own-product showcase)
     diSection: {
-      eyebrow: "Our own product · Our calling card",
+      eyebrow: "Our own product · PropTech",
       title: '<span class="gradient-text">Data Inmobiliaria</span>',
       sub: "Our own real-estate data platform for Chile: validated, in production and cited by the press. Living proof of what we build, tailor-made, for your company.",
       statProps: "Indexed properties",
@@ -838,7 +823,8 @@ const translations = {
       aiTitle: "Ask your data with AI, in natural language",
       aiBody: 'Data Inmobiliaria connects to <strong>Claude</strong> or <strong>ChatGPT</strong> and answers about any property —valuations, prices and comparables— with no spreadsheets or downloads. It is the same custom <a href="/servicios/agentes-ia/">AI agents</a> technology we build so your company can talk to its own data.',
       ctaVisit: "Visit Data Inmobiliaria",
-      ctaCase: "See the technical case"
+      ctaCase: "See the technical case",
+      pressLabel: "In the news:"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)

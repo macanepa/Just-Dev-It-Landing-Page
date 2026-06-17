@@ -1188,12 +1188,16 @@
         /* Logos de clientes: tratamiento monocromo uniforme */
         .client-logo-card img{max-height:38px;opacity:.6;filter:grayscale(1)}
         .client-logo-card:hover img{opacity:1;filter:grayscale(0)}
+        .di-press{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem 1.4rem;max-width:880px;margin:2.6rem auto 0;padding:1.6rem 1rem 0;border-top:1px solid rgba(255,255,255,.07)}
+        .di-press-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:#94A3B8}
+        .di-press a{font-size:.95rem;color:#CBD5E1;font-weight:600;transition:color .2s}
+        .di-press a:hover{color:#26E0C0}
         @media (max-width:760px){.di-split{grid-template-columns:1fr;gap:1.8rem}.di-stats{gap:1.6rem}.di-stat-n{font-size:1.7rem}}
       </style>
       <section class="lp-section lp-section--alt" id="data-inmobiliaria" aria-labelledby="di-title">
         <div class="section-head section-head--center fade-in">
           <div>
-            <p class="jdi-eyebrow" data-i18n="diSection.eyebrow">Producto propio · Nuestra carta de presentación</p>
+            <p class="jdi-eyebrow" data-i18n="diSection.eyebrow">Producto propio · PropTech</p>
             <h2 id="di-title" class="section-title" data-i18n-html="diSection.title"><span class="gradient-text">Data Inmobiliaria</span></h2>
             <p class="section-sub" data-i18n="diSection.sub">Nuestra plataforma propia de datos del mercado inmobiliario chileno: validada, en producción y citada por la prensa. La prueba viva de lo que construimos a medida para tu empresa.</p>
           </div>
@@ -1224,6 +1228,11 @@
             <span class="di-frame__bar"><span class="di-frame__dots"><i></i><i></i><i></i></span><span class="di-frame__url">datainmobiliaria.cl/conector-ia</span></span>
             <img src="assets/images/di/di-conector.webp" alt="Conector de IA de Data Inmobiliaria: consulta con Claude o ChatGPT" width="1440" height="900" loading="lazy" />
           </a>
+        </div>
+        <div class="di-press">
+          <span class="di-press-label" data-i18n="diSection.pressLabel">En los medios:</span>
+          <a href="https://www.t13.cl/noticia/nacional/estudio-revela-comunas-dejaron-ser-buenas-para-invertir-departamentos-29-4-2026" target="_blank" rel="noopener">T13</a>
+          <a href="https://public.izimedia.io/viewNews/E5D3147330EF11F199F60EB07535E017" target="_blank" rel="noopener">La Tercera</a>
         </div>
       </section>
 
@@ -1321,24 +1330,11 @@
           <div class="lp-filters" role="group" aria-label="Filtrar proyectos">
             <button class="lp-filter is-active" data-filter="todos" aria-pressed="true" data-i18n="portfolio.filters.all">Todos</button>
             <button class="lp-filter" data-filter="fintech" aria-pressed="false" data-i18n="portfolio.filters.fintech">Fintech</button>
-            <button class="lp-filter" data-filter="proptech" aria-pressed="false" data-i18n="portfolio.filters.proptech">PropTech</button>
             <button class="lp-filter" data-filter="ia" aria-pressed="false" data-i18n="portfolio.filters.ia">IA</button>
             <button class="lp-filter" data-filter="data" aria-pressed="false" data-i18n="portfolio.filters.data">Data</button>
             <button class="lp-filter" data-filter="legaltech" aria-pressed="false" data-i18n="portfolio.filters.legaltech">LegalTech</button>
           </div>
           <div class="lp-portfolio" role="group" aria-label="Proyectos del portafolio" tabindex="0">
-            <article class="lp-proj slider-card" data-category="proptech">
-              <div class="lp-proj-media">
-                <img src="assets/images/portfolio/cityscape-grid.webp" alt="Vista aérea urbana con malla de datos" class="slider-card-image" width="800" height="500" loading="lazy" />
-                <span class="lp-proj-wash" aria-hidden="true"></span>
-              </div>
-              <div class="lp-proj-body">
-                <span class="jdi-badge" data-i18n="portfolio.project8.category">PropTech</span>
-                <h3 class="slider-card-title" data-i18n="portfolio.project8.title">Data Inmobiliaria</h3>
-                <p class="lp-proj-desc" data-i18n="portfolio.project8.description">Plataforma gratuita de datos inmobiliarios con 9.5M propiedades indexadas. Datos catastrales SII, ofertas y transacciones CBR.</p>
-                <a href="https://datainmobiliaria.cl" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" data-i18n="portfolio.project8.cta">Ver Plataforma</a>
-              </div>
-            </article>
             <article class="lp-proj slider-card" data-category="ia">
               <div class="lp-proj-media">
                 <img src="assets/images/portfolio/developer-screens.webp" alt="Pantallas de desarrollo de software" class="slider-card-image" width="800" height="500" loading="lazy" />
