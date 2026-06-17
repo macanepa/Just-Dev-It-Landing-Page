@@ -1041,6 +1041,66 @@
       /* ===== Menú acotado: un poco más de aire entre 4 ítems en desktop ===== */
       @media (min-width:961px){ .nav-list{ gap:30px; } }
     </style>
+
+    <style id="mobile-ux-v1">
+      /* ===================================================================
+         EXPERIENCIA MÓVIL (≤600px): carruseles, logos que caben y ritmo
+         vertical compacto. El home apilaba ~12 cards en columna (≈17.000px
+         de scroll); aquí las grillas pasan a carrusel horizontal con
+         scroll-snap y peek, como el portafolio.
+         =================================================================== */
+      @media (max-width:600px){
+
+        /* — Ritmo vertical más respirado pero más corto — */
+        .lp-section{ padding-top:48px; padding-bottom:48px; }
+        .section-head{ margin-bottom:26px; }
+        .section-sub{ font-size:.95rem; line-height:1.55; }
+        .section-head .jdi-eyebrow{ font-size:.74rem; }
+
+        /* — Grillas de cards → carrusel horizontal (IA · Datos · Servicios) — */
+        .lp-cards{
+          display:flex; flex-wrap:nowrap; gap:14px;
+          grid-template-columns:none;            /* anula el grid del CSS crítico */
+          overflow-x:auto; overflow-y:visible;
+          -webkit-overflow-scrolling:touch;
+          scroll-snap-type:x mandatory; scroll-padding-inline:18px;
+          margin-inline:-18px; padding:4px 18px 16px;
+          scrollbar-width:none;
+          -webkit-mask-image:linear-gradient(90deg,#000 91%,transparent);
+          mask-image:linear-gradient(90deg,#000 91%,transparent);
+        }
+        .lp-cards::-webkit-scrollbar{ display:none; }
+        .lp-cards > .jdi-card{ flex:0 0 82%; scroll-snap-align:start; margin:0; }
+        .lp-cards:focus-visible{ outline:2px solid var(--jdi-purple-light,#B37BBF); outline-offset:4px; border-radius:14px; }
+        .jdi-card{ padding:1.4rem; }
+        /* en franjas --alt el carrusel debe poder sangrar a los bordes */
+        .lp-section--alt > .lp-cards{ max-width:none; }
+
+        /* — Rutas profundas: chips compactos 2 columnas (título + flecha) — */
+        .routes-cols{ grid-template-columns:1fr; gap:24px; }
+        .routes-col{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .routes-col-head{ grid-column:1 / -1; margin-bottom:2px; }
+        .routes-col .route-card{ padding:14px 14px; gap:.45rem; min-height:96px; justify-content:space-between; }
+        .routes-col .route-card h3{ font-size:1rem; line-height:1.25; }
+        .routes-col .route-card p{ display:none; }            /* desc fuera en móvil (sigue en el DOM) */
+        .routes-col .route-card-cta{ font-size:.82rem; }
+        .routes-feat .route-card{ text-align:left; }
+
+        /* — Logos de clientes: 2×2 que CABEN sin recortes — */
+        .clients-grid{ grid-template-columns:repeat(2,1fr); gap:12px; max-width:none; }
+        .client-logo-card{ min-height:82px; padding:14px 12px; }
+        .client-logo-card img{ max-width:100%; }
+        .client-logo-card:nth-child(1) img{ max-height:38px; max-width:94px; }   /* Pacific Hydro */
+        .client-logo-card:nth-child(2) img{ max-height:22px; max-width:118px; }  /* Contego */
+        .client-logo-card:nth-child(3) img{ max-height:20px; max-width:122px; }  /* Macal */
+        .client-logo-card:nth-child(4) img{ max-height:56px; max-width:56px; }   /* ESE */
+
+        /* — Blog del home: titular destacado proporcionado — */
+        .bloghome-feat h3{ font-size:1.14rem; line-height:1.3; }
+        .bloghome-feat .bh-body{ padding:1.1rem 1.15rem 1.25rem; }
+        .bloghome-feat p{ font-size:.9rem; }
+      }
+    </style>
   </head>
 
         <body>
@@ -1205,7 +1265,7 @@
             <p class="section-sub" data-i18n="aiSection.subtitle">Agentes y asistentes de IA a medida para preguntarle a tu información en lenguaje natural, de forma trazable y segura — sin que tus datos salgan de tu entorno.</p>
           </div>
         </div>
-        <div class="lp-cards">
+        <div class="lp-cards" role="group" aria-label="Capacidades de IA — desliza para ver más en móvil" tabindex="0">
           <article class="jdi-card service-card">
             <div class="jdi-card-icon" aria-hidden="true"><img src="assets/icons/icon-117.svg" alt="" width="28" height="28" loading="lazy" /></div>
             <h3 class="jdi-card-title card-title" data-i18n="aiSection.card1Title">Pregúntale a tus datos</h3>
@@ -1313,7 +1373,7 @@
             <p class="section-sub" data-i18n="dataSection.sub">Extraemos, consolidamos y dejamos consultables grandes volúmenes de datos públicos y de mercado de Chile. Estos son los dominios que ya trabajamos a escala.</p>
           </div>
         </div>
-        <div class="lp-cards">
+        <div class="lp-cards" role="group" aria-label="Datos y fuentes que trabajamos — desliza para ver más en móvil" tabindex="0">
           <article class="jdi-card service-card">
             <div class="jdi-card-icon" aria-hidden="true"><img src="assets/icons/icon-100.svg" alt="" width="28" height="28" loading="lazy" /></div>
             <h3 class="jdi-card-title card-title" data-i18n="dataSection.card1Title">Mercado financiero (CMF)</h3>
@@ -1360,7 +1420,7 @@
           </div>
           <a href="#contacto" class="btn btn-primary" data-i18n="services.cta">Cotizar Proyecto</a>
         </div>
-        <div class="lp-cards">
+        <div class="lp-cards" role="group" aria-label="Servicios — desliza para ver más en móvil" tabindex="0">
           <article class="jdi-card service-card">
             <div class="jdi-card-icon" aria-hidden="true"><img src="assets/icons/icon-86.svg" alt="" width="28" height="28" loading="lazy" /></div>
             <p class="jdi-card-eyebrow" data-i18n="services.service1.category">Desarrollo</p>
