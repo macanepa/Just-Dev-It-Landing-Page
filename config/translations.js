@@ -305,14 +305,14 @@ const translations = {
         title: "Servicios",
         item1: "Desarrollo Web a Medida",
         item2: "Web Scraping a Escala",
-        item3: "Data Engineering Python",
+        item3: "Data Engineering",
         item4: "Dashboards de BI",
         item5: "Cloud AWS Azure GCP"
       },
 
       industries: {
         title: "Industrias",
-        item1: "Fintech",
+        item1: "Finanzas",
         item3: "PropTech",
         item4: "LegalTech"
       },
@@ -742,14 +742,14 @@ const translations = {
         title: "Services",
         item1: "Custom Web Development",
         item2: "Web Scraping at Scale",
-        item3: "Python Data Engineering",
+        item3: "Data Engineering",
         item4: "BI Dashboards",
         item5: "Cloud AWS Azure GCP"
       },
 
       industries: {
         title: "Industries",
-        item1: "Fintech",
+        item1: "Finance",
         item3: "PropTech",
         item4: "LegalTech"
       },
