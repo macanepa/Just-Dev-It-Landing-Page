@@ -2,33 +2,43 @@
 
 > Consultora chilena de desarrollo de software a medida, fundada en 2023 en Santiago de Chile
 > por Joaquín Espíldora (CEO) y Matías Cánepa (CTO). Especializada en automatización RPA,
-> data engineering, inteligencia artificial aplicada, web scraping a escala e integración de
-> sistemas ERP/CRM para empresas de energía renovable, LegalTech, PropTech y finanzas.
+> data engineering, inteligencia artificial aplicada (agentes y copilotos), web scraping a
+> escala e integración de sistemas ERP/CRM, para empresas de energía renovable, LegalTech,
+> minería, finanzas (AGFs y fondos) y PropTech.
 
 Datos verificables:
-- +20 proyectos ejecutados. Propuesta comercial en 24 horas; proyectos desde UF 50 a UF 250
-  (aprox. $2M a $10M CLP); entregas desde 2-4 semanas; garantía de 30 días post-entrega.
+- +20 proyectos de desarrollo a medida ejecutados. Proyectos desde UF 75 según alcance;
+  propuesta con alcance, precio y plazo cerrados; garantía de 30 días post-entrega; la
+  propiedad intelectual del código queda con el cliente.
 - Producto propio: Data Inmobiliaria (https://datainmobiliaria.cl), plataforma gratuita de
-  datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas, citada por prensa
-  nacional (CNN Chile y T13, abril 2026).
-- Clientes públicos: Pacific Hydro Chile (Daily Report automatizado y gestión de datos
-  operativos), Macal (EPC de energías renovables), Contego (validador de documentos),
-  ESE Business School de la Universidad de los Andes (plataforma educativa).
-- Stack principal: Python, Ruby on Rails, Power Automate, PySpark, Databricks, Azure Synapse,
-  Power BI, Metabase, Selenium, Playwright, GPT-4, Claude, LangChain.
+  datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas (datos del SII,
+  Conservadores de Bienes Raíces y portales inmobiliarios). Se consulta en lenguaje natural
+  con Claude o ChatGPT a través de su Conector de IA (servidor MCP). Citada por prensa
+  nacional: CNN Chile, La Tercera y T13 (abril 2026).
+- Experiencia por sector (sin nombrar clientes): multinacional de energía renovable
+  (reportería operativa y consolidación de datos de planta), grupo empresarial multi-sociedad
+  (integración ERP-CRM y consolidación financiera), empresa de validación documental y
+  compliance, estudio jurídico / cobranza judicial (automatización del Poder Judicial) y
+  escuela de negocios.
+- Stack: Python, SQL y JavaScript; nube en AWS, Azure y Google Cloud; IA generativa (LLMs)
+  con servidores MCP, RAG y agentes; automatización de procesos (RPA), web scraping a escala
+  y dashboards de BI.
 
 ## Páginas principales
 
-- [Inicio](https://justdev.it/): servicios, portafolio, clientes y formulario de cotización.
-- [Automatización RPA en Chile](https://justdev.it/servicios/automatizacion-rpa/): qué procesos
-  se automatizan, casos reales con métricas, precios y preguntas frecuentes.
-- [Software para energía renovable](https://justdev.it/industrias/energia-renovable/):
-  automatización de reportería operativa para generadoras; caso Pacific Hydro Chile.
-- [Caso Data Inmobiliaria](https://justdev.it/casos/data-inmobiliaria/): cómo se construyó la
-  plataforma de 9,5M de propiedades (scraping a escala, pipelines de datos).
+- [Inicio](https://justdev.it/): servicios, industrias, producto propio Data Inmobiliaria, prensa y cotización.
+- [Automatización RPA en Chile](https://justdev.it/servicios/automatizacion-rpa/): automatización de procesos, reportería e integración de sistemas.
+- [Ingeniería de datos en Chile](https://justdev.it/servicios/data-engineering/): pipelines, consolidación de fuentes dispersas y consulta de datos con IA.
+- [Inteligencia artificial aplicada](https://justdev.it/servicios/inteligencia-artificial/): IA aplicada a procesos, extracción y clasificación de documentos, detección de anomalías y ML.
+- [Agentes de IA para empresas](https://justdev.it/servicios/agentes-ia/): copilotos y agentes que dejan consultar los datos de la empresa en lenguaje natural, de forma trazable y segura (MCP, RAG, Ley 21.719).
+- [Software para energía renovable](https://justdev.it/industrias/energia-renovable/): reportería operativa automatizada, consolidación de datos y dashboards.
+- [LegalTech en Chile](https://justdev.it/industrias/legaltech/): automatización del Poder Judicial, scraping judicial con resolución de CAPTCHA, validación de documentos por RUT.
+- [Software para minería en Chile](https://justdev.it/industrias/mineria/): automatización de reportería de producción, consolidación multi-faena, mantenimiento predictivo e IA.
+- [Software para finanzas, AGFs y fondos](https://justdev.it/industrias/finanzas/): consolidación financiera multi-sociedad, monitoreo de carteras de riesgo y copilotos financieros.
+- [Caso Data Inmobiliaria](https://justdev.it/casos/data-inmobiliaria/): cómo se construyó la plataforma de 9,5M de propiedades (web scraping a escala, pipelines de datos y consulta con IA).
 
 ## Contacto
 
 - Formulario y agenda de reuniones: https://justdev.it/#contacto
-- Email: joaquin@justdev.it · WhatsApp vía justdev.it/#contacto
+- Email: joaquin@justdev.it · WhatsApp vía https://justdev.it/#contacto
 - LinkedIn: https://www.linkedin.com/company/just-dev-it · GitHub: https://github.com/JustDev-It
