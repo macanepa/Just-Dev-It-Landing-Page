@@ -343,7 +343,9 @@ const translations = {
       links: {
         rpa: "Automatización RPA",
         energia: "Energía Renovable",
-        casoDI: "Caso: Data Inmobiliaria"
+        casoDI: "Caso: Data Inmobiliaria",
+        ia: "Inteligencia Artificial",
+        mineria: "Minería"
       },
 
       bottom: {
@@ -744,7 +746,9 @@ const translations = {
       links: {
         rpa: "RPA Automation",
         energia: "Renewable Energy",
-        casoDI: "Case Study: Data Inmobiliaria"
+        casoDI: "Case Study: Data Inmobiliaria",
+        ia: "Artificial Intelligence",
+        mineria: "Mining"
       },
 
       bottom: {
