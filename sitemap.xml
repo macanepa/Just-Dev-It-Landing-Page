@@ -113,4 +113,32 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://justdev.it/blog/cumplir-ley-21719-ia-datos-empresa/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://justdev.it/blog/pipeline-datos-sii-conservador-bienes-raices/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://justdev.it/blog/rag-documentos-internos-empresa/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

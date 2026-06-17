@@ -51,6 +51,10 @@ Datos verificables:
 - [Automatización para generadoras: Coordinador Eléctrico y DGA](https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/): reportería diaria al Coordinador Eléctrico Nacional y tickets regulatorios a la DGA (MEE).
 - [Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura](https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/): MCP vs RAG vs fine-tuning, seguridad y Ley 21.719.
 - [Automatización del Poder Judicial (PJUD): carga de demandas y exhortos](https://justdev.it/blog/automatizacion-poder-judicial-pjud/): carga masiva de demandas en la Oficina Judicial Virtual, exhortos y validación por RUT con resolución de CAPTCHA.
+- [Extraer datos de la DGA: derechos de aprovechamiento de aguas](https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/): web scraping y monitoreo a escala de derechos de agua, MEE y resoluciones para minería, energía, fondos y estudios legales.
+- [Cómo cumplir la Ley 21.719 al conectar IA a tus datos](https://justdev.it/blog/cumplir-ley-21719-ia-datos-empresa/): postura técnica (solo lectura, datos en tu entorno, trazabilidad, minimización) para usar IA conforme a la ley; orientación general, no asesoría legal.
+- [Pipeline de datos a medida: SII, Conservador de Bienes Raíces y portales](https://justdev.it/blog/pipeline-datos-sii-conservador-bienes-raices/): cruzar catastro del SII, inscripciones del CBR y portales en un data warehouse consultable (la arquitectura detrás de Data Inmobiliaria).
+- [RAG sobre tus documentos internos: respuestas con cita a la fuente](https://justdev.it/blog/rag-documentos-internos-empresa/): asistentes que responden sobre el corpus interno citando el documento de origen; RAG vs fine-tuning vs MCP.
 
 ## Contacto
 
