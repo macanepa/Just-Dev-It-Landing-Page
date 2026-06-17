@@ -30,8 +30,8 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <title>Extraer datos de la DGA: derechos de agua | Just Dev It</title>
-    <meta name="description" content="Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75." />
+    <title>Derechos de aprovechamiento de aguas | Just Dev It</title>
+    <meta name="description" content="Monitorea derechos de aprovechamiento de aguas a partir del Diario Oficial: solicitudes, restricciones y patentes, en una base consultable. Cotiza desde UF 75." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/" />
     <meta name="geo.region" content="CL-RM" />
@@ -41,8 +41,8 @@
 
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/" />
-    <meta property="og:title" content="Extraer datos de la DGA: derechos de agua | Just Dev It" />
-    <meta property="og:description" content="Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75." />
+    <meta property="og:title" content="Derechos de aprovechamiento de aguas | Just Dev It" />
+    <meta property="og:description" content="Monitorea derechos de aprovechamiento de aguas a partir del Diario Oficial: solicitudes, restricciones y patentes, en una base consultable. Cotiza desde UF 75." />
     <meta property="og:image" content="https://justdev.it/assets/images/Desktop/og-image.webp" />
     <meta property="og:site_name" content="Just Dev It" />
     <meta property="og:locale" content="es_CL" />
@@ -85,15 +85,15 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Cómo extraer y monitorear datos de la DGA (derechos de aprovechamiento de aguas)",
+          "name": "Datos de derechos de aprovechamiento de aguas a partir del Diario Oficial",
           "item": "https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/"
         }
       ]
     },
     {
       "@type": "BlogPosting",
-      "headline": "Cómo extraer y monitorear datos de la DGA (derechos de aprovechamiento de aguas)",
-      "description": "Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75.",
+      "headline": "Datos de derechos de aprovechamiento de aguas a partir del Diario Oficial",
+      "description": "Monitorea derechos de aprovechamiento de aguas a partir del Diario Oficial: solicitudes, restricciones y patentes, en una base consultable. Cotiza desde UF 75.",
       "datePublished": "2026-06-17",
       "dateModified": "2026-06-17",
       "inLanguage": "es-CL",
@@ -112,58 +112,58 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Qué datos publica la DGA y se pueden extraer automáticamente?",
+          "name": "¿De dónde se obtienen los datos de derechos de aprovechamiento de aguas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La DGA publica derechos de aprovechamiento de aguas (titularidad, caudal, tipo, ubicación, estado), extracciones efectivas del sistema MEE, y expedientes y resoluciones administrativas. Todos son datos públicos y se pueden extraer automáticamente, aunque los portales no tienen API: se capturan con web scraping y automatización de navegador headless que navega los formularios dinámicos, y luego se estructuran en un data warehouse consultable."
+            "text": "Del Diario Oficial, la fuente oficial y pública del Estado de Chile, donde la autoridad de aguas (DGA/MOP) publica sus actos: solicitudes de derechos, regularizaciones judiciales, áreas de restricción y agotamiento, patentes por no uso y juntas de vigilancia. Procesamos esas publicaciones y las estructuramos en una base consultable; no consultamos sistemas internos de la DGA."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Es legal extraer datos de la DGA?",
+          "name": "¿Es legal usar estos datos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Como orientación general (no asesoría legal): los datos de la DGA son públicos, por lo que extraerlos y analizarlos es en general legítimo. Hay que respetar los términos de uso de los portales, mantener un acceso razonable y cuidar el tratamiento de datos personales conforme a la Ley 21.719 cuando los registros incluyan personas naturales identificables. Cada empresa debe validar su caso concreto con su área jurídica."
+            "text": "Como orientación general (no asesoría legal): el Diario Oficial es una fuente oficial y pública, así que procesar sus publicaciones y analizarlas es en general legítimo. Hay que mantener un acceso razonable y cuidar el tratamiento de datos personales conforme a la Ley 21.719, porque los avisos incluyen nombres y RUT de titulares. Cada empresa debe validar su caso con su área jurídica."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Para qué sirve monitorear derechos de aprovechamiento de aguas en minería o energía?",
+          "name": "¿Qué campos quedan disponibles por cada derecho?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sirve para due diligence y valorización de activos donde el derecho de agua pesa en el precio, para vigilancia regulatoria y para cumplimiento. En energía, una generadora hidroeléctrica usa el monitoreo para responder a alertas ante el MEE-DGA en minutos en lugar de horas. En minería permite seguir derechos propios y de terceros en zonas de alta competencia por el recurso."
+            "text": "Según el aviso: titular y RUT, caudal en litros por segundo, volumen anual, naturaleza (superficial o subterránea), carácter (consuntivo o no consuntivo), tipo de acto (solicitud, regularización, traslado), coordenadas UTM del punto de captación, cuenca o acuífero, y comuna y región. Todo normalizado para poder filtrar y cruzar a escala."
           }
         },
         {
           "@type": "Question",
-          "name": "¿El portal de la DGA tiene API?",
+          "name": "¿Para qué sirve monitorear derechos de agua en minería o energía?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Los portales de la DGA no exponen una API abierta y dependen de formularios dinámicos que hay que navegar y paginar para obtener cada registro. Por eso la extracción automática se hace con web scraping más automatización de navegador headless, que reproduce esa navegación de forma repetible y sin intervención manual."
+            "text": "Para due diligence y valorización de activos donde el derecho de agua pesa en el precio, para vigilancia regulatoria y cumplimiento. En minería permite seguir derechos propios y de terceros en zonas de alta competencia; en energía, vigilar solicitudes y restricciones en las cuencas donde opera una central."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cada cuánto se actualizan estos datos?",
+          "name": "¿Cada cuánto se actualizan los datos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La frecuencia de publicación la define la propia DGA y varía según el conjunto de datos (derechos, extracciones del MEE, expedientes y resoluciones se mueven a ritmos distintos). Lo que sí controlamos es la frecuencia de monitoreo: el pipeline puede correr de forma programada con ingesta incremental, capturar solo los cambios nuevos y disparar alertas cuando detecta una variación relevante."
+            "text": "El Diario Oficial se publica a diario. El pipeline puede correr de forma programada con ingesta incremental: captura solo las publicaciones nuevas, las estructura y dispara alertas cuando detecta un cambio relevante para tus cuencas o titulares de interés."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Se puede automatizar el reporte al MEE-DGA?",
+          "name": "¿También se puede automatizar el reporte al MEE de la DGA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Sobre la base de datos ya estructurada se puede automatizar la generación y el envío de reportes o tickets regulatorios al MEE-DGA que antes se hacían a mano. En el caso de una generadora hidroeléctrica, automatizar la respuesta ante una alerta llevó ese tiempo de horas a aproximadamente 2 minutos, reduciendo el riesgo de incumplir un plazo."
+            "text": "Sí, pero es un proceso distinto: el MEE es la obligación del titular de transmitir sus extracciones a la DGA, y se automatiza del lado de quien debe reportar (lo vemos en nuestro artículo de automatización para generadoras). Es independiente de la extracción de avisos de aguas desde el Diario Oficial que describe esta guía."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto cuesta un proyecto de extracción y monitoreo de datos de la DGA?",
+          "name": "¿Cuánto cuesta un proyecto de datos de aguas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Los proyectos parten desde UF 75 y se cotizan a medida según los conjuntos de datos a extraer, la frecuencia de monitoreo y las automatizaciones de reporte requeridas. Cada desarrollo incluye garantía de 30 días post-entrega. Lo definimos según el alcance que necesites."
+            "text": "Los proyectos parten desde UF 75 y se cotizan a medida según las fuentes, la frecuencia de monitoreo y las automatizaciones requeridas. Cada desarrollo incluye garantía de 30 días post-entrega. Lo definimos según el alcance que necesites."
           }
         }
       ]
@@ -400,8 +400,8 @@
     <header class="article-hero">
       <p class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></p>
       <span class="blog-kicker">Datos · Minería y energía</span>
-      <h1>Cómo extraer y monitorear datos de la DGA (derechos de aprovechamiento de aguas)</h1>
-      <p class="dek">Cómo extraer y monitorear datos de la DGA a escala: derechos de aprovechamiento, MEE y resoluciones, en un data warehouse consultable. Cotiza desde UF 75.</p>
+      <h1>Datos de derechos de aprovechamiento de aguas a partir del Diario Oficial</h1>
+      <p class="dek">Monitorea derechos de aprovechamiento de aguas a partir del Diario Oficial: solicitudes, restricciones y patentes, en una base consultable. Cotiza desde UF 75.</p>
       <div class="article-meta">
         <span>2026-06-17</span><span class="dot"></span>
         <span>6 min de lectura</span><span class="dot"></span>
@@ -415,47 +415,47 @@
       <aside class="toc-rail" aria-label="Secciones del artículo">
         <span class="toc-label">En este artículo</span>
         <ol>
-          <li><a href="#sec-1"><i></i><span>Qué datos publica la DGA y por qué importan</span></a></li>
-          <li><a href="#sec-2"><i></i><span>El problema: portales sin API y formularios dinámicos</span></a></li>
-          <li><a href="#sec-3"><i></i><span>La solución: extracción a escala y un data warehouse consultable</span></a></li>
-          <li><a href="#sec-4"><i></i><span>Cómo funciona el monitoreo y la automatización de reportes</span></a></li>
+          <li><a href="#sec-1"><i></i><span>Qué información de aguas se publica en el Diario Oficial</span></a></li>
+          <li><a href="#sec-2"><i></i><span>El problema: miles de avisos sin estructura</span></a></li>
+          <li><a href="#sec-3"><i></i><span>La solución: del Diario Oficial a una base consultable</span></a></li>
+          <li><a href="#sec-4"><i></i><span>Monitoreo, alertas y automatización de reportes</span></a></li>
           <li><a href="#sec-5"><i></i><span>Casos de uso por sector</span></a></li>
           <li><a href="#sec-6"><i></i><span>Consideraciones legales (orientación general)</span></a></li>
-          <li><a href="#sec-7"><i></i><span>Conversemos tu proyecto de datos de la DGA</span></a></li>
+          <li><a href="#sec-7"><i></i><span>Conversemos tu proyecto de datos de aguas</span></a></li>
         </ol>
       </aside>
       <article class="post-body">
         <section class="reveal lead-sec">
-          <p>La Dirección General de Aguas (DGA) publica información que decide negocios: <strong>derechos de aprovechamiento de aguas</strong>, extracciones efectivas del sistema de Monitoreo de Extracciones Efectivas (MEE), expedientes y resoluciones. El problema es que esos datos viven en portales sin API, detrás de formularios dinámicos, y revisarlos a mano no escala: cuando un equipo legal o técnico necesita cruzar cientos de derechos para una due diligence o reaccionar a una alerta regulatoria, el trabajo manual se vuelve lento, caro y propenso a error.</p><p>En esta guía explicamos qué publica la DGA, qué se puede extraer de forma automática, cómo se monitorea sin intervención humana y qué considerar en materia legal. Es contenido técnico-comercial; donde tocamos normativa, es <strong>orientación general y no asesoría legal</strong>.</p>
+          <p>Los <strong>derechos de aprovechamiento de aguas</strong> deciden negocios: pesan en la valorización de un activo minero, energético o agrícola, y un cambio de estado puede gatillar una decisión. Buena parte de esa información se publica en el <strong>Diario Oficial</strong>: solicitudes de nuevos derechos, regularizaciones judiciales, áreas de restricción y declaraciones de agotamiento, patentes por no uso y constitución de juntas de vigilancia. El problema es que está dispersa en miles de avisos y revisarla a mano no escala.</p><p>En esta guía explicamos qué información de aguas se publica en el Diario Oficial, cómo se extrae y estructura de forma automática, cómo se monitorea sin intervención humana y qué considerar en materia legal. Es contenido técnico-comercial; donde tocamos normativa, es <strong>orientación general y no asesoría legal</strong>.</p>
         </section>
         <section id="sec-1" class="reveal">
-          <h2>Qué datos publica la DGA y por qué importan</h2>
-          <p>La DGA es el organismo público que administra el recurso hídrico en Chile y publica varios conjuntos de datos abiertos relevantes para el sector privado:</p><ul><li><strong>Derechos de aprovechamiento de aguas:</strong> titularidad, caudal, tipo (consuntivo/no consuntivo, superficial/subterráneo), ubicación y estado del derecho.</li><li><strong>Extracciones efectivas (sistema MEE):</strong> mediciones de cuánta agua se extrae realmente respecto del derecho otorgado.</li><li><strong>Expedientes y resoluciones:</strong> el historial administrativo de solicitudes, traslados, perfeccionamientos y actos de la autoridad.</li></ul><p>Quien necesita esta información rara vez es un curioso: son <strong>empresas de minería, energía, agro, fondos de inversión y estudios legales</strong> que la usan para due diligence sobre activos hídricos, valorización, monitoreo regulatorio y cumplimiento. Un derecho de agua puede ser parte central del valor de un proyecto, y un cambio de estado o una nueva resolución puede gatillar una decisión.</p>
+          <h2>Qué información de aguas se publica en el Diario Oficial</h2>
+          <p>La autoridad de aguas (DGA/MOP) publica sus actos en el <strong>Diario Oficial</strong>, la fuente oficial y pública del Estado de Chile. Entre los avisos relevantes para el sector privado están:</p><ul><li><strong>Solicitudes de derechos de aprovechamiento:</strong> nuevos derechos, regularizaciones, traslados y cambios de punto de captación, con caudal (l/s), volumen anual, naturaleza (superficial/subterránea), carácter (consuntivo/no consuntivo) y ubicación.</li><li><strong>Regularizaciones y constituciones judiciales</strong> de derechos ante los Juzgados de Letras.</li><li><strong>Normas generales sobre fuentes:</strong> áreas de restricción, declaraciones de agotamiento, zonas de prohibición y reservas de agua.</li><li><strong>Patentes por no uso</strong> y la constitución de <strong>juntas de vigilancia y cooperativas</strong> de agua.</li></ul><p>Quien necesita seguir esto rara vez es un curioso: son <strong>empresas de minería, energía, agro, fondos de inversión y estudios legales</strong> que lo usan para due diligence sobre activos hídricos, valorización, monitoreo regulatorio y cumplimiento.</p>
         </section>
         <section id="sec-2" class="reveal">
-          <h2>El problema: portales sin API y formularios dinámicos</h2>
-          <p>Los datos son públicos, pero no son fáciles de consumir de forma programática. Los portales de la DGA <strong>no exponen una API</strong> abierta y dependen de formularios dinámicos: hay que navegar pantallas, completar campos y paginar resultados para obtener cada registro. Eso significa que:</p><ul><li>Revisar manualmente cientos o miles de derechos es inviable cuando hay que repetirlo de forma periódica.</li><li>No existe un punto único donde consultar el dato cruzado con los registros internos de la empresa.</li><li>Detectar un cambio (una nueva resolución, una variación en una extracción) depende de que alguien entre a mirar a tiempo.</li></ul><p>En la práctica, el cuello de botella no es la disponibilidad del dato, sino la <strong>capacidad de capturarlo, estructurarlo y vigilarlo a escala</strong> sin depender de personas revisando portales.</p>
+          <h2>El problema: miles de avisos sin estructura</h2>
+          <p>El Diario Oficial es una fuente oficial y abierta, pero está pensada para leerse aviso por aviso, no para consultarse como una base de datos. Cada día se publican cientos de avisos y los de aguas vienen como texto: hay que identificarlos, interpretarlos y normalizar caudales, coordenadas, titulares y comunas para poder cruzarlos. Eso significa que:</p><ul><li>Revisar manualmente miles de avisos para encontrar los pocos que importan es inviable de forma periódica.</li><li>No existe un punto único donde consultar el dato ya estructurado y cruzado con los registros internos de la empresa.</li><li>Detectar un cambio relevante —una nueva solicitud sobre una cuenca de interés, un área de restricción— depende de que alguien lo lea a tiempo.</li></ul><p>El cuello de botella no es el acceso al dato, sino la <strong>capacidad de capturarlo, estructurarlo y vigilarlo a escala</strong>.</p>
         </section>
-        <blockquote class="pullquote reveal"><span>La DGA publica datos públicos clave —derechos de aprovechamiento, extracciones efectivas (MEE), expedientes y resoluciones— pero sin API y tras formularios dinámicos, por lo que revisarlos a mano no escala.</span></blockquote>
+        <blockquote class="pullquote reveal"><span>Buena parte de la información de derechos de aprovechamiento de aguas se publica en el Diario Oficial (solicitudes, regularizaciones, áreas de restricción, patentes), una fuente oficial y pública.</span></blockquote>
         <section id="sec-3" class="reveal">
-          <h2>La solución: extracción a escala y un data warehouse consultable</h2>
-          <p>En Just Dev It resolvemos esto combinando <strong>web scraping con automatización de navegador headless</strong> para los portales que no tienen API. Un navegador automatizado reproduce la navegación que haría una persona —completa formularios, pagina y descarga— pero sin intervención manual y de forma repetible.</p><p>Los datos extraídos se depositan en un <strong>data warehouse en la nube</strong> (AWS, Azure o Google Cloud, con Python y SQL) que queda consultable. El pipeline trabaja con:</p><ul><li><strong>Ingesta incremental:</strong> en cada corrida se capturan solo los cambios y registros nuevos, no toda la base de cero.</li><li><strong>Deduplicación:</strong> el mismo derecho o expediente no se duplica entre ejecuciones, manteniendo la base limpia.</li><li><strong>Datos consultables:</strong> el resultado se cruza con tus propios sistemas (ERP/CRM, planillas, dashboards de BI) para que el dato sea accionable, no solo un archivo.</li></ul><p>Es el mismo enfoque de extracción pública a escala detrás de nuestro producto propio Data Inmobiliaria, con 9,5 millones de propiedades indexadas: capturar fuentes dispersas y dejarlas como una base única y confiable.</p>
+          <h2>La solución: del Diario Oficial a una base consultable</h2>
+          <p>En Just Dev It convertimos los avisos de aguas del Diario Oficial en una <strong>base estructurada y consultable</strong>. Procesamos las publicaciones oficiales, identificamos los actos sobre aguas y normalizamos los campos que importan —caudal en l/s, volumen anual, coordenadas UTM, naturaleza y carácter del derecho, titular, comuna y región— para dejarlos en un <strong>data warehouse en la nube</strong> (AWS, Azure o Google Cloud, con Python y SQL). El pipeline trabaja con:</p><ul><li><strong>Ingesta incremental:</strong> en cada corrida se capturan solo las publicaciones nuevas, no toda la historia.</li><li><strong>Deduplicación:</strong> el mismo aviso o derecho no se duplica entre ejecuciones.</li><li><strong>Datos consultables:</strong> el resultado se cruza con tus sistemas (ERP/CRM, planillas, dashboards de BI) para que el dato sea accionable.</li></ul><p>Es el mismo músculo de convertir <strong>fuentes públicas dispersas en una base única</strong> que sostiene nuestro producto propio Data Inmobiliaria, con 9,5 millones de propiedades indexadas.</p>
         </section>
         <section id="sec-4" class="reveal">
-          <h2>Cómo funciona el monitoreo y la automatización de reportes</h2>
-          <p>Una vez que el dato está estructurado, el siguiente paso es <strong>vigilarlo</strong>. El sistema corre de forma programada, compara el estado actual con el anterior y dispara alertas cuando algo cambia: una nueva resolución sobre un derecho de interés, una variación en las extracciones efectivas o un movimiento en un expediente.</p><p>Sobre esa base también se puede automatizar el flujo regulatorio hacia el <strong>MEE-DGA</strong>: la generación y el envío de reportes o tickets que antes se armaban a mano. En el caso de una generadora hidroeléctrica, automatizar la respuesta ante una alerta llevó ese tiempo de <strong>horas a aproximadamente 2 minutos</strong>, eliminando el riesgo de pasar por alto un plazo regulatorio.</p><p>Cuando aporta valor, sumamos una capa de IA aplicada —LLM, agentes o copilotos— para clasificar resoluciones, resumir expedientes largos o permitir consultas en lenguaje natural sobre la base. La automatización del flujo y la inteligencia sobre el contenido se complementan.</p>
+          <h2>Monitoreo, alertas y automatización de reportes</h2>
+          <p>Una vez estructurado el dato, el siguiente paso es <strong>vigilarlo</strong>. El sistema corre de forma programada, compara el estado actual con el anterior y dispara <strong>alertas</strong> cuando algo cambia: una nueva solicitud sobre una cuenca de interés, un área de restricción declarada o una patente que afecta a un derecho propio o de un tercero.</p><p>Cuando aporta valor, sumamos una capa de <strong>IA aplicada</strong> —LLM, agentes o copilotos— para clasificar avisos, resumir resoluciones largas o permitir consultas en lenguaje natural sobre la base. Y si la operación lo requiere, el reporte regulatorio del lado del titular —por ejemplo el del MEE de la DGA en una generadora hidroeléctrica— se automatiza como un proceso aparte, que tratamos en detalle en nuestro artículo sobre <a href="/blog/automatizacion-generadoras-coordinador-electrico-dga/">automatización para generadoras</a>.</p>
         </section>
         <section id="sec-5" class="reveal">
           <h2>Casos de uso por sector</h2>
-          <p>El mismo motor de extracción y monitoreo sirve a perfiles distintos:</p><ul><li><strong>Energía (una generadora hidroeléctrica):</strong> monitoreo de extracciones y cumplimiento ante el MEE-DGA, con respuesta a alertas en minutos en lugar de horas.</li><li><strong>Minería:</strong> seguimiento de derechos de agua propios y de terceros, clave en zonas de alta competencia por el recurso.</li><li><strong>Fondos de inversión y AGF:</strong> valorización y due diligence de activos donde el derecho de agua pesa en el precio.</li><li><strong>Estudios legales:</strong> vigilancia de expedientes y resoluciones para asesorar a clientes con datos al día, sin revisar portales a mano.</li><li><strong>Agro y grupos multi-sociedad:</strong> consolidación de derechos repartidos entre varias razones sociales en una sola vista.</li></ul>
+          <p>El mismo motor de extracción y monitoreo sirve a perfiles distintos:</p><ul><li><strong>Minería:</strong> seguimiento de derechos de agua propios y de terceros, clave en zonas de alta competencia por el recurso.</li><li><strong>Energía:</strong> vigilancia de solicitudes y restricciones en cuencas donde opera una central, y soporte al cumplimiento hídrico.</li><li><strong>Fondos de inversión y AGF:</strong> valorización y due diligence de activos donde el derecho de agua pesa en el precio.</li><li><strong>Estudios legales:</strong> vigilancia de solicitudes y resoluciones para asesorar con datos al día, sin revisar el Diario Oficial a mano.</li><li><strong>Agro y grupos multi-sociedad:</strong> consolidación de derechos repartidos entre varias razones sociales en una sola vista.</li></ul>
         </section>
         <section id="sec-6" class="reveal">
           <h2>Consideraciones legales (orientación general)</h2>
-          <p>Los datos de la DGA son <strong>información pública</strong>, por lo que extraerlos y analizarlos es, en general, legítimo. Dicho esto, lo siguiente es <strong>orientación general y no constituye asesoría legal</strong>; cada empresa debe validar su caso con su área jurídica:</p><ul><li>Respetar los <strong>términos de uso</strong> de los portales y un acceso razonable que no afecte el servicio.</li><li>Cuidar el tratamiento de <strong>datos personales</strong> conforme a la Ley 21.719 cuando los registros incluyan personas naturales identificables.</li><li>Documentar el origen público de los datos y su finalidad.</li></ul><p>El objetivo es construir un proceso sostenible y trazable, no un atajo: extracción de fuentes públicas, ordenada y conforme a la normativa aplicable.</p>
+          <p>El Diario Oficial es una <strong>fuente oficial y pública</strong> del Estado de Chile, por lo que procesar sus publicaciones y analizarlas es, en general, legítimo. Dicho esto, lo siguiente es <strong>orientación general y no constituye asesoría legal</strong>; cada empresa debe validar su caso con su área jurídica:</p><ul><li>Mantener un acceso razonable a la fuente y respetar sus condiciones de uso.</li><li>Cuidar el tratamiento de <strong>datos personales</strong> conforme a la <strong>Ley 21.719</strong>, ya que los avisos incluyen nombres y RUT de titulares (personas naturales identificables).</li><li>Documentar el origen público de los datos y su finalidad.</li></ul><p>El objetivo es un proceso sostenible y trazable: extracción de una fuente pública oficial, ordenada y conforme a la normativa aplicable.</p>
         </section>
         <section id="sec-7" class="reveal">
-          <h2>Conversemos tu proyecto de datos de la DGA</h2>
-          <p>Si tu equipo de minería, energía, agro, finanzas o legal necesita extraer y monitorear datos de la DGA sin depender de revisión manual, lo construimos a medida: extracción a escala, data warehouse consultable, alertas y automatización de reportes al MEE-DGA. Los proyectos parten <strong>desde UF 75</strong> y cada desarrollo incluye <strong>garantía de 30 días post-entrega</strong>.</p><p>Cuéntanos qué datos necesitas vigilar y con qué frecuencia, y te proponemos el alcance. Conversemos tu proyecto.</p>
+          <h2>Conversemos tu proyecto de datos de aguas</h2>
+          <p>Si tu equipo de minería, energía, agro, finanzas o legal necesita seguir los <strong>derechos de aprovechamiento de aguas</strong> sin depender de revisión manual del Diario Oficial, lo construimos a medida: extracción a escala, base consultable, alertas y, cuando aplica, automatización de reportes regulatorios. Los proyectos parten <strong>desde UF 75</strong> y cada desarrollo incluye <strong>garantía de 30 días post-entrega</strong>.</p><p>Cuéntanos qué cuencas, regiones o titulares necesitas vigilar y con qué frecuencia, y te proponemos el alcance. Conversemos tu proyecto.</p>
         </section>
       </article>
       <div class="rail-right"><div class="spine" aria-hidden="true"><div class="fill"></div></div></div>
@@ -465,11 +465,11 @@
       <div class="box">
         <span class="blog-kicker">En resumen</span>
         <ul>
-            <li>La DGA publica datos públicos clave —derechos de aprovechamiento, extracciones efectivas (MEE), expedientes y resoluciones— pero sin API y tras formularios dinámicos, por lo que revisarlos a mano no escala.</li>
-            <li>Se extraen a escala con web scraping y automatización de navegador headless, y se dejan en un data warehouse en la nube (AWS/Azure/Google Cloud, Python/SQL) con ingesta incremental y deduplicación.</li>
-            <li>El monitoreo programado dispara alertas ante cambios y permite automatizar el reporte al MEE-DGA: para una generadora hidroeléctrica, la respuesta ante una alerta pasó de horas a ~2 minutos.</li>
+            <li>Buena parte de la información de derechos de aprovechamiento de aguas se publica en el Diario Oficial (solicitudes, regularizaciones, áreas de restricción, patentes), una fuente oficial y pública.</li>
+            <li>Esos avisos vienen como texto disperso: se extraen y se normalizan (caudal, volumen, coordenadas, titular, comuna) en un data warehouse consultable, con ingesta incremental y deduplicación.</li>
+            <li>El monitoreo programado dispara alertas ante cambios relevantes (nuevas solicitudes, restricciones) sobre las cuencas o titulares de interés.</li>
             <li>Sirve a minería, energía, agro, fondos/AGF y estudios legales para due diligence, valorización, monitoreo regulatorio y cumplimiento.</li>
-            <li>Son datos públicos: extraerlos es en general legítimo respetando términos de uso y la Ley 21.719 (orientación general, no asesoría legal). Proyectos desde UF 75 con garantía de 30 días post-entrega.</li>
+            <li>El Diario Oficial es público, pero los avisos incluyen datos personales (titulares, RUT): hay que cuidar la Ley 21.719. Orientación general, no asesoría legal. Proyectos desde UF 75 con 30 días de garantía.</li>
         </ul>
       </div>
     </div>
@@ -478,32 +478,32 @@
       <span class="blog-kicker">FAQ</span>
       <h2>Preguntas frecuentes</h2>
       <details class="q">
-        <summary>¿Qué datos publica la DGA y se pueden extraer automáticamente?</summary>
-        <p>La DGA publica derechos de aprovechamiento de aguas (titularidad, caudal, tipo, ubicación, estado), extracciones efectivas del sistema MEE, y expedientes y resoluciones administrativas. Todos son datos públicos y se pueden extraer automáticamente, aunque los portales no tienen API: se capturan con web scraping y automatización de navegador headless que navega los formularios dinámicos, y luego se estructuran en un data warehouse consultable.</p>
+        <summary>¿De dónde se obtienen los datos de derechos de aprovechamiento de aguas?</summary>
+        <p>Del Diario Oficial, la fuente oficial y pública del Estado de Chile, donde la autoridad de aguas (DGA/MOP) publica sus actos: solicitudes de derechos, regularizaciones judiciales, áreas de restricción y agotamiento, patentes por no uso y juntas de vigilancia. Procesamos esas publicaciones y las estructuramos en una base consultable; no consultamos sistemas internos de la DGA.</p>
       </details>
       <details class="q">
-        <summary>¿Es legal extraer datos de la DGA?</summary>
-        <p>Como orientación general (no asesoría legal): los datos de la DGA son públicos, por lo que extraerlos y analizarlos es en general legítimo. Hay que respetar los términos de uso de los portales, mantener un acceso razonable y cuidar el tratamiento de datos personales conforme a la Ley 21.719 cuando los registros incluyan personas naturales identificables. Cada empresa debe validar su caso concreto con su área jurídica.</p>
+        <summary>¿Es legal usar estos datos?</summary>
+        <p>Como orientación general (no asesoría legal): el Diario Oficial es una fuente oficial y pública, así que procesar sus publicaciones y analizarlas es en general legítimo. Hay que mantener un acceso razonable y cuidar el tratamiento de datos personales conforme a la Ley 21.719, porque los avisos incluyen nombres y RUT de titulares. Cada empresa debe validar su caso con su área jurídica.</p>
       </details>
       <details class="q">
-        <summary>¿Para qué sirve monitorear derechos de aprovechamiento de aguas en minería o energía?</summary>
-        <p>Sirve para due diligence y valorización de activos donde el derecho de agua pesa en el precio, para vigilancia regulatoria y para cumplimiento. En energía, una generadora hidroeléctrica usa el monitoreo para responder a alertas ante el MEE-DGA en minutos en lugar de horas. En minería permite seguir derechos propios y de terceros en zonas de alta competencia por el recurso.</p>
+        <summary>¿Qué campos quedan disponibles por cada derecho?</summary>
+        <p>Según el aviso: titular y RUT, caudal en litros por segundo, volumen anual, naturaleza (superficial o subterránea), carácter (consuntivo o no consuntivo), tipo de acto (solicitud, regularización, traslado), coordenadas UTM del punto de captación, cuenca o acuífero, y comuna y región. Todo normalizado para poder filtrar y cruzar a escala.</p>
       </details>
       <details class="q">
-        <summary>¿El portal de la DGA tiene API?</summary>
-        <p>No. Los portales de la DGA no exponen una API abierta y dependen de formularios dinámicos que hay que navegar y paginar para obtener cada registro. Por eso la extracción automática se hace con web scraping más automatización de navegador headless, que reproduce esa navegación de forma repetible y sin intervención manual.</p>
+        <summary>¿Para qué sirve monitorear derechos de agua en minería o energía?</summary>
+        <p>Para due diligence y valorización de activos donde el derecho de agua pesa en el precio, para vigilancia regulatoria y cumplimiento. En minería permite seguir derechos propios y de terceros en zonas de alta competencia; en energía, vigilar solicitudes y restricciones en las cuencas donde opera una central.</p>
       </details>
       <details class="q">
-        <summary>¿Cada cuánto se actualizan estos datos?</summary>
-        <p>La frecuencia de publicación la define la propia DGA y varía según el conjunto de datos (derechos, extracciones del MEE, expedientes y resoluciones se mueven a ritmos distintos). Lo que sí controlamos es la frecuencia de monitoreo: el pipeline puede correr de forma programada con ingesta incremental, capturar solo los cambios nuevos y disparar alertas cuando detecta una variación relevante.</p>
+        <summary>¿Cada cuánto se actualizan los datos?</summary>
+        <p>El Diario Oficial se publica a diario. El pipeline puede correr de forma programada con ingesta incremental: captura solo las publicaciones nuevas, las estructura y dispara alertas cuando detecta un cambio relevante para tus cuencas o titulares de interés.</p>
       </details>
       <details class="q">
-        <summary>¿Se puede automatizar el reporte al MEE-DGA?</summary>
-        <p>Sí. Sobre la base de datos ya estructurada se puede automatizar la generación y el envío de reportes o tickets regulatorios al MEE-DGA que antes se hacían a mano. En el caso de una generadora hidroeléctrica, automatizar la respuesta ante una alerta llevó ese tiempo de horas a aproximadamente 2 minutos, reduciendo el riesgo de incumplir un plazo.</p>
+        <summary>¿También se puede automatizar el reporte al MEE de la DGA?</summary>
+        <p>Sí, pero es un proceso distinto: el MEE es la obligación del titular de transmitir sus extracciones a la DGA, y se automatiza del lado de quien debe reportar (lo vemos en nuestro artículo de automatización para generadoras). Es independiente de la extracción de avisos de aguas desde el Diario Oficial que describe esta guía.</p>
       </details>
       <details class="q">
-        <summary>¿Cuánto cuesta un proyecto de extracción y monitoreo de datos de la DGA?</summary>
-        <p>Los proyectos parten desde UF 75 y se cotizan a medida según los conjuntos de datos a extraer, la frecuencia de monitoreo y las automatizaciones de reporte requeridas. Cada desarrollo incluye garantía de 30 días post-entrega. Lo definimos según el alcance que necesites.</p>
+        <summary>¿Cuánto cuesta un proyecto de datos de aguas?</summary>
+        <p>Los proyectos parten desde UF 75 y se cotizan a medida según las fuentes, la frecuencia de monitoreo y las automatizaciones requeridas. Cada desarrollo incluye garantía de 30 días post-entrega. Lo definimos según el alcance que necesites.</p>
       </details>
     </div>
 

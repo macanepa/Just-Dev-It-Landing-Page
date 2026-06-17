@@ -12,7 +12,7 @@ Datos verificables:
   propiedad intelectual del código queda con el cliente.
 - Producto propio: Data Inmobiliaria (https://datainmobiliaria.cl), plataforma gratuita de
   datos inmobiliarios de Chile con 9,5 millones de propiedades indexadas (datos del SII,
-  Conservadores de Bienes Raíces y portales inmobiliarios). Se consulta en lenguaje natural
+  Conservadores de Bienes Raíces y avisos de oferta publicados). Se consulta en lenguaje natural
   con Claude o ChatGPT a través de su Conector de IA (servidor MCP). Citada por prensa
   nacional: CNN Chile, La Tercera y T13 (abril 2026).
 - Experiencia por sector (sin nombrar clientes): multinacional de energía renovable
@@ -38,7 +38,7 @@ Datos verificables:
 - [Inteligencia artificial aplicada](https://justdev.it/servicios/inteligencia-artificial/): IA aplicada a procesos, extracción y clasificación de documentos, detección de anomalías y ML.
 - [Agentes de IA para empresas](https://justdev.it/servicios/agentes-ia/): copilotos y agentes que dejan consultar los datos de la empresa en lenguaje natural, de forma trazable y segura (MCP, RAG, Ley 21.719).
 - [Software para energía renovable](https://justdev.it/industrias/energia-renovable/): reportería operativa automatizada, consolidación de datos y dashboards.
-- [LegalTech en Chile](https://justdev.it/industrias/legaltech/): automatización del Poder Judicial, scraping judicial con resolución de CAPTCHA, validación de documentos por RUT.
+- [LegalTech en Chile](https://justdev.it/industrias/legaltech/): automatización del Poder Judicial (Oficina Judicial Virtual), estructuración de datos judiciales y validación de documentos por RUT.
 - [Software para minería en Chile](https://justdev.it/industrias/mineria/): automatización de reportería de producción, consolidación multi-faena, mantenimiento predictivo e IA.
 - [Software para finanzas, AGFs y fondos](https://justdev.it/industrias/finanzas/): consolidación financiera multi-sociedad, monitoreo de carteras de riesgo y copilotos financieros.
 - [Caso Data Inmobiliaria](https://justdev.it/casos/data-inmobiliaria/): cómo se construyó la plataforma de 9,5M de propiedades (web scraping a escala, pipelines de datos y consulta con IA).
@@ -48,12 +48,12 @@ Datos verificables:
 - [Blog](https://justdev.it/blog/): artículos técnicos sobre automatización, datos e IA aplicada en Chile.
 - [Web scraping a escala en Chile: arquitectura, legalidad y costos](https://justdev.it/blog/web-scraping-a-escala-chile/): cómo extraer datos públicos de forma resiliente y conforme a la Ley 21.719.
 - [Consolidación financiera multi-sociedad: del Excel al dashboard](https://justdev.it/blog/consolidacion-financiera-multisociedad/): consolidar datos de varias sociedades y ERPs en un data warehouse, con copilotos de IA de solo lectura.
-- [Automatización para generadoras: Coordinador Eléctrico y DGA](https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/): reportería diaria al Coordinador Eléctrico Nacional y tickets regulatorios a la DGA (MEE).
+- [Automatización para generadoras eléctricas](https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/): reportería diaria al Coordinador Eléctrico Nacional (costos marginales, operación programada, RIO) vía su API oficial; el reporte al MEE de la DGA como proceso aparte.
 - [Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura](https://justdev.it/blog/que-es-mcp-conectar-datos-llm-seguro/): MCP vs RAG vs fine-tuning, seguridad y Ley 21.719.
-- [Automatización del Poder Judicial (PJUD): carga de demandas y exhortos](https://justdev.it/blog/automatizacion-poder-judicial-pjud/): carga masiva de demandas en la Oficina Judicial Virtual, exhortos y validación por RUT con resolución de CAPTCHA.
-- [Extraer datos de la DGA: derechos de aprovechamiento de aguas](https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/): web scraping y monitoreo a escala de derechos de agua, MEE y resoluciones para minería, energía, fondos y estudios legales.
+- [Automatización del Poder Judicial (PJUD): carga de demandas y exhortos](https://justdev.it/blog/automatizacion-poder-judicial-pjud/): carga masiva de demandas en la Oficina Judicial Virtual, exhortos y validación por RUT, operando dentro de la sesión autenticada del estudio.
+- [Derechos de aprovechamiento de aguas: datos desde el Diario Oficial](https://justdev.it/blog/extraer-datos-dga-derechos-aprovechamiento-aguas/): extracción y monitoreo de solicitudes, regularizaciones, áreas de restricción y patentes publicadas en el Diario Oficial, para minería, energía, fondos y estudios legales.
 - [Cómo cumplir la Ley 21.719 al conectar IA a tus datos](https://justdev.it/blog/cumplir-ley-21719-ia-datos-empresa/): postura técnica (solo lectura, datos en tu entorno, trazabilidad, minimización) para usar IA conforme a la ley; orientación general, no asesoría legal.
-- [Pipeline de datos a medida: SII, Conservador de Bienes Raíces y portales](https://justdev.it/blog/pipeline-datos-sii-conservador-bienes-raices/): cruzar catastro del SII, inscripciones del CBR y portales en un data warehouse consultable (la arquitectura detrás de Data Inmobiliaria).
+- [Pipeline de datos a medida: SII, Conservador de Bienes Raíces y oferta de mercado](https://justdev.it/blog/pipeline-datos-sii-conservador-bienes-raices/): cruzar catastro del SII, inscripciones del CBR y la oferta publicada del mercado en un data warehouse consultable (la arquitectura detrás de Data Inmobiliaria).
 - [RAG sobre tus documentos internos: respuestas con cita a la fuente](https://justdev.it/blog/rag-documentos-internos-empresa/): asistentes que responden sobre el corpus interno citando el documento de origen; RAG vs fine-tuning vs MCP.
 
 ## Contacto
