@@ -17,6 +17,9 @@ const translations = {
     // Navegación
     nav: {
       home: "Inicio",
+      ia: "IA",
+      di: "Data Inmobiliaria",
+      data: "Datos",
       services: "Servicios",
       portfolio: "Portafolio",
       about: "Nosotros",
@@ -508,6 +511,9 @@ const translations = {
     // Navigation
     nav: {
       home: "Home",
+      ia: "AI",
+      di: "Data Inmobiliaria",
+      data: "Data",
       services: "Services",
       portfolio: "Portfolio",
       about: "About",
