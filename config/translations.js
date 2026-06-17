@@ -398,7 +398,18 @@ const translations = {
       aiBody: 'Data Inmobiliaria se conecta a <strong>Claude</strong> o <strong>ChatGPT</strong> y responde sobre cualquier propiedad —tasaciones, precios y comparables— sin planillas ni descargas. Es la misma tecnología de <a href="/servicios/agentes-ia/">agentes de IA a medida</a> que construimos para que tu empresa converse con sus propios datos.',
       ctaVisit: "Visitar Data Inmobiliaria",
       ctaCase: "Ver el caso técnico",
-      pressLabel: "En los medios:"
+      pressLabel: "En los medios:",
+      moreSummary: "Cómo se conecta con IA (Claude o ChatGPT)"
+    },
+
+    // Sección de prensa (Data Inmobiliaria en los medios)
+    press: {
+      eyebrow: "En la prensa",
+      title: '<span class="gradient-text">Data Inmobiliaria</span> en los medios',
+      sub: "Nuestro producto y nuestros análisis del mercado inmobiliario, citados por la prensa nacional.",
+      summary: "Cobertura en CNN Chile, La Tercera, T13, Publimetro y más",
+      tier1: "Destacados",
+      tier2: "Más cobertura"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
@@ -824,7 +835,18 @@ const translations = {
       aiBody: 'Data Inmobiliaria connects to <strong>Claude</strong> or <strong>ChatGPT</strong> and answers about any property —valuations, prices and comparables— with no spreadsheets or downloads. It is the same custom <a href="/servicios/agentes-ia/">AI agents</a> technology we build so your company can talk to its own data.',
       ctaVisit: "Visit Data Inmobiliaria",
       ctaCase: "See the technical case",
-      pressLabel: "In the news:"
+      pressLabel: "In the news:",
+      moreSummary: "How it connects with AI (Claude or ChatGPT)"
+    },
+
+    // Press section (Data Inmobiliaria in the news)
+    press: {
+      eyebrow: "In the press",
+      title: '<span class="gradient-text">Data Inmobiliaria</span> in the news',
+      sub: "Our product and our real-estate market analysis, cited by the national press.",
+      summary: "Coverage in CNN Chile, La Tercera, T13, Publimetro and more",
+      tier1: "Featured",
+      tier2: "More coverage"
     },
 
     // Rutas profundas (páginas de servicio / vertical / caso)
