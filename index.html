@@ -1024,15 +1024,16 @@
       .section-foot{ display:flex; justify-content:center; margin-top:2.6rem; }
       .route-card p{ max-width:46ch; }
 
-      /* ===== Logos de clientes: normalización óptica por logo (3 logos reales) ===== */
-      .clients-grid{ grid-template-columns:repeat(3,1fr); max-width:880px; margin-inline:auto; }
-      .client-logo-card{ display:flex; align-items:center; justify-content:center; min-height:104px; padding:18px 22px; }
-      .client-logo-card img{ width:auto; height:auto; max-width:160px; max-height:46px; object-fit:contain; opacity:.78; filter:grayscale(1) brightness(1.5); transition:opacity .25s,filter .25s; }
-      .client-logo-card:nth-child(1) img{ max-height:54px; max-width:132px; } /* Pacific Hydro (wordmark claro, aireado) */
-      .client-logo-card:nth-child(2) img{ max-height:34px; max-width:176px; } /* Contego (ancho) */
-      .client-logo-card:nth-child(3) img{ max-height:64px; max-width:66px; filter:none; opacity:.92; border-radius:8px; } /* ESE (cuadrado con fondo) */
+      /* ===== Logos de clientes: normalización óptica por logo (4 logos reales) ===== */
+      .clients-grid{ grid-template-columns:repeat(4,1fr); max-width:1040px; margin-inline:auto; }
+      .client-logo-card{ display:flex; align-items:center; justify-content:center; min-height:104px; padding:18px 20px; }
+      .client-logo-card img{ width:auto; height:auto; max-width:170px; max-height:44px; object-fit:contain; opacity:.78; filter:grayscale(1) brightness(1.5); transition:opacity .25s,filter .25s; }
+      .client-logo-card:nth-child(1) img{ max-height:54px; max-width:128px; } /* Pacific Hydro (ratio ~2) */
+      .client-logo-card:nth-child(2) img{ max-height:32px; max-width:172px; } /* Contego (ratio ~5.4) */
+      .client-logo-card:nth-child(3) img{ max-height:28px; max-width:182px; } /* Macal (ratio ~6.2, SVG claro) */
+      .client-logo-card:nth-child(4) img{ max-height:74px; max-width:74px; filter:none; opacity:.95; border-radius:6px; } /* ESE (retrato, blanco sobre azul) */
       .client-logo-card:hover img{ opacity:1; filter:grayscale(0) brightness(1); }
-      @media (max-width:560px){ .clients-grid{ grid-template-columns:1fr; } }
+      @media (max-width:760px){ .clients-grid{ grid-template-columns:repeat(2,1fr); } }
 
       /* ===== Footer: marca con más presencia (desktop/tablet; móvil conserva 30px) ===== */
       @media (min-width:601px){ .footer-brand img{ height:clamp(44px,4vw,56px); } }
@@ -1607,7 +1608,10 @@
             <img src="assets/images/Desktop/partner2.webp" alt="Contego" width="200" height="80" loading="lazy" />
           </div>
           <div class="client-logo-card">
-            <img src="assets/images/Desktop/partner4.webp" alt="ESE Business School — Universidad de los Andes" width="200" height="80" loading="lazy" />
+            <img src="assets/images/Desktop/macal.svg" alt="Macal" width="313" height="50" loading="lazy" />
+          </div>
+          <div class="client-logo-card">
+            <img src="assets/images/Desktop/ese.png" alt="ESE Business School — Universidad de los Andes" width="196" height="223" loading="lazy" />
           </div>
         </div>
       </section>
