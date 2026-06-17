@@ -1,0 +1,12 @@
+# GitHub Pages (Jekyll). El sitio es estático puro: sin layouts, sin includes,
+# sin Liquid. Este archivo SOLO sirve para que ciertos archivos internos o de
+# configuración muerta NO se publiquen en justdev.it. Siguen viviendo en el
+# repositorio (CLAUDE.md lo necesita el tooling local); solo dejan de servirse.
+#
+# Nota: Jekyll ya ignora por defecto los archivos/carpetas que empiezan con "."
+# o "_" (por eso /_headers y /.github/* ya devuelven 404). Aquí agregamos los
+# que no caen en esa regla.
+exclude:
+  - CLAUDE.md      # contexto interno del proyecto (founders, pendientes, IDs)
+  - README.md      # readme de desarrollo
+  - netlify.toml   # configuración MUERTA (el deploy real es GitHub Pages, no Netlify)
