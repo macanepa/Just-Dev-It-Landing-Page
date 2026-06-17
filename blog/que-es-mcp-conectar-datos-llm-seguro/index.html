@@ -210,19 +210,161 @@
       }
     </style>
   
-    <!-- ===== Estilos del blog ===== -->
+    <!-- ===== Blog — diseño editorial inmersivo JDI ===== -->
     <style>
-      .breadcrumb{max-width:48rem;margin:0 auto;padding:1.4rem 1.5rem 0;font-size:.82rem;color:#9aa6b8}
-      .breadcrumb a{color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
-      .breadcrumb a:hover{text-decoration:underline}
-      .post-meta{max-width:48rem;margin:.35rem auto 0;padding:0 1.5rem;font-size:.82rem;color:#8b94a6;letter-spacing:.02em}
-      .post-body :is(h2,h3){scroll-margin-top:90px}
-      .post-body a{color:var(--jdi-purple-light,#b9a7e6)}
-      .blog-card a.blog-readmore{display:inline-block;margin-top:.6rem;font-weight:600;color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
-      .blog-card a.blog-readmore:hover{text-decoration:underline}
-      .blog-card .post-tag{display:inline-block;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:#8b94a6;margin-bottom:.5rem}
-      .related-box ul{margin:.5rem 0 0;padding-left:1.1rem}
-      .related-box li{margin:.3rem 0}
+      :root{ --blog-ink:#E8EaF4; --blog-dim:#9aa6bc; --blog-faint:#6c768c; --measure:42rem; --blog-max:74rem; }
+      /* Ocultamos el subnav heredado en favor de un masthead propio del blog;
+         dejamos el logo accesible arriba a la izquierda */
+      body{ background:var(--surface-page,#0A0E1A); }
+      .blog-topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+        gap:1rem;padding:0.9rem 1.5rem;background:rgba(10,14,26,.72);backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border-default,rgba(155,97,164,.10))}
+      .blog-topbar img{height:26px;width:auto;display:block}
+      .blog-topbar nav{display:flex;gap:1.4rem;align-items:center;font-size:.86rem}
+      .blog-topbar nav a{color:var(--blog-dim);text-decoration:none;transition:color .2s}
+      .blog-topbar nav a:hover{color:#fff}
+      .blog-topbar .tb-cta{color:#fff;border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:999px;
+        padding:.4rem 1rem;font-weight:600}
+      .blog-topbar .tb-cta:hover{background:var(--jdi-purple,#9B61A4);border-color:transparent}
+      @media (max-width:680px){ .blog-topbar nav a.tb-hide{display:none} }
+
+      /* barra de progreso de lectura (solo en posts) */
+      .read-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:80;
+        background:var(--gradient-cta,linear-gradient(135deg,#9B61A4,#B37BBF));box-shadow:0 0 12px rgba(179,123,191,.6)}
+
+      .blog-kicker{font-family:var(--font-display,'Poppins',sans-serif);font-size:.72rem;letter-spacing:.26em;
+        text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600;display:inline-block}
+      .grad{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));-webkit-background-clip:text;
+        background-clip:text;color:transparent}
+
+      /* ===== Masthead del indice ===== */
+      .blog-masthead{max-width:var(--blog-max);margin:0 auto;padding:5rem 1.5rem 2rem}
+      .blog-masthead h1{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;line-height:.92;
+        font-size:clamp(3.4rem,13vw,8rem);margin:.6rem 0 0;letter-spacing:-.03em}
+      .blog-masthead .dek{color:var(--blog-dim);max-width:33rem;font-size:1.15rem;line-height:1.6;margin:1.4rem 0 0}
+      .blog-rule{max-width:var(--blog-max);margin:0 auto;height:1px;background:var(--border-strong,rgba(155,97,164,.30))}
+
+      /* ===== Post destacado ===== */
+      .feat-wrap{max-width:var(--blog-max);margin:2.5rem auto 0;padding:0 1.5rem}
+      .feat{display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+        border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:var(--radius-lg,.75rem);
+        padding:2.75rem;background:
+          radial-gradient(120% 140% at 100% 0%, rgba(155,97,164,.22) 0%, rgba(155,97,164,0) 55%),
+          var(--surface-raised,#152636);transition:transform .4s var(--ease,ease),border-color .4s}
+      .feat:hover{transform:translateY(-4px);border-color:var(--jdi-purple,#9B61A4)}
+      .feat .tag{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--jdi-green-light,#26E0C0);font-weight:700}
+      .feat h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;letter-spacing:-.02em;
+        line-height:1.02;font-size:clamp(2rem,5.5vw,3.6rem);margin:1rem 0 .9rem;max-width:18ch}
+      .feat p{color:var(--blog-dim);max-width:52ch;font-size:1.08rem;line-height:1.6}
+      .feat .go{margin-top:1.6rem;display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-weight:600}
+      .feat .go span{transition:transform .3s} .feat:hover .go span{transform:translateX(6px)}
+
+      /* ===== Lista editorial ===== */
+      .post-list{max-width:var(--blog-max);margin:1rem auto 0;padding:0 1.5rem 1rem}
+      .post-list .lh{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blog-faint);
+        padding:2.5rem 0 .5rem;font-weight:600}
+      .post-row{display:grid;grid-template-columns:3.5rem 1fr auto;gap:.3rem 2rem;align-items:start;
+        text-decoration:none;color:inherit;padding:2.1rem 0;border-top:1px solid var(--border-default,rgba(155,97,164,.14));
+        position:relative;transition:padding-left .35s var(--ease,ease)}
+      .post-row:last-child{border-bottom:1px solid var(--border-default,rgba(155,97,164,.14))}
+      .post-row:hover{padding-left:.6rem}
+      .post-row .idx{grid-row:1/3;font-family:var(--font-display,'Poppins',sans-serif);font-size:1.05rem;
+        color:var(--blog-faint);font-variant-numeric:tabular-nums;padding-top:.5rem}
+      .post-row .rk{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600}
+      .post-row h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:600;letter-spacing:-.015em;
+        line-height:1.06;font-size:clamp(1.5rem,3.6vw,2.5rem);margin:.45rem 0 .55rem;transition:color .3s}
+      .post-row:hover h2{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+      .post-row p{color:var(--blog-dim);max-width:60ch;font-size:1rem;line-height:1.55;margin:0}
+      .post-row .rmeta{grid-column:2;color:var(--blog-faint);font-size:.82rem;margin-top:.7rem}
+      .post-row .go{grid-row:1/3;align-self:center;color:var(--blog-faint);font-size:1.5rem;transition:transform .3s,color .3s}
+      .post-row:hover .go{color:var(--jdi-purple-light,#B37BBF);transform:translateX(5px)}
+      @media (max-width:640px){
+        .post-row{grid-template-columns:1fr auto;gap:.2rem 1rem}
+        .post-row .idx{grid-row:auto;grid-column:1;padding-top:0}
+        .post-row .go{display:none}
+        .post-row .rmeta{grid-column:1}
+      }
+
+      /* ===== Post: hero editorial ===== */
+      .article-hero{max-width:50rem;margin:0 auto;padding:4.5rem 1.5rem 0;text-align:center}
+      .article-hero .crumbs{font-size:.8rem;color:var(--blog-faint);margin-bottom:1.4rem}
+      .article-hero .crumbs a{color:var(--blog-dim);text-decoration:none}
+      .article-hero .crumbs a:hover{color:#fff}
+      .article-hero h1{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;letter-spacing:-.025em;
+        line-height:1.04;font-size:clamp(2.2rem,6vw,4.2rem);margin:.8rem auto 0;max-width:20ch}
+      .article-hero .dek{color:var(--blog-dim);font-size:1.2rem;line-height:1.6;max-width:42rem;margin:1.5rem auto 0}
+      .article-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;justify-content:center;align-items:center;
+        margin:1.8rem auto 0;font-size:.84rem;color:var(--blog-faint)}
+      .article-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--blog-faint)}
+      .article-divider{max-width:50rem;margin:2.6rem auto 0;padding:0 1.5rem}
+      .article-divider span{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--border-strong,rgba(155,97,164,.4)),transparent)}
+
+      /* ===== Post: cuerpo ===== */
+      .post-body{max-width:var(--measure);margin:2.4rem auto 0;padding:0 1.5rem;color:var(--blog-ink);
+        font-size:1.18rem;line-height:1.78}
+      .post-body section{padding:0;border:0;max-width:none;margin:0}
+      .post-body section + section{margin-top:2.4rem}
+      .post-body p{margin:0 0 1.25rem}
+      .post-body section:first-of-type > p:first-child{font-size:1.36rem;line-height:1.6;color:#fff;font-weight:400}
+      .post-body h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:600;color:#fff;
+        font-size:clamp(1.5rem,3.2vw,2rem);line-height:1.18;letter-spacing:-.015em;margin:2.8rem 0 1.1rem;
+        padding-top:.4rem;position:relative}
+      .post-body h2::before{content:"";position:absolute;top:-.2rem;left:0;width:2.4rem;height:3px;border-radius:2px;
+        background:var(--gradient-cta,linear-gradient(135deg,#9B61A4,#B37BBF))}
+      .post-body h3{font-family:var(--font-display,'Poppins',sans-serif);color:#fff;font-size:1.2rem;margin:1.8rem 0 .7rem}
+      .post-body a{color:var(--jdi-purple-light,#B37BBF);text-decoration:underline;text-underline-offset:3px;
+        text-decoration-color:rgba(179,123,191,.4);transition:text-decoration-color .2s}
+      .post-body a:hover{text-decoration-color:var(--jdi-purple-light,#B37BBF)}
+      .post-body strong{color:#fff;font-weight:600}
+      .post-body ul{margin:0 0 1.3rem;padding:0;list-style:none}
+      .post-body li{position:relative;padding-left:1.5rem;margin:.55rem 0}
+      .post-body li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--jdi-purple-light,#B37BBF)}
+      /* cita destacada */
+      .pullquote{margin:2.8rem 0;padding:.4rem 0 .4rem 1.6rem;border-left:3px solid var(--jdi-purple,#9B61A4);
+        font-family:var(--font-display,'Poppins',sans-serif);font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.3;
+        font-weight:600;letter-spacing:-.01em}
+      .pullquote span{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+      /* takeaways */
+      .takeaways{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+      .takeaways .box{border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:var(--radius-lg,.75rem);
+        background:var(--surface-card,rgba(30,41,59,.6));padding:1.9rem 2rem}
+      .takeaways .blog-kicker{margin-bottom:.9rem}
+      .takeaways ul{margin:0;padding:0;list-style:none}
+      .takeaways li{position:relative;padding-left:1.7rem;margin:.7rem 0;color:var(--blog-ink);line-height:1.55}
+      .takeaways li::before{content:"→";position:absolute;left:0;top:0;color:var(--jdi-green-light,#26E0C0);font-weight:700}
+
+      /* FAQ rediseñado */
+      .faqs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+      .faqs > .blog-kicker{margin-bottom:.4rem}
+      .faqs h2{font-family:var(--font-display,'Poppins',sans-serif);color:#fff;font-size:1.7rem;margin:.3rem 0 1rem;letter-spacing:-.01em}
+      details.q{border-top:1px solid var(--border-default,rgba(155,97,164,.14))}
+      .faqs details.q:last-of-type{border-bottom:1px solid var(--border-default,rgba(155,97,164,.14))}
+      details.q summary{list-style:none;cursor:pointer;padding:1.15rem 2.5rem 1.15rem 0;position:relative;
+        font-family:var(--font-display,'Poppins',sans-serif);font-weight:500;font-size:1.08rem;color:#fff}
+      details.q summary::-webkit-details-marker{display:none}
+      details.q summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
+        font-size:1.4rem;color:var(--jdi-purple-light,#B37BBF);transition:transform .3s}
+      details.q[open] summary::after{content:"−"}
+      details.q p{margin:0 0 1.2rem;color:var(--blog-dim);line-height:1.7;max-width:62ch}
+
+      /* relacionados */
+      .related{max-width:var(--blog-max);margin:4rem auto 0;padding:0 1.5rem}
+      .related .blog-kicker{display:block;margin-bottom:1.2rem}
+      .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+      .rcard{text-decoration:none;color:inherit;border:1px solid var(--border-default,rgba(155,97,164,.14));
+        border-radius:var(--radius-lg,.75rem);padding:1.4rem;transition:transform .3s,border-color .3s,background .3s}
+      .rcard:hover{transform:translateY(-3px);border-color:var(--jdi-purple,#9B61A4);background:var(--surface-card,rgba(30,41,59,.6))}
+      .rcard .rk{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600}
+      .rcard h3{font-family:var(--font-display,'Poppins',sans-serif);font-size:1.1rem;line-height:1.25;margin:.6rem 0 0;color:#fff;font-weight:600}
+
+      /* micro-animaciones al scroll (respeta prefers-reduced-motion) */
+      @media (prefers-reduced-motion:no-preference){
+        .reveal{opacity:0;transform:translateY(22px)}
+        .reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease,cubic-bezier(.22,1,.36,1)),transform .7s var(--ease,cubic-bezier(.22,1,.36,1))}
+      }
     </style>
 
   </head>
@@ -231,115 +373,123 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="subnav" aria-label="Navegación">
-      <a class="subnav-logo" href="/" aria-label="Just Dev It — Inicio">
-        <img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="140" height="32" />
-      </a>
-      <div class="subnav-links">
-        <a href="/#servicios">Servicios</a>
-        <a href="/#portafolio">Portafolio</a>
-        <a href="/#contacto" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Cotizar Proyecto</a>
-      </div>
-    </nav>
+        <div class="blog-topbar">
+      <a href="/" aria-label="Just Dev It — Inicio"><img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="120" height="26" /></a>
+      <nav aria-label="Navegación">
+        <a href="/blog/" class="tb-hide">Blog</a>
+        <a href="/#servicios" class="tb-hide">Servicios</a>
+        <a href="/#contacto" class="tb-cta">Cotizar</a>
+      </nav>
+    </div>
+    <div class="read-progress" aria-hidden="true"></div>
 
-    <header class="page-hero">
-      <span class="page-eyebrow">Blog · IA y MCP</span>
+    <header class="article-hero">
+      <p class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></p>
+      <span class="blog-kicker">IA · MCP</span>
       <h1>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</h1>
-      <p class="lead">Qué es un servidor MCP (Model Context Protocol) y cómo conectar tus datos a un LLM de forma segura y trazable, según la Ley 21.719. Cotiza tu proyecto.</p>
-      <div class="hero-ctas">
-        <a href="/#contacto" class="btn btn-primary">Cotizar mi proyecto</a>
-        <a href="/blog/" class="btn btn-secondary">Más artículos</a>
+      <p class="dek">Qué es un servidor MCP (Model Context Protocol) y cómo conectar tus datos a un LLM de forma segura y trazable, según la Ley 21.719. Cotiza tu proyecto.</p>
+      <div class="article-meta">
+        <span>2026-06-17</span><span class="dot"></span>
+        <span>7 min de lectura</span><span class="dot"></span>
+        <span>Just Dev It</span>
       </div>
     </header>
+    <div class="article-divider"><span></span></div>
 
-    <nav class="breadcrumb" aria-label="Ruta de navegación">
-      <a href="/">Inicio</a> / <a href="/blog/">Blog</a> / <span>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</span>
-    </nav>
-    <p class="post-meta">2026-06-17 · 7 min de lectura · Just Dev It</p>
-
-    <main class="post-body">
-      <section class="page-section">
+    <article class="post-body">
+      <section class="reveal">
         <p>Tu empresa ya tiene los datos: están en el ERP, en el data warehouse, en hojas de cálculo y en cientos de documentos. El problema es que <strong>preguntarles algo</strong> sigue dependiendo de alguien que sepa SQL, que arme el reporte o que busque el archivo correcto. Y cuando aparecen los asistentes de IA, surge la duda obvia: ¿cómo le doy acceso a un LLM como Claude o ChatGPT sin subir mis datos a un tercero, sin que la IA invente cifras y sin pasar a llevar la Ley 21.719?</p><p>La respuesta técnica más limpia hoy es un <strong>servidor MCP</strong>. En esta guía explicamos qué es el Model Context Protocol, cómo se conecta un modelo de lenguaje a los datos de una organización de forma controlada y trazable, en qué se diferencia de RAG y fine-tuning, y qué principios legales conviene tener presentes antes de conectar IA a datos personales en Chile.</p>
       </section>
-      <section class="page-section">
-        <h2>El problema: datos valiosos a los que nadie puede preguntar en lenguaje natural</h2>
-        <p>La mayoría de las empresas no tiene un problema de falta de datos, sino de <strong>acceso</strong>. La información está repartida entre el ERP/CRM, un data warehouse en la nube, planillas y documentos, y cada consulta nueva pasa por el equipo de datos o de TI. Eso genera un cuello de botella: decisiones que esperan días por un reporte, y conocimiento que solo extrae quien domina las herramientas.</p><p>Conectar un LLM directo a esas fuentes parece la solución, pero abre tres riesgos reales:</p><ul><li><strong>Fuga de datos:</strong> copiar la base a una plataforma externa o pegarla en un chat para que el modelo la lea.</li><li><strong>Respuestas inventadas:</strong> un modelo que no consulta la fuente real "alucina" cifras que parecen verosímiles.</li><li><strong>Falta de control y trazabilidad:</strong> no saber qué datos vio el modelo, quién preguntó qué, ni de dónde salió cada respuesta.</li></ul><p>El Model Context Protocol nace precisamente para resolver esos tres puntos sin tener que mover los datos de lugar.</p>
-      </section>
-      <section class="page-section">
-        <h2>Qué es un servidor MCP (Model Context Protocol)</h2>
-        <p><strong>MCP (Model Context Protocol)</strong> es un estándar abierto que conecta modelos de lenguaje con los datos y sistemas de una organización a través de un componente llamado <strong>servidor MCP</strong>. Ese servidor no entrega la base completa al modelo: <strong>expone un conjunto acotado de herramientas y recursos</strong> que el modelo puede usar, y nada más.</p><p>En la práctica funciona así: el usuario pregunta en lenguaje natural, el modelo decide qué herramienta del servidor invocar (por ejemplo, "consultar transacciones de un período"), el servidor ejecuta esa consulta contra la fuente real y devuelve el resultado. El modelo redacta la respuesta sobre datos verdaderos, no sobre suposiciones. Los datos <strong>nunca se copian a otro lugar</strong>: viven donde siempre estuvieron y el servidor actúa como intermediario gobernado.</p><p>La ventaja frente a una integración hecha a la medida para cada modelo es que MCP es un <strong>estándar</strong>: el mismo servidor sirve para distintos asistentes. Hoy en Data Inmobiliaria, nuestro producto propio de datos del mercado inmobiliario chileno, operamos un servidor MCP que permite consultar <strong>9,5 millones de propiedades de Chile en lenguaje natural</strong> desde Claude o ChatGPT, sin que el usuario escriba una sola línea de SQL.</p>
-      </section>
-      <section class="page-section">
-        <h2>Cómo funciona la arquitectura, paso a paso</h2>
-        <p>Una conexión MCP segura se monta sobre la infraestructura que ya tienes, sin reemplazar nada. El flujo típico es:</p><ul><li><strong>1. Pregunta en lenguaje natural.</strong> El usuario conversa con el asistente (Claude o ChatGPT) como lo haría con un analista.</li><li><strong>2. El modelo elige una herramienta.</strong> El servidor MCP publica un catálogo de operaciones permitidas (consultas, búsquedas, lecturas). El modelo no inventa el acceso: solo puede usar lo que el servidor expone.</li><li><strong>3. El servidor ejecuta la consulta de solo lectura.</strong> La operación corre contra el data warehouse, el ERP/CRM o el repositorio documental, dentro de tu entorno.</li><li><strong>4. Devuelve datos reales.</strong> El modelo responde sobre el resultado de la consulta, no sobre su memoria de entrenamiento.</li><li><strong>5. Se registra todo.</strong> Cada consulta queda con su usuario, su hora y su fuente, para auditoría.</li></ul><p>El punto clave de diseño es que <strong>el control vive en el servidor, no en el modelo</strong>. Tú defines qué tablas, qué campos y qué operaciones quedan disponibles; el resto sencillamente no existe para la IA. Lo construimos sobre tecnologías estándar (Python, SQL y tu nube actual, sea AWS, Azure o Google Cloud), reutilizando tu infraestructura en vez de duplicarla.</p>
-      </section>
-      <section class="page-section">
-        <h2>Por qué es seguro: solo lectura, datos en tu entorno y trazabilidad</h2>
-        <p>"Conectar IA a mis datos" suena riesgoso, pero un servidor MCP bien diseñado invierte la lógica: en lugar de abrirle todo al modelo, le abre <strong>solo lo mínimo y de forma controlada</strong>. Los pilares de seguridad son cuatro:</p><ul><li><strong>Acceso de solo lectura y acotado.</strong> El servidor define qué puede y qué no puede consultar el modelo. No puede modificar, borrar ni ejecutar transacciones: consulta y responde.</li><li><strong>Los datos permanecen en tu entorno.</strong> No se copian ni se suben a una plataforma externa para que la IA "aprenda" de ellos. El servidor consulta donde ya están.</li><li><strong>Trazabilidad y auditoría.</strong> Cada consulta queda registrada: quién preguntó, cuándo y qué fuente se tocó. Eso te permite verificar de dónde salió cada respuesta.</li><li><strong>El modelo no entrena con tus datos.</strong> Los proveedores serios de LLM empresariales no usan los datos del cliente para reentrenar sus modelos. Tu información se usa para responderte en ese momento, no para mejorar el modelo de un tercero.</li></ul><p>El resultado práctico lo vemos en el conector de Data Inmobiliaria: millones de registros consultables en lenguaje natural, sin que el usuario acceda directamente a la base ni pueda alterarla.</p>
-      </section>
-      <section class="page-section">
-        <h2>MCP vs RAG vs fine-tuning: cuál usar y cuándo</h2>
-        <p>Son tres formas distintas de "darle contexto" a un LLM, y se suelen confundir. La diferencia importa porque elegir mal encarece el proyecto o lo hace frágil:</p><ul><li><strong>MCP:</strong> el modelo <strong>consulta tus datos y sistemas en vivo</strong> mediante herramientas controladas. Ideal cuando los datos cambian seguido y necesitas trazabilidad y solo lectura gobernada.</li><li><strong>RAG (Retrieval-Augmented Generation):</strong> se <strong>recuperan los documentos más relevantes</strong> y se inyectan en el contexto del modelo antes de que responda. Encaja muy bien con bases documentales (contratos, manuales, normativa).</li><li><strong>Fine-tuning:</strong> se <strong>reentrena el modelo</strong> con tus datos. Es caro, los datos quedan "congelados" al momento del entrenamiento y desactualizarse implica volver a entrenar.</li></ul><p>Como regla general: para <strong>datos que cambian</strong> y donde necesitas saber de dónde viene cada respuesta, MCP y RAG suelen ganar; muchas veces se combinan (MCP para datos estructurados en vivo, RAG para documentos). El fine-tuning tiene sentido para tono o tareas muy específicas, no para mantener al modelo "al día" con tu información.</p>
-      </section>
-      <section class="page-section">
-        <h2>Consideraciones legales: la Ley 21.719 al conectar IA a datos</h2>
-        <p>Lo siguiente es <strong>orientación general, no asesoría legal</strong>: ante datos personales, valida tu caso con tu equipo jurídico. Dicho eso, la Ley 21.719 de Protección de Datos Personales de Chile fija principios que conviene incorporar al diseño desde el inicio:</p><ul><li><strong>Finalidad:</strong> los datos se usan para el propósito declarado. Define para qué se conecta la IA y no excedas ese fin.</li><li><strong>Proporcionalidad y minimización:</strong> expón al modelo solo los datos necesarios. Un servidor MCP ayuda aquí, porque limita por diseño qué campos quedan visibles.</li><li><strong>Licitud:</strong> ten clara la base legal que habilita el tratamiento de esos datos.</li><li><strong>Responsabilidad:</strong> registra los accesos y mantén trazabilidad de las consultas, justo lo que entrega la auditoría del servidor.</li></ul><p>Lo bueno es que un MCP bien diseñado y los principios de la ley apuntan en la misma dirección: minimizar lo expuesto, controlar accesos y dejar registro. La arquitectura de solo lectura con datos en tu propio entorno es, además, un punto de partida favorable.</p><p>Si quieres conectar tus datos a un LLM con este enfoque, lo construimos a medida sobre tu infraestructura actual. <strong>Cotiza tu proyecto desde UF 75</strong> y conversemos qué fuentes tiene sentido exponer primero. Cada desarrollo incluye 30 días de garantía post-entrega.</p>
-      </section>
-      <section class="page-section">
-        <div class="case-box">
-          <h3>En resumen</h3>
-          <ul>
+        <section class="reveal">
+          <h2>El problema: datos valiosos a los que nadie puede preguntar en lenguaje natural</h2>
+          <p>La mayoría de las empresas no tiene un problema de falta de datos, sino de <strong>acceso</strong>. La información está repartida entre el ERP/CRM, un data warehouse en la nube, planillas y documentos, y cada consulta nueva pasa por el equipo de datos o de TI. Eso genera un cuello de botella: decisiones que esperan días por un reporte, y conocimiento que solo extrae quien domina las herramientas.</p><p>Conectar un LLM directo a esas fuentes parece la solución, pero abre tres riesgos reales:</p><ul><li><strong>Fuga de datos:</strong> copiar la base a una plataforma externa o pegarla en un chat para que el modelo la lea.</li><li><strong>Respuestas inventadas:</strong> un modelo que no consulta la fuente real "alucina" cifras que parecen verosímiles.</li><li><strong>Falta de control y trazabilidad:</strong> no saber qué datos vio el modelo, quién preguntó qué, ni de dónde salió cada respuesta.</li></ul><p>El Model Context Protocol nace precisamente para resolver esos tres puntos sin tener que mover los datos de lugar.</p>
+        </section>
+        <section class="reveal">
+          <h2>Qué es un servidor MCP (Model Context Protocol)</h2>
+          <p><strong>MCP (Model Context Protocol)</strong> es un estándar abierto que conecta modelos de lenguaje con los datos y sistemas de una organización a través de un componente llamado <strong>servidor MCP</strong>. Ese servidor no entrega la base completa al modelo: <strong>expone un conjunto acotado de herramientas y recursos</strong> que el modelo puede usar, y nada más.</p><p>En la práctica funciona así: el usuario pregunta en lenguaje natural, el modelo decide qué herramienta del servidor invocar (por ejemplo, "consultar transacciones de un período"), el servidor ejecuta esa consulta contra la fuente real y devuelve el resultado. El modelo redacta la respuesta sobre datos verdaderos, no sobre suposiciones. Los datos <strong>nunca se copian a otro lugar</strong>: viven donde siempre estuvieron y el servidor actúa como intermediario gobernado.</p><p>La ventaja frente a una integración hecha a la medida para cada modelo es que MCP es un <strong>estándar</strong>: el mismo servidor sirve para distintos asistentes. Hoy en Data Inmobiliaria, nuestro producto propio de datos del mercado inmobiliario chileno, operamos un servidor MCP que permite consultar <strong>9,5 millones de propiedades de Chile en lenguaje natural</strong> desde Claude o ChatGPT, sin que el usuario escriba una sola línea de SQL.</p>
+        </section>
+      <blockquote class="pullquote reveal"><span>Un servidor MCP (Model Context Protocol) conecta un LLM como Claude o ChatGPT con tus datos exponiendo herramientas acotadas, sin copiar la información a otro lugar.</span></blockquote>
+        <section class="reveal">
+          <h2>Cómo funciona la arquitectura, paso a paso</h2>
+          <p>Una conexión MCP segura se monta sobre la infraestructura que ya tienes, sin reemplazar nada. El flujo típico es:</p><ul><li><strong>1. Pregunta en lenguaje natural.</strong> El usuario conversa con el asistente (Claude o ChatGPT) como lo haría con un analista.</li><li><strong>2. El modelo elige una herramienta.</strong> El servidor MCP publica un catálogo de operaciones permitidas (consultas, búsquedas, lecturas). El modelo no inventa el acceso: solo puede usar lo que el servidor expone.</li><li><strong>3. El servidor ejecuta la consulta de solo lectura.</strong> La operación corre contra el data warehouse, el ERP/CRM o el repositorio documental, dentro de tu entorno.</li><li><strong>4. Devuelve datos reales.</strong> El modelo responde sobre el resultado de la consulta, no sobre su memoria de entrenamiento.</li><li><strong>5. Se registra todo.</strong> Cada consulta queda con su usuario, su hora y su fuente, para auditoría.</li></ul><p>El punto clave de diseño es que <strong>el control vive en el servidor, no en el modelo</strong>. Tú defines qué tablas, qué campos y qué operaciones quedan disponibles; el resto sencillamente no existe para la IA. Lo construimos sobre tecnologías estándar (Python, SQL y tu nube actual, sea AWS, Azure o Google Cloud), reutilizando tu infraestructura en vez de duplicarla.</p>
+        </section>
+        <section class="reveal">
+          <h2>Por qué es seguro: solo lectura, datos en tu entorno y trazabilidad</h2>
+          <p>"Conectar IA a mis datos" suena riesgoso, pero un servidor MCP bien diseñado invierte la lógica: en lugar de abrirle todo al modelo, le abre <strong>solo lo mínimo y de forma controlada</strong>. Los pilares de seguridad son cuatro:</p><ul><li><strong>Acceso de solo lectura y acotado.</strong> El servidor define qué puede y qué no puede consultar el modelo. No puede modificar, borrar ni ejecutar transacciones: consulta y responde.</li><li><strong>Los datos permanecen en tu entorno.</strong> No se copian ni se suben a una plataforma externa para que la IA "aprenda" de ellos. El servidor consulta donde ya están.</li><li><strong>Trazabilidad y auditoría.</strong> Cada consulta queda registrada: quién preguntó, cuándo y qué fuente se tocó. Eso te permite verificar de dónde salió cada respuesta.</li><li><strong>El modelo no entrena con tus datos.</strong> Los proveedores serios de LLM empresariales no usan los datos del cliente para reentrenar sus modelos. Tu información se usa para responderte en ese momento, no para mejorar el modelo de un tercero.</li></ul><p>El resultado práctico lo vemos en el conector de Data Inmobiliaria: millones de registros consultables en lenguaje natural, sin que el usuario acceda directamente a la base ni pueda alterarla.</p>
+        </section>
+        <section class="reveal">
+          <h2>MCP vs RAG vs fine-tuning: cuál usar y cuándo</h2>
+          <p>Son tres formas distintas de "darle contexto" a un LLM, y se suelen confundir. La diferencia importa porque elegir mal encarece el proyecto o lo hace frágil:</p><ul><li><strong>MCP:</strong> el modelo <strong>consulta tus datos y sistemas en vivo</strong> mediante herramientas controladas. Ideal cuando los datos cambian seguido y necesitas trazabilidad y solo lectura gobernada.</li><li><strong>RAG (Retrieval-Augmented Generation):</strong> se <strong>recuperan los documentos más relevantes</strong> y se inyectan en el contexto del modelo antes de que responda. Encaja muy bien con bases documentales (contratos, manuales, normativa).</li><li><strong>Fine-tuning:</strong> se <strong>reentrena el modelo</strong> con tus datos. Es caro, los datos quedan "congelados" al momento del entrenamiento y desactualizarse implica volver a entrenar.</li></ul><p>Como regla general: para <strong>datos que cambian</strong> y donde necesitas saber de dónde viene cada respuesta, MCP y RAG suelen ganar; muchas veces se combinan (MCP para datos estructurados en vivo, RAG para documentos). El fine-tuning tiene sentido para tono o tareas muy específicas, no para mantener al modelo "al día" con tu información.</p>
+        </section>
+        <section class="reveal">
+          <h2>Consideraciones legales: la Ley 21.719 al conectar IA a datos</h2>
+          <p>Lo siguiente es <strong>orientación general, no asesoría legal</strong>: ante datos personales, valida tu caso con tu equipo jurídico. Dicho eso, la Ley 21.719 de Protección de Datos Personales de Chile fija principios que conviene incorporar al diseño desde el inicio:</p><ul><li><strong>Finalidad:</strong> los datos se usan para el propósito declarado. Define para qué se conecta la IA y no excedas ese fin.</li><li><strong>Proporcionalidad y minimización:</strong> expón al modelo solo los datos necesarios. Un servidor MCP ayuda aquí, porque limita por diseño qué campos quedan visibles.</li><li><strong>Licitud:</strong> ten clara la base legal que habilita el tratamiento de esos datos.</li><li><strong>Responsabilidad:</strong> registra los accesos y mantén trazabilidad de las consultas, justo lo que entrega la auditoría del servidor.</li></ul><p>Lo bueno es que un MCP bien diseñado y los principios de la ley apuntan en la misma dirección: minimizar lo expuesto, controlar accesos y dejar registro. La arquitectura de solo lectura con datos en tu propio entorno es, además, un punto de partida favorable.</p><p>Si quieres conectar tus datos a un LLM con este enfoque, lo construimos a medida sobre tu infraestructura actual. <strong>Cotiza tu proyecto desde UF 75</strong> y conversemos qué fuentes tiene sentido exponer primero. Cada desarrollo incluye 30 días de garantía post-entrega.</p>
+        </section>
+    </article>
+
+    <div class="takeaways reveal">
+      <div class="box">
+        <span class="blog-kicker">En resumen</span>
+        <ul>
             <li>Un servidor MCP (Model Context Protocol) conecta un LLM como Claude o ChatGPT con tus datos exponiendo herramientas acotadas, sin copiar la información a otro lugar.</li>
             <li>La seguridad se basa en cuatro pilares: acceso de solo lectura y acotado, datos que permanecen en tu entorno, trazabilidad de cada consulta y proveedores que no entrenan con tus datos.</li>
             <li>Para datos que cambian y donde importa saber de dónde sale cada respuesta, MCP y RAG suelen superar al fine-tuning, que es caro y deja los datos estáticos.</li>
             <li>La Ley 21.719 (orientación general, no asesoría legal) pide finalidad, minimización, licitud y responsabilidad: exponer solo lo necesario y registrar accesos, algo que un MCP facilita por diseño.</li>
             <li>Caso real: el conector de Data Inmobiliaria es un servidor MCP que permite consultar 9,5 millones de propiedades de Chile en lenguaje natural desde Claude o ChatGPT.</li>
-          </ul>
-        </div>
-      </section>
-      <section class="page-section">
-        <h2>Preguntas frecuentes</h2>
-        <details class="faq">
-          <summary>¿Qué es un servidor MCP (Model Context Protocol)?</summary>
-          <p>Es un componente que conecta un modelo de lenguaje (como Claude o ChatGPT) con los datos y sistemas de tu empresa usando el estándar abierto Model Context Protocol. En vez de entregarle toda la base al modelo, el servidor expone un conjunto acotado de herramientas y recursos que el modelo puede consultar. El usuario pregunta en lenguaje natural y el servidor ejecuta la consulta contra la fuente real, sin copiar los datos a otro lugar.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Es seguro conectar un LLM a los datos de mi empresa?</summary>
-          <p>Sí, si se hace con la arquitectura correcta. Un servidor MCP bien diseñado usa acceso de solo lectura y acotado: el servidor define qué puede y qué no puede consultar el modelo, los datos permanecen en tu entorno y cada consulta queda registrada para auditoría. El riesgo no está en la IA en sí, sino en darle acceso sin control; el servidor existe justamente para imponer ese control.</p>
-        </details>
-        <details class="faq">
-          <summary>¿El modelo de IA aprende de mis datos?</summary>
-          <p>No. Los proveedores serios de LLM empresariales no entrenan sus modelos con los datos del cliente. Tu información se usa para responder esa consulta en ese momento y luego no queda incorporada al modelo. Además, con un servidor MCP los datos ni siquiera salen de tu entorno: el modelo consulta sobre la marcha, no recibe una copia para entrenarse.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Qué exige la Ley 21.719 al usar IA con datos?</summary>
-          <p>Como orientación general (no asesoría legal): la Ley 21.719 de Protección de Datos Personales de Chile aplica principios de finalidad, proporcionalidad y minimización, licitud y responsabilidad. Al conectar IA a datos personales conviene exponer solo los datos necesarios, tener clara la base legal del tratamiento y registrar los accesos. Para un caso concreto, valídalo con tu equipo jurídico.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cuál es la diferencia entre MCP, RAG y fine-tuning?</summary>
-          <p>Con MCP el modelo consulta tus datos y sistemas en vivo a través de herramientas controladas. Con RAG se recuperan los documentos más relevantes y se inyectan en el contexto antes de que el modelo responda. Con fine-tuning se reentrena el modelo con tus datos, lo que es caro y deja la información estática. Para datos que cambian y donde necesitas trazabilidad, MCP y RAG suelen ser mejores que el fine-tuning, y a menudo se combinan.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Funciona con Claude y ChatGPT?</summary>
-          <p>Sí. Al ser un estándar abierto, un mismo servidor MCP puede usarse desde distintos asistentes de IA. Nuestro producto propio Data Inmobiliaria ya expone un servidor MCP que permite consultar 9,5 millones de propiedades de Chile en lenguaje natural desde Claude o ChatGPT, sin escribir SQL.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cómo se controla qué datos puede ver el modelo?</summary>
-          <p>El control vive en el servidor MCP, no en el modelo. Tú defines qué tablas, campos y operaciones quedan expuestos como herramientas; todo lo demás sencillamente no existe para la IA. El acceso es de solo lectura, así que el modelo puede consultar pero no modificar ni borrar, y cada consulta queda registrada para que sepas quién preguntó qué y contra qué fuente.</p>
-        </details>
-      </section>
-      <section class="page-section">
-        <div class="case-box related-box">
-          <h3>Sigue explorando</h3>
-          <ul>
-            <li><a href="https://justdev.it/servicios/agentes-ia/">agentes de IA para empresas</a></li>
-            <li><a href="https://justdev.it/servicios/inteligencia-artificial/">inteligencia artificial aplicada</a></li>
-            <li><a href="https://justdev.it/casos/data-inmobiliaria/">caso Data Inmobiliaria</a></li>
-            <li><a href="/blog/">Ver todos los artículos del blog</a></li>
-          </ul>
-        </div>
-      </section>
-    </main>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faqs reveal">
+      <span class="blog-kicker">FAQ</span>
+      <h2>Preguntas frecuentes</h2>
+      <details class="q">
+        <summary>¿Qué es un servidor MCP (Model Context Protocol)?</summary>
+        <p>Es un componente que conecta un modelo de lenguaje (como Claude o ChatGPT) con los datos y sistemas de tu empresa usando el estándar abierto Model Context Protocol. En vez de entregarle toda la base al modelo, el servidor expone un conjunto acotado de herramientas y recursos que el modelo puede consultar. El usuario pregunta en lenguaje natural y el servidor ejecuta la consulta contra la fuente real, sin copiar los datos a otro lugar.</p>
+      </details>
+      <details class="q">
+        <summary>¿Es seguro conectar un LLM a los datos de mi empresa?</summary>
+        <p>Sí, si se hace con la arquitectura correcta. Un servidor MCP bien diseñado usa acceso de solo lectura y acotado: el servidor define qué puede y qué no puede consultar el modelo, los datos permanecen en tu entorno y cada consulta queda registrada para auditoría. El riesgo no está en la IA en sí, sino en darle acceso sin control; el servidor existe justamente para imponer ese control.</p>
+      </details>
+      <details class="q">
+        <summary>¿El modelo de IA aprende de mis datos?</summary>
+        <p>No. Los proveedores serios de LLM empresariales no entrenan sus modelos con los datos del cliente. Tu información se usa para responder esa consulta en ese momento y luego no queda incorporada al modelo. Además, con un servidor MCP los datos ni siquiera salen de tu entorno: el modelo consulta sobre la marcha, no recibe una copia para entrenarse.</p>
+      </details>
+      <details class="q">
+        <summary>¿Qué exige la Ley 21.719 al usar IA con datos?</summary>
+        <p>Como orientación general (no asesoría legal): la Ley 21.719 de Protección de Datos Personales de Chile aplica principios de finalidad, proporcionalidad y minimización, licitud y responsabilidad. Al conectar IA a datos personales conviene exponer solo los datos necesarios, tener clara la base legal del tratamiento y registrar los accesos. Para un caso concreto, valídalo con tu equipo jurídico.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cuál es la diferencia entre MCP, RAG y fine-tuning?</summary>
+        <p>Con MCP el modelo consulta tus datos y sistemas en vivo a través de herramientas controladas. Con RAG se recuperan los documentos más relevantes y se inyectan en el contexto antes de que el modelo responda. Con fine-tuning se reentrena el modelo con tus datos, lo que es caro y deja la información estática. Para datos que cambian y donde necesitas trazabilidad, MCP y RAG suelen ser mejores que el fine-tuning, y a menudo se combinan.</p>
+      </details>
+      <details class="q">
+        <summary>¿Funciona con Claude y ChatGPT?</summary>
+        <p>Sí. Al ser un estándar abierto, un mismo servidor MCP puede usarse desde distintos asistentes de IA. Nuestro producto propio Data Inmobiliaria ya expone un servidor MCP que permite consultar 9,5 millones de propiedades de Chile en lenguaje natural desde Claude o ChatGPT, sin escribir SQL.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cómo se controla qué datos puede ver el modelo?</summary>
+        <p>El control vive en el servidor MCP, no en el modelo. Tú defines qué tablas, campos y operaciones quedan expuestos como herramientas; todo lo demás sencillamente no existe para la IA. El acceso es de solo lectura, así que el modelo puede consultar pero no modificar ni borrar, y cada consulta queda registrada para que sepas quién preguntó qué y contra qué fuente.</p>
+      </details>
+    </div>
+
+    <section class="related reveal">
+      <span class="blog-kicker">Sigue leyendo</span>
+      <div class="related-grid">
+        <a class="rcard" href="/blog/web-scraping-a-escala-chile/">
+          <span class="rk">Web scraping · Datos</span>
+          <h3>Web scraping a escala en Chile: arquitectura, legalidad y costos</h3>
+        </a>
+        <a class="rcard" href="/blog/consolidacion-financiera-multisociedad/">
+          <span class="rk">Finanzas · Datos</span>
+          <h3>Consolidación financiera multi-sociedad: del Excel al dashboard</h3>
+        </a>
+        <a class="rcard" href="/blog/automatizacion-generadoras-coordinador-electrico-dga/">
+          <span class="rk">Energía · RPA</span>
+          <h3>Automatización para generadoras: reportería al Coordinador Eléctrico y tickets a la DGA</h3>
+        </a>
+      </div>
+    </section>
 
     <section class="final-cta">
       <h2>¿Tienes un caso parecido en tu empresa?</h2>
@@ -353,13 +503,31 @@
     <footer class="page-footer">
       <nav aria-label="Enlaces">
         <a href="/">Inicio</a>
-        <a href="/servicios/inteligencia-artificial/">Inteligencia Artificial</a>
+        <a href="/blog/">Blog</a>
+        <a href="/servicios/agentes-ia/">Agentes de IA</a>
         <a href="/servicios/data-engineering/">Ingeniería de Datos</a>
-        <a href="/casos/data-inmobiliaria/">Caso Data Inmobiliaria</a>
         <a href="/#contacto">Contacto</a>
       </nav>
       <p style="margin-top: 1rem;">&copy; 2026 Just Dev It · Santiago, Chile · <span style="white-space: nowrap;">Hecho con 💜 en Chile</span></p>
     </footer>
+
+
+    <script>
+      (function(){
+        var bar=document.querySelector('.read-progress');
+        if(bar){var f=function(){var h=document.documentElement;var s=h.scrollTop||document.body.scrollTop;
+          var m=(h.scrollHeight-h.clientHeight)||1;bar.style.width=Math.min(100,s/m*100)+'%';};
+          addEventListener('scroll',f,{passive:true});addEventListener('resize',f,{passive:true});f();}
+        var els=document.querySelectorAll('.reveal');
+        if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+          var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+            e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+          els.forEach(function(el){io.observe(el);});
+        } else { els.forEach(function(el){el.classList.add('in');}); }
+      })();
+    </script>
+
+
 
     <script defer src="/js/conversion-tracking.js"></script>
   </body>

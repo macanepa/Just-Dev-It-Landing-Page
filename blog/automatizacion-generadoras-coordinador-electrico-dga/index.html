@@ -210,19 +210,161 @@
       }
     </style>
   
-    <!-- ===== Estilos del blog ===== -->
+    <!-- ===== Blog — diseño editorial inmersivo JDI ===== -->
     <style>
-      .breadcrumb{max-width:48rem;margin:0 auto;padding:1.4rem 1.5rem 0;font-size:.82rem;color:#9aa6b8}
-      .breadcrumb a{color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
-      .breadcrumb a:hover{text-decoration:underline}
-      .post-meta{max-width:48rem;margin:.35rem auto 0;padding:0 1.5rem;font-size:.82rem;color:#8b94a6;letter-spacing:.02em}
-      .post-body :is(h2,h3){scroll-margin-top:90px}
-      .post-body a{color:var(--jdi-purple-light,#b9a7e6)}
-      .blog-card a.blog-readmore{display:inline-block;margin-top:.6rem;font-weight:600;color:var(--jdi-purple-light,#b9a7e6);text-decoration:none}
-      .blog-card a.blog-readmore:hover{text-decoration:underline}
-      .blog-card .post-tag{display:inline-block;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:#8b94a6;margin-bottom:.5rem}
-      .related-box ul{margin:.5rem 0 0;padding-left:1.1rem}
-      .related-box li{margin:.3rem 0}
+      :root{ --blog-ink:#E8EaF4; --blog-dim:#9aa6bc; --blog-faint:#6c768c; --measure:42rem; --blog-max:74rem; }
+      /* Ocultamos el subnav heredado en favor de un masthead propio del blog;
+         dejamos el logo accesible arriba a la izquierda */
+      body{ background:var(--surface-page,#0A0E1A); }
+      .blog-topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+        gap:1rem;padding:0.9rem 1.5rem;background:rgba(10,14,26,.72);backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border-default,rgba(155,97,164,.10))}
+      .blog-topbar img{height:26px;width:auto;display:block}
+      .blog-topbar nav{display:flex;gap:1.4rem;align-items:center;font-size:.86rem}
+      .blog-topbar nav a{color:var(--blog-dim);text-decoration:none;transition:color .2s}
+      .blog-topbar nav a:hover{color:#fff}
+      .blog-topbar .tb-cta{color:#fff;border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:999px;
+        padding:.4rem 1rem;font-weight:600}
+      .blog-topbar .tb-cta:hover{background:var(--jdi-purple,#9B61A4);border-color:transparent}
+      @media (max-width:680px){ .blog-topbar nav a.tb-hide{display:none} }
+
+      /* barra de progreso de lectura (solo en posts) */
+      .read-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:80;
+        background:var(--gradient-cta,linear-gradient(135deg,#9B61A4,#B37BBF));box-shadow:0 0 12px rgba(179,123,191,.6)}
+
+      .blog-kicker{font-family:var(--font-display,'Poppins',sans-serif);font-size:.72rem;letter-spacing:.26em;
+        text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600;display:inline-block}
+      .grad{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));-webkit-background-clip:text;
+        background-clip:text;color:transparent}
+
+      /* ===== Masthead del indice ===== */
+      .blog-masthead{max-width:var(--blog-max);margin:0 auto;padding:5rem 1.5rem 2rem}
+      .blog-masthead h1{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;line-height:.92;
+        font-size:clamp(3.4rem,13vw,8rem);margin:.6rem 0 0;letter-spacing:-.03em}
+      .blog-masthead .dek{color:var(--blog-dim);max-width:33rem;font-size:1.15rem;line-height:1.6;margin:1.4rem 0 0}
+      .blog-rule{max-width:var(--blog-max);margin:0 auto;height:1px;background:var(--border-strong,rgba(155,97,164,.30))}
+
+      /* ===== Post destacado ===== */
+      .feat-wrap{max-width:var(--blog-max);margin:2.5rem auto 0;padding:0 1.5rem}
+      .feat{display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+        border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:var(--radius-lg,.75rem);
+        padding:2.75rem;background:
+          radial-gradient(120% 140% at 100% 0%, rgba(155,97,164,.22) 0%, rgba(155,97,164,0) 55%),
+          var(--surface-raised,#152636);transition:transform .4s var(--ease,ease),border-color .4s}
+      .feat:hover{transform:translateY(-4px);border-color:var(--jdi-purple,#9B61A4)}
+      .feat .tag{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--jdi-green-light,#26E0C0);font-weight:700}
+      .feat h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;letter-spacing:-.02em;
+        line-height:1.02;font-size:clamp(2rem,5.5vw,3.6rem);margin:1rem 0 .9rem;max-width:18ch}
+      .feat p{color:var(--blog-dim);max-width:52ch;font-size:1.08rem;line-height:1.6}
+      .feat .go{margin-top:1.6rem;display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-weight:600}
+      .feat .go span{transition:transform .3s} .feat:hover .go span{transform:translateX(6px)}
+
+      /* ===== Lista editorial ===== */
+      .post-list{max-width:var(--blog-max);margin:1rem auto 0;padding:0 1.5rem 1rem}
+      .post-list .lh{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blog-faint);
+        padding:2.5rem 0 .5rem;font-weight:600}
+      .post-row{display:grid;grid-template-columns:3.5rem 1fr auto;gap:.3rem 2rem;align-items:start;
+        text-decoration:none;color:inherit;padding:2.1rem 0;border-top:1px solid var(--border-default,rgba(155,97,164,.14));
+        position:relative;transition:padding-left .35s var(--ease,ease)}
+      .post-row:last-child{border-bottom:1px solid var(--border-default,rgba(155,97,164,.14))}
+      .post-row:hover{padding-left:.6rem}
+      .post-row .idx{grid-row:1/3;font-family:var(--font-display,'Poppins',sans-serif);font-size:1.05rem;
+        color:var(--blog-faint);font-variant-numeric:tabular-nums;padding-top:.5rem}
+      .post-row .rk{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600}
+      .post-row h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:600;letter-spacing:-.015em;
+        line-height:1.06;font-size:clamp(1.5rem,3.6vw,2.5rem);margin:.45rem 0 .55rem;transition:color .3s}
+      .post-row:hover h2{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+      .post-row p{color:var(--blog-dim);max-width:60ch;font-size:1rem;line-height:1.55;margin:0}
+      .post-row .rmeta{grid-column:2;color:var(--blog-faint);font-size:.82rem;margin-top:.7rem}
+      .post-row .go{grid-row:1/3;align-self:center;color:var(--blog-faint);font-size:1.5rem;transition:transform .3s,color .3s}
+      .post-row:hover .go{color:var(--jdi-purple-light,#B37BBF);transform:translateX(5px)}
+      @media (max-width:640px){
+        .post-row{grid-template-columns:1fr auto;gap:.2rem 1rem}
+        .post-row .idx{grid-row:auto;grid-column:1;padding-top:0}
+        .post-row .go{display:none}
+        .post-row .rmeta{grid-column:1}
+      }
+
+      /* ===== Post: hero editorial ===== */
+      .article-hero{max-width:50rem;margin:0 auto;padding:4.5rem 1.5rem 0;text-align:center}
+      .article-hero .crumbs{font-size:.8rem;color:var(--blog-faint);margin-bottom:1.4rem}
+      .article-hero .crumbs a{color:var(--blog-dim);text-decoration:none}
+      .article-hero .crumbs a:hover{color:#fff}
+      .article-hero h1{font-family:var(--font-display,'Poppins',sans-serif);font-weight:700;letter-spacing:-.025em;
+        line-height:1.04;font-size:clamp(2.2rem,6vw,4.2rem);margin:.8rem auto 0;max-width:20ch}
+      .article-hero .dek{color:var(--blog-dim);font-size:1.2rem;line-height:1.6;max-width:42rem;margin:1.5rem auto 0}
+      .article-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;justify-content:center;align-items:center;
+        margin:1.8rem auto 0;font-size:.84rem;color:var(--blog-faint)}
+      .article-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--blog-faint)}
+      .article-divider{max-width:50rem;margin:2.6rem auto 0;padding:0 1.5rem}
+      .article-divider span{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--border-strong,rgba(155,97,164,.4)),transparent)}
+
+      /* ===== Post: cuerpo ===== */
+      .post-body{max-width:var(--measure);margin:2.4rem auto 0;padding:0 1.5rem;color:var(--blog-ink);
+        font-size:1.18rem;line-height:1.78}
+      .post-body section{padding:0;border:0;max-width:none;margin:0}
+      .post-body section + section{margin-top:2.4rem}
+      .post-body p{margin:0 0 1.25rem}
+      .post-body section:first-of-type > p:first-child{font-size:1.36rem;line-height:1.6;color:#fff;font-weight:400}
+      .post-body h2{font-family:var(--font-display,'Poppins',sans-serif);font-weight:600;color:#fff;
+        font-size:clamp(1.5rem,3.2vw,2rem);line-height:1.18;letter-spacing:-.015em;margin:2.8rem 0 1.1rem;
+        padding-top:.4rem;position:relative}
+      .post-body h2::before{content:"";position:absolute;top:-.2rem;left:0;width:2.4rem;height:3px;border-radius:2px;
+        background:var(--gradient-cta,linear-gradient(135deg,#9B61A4,#B37BBF))}
+      .post-body h3{font-family:var(--font-display,'Poppins',sans-serif);color:#fff;font-size:1.2rem;margin:1.8rem 0 .7rem}
+      .post-body a{color:var(--jdi-purple-light,#B37BBF);text-decoration:underline;text-underline-offset:3px;
+        text-decoration-color:rgba(179,123,191,.4);transition:text-decoration-color .2s}
+      .post-body a:hover{text-decoration-color:var(--jdi-purple-light,#B37BBF)}
+      .post-body strong{color:#fff;font-weight:600}
+      .post-body ul{margin:0 0 1.3rem;padding:0;list-style:none}
+      .post-body li{position:relative;padding-left:1.5rem;margin:.55rem 0}
+      .post-body li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;
+        background:var(--jdi-purple-light,#B37BBF)}
+      /* cita destacada */
+      .pullquote{margin:2.8rem 0;padding:.4rem 0 .4rem 1.6rem;border-left:3px solid var(--jdi-purple,#9B61A4);
+        font-family:var(--font-display,'Poppins',sans-serif);font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.3;
+        font-weight:600;letter-spacing:-.01em}
+      .pullquote span{background:var(--gradient-text,linear-gradient(135deg,#B37BBF,#9B61A4));
+        -webkit-background-clip:text;background-clip:text;color:transparent}
+      /* takeaways */
+      .takeaways{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+      .takeaways .box{border:1px solid var(--border-strong,rgba(155,97,164,.30));border-radius:var(--radius-lg,.75rem);
+        background:var(--surface-card,rgba(30,41,59,.6));padding:1.9rem 2rem}
+      .takeaways .blog-kicker{margin-bottom:.9rem}
+      .takeaways ul{margin:0;padding:0;list-style:none}
+      .takeaways li{position:relative;padding-left:1.7rem;margin:.7rem 0;color:var(--blog-ink);line-height:1.55}
+      .takeaways li::before{content:"→";position:absolute;left:0;top:0;color:var(--jdi-green-light,#26E0C0);font-weight:700}
+
+      /* FAQ rediseñado */
+      .faqs{max-width:var(--measure);margin:3rem auto 0;padding:0 1.5rem}
+      .faqs > .blog-kicker{margin-bottom:.4rem}
+      .faqs h2{font-family:var(--font-display,'Poppins',sans-serif);color:#fff;font-size:1.7rem;margin:.3rem 0 1rem;letter-spacing:-.01em}
+      details.q{border-top:1px solid var(--border-default,rgba(155,97,164,.14))}
+      .faqs details.q:last-of-type{border-bottom:1px solid var(--border-default,rgba(155,97,164,.14))}
+      details.q summary{list-style:none;cursor:pointer;padding:1.15rem 2.5rem 1.15rem 0;position:relative;
+        font-family:var(--font-display,'Poppins',sans-serif);font-weight:500;font-size:1.08rem;color:#fff}
+      details.q summary::-webkit-details-marker{display:none}
+      details.q summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
+        font-size:1.4rem;color:var(--jdi-purple-light,#B37BBF);transition:transform .3s}
+      details.q[open] summary::after{content:"−"}
+      details.q p{margin:0 0 1.2rem;color:var(--blog-dim);line-height:1.7;max-width:62ch}
+
+      /* relacionados */
+      .related{max-width:var(--blog-max);margin:4rem auto 0;padding:0 1.5rem}
+      .related .blog-kicker{display:block;margin-bottom:1.2rem}
+      .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+      .rcard{text-decoration:none;color:inherit;border:1px solid var(--border-default,rgba(155,97,164,.14));
+        border-radius:var(--radius-lg,.75rem);padding:1.4rem;transition:transform .3s,border-color .3s,background .3s}
+      .rcard:hover{transform:translateY(-3px);border-color:var(--jdi-purple,#9B61A4);background:var(--surface-card,rgba(30,41,59,.6))}
+      .rcard .rk{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--jdi-purple-light,#B37BBF);font-weight:600}
+      .rcard h3{font-family:var(--font-display,'Poppins',sans-serif);font-size:1.1rem;line-height:1.25;margin:.6rem 0 0;color:#fff;font-weight:600}
+
+      /* micro-animaciones al scroll (respeta prefers-reduced-motion) */
+      @media (prefers-reduced-motion:no-preference){
+        .reveal{opacity:0;transform:translateY(22px)}
+        .reveal.in{opacity:1;transform:none;transition:opacity .7s var(--ease,cubic-bezier(.22,1,.36,1)),transform .7s var(--ease,cubic-bezier(.22,1,.36,1))}
+      }
     </style>
 
   </head>
@@ -231,111 +373,119 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N67BW2PN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="subnav" aria-label="Navegación">
-      <a class="subnav-logo" href="/" aria-label="Just Dev It — Inicio">
-        <img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="140" height="32" />
-      </a>
-      <div class="subnav-links">
-        <a href="/#servicios">Servicios</a>
-        <a href="/#portafolio">Portafolio</a>
-        <a href="/#contacto" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Cotizar Proyecto</a>
-      </div>
-    </nav>
+        <div class="blog-topbar">
+      <a href="/" aria-label="Just Dev It — Inicio"><img src="/assets/images/Desktop/logo-principal-blanco.svg" alt="Just Dev It" width="120" height="26" /></a>
+      <nav aria-label="Navegación">
+        <a href="/blog/" class="tb-hide">Blog</a>
+        <a href="/#servicios" class="tb-hide">Servicios</a>
+        <a href="/#contacto" class="tb-cta">Cotizar</a>
+      </nav>
+    </div>
+    <div class="read-progress" aria-hidden="true"></div>
 
-    <header class="page-hero">
-      <span class="page-eyebrow">Blog · Energía y RPA</span>
+    <header class="article-hero">
+      <p class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></p>
+      <span class="blog-kicker">Energía · RPA</span>
       <h1>Automatización para generadoras: reportería al Coordinador Eléctrico y tickets a la DGA</h1>
-      <p class="lead">Cómo automatizar el reporte diario al Coordinador Eléctrico Nacional y los tickets a la DGA (MEE). De horas a minutos, trazable y normado. Cotiza desde UF 75.</p>
-      <div class="hero-ctas">
-        <a href="/#contacto" class="btn btn-primary">Cotizar mi proyecto</a>
-        <a href="/blog/" class="btn btn-secondary">Más artículos</a>
+      <p class="dek">Cómo automatizar el reporte diario al Coordinador Eléctrico Nacional y los tickets a la DGA (MEE). De horas a minutos, trazable y normado. Cotiza desde UF 75.</p>
+      <div class="article-meta">
+        <span>2026-06-17</span><span class="dot"></span>
+        <span>6 min de lectura</span><span class="dot"></span>
+        <span>Just Dev It</span>
       </div>
     </header>
+    <div class="article-divider"><span></span></div>
 
-    <nav class="breadcrumb" aria-label="Ruta de navegación">
-      <a href="/">Inicio</a> / <a href="/blog/">Blog</a> / <span>Automatización para generadoras: reportería al Coordinador Eléctrico y tickets a la DGA</span>
-    </nav>
-    <p class="post-meta">2026-06-17 · 6 min de lectura · Just Dev It</p>
-
-    <main class="post-body">
-      <section class="page-section">
+    <article class="post-body">
+      <section class="reveal">
         <p>Si operas una generadora en Chile, conoces la rutina: cada mañana alguien dedica horas a descargar costos marginales y generación 15-minutal del <strong>Coordinador Eléctrico Nacional</strong>, a cruzarlos con datos internos y a revisar que nada falte antes de que la operación tome decisiones. Y cuando la telemetría detecta una falla, el reloj regulatorio empieza a correr: hay que abrir el ticket en el portal <strong>MEE-DGA</strong> y dejar trazabilidad. Procesos críticos, repetitivos y propensos al error humano.</p><p>La buena noticia es que estos flujos se pueden automatizar de punta a punta sin perder control ni trazabilidad. En este artículo explicamos cómo se hace, qué arquitectura lo sostiene, qué resultados son realistas y qué consideraciones de mantención y normativa debes tener en cuenta.</p>
       </section>
-      <section class="page-section">
-        <h2>El problema: reportería diaria y tickets regulatorios consumen horas críticas</h2>
-        <p>Dos procesos concentran gran parte de la carga manual en la operación de una generadora:</p><ul><li><strong>El reporte operativo diario.</strong> Recopilar los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos), consolidarlos con la información interna de las centrales y dejarlos listos para análisis. Hecho a mano, este flujo puede tomar <strong>más de 4 horas diarias</strong> y depende de que la persona a cargo esté disponible y no cometa errores de copiado.</li><li><strong>Los tickets a la DGA.</strong> Cuando ocurre una falla, la normativa exige reportarla a la Dirección General de Aguas a través del portal MEE. Esto implica entrar al sistema, completar formularios y dejar registro, todo bajo presión de tiempo.</li></ul><p>El costo no es solo de horas-persona. Es el riesgo de reportar tarde, de inconsistencias en los datos que alimentan decisiones operativas, y de no tener un registro centralizado y auditable de lo que se informó y cuándo.</p>
-      </section>
-      <section class="page-section">
-        <h2>Cómo se resuelve: automatización de reportería y de trámites regulatorios</h2>
-        <p>La solución combina dos automatizaciones complementarias, cada una pensada para un proceso distinto pero con la misma lógica: quitar el trabajo manual repetitivo y dejar el resultado trazable.</p><p><strong>1. Reporte operativo diario automatizado.</strong> Un flujo programado obtiene los datos del Coordinador Eléctrico Nacional usando su <strong>API oficial</strong>, con <strong>scraping de respaldo</strong> como contingencia cuando la fuente oficial no responde. Los datos se consolidan con la información interna de las centrales, se validan en estructura y completitud, y alimentan dashboards de BI. Si detecta datos faltantes o inconsistentes, emite alertas automáticas para que el equipo intervenga antes de que el problema escale.</p><p><strong>2. Tickets regulatorios a la DGA.</strong> Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA. Como ese portal usa formularios dinámicos y no expone una API, se resuelve con <strong>automatización de navegador headless</strong> que reproduce el proceso que haría una persona. El ticket se centraliza en un repositorio único, su estado se sincroniza periódicamente y el equipo recibe notificaciones, de modo que siempre hay una fuente de verdad sobre qué se reportó y en qué estado está.</p>
-      </section>
-      <section class="page-section">
-        <h2>La arquitectura: cómo funciona por dentro</h2>
-        <p>Sin entrar en detalles propietarios, la arquitectura sigue un patrón claro y reutilizable:</p><ul><li><strong>Ingesta de datos:</strong> conexión a la API del Coordinador como vía principal y scraping de respaldo como contingencia, de modo que un problema en una fuente no detenga todo el flujo.</li><li><strong>Consolidación y validación:</strong> los datos externos se cruzan con los internos en un repositorio central. Reglas de validación revisan estructura y completitud, y se emiten alertas ante cualquier faltante.</li><li><strong>Orquestación:</strong> un orquestador de flujos coordina las tareas en el orden correcto, las reintenta si fallan y deja registro de cada ejecución para auditoría.</li><li><strong>Automatización de navegador:</strong> para el portal MEE-DGA, que no tiene API, un navegador headless completa los formularios dinámicos del mismo modo en que lo haría un operador, pero en segundos.</li><li><strong>Visualización y notificación:</strong> los resultados alimentan dashboards de BI y el equipo recibe avisos automáticos sobre datos faltantes o cambios de estado de los tickets.</li></ul><p>Tecnológicamente esto se sostiene con herramientas estándar y mantenibles: <strong>Python</strong> para la lógica de ingesta y automatización, <strong>SQL</strong> para la consolidación de datos y un <strong>data warehouse en la nube</strong> (sobre AWS, Azure o Google Cloud) como repositorio central. Sin dependencias exóticas que compliquen el mantenimiento a largo plazo.</p>
-      </section>
-      <section class="page-section">
-        <h2>Resultados: de horas a minutos, con trazabilidad</h2>
-        <p>Los efectos de automatizar estos dos procesos son concretos y medibles:</p><ul><li><strong>Reporte diario:</strong> un proceso que tomaba <strong>más de 4 horas diarias</strong> de trabajo manual quedó automatizado y trazable, liberando a las personas para análisis de mayor valor en lugar de descarga y copiado de datos.</li><li><strong>Tickets a la DGA:</strong> el tiempo de respuesta ante una falla pasó <strong>de horas a alrededor de 2 minutos</strong>, operando en 3 centrales y más de 10 códigos de obra.</li><li><strong>Trazabilidad:</strong> cada ejecución y cada ticket quedan registrados, con estado sincronizado y alertas automáticas, lo que da un respaldo auditable que el proceso manual no entregaba.</li></ul><p>El valor no es solo el ahorro de horas, sino la consistencia: los datos llegan validados, las alertas avisan antes de que un faltante se vuelva un problema, y existe un registro centralizado de toda la actividad regulatoria.</p>
-      </section>
-      <section class="page-section">
-        <h2>Consideraciones: normativa, mantención y cómo cotizar</h2>
-        <p><strong>Normativa.</strong> La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable a estos reportes, en particular el <strong>Decreto 53</strong> y la <strong>Resolución 1238 Exenta</strong>. La automatización ejecuta el proceso que la regulación exige; no lo reemplaza ni lo reinterpreta. Esto es orientación general y no constituye asesoría legal: la responsabilidad de cumplimiento siempre recae en la generadora y conviene validar cada caso con el área legal o regulatoria correspondiente.</p><p><strong>Mantención.</strong> Existe un riesgo inherente a automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz de su portal o el formato de sus datos, la automatización requiere un ajuste. Esto se cubre con un esquema de mantención que monitorea y adapta los flujos cuando las fuentes cambian, de modo que el servicio no se interrumpa.</p><p><strong>Cómo avanzar.</strong> Cada operación tiene fuentes de datos, centrales y procesos distintos, así que el alcance se define caso a caso. Los proyectos de automatización parten <strong>desde UF 75</strong> e incluyen <strong>30 días de garantía post-entrega</strong>. Si quieres evaluar qué procesos de tu generadora son automatizables, <strong>escríbenos para una cotización</strong> y revisamos juntos el flujo que más horas te está costando.</p>
-      </section>
-      <section class="page-section">
-        <div class="case-box">
-          <h3>En resumen</h3>
-          <ul>
+        <section class="reveal">
+          <h2>El problema: reportería diaria y tickets regulatorios consumen horas críticas</h2>
+          <p>Dos procesos concentran gran parte de la carga manual en la operación de una generadora:</p><ul><li><strong>El reporte operativo diario.</strong> Recopilar los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos), consolidarlos con la información interna de las centrales y dejarlos listos para análisis. Hecho a mano, este flujo puede tomar <strong>más de 4 horas diarias</strong> y depende de que la persona a cargo esté disponible y no cometa errores de copiado.</li><li><strong>Los tickets a la DGA.</strong> Cuando ocurre una falla, la normativa exige reportarla a la Dirección General de Aguas a través del portal MEE. Esto implica entrar al sistema, completar formularios y dejar registro, todo bajo presión de tiempo.</li></ul><p>El costo no es solo de horas-persona. Es el riesgo de reportar tarde, de inconsistencias en los datos que alimentan decisiones operativas, y de no tener un registro centralizado y auditable de lo que se informó y cuándo.</p>
+        </section>
+        <section class="reveal">
+          <h2>Cómo se resuelve: automatización de reportería y de trámites regulatorios</h2>
+          <p>La solución combina dos automatizaciones complementarias, cada una pensada para un proceso distinto pero con la misma lógica: quitar el trabajo manual repetitivo y dejar el resultado trazable.</p><p><strong>1. Reporte operativo diario automatizado.</strong> Un flujo programado obtiene los datos del Coordinador Eléctrico Nacional usando su <strong>API oficial</strong>, con <strong>scraping de respaldo</strong> como contingencia cuando la fuente oficial no responde. Los datos se consolidan con la información interna de las centrales, se validan en estructura y completitud, y alimentan dashboards de BI. Si detecta datos faltantes o inconsistentes, emite alertas automáticas para que el equipo intervenga antes de que el problema escale.</p><p><strong>2. Tickets regulatorios a la DGA.</strong> Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA. Como ese portal usa formularios dinámicos y no expone una API, se resuelve con <strong>automatización de navegador headless</strong> que reproduce el proceso que haría una persona. El ticket se centraliza en un repositorio único, su estado se sincroniza periódicamente y el equipo recibe notificaciones, de modo que siempre hay una fuente de verdad sobre qué se reportó y en qué estado está.</p>
+        </section>
+      <blockquote class="pullquote reveal"><span>El reporte diario al Coordinador Eléctrico Nacional se automatiza con API oficial más scraping de respaldo, consolidación con datos internos y validación con alertas: un proceso de más de 4 horas diarias queda trazable.</span></blockquote>
+        <section class="reveal">
+          <h2>La arquitectura: cómo funciona por dentro</h2>
+          <p>Sin entrar en detalles propietarios, la arquitectura sigue un patrón claro y reutilizable:</p><ul><li><strong>Ingesta de datos:</strong> conexión a la API del Coordinador como vía principal y scraping de respaldo como contingencia, de modo que un problema en una fuente no detenga todo el flujo.</li><li><strong>Consolidación y validación:</strong> los datos externos se cruzan con los internos en un repositorio central. Reglas de validación revisan estructura y completitud, y se emiten alertas ante cualquier faltante.</li><li><strong>Orquestación:</strong> un orquestador de flujos coordina las tareas en el orden correcto, las reintenta si fallan y deja registro de cada ejecución para auditoría.</li><li><strong>Automatización de navegador:</strong> para el portal MEE-DGA, que no tiene API, un navegador headless completa los formularios dinámicos del mismo modo en que lo haría un operador, pero en segundos.</li><li><strong>Visualización y notificación:</strong> los resultados alimentan dashboards de BI y el equipo recibe avisos automáticos sobre datos faltantes o cambios de estado de los tickets.</li></ul><p>Tecnológicamente esto se sostiene con herramientas estándar y mantenibles: <strong>Python</strong> para la lógica de ingesta y automatización, <strong>SQL</strong> para la consolidación de datos y un <strong>data warehouse en la nube</strong> (sobre AWS, Azure o Google Cloud) como repositorio central. Sin dependencias exóticas que compliquen el mantenimiento a largo plazo.</p>
+        </section>
+        <section class="reveal">
+          <h2>Resultados: de horas a minutos, con trazabilidad</h2>
+          <p>Los efectos de automatizar estos dos procesos son concretos y medibles:</p><ul><li><strong>Reporte diario:</strong> un proceso que tomaba <strong>más de 4 horas diarias</strong> de trabajo manual quedó automatizado y trazable, liberando a las personas para análisis de mayor valor en lugar de descarga y copiado de datos.</li><li><strong>Tickets a la DGA:</strong> el tiempo de respuesta ante una falla pasó <strong>de horas a alrededor de 2 minutos</strong>, operando en 3 centrales y más de 10 códigos de obra.</li><li><strong>Trazabilidad:</strong> cada ejecución y cada ticket quedan registrados, con estado sincronizado y alertas automáticas, lo que da un respaldo auditable que el proceso manual no entregaba.</li></ul><p>El valor no es solo el ahorro de horas, sino la consistencia: los datos llegan validados, las alertas avisan antes de que un faltante se vuelva un problema, y existe un registro centralizado de toda la actividad regulatoria.</p>
+        </section>
+        <section class="reveal">
+          <h2>Consideraciones: normativa, mantención y cómo cotizar</h2>
+          <p><strong>Normativa.</strong> La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable a estos reportes, en particular el <strong>Decreto 53</strong> y la <strong>Resolución 1238 Exenta</strong>. La automatización ejecuta el proceso que la regulación exige; no lo reemplaza ni lo reinterpreta. Esto es orientación general y no constituye asesoría legal: la responsabilidad de cumplimiento siempre recae en la generadora y conviene validar cada caso con el área legal o regulatoria correspondiente.</p><p><strong>Mantención.</strong> Existe un riesgo inherente a automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz de su portal o el formato de sus datos, la automatización requiere un ajuste. Esto se cubre con un esquema de mantención que monitorea y adapta los flujos cuando las fuentes cambian, de modo que el servicio no se interrumpa.</p><p><strong>Cómo avanzar.</strong> Cada operación tiene fuentes de datos, centrales y procesos distintos, así que el alcance se define caso a caso. Los proyectos de automatización parten <strong>desde UF 75</strong> e incluyen <strong>30 días de garantía post-entrega</strong>. Si quieres evaluar qué procesos de tu generadora son automatizables, <strong>escríbenos para una cotización</strong> y revisamos juntos el flujo que más horas te está costando.</p>
+        </section>
+    </article>
+
+    <div class="takeaways reveal">
+      <div class="box">
+        <span class="blog-kicker">En resumen</span>
+        <ul>
             <li>El reporte diario al Coordinador Eléctrico Nacional se automatiza con API oficial más scraping de respaldo, consolidación con datos internos y validación con alertas: un proceso de más de 4 horas diarias queda trazable.</li>
             <li>Los tickets a la DGA se crean automáticamente en el portal MEE mediante automatización de navegador headless, reduciendo el tiempo de respuesta de horas a alrededor de 2 minutos en 3 centrales y más de 10 códigos de obra.</li>
             <li>Los portales estatales sin API (como MEE-DGA) se automatizan con un navegador headless que reproduce el proceso humano sobre formularios dinámicos.</li>
             <li>Automatizar portales de terceros tiene un riesgo inherente: si cambian la interfaz, la automatización requiere ajuste, que se cubre con mantención.</li>
             <li>La automatización busca cumplir la normativa vigente (Decreto 53 y Resolución 1238 Exenta); proyectos desde UF 75 con 30 días de garantía post-entrega.</li>
-          </ul>
-        </div>
-      </section>
-      <section class="page-section">
-        <h2>Preguntas frecuentes</h2>
-        <details class="faq">
-          <summary>¿Se puede automatizar el reporte diario al Coordinador Eléctrico Nacional?</summary>
-          <p>Sí. El reporte operativo diario se automatiza obteniendo los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos) mediante su API oficial, con scraping de respaldo como contingencia. Los datos se consolidan con la información interna, se validan en estructura y completitud, y alimentan dashboards de BI. Un proceso que tomaba más de 4 horas diarias queda automatizado y trazable.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Se pueden automatizar los tickets de la DGA (MEE)?</summary>
-          <p>Sí. Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA, lo centraliza en un repositorio único, sincroniza su estado de forma periódica y notifica al equipo. Como el portal usa formularios dinámicos y no expone una API, se resuelve con automatización de navegador headless. En la práctica, el tiempo de respuesta pasó de horas a alrededor de 2 minutos.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cómo se automatiza un portal estatal que no tiene API?</summary>
-          <p>Con automatización de navegador headless: un proceso reproduce los mismos pasos que haría una persona dentro del portal (iniciar sesión, completar formularios dinámicos, enviar y registrar) pero en segundos y sin error de copiado. Es la vía estándar cuando la entidad no ofrece una integración técnica directa, como ocurre con el portal MEE-DGA.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Qué pasa cuando el portal del Estado cambia su interfaz?</summary>
-          <p>Es el riesgo inherente de automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz o el formato de los datos, la automatización requiere un ajuste. Por eso el servicio incluye un esquema de mantención que monitorea las fuentes y adapta los flujos cuando cambian, evitando interrupciones del proceso.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cuánto tiempo ahorra esta automatización?</summary>
-          <p>En el reporte diario, un proceso de más de 4 horas diarias de trabajo manual quedó completamente automatizado. En los tickets a la DGA, el tiempo de respuesta ante una falla pasó de horas a alrededor de 2 minutos, operando en 3 centrales y más de 10 códigos de obra. Además del ahorro de horas, se gana consistencia y trazabilidad auditable.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Es compatible con la normativa vigente (Decreto 53, Resolución 1238)?</summary>
-          <p>Sí. La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable, en particular el Decreto 53 y la Resolución 1238 Exenta. La automatización ejecuta el proceso que la regulación exige, no lo reemplaza. Esto es orientación general y no asesoría legal: el cumplimiento es responsabilidad de la generadora y conviene validarlo con su área regulatoria.</p>
-        </details>
-        <details class="faq">
-          <summary>¿Cuánto cuesta automatizar estos procesos en una generadora?</summary>
-          <p>El alcance se define caso a caso, porque cada operación tiene fuentes de datos, centrales y procesos distintos. Los proyectos de automatización parten desde UF 75 e incluyen 30 días de garantía post-entrega. Lo más práctico es solicitar una cotización indicando qué flujo te está costando más horas.</p>
-        </details>
-      </section>
-      <section class="page-section">
-        <div class="case-box related-box">
-          <h3>Sigue explorando</h3>
-          <ul>
-            <li><a href="https://justdev.it/industrias/energia-renovable/">software para energía renovable</a></li>
-            <li><a href="https://justdev.it/servicios/automatizacion-rpa/">automatización RPA</a></li>
-            <li><a href="https://justdev.it/servicios/data-engineering/">ingeniería de datos</a></li>
-            <li><a href="/blog/">Ver todos los artículos del blog</a></li>
-          </ul>
-        </div>
-      </section>
-    </main>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faqs reveal">
+      <span class="blog-kicker">FAQ</span>
+      <h2>Preguntas frecuentes</h2>
+      <details class="q">
+        <summary>¿Se puede automatizar el reporte diario al Coordinador Eléctrico Nacional?</summary>
+        <p>Sí. El reporte operativo diario se automatiza obteniendo los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos) mediante su API oficial, con scraping de respaldo como contingencia. Los datos se consolidan con la información interna, se validan en estructura y completitud, y alimentan dashboards de BI. Un proceso que tomaba más de 4 horas diarias queda automatizado y trazable.</p>
+      </details>
+      <details class="q">
+        <summary>¿Se pueden automatizar los tickets de la DGA (MEE)?</summary>
+        <p>Sí. Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA, lo centraliza en un repositorio único, sincroniza su estado de forma periódica y notifica al equipo. Como el portal usa formularios dinámicos y no expone una API, se resuelve con automatización de navegador headless. En la práctica, el tiempo de respuesta pasó de horas a alrededor de 2 minutos.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cómo se automatiza un portal estatal que no tiene API?</summary>
+        <p>Con automatización de navegador headless: un proceso reproduce los mismos pasos que haría una persona dentro del portal (iniciar sesión, completar formularios dinámicos, enviar y registrar) pero en segundos y sin error de copiado. Es la vía estándar cuando la entidad no ofrece una integración técnica directa, como ocurre con el portal MEE-DGA.</p>
+      </details>
+      <details class="q">
+        <summary>¿Qué pasa cuando el portal del Estado cambia su interfaz?</summary>
+        <p>Es el riesgo inherente de automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz o el formato de los datos, la automatización requiere un ajuste. Por eso el servicio incluye un esquema de mantención que monitorea las fuentes y adapta los flujos cuando cambian, evitando interrupciones del proceso.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cuánto tiempo ahorra esta automatización?</summary>
+        <p>En el reporte diario, un proceso de más de 4 horas diarias de trabajo manual quedó completamente automatizado. En los tickets a la DGA, el tiempo de respuesta ante una falla pasó de horas a alrededor de 2 minutos, operando en 3 centrales y más de 10 códigos de obra. Además del ahorro de horas, se gana consistencia y trazabilidad auditable.</p>
+      </details>
+      <details class="q">
+        <summary>¿Es compatible con la normativa vigente (Decreto 53, Resolución 1238)?</summary>
+        <p>Sí. La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable, en particular el Decreto 53 y la Resolución 1238 Exenta. La automatización ejecuta el proceso que la regulación exige, no lo reemplaza. Esto es orientación general y no asesoría legal: el cumplimiento es responsabilidad de la generadora y conviene validarlo con su área regulatoria.</p>
+      </details>
+      <details class="q">
+        <summary>¿Cuánto cuesta automatizar estos procesos en una generadora?</summary>
+        <p>El alcance se define caso a caso, porque cada operación tiene fuentes de datos, centrales y procesos distintos. Los proyectos de automatización parten desde UF 75 e incluyen 30 días de garantía post-entrega. Lo más práctico es solicitar una cotización indicando qué flujo te está costando más horas.</p>
+      </details>
+    </div>
+
+    <section class="related reveal">
+      <span class="blog-kicker">Sigue leyendo</span>
+      <div class="related-grid">
+        <a class="rcard" href="/blog/que-es-mcp-conectar-datos-llm-seguro/">
+          <span class="rk">IA · MCP</span>
+          <h3>Qué es un servidor MCP y cómo conectar tus datos a un LLM de forma segura</h3>
+        </a>
+        <a class="rcard" href="/blog/web-scraping-a-escala-chile/">
+          <span class="rk">Web scraping · Datos</span>
+          <h3>Web scraping a escala en Chile: arquitectura, legalidad y costos</h3>
+        </a>
+        <a class="rcard" href="/blog/consolidacion-financiera-multisociedad/">
+          <span class="rk">Finanzas · Datos</span>
+          <h3>Consolidación financiera multi-sociedad: del Excel al dashboard</h3>
+        </a>
+      </div>
+    </section>
 
     <section class="final-cta">
       <h2>¿Tienes un caso parecido en tu empresa?</h2>
@@ -349,13 +499,31 @@
     <footer class="page-footer">
       <nav aria-label="Enlaces">
         <a href="/">Inicio</a>
-        <a href="/servicios/inteligencia-artificial/">Inteligencia Artificial</a>
+        <a href="/blog/">Blog</a>
+        <a href="/servicios/agentes-ia/">Agentes de IA</a>
         <a href="/servicios/data-engineering/">Ingeniería de Datos</a>
-        <a href="/casos/data-inmobiliaria/">Caso Data Inmobiliaria</a>
         <a href="/#contacto">Contacto</a>
       </nav>
       <p style="margin-top: 1rem;">&copy; 2026 Just Dev It · Santiago, Chile · <span style="white-space: nowrap;">Hecho con 💜 en Chile</span></p>
     </footer>
+
+
+    <script>
+      (function(){
+        var bar=document.querySelector('.read-progress');
+        if(bar){var f=function(){var h=document.documentElement;var s=h.scrollTop||document.body.scrollTop;
+          var m=(h.scrollHeight-h.clientHeight)||1;bar.style.width=Math.min(100,s/m*100)+'%';};
+          addEventListener('scroll',f,{passive:true});addEventListener('resize',f,{passive:true});f();}
+        var els=document.querySelectorAll('.reveal');
+        if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+          var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+            e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+          els.forEach(function(el){io.observe(el);});
+        } else { els.forEach(function(el){el.classList.add('in');}); }
+      })();
+    </script>
+
+
 
     <script defer src="/js/conversion-tracking.js"></script>
   </body>
