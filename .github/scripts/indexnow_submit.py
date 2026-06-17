@@ -14,8 +14,17 @@ ENDPOINT = "https://api.indexnow.org/indexnow"
 NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 
 
+# GitHub Pages (Fastly) responde 403 al User-Agent por defecto de urllib
+# ("Python-urllib/x.y"). Con un UA de navegador devuelve 200. Sin esto, el
+# chequeo de la llave falla siempre (403) y el workflow aborta antes de enviar.
+UA = "Mozilla/5.0 (compatible; JustDevIt-IndexNow/1.0; +https://justdev.it/)"
+
+
 def fetch(url, data=None, headers=None, timeout=30):
-    req = urllib.request.Request(url, data=data, headers=headers or {})
+    h = {"User-Agent": UA}
+    if headers:
+        h.update(headers)
+    req = urllib.request.Request(url, data=data, headers=h)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.status, resp.read().decode("utf-8", "replace")
 
@@ -32,19 +41,22 @@ def main():
     print(f"{len(urls)} URLs en sitemap.xml")
 
     # Esperar a que GitHub Pages publique el archivo de la llave (el deploy de
-    # Pages corre en paralelo a este workflow; ~1-2 min tras el push).
-    for attempt in range(12):
+    # Pages corre en paralelo a este workflow; ~1-2 min tras el push). Este
+    # chequeo es solo una cortesía para no enviar antes de que el deploy exista:
+    # aunque NO logremos confirmar la llave desde el runner, IndexNow la verifica
+    # por su cuenta al procesar el envío, así que NO abortamos.
+    for attempt in range(8):
         try:
             status, body = fetch(KEY_LOCATION)
             if status == 200 and KEY in body:
                 print(f"llave verificada en {KEY_LOCATION}")
                 break
         except Exception as e:
-            print(f"intento {attempt + 1}: llave aún no disponible ({e})")
-        time.sleep(30)
+            print(f"intento {attempt + 1}: llave aún no confirmada ({e})")
+        time.sleep(20)
     else:
-        print(f"ERROR: {KEY_LOCATION} no quedó disponible; abortando", file=sys.stderr)
-        return 1
+        print(f"AVISO: no se pudo confirmar {KEY_LOCATION} desde el runner; "
+              f"se envía igual (IndexNow verifica la llave al procesar)", file=sys.stderr)
 
     payload = json.dumps({
         "host": HOST,
