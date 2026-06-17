@@ -16,6 +16,7 @@ const translations = {
 
     // Navegación
     nav: {
+      home: "Inicio",
       services: "Servicios",
       portfolio: "Portafolio",
       about: "Nosotros",
@@ -438,21 +439,54 @@ const translations = {
       title: "Servicios e industrias en profundidad",
       subtitle: "Páginas dedicadas con casos reales, preguntas frecuentes y el detalle técnico completo.",
       cta: "Ver página",
+      colServicios: "Servicios",
+      colIndustrias: "Industrias",
       rpa: {
         kicker: "Servicio",
         title: "Automatización RPA",
         desc: "Robots de software para reportería, integraciones ERP-CRM y procesos documentales."
+      },
+      dataeng: {
+        title: "Ingeniería de datos",
+        desc: "Pipelines, consolidación de fuentes dispersas y consulta de datos con IA."
+      },
+      ia: {
+        title: "Inteligencia Artificial",
+        desc: "IA aplicada a procesos: extracción y clasificación de documentos, detección de anomalías y ML."
+      },
+      agentes: {
+        title: "Agentes de IA",
+        desc: "Copilotos que dejan consultar los datos de tu empresa en lenguaje natural, de forma trazable y segura (MCP, RAG)."
       },
       energia: {
         kicker: "Industria",
         title: "Energía Renovable",
         desc: "Reportería operativa automática para generadoras de energía renovable. Casos reales en el sector."
       },
+      legaltech: {
+        title: "LegalTech",
+        desc: "Automatización del Poder Judicial y back-office legal: carga de causas, exhortos y validación por RUT."
+      },
+      mineria: {
+        title: "Minería",
+        desc: "Reportería de producción, consolidación multi-faena, mantenimiento predictivo e IA."
+      },
+      finanzas: {
+        title: "Finanzas, AGFs y fondos",
+        desc: "Consolidación financiera multi-sociedad, monitoreo de carteras y copilotos financieros."
+      },
       casoDI: {
         kicker: "Caso de éxito",
         title: "Data Inmobiliaria",
         desc: "9,5 millones de propiedades indexadas. Nuestro producto propio, citado por la prensa."
       }
+    },
+
+    blogHome: {
+      eyebrow: "Desde el blog",
+      title: "Guías y artículos <span class=\"gradient-text\">técnicos</span>",
+      subtitle: "Cómo automatizamos, ordenamos datos y aplicamos IA en empresas chilenas. Casos reales y guías.",
+      cta: "Ver todo el blog"
     },
 
     // Preloader
@@ -473,6 +507,7 @@ const translations = {
 
     // Navigation
     nav: {
+      home: "Home",
       services: "Services",
       portfolio: "Portfolio",
       about: "About",
@@ -895,21 +930,54 @@ const translations = {
       title: "Services and industries in depth",
       subtitle: "Dedicated pages with real cases, FAQs and the full technical detail.",
       cta: "View page",
+      colServicios: "Services",
+      colIndustrias: "Industries",
       rpa: {
         kicker: "Service",
         title: "RPA Automation",
         desc: "Software robots for reporting, ERP-CRM integrations and document workflows."
+      },
+      dataeng: {
+        title: "Data engineering",
+        desc: "Pipelines, consolidation of scattered sources and data querying with AI."
+      },
+      ia: {
+        title: "Artificial Intelligence",
+        desc: "AI applied to processes: document extraction and classification, anomaly detection and ML."
+      },
+      agentes: {
+        title: "AI agents",
+        desc: "Copilots that let you query your company data in natural language, traceable and secure (MCP, RAG)."
       },
       energia: {
         kicker: "Industry",
         title: "Renewable Energy",
         desc: "Automated operational reporting for renewable energy generators. Real cases in the sector."
       },
+      legaltech: {
+        title: "LegalTech",
+        desc: "Judiciary and legal back-office automation: case filing, letters rogatory and ID validation."
+      },
+      mineria: {
+        title: "Mining",
+        desc: "Production reporting, multi-site consolidation, predictive maintenance and AI."
+      },
+      finanzas: {
+        title: "Finance, AMCs and funds",
+        desc: "Multi-entity financial consolidation, portfolio monitoring and financial copilots."
+      },
       casoDI: {
         kicker: "Case study",
         title: "Data Inmobiliaria",
         desc: "9.5 million properties indexed. Our own product, cited by the press."
       }
+    },
+
+    blogHome: {
+      eyebrow: "From the blog",
+      title: "Technical guides and <span class=\"gradient-text\">articles</span>",
+      subtitle: "How we automate, organize data and apply AI at Chilean companies. Real cases and guides.",
+      cta: "View all posts"
     },
 
     // Preloader
