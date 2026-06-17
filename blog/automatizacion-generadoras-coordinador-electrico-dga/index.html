@@ -30,8 +30,8 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <title>Automatización generadoras: Coordinador y DGA | Just Dev It</title>
-    <meta name="description" content="Cómo automatizar el reporte diario al Coordinador Eléctrico Nacional y los tickets a la DGA (MEE). De horas a minutos, trazable y normado. Cotiza desde UF 75." />
+    <title>Automatización para generadoras eléctricas | Just Dev It</title>
+    <meta name="description" content="Automatiza la reportería diaria al Coordinador Eléctrico Nacional: costos marginales, operación programada y generación vía su API oficial. Cotiza desde UF 75." />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/" />
     <meta name="geo.region" content="CL-RM" />
@@ -41,8 +41,8 @@
 
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/" />
-    <meta property="og:title" content="Automatización generadoras: Coordinador y DGA | Just Dev It" />
-    <meta property="og:description" content="Cómo automatizar el reporte diario al Coordinador Eléctrico Nacional y los tickets a la DGA (MEE). De horas a minutos, trazable y normado. Cotiza desde UF 75." />
+    <meta property="og:title" content="Automatización para generadoras eléctricas | Just Dev It" />
+    <meta property="og:description" content="Automatiza la reportería diaria al Coordinador Eléctrico Nacional: costos marginales, operación programada y generación vía su API oficial. Cotiza desde UF 75." />
     <meta property="og:image" content="https://justdev.it/assets/images/Desktop/og-image.webp" />
     <meta property="og:site_name" content="Just Dev It" />
     <meta property="og:locale" content="es_CL" />
@@ -85,15 +85,15 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Automatización para generadoras: reportería al Coordinador Eléctrico y tickets a la DGA",
+          "name": "Automatización para generadoras: reportería al Coordinador Eléctrico Nacional",
           "item": "https://justdev.it/blog/automatizacion-generadoras-coordinador-electrico-dga/"
         }
       ]
     },
     {
       "@type": "BlogPosting",
-      "headline": "Automatización para generadoras: reportería al Coordinador Eléctrico y tickets a la DGA",
-      "description": "Cómo automatizar el reporte diario al Coordinador Eléctrico Nacional y los tickets a la DGA (MEE). De horas a minutos, trazable y normado. Cotiza desde UF 75.",
+      "headline": "Automatización para generadoras: reportería al Coordinador Eléctrico Nacional",
+      "description": "Automatiza la reportería diaria al Coordinador Eléctrico Nacional: costos marginales, operación programada y generación vía su API oficial. Cotiza desde UF 75.",
       "datePublished": "2026-06-17",
       "dateModified": "2026-06-17",
       "inLanguage": "es-CL",
@@ -115,39 +115,31 @@
           "name": "¿Se puede automatizar el reporte diario al Coordinador Eléctrico Nacional?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. El reporte operativo diario se automatiza obteniendo los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos) mediante su API oficial, con scraping de respaldo como contingencia. Los datos se consolidan con la información interna, se validan en estructura y completitud, y alimentan dashboards de BI. Un proceso que tomaba más de 4 horas diarias queda automatizado y trazable."
+            "text": "Sí. El Coordinador Eléctrico Nacional publica los datos de mercado y operación —costos marginales, operación programada, generación y demanda— a través de su API oficial (el Sistema de Información Pública, SIP). Un flujo programado los descarga, los consolida con la información interna de las centrales, los valida y alimenta dashboards de BI, con alertas ante datos faltantes. Un proceso que tomaba varias horas diarias queda automatizado y trazable."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Se pueden automatizar los tickets de la DGA (MEE)?",
+          "name": "¿Qué datos del Coordinador se integran?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA, lo centraliza en un repositorio único, sincroniza su estado de forma periódica y notifica al equipo. Como el portal usa formularios dinámicos y no expone una API, se resuelve con automatización de navegador headless. En la práctica, el tiempo de respuesta pasó de horas a alrededor de 2 minutos."
+            "text": "Los que el CEN expone públicamente: costos marginales (online, real y programado), la operación programada (el «programa»), generación real y demanda del sistema, además de información del Sistema de Medidas y del Registro de Instrucciones de Operación (RIO). Se integran por su API oficial y se cruzan con los datos internos de las centrales."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cómo se automatiza un portal estatal que no tiene API?",
+          "name": "¿Se conecta por API o con scraping?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Con automatización de navegador headless: un proceso reproduce los mismos pasos que haría una persona dentro del portal (iniciar sesión, completar formularios dinámicos, enviar y registrar) pero en segundos y sin error de copiado. Es la vía estándar cuando la entidad no ofrece una integración técnica directa, como ocurre con el portal MEE-DGA."
+            "text": "Por su API oficial. El Coordinador dispone del Sistema de Información Pública (SIP) para entregar sus datos de forma programática, así que esa es la vía principal: más estable y menos frágil que depender de la maquetación de un portal. El scraping queda para fuentes que no ofrecen una integración técnica, no para el Coordinador."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Qué pasa cuando el portal del Estado cambia su interfaz?",
+          "name": "¿También se pueden automatizar trámites regulatorios, como el MEE de la DGA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Es el riesgo inherente de automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz o el formato de los datos, la automatización requiere un ajuste. Por eso el servicio incluye un esquema de mantención que monitorea las fuentes y adapta los flujos cuando cambian, evitando interrupciones del proceso."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto tiempo ahorra esta automatización?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "En el reporte diario, un proceso de más de 4 horas diarias de trabajo manual quedó completamente automatizado. En los tickets a la DGA, el tiempo de respuesta ante una falla pasó de horas a alrededor de 2 minutos, operando en 3 centrales y más de 10 códigos de obra. Además del ahorro de horas, se gana consistencia y trazabilidad auditable."
+            "text": "Sí, como proceso aparte. En generadoras hidroeléctricas el reporte de extracciones al MEE de la DGA se hace sobre un portal sin API, y se automatiza con navegador headless que reproduce el proceso del operador, centraliza el registro y notifica al equipo, reduciendo el tiempo de respuesta de horas a minutos."
           }
         },
         {
@@ -155,7 +147,7 @@
           "name": "¿Es compatible con la normativa vigente (Decreto 53, Resolución 1238)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable, en particular el Decreto 53 y la Resolución 1238 Exenta. La automatización ejecuta el proceso que la regulación exige, no lo reemplaza. Esto es orientación general y no asesoría legal: el cumplimiento es responsabilidad de la generadora y conviene validarlo con su área regulatoria."
+            "text": "Sí. Cuando se automatiza un reporte regulatorio como el del MEE, la automatización está diseñada para cumplir la normativa vigente aplicable, en particular el Decreto 53 (aguas superficiales) y la Resolución 1238 Exenta (aguas subterráneas). Ejecuta el proceso que la regulación exige, no lo reemplaza. Es orientación general y no asesoría legal: el cumplimiento es responsabilidad de la generadora."
           }
         },
         {
@@ -400,8 +392,8 @@
     <header class="article-hero">
       <p class="crumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a></p>
       <span class="blog-kicker">Energía · RPA</span>
-      <h1>Automatización para generadoras: reportería al Coordinador Eléctrico y tickets a la DGA</h1>
-      <p class="dek">Cómo automatizar el reporte diario al Coordinador Eléctrico Nacional y los tickets a la DGA (MEE). De horas a minutos, trazable y normado. Cotiza desde UF 75.</p>
+      <h1>Automatización para generadoras: reportería al Coordinador Eléctrico Nacional</h1>
+      <p class="dek">Automatiza la reportería diaria al Coordinador Eléctrico Nacional: costos marginales, operación programada y generación vía su API oficial. Cotiza desde UF 75.</p>
       <div class="article-meta">
         <span>2026-06-17</span><span class="dot"></span>
         <span>6 min de lectura</span><span class="dot"></span>
@@ -415,37 +407,37 @@
       <aside class="toc-rail" aria-label="Secciones del artículo">
         <span class="toc-label">En este artículo</span>
         <ol>
-          <li><a href="#sec-1"><i></i><span>El problema: reportería diaria y tickets regulatorios consumen horas críticas</span></a></li>
-          <li><a href="#sec-2"><i></i><span>Cómo se resuelve: automatización de reportería y de trámites regulatorios</span></a></li>
+          <li><a href="#sec-1"><i></i><span>El problema: la reportería diaria consume horas críticas</span></a></li>
+          <li><a href="#sec-2"><i></i><span>Cómo se resuelve: integración con la API del Coordinador</span></a></li>
           <li><a href="#sec-3"><i></i><span>La arquitectura: cómo funciona por dentro</span></a></li>
-          <li><a href="#sec-4"><i></i><span>Resultados: de horas a minutos, con trazabilidad</span></a></li>
-          <li><a href="#sec-5"><i></i><span>Consideraciones: normativa, mantención y cómo cotizar</span></a></li>
+          <li><a href="#sec-4"><i></i><span>Más allá del reporte: trámites regulatorios</span></a></li>
+          <li><a href="#sec-5"><i></i><span>Resultados, normativa y cómo cotizar</span></a></li>
         </ol>
       </aside>
       <article class="post-body">
         <section class="reveal lead-sec">
-          <p>Si operas una generadora en Chile, conoces la rutina: cada mañana alguien dedica horas a descargar costos marginales y generación 15-minutal del <strong>Coordinador Eléctrico Nacional</strong>, a cruzarlos con datos internos y a revisar que nada falte antes de que la operación tome decisiones. Y cuando la telemetría detecta una falla, el reloj regulatorio empieza a correr: hay que abrir el ticket en el portal <strong>MEE-DGA</strong> y dejar trazabilidad. Procesos críticos, repetitivos y propensos al error humano.</p><p>La buena noticia es que estos flujos se pueden automatizar de punta a punta sin perder control ni trazabilidad. En este artículo explicamos cómo se hace, qué arquitectura lo sostiene, qué resultados son realistas y qué consideraciones de mantención y normativa debes tener en cuenta.</p>
+          <p>Si operas una generadora en Chile, conoces la rutina: cada mañana alguien dedica horas a descargar del <strong>Coordinador Eléctrico Nacional (CEN)</strong> los costos marginales, la operación programada y la generación, a cruzarlos con la información interna de las centrales y a revisar que nada falte antes de que la operación tome decisiones. Es un proceso crítico, repetitivo y propenso al error humano.</p><p>La buena noticia es que ese flujo se apoya en datos que el propio Coordinador publica a través de su <strong>API oficial</strong>, así que se puede automatizar de punta a punta sin perder control ni trazabilidad. En este artículo explicamos qué datos del CEN se integran, qué arquitectura lo sostiene, qué resultados son realistas y qué considerar en mantención y normativa.</p>
         </section>
         <section id="sec-1" class="reveal">
-          <h2>El problema: reportería diaria y tickets regulatorios consumen horas críticas</h2>
-          <p>Dos procesos concentran gran parte de la carga manual en la operación de una generadora:</p><ul><li><strong>El reporte operativo diario.</strong> Recopilar los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos), consolidarlos con la información interna de las centrales y dejarlos listos para análisis. Hecho a mano, este flujo puede tomar <strong>más de 4 horas diarias</strong> y depende de que la persona a cargo esté disponible y no cometa errores de copiado.</li><li><strong>Los tickets a la DGA.</strong> Cuando ocurre una falla, la normativa exige reportarla a la Dirección General de Aguas a través del portal MEE. Esto implica entrar al sistema, completar formularios y dejar registro, todo bajo presión de tiempo.</li></ul><p>El costo no es solo de horas-persona. Es el riesgo de reportar tarde, de inconsistencias en los datos que alimentan decisiones operativas, y de no tener un registro centralizado y auditable de lo que se informó y cuándo.</p>
+          <h2>El problema: la reportería diaria consume horas críticas</h2>
+          <p>En la operación de una generadora, buena parte de la carga manual se concentra en un proceso diario: recopilar del Coordinador Eléctrico Nacional los datos de mercado y operación, consolidarlos con la información interna de las centrales y dejarlos listos para análisis. Entre los insumos típicos están:</p><ul><li><strong>Costos marginales</strong> (online, real y programado), que valorizan las transferencias de energía.</li><li>La <strong>operación programada</strong> —el «programa»— junto con la <strong>generación real</strong> y la demanda del sistema.</li><li>Información del <strong>Sistema de Medidas</strong> y del <strong>Registro de Instrucciones de Operación (RIO)</strong>, que documentan la medición y las instrucciones del centro de despacho.</li></ul><p>Hecho a mano, este flujo puede tomar varias horas cada día y depende de que la persona a cargo esté disponible y no cometa errores de copiado. El costo no es solo de horas-persona: es el riesgo de inconsistencias en los datos que alimentan decisiones operativas y de no tener un registro centralizado y auditable.</p>
         </section>
         <section id="sec-2" class="reveal">
-          <h2>Cómo se resuelve: automatización de reportería y de trámites regulatorios</h2>
-          <p>La solución combina dos automatizaciones complementarias, cada una pensada para un proceso distinto pero con la misma lógica: quitar el trabajo manual repetitivo y dejar el resultado trazable.</p><p><strong>1. Reporte operativo diario automatizado.</strong> Un flujo programado obtiene los datos del Coordinador Eléctrico Nacional usando su <strong>API oficial</strong>, con <strong>scraping de respaldo</strong> como contingencia cuando la fuente oficial no responde. Los datos se consolidan con la información interna de las centrales, se validan en estructura y completitud, y alimentan dashboards de BI. Si detecta datos faltantes o inconsistentes, emite alertas automáticas para que el equipo intervenga antes de que el problema escale.</p><p><strong>2. Tickets regulatorios a la DGA.</strong> Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA. Como ese portal usa formularios dinámicos y no expone una API, se resuelve con <strong>automatización de navegador headless</strong> que reproduce el proceso que haría una persona. El ticket se centraliza en un repositorio único, su estado se sincroniza periódicamente y el equipo recibe notificaciones, de modo que siempre hay una fuente de verdad sobre qué se reportó y en qué estado está.</p>
+          <h2>Cómo se resuelve: integración con la API del Coordinador</h2>
+          <p>El reporte operativo diario se automatiza obteniendo los datos directamente del Coordinador Eléctrico Nacional a través de su <strong>API oficial</strong> —el Sistema de Información Pública (SIP)—, que expone costos marginales, operación programada, generación y otros conjuntos sin necesidad de revisar portales a mano. Un flujo programado descarga los datos, los <strong>consolida</strong> con la información interna de las centrales, los <strong>valida</strong> en estructura y completitud y los deja en un repositorio central listo para alimentar dashboards de BI.</p><p>Si el proceso detecta datos faltantes o inconsistentes, emite <strong>alertas automáticas</strong> para que el equipo intervenga antes de que el problema escale. Como la fuente es la API oficial y pública del propio Coordinador, la integración es estable y no depende de trucos frágiles: se apoya en la vía que la institución dispone para entregar su información.</p>
         </section>
-        <blockquote class="pullquote reveal"><span>El reporte diario al Coordinador Eléctrico Nacional se automatiza con API oficial más scraping de respaldo, consolidación con datos internos y validación con alertas: un proceso de más de 4 horas diarias queda trazable.</span></blockquote>
+        <blockquote class="pullquote reveal"><span>El Coordinador Eléctrico Nacional publica costos marginales, operación programada, generación y demanda a través de su API oficial (SIP); integrarla automatiza la reportería diaria y la deja trazable.</span></blockquote>
         <section id="sec-3" class="reveal">
           <h2>La arquitectura: cómo funciona por dentro</h2>
-          <p>Sin entrar en detalles propietarios, la arquitectura sigue un patrón claro y reutilizable:</p><ul><li><strong>Ingesta de datos:</strong> conexión a la API del Coordinador como vía principal y scraping de respaldo como contingencia, de modo que un problema en una fuente no detenga todo el flujo.</li><li><strong>Consolidación y validación:</strong> los datos externos se cruzan con los internos en un repositorio central. Reglas de validación revisan estructura y completitud, y se emiten alertas ante cualquier faltante.</li><li><strong>Orquestación:</strong> un orquestador de flujos coordina las tareas en el orden correcto, las reintenta si fallan y deja registro de cada ejecución para auditoría.</li><li><strong>Automatización de navegador:</strong> para el portal MEE-DGA, que no tiene API, un navegador headless completa los formularios dinámicos del mismo modo en que lo haría un operador, pero en segundos.</li><li><strong>Visualización y notificación:</strong> los resultados alimentan dashboards de BI y el equipo recibe avisos automáticos sobre datos faltantes o cambios de estado de los tickets.</li></ul><p>Tecnológicamente esto se sostiene con herramientas estándar y mantenibles: <strong>Python</strong> para la lógica de ingesta y automatización, <strong>SQL</strong> para la consolidación de datos y un <strong>data warehouse en la nube</strong> (sobre AWS, Azure o Google Cloud) como repositorio central. Sin dependencias exóticas que compliquen el mantenimiento a largo plazo.</p>
+          <p>Sin entrar en detalles propietarios, la arquitectura sigue un patrón claro y reutilizable:</p><ul><li><strong>Ingesta de datos:</strong> conexión a la API del Coordinador (SIP) como vía principal, con reintentos y validaciones para que un problema puntual de la fuente no detenga el flujo.</li><li><strong>Consolidación y validación:</strong> los datos del CEN se cruzan con los internos en un repositorio central; reglas de validación revisan estructura y completitud y emiten alertas ante cualquier faltante.</li><li><strong>Orquestación:</strong> un orquestador de flujos coordina las tareas en el orden correcto, las reintenta si fallan y deja registro de cada ejecución para auditoría.</li><li><strong>Visualización y notificación:</strong> los resultados alimentan dashboards de BI y el equipo recibe avisos automáticos sobre datos faltantes o cambios relevantes.</li></ul><p>Tecnológicamente se sostiene con herramientas estándar y mantenibles: <strong>Python</strong> para la lógica de ingesta, <strong>SQL</strong> para la consolidación y un <strong>data warehouse en la nube</strong> (sobre AWS, Azure o Google Cloud) como repositorio central, sin dependencias exóticas que compliquen el mantenimiento.</p>
         </section>
         <section id="sec-4" class="reveal">
-          <h2>Resultados: de horas a minutos, con trazabilidad</h2>
-          <p>Los efectos de automatizar estos dos procesos son concretos y medibles:</p><ul><li><strong>Reporte diario:</strong> un proceso que tomaba <strong>más de 4 horas diarias</strong> de trabajo manual quedó automatizado y trazable, liberando a las personas para análisis de mayor valor en lugar de descarga y copiado de datos.</li><li><strong>Tickets a la DGA:</strong> el tiempo de respuesta ante una falla pasó <strong>de horas a alrededor de 2 minutos</strong>, operando en 3 centrales y más de 10 códigos de obra.</li><li><strong>Trazabilidad:</strong> cada ejecución y cada ticket quedan registrados, con estado sincronizado y alertas automáticas, lo que da un respaldo auditable que el proceso manual no entregaba.</li></ul><p>El valor no es solo el ahorro de horas, sino la consistencia: los datos llegan validados, las alertas avisan antes de que un faltante se vuelva un problema, y existe un registro centralizado de toda la actividad regulatoria.</p>
+          <h2>Más allá del reporte: trámites regulatorios</h2>
+          <p>Sobre la misma lógica de automatización se pueden abordar otros trámites repetitivos de la operación. Un ejemplo es el reporte regulatorio de extracciones de agua al <strong>MEE de la Dirección General de Aguas (DGA)</strong> en generadoras hidroeléctricas: cuando ese trámite se hace a mano sobre un portal que no expone API, se resuelve con <strong>automatización de navegador</strong> que reproduce el proceso del operador, centraliza el registro y notifica al equipo. Es un proceso distinto al reporte diario al Coordinador, pero comparte el objetivo: quitar trabajo manual y dejar todo trazable.</p>
         </section>
         <section id="sec-5" class="reveal">
-          <h2>Consideraciones: normativa, mantención y cómo cotizar</h2>
-          <p><strong>Normativa.</strong> La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable a estos reportes, en particular el <strong>Decreto 53</strong> y la <strong>Resolución 1238 Exenta</strong>. La automatización ejecuta el proceso que la regulación exige; no lo reemplaza ni lo reinterpreta. Esto es orientación general y no constituye asesoría legal: la responsabilidad de cumplimiento siempre recae en la generadora y conviene validar cada caso con el área legal o regulatoria correspondiente.</p><p><strong>Mantención.</strong> Existe un riesgo inherente a automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz de su portal o el formato de sus datos, la automatización requiere un ajuste. Esto se cubre con un esquema de mantención que monitorea y adapta los flujos cuando las fuentes cambian, de modo que el servicio no se interrumpa.</p><p><strong>Cómo avanzar.</strong> Cada operación tiene fuentes de datos, centrales y procesos distintos, así que el alcance se define caso a caso. Los proyectos de automatización parten <strong>desde UF 75</strong> e incluyen <strong>30 días de garantía post-entrega</strong>. Si quieres evaluar qué procesos de tu generadora son automatizables, <strong>escríbenos para una cotización</strong> y revisamos juntos el flujo que más horas te está costando.</p>
+          <h2>Resultados, normativa y cómo cotizar</h2>
+          <p><strong>Resultados.</strong> Automatizar la reportería diaria convierte un proceso de <strong>varias horas</strong> en uno desatendido y trazable: los datos del Coordinador llegan validados, las alertas avisan antes de que un faltante se vuelva un problema y queda un registro centralizado de cada ejecución. Las personas quedan libres para análisis de mayor valor en lugar de descargar y copiar datos.</p><p><strong>Normativa.</strong> Cuando se automatiza un reporte regulatorio —como el MEE de la DGA— la automatización está diseñada para cumplir la normativa vigente aplicable (por ejemplo el <strong>Decreto 53</strong> para aguas superficiales y la <strong>Resolución 1238 Exenta</strong> para aguas subterráneas): ejecuta el proceso que la regulación exige, no lo reemplaza. Esto es orientación general y no asesoría legal; la responsabilidad de cumplimiento recae en la generadora.</p><p><strong>Mantención.</strong> Integrar la API del Coordinador es estable, pero los trámites sobre portales de terceros tienen un riesgo inherente: si cambian la interfaz o el formato, la automatización requiere ajuste, que se cubre con un esquema de mantención que monitorea y adapta los flujos.</p><p><strong>Cómo avanzar.</strong> Cada operación tiene fuentes, centrales y procesos distintos, así que el alcance se define caso a caso. Los proyectos parten <strong>desde UF 75</strong> e incluyen <strong>30 días de garantía post-entrega</strong>. <strong>Escríbenos para una cotización</strong> y revisamos el flujo que más horas te está costando.</p>
         </section>
       </article>
       <div class="rail-right"><div class="spine" aria-hidden="true"><div class="fill"></div></div></div>
@@ -455,11 +447,11 @@
       <div class="box">
         <span class="blog-kicker">En resumen</span>
         <ul>
-            <li>El reporte diario al Coordinador Eléctrico Nacional se automatiza con API oficial más scraping de respaldo, consolidación con datos internos y validación con alertas: un proceso de más de 4 horas diarias queda trazable.</li>
-            <li>Los tickets a la DGA se crean automáticamente en el portal MEE mediante automatización de navegador headless, reduciendo el tiempo de respuesta de horas a alrededor de 2 minutos en 3 centrales y más de 10 códigos de obra.</li>
-            <li>Los portales estatales sin API (como MEE-DGA) se automatizan con un navegador headless que reproduce el proceso humano sobre formularios dinámicos.</li>
-            <li>Automatizar portales de terceros tiene un riesgo inherente: si cambian la interfaz, la automatización requiere ajuste, que se cubre con mantención.</li>
-            <li>La automatización busca cumplir la normativa vigente (Decreto 53 y Resolución 1238 Exenta); proyectos desde UF 75 con 30 días de garantía post-entrega.</li>
+            <li>El Coordinador Eléctrico Nacional publica costos marginales, operación programada, generación y demanda a través de su API oficial (SIP); integrarla automatiza la reportería diaria y la deja trazable.</li>
+            <li>El reporte operativo diario —que a mano toma varias horas— se automatiza descargando los datos del CEN por su API, consolidándolos con la información interna y validándolos con alertas.</li>
+            <li>Además del mercado y la operación, se integran el Sistema de Medidas y el Registro de Instrucciones de Operación (RIO); todo sobre Python, SQL y un data warehouse en la nube.</li>
+            <li>Trámites regulatorios sobre portales sin API —como el reporte al MEE de la DGA en hidroeléctricas— se automatizan con navegador headless, reduciendo el tiempo de respuesta de horas a minutos.</li>
+            <li>Donde se automatiza un reporte regulatorio se cuida la normativa vigente (Decreto 53 para aguas superficiales y Resolución 1238 Exenta para subterráneas); orientación general, no asesoría legal. Proyectos desde UF 75 con 30 días de garantía.</li>
         </ul>
       </div>
     </div>
@@ -469,27 +461,23 @@
       <h2>Preguntas frecuentes</h2>
       <details class="q">
         <summary>¿Se puede automatizar el reporte diario al Coordinador Eléctrico Nacional?</summary>
-        <p>Sí. El reporte operativo diario se automatiza obteniendo los datos del Coordinador Eléctrico Nacional (costos marginales, generación en intervalos de 15 minutos) mediante su API oficial, con scraping de respaldo como contingencia. Los datos se consolidan con la información interna, se validan en estructura y completitud, y alimentan dashboards de BI. Un proceso que tomaba más de 4 horas diarias queda automatizado y trazable.</p>
+        <p>Sí. El Coordinador Eléctrico Nacional publica los datos de mercado y operación —costos marginales, operación programada, generación y demanda— a través de su API oficial (el Sistema de Información Pública, SIP). Un flujo programado los descarga, los consolida con la información interna de las centrales, los valida y alimenta dashboards de BI, con alertas ante datos faltantes. Un proceso que tomaba varias horas diarias queda automatizado y trazable.</p>
       </details>
       <details class="q">
-        <summary>¿Se pueden automatizar los tickets de la DGA (MEE)?</summary>
-        <p>Sí. Cuando la telemetría detecta una falla, el sistema crea automáticamente el ticket en el portal MEE-DGA, lo centraliza en un repositorio único, sincroniza su estado de forma periódica y notifica al equipo. Como el portal usa formularios dinámicos y no expone una API, se resuelve con automatización de navegador headless. En la práctica, el tiempo de respuesta pasó de horas a alrededor de 2 minutos.</p>
+        <summary>¿Qué datos del Coordinador se integran?</summary>
+        <p>Los que el CEN expone públicamente: costos marginales (online, real y programado), la operación programada (el «programa»), generación real y demanda del sistema, además de información del Sistema de Medidas y del Registro de Instrucciones de Operación (RIO). Se integran por su API oficial y se cruzan con los datos internos de las centrales.</p>
       </details>
       <details class="q">
-        <summary>¿Cómo se automatiza un portal estatal que no tiene API?</summary>
-        <p>Con automatización de navegador headless: un proceso reproduce los mismos pasos que haría una persona dentro del portal (iniciar sesión, completar formularios dinámicos, enviar y registrar) pero en segundos y sin error de copiado. Es la vía estándar cuando la entidad no ofrece una integración técnica directa, como ocurre con el portal MEE-DGA.</p>
+        <summary>¿Se conecta por API o con scraping?</summary>
+        <p>Por su API oficial. El Coordinador dispone del Sistema de Información Pública (SIP) para entregar sus datos de forma programática, así que esa es la vía principal: más estable y menos frágil que depender de la maquetación de un portal. El scraping queda para fuentes que no ofrecen una integración técnica, no para el Coordinador.</p>
       </details>
       <details class="q">
-        <summary>¿Qué pasa cuando el portal del Estado cambia su interfaz?</summary>
-        <p>Es el riesgo inherente de automatizar portales de terceros: si el Coordinador o la DGA cambian la interfaz o el formato de los datos, la automatización requiere un ajuste. Por eso el servicio incluye un esquema de mantención que monitorea las fuentes y adapta los flujos cuando cambian, evitando interrupciones del proceso.</p>
-      </details>
-      <details class="q">
-        <summary>¿Cuánto tiempo ahorra esta automatización?</summary>
-        <p>En el reporte diario, un proceso de más de 4 horas diarias de trabajo manual quedó completamente automatizado. En los tickets a la DGA, el tiempo de respuesta ante una falla pasó de horas a alrededor de 2 minutos, operando en 3 centrales y más de 10 códigos de obra. Además del ahorro de horas, se gana consistencia y trazabilidad auditable.</p>
+        <summary>¿También se pueden automatizar trámites regulatorios, como el MEE de la DGA?</summary>
+        <p>Sí, como proceso aparte. En generadoras hidroeléctricas el reporte de extracciones al MEE de la DGA se hace sobre un portal sin API, y se automatiza con navegador headless que reproduce el proceso del operador, centraliza el registro y notifica al equipo, reduciendo el tiempo de respuesta de horas a minutos.</p>
       </details>
       <details class="q">
         <summary>¿Es compatible con la normativa vigente (Decreto 53, Resolución 1238)?</summary>
-        <p>Sí. La automatización de tickets a la DGA está diseñada para cumplir la normativa vigente aplicable, en particular el Decreto 53 y la Resolución 1238 Exenta. La automatización ejecuta el proceso que la regulación exige, no lo reemplaza. Esto es orientación general y no asesoría legal: el cumplimiento es responsabilidad de la generadora y conviene validarlo con su área regulatoria.</p>
+        <p>Sí. Cuando se automatiza un reporte regulatorio como el del MEE, la automatización está diseñada para cumplir la normativa vigente aplicable, en particular el Decreto 53 (aguas superficiales) y la Resolución 1238 Exenta (aguas subterráneas). Ejecuta el proceso que la regulación exige, no lo reemplaza. Es orientación general y no asesoría legal: el cumplimiento es responsabilidad de la generadora.</p>
       </details>
       <details class="q">
         <summary>¿Cuánto cuesta automatizar estos procesos en una generadora?</summary>
