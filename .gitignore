@@ -79,6 +79,10 @@ env/
 # Biblia ADN (estrategia, precios, clientes)
 BIBLIA_ADN_JUST_DEV_IT.md
 
+# Propuestas y documentos de negocio reales (clientes, precios, notas internas)
+# NUNCA committear: repo público
+Negocios/
+
 # SEO Dashboard (eliminado)
 seo-dashboard/
 

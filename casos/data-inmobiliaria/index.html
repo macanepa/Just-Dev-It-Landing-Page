@@ -113,7 +113,7 @@
             {
               "@type": "Question",
               "name": "¿Qué tecnologías usa Data Inmobiliaria?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ruby on Rails para la plataforma web, Python y PySpark para los pipelines de datos, BigQuery como data warehouse, y Selenium y Playwright para la extracción de datos a escala." }
+              "acceptedAnswer": { "@type": "Answer", "text": "Desarrollo web a medida para la plataforma, Python y procesamiento de datos a escala para los pipelines, un data warehouse en la nube y técnicas de scraping a escala para la extracción de datos." }
             },
             {
               "@type": "Question",
@@ -123,7 +123,7 @@
             {
               "@type": "Question",
               "name": "¿Pueden construir una plataforma de datos así para mi empresa?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Sí. La misma base técnica — extracción de datos a escala, pipelines y dashboards — se aplica a proyectos de empresas. Just Dev It entrega cotización en 24 horas con alcance, precio y plazo cerrados." }
+              "acceptedAnswer": { "@type": "Answer", "text": "Sí. La misma base técnica — extracción de datos a escala, pipelines y dashboards de BI — se aplica a proyectos de empresas. Just Dev It envía una propuesta a medida con alcance, precio y plazo cerrados." }
             }
           ]
         }
@@ -476,6 +476,34 @@
         </div>
       </header>
 
+      <style>
+        .di-frames{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:56rem;margin:0 auto;padding:2.5rem 1.5rem 0}
+        .di-frame{position:relative;display:block;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:#0b1220;box-shadow:0 30px 70px -28px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.04);transition:transform .3s ease}
+        .di-frame:hover{transform:translateY(-4px)}
+        .di-frame__bar{display:flex;align-items:center;gap:.45rem;padding:.5rem .8rem;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.07)}
+        .di-frame__bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16)}
+        .di-frame__url{font-size:.72rem;color:#94A3B8;background:rgba(255,255,255,.05);padding:.2rem .7rem;border-radius:5px;margin-left:.3rem}
+        .di-frame img{display:block;width:100%;height:auto}
+        .di-cap{max-width:56rem;margin:1rem auto 0;padding:0 1.5rem;font-size:.85rem;color:#94A3B8;text-align:center}
+        .di-press-line{max-width:56rem;margin:1.2rem auto 0;padding:0 1.5rem;text-align:center;font-size:.9rem}
+        .di-press-line .lbl{text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;color:#94A3B8;margin-right:.5rem}
+        .di-press-line a{color:#CBD5E1;font-weight:600;margin:0 .55rem}
+        .di-press-line a:hover{color:#26E0C0}
+        @media (max-width:640px){.di-frames{grid-template-columns:1fr}}
+      </style>
+      <div class="di-frames">
+        <a class="di-frame" href="https://datainmobiliaria.cl" target="_blank" rel="noopener" aria-label="Visitar Data Inmobiliaria">
+          <span class="di-frame__bar"><i></i><i></i><i></i><span class="di-frame__url">datainmobiliaria.cl</span></span>
+          <img src="/assets/images/di/di-home.webp" alt="Plataforma Data Inmobiliaria: explora el mercado inmobiliario chileno con datos" width="1440" height="900" loading="lazy" />
+        </a>
+        <a class="di-frame" href="https://datainmobiliaria.cl/conector-ia" target="_blank" rel="noopener" aria-label="Conector de IA de Data Inmobiliaria">
+          <span class="di-frame__bar"><i></i><i></i><i></i><span class="di-frame__url">/conector-ia</span></span>
+          <img src="/assets/images/di/di-conector.webp" alt="Conector de IA de Data Inmobiliaria: consulta con Claude o ChatGPT en lenguaje natural" width="1440" height="900" loading="lazy" />
+        </a>
+      </div>
+      <p class="di-cap">Capturas reales de la plataforma. Conéctala a <a href="/servicios/agentes-ia/">Claude o ChatGPT</a> y consúltala en lenguaje natural.</p>
+      <p class="di-press-line"><span class="lbl">En los medios:</span><a href="https://www.t13.cl/noticia/nacional/estudio-revela-comunas-dejaron-ser-buenas-para-invertir-departamentos-29-4-2026" target="_blank" rel="noopener">T13</a><a href="https://public.izimedia.io/viewNews/E5D3147330EF11F199F60EB07535E017" target="_blank" rel="noopener">La Tercera</a></p>
+
       <section class="page-section" aria-labelledby="desafio">
         <h2 id="desafio">El desafío: datos inmobiliarios <span class="accent">dispersos e inaccesibles</span></h2>
         <p>
@@ -499,12 +527,12 @@
           <div class="feature-card">
             <div class="feature-icon"><img src="/assets/icons/icon-128.svg" alt="" width="28" height="28" loading="lazy" /></div>
             <h3>Web scraping a escala</h3>
-            <p>Extracción automatizada desde portales inmobiliarios, SII y Conservadores de Bienes Raíces, con técnicas anti-detección sobre Selenium y Playwright.</p>
+            <p>Extracción automatizada desde portales inmobiliarios, SII y Conservadores de Bienes Raíces, con técnicas de scraping a escala y anti-detección.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon"><img src="/assets/icons/icon-110.svg" alt="" width="28" height="28" loading="lazy" /></div>
             <h3>Pipelines de datos</h3>
-            <p>Procesamiento con Python y PySpark para limpiar, deduplicar y cruzar millones de registros de propiedades, ofertas y transacciones.</p>
+            <p>Procesamiento de datos a escala con Python para limpiar, deduplicar y cruzar millones de registros de propiedades, ofertas y transacciones.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon"><img src="/assets/icons/icon-86.svg" alt="" width="28" height="28" loading="lazy" /></div>
@@ -518,15 +546,14 @@
           </div>
         </div>
         <p style="margin-top: 1.75rem;">
-          El stack es el mismo que usamos en proyectos para empresas:
+          Las capacidades técnicas son las mismas que aplicamos en proyectos para empresas:
         </p>
-        <ul class="stack-chips" aria-label="Tecnologías utilizadas">
-          <li>Ruby on Rails</li>
+        <ul class="stack-chips" aria-label="Capacidades técnicas utilizadas">
+          <li>Desarrollo web a medida</li>
           <li>Python</li>
-          <li>PySpark</li>
-          <li>BigQuery</li>
-          <li>Selenium</li>
-          <li>Playwright</li>
+          <li>Procesamiento de datos a escala</li>
+          <li>Data warehouse en la nube</li>
+          <li>Scraping a escala</li>
         </ul>
       </section>
 
@@ -540,7 +567,7 @@
         <ul class="press-list">
           <li>
             <span class="press-source">CNN Chile · abril 2026</span>
-            <a href="https://www.cnnchile.com/negocios/comunas-mayor-rentabilidad-inversion-inmobiliaria-santiago_20260413/" target="_blank" rel="noopener">Las comunas con mayor rentabilidad para invertir en Santiago</a>
+            <a href="https://www.cnnchile.com/negocios/comunas-mayor-rentabilidad-inversion-inmobiliaria-santiago/" target="_blank" rel="noopener">Las comunas con mayor rentabilidad para invertir en Santiago</a>
           </li>
           <li>
             <span class="press-source">T13 · abril 2026</span>
@@ -583,7 +610,7 @@
         </details>
         <details class="faq">
           <summary>¿Qué tecnologías usa Data Inmobiliaria?</summary>
-          <p>Ruby on Rails para la plataforma web, Python y PySpark para los pipelines de datos, BigQuery como data warehouse, y Selenium y Playwright para la extracción de datos a escala.</p>
+          <p>Desarrollo web a medida para la plataforma, Python y procesamiento de datos a escala para los pipelines, un data warehouse en la nube y técnicas de scraping a escala para la extracción de datos.</p>
         </details>
         <details class="faq">
           <summary>¿El acceso a Data Inmobiliaria es realmente gratuito?</summary>
@@ -591,7 +618,7 @@
         </details>
         <details class="faq">
           <summary>¿Pueden construir una plataforma de datos así para mi empresa?</summary>
-          <p>Sí. Cuéntanos qué datos necesitas y en 24 horas recibes una <a href="/#contacto">cotización</a> con alcance, precio y plazo cerrados.</p>
+          <p>Sí. Cuéntanos qué datos necesitas y te enviamos una <a href="/#contacto">propuesta a medida</a> con alcance, precio y plazo cerrados.</p>
         </details>
       </section>
 

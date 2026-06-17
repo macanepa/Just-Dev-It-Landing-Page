@@ -134,7 +134,7 @@
         });
         
         // 2. Tracking de botones CTA (con debounce)
-        const ctaButtons = document.querySelectorAll('a[href="#contacto"], .btn-primary');
+        const ctaButtons = document.querySelectorAll('a[href$="#contacto"], .btn-primary');
         ctaButtons.forEach(button => {
             button.addEventListener('click', debounce(function() {
                 trackConversion(CONVERSION_EVENTS.CTA_CLICK, {
