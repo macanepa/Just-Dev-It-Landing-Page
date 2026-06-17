@@ -402,6 +402,26 @@ const translations = {
       moreSummary: "Cómo se conecta con IA (Claude o ChatGPT)"
     },
 
+    // Sección de datos que trabajamos (fuentes / dominios)
+    dataSection: {
+      eyebrow: "Datos · Ingeniería de datos",
+      title: 'Datos y fuentes que <span class="gradient-text">dominamos</span>',
+      sub: "Extraemos, consolidamos y dejamos consultables grandes volúmenes de datos públicos y de mercado de Chile. Estos son los dominios que ya trabajamos a escala.",
+      card1Title: "Mercado financiero (CMF)",
+      card1Body: "Carteras de inversión de compañías de seguros y fondos: renta fija, acciones, fondos mutuos, derivados y bienes raíces. Valores cuota, patrimonio y activos, con historia diaria.",
+      card2Title: "Propiedades e inmobiliario",
+      card2Body: "Avalúos y contribuciones, inscripciones y ventas de Conservadores de Bienes Raíces y publicaciones de portales, geolocalizados por comuna y predio. Es la base de Data Inmobiliaria: 9,5M de propiedades.",
+      card3Title: "Diario Oficial",
+      card3Body: "Sociedades y eventos societarios, leyes y actos normativos, concesiones (eléctricas, mineras, marítimas, telecom), información judicial, expropiaciones y derechos de agua, estructurados y consultables.",
+      card4Title: "Compras públicas",
+      card4Body: "Licitaciones y adquisiciones del Estado: organismos, montos, estados y adjudicaciones, listos para análisis de mercado, oportunidades y due diligence.",
+      card5Title: "Energía y operación",
+      card5Body: "Costos marginales y generación del Coordinador Eléctrico Nacional, consolidados con datos de operación de las centrales para reportería y dashboards.",
+      card6Title: "A medida, sobre tus fuentes",
+      card6Body: "¿Otra fuente pública o tus propios sistemas? Construimos el pipeline para los datos que tu negocio necesita y los dejamos consultables en tu data warehouse.",
+      cta: "Ver ingeniería de datos"
+    },
+
     // Sección de prensa (Data Inmobiliaria en los medios)
     press: {
       eyebrow: "En la prensa",
@@ -837,6 +857,26 @@ const translations = {
       ctaCase: "See the technical case",
       pressLabel: "In the news:",
       moreSummary: "How it connects with AI (Claude or ChatGPT)"
+    },
+
+    // Data sources we work with (sources / domains)
+    dataSection: {
+      eyebrow: "Data · Data engineering",
+      title: 'Data sources we <span class="gradient-text">master</span>',
+      sub: "We extract, consolidate and make queryable large volumes of public and market data from Chile. These are the domains we already work with at scale.",
+      card1Title: "Financial market (CMF)",
+      card1Body: "Investment portfolios of insurers and funds: fixed income, equities, mutual funds, derivatives and real estate. Unit values, net assets and holdings, with daily history.",
+      card2Title: "Property & real estate",
+      card2Body: "Tax appraisals and property taxes, Real Estate Registry deeds and sales, and portal listings, geolocated by district and parcel. It's the foundation of Data Inmobiliaria: 9.5M properties.",
+      card3Title: "Official Gazette",
+      card3Body: "Companies and corporate events, laws and regulations, concessions (power, mining, maritime, telecom), judicial records, expropriations and water rights — structured and queryable.",
+      card4Title: "Public procurement",
+      card4Body: "State tenders and purchases: agencies, amounts, statuses and awards, ready for market analysis, lead generation and due diligence.",
+      card5Title: "Energy & operations",
+      card5Body: "Marginal costs and generation from Chile's National Electric Coordinator, consolidated with plant operations data for reporting and dashboards.",
+      card6Title: "Custom, on your sources",
+      card6Body: "Another public source or your own systems? We build the pipeline for the data your business needs and make it queryable in your data warehouse.",
+      cta: "See data engineering"
     },
 
     // Press section (Data Inmobiliaria in the news)
