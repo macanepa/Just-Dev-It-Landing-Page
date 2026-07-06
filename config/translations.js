@@ -255,7 +255,7 @@ const translations = {
       },
       title: "<span class=\"gradient-text\">Cotiza</span> Tu Proyecto",
       subtitle: "Propuesta a medida con alcance, precio y plazo cerrados. Trabajamos por etapas, con entregas incrementales.",
-      location: "Santiago, Chile | Respuesta inmediata",
+      location: "Las Condes, Santiago, Chile | Respuesta inmediata",
 
       formCard: {
         title: "Envíanos un Mensaje",
@@ -332,7 +332,7 @@ const translations = {
 
       contactInfo: {
         title: "Contacto",
-        location: "Santiago, Chile",
+        location: "Las Condes, Santiago, Chile",
         email: "Correo"
       },
 
@@ -751,7 +751,7 @@ const translations = {
       },
       title: "<span class=\"gradient-text\">Quote</span> Your Project",
       subtitle: "Tailored proposal with fixed scope, price and timeline. We work in stages, with incremental deliveries.",
-      location: "Santiago, Chile | Immediate response",
+      location: "Las Condes, Santiago, Chile | Immediate response",
 
       formCard: {
         title: "Send Us a Message",
@@ -828,7 +828,7 @@ const translations = {
 
       contactInfo: {
         title: "Contact",
-        location: "Santiago, Chile",
+        location: "Las Condes, Santiago, Chile",
         email: "Email"
       },
 
