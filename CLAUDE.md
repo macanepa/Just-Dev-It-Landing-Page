@@ -1,20 +1,24 @@
 # Just Dev It — Contexto del proyecto (sitio web justdev.it)
 
 ## Qué es esta empresa
-Just Dev It es una consultora chilena de desarrollo de software a medida fundada en 2023
-por Joaquín Espíldora (CEO) y Matías Cánepa (CTO), basada en Santiago. Servicios:
-automatización RPA, data engineering, IA aplicada, web scraping a escala, desarrollo web
-e integración de sistemas (ERP/CRM). Verticales objetivo: energías renovables, legal
-(LegalTech), minería, financiero (fondos, AGFs, fintech) y PropTech. Producto propio:
-Data Inmobiliaria (datainmobiliaria.cl), 9,5M de propiedades indexadas.
-
-Clientes que SÍ se pueden mencionar públicamente (ya figuran en el JSON-LD del sitio):
-Pacific Hydro Chile, Macal, Contego, ESE Business School (UANDES) y un grupo empresarial
-multi-sociedad (sin nombre). Ningún otro cliente se nombra sin autorización de Joaquín.
+- Consultora chilena de desarrollo de software a medida, fundada en 2023 por
+  Joaquín Espíldora (CEO) y Matías Cánepa (CTO), basada en Santiago.
+- Servicios: automatización RPA, data engineering, IA aplicada, web scraping a escala,
+  desarrollo web e integración de sistemas (ERP/CRM).
+- Verticales objetivo: energías renovables, legal (LegalTech), minería, financiero
+  (fondos, AGFs, fintech) y PropTech.
+- Producto propio: Data Inmobiliaria (datainmobiliaria.cl), 9,5M de propiedades indexadas.
+- Clientes que SÍ se pueden mencionar públicamente (ya figuran en el JSON-LD del sitio):
+  Pacific Hydro Chile, Macal, Contego, ESE Business School (UANDES) y un grupo
+  empresarial multi-sociedad (sin nombre). Ningún otro cliente se nombra sin
+  autorización de Joaquín.
 
 ## Objetivo actual del repositorio
 Actualización integral de marketing digital / SEO. La especificación completa con la
-auditoría y los entregables está en @docs/seo_spec_di_jdi.md (Parte 2 = este sitio).
+auditoría y los entregables está en docs/seo_spec_di_jdi.md (Parte 2 = este sitio).
+OJO: ese archivo hoy NO está en esta copia de trabajo (docs/ es gitignoreado; pedirlo
+si falta) — la auditoría base disponible en local es docs/auditoria_marketing_20260610.md.
+
 Resumen del diagnóstico (junio 2026):
 - Bien hecho y NO tocar sin razón: title/meta/canonical del home, GTM
   (contenedor GTM-N67BW2PN), los bloques JSON-LD existentes.
@@ -34,18 +38,27 @@ Resumen del diagnóstico (junio 2026):
   que actualizar la MISMA clave en config/translations.js (es y en) o el texto se
   revierte en runtime.
 
-## Stack (verificado 10-06-2026)
-Sitio estático puro: HTML/CSS/JS vanilla, sin build, sin package.json. Deploy real:
-push a `main` → GitHub Pages (CNAME justdev.it; `curl -I` devuelve Server: GitHub.com).
-netlify.toml y _headers son configuración MUERTA (no se aplican). GitHub Pages no
-soporta 301s de servidor: para URLs que cambian se usa página puente con meta
-refresh 0 + canonical (patrón en /sections/databam/databam.html; matiza la regla 6).
-TRAMPAS conocidas: (a) el home NO carga css/components/{navigation,hero,
-language-selector}.css — esas reglas viven duplicadas en el <style> inline de
-index.html (critical CSS manual): todo cambio va en ambos lados; (b) css/bundle.css
-y bundle.min.css son otro pipeline: el home no los usa, las páginas interiores cargan
-bundle.min.css; (c) .gitignore ignora docs/ y sections/ — archivos bajo sections/
-requieren `git add -f`; (d) el repo es PÚBLICO: nada sensible en commits.
+Hoja de ruta por fases y pendientes que dependen de Joaquín (no intentar resolverlos
+desde el repo): ver docs/estado_seo.md (doc local; docs/ está gitignoreado y el repo
+es público — no committear).
+
+## Stack y deploy (verificado 10-06-2026)
+- Sitio estático puro: HTML/CSS/JS vanilla. Sin build, sin package.json, sin tests.
+  Vista previa local: `python -m http.server 8000` en la raíz (o Live Server de VS Code).
+- Deploy real: push a `main` → GitHub Pages (CNAME justdev.it; `curl -I` devuelve
+  Server: GitHub.com). netlify.toml y _headers son configuración MUERTA (no se aplican).
+- GitHub Pages no soporta 301s de servidor: para URLs que cambian se usa página puente
+  con meta refresh 0 + canonical (patrón en /sections/databam/databam.html; matiza la
+  regla 6 de trabajo).
+
+## Trampas conocidas (verificadas 10-06-2026)
+- El home NO carga css/components/{navigation,hero,language-selector}.css — esas
+  reglas viven duplicadas en el <style> inline de index.html (critical CSS manual):
+  todo cambio va en ambos lados.
+- css/bundle.css y bundle.min.css son otro pipeline: el home no los usa; las páginas
+  interiores cargan bundle.min.css.
+- .gitignore ignora docs/ y sections/ — archivos bajo sections/ requieren `git add -f`.
+- El repo es PÚBLICO: nada sensible en commits.
 
 ## Reglas de trabajo
 1. Todo cambio en rama propia (`seo/fase-1-paginas-verticales`, etc.). NUNCA commit
@@ -82,28 +95,3 @@ requieren `git add -f`; (d) el repo es PÚBLICO: nada sensible en commits.
   problema → solución → caso → FAQ → CTA de cotización.
 - Nunca: keyword stuffing, contenido duplicado entre páginas, schema con datos
   falsos (reseñas, ratings), texto generado de relleno.
-
-## Hoja de ruta (estado al 10-06-2026, noche)
-- [x] Fase 1: /servicios/automatizacion-rpa, /industrias/energia-renovable y
-      /casos/data-inmobiliaria publicadas (PR #2, mergeado 10-06-2026).
-- [x] Fase 2: sitemap.xml con las 4 URLs reales (sin anclas) + enlaces internos en
-      footer; puente /sections/databam/databam.html restaurado.
-- [ ] Fase 3: resto de verticales (mineria, finanzas, legaltech) y servicios
-      (data-engineering, inteligencia-artificial).
-- [x] Fase 4: medición — GTM v3 publicado por API con GA4 G-E47YX9JYCS; conversiones:
-      lead_form_submit, gcal_booking_open, contact_click (10-06-2026).
-- [x] Bing: sitio verificado en Bing Webmaster (API key en .env local), sitemap y URLs
-      enviados por API; IndexNow automático en cada deploy (PR #3).
-- [ ] Continuo: revisar Search Console tras cada publicación (BLOQUEADO: la service
-      account perdió el acceso a la propiedad el 10-06-2026, ver pendientes).
-
-## Pendientes que dependen de Joaquín (no intentar resolver desde el repo)
-- Re-agregar la service account `seo-dashboard-justdevit@seo-dashboard-justdevit.iam.gserviceaccount.com`
-  como propietario en Search Console (Configuración → Usuarios y permisos). Tenía
-  acceso la mañana del 10-06-2026 y lo perdió esa misma tarde (GA4 también).
-- Confirmar email público canónico: el sitio muestra joaquin@justdev.it (footer,
-  mailto, JSON-LD). El texto antiguo decía contacto@justdev.it — ¿cuál se monitorea?
-- Confirmar cifra del founder 1: "Ex Penta Vida (carteras >$7B USD)" (HTML actual)
-  vs "$3B USD AUM" (copy antiguo). El sitio publica $7B.
-- Google Business Profile de Just Dev It.
-- Decisión sobre dominio alternativo .cl (no migrar nada por ahora).
