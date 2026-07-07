@@ -13,11 +13,17 @@
   empresarial multi-sociedad (sin nombre). Ningún otro cliente se nombra sin
   autorización de Joaquín.
 
+## Estructura (reorg 07-07-2026)
+Este repo es SOLO la web deployable de justdev.it. Los docs, herramientas y el trabajo de
+Data Inmobiliaria se movieron a carpetas hermanas (fuera de este repo):
+- `../Just-Dev-It-Landing-docs/` — docs de la landing (SEO, optimización, i18n, screenshots, design).
+- `../Just-Dev-It-Landing-tools/` — scripts/herramientas (SEO, build, Lighthouse, screenshots + node_modules).
+- `../datainmobiliaria.analytics/` — todo Data Inmobiliaria (monetización, monitoreo, análisis).
+
 ## Objetivo actual del repositorio
 Actualización integral de marketing digital / SEO. La especificación completa con la
-auditoría y los entregables está en docs/seo_spec_di_jdi.md (Parte 2 = este sitio).
-OJO: ese archivo hoy NO está en esta copia de trabajo (docs/ es gitignoreado; pedirlo
-si falta) — la auditoría base disponible en local es docs/auditoria_marketing_20260610.md.
+auditoría y los entregables está en `../Just-Dev-It-Landing-docs/seo_spec_di_jdi.md` (Parte 2 = este
+sitio). Si ese archivo falta, pedirlo. Auditoría base: `../Just-Dev-It-Landing-docs/auditoria_marketing_20260610.md`.
 
 Resumen del diagnóstico (junio 2026):
 - Bien hecho y NO tocar sin razón: title/meta/canonical del home, GTM
@@ -39,8 +45,8 @@ Resumen del diagnóstico (junio 2026):
   revierte en runtime.
 
 Hoja de ruta por fases y pendientes que dependen de Joaquín (no intentar resolverlos
-desde el repo): ver docs/estado_seo.md (doc local; docs/ está gitignoreado y el repo
-es público — no committear).
+desde el repo): ver `../Just-Dev-It-Landing-docs/estado_seo.md` (carpeta hermana, fuera del
+repo público — no committear datos sensibles).
 
 ## Stack y deploy (verificado 10-06-2026)
 - Sitio estático puro: HTML/CSS/JS vanilla. Sin build, sin package.json, sin tests.
@@ -57,7 +63,8 @@ es público — no committear).
   todo cambio va en ambos lados.
 - css/bundle.css y bundle.min.css son otro pipeline: el home no los usa; las páginas
   interiores cargan bundle.min.css.
-- .gitignore ignora docs/ y sections/ — archivos bajo sections/ requieren `git add -f`.
+- .gitignore ignora sections/ — archivos bajo sections/ requieren `git add -f`. (docs/ ya no
+  está en el repo: se movió a `../Just-Dev-It-Landing-docs/`.)
 - El repo es PÚBLICO: nada sensible en commits.
 
 ## Reglas de trabajo
