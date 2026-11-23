@@ -95,7 +95,7 @@
       "headline": "Cómo cumplir la Ley 21.719 al conectar IA a los datos de tu empresa",
       "description": "Cómo conectar IA y LLM a los datos de tu empresa cumpliendo la Ley 21.719: solo lectura, datos en tu entorno, trazabilidad y minimización. Cotiza desde UF 75.",
       "datePublished": "2026-06-17",
-      "dateModified": "2026-06-17",
+      "dateModified": "2026-11-23",
       "inLanguage": "es-CL",
       "image": "https://justdev.it/assets/images/blog/compliance.svg",
       "url": "https://justdev.it/blog/cumplir-ley-21719-ia-datos-empresa/",
@@ -123,7 +123,7 @@
           "name": "¿Cuándo entra en vigencia y cuáles son las multas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La ley contempla su exigibilidad plena hacia fines de 2026. Las multas pueden ser significativas y llegar al 2-4% de los ingresos anuales de la empresa según la gravedad de la infracción. El monto exacto y su aplicación a un caso concreto dependen de criterios que debe evaluar un abogado; aquí entregamos solo el orden de magnitud para dimensionar el riesgo."
+            "text": "La ley rige desde el 15 de octubre de 2027: la Ley 21.855, publicada el 23 de noviembre de 2026, corrió la fecha original del 1 de diciembre de 2026. Las multas pueden ser significativas y llegar al 2-4% de los ingresos anuales de la empresa según la gravedad de la infracción. El monto exacto y su aplicación a un caso concreto dependen de criterios que debe evaluar un abogado; aquí entregamos solo el orden de magnitud para dimensionar el riesgo."
           }
         },
         {
@@ -444,7 +444,7 @@
       </aside>
       <article class="post-body">
         <section class="reveal lead-sec">
-          <p>Conectar un modelo de lenguaje a los datos de tu empresa es la forma más rápida de pasar de "tenemos datos" a "le preguntamos al sistema en lenguaje natural y responde". El problema es que esa misma conexión, mal diseñada, puede exponer datos personales sin base de licitud, sacar información del entorno donde debe vivir y dejarte sin rastro de quién consultó qué. Con la <strong>Ley 21.719 de Protección de Datos Personales</strong> en plena exigibilidad hacia fines de 2026 y multas que pueden llegar al 2-4% de los ingresos anuales según la infracción, improvisar esta arquitectura dejó de ser una opción.</p><p>La buena noticia: cumplir no significa renunciar a la IA. Significa diseñar la conexión con los controles correctos desde el primer día. En Just Dev It conectamos agentes de IA y servidores MCP a datos empresariales con una postura técnica clara —solo lectura, datos en tu entorno, minimización y trazabilidad— pensada para soportar el escrutinio de un sector regulado. <strong>Esto es orientación técnica general, no asesoría legal:</strong> cada caso debe validarse con tu área legal o tu DPO.</p>
+          <p>Conectar un modelo de lenguaje a los datos de tu empresa es la forma más rápida de pasar de "tenemos datos" a "le preguntamos al sistema en lenguaje natural y responde". El problema es que esa misma conexión, mal diseñada, puede exponer datos personales sin base de licitud, sacar información del entorno donde debe vivir y dejarte sin rastro de quién consultó qué. Con la <strong>Ley 21.719 de Protección de Datos Personales</strong> exigible desde el 15 de octubre de 2027 y multas que pueden llegar al 2-4% de los ingresos anuales según la infracción, improvisar esta arquitectura dejó de ser una opción.</p><p>La buena noticia: cumplir no significa renunciar a la IA. Significa diseñar la conexión con los controles correctos desde el primer día. En Just Dev It conectamos agentes de IA y servidores MCP a datos empresariales con una postura técnica clara —solo lectura, datos en tu entorno, minimización y trazabilidad— pensada para soportar el escrutinio de un sector regulado. <strong>Esto es orientación técnica general, no asesoría legal:</strong> cada caso debe validarse con tu área legal o tu DPO.</p>
         </section>
         <section id="sec-1" class="reveal">
           <h2>El riesgo real de enchufar un LLM a tus datos</h2>
@@ -454,7 +454,7 @@
           <h2>La postura técnica: solo lectura, acotado y dentro de tu entorno</h2>
           <p>Nuestra arquitectura para una IA conforme se apoya en cinco controles que se refuerzan entre sí:</p><ul><li><strong>Acceso de solo lectura y acotado:</strong> un servidor MCP (Model Context Protocol) define exactamente qué puede consultar el modelo y qué no. El modelo nunca escribe, borra ni modifica; solo lee lo que se le habilitó de forma explícita.</li><li><strong>Los datos permanecen en tu entorno:</strong> la capa de IA se monta sobre tu infraestructura existente. Tus datos no se copian a servidores de terceros ni salen del perímetro que tú controlas.</li><li><strong>Minimización:</strong> se expone solo lo necesario para responder. El servidor MCP actúa como filtro entre el modelo y tus fuentes, evitando que el detalle personal salga cuando basta con un agregado.</li><li><strong>Trazabilidad y auditoría:</strong> cada consulta queda registrada —qué se preguntó, qué fuente respondió, para qué usuario— de modo que cualquier acceso es reconstruible.</li><li><strong>Proveedores de LLM empresariales serios:</strong> trabajamos con proveedores que, en sus planes empresariales, no entrenan sus modelos con los datos del cliente.</li></ul><p>Estos controles son la traducción técnica directa de los principios de la ley: el acceso acotado responde a la finalidad, la minimización a la proporcionalidad y la trazabilidad a la responsabilidad.</p>
         </section>
-        <blockquote class="pullquote reveal"><span>La Ley 21.719 es plenamente exigible hacia fines de 2026 y contempla multas de hasta 2-4% de los ingresos anuales según la infracción; conectar IA a tus datos sin controles aumenta la exposición.</span></blockquote>
+        <blockquote class="pullquote reveal"><span>La Ley 21.719 es plenamente exigible desde el 15 de octubre de 2027 y contempla multas de hasta 2-4% de los ingresos anuales según la infracción; conectar IA a tus datos sin controles aumenta la exposición.</span></blockquote>
         <section id="sec-3" class="reveal">
           <h2>Cómo funciona un servidor MCP gobernado</h2>
           <p>El servidor MCP es la pieza que convierte "el modelo puede leer la base de datos" en "el modelo puede consultar exactamente estas operaciones, de esta forma". En la práctica:</p><ul><li>Tú defines un catálogo de consultas y fuentes permitidas. Todo lo que no está en ese catálogo, no existe para el modelo.</li><li>El acceso a los sistemas fuente —tu <strong>data warehouse en la nube</strong>, tu ERP/CRM, tus documentos— es siempre de solo lectura, con consultas <strong>SQL</strong> gobernadas por reglas de seguridad.</li><li>Cuando el agente responde sobre documentos, cita el documento de origen; cuando consulta datos estructurados, la respuesta es trazable hasta la consulta que la generó. Nada es una caja negra.</li><li>La capa se construye con <strong>Python</strong> y se despliega sobre tu infraestructura existente (<strong>AWS</strong>, <strong>Azure</strong> o <strong>Google Cloud</strong>), sin reemplazar lo que ya tienes.</li></ul><p>El resultado es que un usuario pregunta en lenguaje natural —"¿cuánto facturamos en la zona sur el trimestre pasado?"— y recibe una respuesta verificable, sin escribir una sola consulta y sin que el modelo haya tenido acceso a nada fuera de su mandato.</p>
@@ -475,7 +475,7 @@
       <div class="box">
         <span class="blog-kicker">En resumen</span>
         <ul>
-            <li>La Ley 21.719 es plenamente exigible hacia fines de 2026 y contempla multas de hasta 2-4% de los ingresos anuales según la infracción; conectar IA a tus datos sin controles aumenta la exposición.</li>
+            <li>La Ley 21.719 es plenamente exigible desde el 15 de octubre de 2027 y contempla multas de hasta 2-4% de los ingresos anuales según la infracción; conectar IA a tus datos sin controles aumenta la exposición.</li>
             <li>Una IA conforme se apoya en cinco controles: acceso de solo lectura y acotado vía servidor MCP, datos que permanecen en tu entorno, minimización, trazabilidad de cada consulta y proveedores empresariales que no entrenan con tus datos.</li>
             <li>El servidor MCP define exactamente qué puede leer el modelo: traduce los principios de licitud, finalidad, proporcionalidad y responsabilidad en reglas técnicas concretas.</li>
             <li>Modelos estándar como Claude o ChatGPT pueden usarse sobre datos de empresa cumpliendo la ley, siempre que la conexión esté bien diseñada y se usen planes empresariales serios.</li>
@@ -493,7 +493,7 @@
       </details>
       <details class="q">
         <summary>¿Cuándo entra en vigencia y cuáles son las multas?</summary>
-        <p>La ley contempla su exigibilidad plena hacia fines de 2026. Las multas pueden ser significativas y llegar al 2-4% de los ingresos anuales de la empresa según la gravedad de la infracción. El monto exacto y su aplicación a un caso concreto dependen de criterios que debe evaluar un abogado; aquí entregamos solo el orden de magnitud para dimensionar el riesgo.</p>
+        <p>La ley rige desde el 15 de octubre de 2027: la Ley 21.855, publicada el 23 de noviembre de 2026, corrió la fecha original del 1 de diciembre de 2026. Las multas pueden ser significativas y llegar al 2-4% de los ingresos anuales de la empresa según la gravedad de la infracción. El monto exacto y su aplicación a un caso concreto dependen de criterios que debe evaluar un abogado; aquí entregamos solo el orden de magnitud para dimensionar el riesgo.</p>
       </details>
       <details class="q">
         <summary>¿Puedo usar Claude o ChatGPT con datos de mi empresa cumpliendo la ley?</summary>
